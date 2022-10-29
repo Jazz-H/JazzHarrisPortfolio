@@ -9,7 +9,7 @@ import { AiFillLinkedin } from "react-icons/ai";
 import {BsFillMoonStarsFill} from "react-icons/bs"
 export default function Home() {
   const [darkMode, setDarkMode] = useState(false);
-  <script src="../path/to/flowbite/dist/flowbite.js"></script>;
+
 
   return (
     <main className={darkMode ? "dark" : ""}>
@@ -29,6 +29,7 @@ export default function Home() {
             className=" text-gray-700 rounded hover:bg-gray-100 hover:bg-transparent hover:text-cyan-400 p-0 dark:hover:text-white dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:bg-transparent dark:border-gray-700 "
             href="https://github.com/Jazz-Harris"
             target="_blank"
+            rel="noreferrer"
           >
             <AiFillGithub />
           </a>
@@ -36,6 +37,7 @@ export default function Home() {
             className=" text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-cyan-400 md:p-0 md:dark:hover:text-white dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700 "
             href="https://www.linkedin.com/in/maurajharris/"
             target="_blank"
+            rel="noreferrer"
           >
             <AiFillLinkedin />
           </a>

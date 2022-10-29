@@ -109,6 +109,7 @@ const Navbar = () => {
                     class="lg:text-white bg-slate-600 hover:-translate-y-0.5 transform transistion hover:animate-pulse hover:bg-slate-500 dark:bg-gray-700  hover:text-cyan-400 px-4 p-2  dark:hover:text-white dark:text-gray-100 dark:hover:bg-gray-400 text-md font-bold uppercase  rounded shadow hover:shadow-md outline-none focus:outline-none lg:mr-1 lg:mb-0 mb-3 ease-linear transition-all duration-150"
                     href="http://localhost:3000/Jazz(Maura)HarrisResume-1.pdf"
                     target="_blank"
+                    rel="noreferrer"
                   >
                     Resume
                   </a>
@@ -118,6 +119,7 @@ const Navbar = () => {
                     className=" text-gray-700 rounded hover:-translate-y-0.5 transform transistion hover:animate-pulse hover:bg-gray-100 hover:bg-transparent hover:text-cyan-400 p-0 dark:hover:text-white dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:bg-transparent dark:border-gray-700 "
                     href="https://github.com/Jazz-Harris"
                     target="_blank"
+                    rel="noreferrer"
                   >
                     <AiFillGithub />
                   </a>
@@ -125,6 +127,7 @@ const Navbar = () => {
                     className=" text-gray-700 rounded hover:-translate-y-0.5 transform transistion hover:animate-pulse hover:bg-gray-100 md:hover:bg-transparent md:hover:text-cyan-400 md:p-0 md:dark:hover:text-white dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700 "
                     href="https://www.linkedin.com/in/maurajharris/"
                     target="_blank"
+                    rel="noreferrer"
                   >
                     <AiFillLinkedin />
                   </a>
@@ -171,6 +174,7 @@ const Navbar = () => {
                 className="lg:text-white bg-slate-600 dark:bg-gray-700  hover:text-cyan-400 p-0 dark:hover:text-white dark:text-gray-200 dark:hover:bg-gray-400 text-md font-bold uppercase px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none lg:mr-1 lg:mb-0 ml-3 mb-3 ease-linear transition-all duration-150"
                 href="http://localhost:3000/Jazz(Maura)HarrisResume-1.pdf"
                 target="_blank"
+                rel="noreferrer"
               >
                 Resume
               </a>

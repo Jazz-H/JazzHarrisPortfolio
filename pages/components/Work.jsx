@@ -40,6 +40,7 @@ const Work = () => {
           <a
             href="https://github.com/Jazz-Harris?tab=repositories"
             target="_blank"
+            rel="noreferrer"
             class="inline-flex items-center  lg:mb-6 lg:text-2xl pt-5 3xl:mb-10 3xl:text-2xl 3xl:mt-5 text-cyan-400  dark:text-cyan-400 hover:underline"
           >
             View on GitHub
@@ -89,6 +90,7 @@ const Work = () => {
               <a
                 href="https://github.com/Jazz-Harris/AngryBirds"
                 target="_blank"
+                rel="noreferrer"
                 class="inline-flex items-center pt-2 text-cyan-400  dark:text-white hover:underline"
               >
                 View on GitHub
@@ -132,6 +134,7 @@ const Work = () => {
               <a
                 href="https://github.com/Jazz-Harris/Roll-A-Ball"
                 target="_blank"
+                rel="noreferrer"
                 class="inline-flex items-center pt-2 text-cyan-400  dark:text-white hover:underline"
               >
                 View on GitHub
