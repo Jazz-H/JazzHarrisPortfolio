@@ -50,16 +50,28 @@ a {
 .icon-bar {
  
    position: fixed;
-    bottom: 5%;
+    bottom: 10%;
     left: 0;
 }
 
-.icon-bar a {
-  display: block;
-  padding: 10px;
+@media  (max-width: 776px) {
+  .icon-bar a {
+    font-size: 20px;
+  }
+}
 
+@media   (mix-width: 777px) {
+  .icon-bar a {
+    font-size: 30px;
+
+   
+  }
+}
+.icon-bar a {
+  
+  display: block;
+  padding: 12px;
   color: black;
-  font-size: 30px;
 }
 
 .icon-bar a:hover {

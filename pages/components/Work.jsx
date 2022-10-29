@@ -20,14 +20,14 @@ const Work = () => {
       <div className=" 3xl:mt-20  flex justify-center ease-linear duration-300 items-left m-10 ">
         <Card_temp_2 toggle={toggle} settoggle={setToggle} />
       </div>
-      <div className="flex justify-center ease-linear duration-300 items-center m-10 ">
+      <div className="flex justify-center ease-linear duration-300 items-center m-10 xs:mt-0 ">
         <Card_temp_1 toggle={toggle} settoggle={setToggle} />
       </div>
      
 
       <section>
         <h1
-          className=" text-center  2xl:mt-20 text-3xl 3xl:mb-10 3xl:mt-20 lg:text-5xl mb-2 lg:mb-6 mt-40 3xl:text-6xl font-semibold dark: text-black dark:text-white"
+          className=" text-center 3xl:mt-60 2xl:mt-20 text-3xl 3xl:mb-10  lg:text-5xl mb-2 lg:mb-6 mt-40 3xl:text-6xl font-semibold dark: text-black dark:text-white"
           style={{
             display: "flex",
             alignItems: "center",
@@ -65,7 +65,7 @@ const Work = () => {
           }}
         >
           <div class="flex flex-col lg:flex-row lg:px-20  ">
-          <div class="float-child p-5 m-5  w-[20rem] h-[17.5rem]  sm:w-[26rem] sm:h-[16rem]  md:w-[30rem]  bg-white rounded-lg border border-gray-200 shadow-md dark:bg-slate-700 dark:hover:bg-gray-500 hover:bg-gray-100 dark:border-gray-700">
+          <div class=" hover:-translate-y-5 transform transistion float-child p-5 m-5  w-[20rem] h-[17.5rem]  sm:w-[26rem] sm:h-[16rem]  md:w-[30rem]  bg-white rounded-lg border border-gray-200 shadow-md dark:bg-slate-700 dark:hover:bg-gray-500 hover:bg-gray-100 dark:border-gray-700">
               <IconContext.Provider value={{ className: "top-react-icons" }}>
                 <AiOutlineFolder />
               </IconContext.Provider>
@@ -109,7 +109,7 @@ const Work = () => {
 
 
 
-            <div class="float-child p-5  m-5  w-[20rem] h-[17.5rem]  sm:w-[26em] sm:h-[16rem] md:w-[30em]  bg-white rounded-lg border border-gray-200 shadow-md dark:bg-slate-700 dark:hover:bg-gray-500 hover:bg-gray-100 dark:border-gray-700">
+            <div class="hover:-translate-y-5 transform transistion float-child p-5  m-5  w-[20rem] h-[17.5rem]  sm:w-[26em] sm:h-[16rem] md:w-[30em]  bg-white rounded-lg border border-gray-200 shadow-md dark:bg-slate-700 dark:hover:bg-gray-500 hover:bg-gray-100 dark:border-gray-700">
               <IconContext.Provider value={{ className: "top-react-icons" }}>
                 <AiOutlineFolder />
               </IconContext.Provider>

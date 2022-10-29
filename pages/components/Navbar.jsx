@@ -26,7 +26,7 @@ const Navbar = () => {
   return (
     <nav
       id="nav"
-      class="fixed top-0  z-50 w-full flex flex-wrap items-center justify-between px-4 py-3 navbar-expand-lg bg-black dark:bg-slate-600 "
+      class="fixed top-0  z-50 w-full flex flex-wrap items-center justify-between  sm:px-20 py-3 navbar-expand-lg bg-black dark:bg-slate-600 "
     >
       <div class="container  mx-auto flex flex-wrap items-center justify-between">
         <div class="w-full relative flex justify-between lg:w-auto lg:static lg:block lg:justify-start ">
@@ -36,19 +36,19 @@ const Navbar = () => {
             smooth={true}
             offset={0}
             duration={500}
-            class="text-sm font-bold leading-relaxed inline-block mr-4 py-2 "
+            class="text-sm font-bold leading-relaxed inline-block py-1 "
           >
-            <img src="JHNavLogo.png" alt="logo" class="ml-3  h-9" />
+            <img src="JHNavLogo.png" alt="logo" class=" w-10 h-10 mt-1" />
           </Link>
 
           <button
-            class="cursor-pointer text-xl leading-none px-3 py-1 border border-solid border-transparent rounded bg-transparent block lg:hidden outline-none focus:outline-none"
+            class="cursor-pointer text-xl leading-none py-1 border border-solid border-transparent rounded bg-transparent block lg:hidden outline-none focus:outline-none"
             type="button"
             onclick="toggleNavbar('example-collapse-navbar')"
           >
             <img
               src="https://img.icons8.com/cotton/64/000000/menu.png"
-              class="ml-3 w-10 h-10 textwhite"
+              class=" w-10 h-10 text-white"
               onClick={() => setShowMenu(!showMenu)}
             />
           </button>
@@ -69,7 +69,7 @@ const Navbar = () => {
             item && (
               <animated.div
                 style={styles}
-                className="fixed top-0 left-0 w-[150px]  duration-100 ease-in-out  text-1xl pt-10 h-screen z-50 bg-gray-700 dark:bg-gray-300 inline-block  pl-2 text-left gap-5 text-white shadow-md shadow-gray-50 rounded-r-sm "
+                className="fixed top-0 left-0 w-[150px]  duration-50 ease-in-out  text-1xl pt-10 h-screen z-50 bg-gray-700 dark:bg-gray-300 inline-block  pl-2 text-left gap-5 text-white shadow-md shadow-gray-50 rounded-r-sm "
               >
                 <div>
                   <Link
@@ -124,7 +124,7 @@ const Navbar = () => {
                     <AiFillGithub />
                   </a>
                   <a
-                    className=" text-gray-700 rounded hover:-translate-y-0.5 transform transistion hover:animate-pulse hover:bg-gray-100 md:hover:bg-transparent md:hover:text-cyan-400 md:p-0 md:dark:hover:text-white dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700 "
+                    className=" text-gray-700 rounded hover:-translate-y-0.5 transform transistion hover:animate-pulse hover:bg-gray-100 hover:bg-transparent hover:text-cyan-400 p-0 dark:hover:text-white dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:bg-transparent dark:border-gray-700 "
                     href="https://www.linkedin.com/in/maurajharris/"
                     target="_blank"
                     rel="noreferrer"
