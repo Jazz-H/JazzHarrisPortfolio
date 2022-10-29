@@ -2,6 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
+*{
+  scroll-behavior: smooth;
+}
 html,
 body {
   margin: 0;
@@ -16,6 +19,7 @@ body {
 a {
   color: inherit;
   font-family: Roboto ;
+  
 }
 
 
@@ -40,25 +44,57 @@ a {
 
 .parent {
   display: inline-block;
-  vertical-align: middle;
+ 
 }
 
 .icon-bar {
-  position: fixed;
-  top: 50%;
-  -webkit-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
-  transform: translateY(150%);
+ 
+   position: fixed;
+    bottom: 5%;
+    left: 0;
 }
 
 .icon-bar a {
   display: block;
-  text-align: center;
-  padding: 20px;
-  transition: all 0.3s ease;
+  padding: 10px;
+
   color: black;
-  font-size: 45px;
+  font-size: 30px;
+}
+
+.icon-bar a:hover {
+ color: cyan;
+}
+
+.icon-bar2 {
+ 
+  
+   top:10%;
+
+}
+
+.icon-bar2 a {
+ display: inline-block;
+ padding: 10px;
+
+ color: black;
+ font-size: 30px;
+}
+
+.icon-bar a:hover {
+color: cyan;
 }
 
 
+p span {
+  display: block;
+}
+
+
+
+.float-child {
+
+  float: left
+ 
+}  
 

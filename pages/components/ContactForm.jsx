@@ -3,9 +3,11 @@ import emailjs from "@emailjs/browser";
 import styled from "styled-components";
 import { useForm } from "react-hook-form";
 
-const Contact = () => {
-  const form = useRef();
 
+const ContactForm = () => {
+  const form = useRef();
+ 
+  
   const {
     register,
     formState: { errors },
@@ -22,15 +24,18 @@ const Contact = () => {
         "EeJ_zgoP_X2vxEM7X"
       )
       .then(
+        
         (result) => {
+        
           reset({
             user_name: "",
             user_email: "",
             message: "",
+
           });
         },
-          alert("SUCCESS! your message has been submitted"),
-        
+       
+       
         (error) => {
           console.log("errors");
         }
@@ -38,8 +43,10 @@ const Contact = () => {
   };
 
   return (
+    
     <StyledContactForm>
       <form ref={form} onSubmit={handleSubmit(sendEmail)}>
+
         <label>Name </label>
         <input
           {...register("user_name", {
@@ -54,7 +61,7 @@ const Contact = () => {
             },
           })}
           type="text"
-          placeholder="Please include your first and last name"
+          placeholder="Please enter your name"
           name="user_name"
         />
 
@@ -95,13 +102,13 @@ const Contact = () => {
         />
 
         <p class="text-red-700">{errors.message?.message}</p>
-        <input type="submit" value="Send" />
+        <input type="submit" value="Send" name='submit' />
       </form>
     </StyledContactForm>
   );
 };
 
-export default Contact;
+export default ContactForm;
 
 // Styles
 const StyledContactForm = styled.div`
@@ -110,13 +117,14 @@ const StyledContactForm = styled.div`
     display: flex;
     align-items: flex-start;
     flex-direction: column;
+    
     width: 100%;
 
-    font-size: 16px;
+    font-size: 14px;
 
     input {
       width: 100%;
-      height: 50px;
+      height: 30px;
       padding: 7px;
       outline: none;
 
@@ -142,6 +150,7 @@ const StyledContactForm = styled.div`
     }
     label {
       margin-top: 1rem;
+      padding-bottom:5px;
     }
     input[type="submit"] {
       margin-top: 2rem;
