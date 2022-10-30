@@ -5,7 +5,7 @@ const About = () => {
         <div>
           <div className=" m-10 p-2 rounded-2xl  shadow-lg  dark:shadow-slate-700   ">
             <div>
-              <div className="md:w-2/6 sm:w-2/12  xs:w-2/12  float-right m-5 lg:p-5">
+              <div className="md:w-2/6 xs:w-4/12  float-right m-5 lg:p-5">
                 <img
                   src="JHPhoto.png"
                   alt="..."

@@ -27,7 +27,7 @@ export default function Home() {
 
       <div className="icon-bar ">
         <a
-          className=" cursor-pointer text-3xl  text-gray-700 rounded hover:bg-gray-100 hover:bg-transparenthover:text-cyan-400 md:p-0 md:dark:hover:text-white dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white dark:hover:bg-transparent dark:border-gray-700 "
+          className=" cursor-pointer text-3xl  md:p-0 md:dark:hover:text-white dark:text-gray-400  dark:border-gray-700 "
           href="https://github.com/Jazz-Harris"
           target="_blank"
           rel="noreferrer"
@@ -35,7 +35,7 @@ export default function Home() {
           <BsGithub />
         </a>
         <a
-          className=" cursor-pointer text-3xl  text-gray-700 rounded hover:bg-gray-100 hover:bg-transparenthover:text-cyan-400 md:p-0 md:dark:hover:text-white dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white dark:hover:bg-transparent dark:border-gray-700 "
+          className=" cursor-pointer text-3xl  md:p-0 md:dark:hover:text-white dark:text-gray-400  dark:border-gray-700 "
           href="https://www.linkedin.com/in/maurajharris/"
           target="_blank"
           rel="noreferrer"
@@ -44,7 +44,7 @@ export default function Home() {
         </a>
         <a
           onClick={() => setDarkMode(!darkMode)}
-          className=" cursor-pointer text-3xl  text-gray-700 rounded hover:bg-gray-100 hover:bg-transparenthover:text-cyan-400 md:p-0 md:dark:hover:text-white dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white dark:hover:bg-transparent dark:border-gray-700 "
+          className=" cursor-pointer text-3xl  md:p-0 md:dark:hover:text-white dark:text-gray-400   dark:border-gray-700 "
         >
           <BsFillMoonStarsFill />
         </a>

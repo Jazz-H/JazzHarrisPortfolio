@@ -16,9 +16,9 @@ const Navbar = () => {
   });
 
   const menuTransitions = useTransition(showMenu, {
-    from: { opacity: 0, transform: "translateX(-100%)" },
+    from: { opacity: 0, transform: "translateX(50%)" },
     enter: { opacity: 1, transform: "translateX(0%)" },
-    leave: { opacity: 0, transform: "translateX(-100%)" },
+    leave: { opacity: 0, transform: "translateX(50%)" },
   });
 
 
@@ -26,10 +26,11 @@ const Navbar = () => {
   return (
     <nav
       id="nav"
+   
       class="fixed top-0  z-50 w-full flex flex-wrap items-center justify-between  sm:px-20 py-3 navbar-expand-lg bg-black dark:bg-slate-600 "
     >
       <div class="container  mx-auto flex flex-wrap items-center justify-between">
-        <div class="w-full relative flex justify-between lg:w-auto lg:static lg:block lg:justify-start ">
+        <div class="w-full relative flex justify-between  lg:w-auto lg:static lg:block lg:justify-start ">
           <Link
             to="Home"
             spy={true}
@@ -52,13 +53,14 @@ const Navbar = () => {
               onClick={() => setShowMenu(!showMenu)}
             />
           </button>
+       
         </div>
         {maskTransitions(
           (styles, item) =>
             item && (
               <animated.div
                 style={styles}
-                className="bg-black bg-opacity-25 fixed top-0 left-0 w-full h-screen z-50 "
+                className=" backdrop-blur-sm fixed top-0 left-0 w-full h-screen z-50 "
                 onClick={() => setShowMenu(false)}
               ></animated.div>
             )
@@ -69,7 +71,7 @@ const Navbar = () => {
             item && (
               <animated.div
                 style={styles}
-                className="fixed top-0 left-0 w-[150px]  duration-50 ease-in-out  text-1xl pt-10 h-screen z-50 bg-gray-700 dark:bg-gray-300 inline-block  pl-2 text-left gap-5 text-white shadow-md shadow-gray-50 rounded-r-sm "
+                className="fixed top-0 right-0 w-[200px]  duration-50 ease-in-out  text-1xl pt-10 h-screen z-50 bg-gray-700 dark:bg-gray-300 inline-block  pl-2 text-left gap-5 text-white shadow-md shadow-gray-50 rounded-r-sm "
               >
                 <div>
                   <Link
