@@ -4,8 +4,9 @@ import ContactForm from "./ContactForm";
 const ContactHeading = () => {
   return (
     <section >
-      <div class="flex min-w-screen items-center text-center pt-20 lg:pt-40 lg:pr-5  dark:bg-gray-900 ">
-        <div  id = "Contact" class="mx-auto w-full max-w-max ">
+        <div id = "Contact"></div>
+      <div class="flex min-w-screen items-center text-center pt-20 lg:pt-35 lg:pr-5  dark:bg-gray-900 ">
+        <div    class="mx-auto w-full max-w-max ">
           <h3 class="my-3 text-4xl sm:text-5xl md:text-5xl mb-8 xl:text-8xl xl:mb-4 font-semibold text-black dark:text-white">
             Wanna connect?
           </h3>

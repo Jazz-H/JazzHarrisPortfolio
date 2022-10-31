@@ -20,12 +20,12 @@ export default function Home() {
       
       <NavMenu></NavMenu>
         <Header></Header>
-        <About></About>
         <Work></Work>
+        <About></About>
         <ContactHeading></ContactHeading>
         <Footer></Footer>
 
-      <div className="icon-bar z-40">
+      <div className="icon-bar ">
         <a
           className=" cursor-pointer text-3xl  md:p-0 md:dark:hover:text-white dark:text-gray-400  dark:border-gray-700 "
           href="https://github.com/Jazz-Harris"

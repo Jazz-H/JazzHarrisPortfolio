@@ -21,7 +21,7 @@ const Navbar = () => {
     enter: { opacity: 1, transform: "translateX(0%)" },
     leave: { opacity: 0, transform: "translateX(50%)" },
   });
-  //  onClick={() => setShowMenu(!showMenu)}
+ 
   return (
     <nav
       id="nav"
@@ -59,7 +59,11 @@ const Navbar = () => {
           </div>
         </div>
         {maskTransitions(
-          (styles, item) => item && <animated.div style={styles}></animated.div>
+          (styles, item) => item && 
+          <animated.div 
+          style={styles}
+          className="backdrop-blur-sm fixed top-20 left-0 w-full h-full z-50"
+          ></animated.div>
         )}
 
         {menuTransitions(
@@ -67,21 +71,22 @@ const Navbar = () => {
             item && (
               <animated.div
                 style={styles}
-                className="fixed top-16 right-0 flex flex-col  text-lg p-10 w-screen duration-50 ease-in-out  text-1xl   z-55 bg-black dark:bg-slate-600  text-white drop-shadow-sm shadow-gray-50 rounded-r-sm "
+                className="fixed top-16 right-0 flex flex-col  text-lg p-10 w-screen duration-50 ease-in-out  text-1xl   z-50 bg-black dark:bg-slate-600  text-white drop-shadow-sm shadow-gray-50 rounded-r-sm "
               >
             
                  
-                  <a
-                    href="#about"
-                    class="mb-8 text-center text-white hover:-translate-y-0.5 transform transistion hover:animate-pulse hover:bg-gray-100 hover:bg-transparent hover:text-cyan-400  dark:hover:text-white dark:text-gray-400  dark:hover:bg-gray-700 dark:hover:bg-transparent dark:border-gray-700    uppercase font-bold"
-                  >
-                    About
-                  </a>
+              
                   <a
                     href="#Work"
                     class="mb-8 text-center text-white   hover:-translate-y-0.5 transform transistion hover:animate-pulse hover:bg-gray-100 hover:bg-transparent hover:text-cyan-400  dark:hover:text-white dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:bg-transparent dark:border-gray-700   uppercase font-bold"
                   >
                     Work
+                  </a>
+                  <a
+                    href="#about"
+                    class="mb-8 text-center text-white hover:-translate-y-0.5 transform transistion hover:animate-pulse hover:bg-gray-100 hover:bg-transparent hover:text-cyan-400  dark:hover:text-white dark:text-gray-400  dark:hover:bg-gray-700 dark:hover:bg-transparent dark:border-gray-700    uppercase font-bold"
+                  >
+                    About
                   </a>
                   <a
                     href="#Contact"
@@ -90,7 +95,7 @@ const Navbar = () => {
                     Contact
                   </a>
                   <a
-                    class="mb-8 lg:text-white mx-auto bg-slate-600 hover:-translate-y-0.5 transform transistion hover:animate-pulse hover:bg-slate-500 dark:bg-gray-700  hover:text-cyan-400  p-2  dark:hover:text-white dark:text-gray-100 dark:hover:bg-gray-400 text-md font-bold uppercase  rounded shadow hover:shadow-md outline-none focus:outline-none  ease-linear transition-all duration-150"
+                    class=" lg:text-white mx-auto bg-slate-600 hover:-translate-y-0.5 transform transistion hover:animate-pulse hover:bg-slate-500 dark:bg-gray-700  hover:text-cyan-400  p-2  dark:hover:text-white dark:text-gray-100 dark:hover:bg-gray-400 text-md font-bold uppercase  rounded shadow hover:shadow-md outline-none focus:outline-none  ease-linear transition-all duration-150"
                     href="http://localhost:3000/Jazz(Maura)HarrisResume-1.pdf"
                     target="_blank"
                     rel="noreferrer"
@@ -108,20 +113,21 @@ const Navbar = () => {
         >
           <ul className="flex flex-col lg:flex-row list-none mr-auto"></ul>
           <ul className="flex flex-col lg:flex-row list-none lg:ml-auto items-center">
-            <li className="inline-block relative">
-              <a
-                class="text-white hover:text-cyan-400 hover:-translate-y-0.5 transform transistion  px-3 py-4 lg:py-2 flex items-center text-md uppercase font-bold"
-                href="#about"
-              >
-                About
-              </a>
-            </li>
+           
             <li className="inline-block relative">
               <a
                 class="text-white hover:text-cyan-400 hover:-translate-y-0.5 transform transistion  px-3 py-4 lg:py-2 flex items-center text-md uppercase font-bold"
                 href="#Work"
               >
                 Work
+              </a>
+            </li>
+            <li className="inline-block relative">
+              <a
+                class="text-white hover:text-cyan-400 hover:-translate-y-0.5 transform transistion  px-3 py-4 lg:py-2 flex items-center text-md uppercase font-bold"
+                href="#about"
+              >
+                About
               </a>
             </li>
             <li className="inline-block relative">
