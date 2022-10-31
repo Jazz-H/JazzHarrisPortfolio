@@ -87,6 +87,7 @@ a {
 
 .icon-bar2 a {
  display: inline-block;
+ flex-direction: column;
  padding: 10px;
 
  color: black;
@@ -110,3 +111,8 @@ p span {
  
 }  
 
+@media  (min-width: 1022px) {
+  .Hamburger {
+  display:none
+  }
+}

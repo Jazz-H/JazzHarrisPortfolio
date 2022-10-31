@@ -25,7 +25,7 @@ export default function Home() {
         <ContactHeading></ContactHeading>
         <Footer></Footer>
 
-      <div className="icon-bar ">
+      <div className="icon-bar z-40">
         <a
           className=" cursor-pointer text-3xl  md:p-0 md:dark:hover:text-white dark:text-gray-400  dark:border-gray-700 "
           href="https://github.com/Jazz-Harris"
