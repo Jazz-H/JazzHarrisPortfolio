@@ -9,7 +9,7 @@ const Work = () => {
     <section  id="Work" class=" pt-20  pb-40 2xl:pb-20 dark:bg-gray-900 ">
       <h1
        
-        className=" text-center sm:text-5xl md:text-7xl   mb-2 font-semibold dark: text-black dark:text-white"
+        className=" text-center text-5xl md:text-7xl   mb-2 font-semibold dark: text-black dark:text-white"
       >
         <bold>Work I've done</bold> </h1>
 
