@@ -2,8 +2,6 @@ import { Link } from "react-scroll";
 import { useState } from "react";
 import React from "react";
 import { useTransition, animated } from "react-spring";
-import { AiFillGithub } from "react-icons/ai";
-import { AiFillLinkedin } from "react-icons/ai";
 import { Twirl as Hamburger } from "hamburger-react";
 
 const Navbar = () => {
