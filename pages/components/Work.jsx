@@ -6,7 +6,7 @@ import SDPortfolio from "./SDPortfolio";
 const Work = () => {
   const [toggle, setToggle] = useState(false);
   return (
-    <section  id="Work" class=" pt-40  2xl:pb-40 dark:bg-gray-900 ">
+    <section  id="Work" class=" pt-20  2xl:pb-20 dark:bg-gray-900 ">
       <h1
        
         className=" text-center text-3xl lg:text-7xl   mb-2 font-semibold dark: text-black dark:text-white"

@@ -118,7 +118,7 @@ p span {
 }
 
 .container{
-  width: 1000px;
+  width: 500px;
   position: left;
   display: flex;
   justify-content: space-evenly;
@@ -216,6 +216,14 @@ p span {
   align-items: center;
   font-family: consolas;
 }
+@media  (min-width: 1400px) {
+  .container{
+    
+    height:325px;
+
+ 
+  }
+}
 
 @media  (max-width: 1400px) {
   .container{
@@ -223,6 +231,7 @@ p span {
     justify-content: center;
     align-items: center;
     display: flex;
+  
 
  
   }
