@@ -5,7 +5,8 @@ const DAPortfolio = () => {
   return (
     <section class="bodyv2">
     
-      <div class="container">
+      <div class="containerv2">
+        <div class = "floatcontainer">
         <div class="card">
           <div class="face face1 ">
             <div class="content  ">
@@ -45,6 +46,7 @@ const DAPortfolio = () => {
             </div>
           </div>
         </div>
+
 
         <div class="card">
           <div class="face face1 ">
@@ -99,8 +101,10 @@ const DAPortfolio = () => {
               </div>
             </div>
           </div>
+          </div>
         </div>
-   
+       
+        <div class ="floatcontainer">
         <div class="card">
           <div class="face face1 ">
             <div class="content  ">
@@ -136,12 +140,13 @@ const DAPortfolio = () => {
               </div>
             </div>
           </div>
+      
         </div>
 
         <div class="card">
           <div class="face face1 ">
             <div class="content  ">
-            <img src="comingsoon.jpg" />
+               <img src="comingsoon.jpg" />
             </div>
           </div>
           <div class="face face2">
@@ -174,6 +179,7 @@ const DAPortfolio = () => {
             </div>
           </div>
         </div>
+      </div>
       </div>
     </section>
   );

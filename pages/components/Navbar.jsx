@@ -25,7 +25,7 @@ const Navbar = () => {
       id="nav"
       class="fixed top-0  z-50 w-full flex flex-wrap items-center justify-between flex-direction:column  sm:px-20 py-3 navbar-expand-lg bg-black dark:bg-slate-600 "
     >
-      <div class="container2  mx-auto flex flex-wrap items-center justify-between">
+      <div class="container  mx-auto flex flex-wrap items-center justify-between">
         <div class="w-full relative flex justify-between  lg:w-auto lg:static lg:block lg:justify-start ">
           <Link
             to="Home"

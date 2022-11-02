@@ -117,27 +117,29 @@ p span {
   }
 }
 
-.container{
+.containerv2{
   width: 500px;
   position: left;
   display: flex;
+ 
   justify-content: space-evenly;
 }
 
-.container .card{
+.containerv2 .card{
   position: relative;
   cursor: pointer;
-  margin: 10px;
+  flex:1;
+  margin: 20px;
 }
 
-.container .card .face{
+.containerv2 .card .face{
   width: 300px;
   height: 200px;
   border-radius: 10px;
   transition: 0.5s;
 }
 
-.container .card .face.face1{
+.containerv2 .card .face.face1{
   position: relative;
   background: rgb(51, 50, 50);
   display: flex;
@@ -147,22 +149,22 @@ p span {
   transform: translateY(100px);
 }
 
-.container .card:hover .face.face1{
+.containerv2 .card:hover .face.face1{
   background: cyan;
   transform: translateY(0);
 }
 
-.container .card .face.face1 .content{
+.containerv2 .card .face.face1 .content{
 
   opacity: 0.2;
   transition: 0.5s;
 }
 
-.container .card:hover .face.face1 .content{
+.containerv2 .card:hover .face.face1 .content{
   opacity: 1;
 }
 
-.container .card .face.face1 .content img{
+.containerv2 .card .face.face1 .content img{
   width: 275px;
   height: 180px;
   object-fit: fill;
@@ -173,14 +175,14 @@ p span {
 
 }
 
-.container .card .face.face1 .content h3{
+.containerv2 .card .face.face1 .content h3{
 
   color: #fff;
   text-align: center;
   font-size: 1.5em;
 }
 
-.container .card .face.face2{
+.containerv2 .card .face.face2{
   position: relative;
   background: #fff;
   display: flex;
@@ -194,17 +196,17 @@ p span {
   transform: translateY(-100px);
 }
 
-.container .card:hover .face.face2{
+.containerv2 .card:hover .face.face2{
   transform: translateY(0);
 }
 
-.container .card .face.face2 .content p{
+.containerv2 .card .face.face2 .content p{
   margin: 0;
   padding: 0;
 }
 
 
-.container .card .face.face2 .content a:hover{
+.containerv2 .card .face.face2 .content a:hover{
   background: #333;
   color: #fff;
 }
@@ -216,17 +218,29 @@ p span {
   align-items: center;
   font-family: consolas;
 }
-@media  (min-width: 1400px) {
-  .container{
-    
-    height:325px;
+@media  (min-width: 900px) {
+  .card{
+
+    height:300px;
 
  
   }
 }
 
-@media  (max-width: 1400px) {
-  .container{
+@media only screen and (min-width: 1300px) {
+  .containerv2 .floatcontainer {
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+  
+
+ 
+  }
+}
+
+@media  (max-width: 900px) {
+  .containerv2{
     flex-direction: column;
     justify-content: center;
     align-items: center;
