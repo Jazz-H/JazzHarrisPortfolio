@@ -146,12 +146,12 @@ const DAPortfolio = () => {
         <div class="card">
           <div class="face face1 ">
             <div class="content  ">
-               <img src="comingsoon.jpg" />
+               <img src="webscraplogo.png" />
             </div>
           </div>
           <div class="face face2">
             <div class="content ">
-              <p>Webscraping (Insert) with Python and BeautifulSoup</p>
+              <p>Webscraping RealEstate data with Python and BeautifulSoup</p>
               <p class="text-gray-500">
                 <small>Python BeautifulSoup</small>
               </p>
@@ -160,7 +160,7 @@ const DAPortfolio = () => {
                 <div>
                   <a
                     className=" cursor-pointer "
-                    href="https://github.com/Jazz-Harris/EDAWithSuperMarketData/blob/main/EDAWithSupermarketSales.ipynb"
+                    href="https://github.com/Jazz-Harris/WebScrapingRealEstateData"
                     target="_blank"
                     rel="noreferrer"
                   >
