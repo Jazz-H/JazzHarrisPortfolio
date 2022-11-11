@@ -7,7 +7,7 @@ const Footer = () => {
 
       <div class="text-sm  text-right display:block  text-gray-500  dark:text-gray-400">
       <div>  Designed and built by Jazz Harris.</div> 
-      <div>   This website was created using NextJS, React, JS, and Tailwind.   </div>
+      <div>   This website was created using NextJS, ReactJS, and Tailwind CSS.   </div>
       <div> 
       The site is hosted using Netlify and the code behind can be viewed on my
         <a

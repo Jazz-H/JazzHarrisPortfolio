@@ -54,7 +54,7 @@ const SDPortfolio = () => {
                         class=" px-2  pb-2 pt-2.5 hover:animate-pulse bg-cyan-400 text-white font-medium text-xs leading-normal uppercase rounded shadow-md hover:bg-cyan-600 hover:shadow-lg focus:bg-cyan-600 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out flex align-center"
                       >
                         <span class="w-3 mr-2 mt-1">
-                        <img src="https://img.icons8.com/ios-filled/50/000000/tableau-software.png"/>
+                        <img src="https://img.icons8.com/cotton/64/null/hyperlink.png"/>
                         </span>
                         LIVE Version
                       </button>
@@ -71,21 +71,21 @@ const SDPortfolio = () => {
         <div class="card">
           <div class="face face1 ">
             <div class="content  ">
-            <img src="comingsoon.jpg" />
+            <img src="ToDoAppLogo.png" />
             </div>
           </div>
           <div class="face face2">
             <div class="content ">
-              <p>COVID19 Data Visualization Using Python</p>
+              <p>Dynamic To-Do App with Quote API</p>
               <p class="text-gray-500">
-                <small>Python Pandas Numpy Plotly Matplotlib</small>
+                <small>FIREBASE API REACTJS</small>
               </p>
               <button></button>
               <div class="justify-center ">
                 <div>
                   <a
                     className=" cursor-pointer "
-                    href="https://github.com/Jazz-Harris/COVID19DataVIS/blob/main/COVID19DataVis.ipynb"
+                    href="https://github.com/Jazz-Harris/To-DoApp"
                     target="_blank"
                     rel="noreferrer"
                   >
@@ -99,6 +99,26 @@ const SDPortfolio = () => {
                       Github
                     </button>
                   </a>
+
+                  
+                  <div>
+                    <a
+                    className=" cursor-pointer "
+                    href="https://todoapp-jazzharris.netlify.app/"
+                    target="_blank"
+                    rel="noreferrer"
+                    >
+                      <button
+                        type="button"
+                        class=" px-2  pb-2 pt-2.5 hover:animate-pulse bg-cyan-400 text-white font-medium text-xs leading-normal uppercase rounded shadow-md hover:bg-cyan-600 hover:shadow-lg focus:bg-cyan-600 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out flex align-center"
+                      >
+                        <span class="w-3 mr-2 mt-1">
+                        <img src="https://img.icons8.com/cotton/64/null/hyperlink.png"/>
+                        </span>
+                        LIVE Version
+                      </button>
+                    </a>
+                  </div>
                 </div>
               </div>
             </div>
@@ -136,6 +156,7 @@ const SDPortfolio = () => {
                       </span>
                       Github
                     </button>
+                    
                   </a>
                 </div>
               </div>
