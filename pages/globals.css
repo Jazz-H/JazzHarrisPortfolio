@@ -135,13 +135,13 @@ p span {
 .containerv2 .card .face{
   width: 300px;
   height: 200px;
-  border-radius: 10px;
+  border-radius: 5px;
   transition: 0.5s;
 }
 
 .containerv2 .card .face.face1{
   position: relative;
-  background: rgb(51, 50, 50);
+  background: rgb(156, 156, 156);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -161,7 +161,7 @@ p span {
 }
 
 .containerv2 .card:hover .face.face1 .content{
-  opacity: 1;
+  opacity: 50;
 }
 
 .containerv2 .card .face.face1 .content img{
