@@ -19,7 +19,7 @@ const SDPortfolio = () => {
             <div class="content ">
               <p>Weather Application for any City in the World</p>
               <p class="text-gray-500">
-                <small>React Nextjs OpenWeatherAPI Google API (Coming soon)</small>
+                <small>Front End:React, TailWind CSS Back END: Axios fetchAPI to use the OpenWeatherAPI. Other Frame works used:  Nextjs. Deployed using Netlify</small>
               </p>
               <button></button>
               <div class="justify-center ">
@@ -78,7 +78,7 @@ const SDPortfolio = () => {
             <div class="content ">
               <p>Dynamic To-Do App with Quote API and CRUD</p>
               <p class="text-gray-500">
-                <small>FIREBASE fetch API REACTJS</small>
+                <small>Front End: React, React Hooks. Back End: Axios fetch API, built on a node server and deployed with Netlify</small>
               </p>
               <button></button>
               <div class="justify-center ">
@@ -134,9 +134,9 @@ const SDPortfolio = () => {
           </div>
           <div class="face face2">
             <div class="content ">
-              <p>Chat Application using FireBasev9 and React  </p>
+              <p>Chat Application using Firebasev9 and React  </p>
               <p class="text-gray-500">
-                <small>ReactJS FireBase HTML </small>
+                <small>Front END: React, TailWind CSS, HTML. Other tools used Firebase</small>
               </p>
               <button></button>
               <div class="justify-center ">
