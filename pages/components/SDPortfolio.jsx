@@ -161,7 +161,7 @@ const SDPortfolio = () => {
                   <div>
                     <a
                     className=" cursor-pointer "
-                    href="https://todoapp-jazzharris.netlify.app/"
+                    href="https://chata-27aa7.web.app/"
                     target="_blank"
                     rel="noreferrer"
                     >
@@ -170,7 +170,7 @@ const SDPortfolio = () => {
                         class=" px-2  pb-2 pt-2.5 hover:animate-pulse bg-cyan-400 text-white font-medium text-xs leading-normal uppercase rounded shadow-md hover:bg-cyan-600 hover:shadow-lg focus:bg-cyan-600 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out flex align-center"
                       >
                         <span class="w-3 mr-2 mt-1">
-                        <img src="https://chata-27aa7.web.app/"/>
+                        <img src="https://img.icons8.com/cotton/64/null/hyperlink.png"/>
                         </span>
                         LIVE Version
                       </button>
