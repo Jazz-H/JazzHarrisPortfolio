@@ -19,7 +19,7 @@ const DAPortfolio = () => {
                 Exploratory Data Analysis With Python, Panda and other libraries
                 on Supermarket Sales Data
               </p>
-              <p class="text-gray-500">
+              <p class="text-gray-500 p-10">
                 <small>Python Pandas Numpy Seaborn</small>
               </p>
               <button></button>
@@ -57,7 +57,7 @@ const DAPortfolio = () => {
           <div class="face face2">
             <div class="content ">
               <p>Interactive KPI Management Dashboard in Tableau</p>
-              <p class="text-gray-500">
+              <p class="text-gray-500 p-10">
                 <small>Tableau</small>
               </p>
               <button></button>
