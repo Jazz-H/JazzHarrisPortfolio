@@ -78,7 +78,7 @@ const ContactForm = () => {
             },
           })}
           type="email"
-          placeholder="john.doe@gmail.com"
+          placeholder="Please enter your email"
           name="user_email"
         />
 
