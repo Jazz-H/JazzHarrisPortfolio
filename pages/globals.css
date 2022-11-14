@@ -121,7 +121,8 @@ p span {
   width: 500px;
   position: left;
   display: flex;
- 
+  margin:2%;
+ margin-bottom: 2%;
   justify-content: space-evenly;
 }
 
@@ -129,7 +130,8 @@ p span {
   position: relative;
   cursor: pointer;
   flex:1;
-  margin: 20px;
+  margin: 10px;
+  
 }
 
 .containerv2 .card .face{
@@ -150,8 +152,9 @@ p span {
 }
 
 .containerv2 .card:hover .face.face1{
-  background: cyan;
+
   transform: translateY(0);
+  
 }
 
 .containerv2 .card .face.face1 .content{
@@ -165,8 +168,8 @@ p span {
 }
 
 .containerv2 .card .face.face1 .content img{
-  width: 275px;
-  height: 180px;
+  width: 375px;
+  height: 200px;
   object-fit: fill;
   display: block;
   margin-left: auto;
@@ -190,14 +193,15 @@ p span {
   align-items: center;
   padding: 20px;
 
-  box-sizing: border-box;
-  box-shadow: 0 8px 8px  rgba(119, 119, 119, 0.8);
-  border-radius:15px;
+ 
+  box-shadow: 0 2px 2px  rgba(119, 119, 119, 0.8);
+
   transform: translateY(-100px);
 }
 
 .containerv2 .card:hover .face.face2{
   transform: translateY(0);
+  
 }
 
 .containerv2 .card .face.face2 .content p{
@@ -212,7 +216,7 @@ p span {
 }
 
 .bodyv2{
-
+margin-top: auto ;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -222,6 +226,17 @@ p span {
   .card{
 
     height:300px;
+ 
+
+ 
+  }
+}
+
+@media  (min-width: 750px),(max-width:950px) {
+  .floatcontainer .card{
+
+   margin-bottom: 2%;
+ 
 
  
   }
@@ -230,6 +245,7 @@ p span {
 @media only screen and (min-width: 1300px) {
   .containerv2 .floatcontainer {
     flex-direction: row;
+  
     justify-content: center;
     align-items: center;
     display: flex;
@@ -245,6 +261,7 @@ p span {
     justify-content: center;
     align-items: center;
     display: flex;
+   
   
 
  

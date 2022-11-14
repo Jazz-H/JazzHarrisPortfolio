@@ -36,10 +36,11 @@ const Work = () => {
         </p>
 
         <section>
-
+        <SQLPortfolio ></SQLPortfolio>
+        <SDPortfolio></SDPortfolio>
    <DAPortfolio></DAPortfolio>
-  <SDPortfolio></SDPortfolio>
-  <SQLPortfolio></SQLPortfolio>
+ 
+
 </section>
 </section>
   );
