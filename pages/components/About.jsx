@@ -7,7 +7,7 @@ const About = () => {
             <div>
               <div className="md:w-2/12 xs:w-4/12  float-right m-5 lg:p-5">
                 <img
-                  src="JHPhoto.png"
+                  src="./assets/JHPhoto.png"
                   alt="..."
                   className=" shadow-2xl  rounded-full "
                 />

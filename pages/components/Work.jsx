@@ -2,7 +2,7 @@
 import DAPortfolio from "./DAPortfolio";
 import { useState } from "react";
 import SDPortfolio from "./SDPortfolio";
-import SQLPortfolio from "./SQLPortfolio";
+import PBIPortfolio from "./PBIPortfolio";
 
 const Work = () => {
   const [toggle, setToggle] = useState(false);
@@ -36,7 +36,7 @@ const Work = () => {
         </p>
 
         <section>
-        <SQLPortfolio ></SQLPortfolio>
+        <PBIPortfolio ></PBIPortfolio>
         <SDPortfolio></SDPortfolio>
    <DAPortfolio></DAPortfolio>
  

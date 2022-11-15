@@ -9,7 +9,7 @@ const SDPortfolio = () => {
         <div class="card">
             <div class="face face1 ">
               <div class="content  ">
-                <img src="comingsoon.jpg" />
+                <img src="./assets/comingsoon.jpg" />
               </div>
             </div>
             <div class="face face2">
@@ -67,7 +67,7 @@ const SDPortfolio = () => {
           <div class="card">
             <div class="face face1 ">
               <div class="content  ">
-                <img src="weatherappbg.png" className="object-cover" />
+                <img src="./assets/weatherappbg.png" className="object-cover" />
               </div>
             </div>
             <div class="face face2">
@@ -129,7 +129,7 @@ const SDPortfolio = () => {
           <div class="card">
             <div class="face face1 ">
               <div class="content  ">
-                <img src="ToDoAppLogo.png" />
+                <img src="./assets/ToDoAppLogo.png" />
               </div>
             </div>
             <div class="face face2">
@@ -188,7 +188,7 @@ const SDPortfolio = () => {
           <div class="card">
             <div class="face face1 ">
               <div class="content  ">
-                <img src="ChatAppLogo.png" />
+                <img src="./assets/ChatAppLogo.png" />
               </div>
             </div>
             <div class="face face2">

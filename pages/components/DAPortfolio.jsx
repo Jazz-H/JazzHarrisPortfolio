@@ -10,7 +10,8 @@ const DAPortfolio = () => {
         <div class="card">
           <div class="face face1 ">
             <div class="content  ">
-              <img src="EDAProjectLogo.png" />
+              <img src="./assets/EDAProjectLogo.png" />
+          
             </div>
           </div>
           <div class="face face2">
@@ -51,7 +52,7 @@ const DAPortfolio = () => {
         <div class="card">
           <div class="face face1 ">
             <div class="content  ">
-              <img src="KPIDashboardLogo.png" />
+              <img src="./assets/KPIDashboardLogo.png" />
             </div>
           </div>
           <div class="face face2">
@@ -108,7 +109,7 @@ const DAPortfolio = () => {
         <div class="card">
           <div class="face face1 ">
             <div class="content  ">
-              <img src="Covid19VisLogo.jpg" />
+              <img src="./assets/Covid19VisLogo.jpg" />
             </div>
           </div>
           <div class="face face2">
@@ -146,7 +147,7 @@ const DAPortfolio = () => {
         <div class="card">
           <div class="face face1 ">
             <div class="content  ">
-               <img src="webscraplogo.png" />
+               <img src="./assets/webscraplogo.png" />
             </div>
           </div>
           <div class="face face2">
