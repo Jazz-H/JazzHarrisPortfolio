@@ -35,7 +35,7 @@ const Navbar = () => {
             duration={500}
             class="text-sm font-bold leading-relaxed inline-block py-1 "
           >
-            <img src="JHNavLogo.png" alt="logo" class=" w-10 h-10 mt-1" />
+            <img src="./assets/JHNavLogo.png" alt="logo" class=" w-10 h-10 mt-1" />
           </Link>
           <div class="Hamburger">
             <Hamburger

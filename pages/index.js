@@ -16,7 +16,7 @@ export default function Home() {
     <main className={darkMode ? "dark" : ""}>
       <title>Jazz Harris Portfolio</title>
       <meta name="description" content="portfolio for Jazz Harris" />
-      <link rel="icon" href="/favicon.ico" />
+      <link rel="icon" href="./assets/faviconjh.ico" />
    
 
       <section id="Home" className=" bg-white  dark:bg-gray-900 ">
