@@ -15,9 +15,7 @@ const Work = () => {
    
       
       <section>
-      < p className=" text-center text-2xl md:text-3xl m-5  mt-20 mr-5 font-semibold dark: text-black dark:text-white">
-          <bold>Featured Projects</bold>{" "}
-        </p>
+    
         <FeaturedProjects />
         
         <SDPortfolio></SDPortfolio>
