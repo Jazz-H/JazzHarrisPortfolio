@@ -224,7 +224,7 @@ margin-top: auto ;
 }
 @media  (min-width: 900px) {
   .card{
-
+    margin-bottom: 5%;
     height:300px;
  
 
@@ -232,7 +232,9 @@ margin-top: auto ;
   }
 }
 
-@media  (min-width: 750px),(max-width:950px) {
+
+
+@media  (min-width: 350px),(max-width:750px) {
   .floatcontainer .card{
 
    margin-bottom: 2%;
