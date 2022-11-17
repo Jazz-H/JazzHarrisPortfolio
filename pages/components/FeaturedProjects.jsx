@@ -31,7 +31,7 @@ const FeaturedProjects = () => {
                 <div>
                   <a
                     className=" cursor-pointer "
-                    href="https://github.com/Jazz-Harris/EDAWithSuperMarketData/blob/main/EDAWithSupermarketSales.ipynb"
+                    href="https://github.com/Jazz-Harris/SpotifyFullStack"
                     target="_blank"
                     rel="noreferrer"
                   >

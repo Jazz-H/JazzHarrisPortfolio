@@ -136,7 +136,7 @@ const DAPortfolio = () => {
             </div>
             <div class="face face2">
               <div class="content ">
-                <p>Real Time Stock Market Dashboard from an API - Power BI</p>
+                <p>Real Time Stock Market Dashboard from a REST API - Power BI</p>
                 <p class="text-gray-500 p-10">
                   <small>
                     Data was loaded using an API from:

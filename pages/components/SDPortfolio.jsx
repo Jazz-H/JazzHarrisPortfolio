@@ -18,7 +18,7 @@ const SDPortfolio = () => {
                 <p>Weather Application</p>
                 <p class="text-gray-500 p-10">
                   <small>
-                    Front End:React, TailWind CSS. Back END: Axios fetchAPI to
+                    Front End:React, TailWind CSS. Back END: Axios, REST API to
                     use the OpenWeatherAPI. Other Frame works used: Nextjs.{" "}
                   </small>
                 </p>
@@ -80,7 +80,7 @@ const SDPortfolio = () => {
                 <p>To-Do App with Quote API</p>
                 <p class="text-gray-500">
                   <small>
-                    Front End: React, React Hooks. Back End: Axios fetch API,
+                    Front End: React, React Hooks. Back End: Axios, REST API,
                     built using CRUD and Firebase
                   </small>
                 </p>
