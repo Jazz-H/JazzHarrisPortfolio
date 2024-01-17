@@ -28,7 +28,7 @@ const FeaturedProjects = () => {
                 <small>     Power BI - Data was prepared, cleaned, transformed and then
                     loaded into Power BI
 </small>
-              </p>
+              </p>  
               <button></button>
               <div class="justify-center ">
                 <div>
