@@ -10,7 +10,7 @@ const FeaturedProjects = () => {
       
       <div class="floatcontainer">
 
-      
+      </section>
 
 <section>
   <h4 className=" text-center text-base md:text-3xl   font-semibold dark: text-black dark:text-white">
