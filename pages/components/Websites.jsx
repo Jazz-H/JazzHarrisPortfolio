@@ -6,17 +6,30 @@ const Websites = () => {
 
     
     <section class="bodyv2">
+      
+      <section>
+      <h4 className=" text-center text-base md:text-3xl   font-semibold dark: text-black dark:text-white">
+        <bold>Websites 1</bold>{" "}
+      </h4>
+      </section>
+
       <div class="containerv2">
         
       <section>
       <h4 className=" text-center text-base md:text-3xl   font-semibold dark: text-black dark:text-white">
-        <bold>Websites</bold>{" "}
+        <bold>Websites 2</bold>{" "}
       </h4>
       </section>
-      
+
       <div class="floatcontainer"></div>
 
       
+      <section>
+      <h4 className=" text-center text-base md:text-3xl   font-semibold dark: text-black dark:text-white">
+        <bold>Websites 3</bold>{" "}
+      </h4>
+      </section>
+
       <div class="card">
             <div class="face face1 ">
               <div class="content  ">
