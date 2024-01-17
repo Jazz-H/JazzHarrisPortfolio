@@ -7,7 +7,7 @@ const SDPortfolio = () => {
       <div class="containerv2">
       <div class="floatcontainer"></div>
 
-      <h4 className=" text-left text-base md:text-3xl   ml-40 font-semibold dark: text-black dark:text-white">
+      <h4 className=" text-left text-base md:text-3xl    font-semibold dark: text-black dark:text-white">
         <bold>React Applications</bold>{" "}
       </h4>
 
