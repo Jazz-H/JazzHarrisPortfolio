@@ -15,8 +15,10 @@ const Work = () => {
    
       
       <section>
-    
+      <bold>Web Development</bold>{" "}
+      <bold>React Applications</bold>{" "}
         <SDPortfolio></SDPortfolio>
+        <bold>Data Visualization</bold>{" "}
         <FeaturedProjects />
         <DAPortfolio></DAPortfolio>
       </section>
