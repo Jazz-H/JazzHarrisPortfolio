@@ -1,7 +1,7 @@
 import { BsGithub } from "react-icons/bs";
 import { SiTableau } from "react-icons/si";
 
-const SDPortfolio = () => {
+const Websites = () => {
   return (
     <section class="bodyv2">
       <div class="containerv2">
@@ -75,7 +75,7 @@ const SDPortfolio = () => {
             </div>
             <div class="face face2">
               <div class="content ">
-                <p>Weather Application</p>
+                <p> Alamance Community Foundation</p>
                 <p class="text-gray-500 p-10">
                   <small>
                     Front End:React, TailWind CSS. Back END: Axios, REST API to
@@ -85,22 +85,7 @@ const SDPortfolio = () => {
                 <button></button>
                 <div class="justify-center ">
                   <div>
-                    <a
-                      className=" cursor-pointer "
-                      href="https://github.com/Jazz-Harris/WeatherApp"
-                      target="_blank"
-                      rel="noreferrer"
-                    >
-                      <button
-                        type="button"
-                        class=" px-2  pb-2 pt-2.5 mr-2 hover:animate-pulse bg-cyan-400 float-left text-white font-medium text-xs leading-normal uppercase rounded shadow-md hover:bg-cyan-600 hover:shadow-lg focus:bg-cyan-600 focus:shadow-lg focus:outline-none focus:ring-0 transition duration-150 ease-in-out flex align-center"
-                      >
-                        <span class="w-3 mr-2 mt-1">
-                          <BsGithub />
-                        </span>
-                        Github
-                      </button>
-                    </a>
+                   
 
                     <div>
                       <a
@@ -200,4 +185,4 @@ const SDPortfolio = () => {
     </section>
   );
 };
-export default SDPortfolio;
+export default Websites;
