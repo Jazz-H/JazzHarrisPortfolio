@@ -110,7 +110,7 @@ const Websites = () => {
                 <p> FIE</p>
                 <p class="text-gray-500 p-10">
                   <small>
-                    Yahoo Manager, HTML, CSS, and JavaScript.
+                  WordPress, HTML, and CSS.
                   </small>
                 </p>
                 <button></button>
