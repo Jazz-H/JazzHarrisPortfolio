@@ -7,10 +7,10 @@ const Websites = () => {
       <div class="containerv2">
       <div class="floatcontainer"></div>
 
-      <h4 className=" text-left text-base md:text-3xl   ml-50 font-semibold dark: text-black dark:text-white">
+      <h4 className=" text-left text-base md:text-3xl   ml-40 font-semibold dark: text-black dark:text-white">
         <bold>Websites</bold>{" "}
       </h4>
-      
+
       <div class="card">
             <div class="face face1 ">
               <div class="content  ">
