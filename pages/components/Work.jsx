@@ -16,7 +16,9 @@ const Work = () => {
    
       
       <section>
-     
+      <h4 className=" text-center text-base md:text-3xl   font-semibold dark: text-black dark:text-white">
+        <bold>Websites</bold>{" "}
+      </h4>
       <Websites></Websites>
         <SDPortfolio></SDPortfolio>
         <FeaturedProjects />
