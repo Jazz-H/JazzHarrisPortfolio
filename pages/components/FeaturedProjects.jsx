@@ -5,12 +5,14 @@ const FeaturedProjects = () => {
   return (
     <section class="bodyv2">
         
-   
-      
-      
-      <div class="floatcontainer">
+    <div class="containerv2">
 
-        
+    
+ 
+      <div class="floatcontainer">
+      
+
+      <div class="floatcontainer">
         <div class="card">
           <div class="face face1 ">
             <div class="content  ">
