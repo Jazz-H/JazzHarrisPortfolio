@@ -6,15 +6,15 @@ const FeaturedProjects = () => {
     <section class="bodyv2">
         
    
-      
+        <div class="containerv2">
       
       <div class="floatcontainer">
 
-      <div class="containerv2">
+      
 
 <section>
   <h4 className=" text-center text-base md:text-3xl   font-semibold dark: text-black dark:text-white">
-    <bold>Websites</bold>{" "}
+    <bold>Data Visualization</bold>{" "}
   </h4>
   </section>
 
