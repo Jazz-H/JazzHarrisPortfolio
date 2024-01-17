@@ -17,7 +17,7 @@ const Websites = () => {
 
       
       <section>
-      <h4 className=" text-center text-base md:text-3xl   font-semibold dark: text-black dark:text-white">
+      <h4 className=" text-left text-base md:text-3xl   font-semibold dark: text-black dark:text-white">
         <bold>Websites</bold>{" "}
       </h4>
       </section>
