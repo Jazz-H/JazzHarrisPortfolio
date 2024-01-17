@@ -14,7 +14,7 @@ const Websites = () => {
       <div class="card">
             <div class="face face1 ">
               <div class="content  ">
-                <img src="./assets/ToDoAppLogo.png" />
+                <img src="./assets/AlamanceCover.jpg" />
               </div>
             </div>
             <div class="face face2">
@@ -22,8 +22,7 @@ const Websites = () => {
                 <p> Alamance Community Foundation</p>
                 <p class="text-gray-500">
                   <small>
-                    Front End: React, React Hooks. Back End: Axios, REST API,
-                    built using CRUD and Firebase
+                    SquareSpace, HTML, CSS and JavaScript
                   </small>
                 </p>
                 <button></button>
@@ -75,7 +74,7 @@ const Websites = () => {
           <div class="card">
             <div class="face face1 ">
               <div class="content  ">
-                <img src="./assets/weatherappbg.png" className="object-cover" />
+                <img src="./assets/ElectricCover.jpg" className="object-cover" />
               </div>
             </div>
             <div class="face face2">
@@ -83,8 +82,7 @@ const Websites = () => {
                 <p> Electric Supplies Online</p>
                 <p class="text-gray-500 p-10">
                   <small>
-                    Front End:React, TailWind CSS. Back END: Axios, REST API to
-                    use the OpenWeatherAPI. Other Frame works used: Nextjs.{" "}
+                    Yahoo Manager, HTML, CSS, and JavaScript.
                   </small>
                 </p>
                 <button></button>
@@ -126,16 +124,15 @@ const Websites = () => {
           <div class="card">
             <div class="face face1 ">
               <div class="content  ">
-                <img src="./assets/ChatAppLogo.png" />
+                <img src="./assets/FIECover.jpg" />
               </div>
             </div>
             <div class="face face2">
               <div class="content ">
-                <p>Chat Application using Firebasev9 and React </p>
+                <p>FIE Study Abroad </p>
                 <p class="text-gray-500">
                   <small>
-                    Front END: React, TailWind CSS, HTML. Other tools used
-                    Firebase
+                    WordPress, HTML, and CSS.
                   </small>
                 </p>
                 <button></button>
