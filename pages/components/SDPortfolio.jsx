@@ -45,7 +45,7 @@ const SDPortfolio = () => {
                     <div>
                       <a
                         className=" cursor-pointer "
-                        href="https://weatherapp-jazzharris.netlify.app/"
+                        href="https://weather-app-sand-six-26.vercel.app/"
                         target="_blank"
                         rel="noreferrer"
                       >

@@ -46,7 +46,7 @@ const FeaturedProjects = () => {
                     <div>
                       <a
                         className=" cursor-pointer "
-                        href="https://todoapp-jazzharris.netlify.app/"
+                        href="https://to-do-app-nu-cyan.vercel.app/"
                         target="_blank"
                         rel="noreferrer"
                       >
