@@ -140,7 +140,7 @@ const Navbar = () => {
             <li className="flex items-center">
               <a
                 className="lg:text-white bg-slate-600 dark:bg-gray-700  hover:text-cyan-400 p-0 dark:hover:text-white dark:text-gray-200 dark:hover:bg-gray-400 text-md font-bold uppercase px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none lg:mr-1 lg:mb-0 ml-3 mb-3 ease-linear transition-all duration-150"
-               href= "https://drive.google.com/file/d/1MeG0mMdpahVXPoyQa5RPtsCW0qRhvSpB/view?usp=share_link"
+               href= "https://drive.google.com/file/d/1au3MOwra1yc2Jy53b7g7nQDIqNU-JGzV/view?usp=sharing"
                
                 target="_blank"
                 rel="noreferrer"
