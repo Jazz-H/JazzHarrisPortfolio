@@ -16,9 +16,8 @@ const Work = () => {
       
       <section>
     
-        <FeaturedProjects />
-        
         <SDPortfolio></SDPortfolio>
+        <FeaturedProjects />
         <DAPortfolio></DAPortfolio>
       </section>
     </section>
