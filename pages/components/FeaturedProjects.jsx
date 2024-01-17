@@ -10,19 +10,9 @@ const FeaturedProjects = () => {
     
  
       <div class="floatcontainer">
-      <section>
-      <h4 className=" text-center text-base md:text-3xl   font-semibold dark: text-black dark:text-white">
-        <bold>Data</bold>{" "}
-      </h4>
-      </section>
+      
 
       <div class="floatcontainer">
-
-      <section>
-      <h4 className=" text-center text-base md:text-3xl   font-semibold dark: text-black dark:text-white">
-        <bold>Vis</bold>{" "}
-      </h4>
-      </section>
         <div class="card">
           <div class="face face1 ">
             <div class="content  ">
