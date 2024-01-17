@@ -11,11 +11,7 @@ const Websites = () => {
 
       <div class="containerv2">
         
-      <section>
-      <h4 className=" text-center text-base md:text-3xl   font-semibold dark: text-black dark:text-white">
-        <bold>Websites 2</bold>{" "}
-      </h4>
-      </section>
+      
 
       <div class="floatcontainer"></div>
 
