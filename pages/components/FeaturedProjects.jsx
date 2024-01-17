@@ -7,9 +7,7 @@ const FeaturedProjects = () => {
         
     <div class="containerv2">
 
-    <h4 className=" text-left text-base md:text-3xl    font-semibold dark: text-black dark:text-white">
-        <bold>Data Visualization</bold>{" "}
-      </h4>
+    
  
       <div class="floatcontainer">
       

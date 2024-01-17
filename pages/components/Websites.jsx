@@ -7,10 +7,7 @@ const Websites = () => {
       <div class="containerv2">
       <div class="floatcontainer"></div>
 
-      <h4 className=" text-left text-base md:text-3xl   font-semibold dark: text-black dark:text-white">
-        <bold>Websites</bold>{" "}
-      </h4>
-
+      
       <div class="card">
             <div class="face face1 ">
               <div class="content  ">
@@ -122,6 +119,7 @@ const Websites = () => {
                 </p>
                 <button></button>
                 <div class="justify-center ">
+                <div>
                   <div>
                    
                       <a
@@ -141,6 +139,7 @@ const Websites = () => {
                         </button>
                       </a>
                     </div>
+                  </div>
                   </div>
                 </div>
               </div>
