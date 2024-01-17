@@ -6,15 +6,14 @@ const Websites = () => {
 
     
     <section class="bodyv2">
-
-      
-<section>
+      <div class="containerv2">
+        
+      <section>
       <h4 className=" text-center text-base md:text-3xl   font-semibold dark: text-black dark:text-white">
         <bold>Websites</bold>{" "}
       </h4>
       </section>
       
-      <div class="containerv2">
       <div class="floatcontainer"></div>
 
       
