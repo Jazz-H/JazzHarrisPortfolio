@@ -7,7 +7,7 @@ const Websites = () => {
       <div class="containerv2">
       <div class="floatcontainer"></div>
 
-      <h4 className=" text-left text-base md:text-3xl   ml-40 font-semibold dark: text-black dark:text-white">
+      <h4 className=" text-left text-base md:text-3xl   font-semibold dark: text-black dark:text-white">
         <bold>Websites</bold>{" "}
       </h4>
 
@@ -19,7 +19,7 @@ const Websites = () => {
             </div>
             <div class="face face2">
               <div class="content ">
-                <p>To-Do App with Quote API</p>
+                <p> Alamance Community Foundation</p>
                 <p class="text-gray-500">
                   <small>
                     Front End: React, React Hooks. Back End: Axios, REST API,
@@ -49,7 +49,7 @@ const Websites = () => {
                     <div>
                       <a
                         className=" cursor-pointer "
-                        href="https://to-do-app-nu-cyan.vercel.app/"
+                        href="https://www.alamancecommunityfoundation.org//"
                         target="_blank"
                         rel="noreferrer"
                       >
@@ -80,7 +80,7 @@ const Websites = () => {
             </div>
             <div class="face face2">
               <div class="content ">
-                <p> Alamance Community Foundation</p>
+                <p> Electric Supplies Online</p>
                 <p class="text-gray-500 p-10">
                   <small>
                     Front End:React, TailWind CSS. Back END: Axios, REST API to
@@ -95,7 +95,7 @@ const Websites = () => {
                     <div>
                       <a
                         className=" cursor-pointer "
-                        href="https://weather-app-sand-six-26.vercel.app/"
+                        href="https://electricsuppliesonline.com/"
                         target="_blank"
                         rel="noreferrer"
                       >

@@ -6,14 +6,13 @@ const FeaturedProjects = () => {
     <section class="bodyv2">
         
     <div class="containerv2">
+
+    <h4 className=" text-left text-base md:text-3xl   ml-40 font-semibold dark: text-black dark:text-white">
+        <bold>Data Visualization</bold>{" "}
+      </h4>
  
       <div class="floatcontainer">
       
-      <h4 className=" text-left text-base md:text-3xl   ml-40 font-semibold dark: text-black dark:text-white">
-        <bold>Data</bold>{" "}
-      </h4>
-
-     
 
       <div class="floatcontainer">
         <div class="card">
