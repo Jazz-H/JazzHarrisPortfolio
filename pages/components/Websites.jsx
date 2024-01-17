@@ -121,7 +121,7 @@ const Websites = () => {
                     <div>
                       <a
                         className=" cursor-pointer "
-                        href="https://electricsuppliesonline.com/"
+                        href="https://fiestudyabroad.wordpress.com/2020/04/13/jazz-wrapping-up-study-abroad-after-covid-19/"
                         target="_blank"
                         rel="noreferrer"
                       >
