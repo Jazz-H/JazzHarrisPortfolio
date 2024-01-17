@@ -16,11 +16,7 @@ const Websites = () => {
       <div class="floatcontainer"></div>
 
       
-      <section>
-      <h4 className=" text-left text-base md:text-3xl   font-semibold dark: text-black dark:text-white">
-        <bold>Websites</bold>{" "}
-      </h4>
-      </section>
+      
 
       <div class="card">
             <div class="face face1 ">
