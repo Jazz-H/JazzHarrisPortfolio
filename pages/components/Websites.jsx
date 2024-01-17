@@ -107,7 +107,7 @@ const Websites = () => {
             </div>
             <div class="face face2">
               <div class="content ">
-                <p> Electric Supplies Online</p>
+                <p> FIE</p>
                 <p class="text-gray-500 p-10">
                   <small>
                     Yahoo Manager, HTML, CSS, and JavaScript.
