@@ -3,11 +3,17 @@ import { SiTableau } from "react-icons/si";
 
 const Websites = () => {
   return (
+
+    
     <section class="bodyv2">
       <div class="containerv2">
       <div class="floatcontainer"></div>
 
-      
+      <section>
+      <h4 className=" text-center text-base md:text-3xl   font-semibold dark: text-black dark:text-white">
+        <bold>Websites</bold>{" "}
+      </h4>
+      </section>
       <div class="card">
             <div class="face face1 ">
               <div class="content  ">
