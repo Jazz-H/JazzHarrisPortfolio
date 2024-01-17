@@ -102,15 +102,15 @@ const Websites = () => {
           <div class="card">
             <div class="face face1 ">
               <div class="content  ">
-                <img src="./assets/ElectricCover.jpg" className="object-cover" />
+                <img src="./assets/FIECover.jpg" className="object-cover" />
               </div>
             </div>
             <div class="face face2">
               <div class="content ">
-                <p> Electric Supplies Online</p>
+                <p> FIE Study Abroad</p>
                 <p class="text-gray-500 p-10">
                   <small>
-                    Yahoo Manager, HTML, CSS, and JavaScript.
+                  WordPress, HTML, and CSS.
                   </small>
                 </p>
                 <button></button>
@@ -121,7 +121,7 @@ const Websites = () => {
                     <div>
                       <a
                         className=" cursor-pointer "
-                        href="https://electricsuppliesonline.com/"
+                        href="https://fiestudyabroad.wordpress.com/2020/04/13/jazz-wrapping-up-study-abroad-after-covid-19/"
                         target="_blank"
                         rel="noreferrer"
                       >
