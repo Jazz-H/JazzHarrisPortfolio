@@ -95,36 +95,33 @@ const Websites = () => {
               </div>
             </div>
           </div>
-          
-        </div>
 
-        <div class="floatcontainer">
-      
+
+          <div class="floatcontainer">
         
-         
-
           <div class="card">
             <div class="face face1 ">
               <div class="content  ">
-                <img src="./assets/FIECover.jpg" />
+                <img src="./assets/ElectricCover.jpg" className="object-cover" />
               </div>
             </div>
             <div class="face face2">
               <div class="content ">
-                <p>FIE Study Abroad </p>
-                <p class="text-gray-500">
+                <p> Electric Supplies Online</p>
+                <p class="text-gray-500 p-10">
                   <small>
-                    WordPress, HTML, and CSS.
+                    Yahoo Manager, HTML, CSS, and JavaScript.
                   </small>
                 </p>
                 <button></button>
                 <div class="justify-center ">
-                <div>
                   <div>
                    
+
+                    <div>
                       <a
                         className=" cursor-pointer "
-                        href="https://fiestudyabroad.wordpress.com/2020/04/13/jazz-wrapping-up-study-abroad-after-covid-19/"
+                        href="https://electricsuppliesonline.com/"
                         target="_blank"
                         rel="noreferrer"
                       >
@@ -140,13 +137,21 @@ const Websites = () => {
                       </a>
                     </div>
                   </div>
-                  </div>
                 </div>
               </div>
             </div>
           </div>
+          
+        </div>
 
+       
       
+        
+         
+
+          
+
+        </div>
 
         </div>
      

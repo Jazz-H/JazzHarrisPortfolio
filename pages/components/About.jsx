@@ -63,10 +63,7 @@ const About = () => {
                       title="SQL"
                       src="https://img.icons8.com/color/48/000000/sql.png"
                     />
-                    <img
-                      title="Microsoft Azure"
-                      src="https://img.icons8.com/color/48/000000/azure-1.png"
-                    />
+                    
                     <img
                       title="REST API"
                       img
