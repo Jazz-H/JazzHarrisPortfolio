@@ -15,10 +15,17 @@ const Work = () => {
    
       
       <section>
-      <bold>Web Development</bold>{" "}
-      <bold>React Applications</bold>{" "}
+      <h2 className=" text-left text-5xl md:text-7xl   mb-2 font-semibold dark: text-black dark:text-white">
+        <bold>Websites</bold>{" "}
+      </h2>
+      <h2 className=" text-left text-5xl md:text-7xl   mb-2 font-semibold dark: text-black dark:text-white">
+        <bold>React Applications</bold>{" "}
+      </h2>
         <SDPortfolio></SDPortfolio>
+        <h2 className=" text-left text-5xl md:text-7xl   mb-2 font-semibold dark: text-black dark:text-white">
         <bold>Data Visualization</bold>{" "}
+      </h2>
+      
         <FeaturedProjects />
         <DAPortfolio></DAPortfolio>
       </section>
