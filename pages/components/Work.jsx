@@ -15,7 +15,7 @@ const Work = () => {
    
       
       <section>
-      <h4 className=" text-left text-5xl md:text-7xl   mb-2 font-semibold dark: text-black dark:text-white">
+      <h4 className=" text-left text-base    mb-2 font-semibold dark: text-black dark:text-white">
         <bold>Websites</bold>{" "}
       </h4>
      
