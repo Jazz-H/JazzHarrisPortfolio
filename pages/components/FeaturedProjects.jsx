@@ -9,7 +9,7 @@ const FeaturedProjects = () => {
 
     
  
-    <div class="floatcontainer"></div>
+    <div class="floatcontainer">
      
 
       <div class="floatcontainer">
