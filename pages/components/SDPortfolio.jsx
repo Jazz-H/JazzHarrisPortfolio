@@ -8,7 +8,7 @@ const SDPortfolio = () => {
       <div class="floatcontainer"></div>
 
       <h4 className=" text-left text-base md:text-3xl    font-semibold dark: text-black dark:text-white">
-        <bold>React Applications</bold>{" "}
+        <bold>React Apps</bold>{" "}
       </h4>
 
       <div class="card">

@@ -28,27 +28,12 @@ const Websites = () => {
                 <button></button>
                 <div class="justify-center ">
                   <div>
-                    <a
-                      className=" cursor-pointer "
-                      href="https://github.com/Jazz-Harris/To-DoApp"
-                      target="_blank"
-                      rel="noreferrer"
-                    >
-                      <button
-                        type="button"
-                        class=" px-2  pb-2 pt-2.5 mr-2 hover:animate-pulse bg-cyan-400 float-left text-white font-medium text-xs leading-normal uppercase rounded shadow-md hover:bg-cyan-600 hover:shadow-lg focus:bg-cyan-600 focus:shadow-lg focus:outline-none focus:ring-0 transition duration-150 ease-in-out flex align-center"
-                      >
-                        <span class="w-3 mr-2 mt-1">
-                          <BsGithub />
-                        </span>
-                        Github
-                      </button>
-                    </a>
+                   
 
                     <div>
                       <a
                         className=" cursor-pointer "
-                        href="https://www.alamancecommunityfoundation.org//"
+                        href="https://www.alamancecommunityfoundation.org"
                         target="_blank"
                         rel="noreferrer"
                       >
@@ -138,26 +123,10 @@ const Websites = () => {
                 <button></button>
                 <div class="justify-center ">
                   <div>
-                    <a
-                      className=" cursor-pointer "
-                      href="https://github.com/Jazz-Harris/ChatApp"
-                      target="_blank"
-                      rel="noreferrer"
-                    >
-                      <button
-                        type="button"
-                        class=" px-2  pb-2 pt-2.5 mr-2 hover:animate-pulse bg-cyan-400 float-left text-white font-medium text-xs leading-normal uppercase rounded shadow-md hover:bg-cyan-600 hover:shadow-lg focus:bg-cyan-600 focus:shadow-lg focus:outline-none focus:ring-0 transition duration-150 ease-in-out flex align-center"
-                      >
-                        <span class="w-3 mr-2 mt-1">
-                          <BsGithub />
-                        </span>
-                        Github
-                      </button>
-                    </a>
-                    <div>
+                   
                       <a
                         className=" cursor-pointer "
-                        href="https://chata-27aa7.web.app/"
+                        href="https://fiestudyabroad.wordpress.com/2020/04/13/jazz-wrapping-up-study-abroad-after-covid-19/"
                         target="_blank"
                         rel="noreferrer"
                       >
@@ -181,7 +150,7 @@ const Websites = () => {
       
 
         </div>
-      </div>
+     
 
       
     </section>
