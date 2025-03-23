@@ -21,33 +21,42 @@ const About = () => {
 
               <p className=" text-xs md:text-lg lg:text-2xl leading-8 lg:leading-10 text-black dark:text-white">
                 <span>
-                My passion for learning and bringing ideas to life sparked my interest in coding. I’ve worked at a digital marketing agency in Ireland, several local businesses, and a multinational enterprise. As a Senior Software Analyst at Canidium, I developed, maintained, and upgraded code for various clients, ensuring high-quality solutions across platforms.
-              Currently, as a Business Relationship Analyst at Central Piedmont Community College, I act as a liaison between stakeholders, vendors, and technical teams, overseeing software and hardware acquisitions to align with business needs and strategic goals.
-
-Skills & Expertise:
-
-    Software Engineering & Full-Stack Development: 3 years with Java, Python, JavaScript, C, C#, NodeJS, React, Angular, HTML, CSS
-
-    Database & Data Processing: Proficient in SQL, Salesforce, SAP Agent Performance Management, Microsoft Azure
-
-    SDLC & Methodologies: Agile, Scrum, TDD, Object-Oriented Design
-
-    Tools & Collaboration: Git, GitHub, Visual Studio, JIRA, Slack, Microsoft Excel, InVision, Sketch, Adobe Suite, WordPress
-
-Certifications:
-
-    Microsoft 365 Certified: Fundamentals
-
-    Business Relationship Management Professional (BRMP®)
-
-    TestOut PC Pro
-
-    ITIL® Foundation Certificate in IT Service Management
-
-I’m passionate about using my technical expertise and communication skills to drive impactful solutions. Let’s connect!
+                My passion for continuously learning and seeing new ideas come to life sparked my interest in coding. Since then, I’ve had the pleasure and privilege of working at a digital marketing agency in Ireland, several local businesses, and a multinational enterprise.
                 </span>
 
-               
+                <span class="mt-2">
+                I previously worked as a Senior Software Analyst at Canidium, where I developed, maintained, and upgraded code for a diverse range of clients using various languages, tools, and digital experiences. In this role, I was responsible for delivering high-quality solutions across different platforms.
+                </span>
+
+                <span class="mt-2">
+                Currently, as a Business Relationship Analyst at Central Piedmont Community College, I act as a liaison between stakeholders, vendors, and technical teams, overseeing software and hardware acquisitions and implementations to ensure alignment with business needs and strategic goals.
+                </span>
+
+                <span class="mt-2">
+                Skills & Expertise:
+
+• Software Engineering & Full-Stack Development: 3 years of experience with Java, Python, JavaScript, C, C#, NodeJS, React, Angular, HTML, CSS.
+
+• Database & Data Processing: Proficient in SQL, Salesforce, SAP Agent Performance Management, Microsoft Azure.
+
+• SDLC & Methodologies: Experienced in Agile, Scrum, TDD, Object-Oriented Design.
+
+• Tools & Collaboration: Git, GitHub, Visual Studio, JIRA, Slack, Microsoft Excel, InVision, Sketch, Adobe Suite, WordPress. Strong communicator and team collaborator, aligning technical solutions with business goals.
+                </span>
+
+
+                <span class="mt-2">
+                Certifications:
+
+• Microsoft 365 Certified: Fundamentals
+• Business Relationship Management Professional (BRMP®)
+• TestOut PC Pro
+• ITIL® Foundation Certificate in IT Service Management
+                </span>
+
+                <span class="mt-2">
+                I am passionate about leveraging my technical background and communication skills to drive impactful solutions. Let’s connect!
+                </span>
               </p>
 
               <div className="flex flex-col mt-4">
