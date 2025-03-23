@@ -21,18 +21,33 @@ const About = () => {
 
               <p className=" text-xs md:text-lg lg:text-2xl leading-8 lg:leading-10 text-black dark:text-white">
                 <span>
-                  My passion to continuously learn new things and watch them
-                  come to life initiated my interest in coding. Since then I
-                  have the pleasure and privilege of working at a digital
-                  marketing agency in Ireland, a local business and a
-                  multinational enterprise.
+                My passion for learning and bringing ideas to life sparked my interest in coding. I’ve worked at a digital marketing agency in Ireland, several local businesses, and a multinational enterprise. As a Senior Software Analyst at Canidium, I developed, maintained, and upgraded code for various clients, ensuring high-quality solutions across platforms.
+              Currently, as a Business Relationship Analyst at Central Piedmont Community College, I act as a liaison between stakeholders, vendors, and technical teams, overseeing software and hardware acquisitions to align with business needs and strategic goals.
+
+Skills & Expertise:
+
+    Software Engineering & Full-Stack Development: 3 years with Java, Python, JavaScript, C, C#, NodeJS, React, Angular, HTML, CSS
+
+    Database & Data Processing: Proficient in SQL, Salesforce, SAP Agent Performance Management, Microsoft Azure
+
+    SDLC & Methodologies: Agile, Scrum, TDD, Object-Oriented Design
+
+    Tools & Collaboration: Git, GitHub, Visual Studio, JIRA, Slack, Microsoft Excel, InVision, Sketch, Adobe Suite, WordPress
+
+Certifications:
+
+    Microsoft 365 Certified: Fundamentals
+
+    Business Relationship Management Professional (BRMP®)
+
+    TestOut PC Pro
+
+    ITIL® Foundation Certificate in IT Service Management
+
+I’m passionate about using my technical expertise and communication skills to drive impactful solutions. Let’s connect!
                 </span>
 
-                <span class="mt-2">
-                  Currently, I develop, maintain and upgrade code for a diverse
-                  array of clients using various languages, products and digital
-                  experiences at Canidium as a Senior Software Analyst.
-                </span>
+               
               </p>
 
               <div className="flex flex-col mt-4">
