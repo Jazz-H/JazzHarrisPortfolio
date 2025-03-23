@@ -94,7 +94,7 @@ const Navbar = () => {
                   </a>
                   <a
                     class=" lg:text-white mx-auto bg-slate-600 hover:-translate-y-0.5 transform transistion hover:animate-pulse hover:bg-slate-500 dark:bg-gray-700  hover:text-cyan-400  p-2  dark:hover:text-white dark:text-gray-100 dark:hover:bg-gray-400 text-md font-bold uppercase  rounded shadow hover:shadow-md outline-none focus:outline-none  ease-linear transition-all duration-150"
-                    href= "https://drive.google.com/drive/my-drive?dmr=1&ec=wgc-drive-hero-goto"
+                    href= "https://drive.google.com/file/d/1ZDRLfYgAmvWeZohlKUU1mZkrgpuLCxoD/view?usp=drive_link"
                     target="_blank"
                     rel="noreferrer"
                   >
@@ -140,7 +140,7 @@ const Navbar = () => {
             <li className="flex items-center">
               <a
                 className="lg:text-white bg-slate-600 dark:bg-gray-700  hover:text-cyan-400 p-0 dark:hover:text-white dark:text-gray-200 dark:hover:bg-gray-400 text-md font-bold uppercase px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none lg:mr-1 lg:mb-0 ml-3 mb-3 ease-linear transition-all duration-150"
-               href= "https://drive.google.com/file/d/1LNoSZvsHEBZDDRivIpgs74e9ZunKDMU1/view?usp=sharing"
+               href= "https://drive.google.com/file/d/1ZDRLfYgAmvWeZohlKUU1mZkrgpuLCxoD/view?usp=drive_link"
                
                 target="_blank"
                 rel="noreferrer"
