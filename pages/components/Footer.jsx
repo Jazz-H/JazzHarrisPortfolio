@@ -11,7 +11,7 @@ const Footer = () => {
       <div> 
       The site is hosted using Netlify and the code behind can be viewed on my
         <a
-          href="https://github.com/Jazz-Harris/JazzHarrisPortfolio"
+          href="https://github.com/Jazz-H/JazzHarrisPortfolio"
           target="_blank"
           rel="noreferrer"
           className = " text-cyan-400  dark:text-cyan-40 "

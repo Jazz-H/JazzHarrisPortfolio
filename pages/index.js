@@ -30,7 +30,7 @@ export default function Home() {
         <div className="icon-bar ">
           <a
             className=" cursor-pointer text-3xl  md:p-0 md:dark:hover:text-white dark:text-gray-400  dark:border-gray-700 "
-            href="https://github.com/Jazz-Harris"
+            href="https://github.com/Jazz-H"
             target="_blank"
             rel="noreferrer"
           >
