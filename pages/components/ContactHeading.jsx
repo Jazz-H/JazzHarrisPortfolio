@@ -15,7 +15,7 @@ const ContactHeading = () => {
             use the form below to send me a message.
           </p>
           <p class=" text-xs p-5 md:text-lg md:px-5 text-gray-400 xl:text-1xl dark:text-gray-200">
-            I'm always lookng for new opportunities and the prospect to create
+            I'm always looking for new opportunities and the prospect to create
             something great!
           </p>
           
