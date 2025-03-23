@@ -32,27 +32,7 @@ const About = () => {
                 Currently, as a Business Relationship Analyst at Central Piedmont Community College, I act as a liaison between stakeholders, vendors, and technical teams, overseeing software and hardware acquisitions and implementations to ensure alignment with business needs and strategic goals.
                 </span>
 
-                <span class="mt-2">
-                Skills & Expertise:
-
-• Software Engineering & Full-Stack Development: 3 years of experience with Java, Python, JavaScript, C, C#, NodeJS, React, Angular, HTML, CSS.
-
-• Database & Data Processing: Proficient in SQL, Salesforce, SAP Agent Performance Management, Microsoft Azure.
-
-• SDLC & Methodologies: Experienced in Agile, Scrum, TDD, Object-Oriented Design.
-
-• Tools & Collaboration: Git, GitHub, Visual Studio, JIRA, Slack, Microsoft Excel, InVision, Sketch, Adobe Suite, WordPress. Strong communicator and team collaborator, aligning technical solutions with business goals.
-                </span>
-
-
-                <span class="mt-2">
-                Certifications:
-
-• Microsoft 365 Certified: Fundamentals
-• Business Relationship Management Professional (BRMP®)
-• TestOut PC Pro
-• ITIL® Foundation Certificate in IT Service Management
-                </span>
+                
 
                 <span class="mt-2">
                 I am passionate about leveraging my technical background and communication skills to drive impactful solutions. Let’s connect!
