@@ -19,10 +19,7 @@ const ContactHeading = () => {
             something great!
           </p>
           
-          <section class = " mx-12 pb-4 px-5 mb-20 3xl:p-10 text-sm shadow-md rounded-lg dark:shadow-grey lg:mt-10 lg:mx-20   lg:p-5 xl:mx-20  text-black dark:text-black dark:bg-white dark:shadow-white flex items-center justify-center">
-   
-     
-      </section>
+          
         </div>
       </div>
     
