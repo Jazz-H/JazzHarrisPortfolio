@@ -3,9 +3,9 @@ import { SiTableau } from "react-icons/si";
 
 const SDPortfolio = () => {
   return (
-    <section class="bodyv2">
+  
       <div class="containerv2">
-      <div class="floatcontainer"></div>
+    
 
       
 
@@ -200,7 +200,7 @@ const SDPortfolio = () => {
       </div>
 
       
-    </section>
+
   );
 };
 export default SDPortfolio;

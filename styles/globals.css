@@ -119,11 +119,10 @@ p span {
 
 .containerv2{
   width: 500px;
-  position: left;
   display: flex;
-  margin:2%;
- margin-bottom: 2%;
-  justify-content: space-evenly;
+  padding-left: 20%;
+
+ 
 }
 
 .containerv2 .card{
@@ -217,6 +216,7 @@ p span {
 
 .bodyv2{
 margin-top: auto ;
+position: relative;
   display: flex;
   justify-content: center;
   align-items: center;

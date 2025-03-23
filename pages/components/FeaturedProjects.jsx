@@ -3,7 +3,7 @@ import { BsGithub } from "react-icons/bs";
 
 const FeaturedProjects = () => {
   return (
-    <section class="bodyv2">
+   
         
     <div class="containerv2">
 
@@ -162,7 +162,7 @@ const FeaturedProjects = () => {
       </div>
       </div>
     </div>
-  </section>
+
   );
 };
 

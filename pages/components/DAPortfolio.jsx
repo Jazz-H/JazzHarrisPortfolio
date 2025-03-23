@@ -3,7 +3,7 @@ import { SiTableau } from "react-icons/si";
 
 const DAPortfolio = () => {
   return (
-    <section class="bodyv2">
+ 
       <div class="containerv2">
 
         
@@ -135,7 +135,7 @@ const DAPortfolio = () => {
         </div>
         </div>
       </div>
-    </section>
+  
   );
 };
 export default DAPortfolio;

@@ -11,7 +11,7 @@ const Header = () => {
 
           
           <p className="  text-xs text-gray-800 md:text-base xs:mt-4 dark:text-gray-200 2xl:text-2xl">
-          Software Engineer, Business Analyst, and Project Management Enthusiast with a Passion for Lifelong Learning
+          Software Engineer, Business Analyst, and Project Management Enthusiast, Passionate About Lifelong Learning.
           </p>
         </div>
       </div>

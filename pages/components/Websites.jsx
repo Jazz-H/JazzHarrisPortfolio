@@ -4,8 +4,7 @@ import { SiTableau } from "react-icons/si";
 const Websites = () => {
   return (
 
-    
-    <section class="bodyv2">
+
       
      
 
@@ -13,7 +12,7 @@ const Websites = () => {
         
       
 
-      <div class="floatcontainer"></div>
+   
 
       
       
@@ -167,7 +166,7 @@ const Websites = () => {
      
 
       
-    </section>
+  
   );
 };
 export default Websites;

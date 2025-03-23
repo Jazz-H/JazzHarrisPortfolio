@@ -24,9 +24,7 @@ const About = () => {
                 My passion for continuously learning and seeing new ideas come to life sparked my interest in coding. Since then, I’ve had the pleasure and privilege of working at a digital marketing agency in Ireland, several local businesses, and a multinational enterprise.
                 </span>
 
-                <span class="mt-2">
-                I previously worked as a Senior Software Analyst at Canidium, where I developed, maintained, and upgraded code for a diverse range of clients using various languages, tools, and digital experiences. In this role, I was responsible for delivering high-quality solutions across different platforms.
-                </span>
+               
 
                 <span class="mt-2">
                 Currently, as a Business Relationship Analyst at Central Piedmont Community College, I act as a liaison between stakeholders, vendors, and technical teams, overseeing software and hardware acquisitions and implementations to ensure alignment with business needs and strategic goals.
