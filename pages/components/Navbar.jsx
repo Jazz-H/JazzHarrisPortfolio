@@ -94,7 +94,7 @@ const Navbar = () => {
                   </a>
                   <a
                     class=" lg:text-white mx-auto bg-slate-600 hover:-translate-y-0.5 transform transistion hover:animate-pulse hover:bg-slate-500 dark:bg-gray-700  hover:text-cyan-400  p-2  dark:hover:text-white dark:text-gray-100 dark:hover:bg-gray-400 text-md font-bold uppercase  rounded shadow hover:shadow-md outline-none focus:outline-none  ease-linear transition-all duration-150"
-                    href= "https://drive.google.com/file/d/1MeG0mMdpahVXPoyQa5RPtsCW0qRhvSpB/view?usp=share_link"
+                    href= "https://drive.google.com/drive/my-drive?dmr=1&ec=wgc-drive-hero-goto"
                     target="_blank"
                     rel="noreferrer"
                   >
