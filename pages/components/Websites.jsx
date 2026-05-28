@@ -8,7 +8,7 @@ const Websites = () => {
       
      
 
-      <div class="containerv2">
+      <div className="containerv2">
         
       
 
@@ -17,22 +17,22 @@ const Websites = () => {
       
       
 
-      <div class="card">
-            <div class="face face1 ">
-              <div class="content  ">
+      <div className="card">
+            <div className="face face1 ">
+              <div className="content  ">
                 <img src="./assets/AlamanceCover.jpg" />
               </div>
             </div>
-            <div class="face face2">
-              <div class="content ">
+            <div className="face face2">
+              <div className="content ">
                 <p> Alamance Community Foundation</p>
-                <p class="text-gray-500">
+                <p className="text-gray-500">
                   <small>
                     SquareSpace, HTML, CSS and JavaScript
                   </small>
                 </p>
                 <button></button>
-                <div class="justify-center ">
+                <div className="justify-center ">
                   <div>
                    
 
@@ -45,9 +45,9 @@ const Websites = () => {
                       >
                         <button
                           type="button"
-                          class=" px-2  pb-2 pt-2.5 hover:animate-pulse bg-cyan-400 text-white font-medium text-xs leading-normal uppercase rounded shadow-md hover:bg-cyan-600 hover:shadow-lg focus:bg-cyan-600 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out flex align-center"
+                          className=" px-2  pb-2 pt-2.5 hover:animate-pulse bg-cyan-400 text-white font-medium text-xs leading-normal uppercase rounded shadow-md hover:bg-cyan-600 hover:shadow-lg focus:bg-cyan-600 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out flex align-center"
                         >
-                          <span class="w-3 mr-2 mt-1">
+                          <span className="w-3 mr-2 mt-1">
                             <img src="https://img.icons8.com/cotton/64/null/hyperlink.png" />
                           </span>
                           LIVE Version
@@ -60,24 +60,24 @@ const Websites = () => {
               </div>
               </div>
         
-        <div class="floatcontainer">
+        <div className="floatcontainer">
         
-          <div class="card">
-            <div class="face face1 ">
-              <div class="content  ">
+          <div className="card">
+            <div className="face face1 ">
+              <div className="content  ">
                 <img src="./assets/ElectricCover.jpg" className="object-cover" />
               </div>
             </div>
-            <div class="face face2">
-              <div class="content ">
+            <div className="face face2">
+              <div className="content ">
                 <p> Electric Supplies Online</p>
-                <p class="text-gray-500 p-10">
+                <p className="text-gray-500 p-10">
                   <small>
                     Yahoo Manager, HTML, CSS, and JavaScript.
                   </small>
                 </p>
                 <button></button>
-                <div class="justify-center ">
+                <div className="justify-center ">
                   <div>
                    
 
@@ -90,9 +90,9 @@ const Websites = () => {
                       >
                         <button
                           type="button"
-                          class=" px-2  pb-2 pt-2.5 hover:animate-pulse bg-cyan-400 text-white font-medium text-xs leading-normal uppercase rounded shadow-md hover:bg-cyan-600 hover:shadow-lg focus:bg-cyan-600 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out flex align-center"
+                          className=" px-2  pb-2 pt-2.5 hover:animate-pulse bg-cyan-400 text-white font-medium text-xs leading-normal uppercase rounded shadow-md hover:bg-cyan-600 hover:shadow-lg focus:bg-cyan-600 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out flex align-center"
                         >
-                          <span class="w-3 mr-2 mt-1">
+                          <span className="w-3 mr-2 mt-1">
                             <img src="https://img.icons8.com/cotton/64/null/hyperlink.png" />
                           </span>
                           LIVE Version
@@ -106,24 +106,24 @@ const Websites = () => {
           </div>
 
 
-          <div class="floatcontainer">
+          <div className="floatcontainer">
         
-          <div class="card">
-            <div class="face face1 ">
-              <div class="content  ">
+          <div className="card">
+            <div className="face face1 ">
+              <div className="content  ">
                 <img src="./assets/FIECover.jpg" className="object-cover" />
               </div>
             </div>
-            <div class="face face2">
-              <div class="content ">
+            <div className="face face2">
+              <div className="content ">
                 <p> FIE</p>
-                <p class="text-gray-500 p-10">
+                <p className="text-gray-500 p-10">
                   <small>
                     WordPress, HTML, CSS, and JavaScript.
                   </small>
                 </p>
                 <button></button>
-                <div class="justify-center ">
+                <div className="justify-center ">
                   <div>
                    
 
@@ -136,9 +136,9 @@ const Websites = () => {
                       >
                         <button
                           type="button"
-                          class=" px-2  pb-2 pt-2.5 hover:animate-pulse bg-cyan-400 text-white font-medium text-xs leading-normal uppercase rounded shadow-md hover:bg-cyan-600 hover:shadow-lg focus:bg-cyan-600 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out flex align-center"
+                          className=" px-2  pb-2 pt-2.5 hover:animate-pulse bg-cyan-400 text-white font-medium text-xs leading-normal uppercase rounded shadow-md hover:bg-cyan-600 hover:shadow-lg focus:bg-cyan-600 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out flex align-center"
                         >
-                          <span class="w-3 mr-2 mt-1">
+                          <span className="w-3 mr-2 mt-1">
                             <img src="https://img.icons8.com/cotton/64/null/hyperlink.png" />
                           </span>
                           LIVE Version

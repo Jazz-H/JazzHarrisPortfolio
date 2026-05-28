@@ -5,33 +5,33 @@ const FeaturedProjects = () => {
   return (
    
         
-    <div class="containerv2">
+    <div className="containerv2">
 
     
  
-    <div class="floatcontainer">
+    <div className="floatcontainer">
      
 
-      <div class="floatcontainer">
+      <div className="floatcontainer">
       
-        <div class="card">
-          <div class="face face1 ">
-            <div class="content  ">
+        <div className="card">
+          <div className="face face1 ">
+            <div className="content  ">
             <img src="./assets/Dataprofessionallogo.png" />
 
             </div>
           </div>
-          <div class="face face2">
-            <div class="content ">
+          <div className="face face2">
+            <div className="content ">
             <p>Data Professional Survey dashboard in Power BI</p>
 
-              <p class="text-gray-500">
+              <p className="text-gray-500">
                 <small>     Power BI - Data was prepared, cleaned, transformed and then
                     loaded into Power BI
 </small>
               </p>  
               <button></button>
-              <div class="justify-center ">
+              <div className="justify-center ">
                 <div>
                   <a
                     className=" cursor-pointer "
@@ -42,9 +42,9 @@ const FeaturedProjects = () => {
                   >
                     <button
                       type="button"
-                      class=" px-2  pb-2 pt-2.5 mr-2 hover:animate-pulse bg-cyan-400 float-left text-white font-medium text-xs leading-normal uppercase rounded shadow-md hover:bg-cyan-600 hover:shadow-lg focus:bg-cyan-600 focus:shadow-lg focus:outline-none focus:ring-0 transition duration-150 ease-in-out flex align-center"
+                      className=" px-2  pb-2 pt-2.5 mr-2 hover:animate-pulse bg-cyan-400 float-left text-white font-medium text-xs leading-normal uppercase rounded shadow-md hover:bg-cyan-600 hover:shadow-lg focus:bg-cyan-600 focus:shadow-lg focus:outline-none focus:ring-0 transition duration-150 ease-in-out flex align-center"
                     >
-                      <span class="w-3 mr-2 mt-1">
+                      <span className="w-3 mr-2 mt-1">
                         <BsGithub />
                       </span>
                       Github
@@ -57,23 +57,23 @@ const FeaturedProjects = () => {
         </div>
        </div>
       </div>
-      <div class="floatcontainer">
-        <div class="card">
-          <div class="face face1 ">
-            <div class="content  ">
+      <div className="floatcontainer">
+        <div className="card">
+          <div className="face face1 ">
+            <div className="content  ">
               <img src="./assets/KPIDashboardLogo.png" />
             </div>
           </div>
-          <div class="face face2">
-            <div class="content ">
+          <div className="face face2">
+            <div className="content ">
               <p>Interactive KPI Management Dashboard in Tableau</p>
-              <p class="text-gray-500 p-10">
+              <p className="text-gray-500 p-10">
                 <small>
                 Tableau
                 </small>
               </p>
               <button></button>
-              <div class="justify-center ">
+              <div className="justify-center ">
                 <div>
                   <a
                     className=" cursor-pointer "
@@ -84,9 +84,9 @@ const FeaturedProjects = () => {
                   >
                     <button
                       type="button"
-                      class=" px-2  pb-2 pt-2.5 mr-2 hover:animate-pulse bg-cyan-400 float-left text-white font-medium text-xs leading-normal uppercase rounded shadow-md hover:bg-cyan-600 hover:shadow-lg focus:bg-cyan-600 focus:shadow-lg focus:outline-none focus:ring-0 transition duration-150 ease-in-out flex align-center"
+                      className=" px-2  pb-2 pt-2.5 mr-2 hover:animate-pulse bg-cyan-400 float-left text-white font-medium text-xs leading-normal uppercase rounded shadow-md hover:bg-cyan-600 hover:shadow-lg focus:bg-cyan-600 focus:shadow-lg focus:outline-none focus:ring-0 transition duration-150 ease-in-out flex align-center"
                     >
-                      <span class="w-3 mr-2 mt-1">
+                      <span className="w-3 mr-2 mt-1">
                         <BsGithub />
                       </span>
                       Github
@@ -102,9 +102,9 @@ const FeaturedProjects = () => {
                     >
                       <button
                         type="button"
-                        class=" px-2  pb-2 pt-2.5 hover:animate-pulse bg-cyan-400 text-white font-medium text-xs leading-normal uppercase rounded shadow-md hover:bg-cyan-600 hover:shadow-lg focus:bg-cyan-600 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out flex align-center"
+                        className=" px-2  pb-2 pt-2.5 hover:animate-pulse bg-cyan-400 text-white font-medium text-xs leading-normal uppercase rounded shadow-md hover:bg-cyan-600 hover:shadow-lg focus:bg-cyan-600 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out flex align-center"
                       >
-                        <span class="w-3 mr-2 mt-1">
+                        <span className="w-3 mr-2 mt-1">
                           <img src="https://img.icons8.com/ios-filled/50/000000/tableau-software.png" />
                         </span>
                         LIVE Version
@@ -117,25 +117,25 @@ const FeaturedProjects = () => {
           </div>
         </div>
    
-      <div class="floatcontainer ">
-        <div class="card">
-          <div class="face face1 ">
-            <div class="content  ">
+      <div className="floatcontainer ">
+        <div className="card">
+          <div className="face face1 ">
+            <div className="content  ">
             <img src="./assets/webscraplogo.png" />
 
             </div>
           </div>
-          <div class="face face2">
-            <div class="content ">
+          <div className="face face2">
+            <div className="content ">
             <p>Webscraping RealEstate data with Python and BeautifulSoup</p>
 
-              <p class="text-gray-500 p-10">
+              <p className="text-gray-500 p-10">
                 <small>
                 Utizling Python and BeautifulSoup I was able to extract listing data and export the data into a csv.
                 </small>
               </p>
               <button></button>
-              <div class="justify-center ">
+              <div className="justify-center ">
                 <div>
                   <a
                     className=" cursor-pointer "
@@ -146,9 +146,9 @@ const FeaturedProjects = () => {
                   >
                     <button
                       type="button"
-                      class=" px-2  pb-2 pt-2.5 mr-2 hover:animate-pulse bg-cyan-400 float-left text-white font-medium text-xs leading-normal uppercase rounded shadow-md hover:bg-cyan-600 hover:shadow-lg focus:bg-cyan-600 focus:shadow-lg focus:outline-none focus:ring-0 transition duration-150 ease-in-out flex align-center"
+                      className=" px-2  pb-2 pt-2.5 mr-2 hover:animate-pulse bg-cyan-400 float-left text-white font-medium text-xs leading-normal uppercase rounded shadow-md hover:bg-cyan-600 hover:shadow-lg focus:bg-cyan-600 focus:shadow-lg focus:outline-none focus:ring-0 transition duration-150 ease-in-out flex align-center"
                     >
-                      <span class="w-3 mr-2 mt-1">
+                      <span className="w-3 mr-2 mt-1">
                         <BsGithub />
                       </span>
                       Github

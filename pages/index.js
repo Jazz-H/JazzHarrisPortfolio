@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Head from "next/head";
 import NavMenu from "./components/Navbar";
 import About from "./components/About";
 import Work from "./components/Work";
@@ -14,42 +15,51 @@ export default function Home() {
 
   return (
     <main className={darkMode ? "dark" : ""}>
-      <title>Jazz Harris Portfolio</title>
-      <meta name="description" content="portfolio for Jazz Harris" />
-      <link rel="icon" href="./assets/faviconjh.ico" />
-   
+      <Head>
+        <title>Jazz Harris Portfolio</title>
+        <meta name="description" content="portfolio for Jazz Harris" />
+        <meta
+          name="viewport"
+          content="width=device-width, initial-scale=1, viewport-fit=cover"
+        />
+        <link rel="icon" href="./assets/faviconjh.ico" />
+      </Head>
 
-      <section id="Home" className=" bg-white  dark:bg-gray-900 ">
-        <NavMenu></NavMenu>
-        <Header></Header>
-        <Work></Work>
-        <About></About>
-        <ContactHeading></ContactHeading>
-        <Footer></Footer>
+      <section id="Home" className="bg-white dark:bg-gray-900">
+        <NavMenu />
+        <Header />
+        <Work />
+        <About />
+        <ContactHeading />
+        <Footer />
 
-        <div className="icon-bar ">
+        <div className="icon-bar">
           <a
-            className=" cursor-pointer text-3xl  md:p-0 md:dark:hover:text-white dark:text-gray-400  dark:border-gray-700 "
+            className="cursor-pointer dark:text-gray-400 dark:hover:text-white"
             href="https://github.com/Jazz-H"
             target="_blank"
             rel="noreferrer"
+            aria-label="GitHub"
           >
             <BsGithub />
           </a>
           <a
-            className=" cursor-pointer text-3xl  md:p-0 md:dark:hover:text-white dark:text-gray-400  dark:border-gray-700 "
+            className="cursor-pointer dark:text-gray-400 dark:hover:text-white"
             href="https://www.linkedin.com/in/maurajharris/"
             target="_blank"
             rel="noreferrer"
+            aria-label="LinkedIn"
           >
             <AiFillLinkedin />
           </a>
-          <a
+          <button
+            type="button"
             onClick={() => setDarkMode(!darkMode)}
-            className=" cursor-pointer text-3xl  md:p-0 md:dark:hover:text-white dark:text-gray-400   dark:border-gray-700 "
+            className="cursor-pointer p-1.5 md:p-3 dark:text-gray-400 dark:hover:text-white"
+            aria-label="Toggle dark mode"
           >
             <BsFillMoonStarsFill />
-          </a>
+          </button>
         </div>
       </section>
     </main>
