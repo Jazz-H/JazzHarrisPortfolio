@@ -79,6 +79,17 @@ const Header = () => {
             <AiFillLinkedin className="h-6 w-6" />
           </a>
         </div>
+
+        <p
+          className="mt-10 text-xs text-zinc-500 dark:text-zinc-400 animate-fade-up sm:text-sm"
+          style={{ animationDelay: "480ms" }}
+        >
+          <span className="font-semibold uppercase tracking-widest text-accent dark:text-accent-light">
+            Now
+          </span>{" "}
+          → Business Relationship Analyst at Central Piedmont Community
+          College.
+        </p>
       </div>
     </section>
   );
