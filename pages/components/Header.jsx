@@ -1,21 +1,18 @@
 const Header = () => {
-    return (
-        <div class=" p-10 xs:mb-40 dark:bg-gray-900">
-        <h3 className="text-1xl mt-40 pb-10  text-left  xs:text-xl  sm:px-5 sm:pt-10 md:text-2xl lg:text-3xl 3xl:ml-20 3xl:text-5xl 3xl:mt-40 text-gray-800 font-medium dark:text-gray-300 2xl:mb-20">
-          Hi, my name is
-        </h3>
-        <div className=" pt-5  md:mt-10 text-center md:text-center  md:pl-0 g:text-center">
-          <h1 className="text-3xl   uppercase font-black mb-8 xs:text-4xl sm:text-5xl  md:text-8xl  xl:text-9xl text-cyan-400 2xl:mb-16  drop-shadow-xl shadow-black dark:drop-shadow-xl ">
-            Jazz Harris
-          </h1>
-
-          
-          <p className="  text-xs text-gray-800 md:text-base xs:mt-4 dark:text-gray-200 2xl:text-2xl">
+  return (
+    <div className="px-4 sm:px-8 md:px-10 pt-24 sm:pt-32 md:pt-36 pb-10 sm:pb-16 dark:bg-gray-900">
+      <h3 className="text-base sm:text-lg md:text-2xl lg:text-3xl 3xl:text-5xl 3xl:ml-20 text-left text-gray-800 font-medium dark:text-gray-300 mb-6 sm:mb-10">
+        Hi, my name is
+      </h3>
+      <div className="text-center">
+        <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl uppercase font-black mb-6 sm:mb-10 text-cyan-400 drop-shadow-xl shadow-black dark:drop-shadow-xl break-words">
+          Jazz Harris
+        </h1>
+        <p className="text-sm sm:text-base md:text-lg lg:text-xl 2xl:text-2xl text-gray-800 dark:text-gray-200 max-w-2xl mx-auto px-2">
           Software Engineer, Business Analyst, and Project Management Enthusiast, Passionate About Lifelong Learning.
-          </p>
-        </div>
+        </p>
       </div>
-    );
-  };
-  export default Header;
-  
+    </div>
+  );
+};
+export default Header;

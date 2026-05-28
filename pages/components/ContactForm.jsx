@@ -65,7 +65,7 @@ const ContactForm = () => {
           name="user_name"
         />
 
-        <p class="text-red-700">{errors.user_name?.message}</p>
+        <p className="text-red-700">{errors.user_name?.message}</p>
 
         <label>Email</label>
         <input
@@ -82,7 +82,7 @@ const ContactForm = () => {
           name="user_email"
         />
 
-        <p class="text-red-700">{errors.user_email?.message}</p>
+        <p className="text-red-700">{errors.user_email?.message}</p>
 
         <label>Write me a message 👇</label>
         <textarea
@@ -101,7 +101,7 @@ const ContactForm = () => {
           placeholder="Hello World!"
         />
 
-        <p class="text-red-700">{errors.message?.message}</p>
+        <p className="text-red-700">{errors.message?.message}</p>
         <input type="submit" value="Send" name='submit' />
       </form>
     </StyledContactForm>
