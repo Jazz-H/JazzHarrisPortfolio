@@ -66,7 +66,12 @@ const About = () => {
               <div className="flex flex-wrap gap-2">
                 {TECH.map((t) => (
                   <span key={t.name} className="chip">
-                    <img src={t.src} alt="" className="h-4 w-4" />
+                    <img
+                      src={t.src}
+                      alt=""
+                      aria-hidden="true"
+                      className="h-4 w-4"
+                    />
                     {t.name}
                   </span>
                 ))}
