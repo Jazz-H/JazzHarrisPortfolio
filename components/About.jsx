@@ -1,21 +1,17 @@
+import {
+  SiJavascript,
+  SiReact,
+  SiPython,
+  SiMysql,
+} from "react-icons/si";
+import { TbApi } from "react-icons/tb";
+
 const TECH = [
-  {
-    name: "JavaScript",
-    src: "https://img.icons8.com/color/48/000000/javascript--v1.png",
-  },
-  {
-    name: "React",
-    src: "https://img.icons8.com/color/48/000000/react-native.png",
-  },
-  {
-    name: "Python",
-    src: "https://img.icons8.com/color/48/000000/python--v1.png",
-  },
-  { name: "SQL", src: "https://img.icons8.com/color/48/000000/sql.png" },
-  {
-    name: "REST API",
-    src: "https://img.icons8.com/color/48/000000/api-settings.png",
-  },
+  { name: "JavaScript", Icon: SiJavascript },
+  { name: "React", Icon: SiReact },
+  { name: "Python", Icon: SiPython },
+  { name: "SQL", Icon: SiMysql },
+  { name: "REST API", Icon: TbApi },
 ];
 
 const About = () => {
@@ -34,7 +30,7 @@ const About = () => {
         <div className="card-modern grid grid-cols-1 gap-8 p-6 sm:p-10 md:grid-cols-[auto_1fr] md:items-start">
           <div className="mx-auto h-36 w-36 shrink-0 overflow-hidden rounded-2xl sm:h-44 sm:w-44 md:mx-0 md:h-52 md:w-52">
             <img
-              src="./assets/JHPhoto.png"
+              src="/assets/JHPhoto.png"
               alt="Jazz Harris"
               className="h-full w-full object-cover"
             />
@@ -64,15 +60,13 @@ const About = () => {
                 Recent tech I've worked with
               </p>
               <div className="flex flex-wrap gap-2">
-                {TECH.map((t) => (
-                  <span key={t.name} className="chip">
-                    <img
-                      src={t.src}
-                      alt=""
+                {TECH.map(({ name, Icon }) => (
+                  <span key={name} className="chip">
+                    <Icon
                       aria-hidden="true"
-                      className="h-4 w-4"
+                      className="h-4 w-4 text-zinc-600 dark:text-zinc-300"
                     />
-                    {t.name}
+                    {name}
                   </span>
                 ))}
               </div>

@@ -1,9 +1,24 @@
-import { useState, useMemo } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { CATEGORIES, projects } from "../lib/projects";
 import ProjectCard from "./ProjectCard";
 
+const VALID_IDS = new Set(CATEGORIES.map((c) => c.id));
+
 const Work = () => {
   const [active, setActive] = useState("all");
+
+  useEffect(() => {
+    const initial = new URLSearchParams(window.location.search).get("work");
+    if (initial && VALID_IDS.has(initial)) setActive(initial);
+  }, []);
+
+  const selectCategory = (id) => {
+    setActive(id);
+    const url = new URL(window.location.href);
+    if (id === "all") url.searchParams.delete("work");
+    else url.searchParams.set("work", id);
+    window.history.replaceState({}, "", url);
+  };
 
   const filtered = useMemo(
     () =>
@@ -39,7 +54,7 @@ const Work = () => {
                 key={cat.id}
                 role="tab"
                 aria-selected={isActive}
-                onClick={() => setActive(cat.id)}
+                onClick={() => selectCategory(cat.id)}
                 className={`rounded-full px-4 py-1.5 text-sm font-medium transition-colors ${
                   isActive
                     ? "bg-white text-zinc-900 shadow-sm dark:bg-zinc-800 dark:text-zinc-50"

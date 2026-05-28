@@ -48,7 +48,7 @@ const Header = () => {
             Get in touch
           </a>
           <a
-            href="https://drive.google.com/file/d/1ZDRLfYgAmvWeZohlKUU1mZkrgpuLCxoD/view"
+            href="https://drive.google.com/uc?export=download&id=1ZDRLfYgAmvWeZohlKUU1mZkrgpuLCxoD"
             target="_blank"
             rel="noreferrer"
             className="btn-ghost"
