@@ -1,24 +1,35 @@
+import Link from "next/link";
 import { BsGithub } from "react-icons/bs";
-import { FiExternalLink } from "react-icons/fi";
+import { FiArrowRight, FiExternalLink } from "react-icons/fi";
 
 const ProjectCard = ({ project }) => {
-  const { title, description, tech, image, links } = project;
+  const { id, title, description, tech, image, links } = project;
+  const detailHref = `/work/${id}`;
 
   return (
     <article className="card-modern group flex flex-col overflow-hidden">
-      <div className="relative aspect-[16/10] overflow-hidden bg-zinc-100 dark:bg-zinc-800">
+      <Link
+        href={detailHref}
+        aria-label={`${title} — view details`}
+        className="relative block aspect-[16/10] overflow-hidden bg-zinc-100 dark:bg-zinc-800"
+      >
         <img
           src={image}
           alt={title}
           loading="lazy"
           className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
         />
-      </div>
+      </Link>
 
       <div className="flex flex-1 flex-col gap-4 p-5 sm:p-6">
         <div>
           <h3 className="text-lg font-semibold text-zinc-900 dark:text-zinc-50">
-            {title}
+            <Link
+              href={detailHref}
+              className="transition-colors hover:text-accent dark:hover:text-accent-light"
+            >
+              {title}
+            </Link>
           </h3>
           <p className="mt-2 text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
             {description}
@@ -33,7 +44,14 @@ const ProjectCard = ({ project }) => {
           ))}
         </div>
 
-        <div className="mt-auto flex items-center gap-3 pt-2">
+        <div className="mt-auto flex flex-wrap items-center gap-x-4 gap-y-2 pt-2">
+          <Link
+            href={detailHref}
+            className="inline-flex items-center gap-1.5 text-sm font-medium text-accent transition-colors hover:text-zinc-900 dark:text-accent-light dark:hover:text-zinc-100"
+          >
+            Details
+            <FiArrowRight className="h-4 w-4" />
+          </Link>
           {links.github && (
             <a
               href={links.github}
