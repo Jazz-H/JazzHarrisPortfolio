@@ -22,7 +22,7 @@ const Header = () => {
 
         <h1 className="animate-fade-up text-4xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50 sm:text-6xl md:text-7xl lg:text-8xl">
           Hey, I'm{" "}
-          <span className="bg-gradient-to-r from-cyan-500 to-sky-500 bg-clip-text text-transparent dark:from-cyan-400 dark:to-sky-400">
+          <span className="bg-gradient-to-r from-cyan-700 to-sky-700 bg-clip-text text-transparent dark:from-cyan-400 dark:to-sky-400">
             Jazz Harris
           </span>
           .
