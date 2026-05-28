@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-scroll";
 import { FiSun, FiMoon, FiMenu, FiX } from "react-icons/fi";
 
 const NAV_ITEMS = [
@@ -34,23 +33,21 @@ const Navbar = ({ theme, toggleTheme }) => {
         }`}
       >
         <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3 sm:px-6">
-          <Link
-            to="Home"
-            spy
-            smooth
-            duration={400}
-            offset={-80}
-            className="flex cursor-pointer items-center gap-2"
+          <a
+            href="#Home"
+            className="flex items-center gap-2"
+            aria-label="Jazz Harris — home"
           >
             <img
-              src="./assets/JHNavLogo.png"
-              alt="Jazz Harris logo"
+              src="/assets/JHNavLogo.png"
+              alt=""
+              aria-hidden="true"
               className="h-8 w-8"
             />
             <span className="text-sm font-semibold tracking-tight text-zinc-900 dark:text-zinc-50">
               Jazz Harris
             </span>
-          </Link>
+          </a>
 
           <div className="hidden items-center gap-1 lg:flex">
             {NAV_ITEMS.map((item) => (
