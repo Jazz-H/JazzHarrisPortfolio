@@ -48,9 +48,8 @@ const Header = () => {
             Get in touch
           </a>
           <a
-            href="https://drive.google.com/file/d/1ZDRLfYgAmvWeZohlKUU1mZkrgpuLCxoD/view"
-            target="_blank"
-            rel="noreferrer"
+            href="/Jazz-Harris-Resume.pdf"
+            download
             className="btn-ghost"
           >
             Resume

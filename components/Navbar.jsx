@@ -63,9 +63,8 @@ const Navbar = ({ theme, toggleTheme }) => {
               </a>
             ))}
             <a
-              href="https://drive.google.com/file/d/1ZDRLfYgAmvWeZohlKUU1mZkrgpuLCxoD/view"
-              target="_blank"
-              rel="noreferrer"
+              href="/Jazz-Harris-Resume.pdf"
+              download
               className="ml-2 rounded-full bg-accent px-4 py-2 text-sm font-semibold text-white transition-transform hover:-translate-y-0.5"
             >
               Resume
@@ -128,9 +127,8 @@ const Navbar = ({ theme, toggleTheme }) => {
               </a>
             ))}
             <a
-              href="https://drive.google.com/file/d/1ZDRLfYgAmvWeZohlKUU1mZkrgpuLCxoD/view"
-              target="_blank"
-              rel="noreferrer"
+              href="/Jazz-Harris-Resume.pdf"
+              download
               onClick={close}
               className="mt-1 rounded-lg bg-accent px-4 py-3 text-center text-sm font-semibold text-white"
             >
