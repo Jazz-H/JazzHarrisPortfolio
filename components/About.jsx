@@ -1,3 +1,4 @@
+import Image from "next/image";
 import {
   SiJavascript,
   SiReact,
@@ -28,11 +29,13 @@ const About = () => {
         </div>
 
         <div className="card-modern grid grid-cols-1 gap-8 p-6 sm:p-10 md:grid-cols-[auto_1fr] md:items-start">
-          <div className="mx-auto h-36 w-36 shrink-0 overflow-hidden rounded-2xl sm:h-44 sm:w-44 md:mx-0 md:h-52 md:w-52">
-            <img
+          <div className="relative mx-auto h-36 w-36 shrink-0 overflow-hidden rounded-2xl sm:h-44 sm:w-44 md:mx-0 md:h-52 md:w-52">
+            <Image
               src="/assets/JHPhoto.png"
               alt="Jazz Harris"
-              className="h-full w-full object-cover"
+              fill
+              sizes="(max-width: 640px) 144px, (max-width: 768px) 176px, 208px"
+              className="object-cover"
             />
           </div>
 
