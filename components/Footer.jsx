@@ -11,7 +11,7 @@ const Footer = () => {
             href="https://github.com/Jazz-H/JazzHarrisPortfolio"
             target="_blank"
             rel="noreferrer"
-            className="text-accent hover:underline dark:text-accent-light"
+            className="text-accent underline underline-offset-2 dark:text-accent-light"
           >
             GitHub
           </a>

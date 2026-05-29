@@ -58,7 +58,7 @@ const ProjectCard = ({ project }) => {
               target="_blank"
               rel="noreferrer"
               className="inline-flex items-center gap-1.5 text-sm font-medium text-zinc-700 hover:text-accent dark:text-zinc-300 dark:hover:text-accent-light transition-colors"
-              aria-label={`${title} on GitHub`}
+              aria-label={`Code on GitHub: ${title}`}
             >
               <BsGithub className="h-4 w-4" />
               Code
@@ -70,7 +70,7 @@ const ProjectCard = ({ project }) => {
               target="_blank"
               rel="noreferrer"
               className="inline-flex items-center gap-1.5 text-sm font-medium text-zinc-700 hover:text-accent dark:text-zinc-300 dark:hover:text-accent-light transition-colors"
-              aria-label={`${title} live demo`}
+              aria-label={`Live demo: ${title}`}
             >
               <FiExternalLink className="h-4 w-4" />
               Live
