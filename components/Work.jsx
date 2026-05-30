@@ -7,8 +7,12 @@ const VALID_IDS = new Set(CATEGORIES.map((c) => c.id));
 const Work = () => {
   const [active, setActive] = useState("all");
 
+  // Hydrate the tab from the URL once on mount. Synchronous setState here
+  // is intentional — the URL is an external source of truth that we read
+  // exactly once. Refactor to useSyncExternalStore if this grows.
   useEffect(() => {
     const initial = new URLSearchParams(window.location.search).get("work");
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     if (initial && VALID_IDS.has(initial)) setActive(initial);
   }, []);
 
