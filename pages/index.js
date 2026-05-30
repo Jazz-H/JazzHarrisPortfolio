@@ -79,7 +79,14 @@ export default function Home() {
         <meta name="twitter:image" content="/assets/og.png" />
       </Head>
 
-      <main className="min-h-screen bg-white text-zinc-900 dark:bg-zinc-950 dark:text-zinc-50">
+      <a href="#main" className="skip-link">
+        Skip to main content
+      </a>
+
+      <main
+        id="main"
+        className="min-h-screen bg-white text-zinc-900 dark:bg-zinc-950 dark:text-zinc-50"
+      >
         <Navbar theme={theme} toggleTheme={toggleTheme} />
         <Header />
         <Work />

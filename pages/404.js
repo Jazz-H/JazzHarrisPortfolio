@@ -37,7 +37,14 @@ export default function NotFound() {
         <meta name="robots" content="noindex" />
       </Head>
 
-      <main className="flex min-h-screen flex-col bg-white text-zinc-900 dark:bg-zinc-950 dark:text-zinc-50">
+      <a href="#main" className="skip-link">
+        Skip to main content
+      </a>
+
+      <main
+        id="main"
+        className="flex min-h-screen flex-col bg-white text-zinc-900 dark:bg-zinc-950 dark:text-zinc-50"
+      >
         <Navbar theme={theme} toggleTheme={toggleTheme} />
 
         <section className="flex flex-1 items-center justify-center px-4 py-32 sm:px-6">
