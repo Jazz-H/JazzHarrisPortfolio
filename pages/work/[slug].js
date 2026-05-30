@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useState } from "react";
 import Head from "next/head";
+import Image from "next/image";
 import Link from "next/link";
 import { BsGithub } from "react-icons/bs";
 import { FiArrowLeft, FiExternalLink } from "react-icons/fi";
@@ -109,12 +110,14 @@ export default function ProjectDetail({ project }) {
               )}
             </div>
 
-            <div className="mt-10 overflow-hidden rounded-2xl border border-zinc-200 dark:border-zinc-800">
-              <img
+            <div className="relative mt-10 aspect-[16/10] overflow-hidden rounded-2xl border border-zinc-200 dark:border-zinc-800">
+              <Image
                 src={image}
                 alt={title}
-                className="h-auto w-full"
-                loading="eager"
+                fill
+                sizes="(max-width: 768px) 100vw, 800px"
+                priority
+                className="object-cover"
               />
             </div>
 

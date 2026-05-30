@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import Image from "next/image";
 import { FiSun, FiMoon, FiMenu, FiX } from "react-icons/fi";
 
 const NAV_ITEMS = [
@@ -38,10 +39,13 @@ const Navbar = ({ theme, toggleTheme }) => {
             className="flex items-center gap-2"
             aria-label="Jazz Harris — home"
           >
-            <img
+            <Image
               src="/assets/JHNavLogo.png"
               alt=""
               aria-hidden="true"
+              width={32}
+              height={32}
+              priority
               className="h-8 w-8"
             />
             <span className="text-sm font-semibold tracking-tight text-zinc-900 dark:text-zinc-50">

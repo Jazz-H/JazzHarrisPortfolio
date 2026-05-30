@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { BsGithub } from "react-icons/bs";
 import { FiArrowRight, FiExternalLink } from "react-icons/fi";
@@ -13,11 +14,12 @@ const ProjectCard = ({ project }) => {
         aria-label={`${title} — view details`}
         className="relative block aspect-[16/10] overflow-hidden bg-zinc-100 dark:bg-zinc-800"
       >
-        <img
+        <Image
           src={image}
           alt={title}
-          loading="lazy"
-          className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+          fill
+          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+          className="object-cover transition-transform duration-500 group-hover:scale-105"
         />
       </Link>
 
