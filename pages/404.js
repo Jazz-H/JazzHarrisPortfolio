@@ -1,33 +1,12 @@
-import { useCallback, useEffect, useState } from "react";
 import Head from "next/head";
 import Link from "next/link";
 import { FiArrowLeft, FiSearch } from "react-icons/fi";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import { useTheme } from "../lib/useTheme";
 
 export default function NotFound() {
-  const [theme, setTheme] = useState("light");
-
-  useEffect(() => {
-    const initial =
-      document.documentElement.dataset.theme ||
-      (window.matchMedia("(prefers-color-scheme: dark)").matches
-        ? "dark"
-        : "light");
-    setTheme(initial);
-  }, []);
-
-  const toggleTheme = useCallback(() => {
-    setTheme((prev) => {
-      const next = prev === "dark" ? "light" : "dark";
-      const root = document.documentElement;
-      if (next === "dark") root.classList.add("dark");
-      else root.classList.remove("dark");
-      root.dataset.theme = next;
-      localStorage.setItem("theme", next);
-      return next;
-    });
-  }, []);
+  const { theme, toggleTheme } = useTheme();
 
   return (
     <>

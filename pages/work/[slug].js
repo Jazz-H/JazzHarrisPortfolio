@@ -1,4 +1,3 @@
-import { useCallback, useEffect, useState } from "react";
 import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
@@ -7,37 +6,13 @@ import { FiArrowLeft, FiExternalLink } from "react-icons/fi";
 import { CATEGORIES, projects } from "../../lib/projects";
 import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
+import { useTheme } from "../../lib/useTheme";
 
 const categoryLabel = (id) =>
   CATEGORIES.find((c) => c.id === id)?.label ?? "Project";
 
 export default function ProjectDetail({ project }) {
-  const [theme, setTheme] = useState("light");
-
-  useEffect(() => {
-    const initial =
-      document.documentElement.dataset.theme ||
-      (window.matchMedia("(prefers-color-scheme: dark)").matches
-        ? "dark"
-        : "light");
-    setTheme(initial);
-  }, []);
-
-  const applyTheme = (next) => {
-    const root = document.documentElement;
-    if (next === "dark") root.classList.add("dark");
-    else root.classList.remove("dark");
-    root.dataset.theme = next;
-  };
-
-  const toggleTheme = useCallback(() => {
-    setTheme((prev) => {
-      const next = prev === "dark" ? "light" : "dark";
-      applyTheme(next);
-      localStorage.setItem("theme", next);
-      return next;
-    });
-  }, []);
+  const { theme, toggleTheme } = useTheme();
 
   const { title, description, category, tech, image, links, details } =
     project;

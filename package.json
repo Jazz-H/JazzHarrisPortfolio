@@ -6,7 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "eslint pages components lib"
   },
   "dependencies": {
     "@types/react": "^19.0.0",
@@ -19,7 +19,7 @@
   "devDependencies": {
     "@types/node": "25.9.1",
     "autoprefixer": "^10.4.12",
-    "eslint": "8.24.0",
+    "eslint": "^9.39.4",
     "eslint-config-next": "^16.2.6",
     "postcss": "^8.4.16",
     "tailwindcss": "^3.1.8",
