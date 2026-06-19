@@ -26,7 +26,7 @@ const PROJECTS = [
     body: "A personal budgeting app that turns messy finances into clear, calm decisions — track spending, set goals, and see where your money actually goes. Currently in public beta.",
     tags: ["React", "Web app", "Fintech"], status: "Beta",
     live: "https://getvalora.netlify.app",
-    company: "Personal product", role: "Solo design & development", medium: "Web app · public beta",
+    company: "Personal product", role: "Solo design & development",
     study: {
       challenge: "Most budgeting tools are noisy and guilt-driven. I wanted something calmer that answers one question fast: where is my money actually going?",
       approach: "Designed and built the product end to end — flows for tracking spending, setting goals, and seeing category breakdowns at a glance.",
@@ -36,9 +36,9 @@ const PROJECTS = [
   {
     cat: "Websites", title: "Alamance Community Foundation",
     body: "A community foundation site built and maintained with the team — focused on credibility, clear navigation, and making it easy for donors to engage.",
-    tags: ["Squarespace", "HTML", "CSS", "JS"], image: "/assets/AlamanceCover.jpg",
+    tags: ["Squarespace", "HTML", "CSS", "JavaScript"], image: "/assets/AlamanceCover.jpg",
     live: "https://www.alamancecommunityfoundation.org",
-    company: "Alamance Community Foundation (client)", role: "Design, build & maintenance", medium: "Squarespace website",
+    company: "Alamance Community Foundation (client)", role: "Design, build & maintenance",
     study: {
       challenge: "A community foundation needs to read as credible and make it effortless for donors to find programs and give.",
       approach: "Built and maintained the site with the team — clear navigation, a trustworthy structure, and content the staff can update themselves.",
@@ -48,9 +48,9 @@ const PROJECTS = [
   {
     cat: "Websites", title: "Electric Supplies Online",
     body: "An e-commerce storefront for an electrical-supplies retailer, organized so customers can find and buy the right parts fast.",
-    tags: ["E-commerce", "HTML", "CSS", "JS"], image: "/assets/ElectricCover.jpg",
+    tags: ["Yahoo Manager", "HTML", "CSS", "JavaScript"], image: "/assets/ElectricCover.jpg",
     live: "https://electricsuppliesonline.com/",
-    company: "Electric Supplies Online (client)", role: "Storefront development", medium: "E-commerce storefront",
+    company: "Electric Supplies Online", role: "Designer & developer",
     study: {
       challenge: "Shoppers needed to find and buy the right electrical part quickly, across a large catalog.",
       approach: "Organized the storefront and product structure around fast discovery and a clean checkout path.",
@@ -60,9 +60,9 @@ const PROJECTS = [
   {
     cat: "Websites", title: "FIE Study Abroad",
     body: "An editorial post documenting a study-abroad experience cut short by COVID-19 — clean reading layout and storytelling.",
-    tags: ["WordPress", "HTML", "CSS"], image: "/assets/FIECover.jpg",
+    tags: ["WordPress", "HTML", "CSS", "JavaScript"], image: "/assets/FIECover.jpg",
     live: "https://fiestudyabroad.wordpress.com/2020/04/13/jazz-wrapping-up-study-abroad-after-covid-19/",
-    company: "Foundation for International Education", role: "Author & contributor", medium: "WordPress editorial post",
+    company: "Foundation for International Education (study-abroad program)", role: "Student & author",
     study: {
       challenge: "Tell the honest story of a study-abroad term cut short by COVID-19 in a way that's readable and useful to future students.",
       approach: "Wrote and laid out an editorial post with a clean reading structure and a clear narrative.",
@@ -72,9 +72,9 @@ const PROJECTS = [
   {
     cat: "Apps", title: "To-Do App with Quote API",
     body: "A task tracker with daily-quote integration and full create/read/update/delete, backed by Firebase.",
-    tags: ["React", "Firebase", "Axios", "REST"], image: "/assets/ToDoAppLogo.png",
+    tags: ["React", "Firebase", "Axios", "REST API"], image: "/assets/ToDoAppLogo.png",
     live: "https://to-do-app-nu-cyan.vercel.app/", code: "https://github.com/Jazz-Harris/To-DoApp",
-    company: "Personal project", role: "Solo developer", medium: "React web app",
+    company: "Personal project", role: "Solo developer",
     study: {
       challenge: "Build a task tracker that's a little more motivating than a plain checklist.",
       approach: "Implemented full create/read/update/delete on Firebase and pulled a daily quote from a REST API.",
@@ -84,9 +84,9 @@ const PROJECTS = [
   {
     cat: "Apps", title: "Weather Application",
     body: "Search any city and get live conditions through the OpenWeather API, built in Next.js.",
-    tags: ["Next.js", "React", "Tailwind"], image: "/assets/weatherappbg.png",
+    tags: ["Next.js", "React", "Tailwind", "OpenWeather API"], image: "/assets/weatherappbg.png",
     live: "https://weather-app-sand-six-26.vercel.app/", code: "https://github.com/Jazz-Harris/WeatherApp",
-    company: "Personal project", role: "Solo developer", medium: "Next.js web app",
+    company: "Personal project", role: "Solo developer",
     study: {
       challenge: "Get accurate, current conditions for any city, fast.",
       approach: "Built a Next.js front end against the OpenWeather API with a clean search-driven flow.",
@@ -98,7 +98,7 @@ const PROJECTS = [
     body: "A multi-user chat with authentication and live message sync on Firebase v9.",
     tags: ["React", "Firebase v9", "Tailwind"], image: "/assets/ChatAppLogo.png",
     live: "https://chata-27aa7.web.app/", code: "https://github.com/Jazz-Harris/ChatApp",
-    company: "Personal project", role: "Solo developer", medium: "React web app",
+    company: "Personal project", role: "Solo developer",
     study: {
       challenge: "Support multiple people chatting live, with proper sign-in.",
       approach: "Used Firebase v9 for authentication and real-time message sync across clients.",
@@ -110,7 +110,7 @@ const PROJECTS = [
     body: "An interactive sales-and-profit dashboard published to Tableau Public for quick decision-making.",
     tags: ["Tableau"], image: "/assets/KPIDashboardLogo.png",
     live: "https://public.tableau.com/views/SalesandProfitManagementDashboard_16673599690350/Dashboard1",
-    company: "Personal project", role: "Data analyst", medium: "Tableau dashboard",
+    company: "Personal project", role: "Data analyst",
     study: {
       challenge: "Turn raw sales and profit data into something a manager can act on at a glance.",
       approach: "Modeled the data and built an interactive Tableau dashboard, published to Tableau Public.",
@@ -122,7 +122,7 @@ const PROJECTS = [
     body: "Cleaned, transformed, and visualized survey data into a clear Power BI report.",
     tags: ["Power BI", "ETL"], image: "/assets/Dataprofessionallogo.png",
     code: "https://github.com/Jazz-Harris/DataProfessionalSurveyPowerbi",
-    company: "Personal project", role: "Data analyst", medium: "Power BI report",
+    company: "Personal project", role: "Data analyst",
     study: {
       challenge: "Make sense of a messy professional-survey dataset.",
       approach: "Cleaned and transformed the data, then visualized it in a clear Power BI report.",
@@ -134,7 +134,7 @@ const PROJECTS = [
     body: "A Python scraper that pulls listing data with BeautifulSoup and exports it to CSV.",
     tags: ["Python", "BeautifulSoup"], image: "/assets/webscraplogo.png",
     code: "https://github.com/Jazz-Harris/WebScrapingRealEstateData",
-    company: "Personal project", role: "Developer", medium: "Python script",
+    company: "Personal project", role: "Developer",
     study: {
       challenge: "Collect real-estate listing data that isn't available as a clean export.",
       approach: "Wrote a Python + BeautifulSoup scraper that pulls listings and exports them to CSV.",
@@ -146,7 +146,7 @@ const PROJECTS = [
     body: "Exploratory data analysis on supermarket sales using the Python data stack.",
     tags: ["Pandas", "NumPy", "Seaborn"], image: "/assets/EDAProjectLogo.png",
     code: "https://github.com/Jazz-Harris/EDAWithSuperMarketData",
-    company: "Personal project", role: "Data analyst", medium: "Jupyter notebook",
+    company: "Personal project", role: "Data analyst",
     study: {
       challenge: "Understand what actually drives supermarket sales.",
       approach: "Ran exploratory data analysis with Pandas, NumPy, and Seaborn.",
@@ -158,7 +158,7 @@ const PROJECTS = [
     body: "Prepared, transformed, and modeled credit-card default data into an analytical Power BI report.",
     tags: ["Power BI", "ETL"], image: "/assets/CreditCardDefaultsLogo.png",
     code: "https://github.com/Jazz-Harris/CreditCardDefaults-Powerbi",
-    company: "Personal project", role: "Data analyst", medium: "Power BI report",
+    company: "Personal project", role: "Data analyst",
     study: {
       challenge: "Explore what correlates with credit-card default risk.",
       approach: "Prepared, transformed, and modeled the data into an analytical Power BI report.",
@@ -169,7 +169,7 @@ const PROJECTS = [
     cat: "Data", title: "Real-time Stock Market Dashboard",
     body: "Live market data pulled from a REST API into an interactive dashboard.",
     tags: ["Power BI", "REST API"], image: "/assets/RTSMDLogo.png",
-    company: "Personal project", role: "Data analyst", medium: "Power BI report",
+    company: "Personal project", role: "Data analyst",
     study: {
       challenge: "See live market movement in one place instead of jumping between sources.",
       approach: "Pulled live data from a REST API into an interactive Power BI dashboard.",
@@ -305,6 +305,7 @@ function Poster({ view, go }) {
             </a>
           ))}
         </div>
+        <span className="dp-divider" aria-hidden="true" />
         <button className="dp-btn dp-btn-primary dp-poster-cta" onClick={() => go("contact")}>
           Start a project <FiArrowRight aria-hidden="true" />
         </button>
@@ -350,7 +351,10 @@ function WorkList({ onOpen }) {
             <span className="dp-card-body">
               <span className="dp-card-h">{p.title}</span>
               <span className="dp-card-p">{p.body}</span>
-              <span className="dp-card-open">View case study <FiArrowRight aria-hidden="true" /></span>
+              <span className="dp-pills dp-card-pills">
+                {p.tags.slice(0, 4).map((t) => (<span className="dp-pill" key={t}>{t}</span>))}
+              </span>
+              <span className="dp-card-open">Details <FiArrowRight aria-hidden="true" /></span>
             </span>
           </button>
         ))}
@@ -380,8 +384,10 @@ function Detail({ p, onBack }) {
       <div className="dp-meta">
         {p.company && <div><span className="dp-meta-l">Company</span><span className="dp-meta-v">{p.company}</span></div>}
         {p.role && <div><span className="dp-meta-l">Role</span><span className="dp-meta-v">{p.role}</span></div>}
-        {p.medium && <div><span className="dp-meta-l">Medium</span><span className="dp-meta-v">{p.medium}</span></div>}
-        <div><span className="dp-meta-l">Stack</span><span className="dp-meta-v">{p.tags.join(", ")}</span></div>
+      </div>
+      <div className="dp-detail-stack">
+        <span className="dp-meta-l">Stack</span>
+        <div className="dp-pills">{p.tags.map((t) => (<span className="dp-pill" key={t}>{t}</span>))}</div>
       </div>
       <div className="dp-detail-links">
         {p.live && <a className="dp-btn dp-btn-primary" href={p.live} target="_blank" rel="noreferrer">Visit live <FiArrowUpRight aria-hidden="true" /></a>}
@@ -439,7 +445,7 @@ function About({ go }) {
 
       <div className="dp-about-section">
         <p className="dp-sub">Tools &amp; technologies</p>
-        <div className="dp-tech">{TECH.map((t) => (<span className="dp-chip" key={t}>{t}</span>))}</div>
+        <div className="dp-pills">{TECH.map((t) => (<span className="dp-pill" key={t}>{t}</span>))}</div>
       </div>
 
       <div className="dp-about-cta">
@@ -538,11 +544,12 @@ const CSS = `
 .dp-nav-label{font-family:var(--font-display),'Bricolage Grotesque',sans-serif;font-weight:600;font-size:18px}
 
 /* grounded footer: social row + CTA */
-.dp-poster-bottom{margin-top:auto;display:flex;flex-direction:column;gap:16px;padding-top:24px;border-top:1px solid var(--line)}
-.dp-social{display:flex;gap:10px}
-.dp-social-btn{display:inline-flex;align-items:center;justify-content:center;width:42px;height:42px;font-size:17px;color:var(--muted);border:1px solid var(--line-2);border-radius:12px;transition:color .2s,border-color .2s,background .2s,transform .2s}
+.dp-poster-bottom{margin-top:auto;display:flex;flex-direction:row;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;padding-top:24px;border-top:1px solid var(--line)}
+.dp-social{display:flex;gap:9px}
+.dp-social-btn{display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;font-size:16px;color:var(--muted);border:1px solid var(--line-2);border-radius:11px;transition:color .2s,border-color .2s,background .2s,transform .2s}
 .dp-social-btn:hover{color:var(--ember);border-color:var(--ember);background:rgba(214,95,116,.07);transform:translateY(-2px)}
-.dp-poster-cta{width:100%;gap:8px}
+.dp-divider{width:1px;height:28px;background:var(--line-2);flex:none}
+.dp-poster-cta{width:auto;gap:8px}
 
 /* buttons */
 .dp-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font-size:14.5px;font-weight:500;border-radius:11px;padding:11px 18px;border:1px solid transparent;white-space:nowrap;transition:transform .15s,background .2s,border-color .2s,color .2s}
@@ -576,8 +583,10 @@ const CSS = `
 .dp-card-body{padding:20px;display:flex;flex-direction:column;gap:10px}
 .dp-card-h{font-family:var(--font-display),'Bricolage Grotesque',sans-serif;font-weight:600;font-size:18px;line-height:1.2}
 .dp-card-p{color:var(--muted);font-size:13.5px}
-.dp-card-open{display:inline-flex;align-items:center;gap:6px;font-family:var(--font-mono),'JetBrains Mono',monospace;font-size:12.5px;color:var(--ember);margin-top:2px;opacity:0;transform:translateX(-4px);transition:opacity .2s,transform .2s}
-.dp-card:hover .dp-card-open{opacity:1;transform:none}
+.dp-card-pills{margin-top:4px}
+.dp-card:hover .dp-pill{border-color:rgba(214,95,116,.35)}
+.dp-card-open{display:inline-flex;align-items:center;gap:6px;font-family:var(--font-mono),'JetBrains Mono',monospace;font-size:12.5px;color:var(--ember);margin-top:4px;transition:gap .2s}
+.dp-card:hover .dp-card-open{gap:10px}
 
 /* detail */
 .dp-detail{max-width:760px}
@@ -592,6 +601,8 @@ const CSS = `
 .dp-meta{display:flex;gap:36px;flex-wrap:wrap;padding:20px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin-bottom:24px}
 .dp-meta-l{display:block;font-family:var(--font-mono),'JetBrains Mono',monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--faint);margin-bottom:6px}
 .dp-meta-v{font-size:14.5px;color:var(--ink)}
+.dp-detail-stack{display:flex;flex-direction:column;gap:11px;margin-bottom:24px}
+.dp-detail-stack .dp-meta-l{margin-bottom:0}
 .dp-detail-links{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:22px}
 .dp-detail-soon{font-family:var(--font-mono),'JetBrains Mono',monospace;font-size:12.5px;color:var(--faint)}
 .dp-detail-note{font-family:var(--font-mono),'JetBrains Mono',monospace;font-size:12.5px;color:var(--faint);border:1px dashed var(--line-2);border-radius:10px;padding:14px 16px}
@@ -619,8 +630,10 @@ const CSS = `
 .dp-service-icn{display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:10px;background:rgba(214,95,116,.12);color:var(--ember);font-size:18px;margin-bottom:13px}
 .dp-service-h{font-family:var(--font-display),'Bricolage Grotesque',sans-serif;font-weight:600;font-size:16px;margin-bottom:7px}
 .dp-service-p{color:var(--muted);font-size:13.5px;line-height:1.5}
-.dp-tech{display:flex;flex-wrap:wrap;gap:8px}
-.dp-chip{font-family:var(--font-mono),'JetBrains Mono',monospace;font-size:12.5px;color:var(--muted);border:1px solid var(--line);background:var(--card);border-radius:8px;padding:6px 11px}
+/* pills (stack / skills / card tags) — shared, on-brand */
+.dp-pills{display:flex;flex-wrap:wrap;gap:8px}
+.dp-pill{display:inline-flex;align-items:center;font-family:var(--font-mono),'JetBrains Mono',monospace;font-size:12px;letter-spacing:.01em;color:var(--muted);background:rgba(243,234,234,.04);border:1px solid var(--line-2);border-radius:999px;padding:5px 12px;line-height:1.3;transition:color .18s,border-color .18s,background .18s}
+.dp-pill:hover{color:var(--ink);border-color:rgba(214,95,116,.45);background:rgba(214,95,116,.08)}
 .dp-about-cta{display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap;border-top:1px solid var(--line);padding-top:30px}
 .dp-about-cta-t{font-family:var(--font-display),'Bricolage Grotesque',sans-serif;font-weight:600;font-size:20px}
 .dp-about-cta-btns{display:flex;gap:12px;flex-wrap:wrap}
