@@ -13,6 +13,7 @@ import {
   FiMapPin,
   FiBriefcase,
   FiActivity,
+  FiBookOpen,
   FiGlobe,
   FiCpu,
   FiBarChart2,
@@ -298,8 +299,8 @@ function Poster({ view, go }) {
               href={href}
               aria-label={label}
               title={label}
-              target={href.startsWith("http") ? "_blank" : undefined}
-              rel={href.startsWith("http") ? "noreferrer" : undefined}
+              target={href.startsWith("mailto:") ? undefined : "_blank"}
+              rel={href.startsWith("mailto:") ? undefined : "noreferrer"}
             >
               <Icon />
             </a>
@@ -419,14 +420,16 @@ function About({ go }) {
           <div className="dp-about-facts">
             <div className="dp-fact"><FiMapPin aria-hidden="true" /><div><span className="dp-fact-l">Based in</span><span className="dp-fact-v">Charlotte, NC</span></div></div>
             <div className="dp-fact"><FiBriefcase aria-hidden="true" /><div><span className="dp-fact-l">By day</span><span className="dp-fact-v">Business Analyst · Coca-Cola Consolidated</span></div></div>
+            <div className="dp-fact"><FiBookOpen aria-hidden="true" /><div><span className="dp-fact-l">Studied</span><span className="dp-fact-v">B.A. Computer Science · Elon University</span></div></div>
             <div className="dp-fact"><FiActivity aria-hidden="true" /><div><span className="dp-fact-l">Currently</span><span className="dp-fact-v">Building Valora, a budgeting app</span></div></div>
           </div>
         </div>
         <div className="dp-about-body">
           <p className="dp-label">About</p>
           <h2 className="dp-detail-h">Builder by craft, analyst by training.</h2>
-          <p className="dp-p">My path runs from a digital marketing agency in Ireland to local businesses to a multinational enterprise. By day I'm a Business Analyst at Coca-Cola Consolidated, sitting between stakeholders, vendors, and engineers.</p>
-          <p className="dp-p">On my own time, I build websites and custom software for businesses that want technology to actually pay off — more leads, less manual work, better decisions. I care about clear thinking, honest scope, and shipping things that hold up.</p>
+          <p className="dp-p">I studied Computer Science at Elon University, with minors in Art History and Digital Art — and that blend is how I work: engineering rigor with a designer's eye. I like building things that are correct and feel good to use.</p>
+          <p className="dp-p">Since then I've moved across the stack and the org chart — from a software internship in Dublin to analyst roles where I sit between stakeholders, vendors, and engineers, turning fuzzy requirements into systems that actually ship. By day I'm a Business Analyst at Coca-Cola Consolidated.</p>
+          <p className="dp-p">On my own time I build websites and custom software — most recently Valora, my budgeting app — for people and businesses that want technology to pay off: more leads, less manual work, better decisions. I care about clear thinking, honest scope, and work that holds up. Off the clock, you'll usually find me traveling, training MMA, or overbuilding a Lego set.</p>
         </div>
       </div>
 
