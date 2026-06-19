@@ -26,6 +26,7 @@ const PROJECTS = [
     cat: "Apps", title: "Valora",
     body: "A personal budgeting app that turns messy finances into clear, calm decisions — track spending, set goals, and see where your money actually goes. Currently in public beta.",
     tags: ["React", "Web app", "Fintech"], status: "Beta",
+    image: "/assets/ValoraCover.jpg",
     live: "https://getvalora.netlify.app",
     company: "Personal product", role: "Solo design & development",
     study: {
@@ -273,7 +274,7 @@ function Poster({ view, go }) {
           I turn business problems into websites, tools, and dashboards that{" "}
           <span className="dp-mark-text">actually work</span>.
         </h1>
-        <span className="dp-status"><i className="dp-dot" /> Open for project inquiries</span>
+        <span className="dp-status"><i className="dp-dot" /> Available now — let's build something together</span>
       </div>
 
       <nav className="dp-nav" aria-label="Sections">
@@ -469,7 +470,7 @@ function Contact() {
         <p className="dp-label">Contact</p>
         <h2 className="dp-cta-h">Let's build something that works.</h2>
         <p className="dp-cta-sub">Got a project, a problem, or a half-formed idea? Email is the fastest way to reach me — I read everything.</p>
-        <span className="dp-status"><i className="dp-dot" /> Open for project inquiries · usually reply within a day</span>
+        <span className="dp-status"><i className="dp-dot" /> Available now — usually reply within a day</span>
       </div>
 
       <div className="dp-contact-card">
@@ -532,11 +533,11 @@ const CSS = `
 
 /* status pill + pulsing dot */
 .dp-status{display:inline-flex;align-items:center;gap:9px;font-family:var(--font-mono),'JetBrains Mono',monospace;font-size:12px;color:var(--muted);border:1px solid var(--line-2);border-radius:999px;padding:6px 12px;margin-top:22px}
-.dp-dot{position:relative;width:7px;height:7px;border-radius:50%;background:var(--ember);flex:none}
-.dp-dot::after{content:"";position:absolute;inset:0;border-radius:50%;background:var(--ember);animation:dpPing 2.6s cubic-bezier(.2,.7,.2,1) infinite}
-.dp-dot::before{content:"";position:absolute;inset:0;border-radius:50%;background:var(--ember);animation:dpBreathe 2.6s ease-in-out infinite}
-@keyframes dpPing{0%{transform:scale(1);opacity:.55}70%,100%{transform:scale(3);opacity:0}}
-@keyframes dpBreathe{0%,100%{opacity:1}50%{opacity:.55}}
+.dp-dot{position:relative;width:8px;height:8px;border-radius:50%;background:var(--ember);flex:none;box-shadow:0 0 8px rgba(214,95,116,.6)}
+.dp-dot::after{content:"";position:absolute;inset:0;border-radius:50%;border:1.5px solid var(--ember);animation:dpPing 2s cubic-bezier(.2,.7,.2,1) infinite}
+.dp-dot::before{content:"";position:absolute;inset:0;border-radius:50%;background:var(--ember);animation:dpBreathe 2s ease-in-out infinite}
+@keyframes dpPing{0%{transform:scale(1);opacity:.8}80%,100%{transform:scale(3.4);opacity:0}}
+@keyframes dpBreathe{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(.82)}}
 
 .dp-nav{display:flex;flex-direction:column;gap:2px}
 .dp-nav-item{display:flex;align-items:baseline;gap:12px;width:100%;padding:11px 14px;border-left:2px solid transparent;border-radius:0 8px 8px 0;color:var(--muted);transition:color .2s,border-color .2s,background .2s}
