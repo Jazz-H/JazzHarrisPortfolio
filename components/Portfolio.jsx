@@ -21,7 +21,7 @@ import {
 const HEADSHOT_SRC = "/jazz-headshot.jpg";
 
 const PROJECTS = [
-  { cat: "Apps", title: "Valora", body: "A personal budgeting app that turns messy finances into clear, calm decisions — track spending, set goals, and see where your money actually goes. Currently in private beta.", tags: ["Personal product", "Fintech", "Beta"], status: "Beta" },
+  { cat: "Apps", title: "Valora", body: "A personal budgeting app that turns messy finances into clear, calm decisions — track spending, set goals, and see where your money actually goes. Currently in public beta.", tags: ["Personal product", "Fintech", "Beta"], status: "Beta", live: "https://getvalora.netlify.app" },
   { cat: "Websites", title: "Alamance Community Foundation", body: "A community foundation site built and maintained with the team — focused on credibility, clear navigation, and making it easy for donors to engage.", tags: ["Squarespace", "HTML", "CSS", "JS"], image: "/assets/AlamanceCover.jpg", live: "https://www.alamancecommunityfoundation.org" },
   { cat: "Websites", title: "Electric Supplies Online", body: "An e-commerce storefront for an electrical-supplies retailer, organized so customers can find and buy the right parts fast.", tags: ["E-commerce", "HTML", "CSS", "JS"], image: "/assets/ElectricCover.jpg", live: "https://electricsuppliesonline.com/" },
   { cat: "Websites", title: "FIE Study Abroad", body: "An editorial post documenting a study-abroad experience cut short by COVID-19 — clean reading layout and storytelling.", tags: ["WordPress", "HTML", "CSS"], image: "/assets/FIECover.jpg", live: "https://fiestudyabroad.wordpress.com/2020/04/13/jazz-wrapping-up-study-abroad-after-covid-19/" },
