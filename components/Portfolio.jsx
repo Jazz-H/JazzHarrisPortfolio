@@ -290,7 +290,10 @@ function About({ go }) {
 
       <div className="dp-about-cta">
         <p className="dp-about-cta-t">Have something in mind?</p>
-        <button className="dp-btn dp-btn-primary" onClick={() => go("contact")}>Start a project <FiArrowRight aria-hidden="true" /></button>
+        <div className="dp-about-cta-btns">
+          <button className="dp-btn dp-btn-primary" onClick={() => go("contact")}>Start a project <FiArrowRight aria-hidden="true" /></button>
+          <a className="dp-btn dp-btn-ghost" href="/Jazz-Harris-Resume.pdf" target="_blank" rel="noreferrer"><FiFileText aria-hidden="true" /> Résumé</a>
+        </div>
       </div>
     </section>
   );
@@ -320,6 +323,11 @@ function Contact() {
         <a className="dp-contact-row" href="https://github.com/Jazz-H" target="_blank" rel="noreferrer">
           <span className="dp-cr-icn"><FiGithub aria-hidden="true" /></span>
           <span className="dp-cr-text"><span className="dp-cr-l">GitHub</span><span className="dp-cr-v">/Jazz-H</span></span>
+          <FiArrowUpRight className="dp-cr-arrow" aria-hidden="true" />
+        </a>
+        <a className="dp-contact-row" href="/Jazz-Harris-Resume.pdf" target="_blank" rel="noreferrer">
+          <span className="dp-cr-icn"><FiFileText aria-hidden="true" /></span>
+          <span className="dp-cr-text"><span className="dp-cr-l">Résumé</span><span className="dp-cr-v">View / download PDF</span></span>
           <FiArrowUpRight className="dp-cr-arrow" aria-hidden="true" />
         </a>
         <div className="dp-contact-row dp-contact-row-static">
@@ -456,6 +464,7 @@ const CSS = `
 .dp-chip{font-family:var(--font-mono),'JetBrains Mono',monospace;font-size:12.5px;color:var(--muted);border:1px solid var(--line);background:var(--card);border-radius:8px;padding:6px 11px}
 .dp-about-cta{display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap;border-top:1px solid var(--line);padding-top:30px}
 .dp-about-cta-t{font-family:var(--font-display),'Bricolage Grotesque',sans-serif;font-weight:600;font-size:20px}
+.dp-about-cta-btns{display:flex;gap:12px;flex-wrap:wrap}
 
 /* contact */
 .dp-contact{max-width:680px}
