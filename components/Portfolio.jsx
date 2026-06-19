@@ -428,9 +428,10 @@ function About({ go }) {
         <div className="dp-about-body">
           <p className="dp-label">About</p>
           <h2 className="dp-detail-h">Builder by craft, analyst by training.</h2>
-          <p className="dp-p">I studied Computer Science at Elon University, with minors in Art History and Digital Art — and that blend is how I work: engineering rigor with a designer's eye. I like building things that are correct and feel good to use.</p>
-          <p className="dp-p">Since then I've moved across the stack and the org chart — from a software internship in Dublin to analyst roles where I sit between stakeholders, vendors, and engineers, turning fuzzy requirements into systems that actually ship. By day I'm a Business Analyst at Coca-Cola Consolidated.</p>
-          <p className="dp-p">On my own time I build websites and custom software — most recently Valora, my budgeting app — for people and businesses that want technology to pay off: more leads, less manual work, better decisions. I care about clear thinking, honest scope, and work that holds up. Off the clock, you'll usually find me traveling, training MMA, or overbuilding a Lego set.</p>
+          <p className="dp-p">I studied Computer Science at Elon University, with minors in Art History and Digital Art. That combination shaped how I approach technology today: balancing technical problem-solving with a designer's eye for detail. I enjoy building things that are not only functional and reliable, but intuitive, polished, and enjoyable to use.</p>
+          <p className="dp-p">While at Elon, I completed a software engineering internship in Dublin, Ireland, an experience that broadened my perspective on technology and collaboration. Since then, I've worked across both the technical and business sides of software—from development and analysis to working directly with stakeholders, vendors, and engineers. I enjoy taking complex ideas, defining a clear path forward, and helping turn them into solutions that create real value.</p>
+          <p className="dp-p">Today, I'm a Business Analyst at Coca-Cola Consolidated. Outside of work, I build websites, custom software, and digital tools for businesses and entrepreneurs. Most recently, I created Valora, a personal finance platform focused on helping people gain clarity and confidence with their money. Whether I'm building a website, an application, or a business tool, my goal is always the same: create thoughtful solutions that solve problems and stand the test of time.</p>
+          <p className="dp-p">When I'm not behind a screen, you'll usually find me traveling, exploring personal finance, working on a Lego project that's become bigger than expected, or enjoying anything with four wheels or two. I believe great technology starts with understanding people, and the best products are built with equal parts creativity, craftsmanship, and purpose.</p>
         </div>
       </div>
 
@@ -548,7 +549,7 @@ const CSS = `
 .dp-nav-label{font-family:var(--font-display),'Bricolage Grotesque',sans-serif;font-weight:600;font-size:18px}
 
 /* grounded footer: social row + CTA */
-.dp-poster-bottom{margin-top:auto;display:flex;flex-direction:row;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;padding-top:24px;border-top:1px solid var(--line)}
+.dp-poster-bottom{margin-top:auto;display:flex;flex-direction:row;align-items:center;justify-content:center;gap:16px;flex-wrap:wrap;padding-top:24px;border-top:1px solid var(--line)}
 .dp-social{display:flex;gap:9px}
 .dp-social-btn{display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;font-size:16px;color:var(--muted);border:1px solid var(--line-2);border-radius:11px;transition:color .2s,border-color .2s,background .2s,transform .2s}
 .dp-social-btn:hover{color:var(--ember);border-color:var(--ember);background:rgba(214,95,116,.07);transform:translateY(-2px)}
@@ -687,7 +688,7 @@ const CSS = `
   .dp-nav{flex-direction:row;gap:6px;overflow-x:auto}
   .dp-nav-item{border-left:none;border-bottom:2px solid transparent;border-radius:8px 8px 0 0;padding:8px 12px;flex-direction:column;gap:2px}
   .dp-nav-item.is-active{border-left:none;border-bottom-color:var(--ember)}
-  .dp-poster-bottom{flex-direction:row;align-items:center;justify-content:space-between;flex-wrap:wrap}
+  .dp-poster-bottom{flex-direction:row;align-items:center;justify-content:center;flex-wrap:wrap}
   .dp-poster-cta{width:auto}
   .dp-stage{padding:30px 22px}
   .dp-about-top{grid-template-columns:1fr;gap:24px}
