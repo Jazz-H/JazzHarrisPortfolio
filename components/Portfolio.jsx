@@ -21,19 +21,161 @@ import {
 const HEADSHOT_SRC = "/jazz-headshot.jpg";
 
 const PROJECTS = [
-  { cat: "Apps", title: "Valora", body: "A personal budgeting app that turns messy finances into clear, calm decisions — track spending, set goals, and see where your money actually goes. Currently in public beta.", tags: ["Personal product", "Fintech", "Beta"], status: "Beta", live: "https://getvalora.netlify.app" },
-  { cat: "Websites", title: "Alamance Community Foundation", body: "A community foundation site built and maintained with the team — focused on credibility, clear navigation, and making it easy for donors to engage.", tags: ["Squarespace", "HTML", "CSS", "JS"], image: "/assets/AlamanceCover.jpg", live: "https://www.alamancecommunityfoundation.org" },
-  { cat: "Websites", title: "Electric Supplies Online", body: "An e-commerce storefront for an electrical-supplies retailer, organized so customers can find and buy the right parts fast.", tags: ["E-commerce", "HTML", "CSS", "JS"], image: "/assets/ElectricCover.jpg", live: "https://electricsuppliesonline.com/" },
-  { cat: "Websites", title: "FIE Study Abroad", body: "An editorial post documenting a study-abroad experience cut short by COVID-19 — clean reading layout and storytelling.", tags: ["WordPress", "HTML", "CSS"], image: "/assets/FIECover.jpg", live: "https://fiestudyabroad.wordpress.com/2020/04/13/jazz-wrapping-up-study-abroad-after-covid-19/" },
-  { cat: "Apps", title: "To-Do App with Quote API", body: "A task tracker with daily-quote integration and full create/read/update/delete, backed by Firebase.", tags: ["React", "Firebase", "Axios", "REST"], image: "/assets/ToDoAppLogo.png", live: "https://to-do-app-nu-cyan.vercel.app/", code: "https://github.com/Jazz-Harris/To-DoApp" },
-  { cat: "Apps", title: "Weather Application", body: "Search any city and get live conditions through the OpenWeather API, built in Next.js.", tags: ["Next.js", "React", "Tailwind"], image: "/assets/weatherappbg.png", live: "https://weather-app-sand-six-26.vercel.app/", code: "https://github.com/Jazz-Harris/WeatherApp" },
-  { cat: "Apps", title: "Real-time Chat App", body: "A multi-user chat with authentication and live message sync on Firebase v9.", tags: ["React", "Firebase v9", "Tailwind"], image: "/assets/ChatAppLogo.png", live: "https://chata-27aa7.web.app/", code: "https://github.com/Jazz-Harris/ChatApp" },
-  { cat: "Data", title: "KPI Management Dashboard", body: "An interactive sales-and-profit dashboard published to Tableau Public for quick decision-making.", tags: ["Tableau"], image: "/assets/KPIDashboardLogo.png", live: "https://public.tableau.com/views/SalesandProfitManagementDashboard_16673599690350/Dashboard1" },
-  { cat: "Data", title: "Data Professional Survey Dashboard", body: "Cleaned, transformed, and visualized survey data into a clear Power BI report.", tags: ["Power BI", "ETL"], image: "/assets/Dataprofessionallogo.png", code: "https://github.com/Jazz-Harris/DataProfessionalSurveyPowerbi" },
-  { cat: "Data", title: "Real Estate Web Scraper", body: "A Python scraper that pulls listing data with BeautifulSoup and exports it to CSV.", tags: ["Python", "BeautifulSoup"], image: "/assets/webscraplogo.png", code: "https://github.com/Jazz-Harris/WebScrapingRealEstateData" },
-  { cat: "Data", title: "Supermarket Sales EDA", body: "Exploratory data analysis on supermarket sales using the Python data stack.", tags: ["Pandas", "NumPy", "Seaborn"], image: "/assets/EDAProjectLogo.png", code: "https://github.com/Jazz-Harris/EDAWithSuperMarketData" },
-  { cat: "Data", title: "U.S. Credit Card Defaults", body: "Prepared, transformed, and modeled credit-card default data into an analytical Power BI report.", tags: ["Power BI", "ETL"], image: "/assets/CreditCardDefaultsLogo.png", code: "https://github.com/Jazz-Harris/CreditCardDefaults-Powerbi" },
-  { cat: "Data", title: "Real-time Stock Market Dashboard", body: "Live market data pulled from a REST API into an interactive dashboard.", tags: ["Power BI", "REST API"], image: "/assets/RTSMDLogo.png" },
+  {
+    cat: "Apps", title: "Valora",
+    body: "A personal budgeting app that turns messy finances into clear, calm decisions — track spending, set goals, and see where your money actually goes. Currently in public beta.",
+    tags: ["React", "Web app", "Fintech"], status: "Beta",
+    live: "https://getvalora.netlify.app",
+    company: "Personal product", role: "Solo design & development", medium: "Web app · public beta",
+    study: {
+      challenge: "Most budgeting tools are noisy and guilt-driven. I wanted something calmer that answers one question fast: where is my money actually going?",
+      approach: "Designed and built the product end to end — flows for tracking spending, setting goals, and seeing category breakdowns at a glance.",
+      outcome: "Live in public beta and gathering real user feedback to shape the roadmap.",
+    },
+  },
+  {
+    cat: "Websites", title: "Alamance Community Foundation",
+    body: "A community foundation site built and maintained with the team — focused on credibility, clear navigation, and making it easy for donors to engage.",
+    tags: ["Squarespace", "HTML", "CSS", "JS"], image: "/assets/AlamanceCover.jpg",
+    live: "https://www.alamancecommunityfoundation.org",
+    company: "Alamance Community Foundation (client)", role: "Design, build & maintenance", medium: "Squarespace website",
+    study: {
+      challenge: "A community foundation needs to read as credible and make it effortless for donors to find programs and give.",
+      approach: "Built and maintained the site with the team — clear navigation, a trustworthy structure, and content the staff can update themselves.",
+      outcome: "A polished, maintainable site the team keeps current without a developer.",
+    },
+  },
+  {
+    cat: "Websites", title: "Electric Supplies Online",
+    body: "An e-commerce storefront for an electrical-supplies retailer, organized so customers can find and buy the right parts fast.",
+    tags: ["E-commerce", "HTML", "CSS", "JS"], image: "/assets/ElectricCover.jpg",
+    live: "https://electricsuppliesonline.com/",
+    company: "Electric Supplies Online (client)", role: "Storefront development", medium: "E-commerce storefront",
+    study: {
+      challenge: "Shoppers needed to find and buy the right electrical part quickly, across a large catalog.",
+      approach: "Organized the storefront and product structure around fast discovery and a clean checkout path.",
+      outcome: "A storefront that gets customers to the right part with less friction.",
+    },
+  },
+  {
+    cat: "Websites", title: "FIE Study Abroad",
+    body: "An editorial post documenting a study-abroad experience cut short by COVID-19 — clean reading layout and storytelling.",
+    tags: ["WordPress", "HTML", "CSS"], image: "/assets/FIECover.jpg",
+    live: "https://fiestudyabroad.wordpress.com/2020/04/13/jazz-wrapping-up-study-abroad-after-covid-19/",
+    company: "Foundation for International Education", role: "Author & contributor", medium: "WordPress editorial post",
+    study: {
+      challenge: "Tell the honest story of a study-abroad term cut short by COVID-19 in a way that's readable and useful to future students.",
+      approach: "Wrote and laid out an editorial post with a clean reading structure and a clear narrative.",
+      outcome: "A published piece that captures the experience for the program's audience.",
+    },
+  },
+  {
+    cat: "Apps", title: "To-Do App with Quote API",
+    body: "A task tracker with daily-quote integration and full create/read/update/delete, backed by Firebase.",
+    tags: ["React", "Firebase", "Axios", "REST"], image: "/assets/ToDoAppLogo.png",
+    live: "https://to-do-app-nu-cyan.vercel.app/", code: "https://github.com/Jazz-Harris/To-DoApp",
+    company: "Personal project", role: "Solo developer", medium: "React web app",
+    study: {
+      challenge: "Build a task tracker that's a little more motivating than a plain checklist.",
+      approach: "Implemented full create/read/update/delete on Firebase and pulled a daily quote from a REST API.",
+      outcome: "A working app that exercises real data persistence and third-party API integration.",
+    },
+  },
+  {
+    cat: "Apps", title: "Weather Application",
+    body: "Search any city and get live conditions through the OpenWeather API, built in Next.js.",
+    tags: ["Next.js", "React", "Tailwind"], image: "/assets/weatherappbg.png",
+    live: "https://weather-app-sand-six-26.vercel.app/", code: "https://github.com/Jazz-Harris/WeatherApp",
+    company: "Personal project", role: "Solo developer", medium: "Next.js web app",
+    study: {
+      challenge: "Get accurate, current conditions for any city, fast.",
+      approach: "Built a Next.js front end against the OpenWeather API with a clean search-driven flow.",
+      outcome: "Type a city, get live conditions instantly.",
+    },
+  },
+  {
+    cat: "Apps", title: "Real-time Chat App",
+    body: "A multi-user chat with authentication and live message sync on Firebase v9.",
+    tags: ["React", "Firebase v9", "Tailwind"], image: "/assets/ChatAppLogo.png",
+    live: "https://chata-27aa7.web.app/", code: "https://github.com/Jazz-Harris/ChatApp",
+    company: "Personal project", role: "Solo developer", medium: "React web app",
+    study: {
+      challenge: "Support multiple people chatting live, with proper sign-in.",
+      approach: "Used Firebase v9 for authentication and real-time message sync across clients.",
+      outcome: "A multi-user chat that updates instantly for everyone in the room.",
+    },
+  },
+  {
+    cat: "Data", title: "KPI Management Dashboard",
+    body: "An interactive sales-and-profit dashboard published to Tableau Public for quick decision-making.",
+    tags: ["Tableau"], image: "/assets/KPIDashboardLogo.png",
+    live: "https://public.tableau.com/views/SalesandProfitManagementDashboard_16673599690350/Dashboard1",
+    company: "Personal project", role: "Data analyst", medium: "Tableau dashboard",
+    study: {
+      challenge: "Turn raw sales and profit data into something a manager can act on at a glance.",
+      approach: "Modeled the data and built an interactive Tableau dashboard, published to Tableau Public.",
+      outcome: "A shareable dashboard for quick sales-and-profit decisions.",
+    },
+  },
+  {
+    cat: "Data", title: "Data Professional Survey Dashboard",
+    body: "Cleaned, transformed, and visualized survey data into a clear Power BI report.",
+    tags: ["Power BI", "ETL"], image: "/assets/Dataprofessionallogo.png",
+    code: "https://github.com/Jazz-Harris/DataProfessionalSurveyPowerbi",
+    company: "Personal project", role: "Data analyst", medium: "Power BI report",
+    study: {
+      challenge: "Make sense of a messy professional-survey dataset.",
+      approach: "Cleaned and transformed the data, then visualized it in a clear Power BI report.",
+      outcome: "An easy-to-read view of who data professionals are and what they earn.",
+    },
+  },
+  {
+    cat: "Data", title: "Real Estate Web Scraper",
+    body: "A Python scraper that pulls listing data with BeautifulSoup and exports it to CSV.",
+    tags: ["Python", "BeautifulSoup"], image: "/assets/webscraplogo.png",
+    code: "https://github.com/Jazz-Harris/WebScrapingRealEstateData",
+    company: "Personal project", role: "Developer", medium: "Python script",
+    study: {
+      challenge: "Collect real-estate listing data that isn't available as a clean export.",
+      approach: "Wrote a Python + BeautifulSoup scraper that pulls listings and exports them to CSV.",
+      outcome: "A repeatable way to gather listing data ready for analysis.",
+    },
+  },
+  {
+    cat: "Data", title: "Supermarket Sales EDA",
+    body: "Exploratory data analysis on supermarket sales using the Python data stack.",
+    tags: ["Pandas", "NumPy", "Seaborn"], image: "/assets/EDAProjectLogo.png",
+    code: "https://github.com/Jazz-Harris/EDAWithSuperMarketData",
+    company: "Personal project", role: "Data analyst", medium: "Jupyter notebook",
+    study: {
+      challenge: "Understand what actually drives supermarket sales.",
+      approach: "Ran exploratory data analysis with Pandas, NumPy, and Seaborn.",
+      outcome: "Clear visual insight into sales patterns and their drivers.",
+    },
+  },
+  {
+    cat: "Data", title: "U.S. Credit Card Defaults",
+    body: "Prepared, transformed, and modeled credit-card default data into an analytical Power BI report.",
+    tags: ["Power BI", "ETL"], image: "/assets/CreditCardDefaultsLogo.png",
+    code: "https://github.com/Jazz-Harris/CreditCardDefaults-Powerbi",
+    company: "Personal project", role: "Data analyst", medium: "Power BI report",
+    study: {
+      challenge: "Explore what correlates with credit-card default risk.",
+      approach: "Prepared, transformed, and modeled the data into an analytical Power BI report.",
+      outcome: "An analytical view of default patterns across customer segments.",
+    },
+  },
+  {
+    cat: "Data", title: "Real-time Stock Market Dashboard",
+    body: "Live market data pulled from a REST API into an interactive dashboard.",
+    tags: ["Power BI", "REST API"], image: "/assets/RTSMDLogo.png",
+    company: "Personal project", role: "Data analyst", medium: "Power BI report",
+    study: {
+      challenge: "See live market movement in one place instead of jumping between sources.",
+      approach: "Pulled live data from a REST API into an interactive Power BI dashboard.",
+      outcome: "A real-time market view that refreshes straight from the API.",
+    },
+  },
 ];
 const FILTERS = ["All", "Websites", "Apps", "Data"];
 const TECH = ["JavaScript", "React", "Next.js", "Python", "Firebase", "SQL", "REST APIs", "Power BI", "Tailwind"];
@@ -236,8 +378,9 @@ function Detail({ p, onBack }) {
       </div>
       <p className="dp-detail-overview">{p.body}</p>
       <div className="dp-meta">
-        <div><span className="dp-meta-l">Type</span><span className="dp-meta-v">{p.cat}</span></div>
-        <div><span className="dp-meta-l">Role</span><span className="dp-meta-v">Design &amp; build</span></div>
+        {p.company && <div><span className="dp-meta-l">Company</span><span className="dp-meta-v">{p.company}</span></div>}
+        {p.role && <div><span className="dp-meta-l">Role</span><span className="dp-meta-v">{p.role}</span></div>}
+        {p.medium && <div><span className="dp-meta-l">Medium</span><span className="dp-meta-v">{p.medium}</span></div>}
         <div><span className="dp-meta-l">Stack</span><span className="dp-meta-v">{p.tags.join(", ")}</span></div>
       </div>
       <div className="dp-detail-links">
@@ -245,7 +388,18 @@ function Detail({ p, onBack }) {
         {p.code && <a className="dp-btn dp-btn-ghost" href={p.code} target="_blank" rel="noreferrer"><FiGithub aria-hidden="true" /> View code</a>}
         {!p.live && !p.code && <span className="dp-detail-soon">Link coming soon</span>}
       </div>
-      <p className="dp-detail-note">Your challenge → approach → outcome write-up goes here.</p>
+      {p.study ? (
+        <div className="dp-study">
+          {[["Challenge", p.study.challenge], ["Approach", p.study.approach], ["Outcome", p.study.outcome]].map(([label, text]) => (
+            <div className="dp-study-row" key={label}>
+              <span className="dp-study-l">{label}</span>
+              <p className="dp-study-p">{text}</p>
+            </div>
+          ))}
+        </div>
+      ) : (
+        <p className="dp-detail-note">Your challenge → approach → outcome write-up goes here.</p>
+      )}
     </section>
   );
 }
@@ -441,6 +595,11 @@ const CSS = `
 .dp-detail-links{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:22px}
 .dp-detail-soon{font-family:var(--font-mono),'JetBrains Mono',monospace;font-size:12.5px;color:var(--faint)}
 .dp-detail-note{font-family:var(--font-mono),'JetBrains Mono',monospace;font-size:12.5px;color:var(--faint);border:1px dashed var(--line-2);border-radius:10px;padding:14px 16px}
+.dp-study{display:flex;flex-direction:column;gap:18px;border-top:1px solid var(--line);padding-top:24px}
+.dp-study-row{display:grid;grid-template-columns:118px 1fr;gap:18px;align-items:start}
+.dp-study-l{font-family:var(--font-mono),'JetBrains Mono',monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--ember);padding-top:3px}
+.dp-study-p{color:var(--muted);font-size:15.5px;line-height:1.6;max-width:60ch}
+@media (max-width:560px){.dp-study-row{grid-template-columns:1fr;gap:6px}}
 
 /* about */
 .dp-about{max-width:880px;display:flex;flex-direction:column;gap:46px}
