@@ -14,8 +14,8 @@ import {
   FiBriefcase,
   FiActivity,
   FiBookOpen,
-  FiGlobe,
-  FiCpu,
+  FiTrendingUp,
+  FiCode,
   FiBarChart2,
 } from "react-icons/fi";
 
@@ -182,9 +182,9 @@ const PROJECTS = [
 const FILTERS = ["All", "Websites", "Apps", "Data"];
 const TECH = ["JavaScript", "React", "Next.js", "Python", "Firebase", "SQL", "REST APIs", "Power BI", "Tailwind"];
 const SERVICES = [
-  { Icon: FiGlobe, title: "Websites", body: "Marketing sites and storefronts that build trust and turn visitors into customers." },
-  { Icon: FiCpu, title: "Custom tools & apps", body: "Internal tools and products that cut manual work and fit how a team actually operates." },
-  { Icon: FiBarChart2, title: "Data & dashboards", body: "Clean pipelines and clear reporting that make the next decision obvious." },
+  { Icon: FiTrendingUp, title: "Business analysis & strategy", body: "Translating business goals into clear requirements and a roadmap — working between stakeholders, vendors, and engineers to ship the right thing." },
+  { Icon: FiCode, title: "Web & app development", body: "Designing and building responsive websites and applications with React, Next.js, and modern tooling — functional, polished, and reliable." },
+  { Icon: FiBarChart2, title: "Data & dashboards", body: "Turning raw data into clear, decision-ready dashboards and reports with Power BI, Tableau, and the Python data stack." },
 ];
 const NAV = [
   { id: "work", label: "Work" },
@@ -436,7 +436,7 @@ function About({ go }) {
       </div>
 
       <div className="dp-about-section">
-        <p className="dp-sub">What I do</p>
+        <p className="dp-sub">Core skills</p>
         <div className="dp-services">
           {SERVICES.map(({ Icon, title, body }) => (
             <div className="dp-service" key={title}>
