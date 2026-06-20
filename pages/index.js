@@ -3,6 +3,47 @@ import Portfolio from "../components/Portfolio";
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://jazzharris.com";
 
+const STRUCTURED_DATA = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Person",
+      "@id": `${SITE_URL}/#person`,
+      name: "Jazz Harris",
+      alternateName: "Maura Harris",
+      url: `${SITE_URL}/`,
+      image: `${SITE_URL}/jazz-headshot.jpg`,
+      jobTitle: "Software Engineer & Business Analyst",
+      email: "mailto:mauraharris948@gmail.com",
+      description:
+        "Software engineer and business analyst who turns business problems into websites, applications, and dashboards that deliver measurable results.",
+      worksFor: { "@type": "Organization", name: "Coca-Cola Consolidated" },
+      alumniOf: { "@type": "CollegeOrUniversity", name: "Elon University" },
+      knowsAbout: [
+        "Web Development",
+        "Software Engineering",
+        "Business Analysis",
+        "Data Visualization",
+        "React",
+        "Next.js",
+        "Power BI",
+      ],
+      sameAs: [
+        "https://github.com/Jazz-H",
+        "https://www.linkedin.com/in/maurajharris/",
+      ],
+    },
+    {
+      "@type": "WebSite",
+      "@id": `${SITE_URL}/#website`,
+      url: `${SITE_URL}/`,
+      name: "Jazz Harris — Portfolio",
+      author: { "@id": `${SITE_URL}/#person` },
+      inLanguage: "en-US",
+    },
+  ],
+};
+
 export default function Home() {
   return (
     <>
@@ -37,6 +78,11 @@ export default function Home() {
           content="Software engineer and business analyst. Selected projects and contact."
         />
         <meta name="twitter:image" content={`${SITE_URL}/assets/og.png`} />
+
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(STRUCTURED_DATA) }}
+        />
       </Head>
 
       <Portfolio />
