@@ -36,7 +36,7 @@ const PROJECTS = [
       "/assets/ValoraOnboarding.jpg",
     ],
     live: "https://getvalora.netlify.app",
-    company: "[ Your agency name ]", role: "Solo design & development",
+    company: "Independent project", role: "Solo design & development",
     study: {
       challenge: "Most budgeting tools are noisy and guilt-driven. I wanted something calmer that answers one question fast: where is my money actually going?",
       approach: "Designed and built the product end to end — flows for tracking spending, setting goals, and seeing category breakdowns at a glance.",
