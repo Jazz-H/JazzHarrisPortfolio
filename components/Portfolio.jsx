@@ -494,45 +494,49 @@ function Gallery({ images, title, gradient, status, fallbackWord }) {
   };
 
   return (
-    <div
-      className="dp-gallery"
-      style={{ background: gradient }}
-      onKeyDown={(e) => {
-        if (e.key === "ArrowRight") go(idx + 1);
-        if (e.key === "ArrowLeft") go(idx - 1);
-      }}
-    >
-      {images.length && !broken ? (
-        <div className="dp-gallery-track" ref={trackRef} onScroll={onScroll}>
-          {images.map((src, i) => (
-            <div className="dp-gallery-slide" key={src}>
-              <img
-                src={src}
-                alt={multi ? `${title} — screen ${i + 1}` : title}
-                loading={i === 0 ? undefined : "lazy"}
-                onError={() => { if (i === 0) setBroken(true); }}
-              />
-            </div>
-          ))}
-        </div>
-      ) : (
-        <span className="dp-thumb-mono dp-detail-mono">{fallbackWord}</span>
-      )}
-      {status && <span className="dp-badge dp-badge-lg">{status}</span>}
-      {multi && (
-        <>
-          <button type="button" className="dp-gallery-nav dp-gallery-prev" aria-label="Previous image" onClick={() => go(idx - 1)} disabled={idx === 0}>
-            <FiChevronLeft aria-hidden="true" />
-          </button>
-          <button type="button" className="dp-gallery-nav dp-gallery-next" aria-label="Next image" onClick={() => go(idx + 1)} disabled={idx === images.length - 1}>
-            <FiChevronRight aria-hidden="true" />
-          </button>
-          <div className="dp-gallery-dots">
+    <div className="dp-gallery-wrap">
+      <div
+        className="dp-gallery"
+        style={{ background: gradient }}
+        onKeyDown={(e) => {
+          if (e.key === "ArrowRight") go(idx + 1);
+          if (e.key === "ArrowLeft") go(idx - 1);
+        }}
+      >
+        {images.length && !broken ? (
+          <div className="dp-gallery-track" ref={trackRef} onScroll={onScroll}>
             {images.map((src, i) => (
-              <button type="button" key={src} className={"dp-gallery-dot" + (i === idx ? " is-active" : "")} aria-label={`Go to image ${i + 1}`} aria-current={i === idx} onClick={() => go(i)} />
+              <div className="dp-gallery-slide" key={src}>
+                <img
+                  src={src}
+                  alt={multi ? `${title} — screen ${i + 1}` : title}
+                  loading={i === 0 ? undefined : "lazy"}
+                  onError={() => { if (i === 0) setBroken(true); }}
+                />
+              </div>
             ))}
           </div>
-        </>
+        ) : (
+          <span className="dp-thumb-mono dp-detail-mono">{fallbackWord}</span>
+        )}
+        {status && <span className="dp-badge dp-badge-lg">{status}</span>}
+        {multi && (
+          <>
+            <button type="button" className="dp-gallery-nav dp-gallery-prev" aria-label="Previous image" onClick={() => go(idx - 1)} disabled={idx === 0}>
+              <FiChevronLeft aria-hidden="true" />
+            </button>
+            <button type="button" className="dp-gallery-nav dp-gallery-next" aria-label="Next image" onClick={() => go(idx + 1)} disabled={idx === images.length - 1}>
+              <FiChevronRight aria-hidden="true" />
+            </button>
+          </>
+        )}
+      </div>
+      {multi && (
+        <div className="dp-gallery-dots">
+          {images.map((src, i) => (
+            <button type="button" key={src} className={"dp-gallery-dot" + (i === idx ? " is-active" : "")} aria-label={`Go to image ${i + 1}`} aria-current={i === idx} onClick={() => go(i)} />
+          ))}
+        </div>
       )}
     </div>
   );
@@ -816,21 +820,23 @@ const CSS = `
 .dp-detail{max-width:760px}
 .dp-back{display:inline-flex;align-items:center;gap:7px;font-family:var(--font-mono),'JetBrains Mono',monospace;font-size:13px;color:var(--muted);transition:color .2s}
 .dp-back:hover{color:var(--ember)}
-.dp-gallery{position:relative;height:320px;border-radius:20px;overflow:hidden;margin:18px 0 24px;border:1px solid var(--line-2);background:var(--card)}
+.dp-gallery-wrap{margin:18px 0 24px}
+.dp-gallery{position:relative;height:320px;border-radius:20px;overflow:hidden;border:1px solid var(--line-2);background:var(--card)}
 .dp-gallery .dp-detail-mono{position:absolute;left:24px;bottom:24px}
 .dp-detail-mono{font-size:48px;color:rgba(20,8,14,.85)}
 .dp-gallery-track{position:absolute;inset:0;display:flex;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;scrollbar-width:none;-ms-overflow-style:none}
 .dp-gallery-track::-webkit-scrollbar{display:none}
 .dp-gallery-slide{flex:0 0 100%;width:100%;height:100%;scroll-snap-align:center}
 .dp-gallery-slide img{width:100%;height:100%;object-fit:cover;object-position:center top;display:block}
-.dp-gallery-nav{position:absolute;top:50%;transform:translateY(-50%);width:38px;height:38px;display:flex;align-items:center;justify-content:center;border-radius:50%;background:rgba(8,6,9,.5);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);border:1px solid rgba(243,234,234,.18);color:var(--ink);font-size:18px;z-index:2;transition:background .2s,border-color .2s,color .2s,opacity .2s}
-.dp-gallery-nav:hover{background:rgba(8,6,9,.85);border-color:var(--ember);color:var(--ember)}
+.dp-gallery-nav{position:absolute;top:50%;transform:translateY(-50%);width:38px;height:38px;display:flex;align-items:center;justify-content:center;border-radius:50%;background:rgba(8,6,9,.72);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);border:1px solid rgba(243,234,234,.28);color:#fff;font-size:18px;z-index:2;box-shadow:0 4px 14px -4px rgba(0,0,0,.6);transition:background .2s,border-color .2s,color .2s,opacity .2s}
+.dp-gallery-nav:hover{background:rgba(8,6,9,.92);border-color:var(--ember);color:var(--ember)}
 .dp-gallery-nav:disabled{opacity:0;pointer-events:none}
 .dp-gallery-prev{left:12px}
 .dp-gallery-next{right:12px}
-.dp-gallery-dots{position:absolute;bottom:13px;left:50%;transform:translateX(-50%);display:flex;gap:7px;z-index:2}
-.dp-gallery-dot{width:7px;height:7px;border-radius:50%;background:rgba(243,234,234,.45);transition:background .2s,transform .2s}
-.dp-gallery-dot.is-active{background:var(--ember);transform:scale(1.3)}
+.dp-gallery-dots{display:flex;justify-content:center;gap:8px;margin-top:12px}
+.dp-gallery-dot{width:7px;height:7px;border-radius:50%;background:rgba(243,234,234,.32);transition:background .2s,transform .2s}
+.dp-gallery-dot:hover{background:rgba(243,234,234,.6)}
+.dp-gallery-dot.is-active{background:var(--ember);transform:scale(1.35)}
 .dp-detail-head{margin-bottom:14px}
 .dp-detail-h{font-family:var(--font-display),'Bricolage Grotesque',sans-serif;font-weight:700;font-size:clamp(26px,3.4vw,40px);letter-spacing:-.02em;line-height:1.06;margin-top:8px}
 .dp-detail-overview{color:var(--muted);font-size:17px;max-width:62ch;margin-bottom:26px}
@@ -987,7 +993,8 @@ const CSS = `
   .dp-detail-h{font-size:clamp(22px,7vw,28px)}
   .dp-cta-h{font-size:clamp(25px,8vw,32px)}
   .dp-detail-overview{font-size:15px}
-  .dp-gallery{height:190px;border-radius:16px;margin:14px 0 20px}
+  .dp-gallery-wrap{margin:14px 0 20px}
+  .dp-gallery{height:190px;border-radius:16px}
   .dp-detail-mono{font-size:36px}
   .dp-meta{gap:18px;padding:16px 0;margin-bottom:18px}
   .dp-stack-row{margin-bottom:20px}
