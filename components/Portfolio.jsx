@@ -186,9 +186,7 @@ const FILTERS = ["All", "Websites", "Apps", "Data"];
 const TECH_GROUPS = [
   { label: "Languages", items: ["JavaScript", "TypeScript", "Python", "SQL"] },
   { label: "Frameworks & UI", items: ["React", "Next.js", "Tailwind"] },
-  { label: "Backend & APIs", items: ["Firebase", "REST APIs"] },
-  { label: "Data & BI", items: ["Power BI", "Tableau"] },
-  { label: "Power Platform", items: ["Power Apps", "SharePoint"] },
+  { label: "Data & Power Platform", items: ["Power BI", "Power Apps", "SharePoint"] },
 ];
 const SERVICES = [
   { Icon: FiTrendingUp, title: "Business analysis & strategy", body: "Translating business goals into clear requirements and a roadmap — working between stakeholders, vendors, and engineers to ship the right thing." },
