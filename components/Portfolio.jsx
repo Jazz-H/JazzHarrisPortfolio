@@ -287,6 +287,7 @@ export default function Portfolio() {
   const [view, setView] = useState("work");
   const [selected, setSelected] = useState(null);
   const rootRef = useRef(null);
+  const didMount = useRef(false);
 
   useEffect(() => {
     const r = rootRef.current;
@@ -310,9 +311,15 @@ export default function Portfolio() {
   }, []);
 
   useEffect(() => {
-    const el = document.querySelector(".dp-stage");
-    if (el) el.scrollTo ? el.scrollTo({ top: 0 }) : (el.scrollTop = 0);
-    window.scrollTo({ top: 0, behavior: "auto" });
+    // Don't jump on first load — let the page open at the hero/poster.
+    if (!didMount.current) { didMount.current = true; return; }
+    const stage = document.querySelector(".dp-stage");
+    if (stage) {
+      const top = stage.getBoundingClientRect().top + window.scrollY;
+      window.scrollTo({ top: Math.max(0, top), behavior: "auto" });
+    } else {
+      window.scrollTo({ top: 0, behavior: "auto" });
+    }
   }, [view, selected]);
 
   const go = (v) => { setSelected(null); setView(v); };
