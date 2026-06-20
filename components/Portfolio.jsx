@@ -183,7 +183,18 @@ const PROJECTS = [
   },
 ];
 const FILTERS = ["All", "Websites", "Apps", "Data"];
-const TECH = ["JavaScript", "TypeScript", "React", "Next.js", "Python", "SQL", "Firebase", "REST APIs", "Power Apps", "SharePoint", "Power BI", "Tableau", "Tailwind"];
+const TECH = [
+  // Languages
+  "JavaScript", "TypeScript", "Python", "SQL",
+  // Frameworks & UI
+  "React", "Next.js", "Tailwind",
+  // Backend & APIs
+  "Firebase", "REST APIs",
+  // Data & BI
+  "Power BI", "Tableau",
+  // Microsoft Power Platform
+  "Power Apps", "SharePoint",
+];
 const SERVICES = [
   { Icon: FiTrendingUp, title: "Business analysis & strategy", body: "Translating business goals into clear requirements and a roadmap — working between stakeholders, vendors, and engineers to ship the right thing." },
   { Icon: FiCode, title: "Software & web development", body: "Building software and responsive websites — applications, custom tools, and polished web experiences — with React, Next.js, and modern tooling. Functional, reliable, and a pleasure to use." },
@@ -603,8 +614,8 @@ function About({ go }) {
       <div className="dp-about-cta">
         <p className="dp-about-cta-t">Have something in mind?</p>
         <div className="dp-about-cta-btns">
-          <button className="dp-btn dp-btn-primary" onClick={() => go("contact")}>Start a project <FiArrowRight aria-hidden="true" /></button>
           <a className="dp-btn dp-btn-ghost" href="/Jazz-Harris-Resume.pdf" target="_blank" rel="noreferrer"><FiFileText aria-hidden="true" /> Résumé</a>
+          <button className="dp-btn dp-btn-primary" onClick={() => go("contact")}>Start a project <FiArrowRight aria-hidden="true" /></button>
         </div>
       </div>
     </section>
@@ -787,11 +798,10 @@ const CSS = `
 
 /* about — bento grid */
 .dp-about{max-width:960px;display:flex;flex-direction:column;gap:28px}
-.dp-bento{display:grid;grid-template-columns:248px 1fr;gap:16px;align-items:stretch}
+.dp-bento{display:grid;grid-template-columns:248px 1fr;gap:16px;align-items:start}
 .dp-bento-left,.dp-bento-right{display:flex;flex-direction:column;gap:16px;min-width:0}
 .dp-bento-tile{border:1px solid var(--line);background:var(--card);border-radius:16px;padding:20px}
 .dp-bento-photo{padding:0;overflow:hidden;aspect-ratio:4/5}
-.dp-bento-facts{flex:1}
 .dp-bento-bio .dp-p:first-of-type{margin-top:14px}
 .dp-bento-stack .dp-sub{margin-bottom:14px}
 .dp-avatar{width:100%;height:100%;border-radius:16px;object-fit:cover;object-position:center top;display:block}
