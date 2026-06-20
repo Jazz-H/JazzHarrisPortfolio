@@ -980,9 +980,11 @@ const CSS = `
   .dp-sticky-bar{display:block;padding:18px 16px;padding-bottom:max(18px,env(safe-area-inset-bottom));border-top:1px solid var(--line-2);background:var(--bg)}
   .dp-sticky-cta{display:flex;width:100%;align-items:center;justify-content:center;gap:8px;padding:14px 18px;font-family:var(--font-inter),'Inter',system-ui,sans-serif;font-size:15px;font-weight:600;border-radius:12px;border:1px solid rgba(214,95,116,.5);background:var(--ember);color:#2a0f15}
   .dp-bento{grid-template-columns:1fr}
-  .dp-bento-facts{display:grid;grid-template-columns:1fr 116px;gap:16px;align-items:start}
-  .dp-facts-main{grid-column:1}
-  .dp-facts-avatar{grid-column:2;width:116px;height:116px;align-self:start}
+  .dp-bento-facts{display:grid;grid-template-columns:1fr auto;column-gap:16px;row-gap:14px;align-items:center}
+  .dp-facts-main{display:contents}
+  .dp-bento-facts .dp-sub{grid-column:1;grid-row:1;align-self:center;margin:0}
+  .dp-facts-avatar{grid-column:2;grid-row:1;width:96px;height:96px;align-self:center}
+  .dp-about-facts{grid-column:1 / -1;grid-row:2}
   .dp-bento-skills{grid-template-columns:1fr}
   .dp-acc{overflow:hidden;border-radius:16px}
   .dp-acc-skills,.dp-acc-stack{border:1px solid var(--line);background:var(--card)}
