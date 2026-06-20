@@ -584,7 +584,13 @@ function About({ go }) {
             <img className="dp-avatar" src={HEADSHOT_SRC} alt="Jazz Harris, Business Analyst" />
           </div>
           <div className="dp-bento-tile dp-bento-facts">
-            <img className="dp-facts-avatar" src={HEADSHOT_SRC} alt="Jazz Harris" loading="lazy" />
+            <div className="dp-facts-id">
+              <img className="dp-facts-avatar" src={HEADSHOT_SRC} alt="Jazz Harris" loading="lazy" />
+              <span className="dp-facts-id-text">
+                <span className="dp-facts-name">Jazz Harris</span>
+                <span className="dp-facts-role">Software engineer &amp; business analyst</span>
+              </span>
+            </div>
             <p className="dp-sub">Quick facts</p>
             <div className="dp-about-facts">
               <div className="dp-fact"><FiMapPin aria-hidden="true" /><div><span className="dp-fact-l">Based in</span><span className="dp-fact-v">Charlotte, NC</span></div></div>
@@ -846,7 +852,11 @@ const CSS = `
 .dp-acc-sum::-webkit-details-marker{display:none}
 .dp-acc-head{display:flex;flex-direction:column;gap:4px;min-width:0}
 .dp-acc-preview{display:none}
-.dp-facts-avatar{display:none}
+.dp-facts-id{display:none}
+.dp-facts-avatar{width:60px;height:60px;border-radius:50%;object-fit:cover;object-position:center top;flex:none;border:1px solid var(--line-2)}
+.dp-facts-id-text{display:flex;flex-direction:column;gap:2px;min-width:0}
+.dp-facts-name{font-family:var(--font-display),'Bricolage Grotesque',sans-serif;font-weight:700;font-size:18px;letter-spacing:-.01em}
+.dp-facts-role{color:var(--muted);font-size:12.5px}
 .dp-acc-chev{display:none;flex:none;color:var(--muted);font-size:18px;transition:transform .2s}
 .dp-acc[open] .dp-acc-chev{transform:rotate(180deg)}
 @media (min-width:881px){
@@ -935,7 +945,7 @@ const CSS = `
   .dp-sticky-cta{display:inline-flex;align-items:center;justify-content:center;gap:8px;position:fixed;left:14px;right:14px;bottom:14px;z-index:60;padding:15px 18px;font-family:var(--font-inter),'Inter',system-ui,sans-serif;font-size:15px;font-weight:600;border-radius:13px;border:1px solid rgba(214,95,116,.5);background:var(--ember);color:#2a0f15;box-shadow:0 12px 30px -8px rgba(0,0,0,.75)}
   .dp-bento{grid-template-columns:1fr}
   .dp-bento-photo{display:none}
-  .dp-facts-avatar{display:block;width:104px;height:104px;border-radius:50%;object-fit:cover;object-position:center top;margin:0 auto 14px;border:1px solid var(--line-2)}
+  .dp-facts-id{display:flex;align-items:center;gap:14px;margin-bottom:16px;padding-bottom:16px;border-bottom:1px solid var(--line)}
   .dp-bento-skills{grid-template-columns:1fr}
   .dp-techgroup{grid-template-columns:1fr;gap:7px}
   .dp-acc{overflow:hidden;border-radius:16px}
