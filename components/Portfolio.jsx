@@ -39,14 +39,14 @@ const PROJECTS = [
   },
   {
     cat: "Websites", title: "Alamance Community Foundation",
-    body: "A community foundation site I designed, built, and maintained as a freelance project — focused on credibility, clear navigation, and making it easy for donors to engage.",
+    body: "A community foundation site I designed and built as a freelance project — focused on credibility, clear navigation, and making it easy for donors to engage.",
     tags: ["Squarespace", "HTML", "CSS", "JavaScript"], image: "/assets/AlamanceCover.jpg",
     live: "https://www.alamancecommunityfoundation.org",
     company: "Alamance Community Foundation (freelance)", role: "Solo design & development",
     study: {
       challenge: "A community foundation needs to read as credible and make it effortless for donors to find programs and give.",
       approach: "Designed and built the site solo — clear navigation, a trustworthy structure, and content the staff can update themselves.",
-      outcome: "A polished, dependable site I continue to maintain — with everyday content the staff can easily update themselves.",
+      outcome: "A polished, credible site — clear for donors to navigate and easy for the team to keep current themselves.",
     },
   },
   {
