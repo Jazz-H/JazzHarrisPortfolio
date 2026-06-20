@@ -332,11 +332,11 @@ export default function Portfolio() {
           </div>
         </main>
       </div>
-      {view !== "contact" && (
+      <div className="dp-sticky-bar">
         <button type="button" className="dp-sticky-cta" onClick={() => go("contact")}>
           Start a project <FiArrowRight aria-hidden="true" />
         </button>
-      )}
+      </div>
     </div>
   );
 }
@@ -901,7 +901,7 @@ const CSS = `
 .dp-root a:focus-visible,.dp-root button:focus-visible{outline:2px solid var(--amber);outline-offset:3px;border-radius:8px}
 
 /* mobile-only helpers (hidden on desktop) */
-.dp-sticky-cta{display:none}
+.dp-sticky-bar{display:none}
 .dp-poster-rule{display:none}
 
 /* motion */
@@ -933,8 +933,9 @@ const CSS = `
   .dp-nav-label{font-size:15.5px}
   .dp-poster-rule{display:block;height:1px;background:var(--line)}
   .dp-poster-bottom{display:none}
-  .dp-stage{padding:28px 20px 88px}
-  .dp-sticky-cta{display:inline-flex;align-items:center;justify-content:center;gap:8px;position:fixed;left:14px;right:14px;bottom:14px;z-index:60;padding:15px 18px;font-family:var(--font-inter),'Inter',system-ui,sans-serif;font-size:15px;font-weight:600;border-radius:13px;border:1px solid rgba(214,95,116,.5);background:var(--ember);color:#2a0f15;box-shadow:0 12px 30px -8px rgba(0,0,0,.75)}
+  .dp-stage{padding:28px 20px 96px}
+  .dp-sticky-bar{display:block;position:fixed;left:0;right:0;bottom:0;z-index:60;padding:12px 16px;padding-bottom:max(12px,env(safe-area-inset-bottom));background:rgba(0,0,0,.82);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-top:1px solid var(--line-2)}
+  .dp-sticky-cta{display:flex;width:100%;align-items:center;justify-content:center;gap:8px;padding:14px 18px;font-family:var(--font-inter),'Inter',system-ui,sans-serif;font-size:15px;font-weight:600;border-radius:12px;border:1px solid rgba(214,95,116,.5);background:var(--ember);color:#2a0f15}
   .dp-bento{grid-template-columns:1fr}
   .dp-bento-photo{display:none}
   .dp-bento-facts{display:grid;grid-template-columns:1fr 116px;gap:16px;align-items:stretch}
@@ -955,7 +956,7 @@ const CSS = `
 }
 @media (max-width:560px){
   .dp-poster{padding:22px 18px;gap:16px}
-  .dp-stage{padding:22px 16px 86px}
+  .dp-stage{padding:22px 16px 96px}
   .dp-h1{font-size:clamp(22px,6.6vw,26px);line-height:1.16}
   .dp-kicker{margin-bottom:10px}
   .dp-statement .dp-status{margin-top:16px}
