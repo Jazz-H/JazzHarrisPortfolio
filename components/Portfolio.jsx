@@ -876,9 +876,11 @@ const CSS = `
 .dp-pill{display:inline-flex;align-items:center;font-family:var(--font-mono),'JetBrains Mono',monospace;font-size:12px;letter-spacing:.01em;color:var(--muted);background:rgba(243,234,234,.04);border:1px solid var(--line-2);border-radius:999px;padding:5px 12px;line-height:1.3;transition:color .18s,border-color .18s,background .18s}
 .dp-pill:hover{color:var(--ink);border-color:rgba(214,95,116,.45);background:rgba(214,95,116,.08)}
 .dp-techgroups{display:flex;flex-direction:column;gap:0}
-.dp-techgroup{display:flex;flex-direction:column;gap:9px;padding:13px 0;border-top:1px solid var(--line)}
-.dp-techgroup:first-child{padding-top:2px;border-top:none}
+.dp-techgroup{display:flex;flex-direction:column;gap:8px;padding:10px 0;border-top:1px solid var(--line)}
+.dp-techgroup:first-child{padding-top:0;border-top:none}
 .dp-techgroup-l{font-family:var(--font-mono),'JetBrains Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.dp-techgroup .dp-pills{gap:7px}
+.dp-techgroup .dp-pill{font-size:11.5px;padding:4px 10px}
 .dp-about-cta{display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap;border-top:1px solid var(--line);padding-top:30px}
 .dp-about-cta-t{font-family:var(--font-display),'Bricolage Grotesque',sans-serif;font-weight:600;font-size:20px}
 .dp-about-cta-btns{display:flex;gap:12px;flex-wrap:wrap}
