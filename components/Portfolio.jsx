@@ -12,6 +12,7 @@ import {
   FiArrowUpRight,
   FiChevronLeft,
   FiChevronRight,
+  FiClock,
   FiMapPin,
   FiBriefcase,
   FiActivity,
@@ -613,8 +614,8 @@ function Contact() {
       <div className="dp-contact-head">
         <p className="dp-label">Contact</p>
         <h2 className="dp-cta-h">Let's build something that works.</h2>
-        <p className="dp-cta-sub">Got a project, a problem, or a half-formed idea? Email is the fastest way to reach me.<br />I read everything.</p>
-        <span className="dp-status"><i className="dp-dot" /> Usually replies within a day</span>
+        <p className="dp-cta-sub">Got a project, a problem, or a half-formed idea? Email is the fastest way to reach me, and I read everything.</p>
+        <span className="dp-status"><FiClock className="dp-status-icn" aria-hidden="true" /> Usually replies within a day</span>
       </div>
 
       <div className="dp-contact-card">
@@ -680,6 +681,7 @@ const CSS = `
 
 /* status pill + pulsing dot */
 .dp-status{display:inline-flex;align-items:center;gap:9px;font-family:var(--font-mono),'JetBrains Mono',monospace;font-size:12px;color:var(--muted);border:1px solid var(--line-2);border-radius:999px;padding:6px 12px;margin-top:22px}
+.dp-status-icn{color:var(--ember);font-size:13px;flex:none}
 .dp-dot{position:relative;width:8px;height:8px;border-radius:50%;background:var(--ember);flex:none;box-shadow:0 0 8px rgba(214,95,116,.6)}
 .dp-dot::after{content:"";position:absolute;inset:0;border-radius:50%;border:1.5px solid var(--ember);animation:dpPing 2s cubic-bezier(.2,.7,.2,1) infinite}
 .dp-dot::before{content:"";position:absolute;inset:0;border-radius:50%;background:var(--ember);animation:dpBreathe 2s ease-in-out infinite}
