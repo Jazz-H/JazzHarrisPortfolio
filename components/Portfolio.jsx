@@ -185,7 +185,7 @@ const PROJECTS = [
 const FILTERS = ["All", "Websites", "Apps", "Data"];
 const TECH_GROUPS = [
   { label: "Languages", items: ["JavaScript", "TypeScript", "Python", "SQL"] },
-  { label: "Frameworks & UI", items: ["React", "Next.js", "Tailwind"] },
+  { label: "Frameworks & UI", items: ["React", "Next.js"] },
   { label: "Data & Power Platform", items: ["Power BI", "Power Apps", "SharePoint"] },
 ];
 const SERVICES = [
