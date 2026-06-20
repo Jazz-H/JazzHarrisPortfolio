@@ -948,7 +948,10 @@ const CSS = `
   .dp-bento-facts{display:grid;grid-template-columns:1fr 116px;gap:16px;align-items:start}
   .dp-facts-avatar{display:block;width:116px;height:116px;align-self:start;border-radius:50%;object-fit:cover;object-position:center 22%;border:1px solid var(--line-2)}
   .dp-bento-skills{grid-template-columns:1fr}
-  .dp-techgroup{grid-template-columns:1fr;gap:7px}
+  .dp-techgroups{gap:0}
+  .dp-techgroup{grid-template-columns:1fr;gap:9px;padding:14px 0;border-top:1px solid var(--line)}
+  .dp-techgroup:first-child{padding-top:2px;border-top:none}
+  .dp-techgroup-l{color:var(--muted)}
   .dp-acc{overflow:hidden;border-radius:16px}
   .dp-acc-skills{border:1px solid var(--line);background:var(--card)}
   .dp-acc.dp-bento-tile{padding:0}
