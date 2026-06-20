@@ -630,7 +630,7 @@ function About({ go }) {
             <summary className="dp-acc-sum">
               <span className="dp-acc-head">
                 <span className="dp-sub">Tools &amp; technologies</span>
-                <span className="dp-acc-preview">Full-stack web, data &amp; Microsoft Power Platform</span>
+                <span className="dp-acc-preview">Full-stack web · Data &amp; BI · Microsoft Power Platform</span>
               </span>
               <FiChevronDown className="dp-acc-chev" aria-hidden="true" />
             </summary>
@@ -846,7 +846,7 @@ const CSS = `
 .dp-acc{min-width:0}
 .dp-acc-sum{display:flex;align-items:center;justify-content:space-between;gap:12px;list-style:none}
 .dp-acc-sum::-webkit-details-marker{display:none}
-.dp-acc-head{display:flex;flex-direction:column;gap:4px;min-width:0}
+.dp-acc-head{display:flex;flex-direction:column;gap:6px;min-width:0}
 .dp-acc-preview{display:none}
 .dp-facts-avatar{display:none}
 .dp-acc-chev{display:none;flex:none;color:var(--muted);font-size:18px;transition:transform .2s}
@@ -945,11 +945,12 @@ const CSS = `
   .dp-acc{overflow:hidden;border-radius:16px}
   .dp-acc-skills{border:1px solid var(--line);background:var(--card)}
   .dp-acc.dp-bento-tile{padding:0}
-  .dp-acc-sum{padding:16px;cursor:pointer}
+  .dp-acc-sum{padding:16px;cursor:pointer;align-items:flex-start}
   .dp-acc-sum .dp-sub{margin-bottom:0}
-  .dp-acc-preview{display:block;font-family:var(--font-mono),'JetBrains Mono',monospace;font-size:11.5px;color:var(--faint);letter-spacing:.01em;line-height:1.4}
+  .dp-acc-preview{display:block;font-size:12.5px;color:var(--muted);line-height:1.5}
   .dp-acc[open] .dp-acc-preview{display:none}
-  .dp-acc-chev{display:block}
+  .dp-acc[open] .dp-acc-sum{align-items:center}
+  .dp-acc-chev{display:block;margin-top:1px}
   .dp-acc-body{padding:0 16px 16px}
   .dp-about-cta{display:none}
 }
