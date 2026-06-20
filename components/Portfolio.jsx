@@ -559,42 +559,47 @@ function Detail({ p, onBack }) {
 function About({ go }) {
   return (
     <section className="dp-view dp-about">
-      <div className="dp-about-top">
-        <div className="dp-about-media">
-          <img className="dp-avatar" src={HEADSHOT_SRC} alt="Jazz Harris, Business Analyst" />
-          <div className="dp-about-facts">
-            <div className="dp-fact"><FiMapPin aria-hidden="true" /><div><span className="dp-fact-l">Based in</span><span className="dp-fact-v">Charlotte, NC</span></div></div>
-            <div className="dp-fact"><FiBriefcase aria-hidden="true" /><div><span className="dp-fact-l">By day</span><span className="dp-fact-v">Business Analyst · Coca-Cola Consolidated</span></div></div>
-            <div className="dp-fact"><FiBookOpen aria-hidden="true" /><div><span className="dp-fact-l">Studied</span><span className="dp-fact-v">B.A. Computer Science · Elon University</span></div></div>
-            <div className="dp-fact"><FiActivity aria-hidden="true" /><div><span className="dp-fact-l">Currently</span><span className="dp-fact-v">Building Valora, a budgeting app</span></div></div>
+      <div className="dp-bento">
+        <div className="dp-bento-left">
+          <div className="dp-bento-tile dp-bento-photo">
+            <img className="dp-avatar" src={HEADSHOT_SRC} alt="Jazz Harris, Business Analyst" />
+          </div>
+          <div className="dp-bento-tile dp-bento-facts">
+            <p className="dp-sub">Quick facts</p>
+            <div className="dp-about-facts">
+              <div className="dp-fact"><FiMapPin aria-hidden="true" /><div><span className="dp-fact-l">Based in</span><span className="dp-fact-v">Charlotte, NC</span></div></div>
+              <div className="dp-fact"><FiBriefcase aria-hidden="true" /><div><span className="dp-fact-l">By day</span><span className="dp-fact-v">Business Analyst · Coca-Cola Consolidated</span></div></div>
+              <div className="dp-fact"><FiBookOpen aria-hidden="true" /><div><span className="dp-fact-l">Studied</span><span className="dp-fact-v">B.A. Computer Science · Elon University</span></div></div>
+              <div className="dp-fact"><FiActivity aria-hidden="true" /><div><span className="dp-fact-l">Currently</span><span className="dp-fact-v">Building Valora, a budgeting app</span></div></div>
+            </div>
           </div>
         </div>
-        <div className="dp-about-body">
-          <p className="dp-label">About</p>
-          <h2 className="dp-detail-h">Builder by craft, analyst by training.</h2>
-          <p className="dp-p">I studied Computer Science at Elon University, with minors in Art History and Digital Art. That combination shaped how I approach technology today: balancing technical problem-solving with a designer's eye for detail. I enjoy building things that are not only functional and reliable, but intuitive, polished, and enjoyable to use.</p>
-          <p className="dp-p">While at Elon, I completed a software engineering internship in Dublin, Ireland, an experience that broadened my perspective on technology and collaboration. Since then, I've worked across both the technical and business sides of software—from development and analysis to working directly with stakeholders, vendors, and engineers. I enjoy taking complex ideas, defining a clear path forward, and helping turn them into solutions that create real value.</p>
-          <p className="dp-p">Today, I'm a Business Analyst at Coca-Cola Consolidated, where I help bridge the gap between business needs and technology. Outside of work, I build websites, custom software, and digital tools for businesses and entrepreneurs. Most recently, I created Valora, a personal finance platform focused on helping people gain clarity and confidence with their money. Whether I'm building a website, an application, or a business tool, my goal is always the same: create thoughtful solutions that solve problems and stand the test of time.</p>
-          <p className="dp-p">When I'm not behind a screen, you'll usually find me traveling, exploring personal finance, working on a Lego project that's become bigger than expected, or enjoying anything with four wheels or two. I believe great technology starts with understanding people, and the best products are built with equal parts creativity, craftsmanship, and purpose.</p>
-        </div>
-      </div>
 
-      <div className="dp-about-section">
-        <p className="dp-sub">Core skills</p>
-        <div className="dp-services">
-          {SERVICES.map(({ Icon, title, body }) => (
-            <div className="dp-service" key={title}>
-              <span className="dp-service-icn"><Icon aria-hidden="true" /></span>
-              <h3 className="dp-service-h">{title}</h3>
-              <p className="dp-service-p">{body}</p>
-            </div>
-          ))}
-        </div>
-      </div>
+        <div className="dp-bento-right">
+          <div className="dp-bento-tile dp-bento-bio">
+            <p className="dp-label">About</p>
+            <h2 className="dp-detail-h">Builder by craft, analyst by training.</h2>
+            <p className="dp-p">I studied Computer Science at Elon University, with minors in Art History and Digital Art. That combination shaped how I approach technology today: balancing technical problem-solving with a designer's eye for detail. I enjoy building things that are not only functional and reliable, but intuitive, polished, and enjoyable to use.</p>
+            <p className="dp-p">While at Elon, I completed a software engineering internship in Dublin, Ireland, an experience that broadened my perspective on technology and collaboration. Since then, I've worked across both the technical and business sides of software—from development and analysis to working directly with stakeholders, vendors, and engineers. I enjoy taking complex ideas, defining a clear path forward, and helping turn them into solutions that create real value.</p>
+            <p className="dp-p">Today, I'm a Business Analyst at Coca-Cola Consolidated, where I help bridge the gap between business needs and technology. Outside of work, I build websites, custom software, and digital tools for businesses and entrepreneurs. Most recently, I created Valora, a personal finance platform focused on helping people gain clarity and confidence with their money. Whether I'm building a website, an application, or a business tool, my goal is always the same: create thoughtful solutions that solve problems and stand the test of time.</p>
+            <p className="dp-p">When I'm not behind a screen, you'll usually find me traveling, exploring personal finance, working on a Lego project that's become bigger than expected, or enjoying anything with four wheels or two. I believe great technology starts with understanding people, and the best products are built with equal parts creativity, craftsmanship, and purpose.</p>
+          </div>
 
-      <div className="dp-about-section">
-        <p className="dp-sub">Tools &amp; technologies</p>
-        <div className="dp-pills">{TECH.map((t) => (<span className="dp-pill" key={t}>{t}</span>))}</div>
+          <div className="dp-bento-skills">
+            {SERVICES.map(({ Icon, title, body }) => (
+              <div className="dp-service" key={title}>
+                <span className="dp-service-icn"><Icon aria-hidden="true" /></span>
+                <h3 className="dp-service-h">{title}</h3>
+                <p className="dp-service-p">{body}</p>
+              </div>
+            ))}
+          </div>
+
+          <div className="dp-bento-tile dp-bento-stack">
+            <p className="dp-sub">Tools &amp; technologies</p>
+            <div className="dp-pills">{TECH.map((t) => (<span className="dp-pill" key={t}>{t}</span>))}</div>
+          </div>
+        </div>
       </div>
 
       <div className="dp-about-cta">
@@ -782,21 +787,25 @@ const CSS = `
 .dp-metric-l{display:block;color:var(--muted);font-size:12.5px;line-height:1.4;margin-top:5px}
 @media (max-width:560px){.dp-study-row{grid-template-columns:1fr;gap:6px}.dp-metrics{grid-template-columns:1fr}}
 
-/* about */
-.dp-about{max-width:880px;display:flex;flex-direction:column;gap:46px}
-.dp-about-top{display:grid;grid-template-columns:240px 1fr;gap:44px;align-items:start}
-.dp-about-media{display:flex;flex-direction:column;gap:18px}
-.dp-avatar{width:240px;height:300px;border-radius:20px;object-fit:cover;border:1px solid var(--line-2);display:block}
+/* about — bento grid */
+.dp-about{max-width:960px;display:flex;flex-direction:column;gap:28px}
+.dp-bento{display:grid;grid-template-columns:248px 1fr;gap:16px;align-items:stretch}
+.dp-bento-left,.dp-bento-right{display:flex;flex-direction:column;gap:16px;min-width:0}
+.dp-bento-tile{border:1px solid var(--line);background:var(--card);border-radius:16px;padding:20px}
+.dp-bento-photo{padding:0;overflow:hidden;aspect-ratio:4/5}
+.dp-bento-facts{flex:1}
+.dp-bento-bio .dp-p:first-of-type{margin-top:14px}
+.dp-bento-stack .dp-sub{margin-bottom:14px}
+.dp-avatar{width:100%;height:100%;border-radius:16px;object-fit:cover;object-position:center top;display:block}
 .dp-about-facts{display:flex;flex-direction:column;gap:13px}
 .dp-fact{display:flex;align-items:flex-start;gap:11px;color:var(--muted);font-size:13px}
 .dp-fact svg{color:var(--ember);font-size:15px;margin-top:2px;flex:none}
 .dp-fact-l{display:block;font-family:var(--font-mono),'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--faint)}
 .dp-fact-v{display:block;color:var(--ink);font-size:13.5px;margin-top:1px}
-.dp-p{color:var(--muted);font-size:16px;max-width:58ch;margin-top:16px}
+.dp-p{color:var(--muted);font-size:15.5px;max-width:64ch;margin-top:14px}
 
-.dp-about-section{border-top:1px solid var(--line);padding-top:30px}
-.dp-services{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-.dp-service{border:1px solid var(--line);background:var(--card);border-radius:14px;padding:18px}
+.dp-bento-skills{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px}
+.dp-service{border:1px solid var(--line);background:var(--bg-2);border-radius:14px;padding:18px}
 .dp-service-icn{display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:10px;background:rgba(214,95,116,.12);color:var(--ember);font-size:18px;margin-bottom:13px}
 .dp-service-h{font-family:var(--font-display),'Bricolage Grotesque',sans-serif;font-weight:600;font-size:16px;margin-bottom:7px}
 .dp-service-p{color:var(--muted);font-size:13.5px;line-height:1.5}
@@ -845,7 +854,7 @@ const CSS = `
 @media (prefers-reduced-motion:reduce){.dp-root *{animation:none!important;transition:none!important}}
 
 /* responsive */
-@media (max-width:1080px){.dp-grid{grid-template-columns:1fr}.dp-services{grid-template-columns:1fr}}
+@media (max-width:1080px){.dp-grid{grid-template-columns:1fr}}
 @media (max-width:880px){
   .dp-shell{grid-template-columns:1fr}
   .dp-poster{position:sticky;top:0;height:auto;flex-direction:column;gap:22px;padding:24px 22px}
@@ -856,7 +865,8 @@ const CSS = `
   .dp-poster-bottom{flex-direction:row;align-items:center;justify-content:center;flex-wrap:wrap}
   .dp-poster-cta{width:auto}
   .dp-stage{padding:30px 22px}
-  .dp-about-top{grid-template-columns:1fr;gap:24px}
-  .dp-avatar{width:100%;max-width:280px;height:320px}
+  .dp-bento{grid-template-columns:1fr}
+  .dp-bento-photo{aspect-ratio:4/5;max-width:300px}
+  .dp-bento-skills{grid-template-columns:1fr}
 }
 `;
