@@ -20,14 +20,17 @@ import {
   FiTrendingUp,
   FiCode,
   FiBarChart2,
+  FiTerminal,
+  FiLayers,
+  FiDatabase,
 } from "react-icons/fi";
 
 const HEADSHOT_SRC = "/jazz-headshot.jpg";
 
 const PROJECTS = [
   {
-    cat: "Apps", title: "Valora",
-    body: "A personal budgeting app that turns messy finances into clear, calm decisions — track spending, set goals, and see where your money actually goes. Currently in public beta.",
+    cat: "Websites", title: "Valora",
+    body: "A personal budgeting web app that turns messy finances into clear, calm decisions — track spending, set goals, and see where your money actually goes. Live in public beta as a website, with a native mobile app on the way.",
     tags: ["React", "TypeScript", "JavaScript", "CSS", "HTML"], status: "Beta",
     image: "/assets/ValoraCover.jpg",
     live: "https://getvalora.netlify.app",
@@ -184,9 +187,9 @@ const PROJECTS = [
 ];
 const FILTERS = ["All", "Websites", "Apps", "Data"];
 const TECH_GROUPS = [
-  { label: "Languages", items: ["JavaScript", "TypeScript", "Python", "SQL"] },
-  { label: "Frameworks & UI", items: ["React", "Next.js", "Tailwind"] },
-  { label: "Data & Power Platform", items: ["Power BI", "Power Apps", "SharePoint"] },
+  { label: "Languages", Icon: FiTerminal, items: ["JavaScript", "TypeScript", "Python", "SQL"] },
+  { label: "Frameworks & UI", Icon: FiLayers, items: ["React", "Next.js", "Tailwind"] },
+  { label: "Data & Power Platform", Icon: FiDatabase, items: ["Power BI", "Power Apps", "SharePoint"] },
 ];
 const SERVICES = [
   { Icon: FiTrendingUp, title: "Business analysis & strategy", body: "Translating business goals into clear requirements and a roadmap — working between stakeholders, vendors, and engineers to ship the right thing." },
@@ -610,10 +613,11 @@ function About({ go }) {
             </summary>
             <div className="dp-acc-body">
               <div className="dp-techgroups">
-                {TECH_GROUPS.map((g) => (
-                  <div className="dp-techgroup" key={g.label}>
-                    <span className="dp-techgroup-l">{g.label}</span>
-                    <div className="dp-pills">{g.items.map((t) => (<span className="dp-pill" key={t}>{t}</span>))}</div>
+                {TECH_GROUPS.map(({ label, Icon, items }) => (
+                  <div className="dp-service dp-techcard" key={label}>
+                    <span className="dp-service-icn"><Icon aria-hidden="true" /></span>
+                    <h3 className="dp-service-h">{label}</h3>
+                    <div className="dp-pills dp-techcard-pills">{items.map((t) => (<span className="dp-pill" key={t}>{t}</span>))}</div>
                   </div>
                 ))}
               </div>
@@ -875,12 +879,9 @@ const CSS = `
 .dp-pills{display:flex;flex-wrap:wrap;gap:8px}
 .dp-pill{display:inline-flex;align-items:center;font-family:var(--font-mono),'JetBrains Mono',monospace;font-size:12px;letter-spacing:.01em;color:var(--muted);background:rgba(243,234,234,.04);border:1px solid var(--line-2);border-radius:999px;padding:5px 12px;line-height:1.3;transition:color .18s,border-color .18s,background .18s}
 .dp-pill:hover{color:var(--ink);border-color:rgba(214,95,116,.45);background:rgba(214,95,116,.08)}
-.dp-techgroups{display:flex;flex-direction:column;gap:0}
-.dp-techgroup{display:flex;flex-direction:column;gap:8px;padding:10px 0;border-top:1px solid var(--line)}
-.dp-techgroup:first-child{padding-top:0;border-top:none}
-.dp-techgroup-l{font-family:var(--font-mono),'JetBrains Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
-.dp-techgroup .dp-pills{gap:7px}
-.dp-techgroup .dp-pill{font-size:11.5px;padding:4px 10px}
+.dp-techgroups{display:flex;flex-direction:column;gap:12px}
+.dp-techcard .dp-service-h{margin-bottom:0}
+.dp-techcard-pills{margin-top:12px}
 .dp-about-cta{display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap;border-top:1px solid var(--line);padding-top:30px}
 .dp-about-cta-t{font-family:var(--font-display),'Bricolage Grotesque',sans-serif;font-weight:600;font-size:20px}
 .dp-about-cta-btns{display:flex;gap:12px;flex-wrap:wrap}
