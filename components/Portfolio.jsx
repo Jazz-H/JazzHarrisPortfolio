@@ -65,6 +65,12 @@ const PROJECTS = [
     cat: "Websites", title: "Electric Supplies Online",
     body: "An e-commerce storefront for an electrical-supplies retailer, organized so customers can find and buy the right parts fast.",
     tags: ["Yahoo Manager", "HTML", "CSS", "JavaScript"], image: "/assets/ElectricCover.jpg",
+    images: [
+      "/assets/ElectricStore.jpg",
+      "/assets/ElectricHome.jpg",
+      "/assets/ElectricAbout.jpg",
+      "/assets/ElectricSignin.jpg",
+    ],
     live: "https://electricsuppliesonline.com/",
     company: "Electric Supplies Online", role: "Designer & developer",
     study: {
