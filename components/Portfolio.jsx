@@ -355,11 +355,11 @@ function Poster({ view, go }) {
       <button type="button" className="dp-id" onClick={() => go("work")} aria-label="Jazz Harris — back to top">
         <span className="dp-mark" aria-hidden="true">
           <svg viewBox="0 0 132 104" fill="none">
-            <path d="M26 26 H14 V78 H26" stroke="#EC7488" strokeWidth="7.5" strokeLinecap="round" strokeLinejoin="round" />
-            <path d="M106 26 H118 V78 H106" stroke="#EC7488" strokeWidth="7.5" strokeLinecap="round" strokeLinejoin="round" />
-            <path d="M64 31 V73" stroke="#EC7488" strokeWidth="3" strokeLinecap="round" />
-            <path d="M52 32 V58 C52 68 45 70 38 69" stroke="#EC7488" strokeWidth="8" strokeLinecap="round" />
-            <path d="M76 32 V72 M76 52 H96 M96 32 V72" stroke="currentColor" strokeWidth="8" strokeLinecap="round" strokeLinejoin="round" />
+            <path d="M23 24 H11 V80 H23" stroke="#EC7488" strokeWidth="7" strokeLinecap="round" strokeLinejoin="round" />
+            <path d="M109 24 H121 V80 H109" stroke="#EC7488" strokeWidth="7" strokeLinecap="round" strokeLinejoin="round" />
+            <path d="M64 31 V73" stroke="#EC7488" strokeWidth="2.6" strokeLinecap="round" />
+            <path d="M47 32 V58 C47 68 40 70 33 69" stroke="#EC7488" strokeWidth="7.5" strokeLinecap="round" />
+            <path d="M81 32 V72 M81 52 H101 M101 32 V72" stroke="currentColor" strokeWidth="7.5" strokeLinecap="round" strokeLinejoin="round" />
           </svg>
         </span>
         <span className="dp-id-text">
@@ -589,10 +589,8 @@ function About({ go }) {
     <section className="dp-view dp-about">
       <div className="dp-bento">
         <div className="dp-bento-left">
-          <div className="dp-bento-tile dp-bento-photo">
-            <img className="dp-avatar" src={HEADSHOT_SRC} alt="Jazz Harris, Business Analyst" />
-          </div>
           <div className="dp-bento-tile dp-bento-facts">
+            <img className="dp-facts-avatar" src={HEADSHOT_SRC} alt="Jazz Harris" loading="lazy" />
             <div className="dp-facts-main">
               <p className="dp-sub">Quick facts</p>
               <div className="dp-about-facts">
@@ -602,8 +600,27 @@ function About({ go }) {
                 <div className="dp-fact"><FiActivity aria-hidden="true" /><div><span className="dp-fact-l">Currently</span><span className="dp-fact-v">Building Valora, a budgeting app</span></div></div>
               </div>
             </div>
-            <img className="dp-facts-avatar" src={HEADSHOT_SRC} alt="Jazz Harris" loading="lazy" />
           </div>
+
+          <details className="dp-bento-tile dp-acc dp-acc-stack">
+            <summary className="dp-acc-sum">
+              <span className="dp-acc-head">
+                <span className="dp-sub">Tools &amp; technologies</span>
+                <span className="dp-acc-preview">Full-stack dev · Data &amp; BI · Microsoft Power Platform</span>
+              </span>
+              <FiChevronDown className="dp-acc-chev" aria-hidden="true" />
+            </summary>
+            <div className="dp-acc-body">
+              <div className="dp-techgroups">
+                {TECH_GROUPS.map((g) => (
+                  <div className="dp-techgroup" key={g.label}>
+                    <span className="dp-techgroup-l">{g.label}</span>
+                    <div className="dp-pills">{g.items.map((t) => (<span className="dp-pill" key={t}>{t}</span>))}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </details>
         </div>
 
         <div className="dp-bento-right">
@@ -629,26 +646,6 @@ function About({ go }) {
                     <span className="dp-service-icn"><Icon aria-hidden="true" /></span>
                     <h3 className="dp-service-h">{title}</h3>
                     <p className="dp-service-p">{body}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </details>
-
-          <details className="dp-bento-tile dp-acc dp-acc-stack">
-            <summary className="dp-acc-sum">
-              <span className="dp-acc-head">
-                <span className="dp-sub">Tools &amp; technologies</span>
-                <span className="dp-acc-preview">Full-stack dev · Data &amp; BI · Microsoft Power Platform</span>
-              </span>
-              <FiChevronDown className="dp-acc-chev" aria-hidden="true" />
-            </summary>
-            <div className="dp-acc-body">
-              <div className="dp-techgroups">
-                {TECH_GROUPS.map((g) => (
-                  <div className="dp-techgroup" key={g.label}>
-                    <span className="dp-techgroup-l">{g.label}</span>
-                    <div className="dp-pills">{g.items.map((t) => (<span className="dp-pill" key={t}>{t}</span>))}</div>
                   </div>
                 ))}
               </div>
@@ -847,9 +844,8 @@ const CSS = `
 .dp-bento{display:grid;grid-template-columns:248px 1fr;gap:16px;align-items:start}
 .dp-bento-left,.dp-bento-right{display:flex;flex-direction:column;gap:16px;min-width:0}
 .dp-bento-tile{border:1px solid var(--line);background:var(--card);border-radius:16px;padding:20px}
-.dp-bento-photo{padding:0;overflow:hidden;aspect-ratio:4/5}
 .dp-bento-bio .dp-p:first-of-type{margin-top:14px}
-.dp-avatar{width:100%;height:100%;border-radius:16px;object-fit:cover;object-position:center top;display:block}
+.dp-bento-facts{display:flex;flex-direction:column;gap:16px}
 
 /* skills + stack accordions (open on desktop, collapsible on mobile) */
 .dp-acc{min-width:0}
@@ -857,7 +853,7 @@ const CSS = `
 .dp-acc-sum::-webkit-details-marker{display:none}
 .dp-acc-head{display:flex;flex-direction:column;gap:6px;min-width:0}
 .dp-acc-preview{display:none}
-.dp-facts-avatar{display:none}
+.dp-facts-avatar{display:block;align-self:center;width:120px;height:120px;border-radius:50%;object-fit:cover;object-position:center 22%;border:1px solid var(--line-2)}
 .dp-acc-chev{display:none;flex:none;color:var(--muted);font-size:18px;transition:transform .2s}
 .dp-acc[open] .dp-acc-chev{transform:rotate(180deg)}
 @media (min-width:881px){
@@ -881,9 +877,10 @@ const CSS = `
 .dp-pills{display:flex;flex-wrap:wrap;gap:8px}
 .dp-pill{display:inline-flex;align-items:center;font-family:var(--font-mono),'JetBrains Mono',monospace;font-size:12px;letter-spacing:.01em;color:var(--muted);background:rgba(243,234,234,.04);border:1px solid var(--line-2);border-radius:999px;padding:5px 12px;line-height:1.3;transition:color .18s,border-color .18s,background .18s}
 .dp-pill:hover{color:var(--ink);border-color:rgba(214,95,116,.45);background:rgba(214,95,116,.08)}
-.dp-techgroups{display:flex;flex-direction:column;gap:14px}
-.dp-techgroup{display:grid;grid-template-columns:132px 1fr;gap:14px;align-items:start}
-.dp-techgroup-l{font-family:var(--font-mono),'JetBrains Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--faint);padding-top:6px}
+.dp-techgroups{display:flex;flex-direction:column;gap:0}
+.dp-techgroup{display:flex;flex-direction:column;gap:9px;padding:13px 0;border-top:1px solid var(--line)}
+.dp-techgroup:first-child{padding-top:2px;border-top:none}
+.dp-techgroup-l{font-family:var(--font-mono),'JetBrains Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
 .dp-about-cta{display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap;border-top:1px solid var(--line);padding-top:30px}
 .dp-about-cta-t{font-family:var(--font-display),'Bricolage Grotesque',sans-serif;font-weight:600;font-size:20px}
 .dp-about-cta-btns{display:flex;gap:12px;flex-wrap:wrap}
@@ -946,14 +943,10 @@ const CSS = `
   .dp-sticky-bar{display:block;padding:18px 16px;padding-bottom:max(18px,env(safe-area-inset-bottom));border-top:1px solid var(--line-2);background:var(--bg)}
   .dp-sticky-cta{display:flex;width:100%;align-items:center;justify-content:center;gap:8px;padding:14px 18px;font-family:var(--font-inter),'Inter',system-ui,sans-serif;font-size:15px;font-weight:600;border-radius:12px;border:1px solid rgba(214,95,116,.5);background:var(--ember);color:#2a0f15}
   .dp-bento{grid-template-columns:1fr}
-  .dp-bento-photo{display:none}
   .dp-bento-facts{display:grid;grid-template-columns:1fr 116px;gap:16px;align-items:start}
-  .dp-facts-avatar{display:block;width:116px;height:116px;align-self:start;border-radius:50%;object-fit:cover;object-position:center 22%;border:1px solid var(--line-2)}
+  .dp-facts-main{grid-column:1}
+  .dp-facts-avatar{grid-column:2;width:116px;height:116px;align-self:start}
   .dp-bento-skills{grid-template-columns:1fr}
-  .dp-techgroups{gap:0}
-  .dp-techgroup{grid-template-columns:1fr;gap:9px;padding:14px 0;border-top:1px solid var(--line)}
-  .dp-techgroup:first-child{padding-top:2px;border-top:none}
-  .dp-techgroup-l{color:var(--muted)}
   .dp-acc{overflow:hidden;border-radius:16px}
   .dp-acc-skills{border:1px solid var(--line);background:var(--card)}
   .dp-acc.dp-bento-tile{padding:0}
