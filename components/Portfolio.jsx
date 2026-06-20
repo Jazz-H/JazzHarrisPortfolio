@@ -912,7 +912,8 @@ const CSS = `
   .dp-poster-cta{width:auto}
   .dp-stage{padding:28px 20px}
   .dp-bento{grid-template-columns:1fr}
-  .dp-bento-photo{aspect-ratio:4/5;max-width:280px}
+  .dp-bento-photo{aspect-ratio:1/1;width:120px;max-width:120px;border:none;background:none;border-radius:50%;align-self:center}
+  .dp-bento-photo .dp-avatar{border-radius:50%}
   .dp-bento-skills{grid-template-columns:1fr}
   .dp-techgroup{grid-template-columns:1fr;gap:7px}
   .dp-acc{overflow:hidden;border-radius:16px}
