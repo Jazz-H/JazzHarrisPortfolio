@@ -802,7 +802,6 @@ const CSS = `
 .dp-metric:hover{border-color:rgba(214,95,116,.4);transform:translateY(-2px);box-shadow:0 14px 30px -22px rgba(0,0,0,.9)}
 .dp-metric-v{display:block;font-family:var(--font-display),'Bricolage Grotesque',sans-serif;font-weight:700;font-size:19px;color:var(--ink);letter-spacing:-.01em;line-height:1.1}
 .dp-metric-l{display:block;color:var(--muted);font-size:12.5px;line-height:1.45;margin-top:6px}
-@media (max-width:560px){.dp-study-row{grid-template-columns:1fr;gap:6px}.dp-metrics{grid-template-columns:1fr}}
 
 /* about — bento grid */
 .dp-about{max-width:960px;display:flex;flex-direction:column;gap:28px}
@@ -876,17 +875,44 @@ const CSS = `
 @media (max-width:1080px){.dp-grid{grid-template-columns:1fr}}
 @media (max-width:880px){
   .dp-shell{grid-template-columns:1fr}
-  .dp-poster{position:sticky;top:0;height:auto;flex-direction:column;gap:22px;padding:24px 22px}
+  .dp-poster{position:static;height:auto;flex-direction:column;gap:20px;padding:26px 22px}
   .dp-glow{display:none}
-  .dp-nav{flex-direction:row;gap:6px;overflow-x:auto}
-  .dp-nav-item{border-left:none;border-bottom:2px solid transparent;border-radius:8px 8px 0 0;padding:8px 12px;flex-direction:column;gap:2px}
-  .dp-nav-item.is-active{border-left:none;border-bottom-color:var(--ember)}
+  .dp-h1{font-size:clamp(23px,5.8vw,30px);line-height:1.14}
+  .dp-nav{flex-direction:row;gap:8px}
+  .dp-nav-item{flex:1;flex-direction:row;align-items:center;justify-content:center;gap:0;border:1px solid var(--line);border-radius:10px;padding:11px 10px}
+  .dp-nav-item.is-active{border-color:var(--ember);background:rgba(214,95,116,.08)}
+  .dp-nav-idx{display:none}
+  .dp-nav-label{font-size:15.5px}
   .dp-poster-bottom{flex-direction:row;align-items:center;justify-content:center;flex-wrap:wrap}
   .dp-poster-cta{width:auto}
-  .dp-stage{padding:30px 22px}
+  .dp-stage{padding:28px 20px}
   .dp-bento{grid-template-columns:1fr}
-  .dp-bento-photo{aspect-ratio:4/5;max-width:300px}
+  .dp-bento-photo{aspect-ratio:4/5;max-width:280px}
   .dp-bento-skills{grid-template-columns:1fr}
   .dp-techgroup{grid-template-columns:1fr;gap:7px}
+}
+@media (max-width:560px){
+  .dp-poster{padding:22px 18px;gap:16px}
+  .dp-stage{padding:22px 16px}
+  .dp-h1{font-size:clamp(22px,6.6vw,26px);line-height:1.16}
+  .dp-kicker{margin-bottom:10px}
+  .dp-statement .dp-status{margin-top:16px}
+  .dp-name{font-size:19px}
+  .dp-work-head{margin-bottom:18px;gap:12px}
+  .dp-detail-h{font-size:clamp(22px,7vw,28px)}
+  .dp-cta-h{font-size:clamp(25px,8vw,32px)}
+  .dp-detail-overview{font-size:15px}
+  .dp-gallery{height:190px;border-radius:16px;margin:14px 0 20px}
+  .dp-detail-mono{font-size:36px}
+  .dp-meta{gap:18px;padding:16px 0;margin-bottom:18px}
+  .dp-stack-row{margin-bottom:20px}
+  .dp-study{gap:14px;padding-top:20px}
+  .dp-study-row{grid-template-columns:1fr;gap:6px}
+  .dp-metrics{grid-template-columns:1fr 1fr;gap:10px}
+  .dp-card-body{padding:16px;gap:8px}
+  .dp-bento-tile{padding:16px}
+  .dp-contact-row{padding:14px 15px;gap:12px}
+  .dp-cr-icn{width:36px;height:36px;font-size:16px}
+  .dp-about-cta{gap:14px}
 }
 `;
