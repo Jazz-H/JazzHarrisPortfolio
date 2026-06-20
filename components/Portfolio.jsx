@@ -584,16 +584,16 @@ function About({ go }) {
             <img className="dp-avatar" src={HEADSHOT_SRC} alt="Jazz Harris, Business Analyst" />
           </div>
           <div className="dp-bento-tile dp-bento-facts">
-            <div className="dp-facts-top">
+            <div className="dp-facts-main">
               <p className="dp-sub">Quick facts</p>
-              <img className="dp-facts-avatar" src={HEADSHOT_SRC} alt="Jazz Harris" loading="lazy" />
+              <div className="dp-about-facts">
+                <div className="dp-fact"><FiMapPin aria-hidden="true" /><div><span className="dp-fact-l">Based in</span><span className="dp-fact-v">Charlotte, NC</span></div></div>
+                <div className="dp-fact"><FiBriefcase aria-hidden="true" /><div><span className="dp-fact-l">By day</span><span className="dp-fact-v">Business Analyst · Coca-Cola Consolidated</span></div></div>
+                <div className="dp-fact"><FiBookOpen aria-hidden="true" /><div><span className="dp-fact-l">Studied</span><span className="dp-fact-v">B.A. Computer Science · Elon University</span></div></div>
+                <div className="dp-fact"><FiActivity aria-hidden="true" /><div><span className="dp-fact-l">Currently</span><span className="dp-fact-v">Building Valora, a budgeting app</span></div></div>
+              </div>
             </div>
-            <div className="dp-about-facts">
-              <div className="dp-fact"><FiMapPin aria-hidden="true" /><div><span className="dp-fact-l">Based in</span><span className="dp-fact-v">Charlotte, NC</span></div></div>
-              <div className="dp-fact"><FiBriefcase aria-hidden="true" /><div><span className="dp-fact-l">By day</span><span className="dp-fact-v">Business Analyst · Coca-Cola Consolidated</span></div></div>
-              <div className="dp-fact"><FiBookOpen aria-hidden="true" /><div><span className="dp-fact-l">Studied</span><span className="dp-fact-v">B.A. Computer Science · Elon University</span></div></div>
-              <div className="dp-fact"><FiActivity aria-hidden="true" /><div><span className="dp-fact-l">Currently</span><span className="dp-fact-v">Building Valora, a budgeting app</span></div></div>
-            </div>
+            <img className="dp-facts-avatar" src={HEADSHOT_SRC} alt="Jazz Harris" loading="lazy" />
           </div>
         </div>
 
@@ -937,9 +937,8 @@ const CSS = `
   .dp-sticky-cta{display:inline-flex;align-items:center;justify-content:center;gap:8px;position:fixed;left:14px;right:14px;bottom:14px;z-index:60;padding:15px 18px;font-family:var(--font-inter),'Inter',system-ui,sans-serif;font-size:15px;font-weight:600;border-radius:13px;border:1px solid rgba(214,95,116,.5);background:var(--ember);color:#2a0f15;box-shadow:0 12px 30px -8px rgba(0,0,0,.75)}
   .dp-bento{grid-template-columns:1fr}
   .dp-bento-photo{display:none}
-  .dp-facts-top{display:flex;align-items:flex-start;justify-content:space-between;gap:14px;margin-bottom:14px}
-  .dp-facts-top .dp-sub{margin-bottom:0}
-  .dp-facts-avatar{display:block;width:64px;height:64px;border-radius:50%;object-fit:cover;object-position:center top;flex:none;border:1px solid var(--line-2)}
+  .dp-bento-facts{display:grid;grid-template-columns:1fr 100px;gap:16px;align-items:stretch}
+  .dp-facts-avatar{display:block;width:100%;height:100%;border-radius:14px;object-fit:cover;object-position:center top;border:1px solid var(--line-2)}
   .dp-bento-skills{grid-template-columns:1fr}
   .dp-techgroup{grid-template-columns:1fr;gap:7px}
   .dp-acc{overflow:hidden;border-radius:16px}
