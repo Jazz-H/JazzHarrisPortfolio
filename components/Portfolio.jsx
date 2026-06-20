@@ -25,7 +25,7 @@ const PROJECTS = [
   {
     cat: "Apps", title: "Valora",
     body: "A personal budgeting app that turns messy finances into clear, calm decisions — track spending, set goals, and see where your money actually goes. Currently in public beta.",
-    tags: ["React", "Web app", "Fintech"], status: "Beta",
+    tags: ["React", "TypeScript", "JavaScript", "CSS", "HTML"], status: "Beta",
     image: "/assets/ValoraCover.jpg",
     live: "https://getvalora.netlify.app",
     company: "Personal product", role: "Solo design & development",
@@ -183,7 +183,7 @@ const FILTERS = ["All", "Websites", "Apps", "Data"];
 const TECH = ["JavaScript", "React", "Next.js", "Python", "Firebase", "SQL", "REST APIs", "Power BI", "Tailwind"];
 const SERVICES = [
   { Icon: FiTrendingUp, title: "Business analysis & strategy", body: "Translating business goals into clear requirements and a roadmap — working between stakeholders, vendors, and engineers to ship the right thing." },
-  { Icon: FiCode, title: "Web & app development", body: "Designing and building responsive websites and applications with React, Next.js, and modern tooling — functional, polished, and reliable." },
+  { Icon: FiCode, title: "Software & web development", body: "Building software and responsive websites — applications, custom tools, and polished web experiences — with React, Next.js, and modern tooling. Functional, reliable, and a pleasure to use." },
   { Icon: FiBarChart2, title: "Data & dashboards", body: "Turning raw data into clear, decision-ready dashboards and reports with Power BI, Tableau, and the Python data stack." },
 ];
 const NAV = [
