@@ -1,7 +1,7 @@
 import { projects } from "../lib/projects";
 
 const SITE_URL =
-  process.env.NEXT_PUBLIC_SITE_URL || "https://jazz-harris.netlify.app";
+  process.env.NEXT_PUBLIC_SITE_URL || "https://jazzharris.com";
 
 function generateSiteMap() {
   const lastmod = new Date().toISOString().split("T")[0];
