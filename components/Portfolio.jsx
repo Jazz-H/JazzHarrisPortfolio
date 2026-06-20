@@ -368,6 +368,8 @@ function Poster({ view, go }) {
         <span className="dp-status"><i className="dp-dot" /> Booking new projects for 2026</span>
       </div>
 
+      <span className="dp-poster-rule" aria-hidden="true" />
+
       <nav className="dp-nav" aria-label="Sections">
         {NAV.map((n, i) => (
           <button
@@ -582,6 +584,7 @@ function About({ go }) {
             <img className="dp-avatar" src={HEADSHOT_SRC} alt="Jazz Harris, Business Analyst" />
           </div>
           <div className="dp-bento-tile dp-bento-facts">
+            <img className="dp-facts-avatar" src={HEADSHOT_SRC} alt="Jazz Harris" loading="lazy" />
             <p className="dp-sub">Quick facts</p>
             <div className="dp-about-facts">
               <div className="dp-fact"><FiMapPin aria-hidden="true" /><div><span className="dp-fact-l">Based in</span><span className="dp-fact-v">Charlotte, NC</span></div></div>
@@ -602,7 +605,10 @@ function About({ go }) {
 
           <details className="dp-acc dp-acc-skills">
             <summary className="dp-acc-sum">
-              <span className="dp-sub">Core skills</span>
+              <span className="dp-acc-head">
+                <span className="dp-sub">Core skills</span>
+                <span className="dp-acc-preview">Business analysis · Software &amp; web · Data</span>
+              </span>
               <FiChevronDown className="dp-acc-chev" aria-hidden="true" />
             </summary>
             <div className="dp-acc-body">
@@ -620,7 +626,10 @@ function About({ go }) {
 
           <details className="dp-bento-tile dp-acc dp-acc-stack">
             <summary className="dp-acc-sum">
-              <span className="dp-sub">Tools &amp; technologies</span>
+              <span className="dp-acc-head">
+                <span className="dp-sub">Tools &amp; technologies</span>
+                <span className="dp-acc-preview">{TECH_GROUPS.reduce((n, g) => n + g.items.length, 0)} tools · {TECH_GROUPS.length} categories</span>
+              </span>
               <FiChevronDown className="dp-acc-chev" aria-hidden="true" />
             </summary>
             <div className="dp-acc-body">
@@ -835,6 +844,9 @@ const CSS = `
 .dp-acc{min-width:0}
 .dp-acc-sum{display:flex;align-items:center;justify-content:space-between;gap:12px;list-style:none}
 .dp-acc-sum::-webkit-details-marker{display:none}
+.dp-acc-head{display:flex;flex-direction:column;gap:4px;min-width:0}
+.dp-acc-preview{display:none}
+.dp-facts-avatar{display:none}
 .dp-acc-chev{display:none;flex:none;color:var(--muted);font-size:18px;transition:transform .2s}
 .dp-acc[open] .dp-acc-chev{transform:rotate(180deg)}
 @media (min-width:881px){
@@ -886,8 +898,9 @@ const CSS = `
 
 .dp-root a:focus-visible,.dp-root button:focus-visible{outline:2px solid var(--amber);outline-offset:3px;border-radius:8px}
 
-/* mobile sticky CTA (hidden on desktop) */
+/* mobile-only helpers (hidden on desktop) */
 .dp-sticky-cta{display:none}
+.dp-poster-rule{display:none}
 
 /* motion */
 .dp-root.motion-on .dp-view > *{opacity:0;animation:dpRise .55s cubic-bezier(.2,.7,.2,1) forwards}
@@ -916,12 +929,13 @@ const CSS = `
   .dp-nav-item.is-active{border-color:var(--ember);background:rgba(214,95,116,.08)}
   .dp-nav-idx{display:none}
   .dp-nav-label{font-size:15.5px}
+  .dp-poster-rule{display:block;height:1px;background:var(--line)}
   .dp-poster-bottom{display:none}
   .dp-stage{padding:28px 20px 88px}
   .dp-sticky-cta{display:inline-flex;align-items:center;justify-content:center;gap:8px;position:fixed;left:14px;right:14px;bottom:14px;z-index:60;padding:15px 18px;font-family:var(--font-inter),'Inter',system-ui,sans-serif;font-size:15px;font-weight:600;border-radius:13px;border:1px solid rgba(214,95,116,.5);background:var(--ember);color:#2a0f15;box-shadow:0 12px 30px -8px rgba(0,0,0,.75)}
   .dp-bento{grid-template-columns:1fr}
-  .dp-bento-photo{aspect-ratio:1/1;width:120px;max-width:120px;border:none;background:none;border-radius:50%;align-self:center}
-  .dp-bento-photo .dp-avatar{border-radius:50%}
+  .dp-bento-photo{display:none}
+  .dp-facts-avatar{display:block;width:104px;height:104px;border-radius:50%;object-fit:cover;object-position:center top;margin:0 auto 14px;border:1px solid var(--line-2)}
   .dp-bento-skills{grid-template-columns:1fr}
   .dp-techgroup{grid-template-columns:1fr;gap:7px}
   .dp-acc{overflow:hidden;border-radius:16px}
@@ -929,8 +943,11 @@ const CSS = `
   .dp-acc.dp-bento-tile{padding:0}
   .dp-acc-sum{padding:16px;cursor:pointer}
   .dp-acc-sum .dp-sub{margin-bottom:0}
+  .dp-acc-preview{display:block;font-family:var(--font-mono),'JetBrains Mono',monospace;font-size:11.5px;color:var(--faint);letter-spacing:.01em;line-height:1.4}
+  .dp-acc[open] .dp-acc-preview{display:none}
   .dp-acc-chev{display:block}
   .dp-acc-body{padding:0 16px 16px}
+  .dp-about-cta{display:none}
 }
 @media (max-width:560px){
   .dp-poster{padding:22px 18px;gap:16px}
