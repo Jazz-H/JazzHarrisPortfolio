@@ -937,8 +937,8 @@ const CSS = `
   .dp-sticky-cta{display:inline-flex;align-items:center;justify-content:center;gap:8px;position:fixed;left:14px;right:14px;bottom:14px;z-index:60;padding:15px 18px;font-family:var(--font-inter),'Inter',system-ui,sans-serif;font-size:15px;font-weight:600;border-radius:13px;border:1px solid rgba(214,95,116,.5);background:var(--ember);color:#2a0f15;box-shadow:0 12px 30px -8px rgba(0,0,0,.75)}
   .dp-bento{grid-template-columns:1fr}
   .dp-bento-photo{display:none}
-  .dp-bento-facts{display:grid;grid-template-columns:1fr 100px;gap:16px;align-items:stretch}
-  .dp-facts-avatar{display:block;width:100%;height:100%;border-radius:14px;object-fit:cover;object-position:center top;border:1px solid var(--line-2)}
+  .dp-bento-facts{display:grid;grid-template-columns:1fr 116px;gap:16px;align-items:stretch}
+  .dp-facts-avatar{display:block;width:100%;height:100%;border-radius:14px;object-fit:cover;object-position:center 25%;border:1px solid var(--line-2)}
   .dp-bento-skills{grid-template-columns:1fr}
   .dp-techgroup{grid-template-columns:1fr;gap:7px}
   .dp-acc{overflow:hidden;border-radius:16px}
