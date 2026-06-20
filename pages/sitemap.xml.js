@@ -1,22 +1,12 @@
-import { projects } from "../lib/projects";
-
 const SITE_URL =
   process.env.NEXT_PUBLIC_SITE_URL || "https://jazzharris.com";
 
 function generateSiteMap() {
   const lastmod = new Date().toISOString().split("T")[0];
-  const urls = [
-    `${SITE_URL}/`,
-    ...projects.map((p) => `${SITE_URL}/work/${p.id}`),
-  ];
+  // Single-page portfolio — the canonical URL is the root.
   return `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-${urls
-  .map(
-    (loc) =>
-      `  <url><loc>${loc}</loc><lastmod>${lastmod}</lastmod></url>`
-  )
-  .join("\n")}
+  <url><loc>${SITE_URL}/</loc><lastmod>${lastmod}</lastmod></url>
 </urlset>`;
 }
 
