@@ -20,9 +20,6 @@ import {
   FiTrendingUp,
   FiCode,
   FiBarChart2,
-  FiTerminal,
-  FiLayers,
-  FiDatabase,
 } from "react-icons/fi";
 
 const HEADSHOT_SRC = "/jazz-headshot.jpg";
@@ -187,9 +184,9 @@ const PROJECTS = [
 ];
 const FILTERS = ["All", "Websites", "Apps", "Data"];
 const TECH_GROUPS = [
-  { label: "Languages", Icon: FiTerminal, items: ["JavaScript", "TypeScript", "Python", "SQL"] },
-  { label: "Frameworks & UI", Icon: FiLayers, items: ["React", "Next.js", "Tailwind"] },
-  { label: "Data & Power Platform", Icon: FiDatabase, items: ["Power BI", "Power Apps", "SharePoint"] },
+  { label: "Languages", items: ["JavaScript", "TypeScript", "Python", "SQL"] },
+  { label: "Frameworks & UI", items: ["React", "Next.js", "Tailwind"] },
+  { label: "Data & Power Platform", items: ["Power BI", "Power Apps", "SharePoint"] },
 ];
 const SERVICES = [
   { Icon: FiTrendingUp, title: "Business analysis & strategy", body: "Translating business goals into clear requirements and a roadmap — working between stakeholders, vendors, and engineers to ship the right thing." },
@@ -603,7 +600,7 @@ function About({ go }) {
             </div>
           </div>
 
-          <details className="dp-bento-tile dp-acc dp-acc-stack">
+          <details className="dp-acc dp-acc-stack">
             <summary className="dp-acc-sum">
               <span className="dp-acc-head">
                 <span className="dp-sub">Tools &amp; technologies</span>
@@ -613,9 +610,8 @@ function About({ go }) {
             </summary>
             <div className="dp-acc-body">
               <div className="dp-techgroups">
-                {TECH_GROUPS.map(({ label, Icon, items }) => (
+                {TECH_GROUPS.map(({ label, items }) => (
                   <div className="dp-service dp-techcard" key={label}>
-                    <span className="dp-service-icn"><Icon aria-hidden="true" /></span>
                     <h3 className="dp-service-h">{label}</h3>
                     <div className="dp-pills dp-techcard-pills">{items.map((t) => (<span className="dp-pill" key={t}>{t}</span>))}</div>
                   </div>
@@ -949,8 +945,7 @@ const CSS = `
   .dp-facts-avatar{grid-column:2;width:116px;height:116px;align-self:start}
   .dp-bento-skills{grid-template-columns:1fr}
   .dp-acc{overflow:hidden;border-radius:16px}
-  .dp-acc-skills{border:1px solid var(--line);background:var(--card)}
-  .dp-acc.dp-bento-tile{padding:0}
+  .dp-acc-skills,.dp-acc-stack{border:1px solid var(--line);background:var(--card)}
   .dp-acc-sum{padding:16px;cursor:pointer;align-items:flex-start}
   .dp-acc-sum .dp-sub{margin-bottom:0}
   .dp-acc-preview{display:block;font-size:12.5px;color:var(--muted);line-height:1.5}
