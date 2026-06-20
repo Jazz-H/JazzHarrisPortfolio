@@ -12,8 +12,6 @@ import {
   FiArrowUpRight,
   FiChevronLeft,
   FiChevronRight,
-  FiCopy,
-  FiCheck,
   FiMapPin,
   FiBriefcase,
   FiActivity,
@@ -48,7 +46,7 @@ const PROJECTS = [
     study: {
       challenge: "A community foundation needs to read as credible and make it effortless for donors to find programs and give.",
       approach: "Designed and built the site solo — clear navigation, a trustworthy structure, and content the staff can update themselves.",
-      outcome: "A polished, maintainable site the foundation keeps current without a developer.",
+      outcome: "A polished, dependable site I continue to maintain — with everyday content the staff can easily update themselves.",
     },
   },
   {
@@ -195,10 +193,12 @@ const NAV = [
   { id: "about", label: "About" },
   { id: "contact", label: "Contact" },
 ];
+const EMAIL = "mauraharris948@gmail.com";
+const GMAIL_COMPOSE = `https://mail.google.com/mail/?view=cm&fs=1&to=${EMAIL}`;
 const SOCIALS = [
   { Icon: FiGithub, label: "GitHub", href: "https://github.com/Jazz-H" },
   { Icon: FiLinkedin, label: "LinkedIn", href: "https://www.linkedin.com/in/maurajharris/" },
-  { Icon: FiMail, label: "Email", href: "mailto:mauraharris948@gmail.com" },
+  { Icon: FiMail, label: "Email", href: GMAIL_COMPOSE },
   { Icon: FiFileText, label: "Résumé", href: "/Jazz-Harris-Resume.pdf" },
 ];
 const CAT_GRADIENT = {
@@ -206,19 +206,75 @@ const CAT_GRADIENT = {
   Apps: "linear-gradient(135deg, #d77fa6 0%, #7d3f63 100%)",
   Data: "linear-gradient(135deg, #b9697f 0%, #5e3450 100%)",
 };
-const EMAIL = "mauraharris948@gmail.com";
-
-function useCopy() {
-  const [copied, setCopied] = useState(false);
-  const copy = (text) => {
-    if (typeof navigator !== "undefined" && navigator.clipboard) {
-      navigator.clipboard.writeText(text)
-        .then(() => { setCopied(true); setTimeout(() => setCopied(false), 1600); })
-        .catch(() => {});
-    }
-  };
-  return [copied, copy];
-}
+// Result highlights per project (qualitative stat-style — swap in real
+// numbers like donations raised, users, traffic, or time saved any time).
+const METRICS = {
+  "Valora": [
+    { value: "Public beta", label: "Live and in users' hands" },
+    { value: "End-to-end", label: "Designed & built solo" },
+    { value: "React + TS", label: "Modern, typed web stack" },
+  ],
+  "Alamance Community Foundation": [
+    { value: "Live", label: "In production today" },
+    { value: "Self-serve", label: "Staff update content themselves" },
+    { value: "Freelance", label: "Delivered solo, end-to-end" },
+  ],
+  "Electric Supplies Online": [
+    { value: "Live store", label: "Active e-commerce storefront" },
+    { value: "Full catalog", label: "Organized for fast discovery" },
+    { value: "In-house", label: "Designer / developer role" },
+  ],
+  "FIE Study Abroad": [
+    { value: "Published", label: "Featured on the FIE blog" },
+    { value: "Dublin", label: "Study-abroad program" },
+    { value: "Editorial", label: "Written & laid out by me" },
+  ],
+  "To-Do App with Quote API": [
+    { value: "Full CRUD", label: "Create / read / update / delete" },
+    { value: "Live demo", label: "Deployed and shareable" },
+    { value: "REST API", label: "Daily-quote integration" },
+  ],
+  "Weather Application": [
+    { value: "Any city", label: "Live OpenWeather data" },
+    { value: "Live demo", label: "Deployed and shareable" },
+    { value: "Next.js", label: "Fast, modern front end" },
+  ],
+  "Real-time Chat App": [
+    { value: "Real-time", label: "Instant message sync" },
+    { value: "Auth", label: "Secure multi-user sign-in" },
+    { value: "Live demo", label: "Deployed and shareable" },
+  ],
+  "KPI Management Dashboard": [
+    { value: "Published", label: "Live on Tableau Public" },
+    { value: "Interactive", label: "Filterable sales & profit" },
+    { value: "Decision-ready", label: "Built for quick reads" },
+  ],
+  "Data Professional Survey Dashboard": [
+    { value: "ETL", label: "Cleaned & transformed" },
+    { value: "Power BI", label: "Clear, shareable report" },
+    { value: "Insightful", label: "Roles & pay at a glance" },
+  ],
+  "Real Estate Web Scraper": [
+    { value: "Automated", label: "Repeatable data pulls" },
+    { value: "CSV export", label: "Analysis-ready output" },
+    { value: "Python", label: "BeautifulSoup pipeline" },
+  ],
+  "Supermarket Sales EDA": [
+    { value: "Full EDA", label: "Pandas / NumPy / Seaborn" },
+    { value: "Insights", label: "Sales drivers surfaced" },
+    { value: "Notebook", label: "Documented & reproducible" },
+  ],
+  "U.S. Credit Card Defaults": [
+    { value: "Modeled", label: "Default-risk analysis" },
+    { value: "Power BI", label: "Analytical report" },
+    { value: "Segmented", label: "Patterns by customer group" },
+  ],
+  "Real-time Stock Market Dashboard": [
+    { value: "Real-time", label: "Live REST API feed" },
+    { value: "Interactive", label: "Filterable market view" },
+    { value: "Power BI", label: "Auto-refreshing dashboard" },
+  ],
+};
 
 export default function Portfolio() {
   const [view, setView] = useState("work");
@@ -274,7 +330,6 @@ export default function Portfolio() {
 }
 
 function Poster({ view, go }) {
-  const [emailCopied, copyEmail] = useCopy();
   return (
     <aside className="dp-poster">
       <div className="dp-glow" aria-hidden="true" />
@@ -292,7 +347,7 @@ function Poster({ view, go }) {
           I turn business problems into websites, applications, and dashboards that{" "}
           <span className="dp-mark-text">actually work</span>.
         </h1>
-        <span className="dp-status"><i className="dp-dot" /> Available now — let's build something together</span>
+        <span className="dp-status"><i className="dp-dot" /> Booking new projects for 2026</span>
       </div>
 
       <nav className="dp-nav" aria-label="Sections">
@@ -311,32 +366,19 @@ function Poster({ view, go }) {
 
       <div className="dp-poster-bottom">
         <div className="dp-social">
-          {SOCIALS.map(({ Icon, label, href }) =>
-            label === "Email" ? (
-              <button
-                key={label}
-                type="button"
-                className="dp-social-btn"
-                aria-label={emailCopied ? "Email address copied" : "Copy email address"}
-                title={emailCopied ? "Copied!" : EMAIL}
-                onClick={() => copyEmail(EMAIL)}
-              >
-                {emailCopied ? <FiCheck aria-hidden="true" /> : <Icon aria-hidden="true" />}
-              </button>
-            ) : (
-              <a
-                key={label}
-                className="dp-social-btn"
-                href={href}
-                aria-label={label}
-                title={label}
-                target="_blank"
-                rel="noreferrer"
-              >
-                <Icon aria-hidden="true" />
-              </a>
-            )
-          )}
+          {SOCIALS.map(({ Icon, label, href }) => (
+            <a
+              key={label}
+              className="dp-social-btn"
+              href={href}
+              aria-label={label}
+              title={label}
+              target="_blank"
+              rel="noreferrer"
+            >
+              <Icon aria-hidden="true" />
+            </a>
+          ))}
         </div>
         <span className="dp-divider" aria-hidden="true" />
         <button className="dp-btn dp-btn-primary dp-poster-cta" onClick={() => go("contact")}>
@@ -492,6 +534,19 @@ function Detail({ p, onBack }) {
               <p className="dp-study-p">{text}</p>
             </div>
           ))}
+          {METRICS[p.title] && (
+            <div className="dp-study-row">
+              <span className="dp-study-l">Results</span>
+              <div className="dp-metrics">
+                {METRICS[p.title].map((m) => (
+                  <div className="dp-metric" key={m.value + m.label}>
+                    <span className="dp-metric-v">{m.value}</span>
+                    <span className="dp-metric-l">{m.label}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
         </div>
       ) : (
         <p className="dp-detail-note">Your challenge → approach → outcome write-up goes here.</p>
@@ -553,7 +608,6 @@ function About({ go }) {
 }
 
 function Contact() {
-  const [copied, copy] = useCopy();
   return (
     <section className="dp-view dp-contact">
       <div className="dp-contact-head">
@@ -564,11 +618,11 @@ function Contact() {
       </div>
 
       <div className="dp-contact-card">
-        <button type="button" className="dp-contact-row dp-contact-row-primary" onClick={() => copy(EMAIL)}>
+        <a className="dp-contact-row dp-contact-row-primary" href={GMAIL_COMPOSE} target="_blank" rel="noreferrer">
           <span className="dp-cr-icn"><FiMail aria-hidden="true" /></span>
           <span className="dp-cr-text"><span className="dp-cr-l">Email</span><span className="dp-cr-v">{EMAIL}</span></span>
-          <span className={"dp-cr-arrow dp-cr-copy" + (copied ? " is-copied" : "")}>{copied ? (<><FiCheck aria-hidden="true" /> Copied</>) : (<><FiCopy aria-hidden="true" /> Copy</>)}</span>
-        </button>
+          <FiArrowUpRight className="dp-cr-arrow" aria-hidden="true" />
+        </a>
         <a className="dp-contact-row" href="https://www.linkedin.com/in/maurajharris/" target="_blank" rel="noreferrer">
           <span className="dp-cr-icn"><FiLinkedin aria-hidden="true" /></span>
           <span className="dp-cr-text"><span className="dp-cr-l">LinkedIn</span><span className="dp-cr-v">/in/maurajharris</span></span>
@@ -720,7 +774,11 @@ const CSS = `
 .dp-study-row{display:grid;grid-template-columns:118px 1fr;gap:18px;align-items:start}
 .dp-study-l{font-family:var(--font-mono),'JetBrains Mono',monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--ember);padding-top:3px}
 .dp-study-p{color:var(--muted);font-size:15.5px;line-height:1.6;max-width:60ch}
-@media (max-width:560px){.dp-study-row{grid-template-columns:1fr;gap:6px}}
+.dp-metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.dp-metric{border:1px solid var(--line);background:var(--card);border-radius:12px;padding:14px 15px}
+.dp-metric-v{display:block;font-family:var(--font-display),'Bricolage Grotesque',sans-serif;font-weight:700;font-size:18px;color:var(--ink);letter-spacing:-.01em}
+.dp-metric-l{display:block;color:var(--muted);font-size:12.5px;line-height:1.4;margin-top:5px}
+@media (max-width:560px){.dp-study-row{grid-template-columns:1fr;gap:6px}.dp-metrics{grid-template-columns:1fr}}
 
 /* about */
 .dp-about{max-width:880px;display:flex;flex-direction:column;gap:46px}
@@ -766,9 +824,6 @@ const CSS = `
 .dp-cr-v{font-size:15px;color:var(--ink);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .dp-cr-arrow{margin-left:auto;color:var(--faint);font-size:16px;flex:none;transition:color .18s,transform .18s}
 .dp-contact-row:hover .dp-cr-arrow{color:var(--ember);transform:translate(2px,-2px)}
-.dp-cr-copy{display:inline-flex;align-items:center;gap:6px;font-family:var(--font-mono),'JetBrains Mono',monospace;font-size:12px;transform:none}
-.dp-contact-row:hover .dp-cr-copy{transform:none}
-.dp-cr-copy.is-copied{color:var(--ember)}
 
 .dp-root a:focus-visible,.dp-root button:focus-visible{outline:2px solid var(--amber);outline-offset:3px;border-radius:8px}
 
