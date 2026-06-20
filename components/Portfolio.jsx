@@ -183,7 +183,18 @@ const PROJECTS = [
   },
 ];
 const FILTERS = ["All", "Websites", "Apps", "Data"];
-const TECH = ["JavaScript", "TypeScript", "React", "Next.js", "Python", "SQL", "Firebase", "REST APIs", "Power Apps", "SharePoint", "Power BI", "Tableau", "Tailwind"];
+const TECH = [
+  // Languages
+  "JavaScript", "TypeScript", "Python", "SQL",
+  // Frameworks & UI
+  "React", "Next.js", "Tailwind",
+  // Backend & APIs
+  "Firebase", "REST APIs",
+  // Data & BI
+  "Power BI", "Tableau",
+  // Microsoft Power Platform
+  "Power Apps", "SharePoint",
+];
 const SERVICES = [
   { Icon: FiTrendingUp, title: "Business analysis & strategy", body: "Translating business goals into clear requirements and a roadmap — working between stakeholders, vendors, and engineers to ship the right thing." },
   { Icon: FiCode, title: "Software & web development", body: "Building software and responsive websites — applications, custom tools, and polished web experiences — with React, Next.js, and modern tooling. Functional, reliable, and a pleasure to use." },
