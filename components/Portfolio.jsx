@@ -630,7 +630,7 @@ function About({ go }) {
             <summary className="dp-acc-sum">
               <span className="dp-acc-head">
                 <span className="dp-sub">Tools &amp; technologies</span>
-                <span className="dp-acc-preview">Full-stack web · Data &amp; BI · Microsoft Power Platform</span>
+                <span className="dp-acc-preview">Full-stack dev · Data &amp; BI · Microsoft Power Platform</span>
               </span>
               <FiChevronDown className="dp-acc-chev" aria-hidden="true" />
             </summary>
