@@ -284,6 +284,7 @@ const METRICS = {
 export default function Portfolio() {
   const [view, setView] = useState("work");
   const [selected, setSelected] = useState(null);
+  const [filter, setFilter] = useState("All");
   const rootRef = useRef(null);
   const didMount = useRef(false);
 
@@ -330,7 +331,7 @@ export default function Portfolio() {
         <Poster view={view} go={go} />
         <main className="dp-stage">
           <div className="dp-stagewrap" key={view + ":" + (selected || "")}>
-            {view === "work" && !selected && <WorkList onOpen={setSelected} />}
+            {view === "work" && !selected && <WorkList onOpen={setSelected} filter={filter} setFilter={setFilter} />}
             {view === "work" && selected && <Detail p={project} onBack={() => setSelected(null)} />}
             {view === "about" && <About go={go} />}
             {view === "contact" && <Contact />}
@@ -431,8 +432,7 @@ function Thumb({ p }) {
   );
 }
 
-function WorkList({ onOpen }) {
-  const [filter, setFilter] = useState("All");
+function WorkList({ onOpen, filter, setFilter }) {
   const shown = PROJECTS.filter((p) => filter === "All" || p.cat === filter);
   return (
     <section className="dp-view">
@@ -875,9 +875,10 @@ const CSS = `
 .dp-pills{display:flex;flex-wrap:wrap;gap:8px}
 .dp-pill{display:inline-flex;align-items:center;font-family:var(--font-mono),'JetBrains Mono',monospace;font-size:12px;letter-spacing:.01em;color:var(--muted);background:rgba(243,234,234,.04);border:1px solid var(--line-2);border-radius:999px;padding:5px 12px;line-height:1.3;transition:color .18s,border-color .18s,background .18s}
 .dp-pill:hover{color:var(--ink);border-color:rgba(214,95,116,.45);background:rgba(214,95,116,.08)}
-.dp-techgroups{display:flex;flex-direction:column;gap:12px}
-.dp-techcard .dp-service-h{margin-bottom:0}
-.dp-techcard-pills{margin-top:12px}
+.dp-techgroups{display:flex;flex-direction:column;gap:9px}
+.dp-techcard{padding:14px 16px}
+.dp-techcard .dp-service-h{margin-bottom:0;font-size:15px}
+.dp-techcard-pills{margin-top:10px}
 .dp-about-cta{display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap;border-top:1px solid var(--line);padding-top:30px}
 .dp-about-cta-t{font-family:var(--font-display),'Bricolage Grotesque',sans-serif;font-weight:600;font-size:20px}
 .dp-about-cta-btns{display:flex;gap:12px;flex-wrap:wrap}
