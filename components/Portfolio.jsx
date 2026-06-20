@@ -66,6 +66,7 @@ const PROJECTS = [
     body: "An e-commerce storefront for an electrical-supplies retailer, organized so customers can find and buy the right parts fast.",
     tags: ["Yahoo Manager", "HTML", "CSS", "JavaScript"], image: "/assets/ElectricCover.jpg",
     images: [
+      "/assets/ElectricHomepage.jpg",
       "/assets/ElectricStore.jpg",
       "/assets/ElectricHome.jpg",
       "/assets/ElectricAbout.jpg",
@@ -83,6 +84,11 @@ const PROJECTS = [
     cat: "Websites", title: "FIE Study Abroad",
     body: "An editorial post documenting a study-abroad experience cut short by COVID-19 — clean reading layout and storytelling.",
     tags: ["WordPress", "HTML", "CSS", "JavaScript"], image: "/assets/FIECover.jpg",
+    images: [
+      "/assets/FIEAbout.jpg",
+      "/assets/FIEBloggers.jpg",
+      "/assets/FIEPost.jpg",
+    ],
     live: "https://fiestudyabroad.wordpress.com/2020/04/13/jazz-wrapping-up-study-abroad-after-covid-19/",
     company: "Foundation for International Education (study-abroad program)", role: "Student & author",
     study: {
