@@ -479,6 +479,7 @@ function WorkList({ onOpen, filter, setFilter }) {
 function Gallery({ images, title, gradient, status, fallbackWord }) {
   const trackRef = useRef(null);
   const [idx, setIdx] = useState(0);
+  const [broken, setBroken] = useState(false);
   const multi = images.length > 1;
 
   const onScroll = () => {
@@ -501,11 +502,16 @@ function Gallery({ images, title, gradient, status, fallbackWord }) {
         if (e.key === "ArrowLeft") go(idx - 1);
       }}
     >
-      {images.length ? (
+      {images.length && !broken ? (
         <div className="dp-gallery-track" ref={trackRef} onScroll={onScroll}>
           {images.map((src, i) => (
             <div className="dp-gallery-slide" key={src}>
-              <img src={src} alt={multi ? `${title} — screen ${i + 1}` : title} loading={i === 0 ? undefined : "lazy"} />
+              <img
+                src={src}
+                alt={multi ? `${title} — screen ${i + 1}` : title}
+                loading={i === 0 ? undefined : "lazy"}
+                onError={() => { if (i === 0) setBroken(true); }}
+              />
             </div>
           ))}
         </div>
@@ -810,7 +816,7 @@ const CSS = `
 .dp-detail{max-width:760px}
 .dp-back{display:inline-flex;align-items:center;gap:7px;font-family:var(--font-mono),'JetBrains Mono',monospace;font-size:13px;color:var(--muted);transition:color .2s}
 .dp-back:hover{color:var(--ember)}
-.dp-gallery{position:relative;height:320px;border-radius:20px;overflow:hidden;margin:18px 0 24px;border:1px solid var(--line-2)}
+.dp-gallery{position:relative;height:320px;border-radius:20px;overflow:hidden;margin:18px 0 24px;border:1px solid var(--line-2);background:var(--card)}
 .dp-gallery .dp-detail-mono{position:absolute;left:24px;bottom:24px}
 .dp-detail-mono{font-size:48px;color:rgba(20,8,14,.85)}
 .dp-gallery-track{position:absolute;inset:0;display:flex;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;scrollbar-width:none;-ms-overflow-style:none}
