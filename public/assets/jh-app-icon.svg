@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="none" role="img" aria-label="JH app icon">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0.6" y2="1">
+      <stop offset="0" stop-color="#1C1920"></stop>
+      <stop offset="1" stop-color="#141117"></stop>
+    </linearGradient>
+  </defs>
+  <rect width="512" height="512" rx="143" fill="url(#bg)"></rect>
+  <g transform="translate(106 152) scale(2.27)" fill="none">
+    <path d="M26 26 H14 V78 H26" stroke="#EC7488" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"></path>
+    <path d="M106 26 H118 V78 H106" stroke="#EC7488" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"></path>
+    <path d="M64 31 V73" stroke="#EC7488" stroke-width="3.2" stroke-linecap="round"></path>
+    <path d="M52 32 V58 C52 68 45 70 38 69" stroke="#EC7488" stroke-width="8.5" stroke-linecap="round"></path>
+    <path d="M76 32 V72 M76 52 H96 M96 32 V72" stroke="#F2ECE2" stroke-width="8.5" stroke-linecap="round" stroke-linejoin="round"></path>
+  </g>
+</svg>

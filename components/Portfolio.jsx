@@ -354,10 +354,12 @@ function Poster({ view, go }) {
       <div className="dp-glow" aria-hidden="true" />
       <button type="button" className="dp-id" onClick={() => go("work")} aria-label="Jazz Harris — back to top">
         <span className="dp-mark" aria-hidden="true">
-          <svg viewBox="0 6 52 52" fill="none" strokeLinecap="round" strokeLinejoin="round">
-            <path d="M24 16 V36 Q24 46 15 46 Q7 46 7 38" stroke="#d65f74" strokeWidth="3.2" />
-            <path d="M44 16 V48" stroke="currentColor" strokeWidth="3.2" />
-            <path d="M24 31 H44" stroke="currentColor" strokeWidth="3.2" />
+          <svg viewBox="0 0 132 104" fill="none">
+            <path d="M26 26 H14 V78 H26" stroke="#EC7488" strokeWidth="7.5" strokeLinecap="round" strokeLinejoin="round" />
+            <path d="M106 26 H118 V78 H106" stroke="#EC7488" strokeWidth="7.5" strokeLinecap="round" strokeLinejoin="round" />
+            <path d="M64 31 V73" stroke="#EC7488" strokeWidth="3" strokeLinecap="round" />
+            <path d="M52 32 V58 C52 68 45 70 38 69" stroke="#EC7488" strokeWidth="8" strokeLinecap="round" />
+            <path d="M76 32 V72 M76 52 H96 M96 32 V72" stroke="currentColor" strokeWidth="8" strokeLinecap="round" strokeLinejoin="round" />
           </svg>
         </span>
         <span className="dp-id-text">
@@ -726,9 +728,9 @@ const CSS = `
 .dp-id{display:flex;gap:14px;align-items:center;position:relative;width:fit-content;border-radius:12px;transition:opacity .2s}
 .dp-id:hover{opacity:.92}
 .dp-id-text{display:flex;flex-direction:column}
-.dp-mark{display:inline-flex;align-items:center;justify-content:center;width:42px;height:42px;border:1px solid var(--line-2);border-radius:12px;background:rgba(243,234,234,.03);color:var(--ink);flex:none;transition:border-color .2s,transform .2s,background .2s}
-.dp-mark svg{width:24px;height:24px;display:block}
-.dp-id:hover .dp-mark{border-color:var(--ember);background:rgba(214,95,116,.08);transform:translateY(-1px)}
+.dp-mark{display:inline-flex;align-items:center;justify-content:center;color:var(--ink);flex:none;transition:transform .2s}
+.dp-mark svg{width:50px;height:auto;display:block}
+.dp-id:hover .dp-mark{transform:translateY(-1px)}
 .dp-name{display:block;font-family:var(--font-display),'Bricolage Grotesque',sans-serif;font-weight:700;font-size:21px;letter-spacing:-.01em}
 .dp-role{display:block;color:var(--muted);font-size:13px;margin-top:2px}
 .dp-statement{position:relative}
