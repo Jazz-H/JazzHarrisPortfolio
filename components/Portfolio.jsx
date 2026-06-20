@@ -213,7 +213,7 @@ const METRICS = {
   "Valora": [
     { value: "Public beta", label: "Live and in users' hands" },
     { value: "End-to-end", label: "Designed & built solo" },
-    { value: "React + TS", label: "Modern, typed web stack" },
+    { value: "AI insights", label: "Recommends your next money move" },
   ],
   "Alamance Community Foundation": [
     { value: "Live", label: "In production today" },
