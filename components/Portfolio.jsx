@@ -10,6 +10,10 @@ import {
   FiArrowLeft,
   FiArrowRight,
   FiArrowUpRight,
+  FiChevronLeft,
+  FiChevronRight,
+  FiCopy,
+  FiCheck,
   FiMapPin,
   FiBriefcase,
   FiActivity,
@@ -28,7 +32,7 @@ const PROJECTS = [
     tags: ["React", "TypeScript", "JavaScript", "CSS", "HTML"], status: "Beta",
     image: "/assets/ValoraCover.jpg",
     live: "https://getvalora.netlify.app",
-    company: "Personal product", role: "Solo design & development",
+    company: "[ Your agency name ]", role: "Solo design & development",
     study: {
       challenge: "Most budgeting tools are noisy and guilt-driven. I wanted something calmer that answers one question fast: where is my money actually going?",
       approach: "Designed and built the product end to end — flows for tracking spending, setting goals, and seeing category breakdowns at a glance.",
@@ -37,14 +41,14 @@ const PROJECTS = [
   },
   {
     cat: "Websites", title: "Alamance Community Foundation",
-    body: "A community foundation site built and maintained with the team — focused on credibility, clear navigation, and making it easy for donors to engage.",
+    body: "A community foundation site I designed, built, and maintained as a freelance project — focused on credibility, clear navigation, and making it easy for donors to engage.",
     tags: ["Squarespace", "HTML", "CSS", "JavaScript"], image: "/assets/AlamanceCover.jpg",
     live: "https://www.alamancecommunityfoundation.org",
-    company: "Alamance Community Foundation (client)", role: "Design, build & maintenance",
+    company: "Alamance Community Foundation (freelance)", role: "Solo design & development",
     study: {
       challenge: "A community foundation needs to read as credible and make it effortless for donors to find programs and give.",
-      approach: "Built and maintained the site with the team — clear navigation, a trustworthy structure, and content the staff can update themselves.",
-      outcome: "A polished, maintainable site the team keeps current without a developer.",
+      approach: "Designed and built the site solo — clear navigation, a trustworthy structure, and content the staff can update themselves.",
+      outcome: "A polished, maintainable site the foundation keeps current without a developer.",
     },
   },
   {
@@ -180,7 +184,7 @@ const PROJECTS = [
   },
 ];
 const FILTERS = ["All", "Websites", "Apps", "Data"];
-const TECH = ["JavaScript", "React", "Next.js", "Python", "Firebase", "SQL", "REST APIs", "Power BI", "Tailwind"];
+const TECH = ["JavaScript", "TypeScript", "React", "Next.js", "Python", "SQL", "Firebase", "REST APIs", "Power Apps", "SharePoint", "Power BI", "Tableau", "Tailwind"];
 const SERVICES = [
   { Icon: FiTrendingUp, title: "Business analysis & strategy", body: "Translating business goals into clear requirements and a roadmap — working between stakeholders, vendors, and engineers to ship the right thing." },
   { Icon: FiCode, title: "Software & web development", body: "Building software and responsive websites — applications, custom tools, and polished web experiences — with React, Next.js, and modern tooling. Functional, reliable, and a pleasure to use." },
@@ -202,6 +206,19 @@ const CAT_GRADIENT = {
   Apps: "linear-gradient(135deg, #d77fa6 0%, #7d3f63 100%)",
   Data: "linear-gradient(135deg, #b9697f 0%, #5e3450 100%)",
 };
+const EMAIL = "mauraharris948@gmail.com";
+
+function useCopy() {
+  const [copied, setCopied] = useState(false);
+  const copy = (text) => {
+    if (typeof navigator !== "undefined" && navigator.clipboard) {
+      navigator.clipboard.writeText(text)
+        .then(() => { setCopied(true); setTimeout(() => setCopied(false), 1600); })
+        .catch(() => {});
+    }
+  };
+  return [copied, copy];
+}
 
 export default function Portfolio() {
   const [view, setView] = useState("work");
@@ -257,21 +274,22 @@ export default function Portfolio() {
 }
 
 function Poster({ view, go }) {
+  const [emailCopied, copyEmail] = useCopy();
   return (
     <aside className="dp-poster">
       <div className="dp-glow" aria-hidden="true" />
-      <div className="dp-id">
+      <button type="button" className="dp-id" onClick={() => go("work")} aria-label="Jazz Harris — back to top">
         <span className="dp-mark">JH</span>
-        <div>
-          <p className="dp-name">Jazz Harris</p>
-          <p className="dp-role">Software engineer &amp; business analyst</p>
-        </div>
-      </div>
+        <span className="dp-id-text">
+          <span className="dp-name">Jazz Harris</span>
+          <span className="dp-role">Software engineer &amp; business analyst</span>
+        </span>
+      </button>
 
       <div className="dp-statement">
         <p className="dp-kicker">Portfolio — 2026</p>
         <h1 className="dp-h1">
-          I turn business problems into websites, tools, and dashboards that{" "}
+          I turn business problems into websites, applications, and dashboards that{" "}
           <span className="dp-mark-text">actually work</span>.
         </h1>
         <span className="dp-status"><i className="dp-dot" /> Available now — let's build something together</span>
@@ -293,19 +311,32 @@ function Poster({ view, go }) {
 
       <div className="dp-poster-bottom">
         <div className="dp-social">
-          {SOCIALS.map(({ Icon, label, href }) => (
-            <a
-              key={label}
-              className="dp-social-btn"
-              href={href}
-              aria-label={label}
-              title={label}
-              target={href.startsWith("mailto:") ? undefined : "_blank"}
-              rel={href.startsWith("mailto:") ? undefined : "noreferrer"}
-            >
-              <Icon />
-            </a>
-          ))}
+          {SOCIALS.map(({ Icon, label, href }) =>
+            label === "Email" ? (
+              <button
+                key={label}
+                type="button"
+                className="dp-social-btn"
+                aria-label={emailCopied ? "Email address copied" : "Copy email address"}
+                title={emailCopied ? "Copied!" : EMAIL}
+                onClick={() => copyEmail(EMAIL)}
+              >
+                {emailCopied ? <FiCheck aria-hidden="true" /> : <Icon aria-hidden="true" />}
+              </button>
+            ) : (
+              <a
+                key={label}
+                className="dp-social-btn"
+                href={href}
+                aria-label={label}
+                title={label}
+                target="_blank"
+                rel="noreferrer"
+              >
+                <Icon aria-hidden="true" />
+              </a>
+            )
+          )}
         </div>
         <span className="dp-divider" aria-hidden="true" />
         <button className="dp-btn dp-btn-primary dp-poster-cta" onClick={() => go("contact")}>
@@ -365,19 +396,74 @@ function WorkList({ onOpen }) {
   );
 }
 
+function Gallery({ images, title, gradient, status, fallbackWord }) {
+  const trackRef = useRef(null);
+  const [idx, setIdx] = useState(0);
+  const multi = images.length > 1;
+
+  const onScroll = () => {
+    const el = trackRef.current;
+    if (el) setIdx(Math.round(el.scrollLeft / el.clientWidth));
+  };
+  const go = (i) => {
+    const el = trackRef.current;
+    if (!el) return;
+    const clamped = Math.max(0, Math.min(images.length - 1, i));
+    el.scrollTo({ left: clamped * el.clientWidth, behavior: "smooth" });
+  };
+
+  return (
+    <div
+      className="dp-gallery"
+      style={{ background: gradient }}
+      onKeyDown={(e) => {
+        if (e.key === "ArrowRight") go(idx + 1);
+        if (e.key === "ArrowLeft") go(idx - 1);
+      }}
+    >
+      {images.length ? (
+        <div className="dp-gallery-track" ref={trackRef} onScroll={onScroll}>
+          {images.map((src, i) => (
+            <div className="dp-gallery-slide" key={src}>
+              <img src={src} alt={multi ? `${title} — screen ${i + 1}` : title} loading={i === 0 ? undefined : "lazy"} />
+            </div>
+          ))}
+        </div>
+      ) : (
+        <span className="dp-thumb-mono dp-detail-mono">{fallbackWord}</span>
+      )}
+      {status && <span className="dp-badge dp-badge-lg">{status}</span>}
+      {multi && (
+        <>
+          <button type="button" className="dp-gallery-nav dp-gallery-prev" aria-label="Previous image" onClick={() => go(idx - 1)} disabled={idx === 0}>
+            <FiChevronLeft aria-hidden="true" />
+          </button>
+          <button type="button" className="dp-gallery-nav dp-gallery-next" aria-label="Next image" onClick={() => go(idx + 1)} disabled={idx === images.length - 1}>
+            <FiChevronRight aria-hidden="true" />
+          </button>
+          <div className="dp-gallery-dots">
+            {images.map((src, i) => (
+              <button type="button" key={src} className={"dp-gallery-dot" + (i === idx ? " is-active" : "")} aria-label={`Go to image ${i + 1}`} aria-current={i === idx} onClick={() => go(i)} />
+            ))}
+          </div>
+        </>
+      )}
+    </div>
+  );
+}
+
 function Detail({ p, onBack }) {
   if (!p) return null;
   return (
     <section className="dp-view dp-detail">
       <button className="dp-back" onClick={onBack}><FiArrowLeft aria-hidden="true" /> All work</button>
-      <div className="dp-detail-hero" style={{ background: CAT_GRADIENT[p.cat] }}>
-        {p.image ? (
-          <img className="dp-hero-img" src={p.image} alt={p.title} />
-        ) : (
-          <span className="dp-thumb-mono dp-detail-mono">{p.title.split(" ")[0]}</span>
-        )}
-        {p.status && <span className="dp-badge dp-badge-lg">{p.status}</span>}
-      </div>
+      <Gallery
+        images={p.images || (p.image ? [p.image] : [])}
+        title={p.title}
+        gradient={CAT_GRADIENT[p.cat]}
+        status={p.status}
+        fallbackWord={p.title.split(" ")[0]}
+      />
       <div className="dp-detail-head">
         <p className="dp-kicker">{p.cat}</p>
         <h2 className="dp-detail-h">{p.title}</h2>
@@ -387,14 +473,16 @@ function Detail({ p, onBack }) {
         {p.company && <div><span className="dp-meta-l">Company</span><span className="dp-meta-v">{p.company}</span></div>}
         {p.role && <div><span className="dp-meta-l">Role</span><span className="dp-meta-v">{p.role}</span></div>}
       </div>
-      <div className="dp-detail-stack">
-        <span className="dp-meta-l">Stack</span>
-        <div className="dp-pills">{p.tags.map((t) => (<span className="dp-pill" key={t}>{t}</span>))}</div>
-      </div>
-      <div className="dp-detail-links">
-        {p.live && <a className="dp-btn dp-btn-primary" href={p.live} target="_blank" rel="noreferrer">Visit live <FiArrowUpRight aria-hidden="true" /></a>}
-        {p.code && <a className="dp-btn dp-btn-ghost" href={p.code} target="_blank" rel="noreferrer"><FiGithub aria-hidden="true" /> View code</a>}
-        {!p.live && !p.code && <span className="dp-detail-soon">Link coming soon</span>}
+      <div className="dp-stack-row">
+        <div className="dp-detail-stack">
+          <span className="dp-meta-l">Stack</span>
+          <div className="dp-pills">{p.tags.map((t) => (<span className="dp-pill" key={t}>{t}</span>))}</div>
+        </div>
+        <div className="dp-detail-links">
+          {p.live && <a className="dp-btn dp-btn-primary" href={p.live} target="_blank" rel="noreferrer">Visit live <FiArrowUpRight aria-hidden="true" /></a>}
+          {p.code && <a className="dp-btn dp-btn-ghost" href={p.code} target="_blank" rel="noreferrer"><FiGithub aria-hidden="true" /> View code</a>}
+          {!p.live && !p.code && <span className="dp-detail-soon">Link coming soon</span>}
+        </div>
       </div>
       {p.study ? (
         <div className="dp-study">
@@ -465,21 +553,22 @@ function About({ go }) {
 }
 
 function Contact() {
+  const [copied, copy] = useCopy();
   return (
     <section className="dp-view dp-contact">
       <div className="dp-contact-head">
         <p className="dp-label">Contact</p>
         <h2 className="dp-cta-h">Let's build something that works.</h2>
-        <p className="dp-cta-sub">Got a project, a problem, or a half-formed idea? Email is the fastest way to reach me — I read everything.</p>
-        <span className="dp-status"><i className="dp-dot" /> Available now — usually reply within a day</span>
+        <p className="dp-cta-sub">Got a project, a problem, or a half-formed idea? Email is the fastest way to reach me.<br />I read everything.</p>
+        <span className="dp-status"><i className="dp-dot" /> Usually replies within a day</span>
       </div>
 
       <div className="dp-contact-card">
-        <a className="dp-contact-row dp-contact-row-primary" href="mailto:mauraharris948@gmail.com">
+        <button type="button" className="dp-contact-row dp-contact-row-primary" onClick={() => copy(EMAIL)}>
           <span className="dp-cr-icn"><FiMail aria-hidden="true" /></span>
-          <span className="dp-cr-text"><span className="dp-cr-l">Email</span><span className="dp-cr-v">mauraharris948@gmail.com</span></span>
-          <FiArrowUpRight className="dp-cr-arrow" aria-hidden="true" />
-        </a>
+          <span className="dp-cr-text"><span className="dp-cr-l">Email</span><span className="dp-cr-v">{EMAIL}</span></span>
+          <span className={"dp-cr-arrow dp-cr-copy" + (copied ? " is-copied" : "")}>{copied ? (<><FiCheck aria-hidden="true" /> Copied</>) : (<><FiCopy aria-hidden="true" /> Copy</>)}</span>
+        </button>
         <a className="dp-contact-row" href="https://www.linkedin.com/in/maurajharris/" target="_blank" rel="noreferrer">
           <span className="dp-cr-icn"><FiLinkedin aria-hidden="true" /></span>
           <span className="dp-cr-text"><span className="dp-cr-l">LinkedIn</span><span className="dp-cr-v">/in/maurajharris</span></span>
@@ -522,10 +611,13 @@ const CSS = `
   background:var(--bg-2);padding:48px 44px;display:flex;flex-direction:column;gap:34px}
 .dp-glow{position:absolute;top:-100px;left:-100px;width:380px;height:380px;
   background:radial-gradient(closest-side,rgba(214,95,116,.22),transparent 70%);filter:blur(14px);pointer-events:none}
-.dp-id{display:flex;gap:14px;align-items:flex-start;position:relative}
-.dp-mark{font-family:var(--font-mono),'JetBrains Mono',monospace;font-weight:500;font-size:15px;letter-spacing:.04em;border:1px solid var(--line-2);border-radius:9px;padding:8px 10px}
-.dp-name{font-family:var(--font-display),'Bricolage Grotesque',sans-serif;font-weight:700;font-size:21px;letter-spacing:-.01em}
-.dp-role{color:var(--muted);font-size:13px;margin-top:2px}
+.dp-id{display:flex;gap:14px;align-items:center;position:relative;width:fit-content;border-radius:12px;transition:opacity .2s}
+.dp-id:hover{opacity:.92}
+.dp-id-text{display:flex;flex-direction:column}
+.dp-mark{font-family:var(--font-mono),'JetBrains Mono',monospace;font-weight:500;font-size:15px;letter-spacing:.04em;border:1px solid var(--line-2);border-radius:9px;padding:8px 10px;transition:border-color .2s,color .2s}
+.dp-id:hover .dp-mark{border-color:var(--ember);color:var(--ember)}
+.dp-name{display:block;font-family:var(--font-display),'Bricolage Grotesque',sans-serif;font-weight:700;font-size:21px;letter-spacing:-.01em}
+.dp-role{display:block;color:var(--muted);font-size:13px;margin-top:2px}
 .dp-statement{position:relative}
 .dp-kicker{font-family:var(--font-mono),'JetBrains Mono',monospace;color:var(--amber);font-size:13px;margin-bottom:14px}
 .dp-h1{font-family:var(--font-display),'Bricolage Grotesque',sans-serif;font-weight:700;letter-spacing:-.02em;line-height:1.08;font-size:clamp(26px,2.7vw,38px)}
@@ -597,18 +689,31 @@ const CSS = `
 .dp-detail{max-width:760px}
 .dp-back{display:inline-flex;align-items:center;gap:7px;font-family:var(--font-mono),'JetBrains Mono',monospace;font-size:13px;color:var(--muted);transition:color .2s}
 .dp-back:hover{color:var(--ember)}
-.dp-detail-hero{position:relative;height:300px;border-radius:20px;overflow:hidden;display:flex;align-items:flex-end;padding:24px;margin:18px 0 24px;border:1px solid var(--line-2)}
-.dp-hero-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.dp-gallery{position:relative;height:320px;border-radius:20px;overflow:hidden;margin:18px 0 24px;border:1px solid var(--line-2)}
+.dp-gallery .dp-detail-mono{position:absolute;left:24px;bottom:24px}
 .dp-detail-mono{font-size:48px;color:rgba(20,8,14,.85)}
+.dp-gallery-track{position:absolute;inset:0;display:flex;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;scrollbar-width:none;-ms-overflow-style:none}
+.dp-gallery-track::-webkit-scrollbar{display:none}
+.dp-gallery-slide{flex:0 0 100%;width:100%;height:100%;scroll-snap-align:center}
+.dp-gallery-slide img{width:100%;height:100%;object-fit:cover;object-position:center top;display:block}
+.dp-gallery-nav{position:absolute;top:50%;transform:translateY(-50%);width:38px;height:38px;display:flex;align-items:center;justify-content:center;border-radius:50%;background:rgba(8,6,9,.5);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);border:1px solid rgba(243,234,234,.18);color:var(--ink);font-size:18px;z-index:2;transition:background .2s,border-color .2s,color .2s,opacity .2s}
+.dp-gallery-nav:hover{background:rgba(8,6,9,.85);border-color:var(--ember);color:var(--ember)}
+.dp-gallery-nav:disabled{opacity:0;pointer-events:none}
+.dp-gallery-prev{left:12px}
+.dp-gallery-next{right:12px}
+.dp-gallery-dots{position:absolute;bottom:13px;left:50%;transform:translateX(-50%);display:flex;gap:7px;z-index:2}
+.dp-gallery-dot{width:7px;height:7px;border-radius:50%;background:rgba(243,234,234,.45);transition:background .2s,transform .2s}
+.dp-gallery-dot.is-active{background:var(--ember);transform:scale(1.3)}
 .dp-detail-head{margin-bottom:14px}
 .dp-detail-h{font-family:var(--font-display),'Bricolage Grotesque',sans-serif;font-weight:700;font-size:clamp(26px,3.4vw,40px);letter-spacing:-.02em;line-height:1.06;margin-top:8px}
 .dp-detail-overview{color:var(--muted);font-size:17px;max-width:62ch;margin-bottom:26px}
 .dp-meta{display:flex;gap:36px;flex-wrap:wrap;padding:20px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin-bottom:24px}
 .dp-meta-l{display:block;font-family:var(--font-mono),'JetBrains Mono',monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--faint);margin-bottom:6px}
 .dp-meta-v{font-size:14.5px;color:var(--ink)}
-.dp-detail-stack{display:flex;flex-direction:column;gap:11px;margin-bottom:24px}
+.dp-stack-row{display:flex;align-items:flex-end;justify-content:space-between;gap:16px 28px;flex-wrap:wrap;margin-bottom:24px}
+.dp-detail-stack{display:flex;flex-direction:column;gap:11px}
 .dp-detail-stack .dp-meta-l{margin-bottom:0}
-.dp-detail-links{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:22px}
+.dp-detail-links{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
 .dp-detail-soon{font-family:var(--font-mono),'JetBrains Mono',monospace;font-size:12.5px;color:var(--faint)}
 .dp-detail-note{font-family:var(--font-mono),'JetBrains Mono',monospace;font-size:12.5px;color:var(--faint);border:1px dashed var(--line-2);border-radius:10px;padding:14px 16px}
 .dp-study{display:flex;flex-direction:column;gap:18px;border-top:1px solid var(--line);padding-top:24px}
@@ -661,6 +766,9 @@ const CSS = `
 .dp-cr-v{font-size:15px;color:var(--ink);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .dp-cr-arrow{margin-left:auto;color:var(--faint);font-size:16px;flex:none;transition:color .18s,transform .18s}
 .dp-contact-row:hover .dp-cr-arrow{color:var(--ember);transform:translate(2px,-2px)}
+.dp-cr-copy{display:inline-flex;align-items:center;gap:6px;font-family:var(--font-mono),'JetBrains Mono',monospace;font-size:12px;transform:none}
+.dp-contact-row:hover .dp-cr-copy{transform:none}
+.dp-cr-copy.is-copied{color:var(--ember)}
 
 .dp-root a:focus-visible,.dp-root button:focus-visible{outline:2px solid var(--amber);outline-offset:3px;border-radius:8px}
 
@@ -674,7 +782,7 @@ const CSS = `
 .dp-root.motion-on .dp-view > *:nth-child(6){animation-delay:.34s}
 .dp-root.motion-on .dp-view > *:nth-child(7){animation-delay:.40s}
 .dp-root.motion-on .dp-view > *:nth-child(8){animation-delay:.46s}
-.dp-root.motion-on .dp-detail-hero{transform-origin:top center;animation:dpExpand .5s cubic-bezier(.2,.7,.2,1)}
+.dp-root.motion-on .dp-gallery{transform-origin:top center;animation:dpExpand .5s cubic-bezier(.2,.7,.2,1)}
 @keyframes dpRise{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
 @keyframes dpExpand{from{transform:scale(.97)}to{transform:none}}
 @media (prefers-reduced-motion:reduce){.dp-root *{animation:none!important;transition:none!important}}
