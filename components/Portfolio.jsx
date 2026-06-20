@@ -12,6 +12,7 @@ import {
   FiArrowUpRight,
   FiChevronLeft,
   FiChevronRight,
+  FiChevronDown,
   FiMapPin,
   FiBriefcase,
   FiActivity,
@@ -286,6 +287,7 @@ export default function Portfolio() {
   const [view, setView] = useState("work");
   const [selected, setSelected] = useState(null);
   const rootRef = useRef(null);
+  const didMount = useRef(false);
 
   useEffect(() => {
     const r = rootRef.current;
@@ -309,9 +311,15 @@ export default function Portfolio() {
   }, []);
 
   useEffect(() => {
-    const el = document.querySelector(".dp-stage");
-    if (el) el.scrollTo ? el.scrollTo({ top: 0 }) : (el.scrollTop = 0);
-    window.scrollTo({ top: 0, behavior: "auto" });
+    // Don't jump on first load — let the page open at the hero/poster.
+    if (!didMount.current) { didMount.current = true; return; }
+    const stage = document.querySelector(".dp-stage");
+    if (stage) {
+      const top = stage.getBoundingClientRect().top + window.scrollY;
+      window.scrollTo({ top: Math.max(0, top), behavior: "auto" });
+    } else {
+      window.scrollTo({ top: 0, behavior: "auto" });
+    }
   }, [view, selected]);
 
   const go = (v) => { setSelected(null); setView(v); };
@@ -331,6 +339,11 @@ export default function Portfolio() {
           </div>
         </main>
       </div>
+      <div className="dp-sticky-bar">
+        <button type="button" className="dp-sticky-cta" onClick={() => go("contact")}>
+          Start a project <FiArrowRight aria-hidden="true" />
+        </button>
+      </div>
     </div>
   );
 }
@@ -341,10 +354,12 @@ function Poster({ view, go }) {
       <div className="dp-glow" aria-hidden="true" />
       <button type="button" className="dp-id" onClick={() => go("work")} aria-label="Jazz Harris — back to top">
         <span className="dp-mark" aria-hidden="true">
-          <svg viewBox="0 6 52 52" fill="none" strokeLinecap="round" strokeLinejoin="round">
-            <path d="M24 16 V36 Q24 46 15 46 Q7 46 7 38" stroke="#d65f74" strokeWidth="3.2" />
-            <path d="M44 16 V48" stroke="currentColor" strokeWidth="3.2" />
-            <path d="M24 31 H44" stroke="currentColor" strokeWidth="3.2" />
+          <svg viewBox="0 0 132 104" fill="none">
+            <path d="M26 26 H14 V78 H26" stroke="#EC7488" strokeWidth="7.5" strokeLinecap="round" strokeLinejoin="round" />
+            <path d="M106 26 H118 V78 H106" stroke="#EC7488" strokeWidth="7.5" strokeLinecap="round" strokeLinejoin="round" />
+            <path d="M64 31 V73" stroke="#EC7488" strokeWidth="3" strokeLinecap="round" />
+            <path d="M52 32 V58 C52 68 45 70 38 69" stroke="#EC7488" strokeWidth="8" strokeLinecap="round" />
+            <path d="M76 32 V72 M76 52 H96 M96 32 V72" stroke="currentColor" strokeWidth="8" strokeLinecap="round" strokeLinejoin="round" />
           </svg>
         </span>
         <span className="dp-id-text">
@@ -361,6 +376,8 @@ function Poster({ view, go }) {
         </h1>
         <span className="dp-status"><i className="dp-dot" /> Booking new projects for 2026</span>
       </div>
+
+      <span className="dp-poster-rule" aria-hidden="true" />
 
       <nav className="dp-nav" aria-label="Sections">
         {NAV.map((n, i) => (
@@ -576,13 +593,16 @@ function About({ go }) {
             <img className="dp-avatar" src={HEADSHOT_SRC} alt="Jazz Harris, Business Analyst" />
           </div>
           <div className="dp-bento-tile dp-bento-facts">
-            <p className="dp-sub">Quick facts</p>
-            <div className="dp-about-facts">
-              <div className="dp-fact"><FiMapPin aria-hidden="true" /><div><span className="dp-fact-l">Based in</span><span className="dp-fact-v">Charlotte, NC</span></div></div>
-              <div className="dp-fact"><FiBriefcase aria-hidden="true" /><div><span className="dp-fact-l">By day</span><span className="dp-fact-v">Business Analyst · Coca-Cola Consolidated</span></div></div>
-              <div className="dp-fact"><FiBookOpen aria-hidden="true" /><div><span className="dp-fact-l">Studied</span><span className="dp-fact-v">B.A. Computer Science · Elon University</span></div></div>
-              <div className="dp-fact"><FiActivity aria-hidden="true" /><div><span className="dp-fact-l">Currently</span><span className="dp-fact-v">Building Valora, a budgeting app</span></div></div>
+            <div className="dp-facts-main">
+              <p className="dp-sub">Quick facts</p>
+              <div className="dp-about-facts">
+                <div className="dp-fact"><FiMapPin aria-hidden="true" /><div><span className="dp-fact-l">Based in</span><span className="dp-fact-v">Charlotte, NC</span></div></div>
+                <div className="dp-fact"><FiBriefcase aria-hidden="true" /><div><span className="dp-fact-l">By day</span><span className="dp-fact-v">Business Analyst · Coca-Cola Consolidated</span></div></div>
+                <div className="dp-fact"><FiBookOpen aria-hidden="true" /><div><span className="dp-fact-l">Studied</span><span className="dp-fact-v">B.A. Computer Science · Elon University</span></div></div>
+                <div className="dp-fact"><FiActivity aria-hidden="true" /><div><span className="dp-fact-l">Currently</span><span className="dp-fact-v">Building Valora, a budgeting app</span></div></div>
+              </div>
             </div>
+            <img className="dp-facts-avatar" src={HEADSHOT_SRC} alt="Jazz Harris" loading="lazy" />
           </div>
         </div>
 
@@ -594,27 +614,46 @@ function About({ go }) {
             <p className="dp-p">Today I'm a Business Analyst at Coca-Cola Consolidated, bridging business needs and technology. Outside of work I build websites, custom software, and tools for businesses and entrepreneurs — most recently Valora, a personal finance platform. When I'm not behind a screen: traveling, Legos, and anything with four wheels or two.</p>
           </div>
 
-          <div className="dp-bento-skills">
-            {SERVICES.map(({ Icon, title, body }) => (
-              <div className="dp-service" key={title}>
-                <span className="dp-service-icn"><Icon aria-hidden="true" /></span>
-                <h3 className="dp-service-h">{title}</h3>
-                <p className="dp-service-p">{body}</p>
+          <details className="dp-acc dp-acc-skills">
+            <summary className="dp-acc-sum">
+              <span className="dp-acc-head">
+                <span className="dp-sub">Core skills</span>
+                <span className="dp-acc-preview">Business analysis · Software &amp; web · Data &amp; dashboards</span>
+              </span>
+              <FiChevronDown className="dp-acc-chev" aria-hidden="true" />
+            </summary>
+            <div className="dp-acc-body">
+              <div className="dp-bento-skills">
+                {SERVICES.map(({ Icon, title, body }) => (
+                  <div className="dp-service" key={title}>
+                    <span className="dp-service-icn"><Icon aria-hidden="true" /></span>
+                    <h3 className="dp-service-h">{title}</h3>
+                    <p className="dp-service-p">{body}</p>
+                  </div>
+                ))}
               </div>
-            ))}
-          </div>
-
-          <div className="dp-bento-tile dp-bento-stack">
-            <p className="dp-sub">Tools &amp; technologies</p>
-            <div className="dp-techgroups">
-              {TECH_GROUPS.map((g) => (
-                <div className="dp-techgroup" key={g.label}>
-                  <span className="dp-techgroup-l">{g.label}</span>
-                  <div className="dp-pills">{g.items.map((t) => (<span className="dp-pill" key={t}>{t}</span>))}</div>
-                </div>
-              ))}
             </div>
-          </div>
+          </details>
+
+          <details className="dp-bento-tile dp-acc dp-acc-stack">
+            <summary className="dp-acc-sum">
+              <span className="dp-acc-head">
+                <span className="dp-sub">Tools &amp; technologies</span>
+                <span className="dp-acc-preview">Full-stack dev · Data &amp; BI · Microsoft Power Platform</span>
+              </span>
+              <FiChevronDown className="dp-acc-chev" aria-hidden="true" />
+            </summary>
+            <div className="dp-acc-body">
+              <div className="dp-techgroups">
+                {TECH_GROUPS.map((g) => (
+                  <div className="dp-techgroup" key={g.label}>
+                    <span className="dp-techgroup-l">{g.label}</span>
+                    <div className="dp-pills">{g.items.map((t) => (<span className="dp-pill" key={t}>{t}</span>))}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </details>
         </div>
       </div>
 
@@ -689,9 +728,9 @@ const CSS = `
 .dp-id{display:flex;gap:14px;align-items:center;position:relative;width:fit-content;border-radius:12px;transition:opacity .2s}
 .dp-id:hover{opacity:.92}
 .dp-id-text{display:flex;flex-direction:column}
-.dp-mark{display:inline-flex;align-items:center;justify-content:center;width:42px;height:42px;border:1px solid var(--line-2);border-radius:12px;background:rgba(243,234,234,.03);color:var(--ink);flex:none;transition:border-color .2s,transform .2s,background .2s}
-.dp-mark svg{width:24px;height:24px;display:block}
-.dp-id:hover .dp-mark{border-color:var(--ember);background:rgba(214,95,116,.08);transform:translateY(-1px)}
+.dp-mark{display:inline-flex;align-items:center;justify-content:center;color:var(--ink);flex:none;transition:transform .2s}
+.dp-mark svg{width:50px;height:auto;display:block}
+.dp-id:hover .dp-mark{transform:translateY(-1px)}
 .dp-name{display:block;font-family:var(--font-display),'Bricolage Grotesque',sans-serif;font-weight:700;font-size:21px;letter-spacing:-.01em}
 .dp-role{display:block;color:var(--muted);font-size:13px;margin-top:2px}
 .dp-statement{position:relative}
@@ -802,7 +841,6 @@ const CSS = `
 .dp-metric:hover{border-color:rgba(214,95,116,.4);transform:translateY(-2px);box-shadow:0 14px 30px -22px rgba(0,0,0,.9)}
 .dp-metric-v{display:block;font-family:var(--font-display),'Bricolage Grotesque',sans-serif;font-weight:700;font-size:19px;color:var(--ink);letter-spacing:-.01em;line-height:1.1}
 .dp-metric-l{display:block;color:var(--muted);font-size:12.5px;line-height:1.45;margin-top:6px}
-@media (max-width:560px){.dp-study-row{grid-template-columns:1fr;gap:6px}.dp-metrics{grid-template-columns:1fr}}
 
 /* about — bento grid */
 .dp-about{max-width:960px;display:flex;flex-direction:column;gap:28px}
@@ -811,8 +849,22 @@ const CSS = `
 .dp-bento-tile{border:1px solid var(--line);background:var(--card);border-radius:16px;padding:20px}
 .dp-bento-photo{padding:0;overflow:hidden;aspect-ratio:4/5}
 .dp-bento-bio .dp-p:first-of-type{margin-top:14px}
-.dp-bento-stack .dp-sub{margin-bottom:14px}
 .dp-avatar{width:100%;height:100%;border-radius:16px;object-fit:cover;object-position:center top;display:block}
+
+/* skills + stack accordions (open on desktop, collapsible on mobile) */
+.dp-acc{min-width:0}
+.dp-acc-sum{display:flex;align-items:center;justify-content:space-between;gap:12px;list-style:none}
+.dp-acc-sum::-webkit-details-marker{display:none}
+.dp-acc-head{display:flex;flex-direction:column;gap:6px;min-width:0}
+.dp-acc-preview{display:none}
+.dp-facts-avatar{display:none}
+.dp-acc-chev{display:none;flex:none;color:var(--muted);font-size:18px;transition:transform .2s}
+.dp-acc[open] .dp-acc-chev{transform:rotate(180deg)}
+@media (min-width:881px){
+  .dp-acc-body{display:block !important}
+  .dp-acc-sum{margin-bottom:14px}
+  .dp-acc-sum .dp-sub{margin-bottom:0}
+}
 .dp-about-facts{display:flex;flex-direction:column;gap:13px}
 .dp-fact{display:flex;align-items:flex-start;gap:11px;color:var(--muted);font-size:13px}
 .dp-fact svg{color:var(--ember);font-size:15px;margin-top:2px;flex:none}
@@ -857,6 +909,10 @@ const CSS = `
 
 .dp-root a:focus-visible,.dp-root button:focus-visible{outline:2px solid var(--amber);outline-offset:3px;border-radius:8px}
 
+/* mobile-only helpers (hidden on desktop) */
+.dp-sticky-bar{display:none}
+.dp-poster-rule{display:none}
+
 /* motion */
 .dp-root.motion-on .dp-view > *{opacity:0;animation:dpRise .55s cubic-bezier(.2,.7,.2,1) forwards}
 .dp-root.motion-on .dp-view > *:nth-child(1){animation-delay:.04s}
@@ -876,17 +932,62 @@ const CSS = `
 @media (max-width:1080px){.dp-grid{grid-template-columns:1fr}}
 @media (max-width:880px){
   .dp-shell{grid-template-columns:1fr}
-  .dp-poster{position:sticky;top:0;height:auto;flex-direction:column;gap:22px;padding:24px 22px}
+  .dp-poster{position:static;height:auto;flex-direction:column;gap:20px;padding:26px 22px}
   .dp-glow{display:none}
-  .dp-nav{flex-direction:row;gap:6px;overflow-x:auto}
-  .dp-nav-item{border-left:none;border-bottom:2px solid transparent;border-radius:8px 8px 0 0;padding:8px 12px;flex-direction:column;gap:2px}
-  .dp-nav-item.is-active{border-left:none;border-bottom-color:var(--ember)}
-  .dp-poster-bottom{flex-direction:row;align-items:center;justify-content:center;flex-wrap:wrap}
-  .dp-poster-cta{width:auto}
-  .dp-stage{padding:30px 22px}
+  .dp-h1{font-size:clamp(23px,5.8vw,30px);line-height:1.14}
+  .dp-nav{flex-direction:row;gap:8px}
+  .dp-nav-item{flex:1;flex-direction:row;align-items:center;justify-content:center;gap:0;border:1px solid var(--line);border-radius:10px;padding:11px 10px}
+  .dp-nav-item.is-active{border-color:var(--ember);background:rgba(214,95,116,.08)}
+  .dp-nav-idx{display:none}
+  .dp-nav-label{font-size:15.5px}
+  .dp-poster-rule{display:block;height:1px;background:var(--line)}
+  .dp-poster-bottom{display:none}
+  .dp-stage{padding:28px 20px}
+  .dp-sticky-bar{display:block;padding:18px 16px;padding-bottom:max(18px,env(safe-area-inset-bottom));border-top:1px solid var(--line-2);background:var(--bg)}
+  .dp-sticky-cta{display:flex;width:100%;align-items:center;justify-content:center;gap:8px;padding:14px 18px;font-family:var(--font-inter),'Inter',system-ui,sans-serif;font-size:15px;font-weight:600;border-radius:12px;border:1px solid rgba(214,95,116,.5);background:var(--ember);color:#2a0f15}
   .dp-bento{grid-template-columns:1fr}
-  .dp-bento-photo{aspect-ratio:4/5;max-width:300px}
+  .dp-bento-photo{display:none}
+  .dp-bento-facts{display:grid;grid-template-columns:1fr 116px;gap:16px;align-items:start}
+  .dp-facts-avatar{display:block;width:116px;height:116px;align-self:start;border-radius:50%;object-fit:cover;object-position:center 22%;border:1px solid var(--line-2)}
   .dp-bento-skills{grid-template-columns:1fr}
-  .dp-techgroup{grid-template-columns:1fr;gap:7px}
+  .dp-techgroups{gap:0}
+  .dp-techgroup{grid-template-columns:1fr;gap:9px;padding:14px 0;border-top:1px solid var(--line)}
+  .dp-techgroup:first-child{padding-top:2px;border-top:none}
+  .dp-techgroup-l{color:var(--muted)}
+  .dp-acc{overflow:hidden;border-radius:16px}
+  .dp-acc-skills{border:1px solid var(--line);background:var(--card)}
+  .dp-acc.dp-bento-tile{padding:0}
+  .dp-acc-sum{padding:16px;cursor:pointer;align-items:flex-start}
+  .dp-acc-sum .dp-sub{margin-bottom:0}
+  .dp-acc-preview{display:block;font-size:12.5px;color:var(--muted);line-height:1.5}
+  .dp-acc[open] .dp-acc-preview{display:none}
+  .dp-acc[open] .dp-acc-sum{align-items:center}
+  .dp-acc-chev{display:block;margin-top:1px}
+  .dp-acc-body{padding:0 16px 16px}
+  .dp-about-cta{display:none}
+}
+@media (max-width:560px){
+  .dp-poster{padding:22px 18px;gap:16px}
+  .dp-stage{padding:22px 16px}
+  .dp-h1{font-size:clamp(22px,6.6vw,26px);line-height:1.16}
+  .dp-kicker{margin-bottom:10px}
+  .dp-statement .dp-status{margin-top:16px}
+  .dp-name{font-size:19px}
+  .dp-work-head{margin-bottom:18px;gap:12px}
+  .dp-detail-h{font-size:clamp(22px,7vw,28px)}
+  .dp-cta-h{font-size:clamp(25px,8vw,32px)}
+  .dp-detail-overview{font-size:15px}
+  .dp-gallery{height:190px;border-radius:16px;margin:14px 0 20px}
+  .dp-detail-mono{font-size:36px}
+  .dp-meta{gap:18px;padding:16px 0;margin-bottom:18px}
+  .dp-stack-row{margin-bottom:20px}
+  .dp-study{gap:14px;padding-top:20px}
+  .dp-study-row{grid-template-columns:1fr;gap:6px}
+  .dp-metrics{grid-template-columns:1fr 1fr;gap:10px}
+  .dp-card-body{padding:16px;gap:8px}
+  .dp-bento-tile{padding:16px}
+  .dp-contact-row{padding:14px 15px;gap:12px}
+  .dp-cr-icn{width:36px;height:36px;font-size:16px}
+  .dp-about-cta{gap:14px}
 }
 `;

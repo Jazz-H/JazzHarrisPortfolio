@@ -14,8 +14,7 @@ export default function Home() {
           name="viewport"
           content="width=device-width, initial-scale=1, viewport-fit=cover"
         />
-        <link rel="icon" href="/assets/faviconjh.ico" />
-        <meta name="theme-color" content="#17131a" />
+        <meta name="theme-color" content="#08080A" />
 
         <meta property="og:type" content="website" />
         <meta property="og:title" content="Jazz Harris — Portfolio" />
