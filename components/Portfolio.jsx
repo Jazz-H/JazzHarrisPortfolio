@@ -183,17 +183,12 @@ const PROJECTS = [
   },
 ];
 const FILTERS = ["All", "Websites", "Apps", "Data"];
-const TECH = [
-  // Languages
-  "JavaScript", "TypeScript", "Python", "SQL",
-  // Frameworks & UI
-  "React", "Next.js", "Tailwind",
-  // Backend & APIs
-  "Firebase", "REST APIs",
-  // Data & BI
-  "Power BI", "Tableau",
-  // Microsoft Power Platform
-  "Power Apps", "SharePoint",
+const TECH_GROUPS = [
+  { label: "Languages", items: ["JavaScript", "TypeScript", "Python", "SQL"] },
+  { label: "Frameworks & UI", items: ["React", "Next.js", "Tailwind"] },
+  { label: "Backend & APIs", items: ["Firebase", "REST APIs"] },
+  { label: "Data & BI", items: ["Power BI", "Tableau"] },
+  { label: "Power Platform", items: ["Power Apps", "SharePoint"] },
 ];
 const SERVICES = [
   { Icon: FiTrendingUp, title: "Business analysis & strategy", body: "Translating business goals into clear requirements and a roadmap — working between stakeholders, vendors, and engineers to ship the right thing." },
@@ -346,7 +341,13 @@ function Poster({ view, go }) {
     <aside className="dp-poster">
       <div className="dp-glow" aria-hidden="true" />
       <button type="button" className="dp-id" onClick={() => go("work")} aria-label="Jazz Harris — back to top">
-        <span className="dp-mark">JH</span>
+        <span className="dp-mark" aria-hidden="true">
+          <svg viewBox="0 6 52 52" fill="none" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M24 16 V36 Q24 46 15 46 Q7 46 7 38" stroke="#d65f74" strokeWidth="3.2" />
+            <path d="M44 16 V48" stroke="currentColor" strokeWidth="3.2" />
+            <path d="M24 31 H44" stroke="currentColor" strokeWidth="3.2" />
+          </svg>
+        </span>
         <span className="dp-id-text">
           <span className="dp-name">Jazz Harris</span>
           <span className="dp-role">Software engineer &amp; business analyst</span>
@@ -606,7 +607,14 @@ function About({ go }) {
 
           <div className="dp-bento-tile dp-bento-stack">
             <p className="dp-sub">Tools &amp; technologies</p>
-            <div className="dp-pills">{TECH.map((t) => (<span className="dp-pill" key={t}>{t}</span>))}</div>
+            <div className="dp-techgroups">
+              {TECH_GROUPS.map((g) => (
+                <div className="dp-techgroup" key={g.label}>
+                  <span className="dp-techgroup-l">{g.label}</span>
+                  <div className="dp-pills">{g.items.map((t) => (<span className="dp-pill" key={t}>{t}</span>))}</div>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </div>
@@ -633,7 +641,7 @@ function Contact() {
       </div>
 
       <div className="dp-contact-card">
-        <a className="dp-contact-row dp-contact-row-primary" href={GMAIL_COMPOSE} target="_blank" rel="noreferrer">
+        <a className="dp-contact-row" href={GMAIL_COMPOSE} target="_blank" rel="noreferrer">
           <span className="dp-cr-icn"><FiMail aria-hidden="true" /></span>
           <span className="dp-cr-text"><span className="dp-cr-l">Email</span><span className="dp-cr-v">{EMAIL}</span></span>
           <FiArrowUpRight className="dp-cr-arrow" aria-hidden="true" />
@@ -683,8 +691,9 @@ const CSS = `
 .dp-id{display:flex;gap:14px;align-items:center;position:relative;width:fit-content;border-radius:12px;transition:opacity .2s}
 .dp-id:hover{opacity:.92}
 .dp-id-text{display:flex;flex-direction:column}
-.dp-mark{font-family:var(--font-mono),'JetBrains Mono',monospace;font-weight:500;font-size:15px;letter-spacing:.04em;border:1px solid var(--line-2);border-radius:9px;padding:8px 10px;transition:border-color .2s,color .2s}
-.dp-id:hover .dp-mark{border-color:var(--ember);color:var(--ember)}
+.dp-mark{display:inline-flex;align-items:center;justify-content:center;width:42px;height:42px;border:1px solid var(--line-2);border-radius:12px;background:rgba(243,234,234,.03);color:var(--ink);flex:none;transition:border-color .2s,transform .2s,background .2s}
+.dp-mark svg{width:24px;height:24px;display:block}
+.dp-id:hover .dp-mark{border-color:var(--ember);background:rgba(214,95,116,.08);transform:translateY(-1px)}
 .dp-name{display:block;font-family:var(--font-display),'Bricolage Grotesque',sans-serif;font-weight:700;font-size:21px;letter-spacing:-.01em}
 .dp-role{display:block;color:var(--muted);font-size:13px;margin-top:2px}
 .dp-statement{position:relative}
@@ -791,9 +800,11 @@ const CSS = `
 .dp-study-l{font-family:var(--font-mono),'JetBrains Mono',monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--ember);padding-top:3px}
 .dp-study-p{color:var(--muted);font-size:15.5px;line-height:1.6;max-width:60ch}
 .dp-metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
-.dp-metric{border:1px solid var(--line);background:var(--card);border-radius:12px;padding:14px 15px}
-.dp-metric-v{display:block;font-family:var(--font-display),'Bricolage Grotesque',sans-serif;font-weight:700;font-size:18px;color:var(--ink);letter-spacing:-.01em}
-.dp-metric-l{display:block;color:var(--muted);font-size:12.5px;line-height:1.4;margin-top:5px}
+.dp-metric{position:relative;border:1px solid var(--line);background:var(--card);border-radius:12px;padding:15px 16px 15px 19px;overflow:hidden;transition:border-color .2s,transform .2s,box-shadow .2s}
+.dp-metric::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--ember);opacity:.85}
+.dp-metric:hover{border-color:rgba(214,95,116,.4);transform:translateY(-2px);box-shadow:0 14px 30px -22px rgba(0,0,0,.9)}
+.dp-metric-v{display:block;font-family:var(--font-display),'Bricolage Grotesque',sans-serif;font-weight:700;font-size:19px;color:var(--ink);letter-spacing:-.01em;line-height:1.1}
+.dp-metric-l{display:block;color:var(--muted);font-size:12.5px;line-height:1.45;margin-top:6px}
 @media (max-width:560px){.dp-study-row{grid-template-columns:1fr;gap:6px}.dp-metrics{grid-template-columns:1fr}}
 
 /* about — bento grid */
@@ -821,6 +832,9 @@ const CSS = `
 .dp-pills{display:flex;flex-wrap:wrap;gap:8px}
 .dp-pill{display:inline-flex;align-items:center;font-family:var(--font-mono),'JetBrains Mono',monospace;font-size:12px;letter-spacing:.01em;color:var(--muted);background:rgba(243,234,234,.04);border:1px solid var(--line-2);border-radius:999px;padding:5px 12px;line-height:1.3;transition:color .18s,border-color .18s,background .18s}
 .dp-pill:hover{color:var(--ink);border-color:rgba(214,95,116,.45);background:rgba(214,95,116,.08)}
+.dp-techgroups{display:flex;flex-direction:column;gap:14px}
+.dp-techgroup{display:grid;grid-template-columns:132px 1fr;gap:14px;align-items:start}
+.dp-techgroup-l{font-family:var(--font-mono),'JetBrains Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--faint);padding-top:6px}
 .dp-about-cta{display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap;border-top:1px solid var(--line);padding-top:30px}
 .dp-about-cta-t{font-family:var(--font-display),'Bricolage Grotesque',sans-serif;font-weight:600;font-size:20px}
 .dp-about-cta-btns{display:flex;gap:12px;flex-wrap:wrap}
@@ -876,5 +890,6 @@ const CSS = `
   .dp-bento{grid-template-columns:1fr}
   .dp-bento-photo{aspect-ratio:4/5;max-width:300px}
   .dp-bento-skills{grid-template-columns:1fr}
+  .dp-techgroup{grid-template-columns:1fr;gap:7px}
 }
 `;
