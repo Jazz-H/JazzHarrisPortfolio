@@ -332,7 +332,7 @@ export default function Portfolio() {
         <main className="dp-stage">
           <div className="dp-stagewrap" key={view + ":" + (selected || "")}>
             {view === "work" && !selected && <WorkList onOpen={setSelected} filter={filter} setFilter={setFilter} />}
-            {view === "work" && selected && <Detail p={project} onBack={() => setSelected(null)} />}
+            {view === "work" && selected && <Detail p={project} onBack={() => setSelected(null)} filter={filter} />}
             {view === "about" && <About go={go} />}
             {view === "contact" && <Contact />}
           </div>
@@ -521,11 +521,11 @@ function Gallery({ images, title, gradient, status, fallbackWord }) {
   );
 }
 
-function Detail({ p, onBack }) {
+function Detail({ p, onBack, filter = "All" }) {
   if (!p) return null;
   return (
     <section className="dp-view dp-detail">
-      <button className="dp-back" onClick={onBack}><FiArrowLeft aria-hidden="true" /> All work</button>
+      <button className="dp-back" onClick={onBack}><FiArrowLeft aria-hidden="true" /> {filter === "All" ? "All work" : filter}</button>
       <Gallery
         images={p.images || (p.image ? [p.image] : [])}
         title={p.title}
@@ -839,7 +839,7 @@ const CSS = `
 
 /* about — bento grid */
 .dp-about{max-width:960px;display:flex;flex-direction:column;gap:28px}
-.dp-bento{display:grid;grid-template-columns:248px 1fr;gap:16px;align-items:start}
+.dp-bento{display:grid;grid-template-columns:248px 1fr;gap:16px;align-items:stretch}
 .dp-bento-left,.dp-bento-right{display:flex;flex-direction:column;gap:16px;min-width:0}
 .dp-bento-tile{border:1px solid var(--line);background:var(--card);border-radius:16px;padding:20px}
 .dp-bento-bio .dp-p:first-of-type{margin-top:14px}
@@ -858,6 +858,10 @@ const CSS = `
   .dp-acc-body{display:block !important}
   .dp-acc-sum{margin-bottom:14px}
   .dp-acc-sum .dp-sub{margin-bottom:0}
+  /* tools card stretches to align its bottom with core skills */
+  .dp-bento-left .dp-acc-stack{flex:1;display:flex;flex-direction:column}
+  .dp-bento-left .dp-acc-stack .dp-acc-body{display:flex !important;flex-direction:column;flex:1}
+  .dp-bento-left .dp-acc-stack .dp-techgroups{flex:1;justify-content:space-between}
 }
 .dp-about-facts{display:flex;flex-direction:column;gap:13px}
 .dp-fact{display:flex;align-items:flex-start;gap:11px;color:var(--muted);font-size:13px}
@@ -875,10 +879,9 @@ const CSS = `
 .dp-pills{display:flex;flex-wrap:wrap;gap:8px}
 .dp-pill{display:inline-flex;align-items:center;font-family:var(--font-mono),'JetBrains Mono',monospace;font-size:12px;letter-spacing:.01em;color:var(--muted);background:rgba(243,234,234,.04);border:1px solid var(--line-2);border-radius:999px;padding:5px 12px;line-height:1.3;transition:color .18s,border-color .18s,background .18s}
 .dp-pill:hover{color:var(--ink);border-color:rgba(214,95,116,.45);background:rgba(214,95,116,.08)}
-.dp-techgroups{display:flex;flex-direction:column;gap:9px}
-.dp-techcard{padding:14px 16px}
-.dp-techcard .dp-service-h{margin-bottom:0;font-size:15px}
-.dp-techcard-pills{margin-top:10px}
+.dp-techgroups{display:flex;flex-direction:column;gap:12px}
+.dp-techcard .dp-service-h{margin-bottom:0}
+.dp-techcard-pills{margin-top:12px}
 .dp-about-cta{display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap;border-top:1px solid var(--line);padding-top:30px}
 .dp-about-cta-t{font-family:var(--font-display),'Bricolage Grotesque',sans-serif;font-weight:600;font-size:20px}
 .dp-about-cta-btns{display:flex;gap:12px;flex-wrap:wrap}
