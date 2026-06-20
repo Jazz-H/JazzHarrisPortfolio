@@ -897,6 +897,10 @@ const CSS = `
   .dp-h1{font-size:clamp(22px,6.6vw,26px);line-height:1.16}
   .dp-kicker{margin-bottom:10px}
   .dp-statement .dp-status{margin-top:16px}
+  .dp-poster-bottom{flex-direction:column;align-items:stretch;gap:14px}
+  .dp-social{justify-content:center}
+  .dp-divider{display:none}
+  .dp-poster-cta{width:100%}
   .dp-name{font-size:19px}
   .dp-work-head{margin-bottom:18px;gap:12px}
   .dp-detail-h{font-size:clamp(22px,7vw,28px)}
