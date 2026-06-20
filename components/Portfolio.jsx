@@ -29,7 +29,12 @@ const PROJECTS = [
     cat: "Websites", title: "Valora",
     body: "A personal budgeting web app that turns messy finances into clear, calm decisions — track spending, set goals, and see where your money actually goes. Live in public beta as a website, with a native mobile app on the way.",
     tags: ["React", "TypeScript", "JavaScript", "CSS", "HTML"], status: "Beta",
-    image: "/assets/ValoraCover.jpg",
+    image: "/assets/ValoraDashboard.jpg",
+    images: [
+      "/assets/ValoraDashboard.jpg",
+      "/assets/ValoraLanding.jpg",
+      "/assets/ValoraOnboarding.jpg",
+    ],
     live: "https://getvalora.netlify.app",
     company: "[ Your agency name ]", role: "Solo design & development",
     study: {
