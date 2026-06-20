@@ -1,28 +1,21 @@
 import Head from "next/head";
-import Navbar from "../components/Navbar";
-import About from "../components/About";
-import Work from "../components/Work";
-import ContactHeading from "../components/ContactHeading";
-import Footer from "../components/Footer";
-import Header from "../components/Header";
-import { useTheme } from "../lib/useTheme";
+import Portfolio from "../components/Portfolio";
 
 export default function Home() {
-  const { theme, toggleTheme } = useTheme();
-
   return (
     <>
       <Head>
         <title>Jazz Harris — Portfolio</title>
         <meta
           name="description"
-          content="Software engineer and business analyst. Selected projects and contact."
+          content="Software engineer and business analyst. I turn business problems into websites, tools, and dashboards that actually work."
         />
         <meta
           name="viewport"
           content="width=device-width, initial-scale=1, viewport-fit=cover"
         />
         <link rel="icon" href="/assets/faviconjh.ico" />
+        <meta name="theme-color" content="#17131a" />
 
         <meta property="og:type" content="website" />
         <meta property="og:title" content="Jazz Harris — Portfolio" />
@@ -43,14 +36,7 @@ export default function Home() {
         <meta name="twitter:image" content="/assets/og.png" />
       </Head>
 
-      <main className="min-h-screen bg-white text-zinc-900 dark:bg-zinc-950 dark:text-zinc-50">
-        <Navbar theme={theme} toggleTheme={toggleTheme} />
-        <Header />
-        <Work />
-        <About />
-        <ContactHeading />
-        <Footer />
-      </main>
+      <Portfolio />
     </>
   );
 }
