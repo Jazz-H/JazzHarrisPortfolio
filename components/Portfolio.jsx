@@ -47,6 +47,12 @@ const PROJECTS = [
     cat: "Websites", title: "Alamance Community Foundation",
     body: "A community foundation site I designed and built as a freelance project — focused on credibility, clear navigation, and making it easy for donors to engage.",
     tags: ["Squarespace", "HTML", "CSS", "JavaScript"], image: "/assets/AlamanceCover.jpg",
+    images: [
+      "/assets/AlamanceFunds.jpg",
+      "/assets/AlamanceGive.jpg",
+      "/assets/AlamanceScholarships.jpg",
+      "/assets/AlamanceAbout.jpg",
+    ],
     live: "https://www.alamancecommunityfoundation.org",
     company: "Alamance Community Foundation (freelance)", role: "Solo design & development",
     study: {
