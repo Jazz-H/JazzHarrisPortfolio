@@ -1,8 +1,0 @@
-[build]
-  command = "npm run build"
-
-# Official Next.js runtime — serves the app + the /public folder
-# (e.g. /assets/*.jpg) correctly on Netlify. Without this, Netlify
-# guesses the build and static assets under /public can 404.
-[[plugins]]
-  package = "@netlify/plugin-nextjs"

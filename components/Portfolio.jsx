@@ -940,7 +940,7 @@ const CSS = `
 .dp-root.motion-on .dp-view > *:nth-child(8){animation-delay:.46s}
 .dp-root.motion-on .dp-gallery{transform-origin:top center;animation:dpExpand .5s cubic-bezier(.2,.7,.2,1)}
 @keyframes dpRise{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
-@keyframes dpExpand{from{transform:scale(.97)}to{transform:none}}
+@keyframes dpExpand{from{opacity:0;transform:scale(.97)}to{opacity:1;transform:none}}
 @media (prefers-reduced-motion:reduce){.dp-root *{animation:none!important;transition:none!important}}
 
 /* responsive */
