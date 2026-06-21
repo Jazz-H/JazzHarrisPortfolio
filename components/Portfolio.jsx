@@ -21,9 +21,12 @@ import {
   FiCode,
   FiBarChart2,
   FiLayers,
+  FiGlobe,
 } from "react-icons/fi";
 
 const HEADSHOT_SRC = "/jazz-headshot.jpg";
+const FIE_BLOG =
+  "https://fiestudyabroad.wordpress.com/2020/04/13/jazz-wrapping-up-study-abroad-after-covid-19/";
 
 const PROJECTS = [
   {
@@ -523,6 +526,7 @@ function About({ go }) {
                 <div className="dp-fact"><FiMapPin aria-hidden="true" /><div><span className="dp-fact-l">Based in</span><span className="dp-fact-v">Charlotte, NC</span></div></div>
                 <div className="dp-fact"><FiBriefcase aria-hidden="true" /><div><span className="dp-fact-l">By day</span><span className="dp-fact-v">Business Analyst · Coca-Cola Consolidated</span></div></div>
                 <div className="dp-fact"><FiBookOpen aria-hidden="true" /><div><span className="dp-fact-l">Studied</span><span className="dp-fact-v">B.A. Computer Science · Elon University</span></div></div>
+                <div className="dp-fact"><FiGlobe aria-hidden="true" /><div><span className="dp-fact-l">Studied abroad</span><span className="dp-fact-v">Dublin, Ireland · <a className="dp-link" href={FIE_BLOG} target="_blank" rel="noreferrer">FIE</a></span></div></div>
                 <div className="dp-fact"><FiActivity aria-hidden="true" /><div><span className="dp-fact-l">Currently</span><span className="dp-fact-v">Building Valora, a budgeting app</span></div></div>
               </div>
             </div>
@@ -554,7 +558,7 @@ function About({ go }) {
           <div className="dp-bento-tile dp-bento-bio">
             <p className="dp-label">About</p>
             <h2 className="dp-detail-h">Builder by craft, analyst by training.</h2>
-            <p className="dp-p">I studied Computer Science at Elon University, with minors in Art History and Digital Art — a blend that shapes how I work: technical problem-solving with a designer's eye. After a software engineering internship in Dublin, I've worked across both the technical and business sides of software, turning complex ideas into solutions that create real value.</p>
+            <p className="dp-p">I studied Computer Science at Elon University, with minors in Art History and Digital Art — a blend that shapes how I work: technical problem-solving with a designer's eye. I also studied abroad in Dublin through FIE (Foundation for International Education), completing a software-engineering internship and writing about it on the <a className="dp-link" href={FIE_BLOG} target="_blank" rel="noreferrer">program blog</a>. Since then I've worked across both the technical and business sides of software, turning complex ideas into solutions that create real value.</p>
             <p className="dp-p">Today I'm a Business Analyst at Coca-Cola Consolidated, bridging business needs and technology. Outside of work I build websites, custom software, and tools for businesses and entrepreneurs — most recently Valora, a personal finance platform. When I'm not behind a screen: traveling, Legos, and anything with four wheels or two.</p>
           </div>
 
@@ -639,6 +643,8 @@ const CSS = `
 }
 .dp-root *{box-sizing:border-box;margin:0;padding:0}
 .dp-root a{color:inherit;text-decoration:none}
+.dp-link{color:var(--ember);text-decoration:underline;text-underline-offset:3px;text-decoration-thickness:1px;transition:color .18s}
+.dp-link:hover{color:var(--amber)}
 .dp-root button{font:inherit;color:inherit;background:none;border:none;cursor:pointer;text-align:left}
 .dp-root svg{display:inline-block;vertical-align:middle}
 
