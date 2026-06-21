@@ -930,9 +930,16 @@ const CSS = `
 .dp-pill{display:inline-flex;align-items:center;font-family:var(--font-mono),'JetBrains Mono',monospace;font-size:12px;letter-spacing:.01em;color:var(--muted);background:rgba(243,234,234,.04);border:1px solid var(--line-2);border-radius:999px;padding:5px 12px;line-height:1.3;transition:color .18s,border-color .18s,background .18s}
 .dp-pill:hover{color:var(--ink);border-color:rgba(214,95,116,.45);background:rgba(214,95,116,.08)}
 .dp-techgroups{display:flex;flex-direction:column;gap:12px}
-/* tech cards: icon on top, label, then pills below */
+/* tech cards: icon on top, label, then pills below (narrow desktop column) */
 .dp-techcard-icn{display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;border-radius:8px;background:rgba(214,95,116,.12);color:var(--ember);font-size:15px;flex:none;margin-bottom:11px}
 .dp-techcard .dp-service-h{margin-bottom:11px}
+/* wide tools cards (tablet/mobile): icon + label on one row, pills below */
+@media (max-width:1080px){
+  .dp-techcard{display:grid;grid-template-columns:auto 1fr;column-gap:12px;row-gap:12px;align-items:center}
+  .dp-techcard-icn{grid-column:1;grid-row:1;margin-bottom:0}
+  .dp-techcard .dp-service-h{grid-column:2;grid-row:1;margin-bottom:0}
+  .dp-techcard-pills{grid-column:1 / -1;grid-row:2}
+}
 .dp-about-cta{display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap;border-top:1px solid var(--line);padding-top:30px}
 .dp-about-cta-t{font-family:var(--font-display),'Bricolage Grotesque',sans-serif;font-weight:600;font-size:20px}
 .dp-about-cta-btns{display:flex;gap:12px;flex-wrap:wrap}
