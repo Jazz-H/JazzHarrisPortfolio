@@ -917,11 +917,14 @@ const CSS = `
 .dp-service-icn{display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:10px;background:rgba(214,95,116,.12);color:var(--ember);font-size:18px;margin-bottom:13px}
 .dp-service-h{font-family:var(--font-display),'Bricolage Grotesque',sans-serif;font-weight:600;font-size:16px;margin-bottom:7px}
 .dp-service-p{color:var(--muted);font-size:13.5px;line-height:1.5}
-/* core-skill cards: icon left, title to its right, description below */
-.dp-service:not(.dp-techcard){display:grid;grid-template-columns:auto 1fr;column-gap:13px;row-gap:12px;align-items:center}
-.dp-service:not(.dp-techcard) .dp-service-icn{grid-column:1;grid-row:1;margin-bottom:0}
-.dp-service:not(.dp-techcard) .dp-service-h{grid-column:2;grid-row:1;margin-bottom:0}
-.dp-service:not(.dp-techcard) .dp-service-p{grid-column:1 / -1;grid-row:2}
+/* core-skill cards: icon left + title right — only when cards are full-width
+   (mobile/tablet single column). Desktop's narrow 3-up grid keeps icon-on-top. */
+@media (max-width:880px){
+  .dp-service:not(.dp-techcard){display:grid;grid-template-columns:auto 1fr;column-gap:13px;row-gap:12px;align-items:center}
+  .dp-service:not(.dp-techcard) .dp-service-icn{grid-column:1;grid-row:1;margin-bottom:0}
+  .dp-service:not(.dp-techcard) .dp-service-h{grid-column:2;grid-row:1;margin-bottom:0}
+  .dp-service:not(.dp-techcard) .dp-service-p{grid-column:1 / -1;grid-row:2}
+}
 /* pills (stack / skills / card tags) — shared, on-brand */
 .dp-pills{display:flex;flex-wrap:wrap;gap:8px}
 .dp-pill{display:inline-flex;align-items:center;font-family:var(--font-mono),'JetBrains Mono',monospace;font-size:12px;letter-spacing:.01em;color:var(--muted);background:rgba(243,234,234,.04);border:1px solid var(--line-2);border-radius:999px;padding:5px 12px;line-height:1.3;transition:color .18s,border-color .18s,background .18s}
