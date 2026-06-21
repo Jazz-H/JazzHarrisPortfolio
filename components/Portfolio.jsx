@@ -1002,8 +1002,8 @@ const CSS = `
   .dp-poster-rule{display:block;height:1px;background:var(--line)}
   .dp-poster-bottom{display:none}
   .dp-stage{padding:28px 20px}
-  .dp-sticky-bar{display:block;padding:18px 16px;padding-bottom:max(18px,env(safe-area-inset-bottom));border-top:1px solid var(--line-2);background:var(--bg)}
-  .dp-sticky-cta{display:flex;width:100%;align-items:center;justify-content:center;gap:8px;padding:14px 18px;font-family:var(--font-inter),'Inter',system-ui,sans-serif;font-size:15px;font-weight:600;border-radius:12px;border:1px solid rgba(214,95,116,.5);background:var(--ember);color:#2a0f15;transition:background .2s,transform .15s,box-shadow .2s}
+  .dp-sticky-bar{display:flex;justify-content:center;padding:16px;padding-bottom:max(16px,env(safe-area-inset-bottom));border-top:1px solid var(--line-2);background:var(--bg)}
+  .dp-sticky-cta{display:inline-flex;width:auto;align-items:center;justify-content:center;gap:8px;padding:13px 30px;font-family:var(--font-inter),'Inter',system-ui,sans-serif;font-size:15px;font-weight:600;border-radius:12px;border:1px solid rgba(214,95,116,.5);background:var(--ember);color:#2a0f15;transition:background .2s,transform .15s,box-shadow .2s}
   .dp-sticky-cta svg{transition:transform .2s}
   .dp-sticky-cta:hover{background:#e2748a;transform:translateY(-1px);box-shadow:0 8px 22px -10px rgba(214,95,116,.7)}
   .dp-sticky-cta:hover svg{transform:translateX(4px)}
