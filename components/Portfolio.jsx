@@ -791,6 +791,8 @@ const CSS = `
 .dp-social-btn:hover{color:var(--ember);border-color:var(--ember);background:rgba(214,95,116,.07);transform:translateY(-2px)}
 .dp-divider{width:1px;height:28px;background:var(--line-2);flex:none}
 .dp-poster-cta{width:auto;gap:8px}
+.dp-poster-cta svg{transition:transform .2s}
+.dp-poster-cta:hover svg{transform:translateX(4px)}
 
 /* buttons */
 .dp-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font-size:14.5px;font-weight:500;border-radius:11px;padding:11px 18px;border:1px solid transparent;white-space:nowrap;transition:transform .15s,background .2s,border-color .2s,color .2s}
@@ -1001,7 +1003,10 @@ const CSS = `
   .dp-poster-bottom{display:none}
   .dp-stage{padding:28px 20px}
   .dp-sticky-bar{display:block;padding:18px 16px;padding-bottom:max(18px,env(safe-area-inset-bottom));border-top:1px solid var(--line-2);background:var(--bg)}
-  .dp-sticky-cta{display:flex;width:100%;align-items:center;justify-content:center;gap:8px;padding:14px 18px;font-family:var(--font-inter),'Inter',system-ui,sans-serif;font-size:15px;font-weight:600;border-radius:12px;border:1px solid rgba(214,95,116,.5);background:var(--ember);color:#2a0f15}
+  .dp-sticky-cta{display:flex;width:100%;align-items:center;justify-content:center;gap:8px;padding:14px 18px;font-family:var(--font-inter),'Inter',system-ui,sans-serif;font-size:15px;font-weight:600;border-radius:12px;border:1px solid rgba(214,95,116,.5);background:var(--ember);color:#2a0f15;transition:background .2s,transform .15s,box-shadow .2s}
+  .dp-sticky-cta svg{transition:transform .2s}
+  .dp-sticky-cta:hover{background:#e2748a;transform:translateY(-1px);box-shadow:0 8px 22px -10px rgba(214,95,116,.7)}
+  .dp-sticky-cta:hover svg{transform:translateX(4px)}
   .dp-bento{grid-template-columns:1fr}
   .dp-bento-skills{grid-template-columns:1fr}
   .dp-acc{overflow:hidden;border-radius:16px}
