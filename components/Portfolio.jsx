@@ -100,7 +100,12 @@ const PROJECTS = [
   {
     cat: "Data", title: "KPI Management Dashboard",
     body: "An interactive sales-and-profit dashboard published to Tableau Public for quick decision-making.",
-    tags: ["Tableau"], image: "/assets/KPIDashboardLogo.png",
+    tags: ["Tableau"], image: "/assets/KPIDashboard.jpg",
+    images: [
+      "/assets/KPIDashboard.jpg",
+      "/assets/KPIStateNC.jpg",
+      "/assets/KPIStateNY.jpg",
+    ],
     live: "https://public.tableau.com/views/SalesandProfitManagementDashboard_16673599690350/Dashboard1",
     company: "Personal project", role: "Data analyst",
     study: {
