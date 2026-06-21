@@ -925,8 +925,10 @@ const CSS = `
 .dp-pill{display:inline-flex;align-items:center;font-family:var(--font-mono),'JetBrains Mono',monospace;font-size:12px;letter-spacing:.01em;color:var(--muted);background:rgba(243,234,234,.04);border:1px solid var(--line-2);border-radius:999px;padding:5px 12px;line-height:1.3;transition:color .18s,border-color .18s,background .18s}
 .dp-pill:hover{color:var(--ink);border-color:rgba(214,95,116,.45);background:rgba(214,95,116,.08)}
 .dp-techgroups{display:flex;flex-direction:column;gap:12px}
-.dp-techcard .dp-service-h{margin-bottom:0}
-.dp-techcard-pills{margin-top:12px}
+/* tech cards: pills inline on the same row as the label, wrapping as needed */
+.dp-techcard{display:flex;flex-wrap:wrap;align-items:center;column-gap:14px;row-gap:8px}
+.dp-techcard .dp-service-h{margin-bottom:0;flex:none}
+.dp-techcard-pills{display:contents}
 .dp-about-cta{display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap;border-top:1px solid var(--line);padding-top:30px}
 .dp-about-cta-t{font-family:var(--font-display),'Bricolage Grotesque',sans-serif;font-weight:600;font-size:20px}
 .dp-about-cta-btns{display:flex;gap:12px;flex-wrap:wrap}
