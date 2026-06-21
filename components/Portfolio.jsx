@@ -89,7 +89,7 @@ const PROJECTS = [
     cat: "Apps", title: "Real-time Chat App",
     body: "A multi-user chat with authentication and live message sync on Firebase v9.",
     tags: ["React", "Firebase v9", "Tailwind"], image: "/assets/ChatAppLogo.png",
-    live: "https://chata-27aa7.web.app/", code: "https://github.com/Jazz-Harris/ChatApp",
+    code: "https://github.com/Jazz-Harris/ChatApp",
     company: "Personal project", role: "Solo developer",
     study: {
       challenge: "Support multiple people chatting live, with proper sign-in.",
