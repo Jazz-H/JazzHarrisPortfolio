@@ -31,7 +31,7 @@ const FIE_BLOG =
 const PROJECTS = [
   {
     cat: "Websites", title: "Valora",
-    body: "A personal budgeting web app that turns messy finances into clear, calm decisions — track spending, set goals, and see where your money actually goes. Live in public beta as a website, with a native mobile app on the way.",
+    body: "A personal budgeting web app that turns messy finances into clear, calm decisions — track spending, set goals, and see where your money actually goes, privately and without forced bank-account linking. Live in public beta as a website, with a native mobile app on the way.",
     tags: ["React", "TypeScript", "JavaScript", "CSS", "HTML"], status: "Beta",
     image: "/assets/ValoraDashboard.jpg",
     images: [
@@ -42,14 +42,14 @@ const PROJECTS = [
     live: "https://getvalora.netlify.app",
     company: "Independent project", role: "Solo design & development",
     study: {
-      challenge: "Most budgeting tools are noisy and guilt-driven. I wanted something calmer that answers one question fast: where is my money actually going?",
-      approach: "Designed and built the product end to end — flows for tracking spending, setting goals, and seeing category breakdowns at a glance.",
-      outcome: "Live in public beta and gathering real user feedback to shape the roadmap.",
+      challenge: "I was tired of budgeting apps that over-promised and boxed you into rigid UIs — you'd spend ages entering your data only to be frustrated by how it was shown. Most also force you to link a bank account but give you no real control over your own data. I wanted the opposite: a calm, flexible app that answers what actually matters — where is my money going, and what's safe to spend right now — while keeping you in control of your data.",
+      approach: "I designed and built Valora end to end in React and TypeScript — the visual system, data model, and product flows. The home Overview surfaces the essentials at a glance: savings rate, a safe-to-spend number, cash reserve, income, and goal milestones — paired with an AI Insight that recommends your next money move. I leaned on my design background for a calm, legible UI, built a guided first run so new users reach value in minutes, and made it private by default — your financial data stays on your device unless you opt into cloud backup, with no forced bank linking.",
+      outcome: "Live in public beta as a website and gathering real user feedback to shape the roadmap, with a native mobile app next. I took it from concept to a working product — owning the design, UX, and engineering end to end.",
     },
   },
   {
     cat: "Websites", title: "Alamance Community Foundation",
-    body: "A community foundation site I designed and built as a freelance project — focused on credibility, clear navigation, and making it easy for donors to engage.",
+    body: "The website for the Alamance Community Foundation — a Burlington, NC public charity that stewards over $27M in assets and grants roughly $1.9M a year to local nonprofits. I designed and built it as a freelance project, focused on credibility, clear navigation, and making it easy for donors to find programs and give.",
     tags: ["Squarespace", "HTML", "CSS", "JavaScript"], image: "/assets/AlamanceCover.jpg",
     images: [
       "/assets/AlamanceHome.jpg",
@@ -61,9 +61,9 @@ const PROJECTS = [
     live: "https://www.alamancecommunityfoundation.org",
     company: "Alamance Community Foundation (freelance)", role: "Solo design & development",
     study: {
-      challenge: "A community foundation needs to read as credible and make it effortless for donors to find programs and give.",
+      challenge: "A foundation stewarding $27M+ in assets needs a site that instantly reads as credible, makes it effortless for donors to find programs and give, and that a small staff can keep current themselves.",
       approach: "Designed and built the site solo — clear navigation, a trustworthy structure, and content the staff can update themselves.",
-      outcome: "A polished, credible site — clear for donors to navigate and easy for the team to keep current themselves.",
+      outcome: "A polished, credible home for a foundation that distributes roughly $1.9M in grants a year across 30+ local nonprofits — easy for donors to navigate and for the team to maintain.",
     },
   },
   {
@@ -100,7 +100,12 @@ const PROJECTS = [
   {
     cat: "Data", title: "KPI Management Dashboard",
     body: "An interactive sales-and-profit dashboard published to Tableau Public for quick decision-making.",
-    tags: ["Tableau"], image: "/assets/KPIDashboardLogo.png",
+    tags: ["Tableau"], image: "/assets/KPIDashboard.jpg", tall: true,
+    images: [
+      "/assets/KPIDashboard.jpg",
+      "/assets/KPIStateNC.jpg",
+      "/assets/KPIStateNY.jpg",
+    ],
     live: "https://public.tableau.com/views/SalesandProfitManagementDashboard_16673599690350/Dashboard1",
     company: "Personal project", role: "Data analyst",
     study: {
@@ -166,14 +171,14 @@ const CAT_GRADIENT = {
 // numbers like donations raised, users, traffic, or time saved any time).
 const METRICS = {
   "Valora": [
-    { value: "Public beta", label: "Live and in users' hands" },
+    { value: "Privacy-first", label: "Your data stays yours — no forced bank linking" },
     { value: "End-to-end", label: "Designed & built solo" },
     { value: "AI insights", label: "Recommends your next money move" },
   ],
   "Alamance Community Foundation": [
-    { value: "Live", label: "In production today" },
-    { value: "Self-serve", label: "Staff update content themselves" },
-    { value: "Freelance", label: "Delivered solo, end-to-end" },
+    { value: "$27M+", label: "Assets the foundation stewards" },
+    { value: "$1.9M / yr", label: "Granted to 30+ local nonprofits" },
+    { value: "Freelance", label: "Designed & built solo, end-to-end" },
   ],
   "Electric Supplies Online": [
     { value: "Live store", label: "Active e-commerce storefront" },
@@ -386,7 +391,7 @@ function WorkList({ onOpen, filter, setFilter }) {
   );
 }
 
-function Gallery({ images, title, gradient, status, fallbackWord }) {
+function Gallery({ images, title, gradient, status, fallbackWord, tall }) {
   const trackRef = useRef(null);
   const [idx, setIdx] = useState(0);
   const [broken, setBroken] = useState(false);
@@ -406,8 +411,8 @@ function Gallery({ images, title, gradient, status, fallbackWord }) {
   return (
     <div className="dp-gallery-wrap">
       <div
-        className="dp-gallery"
-        style={{ background: gradient }}
+        className={"dp-gallery" + (tall ? " dp-gallery-tall" : "")}
+        style={tall ? undefined : { background: gradient }}
         onKeyDown={(e) => {
           if (e.key === "ArrowRight") go(idx + 1);
           if (e.key === "ArrowLeft") go(idx - 1);
@@ -463,6 +468,7 @@ function Detail({ p, onBack, filter = "All" }) {
         gradient={CAT_GRADIENT[p.cat]}
         status={p.status}
         fallbackWord={p.title.split(" ")[0]}
+        tall={p.tall}
       />
       <div className="dp-detail-head">
         <p className="dp-kicker">{p.cat}</p>
@@ -744,6 +750,9 @@ const CSS = `
 .dp-gallery-track::-webkit-scrollbar{display:none}
 .dp-gallery-slide{flex:0 0 100%;width:100%;height:100%;scroll-snap-align:center}
 .dp-gallery-slide img{width:100%;height:100%;object-fit:cover;object-position:center top;display:block}
+/* tall/portrait screenshots (e.g. full dashboards): show the whole page, matted on the gradient */
+.dp-gallery-tall{height:520px;background:#202023}
+.dp-gallery-tall .dp-gallery-slide img{object-fit:contain;object-position:center;padding:14px}
 .dp-gallery-nav{position:absolute;top:50%;transform:translateY(-50%);width:38px;height:38px;display:flex;align-items:center;justify-content:center;border-radius:50%;background:rgba(8,6,9,.72);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);border:1px solid rgba(242,131,155,.5);color:#ff8fa6;font-size:18px;z-index:2;box-shadow:0 4px 14px -4px rgba(0,0,0,.6);transition:background .2s,border-color .2s,color .2s,opacity .2s}
 .dp-gallery-nav:hover{background:rgba(8,6,9,.92);border-color:#ff8fa6;color:#ffa7bb}
 .dp-gallery-nav:disabled{opacity:0;pointer-events:none}
@@ -947,6 +956,7 @@ const CSS = `
   .dp-detail-overview{font-size:15px}
   .dp-gallery-wrap{margin:14px 0 20px}
   .dp-gallery{height:190px;border-radius:16px}
+  .dp-gallery-tall{height:420px}
   .dp-detail-mono{font-size:36px}
   .dp-meta{gap:18px;padding:16px 0;margin-bottom:18px}
   .dp-stack-row{margin-bottom:20px}
