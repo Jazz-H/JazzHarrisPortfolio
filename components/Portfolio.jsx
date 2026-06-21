@@ -913,6 +913,11 @@ const CSS = `
 .dp-service-icn{display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:10px;background:rgba(214,95,116,.12);color:var(--ember);font-size:18px;margin-bottom:13px}
 .dp-service-h{font-family:var(--font-display),'Bricolage Grotesque',sans-serif;font-weight:600;font-size:16px;margin-bottom:7px}
 .dp-service-p{color:var(--muted);font-size:13.5px;line-height:1.5}
+/* core-skill cards: icon left, title to its right, description below */
+.dp-service:not(.dp-techcard){display:grid;grid-template-columns:auto 1fr;column-gap:13px;row-gap:12px;align-items:center}
+.dp-service:not(.dp-techcard) .dp-service-icn{grid-column:1;grid-row:1;margin-bottom:0}
+.dp-service:not(.dp-techcard) .dp-service-h{grid-column:2;grid-row:1;margin-bottom:0}
+.dp-service:not(.dp-techcard) .dp-service-p{grid-column:1 / -1;grid-row:2}
 /* pills (stack / skills / card tags) — shared, on-brand */
 .dp-pills{display:flex;flex-wrap:wrap;gap:8px}
 .dp-pill{display:inline-flex;align-items:center;font-family:var(--font-mono),'JetBrains Mono',monospace;font-size:12px;letter-spacing:.01em;color:var(--muted);background:rgba(243,234,234,.04);border:1px solid var(--line-2);border-radius:999px;padding:5px 12px;line-height:1.3;transition:color .18s,border-color .18s,background .18s}
@@ -974,6 +979,12 @@ const CSS = `
   .dp-bento-bio{order:2}
   .dp-acc-skills{order:3}
   .dp-acc-stack{order:4}
+  /* facts card: label top-left aligned with the headshot, facts full width below */
+  .dp-bento-facts{display:grid;grid-template-columns:1fr auto;column-gap:16px;row-gap:16px;align-items:start}
+  .dp-facts-main{display:contents}
+  .dp-bento-facts .dp-sub{grid-column:1;grid-row:1;align-self:start;margin:0}
+  .dp-facts-avatar{grid-column:2;grid-row:1;width:104px;height:104px;align-self:start}
+  .dp-about-facts{grid-column:1 / -1;grid-row:2}
 }
 @media (max-width:880px){
   .dp-shell{grid-template-columns:1fr}
@@ -993,12 +1004,6 @@ const CSS = `
   .dp-sticky-cta{display:flex;width:100%;align-items:center;justify-content:center;gap:8px;padding:14px 18px;font-family:var(--font-inter),'Inter',system-ui,sans-serif;font-size:15px;font-weight:600;border-radius:12px;border:1px solid rgba(214,95,116,.5);background:var(--ember);color:#2a0f15}
   .dp-bento{grid-template-columns:1fr}
   .dp-bento-skills{grid-template-columns:1fr}
-  /* facts card: label top-left aligned with the headshot, facts full width below */
-  .dp-bento-facts{display:grid;grid-template-columns:1fr auto;column-gap:16px;row-gap:16px;align-items:start}
-  .dp-facts-main{display:contents}
-  .dp-bento-facts .dp-sub{grid-column:1;grid-row:1;align-self:start;margin:0}
-  .dp-facts-avatar{grid-column:2;grid-row:1;width:104px;height:104px;align-self:start}
-  .dp-about-facts{grid-column:1 / -1;grid-row:2}
   .dp-acc{overflow:hidden;border-radius:16px}
   .dp-acc-skills,.dp-acc-stack{border:1px solid var(--line);background:var(--card)}
   .dp-acc-sum{padding:16px;cursor:pointer;align-items:flex-start}
