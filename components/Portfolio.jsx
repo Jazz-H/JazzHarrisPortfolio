@@ -894,7 +894,9 @@ const CSS = `
   .dp-acc-body{display:block !important}
   .dp-acc-sum{margin-bottom:14px}
   .dp-acc-sum .dp-sub{margin-bottom:0}
-  /* tools card stretches to align its bottom with core skills */
+}
+/* tools card stretches to align its bottom with core skills (2-col layout only) */
+@media (min-width:1081px){
   .dp-bento-left .dp-acc-stack{flex:1;display:flex;flex-direction:column}
   .dp-bento-left .dp-acc-stack .dp-acc-body{display:flex !important;flex-direction:column;flex:1}
   .dp-bento-left .dp-acc-stack .dp-techgroups{flex:1;justify-content:space-between}
@@ -963,9 +965,19 @@ const CSS = `
 @media (prefers-reduced-motion:reduce){.dp-root *{animation:none!important;transition:none!important}}
 
 /* responsive */
-@media (max-width:1080px){.dp-grid{grid-template-columns:1fr}}
+@media (max-width:1080px){
+  .dp-grid{grid-template-columns:1fr}
+  .dp-bento{grid-template-columns:1fr}
+  /* stacked About: flatten the two columns and order so About sits above Tools */
+  .dp-bento-left,.dp-bento-right{display:contents}
+  .dp-bento-facts{order:1}
+  .dp-bento-bio{order:2}
+  .dp-acc-skills{order:3}
+  .dp-acc-stack{order:4}
+}
 @media (max-width:880px){
   .dp-shell{grid-template-columns:1fr}
+  .dp-grid{grid-template-columns:1fr 1fr}
   .dp-poster{position:static;height:auto;flex-direction:column;gap:20px;padding:26px 22px}
   .dp-glow{display:none}
   .dp-h1{font-size:clamp(23px,5.8vw,30px);line-height:1.14}
@@ -980,11 +992,6 @@ const CSS = `
   .dp-sticky-bar{display:block;padding:18px 16px;padding-bottom:max(18px,env(safe-area-inset-bottom));border-top:1px solid var(--line-2);background:var(--bg)}
   .dp-sticky-cta{display:flex;width:100%;align-items:center;justify-content:center;gap:8px;padding:14px 18px;font-family:var(--font-inter),'Inter',system-ui,sans-serif;font-size:15px;font-weight:600;border-radius:12px;border:1px solid rgba(214,95,116,.5);background:var(--ember);color:#2a0f15}
   .dp-bento{grid-template-columns:1fr}
-  .dp-bento-facts{display:grid;grid-template-columns:1fr auto;column-gap:16px;row-gap:14px;align-items:center}
-  .dp-facts-main{display:contents}
-  .dp-bento-facts .dp-sub{grid-column:1;grid-row:1;align-self:center;margin:0}
-  .dp-facts-avatar{grid-column:2;grid-row:1;width:96px;height:96px;align-self:center}
-  .dp-about-facts{grid-column:1 / -1;grid-row:2}
   .dp-bento-skills{grid-template-columns:1fr}
   .dp-acc{overflow:hidden;border-radius:16px}
   .dp-acc-skills,.dp-acc-stack{border:1px solid var(--line);background:var(--card)}
@@ -998,6 +1005,7 @@ const CSS = `
   .dp-about-cta{display:none}
 }
 @media (max-width:560px){
+  .dp-grid{grid-template-columns:1fr}
   .dp-poster{padding:22px 18px;gap:16px}
   .dp-stage{padding:22px 16px}
   .dp-h1{font-size:clamp(22px,6.6vw,26px);line-height:1.16}
