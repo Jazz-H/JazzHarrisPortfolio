@@ -412,7 +412,7 @@ function Gallery({ images, title, gradient, status, fallbackWord, tall }) {
     <div className="dp-gallery-wrap">
       <div
         className={"dp-gallery" + (tall ? " dp-gallery-tall" : "")}
-        style={{ background: gradient }}
+        style={tall ? undefined : { background: gradient }}
         onKeyDown={(e) => {
           if (e.key === "ArrowRight") go(idx + 1);
           if (e.key === "ArrowLeft") go(idx - 1);
@@ -751,7 +751,7 @@ const CSS = `
 .dp-gallery-slide{flex:0 0 100%;width:100%;height:100%;scroll-snap-align:center}
 .dp-gallery-slide img{width:100%;height:100%;object-fit:cover;object-position:center top;display:block}
 /* tall/portrait screenshots (e.g. full dashboards): show the whole page, matted on the gradient */
-.dp-gallery-tall{height:520px}
+.dp-gallery-tall{height:520px;background:#202023}
 .dp-gallery-tall .dp-gallery-slide img{object-fit:contain;object-position:center;padding:14px}
 .dp-gallery-nav{position:absolute;top:50%;transform:translateY(-50%);width:38px;height:38px;display:flex;align-items:center;justify-content:center;border-radius:50%;background:rgba(8,6,9,.72);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);border:1px solid rgba(242,131,155,.5);color:#ff8fa6;font-size:18px;z-index:2;box-shadow:0 4px 14px -4px rgba(0,0,0,.6);transition:background .2s,border-color .2s,color .2s,opacity .2s}
 .dp-gallery-nav:hover{background:rgba(8,6,9,.92);border-color:#ff8fa6;color:#ffa7bb}
