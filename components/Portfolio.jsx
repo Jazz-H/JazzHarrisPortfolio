@@ -100,7 +100,7 @@ const PROJECTS = [
   {
     cat: "Data", title: "KPI Management Dashboard",
     body: "An interactive sales-and-profit dashboard published to Tableau Public for quick decision-making.",
-    tags: ["Tableau"], image: "/assets/KPIDashboard.jpg",
+    tags: ["Tableau"], image: "/assets/KPIDashboard.jpg", tall: true,
     images: [
       "/assets/KPIDashboard.jpg",
       "/assets/KPIStateNC.jpg",
@@ -391,7 +391,7 @@ function WorkList({ onOpen, filter, setFilter }) {
   );
 }
 
-function Gallery({ images, title, gradient, status, fallbackWord }) {
+function Gallery({ images, title, gradient, status, fallbackWord, tall }) {
   const trackRef = useRef(null);
   const [idx, setIdx] = useState(0);
   const [broken, setBroken] = useState(false);
@@ -411,7 +411,7 @@ function Gallery({ images, title, gradient, status, fallbackWord }) {
   return (
     <div className="dp-gallery-wrap">
       <div
-        className="dp-gallery"
+        className={"dp-gallery" + (tall ? " dp-gallery-tall" : "")}
         style={{ background: gradient }}
         onKeyDown={(e) => {
           if (e.key === "ArrowRight") go(idx + 1);
@@ -468,6 +468,7 @@ function Detail({ p, onBack, filter = "All" }) {
         gradient={CAT_GRADIENT[p.cat]}
         status={p.status}
         fallbackWord={p.title.split(" ")[0]}
+        tall={p.tall}
       />
       <div className="dp-detail-head">
         <p className="dp-kicker">{p.cat}</p>
@@ -749,6 +750,9 @@ const CSS = `
 .dp-gallery-track::-webkit-scrollbar{display:none}
 .dp-gallery-slide{flex:0 0 100%;width:100%;height:100%;scroll-snap-align:center}
 .dp-gallery-slide img{width:100%;height:100%;object-fit:cover;object-position:center top;display:block}
+/* tall/portrait screenshots (e.g. full dashboards): show the whole page, matted on the gradient */
+.dp-gallery-tall{height:520px}
+.dp-gallery-tall .dp-gallery-slide img{object-fit:contain;object-position:center;padding:14px}
 .dp-gallery-nav{position:absolute;top:50%;transform:translateY(-50%);width:38px;height:38px;display:flex;align-items:center;justify-content:center;border-radius:50%;background:rgba(8,6,9,.72);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);border:1px solid rgba(242,131,155,.5);color:#ff8fa6;font-size:18px;z-index:2;box-shadow:0 4px 14px -4px rgba(0,0,0,.6);transition:background .2s,border-color .2s,color .2s,opacity .2s}
 .dp-gallery-nav:hover{background:rgba(8,6,9,.92);border-color:#ff8fa6;color:#ffa7bb}
 .dp-gallery-nav:disabled{opacity:0;pointer-events:none}
@@ -952,6 +956,7 @@ const CSS = `
   .dp-detail-overview{font-size:15px}
   .dp-gallery-wrap{margin:14px 0 20px}
   .dp-gallery{height:190px;border-radius:16px}
+  .dp-gallery-tall{height:420px}
   .dp-detail-mono{font-size:36px}
   .dp-meta{gap:18px;padding:16px 0;margin-bottom:18px}
   .dp-stack-row{margin-bottom:20px}
