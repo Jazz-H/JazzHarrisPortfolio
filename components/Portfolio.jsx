@@ -643,8 +643,8 @@ const CSS = `
 }
 .dp-root *{box-sizing:border-box;margin:0;padding:0}
 .dp-root a{color:inherit;text-decoration:none}
-.dp-link{color:var(--ember);text-decoration:underline;text-underline-offset:3px;text-decoration-thickness:1px;transition:color .18s}
-.dp-link:hover{color:var(--amber)}
+.dp-root a.dp-link{color:var(--ember);text-decoration:underline;text-underline-offset:3px;text-decoration-thickness:1px;font-weight:500;transition:color .18s}
+.dp-root a.dp-link:hover{color:var(--amber)}
 .dp-root button{font:inherit;color:inherit;background:none;border:none;cursor:pointer;text-align:left}
 .dp-root svg{display:inline-block;vertical-align:middle}
 
