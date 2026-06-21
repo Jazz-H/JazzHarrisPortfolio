@@ -20,6 +20,7 @@ import {
   FiTrendingUp,
   FiCode,
   FiBarChart2,
+  FiLayers,
 } from "react-icons/fi";
 
 const HEADSHOT_SRC = "/jazz-headshot.jpg";
@@ -208,9 +209,9 @@ const PROJECTS = [
 ];
 const FILTERS = ["All", "Websites", "Apps", "Data"];
 const TECH_GROUPS = [
-  { label: "Languages", items: ["JavaScript", "TypeScript", "Python", "SQL"] },
-  { label: "Frameworks & UI", items: ["React", "Next.js"] },
-  { label: "Data & Power Platform", items: ["Power BI", "Power Apps", "SharePoint"] },
+  { label: "Languages", Icon: FiCode, items: ["JavaScript", "TypeScript", "Python", "SQL"] },
+  { label: "Frameworks & UI", Icon: FiLayers, items: ["React", "Next.js"] },
+  { label: "Data & Power Platform", Icon: FiBarChart2, items: ["Power BI", "Power Apps", "SharePoint"] },
 ];
 const SERVICES = [
   { Icon: FiTrendingUp, title: "Business analysis & strategy", body: "Translating business goals into clear requirements and a roadmap — working between stakeholders, vendors, and engineers to ship the right thing." },
@@ -644,8 +645,9 @@ function About({ go }) {
             </summary>
             <div className="dp-acc-body">
               <div className="dp-techgroups">
-                {TECH_GROUPS.map(({ label, items }) => (
+                {TECH_GROUPS.map(({ label, Icon, items }) => (
                   <div className="dp-service dp-techcard" key={label}>
+                    <span className="dp-techcard-icn"><Icon aria-hidden="true" /></span>
                     <h3 className="dp-service-h">{label}</h3>
                     <div className="dp-pills dp-techcard-pills">{items.map((t) => (<span className="dp-pill" key={t}>{t}</span>))}</div>
                   </div>
@@ -927,6 +929,7 @@ const CSS = `
 .dp-techcard{display:flex;flex-wrap:wrap;align-items:center;column-gap:14px;row-gap:8px}
 .dp-techcard .dp-service-h{margin-bottom:0;flex:none}
 .dp-techcard-pills{display:contents}
+.dp-techcard-icn{display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;border-radius:8px;background:rgba(214,95,116,.12);color:var(--ember);font-size:15px;flex:none}
 .dp-about-cta{display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap;border-top:1px solid var(--line);padding-top:30px}
 .dp-about-cta-t{font-family:var(--font-display),'Bricolage Grotesque',sans-serif;font-weight:600;font-size:20px}
 .dp-about-cta-btns{display:flex;gap:12px;flex-wrap:wrap}
