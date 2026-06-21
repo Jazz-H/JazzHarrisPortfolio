@@ -31,7 +31,7 @@ const FIE_BLOG =
 const PROJECTS = [
   {
     cat: "Websites", title: "Valora",
-    body: "A personal budgeting web app that turns messy finances into clear, calm decisions — track spending, set goals, and see where your money actually goes. Live in public beta as a website, with a native mobile app on the way.",
+    body: "A personal budgeting web app that turns messy finances into clear, calm decisions — track spending, set goals, and see where your money actually goes, privately and without forced bank-account linking. Live in public beta as a website, with a native mobile app on the way.",
     tags: ["React", "TypeScript", "JavaScript", "CSS", "HTML"], status: "Beta",
     image: "/assets/ValoraDashboard.jpg",
     images: [
@@ -42,9 +42,9 @@ const PROJECTS = [
     live: "https://getvalora.netlify.app",
     company: "Independent project", role: "Solo design & development",
     study: {
-      challenge: "Most budgeting tools are noisy and guilt-driven. I wanted something calmer that answers one question fast: where is my money actually going?",
-      approach: "Designed and built the product end to end — flows for tracking spending, setting goals, and seeing category breakdowns at a glance.",
-      outcome: "Live in public beta and gathering real user feedback to shape the roadmap.",
+      challenge: "I was tired of budgeting apps that over-promised and boxed you into rigid UIs — you'd spend ages entering your data only to be frustrated by how it was shown. Most also force you to link a bank account but give you no real control over your own data. I wanted the opposite: a calm, flexible app that answers what actually matters — where is my money going, and what's safe to spend right now — while keeping you in control of your data.",
+      approach: "I designed and built Valora end to end in React and TypeScript — the visual system, data model, and product flows. The home Overview surfaces the essentials at a glance: savings rate, a safe-to-spend number, cash reserve, income, and goal milestones — paired with an AI Insight that recommends your next money move. I leaned on my design background for a calm, legible UI, built a guided first run so new users reach value in minutes, and made it private by default — your financial data stays on your device unless you opt into cloud backup, with no forced bank linking.",
+      outcome: "Live in public beta as a website and gathering real user feedback to shape the roadmap, with a native mobile app next. It's my most complete product to date — taking an idea from blank canvas to a real, usable tool, owning both the design and the engineering.",
     },
   },
   {
@@ -166,7 +166,7 @@ const CAT_GRADIENT = {
 // numbers like donations raised, users, traffic, or time saved any time).
 const METRICS = {
   "Valora": [
-    { value: "Public beta", label: "Live and in users' hands" },
+    { value: "Privacy-first", label: "Your data stays yours — no forced bank linking" },
     { value: "End-to-end", label: "Designed & built solo" },
     { value: "AI insights", label: "Recommends your next money move" },
   ],
