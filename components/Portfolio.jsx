@@ -49,7 +49,7 @@ const PROJECTS = [
   },
   {
     cat: "Websites", title: "Alamance Community Foundation",
-    body: "A community foundation site I designed and built as a freelance project — focused on credibility, clear navigation, and making it easy for donors to engage.",
+    body: "The website for the Alamance Community Foundation — a Burlington, NC public charity that stewards over $27M in assets and grants roughly $1.9M a year to local nonprofits. I designed and built it as a freelance project, focused on credibility, clear navigation, and making it easy for donors to find programs and give.",
     tags: ["Squarespace", "HTML", "CSS", "JavaScript"], image: "/assets/AlamanceCover.jpg",
     images: [
       "/assets/AlamanceHome.jpg",
@@ -61,9 +61,9 @@ const PROJECTS = [
     live: "https://www.alamancecommunityfoundation.org",
     company: "Alamance Community Foundation (freelance)", role: "Solo design & development",
     study: {
-      challenge: "A community foundation needs to read as credible and make it effortless for donors to find programs and give.",
+      challenge: "A foundation stewarding $27M+ in assets needs a site that instantly reads as credible, makes it effortless for donors to find programs and give, and that a small staff can keep current themselves.",
       approach: "Designed and built the site solo — clear navigation, a trustworthy structure, and content the staff can update themselves.",
-      outcome: "A polished, credible site — clear for donors to navigate and easy for the team to keep current themselves.",
+      outcome: "A polished, credible home for a foundation that distributes roughly $1.9M in grants a year across 30+ local nonprofits — easy for donors to navigate and for the team to maintain.",
     },
   },
   {
@@ -171,9 +171,9 @@ const METRICS = {
     { value: "AI insights", label: "Recommends your next money move" },
   ],
   "Alamance Community Foundation": [
-    { value: "Live", label: "In production today" },
-    { value: "Self-serve", label: "Staff update content themselves" },
-    { value: "Freelance", label: "Delivered solo, end-to-end" },
+    { value: "$27M+", label: "Assets the foundation stewards" },
+    { value: "$1.9M / yr", label: "Granted to 30+ local nonprofits" },
+    { value: "Freelance", label: "Designed & built solo, end-to-end" },
   ],
   "Electric Supplies Online": [
     { value: "Live store", label: "Active e-commerce storefront" },
