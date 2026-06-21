@@ -44,7 +44,7 @@ const PROJECTS = [
     study: {
       challenge: "I was tired of budgeting apps that over-promised and boxed you into rigid UIs — you'd spend ages entering your data only to be frustrated by how it was shown. Most also force you to link a bank account but give you no real control over your own data. I wanted the opposite: a calm, flexible app that answers what actually matters — where is my money going, and what's safe to spend right now — while keeping you in control of your data.",
       approach: "I designed and built Valora end to end in React and TypeScript — the visual system, data model, and product flows. The home Overview surfaces the essentials at a glance: savings rate, a safe-to-spend number, cash reserve, income, and goal milestones — paired with an AI Insight that recommends your next money move. I leaned on my design background for a calm, legible UI, built a guided first run so new users reach value in minutes, and made it private by default — your financial data stays on your device unless you opt into cloud backup, with no forced bank linking.",
-      outcome: "Live in public beta as a website and gathering real user feedback to shape the roadmap, with a native mobile app next. It's my most complete product to date — taking an idea from blank canvas to a real, usable tool, owning both the design and the engineering.",
+      outcome: "Live in public beta as a website and gathering real user feedback to shape the roadmap, with a native mobile app next. I took it from concept to a working product — owning the design, UX, and engineering end to end.",
     },
   },
   {
