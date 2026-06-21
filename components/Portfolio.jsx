@@ -993,6 +993,12 @@ const CSS = `
   .dp-sticky-cta{display:flex;width:100%;align-items:center;justify-content:center;gap:8px;padding:14px 18px;font-family:var(--font-inter),'Inter',system-ui,sans-serif;font-size:15px;font-weight:600;border-radius:12px;border:1px solid rgba(214,95,116,.5);background:var(--ember);color:#2a0f15}
   .dp-bento{grid-template-columns:1fr}
   .dp-bento-skills{grid-template-columns:1fr}
+  /* facts card: label top-left aligned with the headshot, facts full width below */
+  .dp-bento-facts{display:grid;grid-template-columns:1fr auto;column-gap:16px;row-gap:16px;align-items:start}
+  .dp-facts-main{display:contents}
+  .dp-bento-facts .dp-sub{grid-column:1;grid-row:1;align-self:start;margin:0}
+  .dp-facts-avatar{grid-column:2;grid-row:1;width:104px;height:104px;align-self:start}
+  .dp-about-facts{grid-column:1 / -1;grid-row:2}
   .dp-acc{overflow:hidden;border-radius:16px}
   .dp-acc-skills,.dp-acc-stack{border:1px solid var(--line);background:var(--card)}
   .dp-acc-sum{padding:16px;cursor:pointer;align-items:flex-start}
