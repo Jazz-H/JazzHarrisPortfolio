@@ -21,9 +21,12 @@ import {
   FiCode,
   FiBarChart2,
   FiLayers,
+  FiGlobe,
 } from "react-icons/fi";
 
 const HEADSHOT_SRC = "/jazz-headshot.jpg";
+const FIE_BLOG =
+  "https://fiestudyabroad.wordpress.com/2020/04/13/jazz-wrapping-up-study-abroad-after-covid-19/";
 
 const PROJECTS = [
   {
@@ -83,47 +86,6 @@ const PROJECTS = [
     },
   },
   {
-    cat: "Websites", title: "FIE Study Abroad",
-    body: "An editorial post documenting a study-abroad experience cut short by COVID-19 — clean reading layout and storytelling.",
-    tags: ["WordPress", "HTML", "CSS", "JavaScript"], image: "/assets/FIECover.jpg",
-    images: [
-      "/assets/FIEAbout.jpg",
-      "/assets/FIEBloggers.jpg",
-      "/assets/FIEPost.jpg",
-    ],
-    live: "https://fiestudyabroad.wordpress.com/2020/04/13/jazz-wrapping-up-study-abroad-after-covid-19/",
-    company: "Foundation for International Education (study-abroad program)", role: "Student & author",
-    study: {
-      challenge: "Tell the honest story of a study-abroad term cut short by COVID-19 in a way that's readable and useful to future students.",
-      approach: "Wrote and laid out an editorial post with a clean reading structure and a clear narrative.",
-      outcome: "A published piece that captures the experience for the program's audience.",
-    },
-  },
-  {
-    cat: "Apps", title: "To-Do App with Quote API",
-    body: "A task tracker with daily-quote integration and full create/read/update/delete, backed by Firebase.",
-    tags: ["React", "Firebase", "Axios", "REST API"], image: "/assets/ToDoAppLogo.png",
-    live: "https://to-do-app-nu-cyan.vercel.app/", code: "https://github.com/Jazz-Harris/To-DoApp",
-    company: "Personal project", role: "Solo developer",
-    study: {
-      challenge: "Build a task tracker that's a little more motivating than a plain checklist.",
-      approach: "Implemented full create/read/update/delete on Firebase and pulled a daily quote from a REST API.",
-      outcome: "A working app that exercises real data persistence and third-party API integration.",
-    },
-  },
-  {
-    cat: "Apps", title: "Weather Application",
-    body: "Search any city and get live conditions through the OpenWeather API, built in Next.js.",
-    tags: ["Next.js", "React", "Tailwind", "OpenWeather API"], image: "/assets/weatherappbg.png",
-    live: "https://weather-app-sand-six-26.vercel.app/", code: "https://github.com/Jazz-Harris/WeatherApp",
-    company: "Personal project", role: "Solo developer",
-    study: {
-      challenge: "Get accurate, current conditions for any city, fast.",
-      approach: "Built a Next.js front end against the OpenWeather API with a clean search-driven flow.",
-      outcome: "Type a city, get live conditions instantly.",
-    },
-  },
-  {
     cat: "Apps", title: "Real-time Chat App",
     body: "A multi-user chat with authentication and live message sync on Firebase v9.",
     tags: ["React", "Firebase v9", "Tailwind"], image: "/assets/ChatAppLogo.png",
@@ -148,18 +110,6 @@ const PROJECTS = [
     },
   },
   {
-    cat: "Data", title: "Data Professional Survey Dashboard",
-    body: "Cleaned, transformed, and visualized survey data into a clear Power BI report.",
-    tags: ["Power BI", "ETL"], image: "/assets/Dataprofessionallogo.png",
-    code: "https://github.com/Jazz-Harris/DataProfessionalSurveyPowerbi",
-    company: "Personal project", role: "Data analyst",
-    study: {
-      challenge: "Make sense of a messy professional-survey dataset.",
-      approach: "Cleaned and transformed the data, then visualized it in a clear Power BI report.",
-      outcome: "An easy-to-read view of who data professionals are and what they earn.",
-    },
-  },
-  {
     cat: "Data", title: "Real Estate Web Scraper",
     body: "A Python scraper that pulls listing data with BeautifulSoup and exports it to CSV.",
     tags: ["Python", "BeautifulSoup"], image: "/assets/webscraplogo.png",
@@ -169,30 +119,6 @@ const PROJECTS = [
       challenge: "Collect real-estate listing data that isn't available as a clean export.",
       approach: "Wrote a Python + BeautifulSoup scraper that pulls listings and exports them to CSV.",
       outcome: "A repeatable way to gather listing data ready for analysis.",
-    },
-  },
-  {
-    cat: "Data", title: "Supermarket Sales EDA",
-    body: "Exploratory data analysis on supermarket sales using the Python data stack.",
-    tags: ["Pandas", "NumPy", "Seaborn"], image: "/assets/EDAProjectLogo.png",
-    code: "https://github.com/Jazz-Harris/EDAWithSuperMarketData",
-    company: "Personal project", role: "Data analyst",
-    study: {
-      challenge: "Understand what actually drives supermarket sales.",
-      approach: "Ran exploratory data analysis with Pandas, NumPy, and Seaborn.",
-      outcome: "Clear visual insight into sales patterns and their drivers.",
-    },
-  },
-  {
-    cat: "Data", title: "U.S. Credit Card Defaults",
-    body: "Prepared, transformed, and modeled credit-card default data into an analytical Power BI report.",
-    tags: ["Power BI", "ETL"], image: "/assets/CreditCardDefaultsLogo.png",
-    code: "https://github.com/Jazz-Harris/CreditCardDefaults-Powerbi",
-    company: "Personal project", role: "Data analyst",
-    study: {
-      challenge: "Explore what correlates with credit-card default risk.",
-      approach: "Prepared, transformed, and modeled the data into an analytical Power BI report.",
-      outcome: "An analytical view of default patterns across customer segments.",
     },
   },
   {
@@ -254,21 +180,6 @@ const METRICS = {
     { value: "Full catalog", label: "Organized for fast discovery" },
     { value: "In-house", label: "Designer / developer role" },
   ],
-  "FIE Study Abroad": [
-    { value: "Published", label: "Featured on the FIE blog" },
-    { value: "Dublin", label: "Study-abroad program" },
-    { value: "Editorial", label: "Written & laid out by me" },
-  ],
-  "To-Do App with Quote API": [
-    { value: "Full CRUD", label: "Create / read / update / delete" },
-    { value: "Live demo", label: "Deployed and shareable" },
-    { value: "REST API", label: "Daily-quote integration" },
-  ],
-  "Weather Application": [
-    { value: "Any city", label: "Live OpenWeather data" },
-    { value: "Live demo", label: "Deployed and shareable" },
-    { value: "Next.js", label: "Fast, modern front end" },
-  ],
   "Real-time Chat App": [
     { value: "Real-time", label: "Instant message sync" },
     { value: "Auth", label: "Secure multi-user sign-in" },
@@ -279,25 +190,10 @@ const METRICS = {
     { value: "Interactive", label: "Filterable sales & profit" },
     { value: "Decision-ready", label: "Built for quick reads" },
   ],
-  "Data Professional Survey Dashboard": [
-    { value: "ETL", label: "Cleaned & transformed" },
-    { value: "Power BI", label: "Clear, shareable report" },
-    { value: "Insightful", label: "Roles & pay at a glance" },
-  ],
   "Real Estate Web Scraper": [
     { value: "Automated", label: "Repeatable data pulls" },
     { value: "CSV export", label: "Analysis-ready output" },
     { value: "Python", label: "BeautifulSoup pipeline" },
-  ],
-  "Supermarket Sales EDA": [
-    { value: "Full EDA", label: "Pandas / NumPy / Seaborn" },
-    { value: "Insights", label: "Sales drivers surfaced" },
-    { value: "Notebook", label: "Documented & reproducible" },
-  ],
-  "U.S. Credit Card Defaults": [
-    { value: "Modeled", label: "Default-risk analysis" },
-    { value: "Power BI", label: "Analytical report" },
-    { value: "Segmented", label: "Patterns by customer group" },
   ],
   "Real-time Stock Market Dashboard": [
     { value: "Real-time", label: "Live REST API feed" },
@@ -630,6 +526,7 @@ function About({ go }) {
                 <div className="dp-fact"><FiMapPin aria-hidden="true" /><div><span className="dp-fact-l">Based in</span><span className="dp-fact-v">Charlotte, NC</span></div></div>
                 <div className="dp-fact"><FiBriefcase aria-hidden="true" /><div><span className="dp-fact-l">By day</span><span className="dp-fact-v">Business Analyst · Coca-Cola Consolidated</span></div></div>
                 <div className="dp-fact"><FiBookOpen aria-hidden="true" /><div><span className="dp-fact-l">Studied</span><span className="dp-fact-v">B.A. Computer Science · Elon University</span></div></div>
+                <div className="dp-fact"><FiGlobe aria-hidden="true" /><div><span className="dp-fact-l">Studied abroad</span><span className="dp-fact-v">Dublin, Ireland · <a className="dp-link" href={FIE_BLOG} target="_blank" rel="noreferrer">FIE</a></span></div></div>
                 <div className="dp-fact"><FiActivity aria-hidden="true" /><div><span className="dp-fact-l">Currently</span><span className="dp-fact-v">Building Valora, a budgeting app</span></div></div>
               </div>
             </div>
@@ -661,7 +558,7 @@ function About({ go }) {
           <div className="dp-bento-tile dp-bento-bio">
             <p className="dp-label">About</p>
             <h2 className="dp-detail-h">Builder by craft, analyst by training.</h2>
-            <p className="dp-p">I studied Computer Science at Elon University, with minors in Art History and Digital Art — a blend that shapes how I work: technical problem-solving with a designer's eye. After a software engineering internship in Dublin, I've worked across both the technical and business sides of software, turning complex ideas into solutions that create real value.</p>
+            <p className="dp-p">I studied Computer Science at Elon University, with minors in Art History and Digital Art — a blend that shapes how I work: technical problem-solving with a designer's eye. I also studied abroad in Dublin through FIE (Foundation for International Education), completing a software-engineering internship and writing about it on the <a className="dp-link" href={FIE_BLOG} target="_blank" rel="noreferrer">program blog</a>. Since then I've worked across both the technical and business sides of software, turning complex ideas into solutions that create real value.</p>
             <p className="dp-p">Today I'm a Business Analyst at Coca-Cola Consolidated, bridging business needs and technology. Outside of work I build websites, custom software, and tools for businesses and entrepreneurs — most recently Valora, a personal finance platform. When I'm not behind a screen: traveling, Legos, and anything with four wheels or two.</p>
           </div>
 
@@ -746,6 +643,8 @@ const CSS = `
 }
 .dp-root *{box-sizing:border-box;margin:0;padding:0}
 .dp-root a{color:inherit;text-decoration:none}
+.dp-root a.dp-link{color:var(--ember);text-decoration:underline;text-underline-offset:3px;text-decoration-thickness:1px;font-weight:500;transition:color .18s}
+.dp-root a.dp-link:hover{color:var(--amber)}
 .dp-root button{font:inherit;color:inherit;background:none;border:none;cursor:pointer;text-align:left}
 .dp-root svg{display:inline-block;vertical-align:middle}
 
