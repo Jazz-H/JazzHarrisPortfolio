@@ -991,7 +991,7 @@ const CSS = `
   .dp-bento-facts{display:grid;grid-template-columns:1fr auto;column-gap:20px;align-items:center}
   .dp-facts-main{grid-column:1;min-width:0}
   .dp-bento-facts .dp-sub{margin-bottom:14px}
-  .dp-facts-avatar{grid-column:2;align-self:center;width:140px;height:140px}
+  .dp-facts-avatar{grid-column:2;align-self:center;width:150px;height:150px}
 }
 @media (max-width:880px){
   .dp-shell{grid-template-columns:1fr}
