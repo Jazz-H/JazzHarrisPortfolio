@@ -20,6 +20,7 @@ import {
   FiTrendingUp,
   FiCode,
   FiBarChart2,
+  FiLayers,
 } from "react-icons/fi";
 
 const HEADSHOT_SRC = "/jazz-headshot.jpg";
@@ -208,9 +209,9 @@ const PROJECTS = [
 ];
 const FILTERS = ["All", "Websites", "Apps", "Data"];
 const TECH_GROUPS = [
-  { label: "Languages", items: ["JavaScript", "TypeScript", "Python", "SQL"] },
-  { label: "Frameworks & UI", items: ["React", "Next.js"] },
-  { label: "Data & Power Platform", items: ["Power BI", "Power Apps", "SharePoint"] },
+  { label: "Languages", Icon: FiCode, items: ["JavaScript", "TypeScript", "Python", "SQL"] },
+  { label: "Frameworks & UI", Icon: FiLayers, items: ["React", "Next.js"] },
+  { label: "Data & Power Platform", Icon: FiBarChart2, items: ["Power BI", "Power Apps", "SharePoint"] },
 ];
 const SERVICES = [
   { Icon: FiTrendingUp, title: "Business analysis & strategy", body: "Translating business goals into clear requirements and a roadmap — working between stakeholders, vendors, and engineers to ship the right thing." },
@@ -644,8 +645,9 @@ function About({ go }) {
             </summary>
             <div className="dp-acc-body">
               <div className="dp-techgroups">
-                {TECH_GROUPS.map(({ label, items }) => (
+                {TECH_GROUPS.map(({ label, Icon, items }) => (
                   <div className="dp-service dp-techcard" key={label}>
+                    <span className="dp-techcard-icn"><Icon aria-hidden="true" /></span>
                     <h3 className="dp-service-h">{label}</h3>
                     <div className="dp-pills dp-techcard-pills">{items.map((t) => (<span className="dp-pill" key={t}>{t}</span>))}</div>
                   </div>
@@ -791,6 +793,8 @@ const CSS = `
 .dp-social-btn:hover{color:var(--ember);border-color:var(--ember);background:rgba(214,95,116,.07);transform:translateY(-2px)}
 .dp-divider{width:1px;height:28px;background:var(--line-2);flex:none}
 .dp-poster-cta{width:auto;gap:8px}
+.dp-poster-cta svg{transition:transform .2s}
+.dp-poster-cta:hover svg{transform:translateX(4px)}
 
 /* buttons */
 .dp-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font-size:14.5px;font-weight:500;border-radius:11px;padding:11px 18px;border:1px solid transparent;white-space:nowrap;transition:transform .15s,background .2s,border-color .2s,color .2s}
@@ -913,18 +917,22 @@ const CSS = `
 .dp-service-icn{display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:10px;background:rgba(214,95,116,.12);color:var(--ember);font-size:18px;margin-bottom:13px}
 .dp-service-h{font-family:var(--font-display),'Bricolage Grotesque',sans-serif;font-weight:600;font-size:16px;margin-bottom:7px}
 .dp-service-p{color:var(--muted);font-size:13.5px;line-height:1.5}
-/* core-skill cards: icon left, title to its right, description below */
-.dp-service:not(.dp-techcard){display:grid;grid-template-columns:auto 1fr;column-gap:13px;row-gap:12px;align-items:center}
-.dp-service:not(.dp-techcard) .dp-service-icn{grid-column:1;grid-row:1;margin-bottom:0}
-.dp-service:not(.dp-techcard) .dp-service-h{grid-column:2;grid-row:1;margin-bottom:0}
-.dp-service:not(.dp-techcard) .dp-service-p{grid-column:1 / -1;grid-row:2}
+/* core-skill cards: icon left + title right — only when cards are full-width
+   (mobile/tablet single column). Desktop's narrow 3-up grid keeps icon-on-top. */
+@media (max-width:880px){
+  .dp-service:not(.dp-techcard){display:grid;grid-template-columns:auto 1fr;column-gap:13px;row-gap:12px;align-items:center}
+  .dp-service:not(.dp-techcard) .dp-service-icn{grid-column:1;grid-row:1;margin-bottom:0}
+  .dp-service:not(.dp-techcard) .dp-service-h{grid-column:2;grid-row:1;margin-bottom:0}
+  .dp-service:not(.dp-techcard) .dp-service-p{grid-column:1 / -1;grid-row:2}
+}
 /* pills (stack / skills / card tags) — shared, on-brand */
 .dp-pills{display:flex;flex-wrap:wrap;gap:8px}
 .dp-pill{display:inline-flex;align-items:center;font-family:var(--font-mono),'JetBrains Mono',monospace;font-size:12px;letter-spacing:.01em;color:var(--muted);background:rgba(243,234,234,.04);border:1px solid var(--line-2);border-radius:999px;padding:5px 12px;line-height:1.3;transition:color .18s,border-color .18s,background .18s}
 .dp-pill:hover{color:var(--ink);border-color:rgba(214,95,116,.45);background:rgba(214,95,116,.08)}
 .dp-techgroups{display:flex;flex-direction:column;gap:12px}
-.dp-techcard .dp-service-h{margin-bottom:0}
-.dp-techcard-pills{margin-top:12px}
+/* tech cards: icon on top, label, then pills below */
+.dp-techcard-icn{display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;border-radius:8px;background:rgba(214,95,116,.12);color:var(--ember);font-size:15px;flex:none;margin-bottom:11px}
+.dp-techcard .dp-service-h{margin-bottom:11px}
 .dp-about-cta{display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap;border-top:1px solid var(--line);padding-top:30px}
 .dp-about-cta-t{font-family:var(--font-display),'Bricolage Grotesque',sans-serif;font-weight:600;font-size:20px}
 .dp-about-cta-btns{display:flex;gap:12px;flex-wrap:wrap}
@@ -979,12 +987,11 @@ const CSS = `
   .dp-bento-bio{order:2}
   .dp-acc-skills{order:3}
   .dp-acc-stack{order:4}
-  /* facts card: label top-left aligned with the headshot, facts full width below */
-  .dp-bento-facts{display:grid;grid-template-columns:1fr auto;column-gap:16px;row-gap:16px;align-items:start}
-  .dp-facts-main{display:contents}
-  .dp-bento-facts .dp-sub{grid-column:1;grid-row:1;align-self:start;margin:0}
-  .dp-facts-avatar{grid-column:2;grid-row:1;width:104px;height:104px;align-self:start}
-  .dp-about-facts{grid-column:1 / -1;grid-row:2}
+  /* facts card: label + facts stacked in a left column (no gap), larger headshot on the right */
+  .dp-bento-facts{display:grid;grid-template-columns:1fr auto;column-gap:20px;align-items:center}
+  .dp-facts-main{grid-column:1;min-width:0}
+  .dp-bento-facts .dp-sub{margin-bottom:14px}
+  .dp-facts-avatar{grid-column:2;align-self:center;width:150px;height:150px}
 }
 @media (max-width:880px){
   .dp-shell{grid-template-columns:1fr}
@@ -1000,8 +1007,11 @@ const CSS = `
   .dp-poster-rule{display:block;height:1px;background:var(--line)}
   .dp-poster-bottom{display:none}
   .dp-stage{padding:28px 20px}
-  .dp-sticky-bar{display:block;padding:18px 16px;padding-bottom:max(18px,env(safe-area-inset-bottom));border-top:1px solid var(--line-2);background:var(--bg)}
-  .dp-sticky-cta{display:flex;width:100%;align-items:center;justify-content:center;gap:8px;padding:14px 18px;font-family:var(--font-inter),'Inter',system-ui,sans-serif;font-size:15px;font-weight:600;border-radius:12px;border:1px solid rgba(214,95,116,.5);background:var(--ember);color:#2a0f15}
+  .dp-sticky-bar{display:flex;justify-content:center;padding:16px;padding-bottom:max(16px,env(safe-area-inset-bottom));border-top:1px solid var(--line-2);background:var(--bg)}
+  .dp-sticky-cta{display:inline-flex;width:auto;align-items:center;justify-content:center;gap:8px;padding:13px 30px;font-family:var(--font-inter),'Inter',system-ui,sans-serif;font-size:15px;font-weight:600;border-radius:12px;border:1px solid rgba(214,95,116,.5);background:var(--ember);color:#2a0f15;transition:background .2s,transform .15s,box-shadow .2s}
+  .dp-sticky-cta svg{transition:transform .2s}
+  .dp-sticky-cta:hover{background:#e2748a;transform:translateY(-1px);box-shadow:0 8px 22px -10px rgba(214,95,116,.7)}
+  .dp-sticky-cta:hover svg{transform:translateX(4px)}
   .dp-bento{grid-template-columns:1fr}
   .dp-bento-skills{grid-template-columns:1fr}
   .dp-acc{overflow:hidden;border-radius:16px}
@@ -1017,6 +1027,8 @@ const CSS = `
 }
 @media (max-width:560px){
   .dp-grid{grid-template-columns:1fr}
+  .dp-facts-avatar{width:108px;height:108px}
+  .dp-bento-facts{column-gap:16px}
   .dp-poster{padding:22px 18px;gap:16px}
   .dp-stage{padding:22px 16px}
   .dp-h1{font-size:clamp(22px,6.6vw,26px);line-height:1.16}
