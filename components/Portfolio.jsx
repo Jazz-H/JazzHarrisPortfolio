@@ -986,12 +986,11 @@ const CSS = `
   .dp-bento-bio{order:2}
   .dp-acc-skills{order:3}
   .dp-acc-stack{order:4}
-  /* facts card: label top-left aligned with the headshot, facts full width below */
-  .dp-bento-facts{display:grid;grid-template-columns:1fr auto;column-gap:16px;row-gap:16px;align-items:start}
-  .dp-facts-main{display:contents}
-  .dp-bento-facts .dp-sub{grid-column:1;grid-row:1;align-self:start;margin:0}
-  .dp-facts-avatar{grid-column:2;grid-row:1;width:104px;height:104px;align-self:start}
-  .dp-about-facts{grid-column:1 / -1;grid-row:2}
+  /* facts card: label + facts stacked in a left column (no gap), larger headshot on the right */
+  .dp-bento-facts{display:grid;grid-template-columns:1fr auto;column-gap:20px;align-items:center}
+  .dp-facts-main{grid-column:1;min-width:0}
+  .dp-bento-facts .dp-sub{margin-bottom:14px}
+  .dp-facts-avatar{grid-column:2;align-self:center;width:140px;height:140px}
 }
 @media (max-width:880px){
   .dp-shell{grid-template-columns:1fr}
@@ -1027,6 +1026,8 @@ const CSS = `
 }
 @media (max-width:560px){
   .dp-grid{grid-template-columns:1fr}
+  .dp-facts-avatar{width:108px;height:108px}
+  .dp-bento-facts{column-gap:16px}
   .dp-poster{padding:22px 18px;gap:16px}
   .dp-stage{padding:22px 16px}
   .dp-h1{font-size:clamp(22px,6.6vw,26px);line-height:1.16}
