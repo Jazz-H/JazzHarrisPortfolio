@@ -87,8 +87,8 @@ const PROJECTS = [
   },
   {
     cat: "Apps", title: "Real-time Chat App",
-    body: "A multi-user chat with authentication, channels, emoji reactions, image sharing, message editing/deletion, and live message sync on Firebase v9.",
-    tags: ["React", "Firebase v9", "Tailwind"], image: "/assets/ChatAppChat.png", tall: true,
+    body: "Real-time chat with channels, DMs, reactions, and image sharing — React + TypeScript + Firebase, shipped through CI/CD.",
+    tags: ["React", "TypeScript", "Vite", "Firebase", "Tailwind", "CI/CD"], image: "/assets/ChatAppChat.png", tall: true,
     images: [
       "/assets/ChatAppSignin.png",
       "/assets/ChatAppReactions.png",
@@ -99,9 +99,9 @@ const PROJECTS = [
     live: "https://chatappdemo-e1b26.web.app/", code: "https://github.com/Jazz-Harris/ChatApp",
     company: "Personal project", role: "Solo developer",
     study: {
-      challenge: "Support multiple people chatting live across channels, with proper sign-in and the message controls people expect — reactions, edits, and deletes.",
-      approach: "Built on Firebase v9 for authentication and real-time sync, with email/password and Google sign-in, public channels, emoji reactions, image sharing, inline editing, message deletion, and typing indicators.",
-      outcome: "A polished, multi-user chat that updates instantly for everyone in the room — reactions, edits, and deletes all sync live.",
+      challenge: "Build a real-time chat people actually want to use — multiple channels and private direct messages, with the controls users expect: reactions, edits, deletes, typing indicators, and image sharing — all without a server to maintain.",
+      approach: "Built on a modern, type-safe stack (React + TypeScript + Vite) with Firebase Auth and Firestore for live sync. Public channels and 1:1 DMs share a single, generalized message layer; Firestore security rules enforce author-only writes, validated payloads, and member-only conversations. Email/password and Google sign-in, in-browser image compression, and a responsive black-and-blue UI round it out. Migrated the original Create React App to Vite + TypeScript and added a CI/CD pipeline with quality gates — shipped continuously through GitHub Actions (lint → tests → type-check) to Firebase Hosting.",
+      outcome: "A fast, polished chat app where messages, reactions, edits, and typing all update instantly for everyone — across public channels and private DMs — on desktop and mobile. Backed by a typed codebase, an automated test suite, and zero-touch deploys.",
     },
   },
   {
@@ -193,9 +193,10 @@ const METRICS = {
     { value: "In-house", label: "Designer / developer role" },
   ],
   "Real-time Chat App": [
-    { value: "Real-time", label: "Instant message sync" },
-    { value: "Auth", label: "Secure multi-user sign-in" },
-    { value: "Live demo", label: "Deployed and shareable" },
+    { value: "Real-time", label: "Messages, reactions & typing sync instantly" },
+    { value: "Channels + DMs", label: "Public rooms and private 1:1 conversations" },
+    { value: "Type-safe & tested", label: "TS strict mode, CI-gated tests, auto-deploy" },
+    { value: "Rescued + rebuilt", label: "From a broken deploy to a modern TS/Vite app" },
   ],
   "KPI Management Dashboard": [
     { value: "Published", label: "Live on Tableau Public" },
@@ -766,8 +767,8 @@ const CSS = `
 .dp-gallery-prev{left:12px}
 .dp-gallery-next{right:12px}
 .dp-gallery-dots{display:flex;justify-content:center;gap:8px;margin-top:12px}
-.dp-gallery-dot{width:7px;height:7px;border-radius:50%;background:rgba(243,234,234,.6);transition:background .2s,transform .2s}
-.dp-gallery-dot:hover{background:rgba(243,234,234,.85)}
+.dp-gallery-dot{width:7px;height:7px;border-radius:50%;background:rgba(243,234,234,.9);box-shadow:0 1px 3px rgba(0,0,0,.55);transition:background .2s,transform .2s}
+.dp-gallery-dot:hover{background:#fff}
 .dp-gallery-dot.is-active{background:var(--ember);transform:scale(1.35)}
 .dp-detail-head{margin-bottom:14px}
 .dp-detail-h{font-family:var(--font-display),'Bricolage Grotesque',sans-serif;font-weight:700;font-size:clamp(26px,3.4vw,40px);letter-spacing:-.02em;line-height:1.06;margin-top:8px}
@@ -785,7 +786,7 @@ const CSS = `
 .dp-study-row{display:grid;grid-template-columns:118px 1fr;gap:18px;align-items:start}
 .dp-study-l{font-family:var(--font-mono),'JetBrains Mono',monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--ember);padding-top:3px}
 .dp-study-p{color:var(--muted);font-size:15.5px;line-height:1.6;max-width:60ch}
-.dp-metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.dp-metrics{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px}
 .dp-metric{position:relative;border:1px solid var(--line);background:var(--card);border-radius:12px;padding:15px 16px 15px 19px;overflow:hidden;transition:border-color .2s,transform .2s,box-shadow .2s}
 .dp-metric::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--ember);opacity:.85}
 .dp-metric:hover{border-color:rgba(214,95,116,.4);transform:translateY(-2px);box-shadow:0 14px 30px -22px rgba(0,0,0,.9)}
