@@ -109,7 +109,7 @@ const PROJECTS = [
     body: "Clearcast is a weather app that answers what you can actually do today. Instead of just showing the temperature, it reads the forecast and writes a plain, friendly recommendation: what to wear, which activities are worth it, and the best window to get out. Built in React and TypeScript on a serverless Claude backend, installable and ready to work offline. Live in public beta.",
     tags: ["React", "TypeScript", "Claude API", "PWA"],
     status: "Beta",
-    live: "https://useclearcast.netlify.app/",
+    live: "https://useclearcast.netlify.app/", code: "https://github.com/Jazz-H/WeatherApp",
     company: "Independent project", role: "Solo design & development",
     study: {
       challenge: "I wanted Clearcast to be a weather app that's actually useful, one that tells you what to do and not just the temperature. The hard part is turning a noisy hourly forecast into a single confident recommendation, fast and cheap enough to run on every visit, without leaking an API key to the browser.",
