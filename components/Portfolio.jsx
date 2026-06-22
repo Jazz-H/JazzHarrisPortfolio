@@ -105,7 +105,19 @@ const PROJECTS = [
     },
   },
   {
-    cat: "Power Apps & Data", title: "KPI Management Dashboard",
+    cat: "Power Apps & Data", kind: "Power Apps", title: "Activity Tracker",
+    body: "An internal activity-tracking app for an enterprise team at Coca-Cola Consolidated — replacing a manual, spreadsheet-driven process with a Power Apps front end on SharePoint, so the team logs and reports work in minutes instead of hours. In active development.",
+    tags: ["Power Apps", "SharePoint", "Power Automate", "Business Analysis"],
+    status: "Coming soon",
+    company: "Coca-Cola Consolidated", role: "IT Business Analyst II",
+    study: {
+      challenge: "A team was tracking activity manually across spreadsheets and email — slow, error-prone, and hard to report on. As the BA, I own turning that pain into a tool people will actually use.",
+      approach: "Gathering requirements from the team and stakeholders, modeling the data in SharePoint, and building a Power Apps front end (with Power Automate for notifications and approvals) — designed around the real workflow, not the org chart.",
+      outcome: "In development — full results, metrics, and screenshots coming soon.",
+    },
+  },
+  {
+    cat: "Power Apps & Data", kind: "Data", title: "KPI Management Dashboard",
     body: "An interactive sales-and-profit dashboard published to Tableau Public for quick decision-making.",
     tags: ["Tableau"], image: "/assets/KPIDashboard.jpg", tall: true,
     images: [
@@ -122,19 +134,7 @@ const PROJECTS = [
     },
   },
   {
-    cat: "Power Apps & Data", title: "Real Estate Web Scraper",
-    body: "A Python scraper that pulls listing data with BeautifulSoup and exports it to CSV.",
-    tags: ["Python", "BeautifulSoup"], image: "/assets/webscraplogo.png",
-    code: "https://github.com/Jazz-Harris/WebScrapingRealEstateData",
-    company: "Personal project", role: "Developer",
-    study: {
-      challenge: "Collect real-estate listing data that isn't available as a clean export.",
-      approach: "Wrote a Python + BeautifulSoup scraper that pulls listings and exports them to CSV.",
-      outcome: "A repeatable way to gather listing data ready for analysis.",
-    },
-  },
-  {
-    cat: "Power Apps & Data", title: "Real-time Stock Market Dashboard",
+    cat: "Power Apps & Data", kind: "Data", title: "Real-time Stock Market Dashboard",
     body: "Live market data pulled from a REST API into an interactive dashboard.",
     tags: ["Power BI", "REST API"], image: "/assets/RTSMDLogo.png",
     company: "Personal project", role: "Data analyst",
@@ -145,15 +145,15 @@ const PROJECTS = [
     },
   },
   {
-    cat: "Power Apps & Data", title: "Activity Tracker",
-    body: "An internal activity-tracking app for an enterprise team at Coca-Cola Consolidated — replacing a manual, spreadsheet-driven process with a Power Apps front end on SharePoint, so the team logs and reports work in minutes instead of hours. In active development.",
-    tags: ["Power Apps", "SharePoint", "Power Automate", "Business Analysis"],
-    status: "Coming soon",
-    company: "Coca-Cola Consolidated", role: "IT Business Analyst II",
+    cat: "Power Apps & Data", kind: "Data", title: "Real Estate Web Scraper",
+    body: "A Python scraper that pulls listing data with BeautifulSoup and exports it to CSV.",
+    tags: ["Python", "BeautifulSoup"], image: "/assets/webscraplogo.png",
+    code: "https://github.com/Jazz-Harris/WebScrapingRealEstateData",
+    company: "Personal project", role: "Developer",
     study: {
-      challenge: "A team was tracking activity manually across spreadsheets and email — slow, error-prone, and hard to report on. As the BA, I own turning that pain into a tool people will actually use.",
-      approach: "Gathering requirements from the team and stakeholders, modeling the data in SharePoint, and building a Power Apps front end (with Power Automate for notifications and approvals) — designed around the real workflow, not the org chart.",
-      outcome: "In development — full results, metrics, and screenshots coming soon.",
+      challenge: "Collect real-estate listing data that isn't available as a clean export.",
+      approach: "Wrote a Python + BeautifulSoup scraper that pulls listings and exports them to CSV.",
+      outcome: "A repeatable way to gather listing data ready for analysis.",
     },
   },
 ];
@@ -374,7 +374,7 @@ function Thumb({ p }) {
         <span className="dp-thumb-mono">{p.title.split(" ")[0]}</span>
       )}
       <span className="dp-thumb-scrim" aria-hidden="true" />
-      <span className="dp-thumb-cat">{p.cat}</span>
+      <span className="dp-thumb-cat">{p.kind || p.cat}</span>
       {p.status && <span className="dp-badge">{p.status}</span>}
     </span>
   );
@@ -386,12 +386,14 @@ function WorkList({ onOpen, filter, setFilter }) {
     <section className="dp-view">
       <div className="dp-work-head">
         <p className="dp-label">Selected work · {shown.length}</p>
-        <div className="dp-filters" role="tablist" aria-label="Filter work">
-          {FILTERS.map((f) => (
-            <button key={f} className={"dp-filter" + (filter === f ? " is-active" : "")} onClick={() => setFilter(f)} aria-pressed={filter === f}>
-              {f}
-            </button>
-          ))}
+        <div className="dp-filters-wrap">
+          <div className="dp-filters" role="tablist" aria-label="Filter work">
+            {FILTERS.map((f) => (
+              <button key={f} className={"dp-filter" + (filter === f ? " is-active" : "")} onClick={() => setFilter(f)} aria-pressed={filter === f}>
+                {f}
+              </button>
+            ))}
+          </div>
         </div>
       </div>
       <div className="dp-grid">
@@ -493,7 +495,7 @@ function Detail({ p, onBack, filter = "All" }) {
         tall={p.tall}
       />
       <div className="dp-detail-head">
-        <p className="dp-kicker">{p.cat}</p>
+        <p className="dp-kicker">{p.kind || p.cat}</p>
         <h2 className="dp-detail-h">{p.title}</h2>
       </div>
       <p className="dp-detail-overview">{p.body}</p>
@@ -736,6 +738,7 @@ const CSS = `
 .dp-label{font-family:var(--font-mono),'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--amber)}
 .dp-sub{font-family:var(--font-mono),'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--faint);margin-bottom:18px}
 .dp-work-head{display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap;margin-bottom:26px}
+.dp-filters-wrap{display:contents}
 .dp-filters{display:flex;gap:8px;flex-wrap:wrap}
 .dp-filter{font-family:var(--font-mono),'JetBrains Mono',monospace;font-size:13px;color:var(--muted);border:1px solid var(--line);border-radius:999px;padding:7px 15px;transition:all .18s}
 .dp-filter:hover{color:var(--ink);border-color:var(--line-2)}
@@ -933,9 +936,13 @@ const CSS = `
 @media (max-width:880px){
   .dp-root{overflow-x:clip}
   .dp-shell{grid-template-columns:1fr;min-width:0;max-width:100%;overflow-x:clip}
-  .dp-work-head{flex-direction:column;align-items:flex-start;gap:14px}
-  .dp-filters{width:100%;max-width:100%;flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch;padding-bottom:2px;-webkit-mask-image:linear-gradient(to right,#000 calc(100% - 32px),transparent);mask-image:linear-gradient(to right,#000 calc(100% - 32px),transparent)}
-  .dp-filters::-webkit-scrollbar{display:none}
+  .dp-work-head{flex-direction:column;align-items:flex-start;gap:14px;margin-bottom:26px}
+  .dp-filters-wrap{display:block;position:relative;width:100%;max-width:100%;min-width:0}
+  .dp-filters-wrap::after{content:"";position:absolute;top:0;right:0;bottom:12px;width:34px;background:linear-gradient(to right,transparent,var(--bg));pointer-events:none}
+  .dp-filters{width:100%;max-width:100%;flex-wrap:nowrap;overflow-x:auto;scrollbar-width:thin;scrollbar-color:var(--line-2) rgba(243,234,234,.06);-webkit-overflow-scrolling:touch;padding-bottom:8px}
+  .dp-filters::-webkit-scrollbar{height:4px}
+  .dp-filters::-webkit-scrollbar-track{background:rgba(243,234,234,.06);border-radius:999px}
+  .dp-filters::-webkit-scrollbar-thumb{background:var(--line-2);border-radius:999px}
   .dp-filter{flex:0 0 auto;white-space:nowrap}
   .dp-grid{grid-template-columns:1fr 1fr}
   .dp-poster{position:static;height:auto;flex-direction:column;gap:20px;padding:26px 22px}
@@ -977,7 +984,7 @@ const CSS = `
   .dp-kicker{margin-bottom:10px}
   .dp-statement .dp-status{margin-top:16px}
   .dp-name{font-size:19px}
-  .dp-work-head{margin-bottom:18px;gap:12px}
+  .dp-work-head{margin-bottom:24px;gap:12px}
   .dp-detail-h{font-size:clamp(22px,7vw,28px)}
   .dp-cta-h{font-size:clamp(25px,8vw,32px)}
   .dp-detail-overview{font-size:15px}
