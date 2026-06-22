@@ -105,7 +105,7 @@ const PROJECTS = [
     },
   },
   {
-    cat: "Data", title: "KPI Management Dashboard",
+    cat: "Power Apps & Data", title: "KPI Management Dashboard",
     body: "An interactive sales-and-profit dashboard published to Tableau Public for quick decision-making.",
     tags: ["Tableau"], image: "/assets/KPIDashboard.jpg", tall: true,
     images: [
@@ -122,7 +122,7 @@ const PROJECTS = [
     },
   },
   {
-    cat: "Data", title: "Real Estate Web Scraper",
+    cat: "Power Apps & Data", title: "Real Estate Web Scraper",
     body: "A Python scraper that pulls listing data with BeautifulSoup and exports it to CSV.",
     tags: ["Python", "BeautifulSoup"], image: "/assets/webscraplogo.png",
     code: "https://github.com/Jazz-Harris/WebScrapingRealEstateData",
@@ -134,7 +134,7 @@ const PROJECTS = [
     },
   },
   {
-    cat: "Data", title: "Real-time Stock Market Dashboard",
+    cat: "Power Apps & Data", title: "Real-time Stock Market Dashboard",
     body: "Live market data pulled from a REST API into an interactive dashboard.",
     tags: ["Power BI", "REST API"], image: "/assets/RTSMDLogo.png",
     company: "Personal project", role: "Data analyst",
@@ -147,7 +147,7 @@ const PROJECTS = [
 ];
 // Only show category filters that actually have projects (e.g. "Apps" hides
 // when empty, and reappears automatically once an Apps project is added).
-const CAT_ORDER = ["Websites", "Apps", "Data"];
+const CAT_ORDER = ["Websites", "Apps", "Power Apps & Data"];
 const FILTERS = ["All", ...CAT_ORDER.filter((c) => PROJECTS.some((p) => p.cat === c))];
 const TECH_GROUPS = [
   { label: "Languages", Icon: FiCode, items: ["JavaScript", "TypeScript", "Python", "SQL"] },
@@ -175,7 +175,7 @@ const SOCIALS = [
 const CAT_GRADIENT = {
   Websites: "linear-gradient(135deg, #e98a99 0%, #9c4a60 100%)",
   Apps: "linear-gradient(135deg, #d77fa6 0%, #7d3f63 100%)",
-  Data: "linear-gradient(135deg, #b9697f 0%, #5e3450 100%)",
+  "Power Apps & Data": "linear-gradient(135deg, #b9697f 0%, #5e3450 100%)",
 };
 // Result highlights per project (qualitative stat-style — swap in real
 // numbers like donations raised, users, traffic, or time saved any time).
