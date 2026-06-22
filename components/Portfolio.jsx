@@ -86,9 +86,9 @@ const PROJECTS = [
     },
   },
   {
-    cat: "Apps", title: "Real-time Chat App",
-    body: "Real-time chat with channels, DMs, reactions, and image sharing — React + TypeScript + Firebase, shipped through CI/CD.",
-    tags: ["React", "TypeScript", "Vite", "Firebase", "Tailwind", "CI/CD"], image: "/assets/ChatAppChat.png", tall: true,
+    cat: "Websites", title: "Chat App",
+    body: "A real-time chat app that turns a blank channel into a live conversation — message across public rooms and private DMs, react, edit, and share images, with typing indicators as people reply. Built in React and TypeScript on Firebase, live on the web and synced instantly for everyone in the room.",
+    tags: ["React", "TypeScript", "Firebase", "Tailwind"], image: "/assets/ChatAppChat.png", tall: true,
     images: [
       "/assets/ChatAppSignin.png",
       "/assets/ChatAppReactions.png",
@@ -96,12 +96,12 @@ const PROJECTS = [
       "/assets/ChatAppImage.png",
       "/assets/ChatAppDelete.png",
     ],
-    live: "https://chatappdemo-e1b26.web.app/", code: "https://github.com/Jazz-Harris/ChatApp",
-    company: "Personal project", role: "Solo developer",
+    live: "https://chatappdemo-e1b26.web.app", code: "https://github.com/Jazz-H/Chat-Application",
+    company: "Independent project", role: "Solo design & development",
     study: {
-      challenge: "Build a real-time chat people actually want to use — multiple channels and private direct messages, with the controls users expect: reactions, edits, deletes, typing indicators, and image sharing — all without a server to maintain.",
-      approach: "Built on a modern, type-safe stack (React + TypeScript + Vite) with Firebase Auth and Firestore for live sync. Public channels and 1:1 DMs share a single, generalized message layer; Firestore security rules enforce author-only writes, validated payloads, and member-only conversations. Email/password and Google sign-in, in-browser image compression, and a responsive black-and-blue UI round it out. Migrated the original Create React App to Vite + TypeScript and added a CI/CD pipeline with quality gates — shipped continuously through GitHub Actions (lint → tests → type-check) to Firebase Hosting.",
-      outcome: "A fast, polished chat app where messages, reactions, edits, and typing all update instantly for everyone — across public channels and private DMs — on desktop and mobile. Backed by a typed codebase, an automated test suite, and zero-touch deploys.",
+      challenge: "I wanted a chat app that felt instant and complete — not a toy demo, but the things people actually expect: channels, private DMs, reactions, editing, image sharing, and live typing. The catch was doing it without a backend to babysit, while keeping data secure and the UI fast on a phone.",
+      approach: "I built it end to end in React and TypeScript on Firebase — auth, the real-time data model, and the UI. Public channels and private DMs share one message layer, so every feature works in both, and Firestore security rules keep writes author-only and conversations private to their members. Along the way I migrated the codebase from Create React App to Vite, added a typed test suite, and set up a CI/CD pipeline that lints, tests, and deploys on every push.",
+      outcome: "A polished, fully-featured chat where messages, reactions, edits, and typing sync live for everyone — across channels and DMs, on desktop and mobile. I took it from a broken deploy to a modern, type-safe app, owning the architecture, UI, and delivery end to end.",
     },
   },
   {
@@ -192,11 +192,10 @@ const METRICS = {
     { value: "Full catalog", label: "Organized for fast discovery" },
     { value: "In-house", label: "Designer / developer role" },
   ],
-  "Real-time Chat App": [
+  "Chat App": [
     { value: "Real-time", label: "Messages, reactions & typing sync instantly" },
-    { value: "Channels + DMs", label: "Public rooms and private 1:1 conversations" },
-    { value: "Type-safe & tested", label: "TS strict mode, CI-gated tests, auto-deploy" },
-    { value: "Rescued + rebuilt", label: "From a broken deploy to a modern TS/Vite app" },
+    { value: "Channels + DMs", label: "Public rooms and private conversations" },
+    { value: "Type-safe & tested", label: "TS strict, CI-gated tests, auto-deploy" },
   ],
   "KPI Management Dashboard": [
     { value: "Published", label: "Live on Tableau Public" },
