@@ -90,10 +90,10 @@ const PROJECTS = [
     body: "A multi-user chat with authentication, channels, emoji reactions, image sharing, message editing/deletion, and live message sync on Firebase v9.",
     tags: ["React", "Firebase v9", "Tailwind"], image: "/assets/ChatAppChat.png",
     images: [
+      "/assets/ChatAppSignin.png",
       "/assets/ChatAppReactions.png",
       "/assets/ChatAppUpload.png",
       "/assets/ChatAppImage.png",
-      "/assets/ChatAppSignin.png",
       "/assets/ChatAppDelete.png",
     ],
     live: "https://chatappdemo-e1b26.web.app/", code: "https://github.com/Jazz-Harris/ChatApp",
