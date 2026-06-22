@@ -105,13 +105,13 @@ const PROJECTS = [
     },
   },
   {
-    cat: "Apps", title: "Weather AI",
-    body: "A weather app that answers what you can actually do today — AI turns the raw forecast into a plain-English recommendation: what to wear, which activities are worth it, and the best window. Built in React and TypeScript on a serverless Claude backend, installable and offline-ready. In active development.",
+    cat: "Apps", title: "Clearcast",
+    body: "Clearcast is a weather app that answers what you can actually do today — it turns the raw forecast into a plain-English, AI-written recommendation: what to wear, which activities are worth it, and the best window. Built in React and TypeScript on a serverless Claude backend, installable and offline-ready. In active development.",
     tags: ["React", "TypeScript", "Claude API", "PWA"],
     status: "Coming soon",
     company: "Independent project", role: "Solo design & development",
     study: {
-      challenge: "I wanted a weather app that's actually useful — one that tells you what to do, not just the temperature. The hard part is turning a noisy hourly forecast into a single confident recommendation, fast and cheap enough to run on every visit, without leaking an API key to the browser.",
+      challenge: "I wanted Clearcast to be a weather app that's actually useful — one that tells you what to do, not just the temperature. The hard part is turning a noisy hourly forecast into a single confident recommendation, fast and cheap enough to run on every visit, without leaking an API key to the browser.",
       approach: "Building it in React and TypeScript on Vite — pulling forecasts from Open-Meteo and sending them to a serverless function that calls Claude with a strict structured-output schema, so the UI always gets clean, typed data. Installable, offline-first PWA, shipped through a CI/CD pipeline.",
       outcome: "In development — full results, screenshots, and a live demo coming soon.",
     },
