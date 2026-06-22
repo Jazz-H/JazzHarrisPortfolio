@@ -88,7 +88,7 @@ const PROJECTS = [
   {
     cat: "Apps", title: "Real-time Chat App",
     body: "A multi-user chat with authentication, channels, emoji reactions, message editing/deletion, and live message sync on Firebase v9.",
-    tags: ["React", "Firebase v9", "Tailwind"], image: "/assets/ChatAppLogo.png",
+    tags: ["React", "Firebase v9", "Tailwind"], image: "/assets/ChatAppChat.png",
     images: [
       "/assets/ChatAppChat.png",
       "/assets/ChatAppReactions.png",
