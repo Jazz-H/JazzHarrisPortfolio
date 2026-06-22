@@ -931,7 +931,12 @@ const CSS = `
   .dp-facts-avatar{grid-column:2;grid-row:1;align-self:center;width:150px;height:150px}
 }
 @media (max-width:880px){
-  .dp-shell{grid-template-columns:1fr}
+  .dp-root{overflow-x:clip}
+  .dp-shell{grid-template-columns:1fr;min-width:0;max-width:100%;overflow-x:clip}
+  .dp-work-head{flex-direction:column;align-items:flex-start;gap:14px}
+  .dp-filters{width:100%;max-width:100%;flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch;padding-bottom:2px;-webkit-mask-image:linear-gradient(to right,#000 calc(100% - 32px),transparent);mask-image:linear-gradient(to right,#000 calc(100% - 32px),transparent)}
+  .dp-filters::-webkit-scrollbar{display:none}
+  .dp-filter{flex:0 0 auto;white-space:nowrap}
   .dp-grid{grid-template-columns:1fr 1fr}
   .dp-poster{position:static;height:auto;flex-direction:column;gap:20px;padding:26px 22px}
   .dp-glow{display:none}
@@ -943,7 +948,7 @@ const CSS = `
   .dp-nav-label{font-size:15.5px}
   .dp-poster-rule{display:block;height:1px;background:var(--line)}
   .dp-poster-bottom{display:none}
-  .dp-stage{padding:28px 20px}
+  .dp-stage{padding:28px 20px;min-width:0}
   .dp-sticky-bar{display:flex;justify-content:center;padding:16px;padding-bottom:max(16px,env(safe-area-inset-bottom));border-top:1px solid var(--line-2);background:var(--bg)}
   .dp-sticky-cta{display:inline-flex;width:auto;align-items:center;justify-content:center;gap:8px;padding:13px 30px;font-family:var(--font-inter),'Inter',system-ui,sans-serif;font-size:15px;font-weight:600;border-radius:12px;border:1px solid rgba(214,95,116,.5);background:var(--ember);color:#2a0f15;transition:background .2s,transform .15s,box-shadow .2s}
   .dp-sticky-cta svg{transition:transform .2s}
@@ -973,9 +978,6 @@ const CSS = `
   .dp-statement .dp-status{margin-top:16px}
   .dp-name{font-size:19px}
   .dp-work-head{margin-bottom:18px;gap:12px}
-  .dp-filters{flex:1 1 100%;min-width:0;max-width:100%;flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch;padding-bottom:2px}
-  .dp-filters::-webkit-scrollbar{display:none}
-  .dp-filter{flex:0 0 auto;white-space:nowrap}
   .dp-detail-h{font-size:clamp(22px,7vw,28px)}
   .dp-cta-h{font-size:clamp(25px,8vw,32px)}
   .dp-detail-overview{font-size:15px}
