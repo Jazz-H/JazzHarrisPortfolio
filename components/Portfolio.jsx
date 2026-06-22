@@ -766,9 +766,9 @@ const CSS = `
 .dp-gallery-prev{left:12px}
 .dp-gallery-next{right:12px}
 .dp-gallery-dots{display:flex;justify-content:center;gap:8px;margin-top:12px}
-.dp-gallery-dot{width:7px;height:7px;border-radius:50%;background:rgba(243,234,234,.9);box-shadow:0 1px 3px rgba(0,0,0,.55);transition:background .2s,transform .2s}
-.dp-gallery-dot:hover{background:#fff}
-.dp-gallery-dot.is-active{background:var(--ember);transform:scale(1.35)}
+.dp-gallery-dots .dp-gallery-dot{width:7px;height:7px;border-radius:50%;background:rgba(243,234,234,.9);box-shadow:0 1px 3px rgba(0,0,0,.55);transition:background .2s,transform .2s}
+.dp-gallery-dots .dp-gallery-dot:hover{background:#fff}
+.dp-gallery-dots .dp-gallery-dot.is-active{background:var(--ember);transform:scale(1.35)}
 .dp-detail-head{margin-bottom:14px}
 .dp-detail-h{font-family:var(--font-display),'Bricolage Grotesque',sans-serif;font-weight:700;font-size:clamp(26px,3.4vw,40px);letter-spacing:-.02em;line-height:1.06;margin-top:8px}
 .dp-detail-overview{color:var(--muted);font-size:17px;max-width:62ch;margin-bottom:26px}
