@@ -31,7 +31,7 @@ const FIE_BLOG =
 const PROJECTS = [
   {
     cat: "Websites", title: "Valora",
-    body: "A personal budgeting web app that turns messy finances into clear, calm decisions — track spending, set goals, and see where your money actually goes, privately and without forced bank-account linking. Live in public beta as a website, with a native mobile app on the way.",
+    body: "A personal budgeting web app that turns messy finances into clear, calm decisions. Track spending, set goals, and see where your money actually goes, privately and without forced bank linking. Live in public beta as a website, with a native mobile app on the way.",
     tags: ["React", "TypeScript", "JavaScript", "CSS", "HTML"], status: "Beta",
     image: "/assets/ValoraDashboard.jpg",
     images: [
@@ -42,14 +42,14 @@ const PROJECTS = [
     live: "https://getvalora.netlify.app",
     company: "Independent project", role: "Solo design & development",
     study: {
-      challenge: "I was tired of budgeting apps that over-promised and boxed you into rigid UIs — you'd spend ages entering your data only to be frustrated by how it was shown. Most also force you to link a bank account but give you no real control over your own data. I wanted the opposite: a calm, flexible app that answers what actually matters — where is my money going, and what's safe to spend right now — while keeping you in control of your data.",
-      approach: "I designed and built Valora end to end in React and TypeScript — the visual system, data model, and product flows. The home Overview surfaces the essentials at a glance: savings rate, a safe-to-spend number, cash reserve, income, and goal milestones — paired with an AI Insight that recommends your next money move. I leaned on my design background for a calm, legible UI, built a guided first run so new users reach value in minutes, and made it private by default — your financial data stays on your device unless you opt into cloud backup, with no forced bank linking.",
-      outcome: "Live in public beta as a website and gathering real user feedback to shape the roadmap, with a native mobile app next. I took it from concept to a working product — owning the design, UX, and engineering end to end.",
+      challenge: "I was tired of budgeting apps that overpromised and boxed you into rigid UIs, where you'd spend ages entering your data only to be frustrated by how it was shown. Most also force you to link a bank account but give you no real control over your own data. I wanted the opposite: a calm, flexible app that answers what actually matters, like where my money is going and what's safe to spend right now, while keeping you in control of your data.",
+      approach: "I designed and built Valora end to end in React and TypeScript: the visual system, data model, and product flows. The home Overview surfaces the essentials at a glance, including savings rate, a safe-to-spend number, cash reserve, income, and goal milestones, paired with an AI Insight that recommends your next money move. I leaned on my design background for a calm, legible UI, built a guided first run so new users reach value in minutes, and made it private by default. Your financial data stays on your device unless you opt into cloud backup, with no forced bank linking.",
+      outcome: "Live in public beta as a website and gathering real user feedback to shape the roadmap, with a native mobile app next. I took it from concept to a working product, owning the design, UX, and engineering end to end.",
     },
   },
   {
     cat: "Websites", title: "Alamance Community Foundation",
-    body: "The website for the Alamance Community Foundation — a Burlington, NC public charity that stewards over $27M in assets and grants roughly $1.9M a year to local nonprofits. I designed and built it as a freelance project, focused on credibility, clear navigation, and making it easy for donors to find programs and give.",
+    body: "The website for the Alamance Community Foundation, a Burlington, NC public charity that stewards over $27M in assets and grants roughly $1.9M a year to local nonprofits. I designed and built it as a freelance project, focused on credibility, clear navigation, and making it easy for donors to find programs and give.",
     tags: ["Squarespace", "HTML", "CSS", "JavaScript"], image: "/assets/AlamanceCover.jpg",
     images: [
       "/assets/AlamanceHome.jpg",
@@ -62,8 +62,8 @@ const PROJECTS = [
     company: "Alamance Community Foundation (freelance)", role: "Solo design & development",
     study: {
       challenge: "A foundation stewarding $27M+ in assets needs a site that instantly reads as credible, makes it effortless for donors to find programs and give, and that a small staff can keep current themselves.",
-      approach: "Designed and built the site solo — clear navigation, a trustworthy structure, and content the staff can update themselves.",
-      outcome: "A polished, credible home for a foundation that distributes roughly $1.9M in grants a year across 30+ local nonprofits — easy for donors to navigate and for the team to maintain.",
+      approach: "Designed and built the site solo, with clear navigation, a trustworthy structure, and content the staff can update themselves.",
+      outcome: "A polished, credible home for a foundation that distributes roughly $1.9M in grants a year across 30+ local nonprofits, easy for donors to navigate and for the team to maintain.",
     },
   },
   {
@@ -87,7 +87,7 @@ const PROJECTS = [
   },
   {
     cat: "Apps", title: "Chat App",
-    body: "A real-time chat app that turns a blank channel into a live conversation — message across public rooms and private DMs, react, edit, and share images, with typing indicators as people reply. Built in React and TypeScript on Firebase, live on the web and synced instantly for everyone in the room.",
+    body: "A real-time chat app that turns a blank channel into a live conversation. Message across public rooms and private DMs, react, edit, and share images, with typing indicators as people reply. Built in React and TypeScript on Firebase, live on the web and synced instantly for everyone in the room.",
     tags: ["React", "TypeScript", "Firebase", "Tailwind"], image: "/assets/ChatAppChat.png", tall: true,
     images: [
       "/assets/ChatAppSignin.png",
@@ -99,21 +99,21 @@ const PROJECTS = [
     live: "https://chatappdemo-e1b26.web.app", code: "https://github.com/Jazz-H/Chat-Application",
     company: "Independent project", role: "Solo design & development",
     study: {
-      challenge: "I wanted a chat app that felt instant and complete — not a toy demo, but the things people actually expect: channels, private DMs, reactions, editing, image sharing, and live typing. The catch was doing it without a backend to babysit, while keeping data secure and the UI fast on a phone.",
-      approach: "I built it end to end in React and TypeScript on Firebase — auth, the real-time data model, and the UI. Public channels and private DMs share one message layer, so every feature works in both, and Firestore security rules keep writes author-only and conversations private to their members. Along the way I migrated the codebase from Create React App to Vite, added a typed test suite, and set up a CI/CD pipeline that lints, tests, and deploys on every push.",
-      outcome: "A polished, fully-featured chat where messages, reactions, edits, and typing sync live for everyone — across channels and DMs, on desktop and mobile. I took it from a broken deploy to a modern, type-safe app, owning the architecture, UI, and delivery end to end.",
+      challenge: "I wanted a chat app that felt instant and complete, not a toy demo but the things people actually expect: channels, private DMs, reactions, editing, image sharing, and live typing. The catch was doing it without a backend to babysit, while keeping data secure and the UI fast on a phone.",
+      approach: "I built it end to end in React and TypeScript on Firebase: auth, the real-time data model, and the UI. Public channels and private DMs share one message layer, so every feature works in both, and Firestore security rules keep writes author-only and conversations private to their members. Along the way I migrated the codebase from Create React App to Vite, added a typed test suite, and set up a CI/CD pipeline that lints, tests, and deploys on every push.",
+      outcome: "A polished, fully-featured chat where messages, reactions, edits, and typing sync live for everyone, across channels and DMs, on desktop and mobile. I took it from a broken deploy to a modern, type-safe app, owning the architecture, UI, and delivery end to end.",
     },
   },
   {
     cat: "Power Apps & Data", kind: "Power Apps", title: "Activity Tracker",
-    body: "An internal activity-tracking app for an enterprise team at Coca-Cola Consolidated — replacing a manual, spreadsheet-driven process with a Power Apps front end on SharePoint, so the team logs and reports work in minutes instead of hours. In active development.",
+    body: "An internal activity-tracking app for an enterprise team at Coca-Cola Consolidated. It replaces a manual, spreadsheet-driven process with a Power Apps front end on SharePoint, so the team logs and reports work in minutes instead of hours. In active development.",
     tags: ["Power Apps", "SharePoint", "Power Automate", "Business Analysis"],
     status: "Coming soon",
     company: "Coca-Cola Consolidated", role: "IT Business Analyst II",
     study: {
-      challenge: "A team was tracking activity manually across spreadsheets and email — slow, error-prone, and hard to report on. As the BA, I own turning that pain into a tool people will actually use.",
-      approach: "Gathering requirements from the team and stakeholders, modeling the data in SharePoint, and building a Power Apps front end (with Power Automate for notifications and approvals) — designed around the real workflow, not the org chart.",
-      outcome: "In development — full results, metrics, and screenshots coming soon.",
+      challenge: "A team was tracking activity manually across spreadsheets and email, which was slow, error-prone, and hard to report on. As the BA, I own turning that pain into a tool people will actually use.",
+      approach: "Gathering requirements from the team and stakeholders, modeling the data in SharePoint, and building a Power Apps front end (with Power Automate for notifications and approvals), all designed around the real workflow, not the org chart.",
+      outcome: "In development. Full results, metrics, and screenshots coming soon.",
     },
   },
   {
@@ -167,8 +167,8 @@ const TECH_GROUPS = [
   { label: "Data & Power Platform", Icon: FiBarChart2, items: ["Power BI", "Power Apps", "SharePoint"] },
 ];
 const SERVICES = [
-  { Icon: FiTrendingUp, title: "Business analysis & strategy", body: "Translating business goals into clear requirements and a roadmap — working between stakeholders, vendors, and engineers to ship the right thing." },
-  { Icon: FiCode, title: "Software & web development", body: "Building software and responsive websites — applications, custom tools, and polished web experiences — with React, Next.js, and modern tooling. Functional, reliable, and a pleasure to use." },
+  { Icon: FiTrendingUp, title: "Business analysis & strategy", body: "Translating business goals into clear requirements and a roadmap, working between stakeholders, vendors, and engineers to ship the right thing." },
+  { Icon: FiCode, title: "Software & web development", body: "Building software and responsive websites, from applications to custom tools to polished web experiences, with React, Next.js, and modern tooling. Functional, reliable, and a pleasure to use." },
   { Icon: FiBarChart2, title: "Data & dashboards", body: "Turning raw data into clear, decision-ready dashboards and reports with Power BI, Tableau, and the Python data stack." },
 ];
 const NAV = [
@@ -193,7 +193,7 @@ const CAT_GRADIENT = {
 // numbers like donations raised, users, traffic, or time saved any time).
 const METRICS = {
   "Valora": [
-    { value: "Privacy-first", label: "Your data stays yours — no forced bank linking" },
+    { value: "Privacy-first", label: "Your data stays yours, no forced bank linking" },
     { value: "End-to-end", label: "Designed & built solo" },
     { value: "AI insights", label: "Recommends your next money move" },
   ],
@@ -316,7 +316,7 @@ function Poster({ view, go }) {
       </button>
 
       <div className="dp-statement">
-        <p className="dp-kicker">Portfolio — 2026</p>
+        <p className="dp-kicker">Portfolio · 2026</p>
         <h1 className="dp-h1">
           I transform business challenges into websites, applications, and dashboards that deliver{" "}
           <span className="dp-mark-text">measurable results</span>.
@@ -588,8 +588,8 @@ function About({ go }) {
           <div className="dp-bento-tile dp-bento-bio">
             <p className="dp-label">About</p>
             <h2 className="dp-detail-h">Builder by craft, analyst by training.</h2>
-            <p className="dp-p">I studied Computer Science at Elon University, with minors in Art History and Digital Art — a blend that shapes how I work: technical problem-solving with a designer's eye. I also studied abroad in Dublin through FIE (Foundation for International Education), completing a software-engineering internship and writing about it on the <a className="dp-link" href={FIE_BLOG} target="_blank" rel="noreferrer">program blog</a>. Since then I've worked across both the technical and business sides of software, turning complex ideas into solutions that create real value.</p>
-            <p className="dp-p">Today I'm a Business Analyst at Coca-Cola Consolidated, bridging business needs and technology. Outside of work I build websites, custom software, and tools for businesses and entrepreneurs — most recently Valora, a personal finance platform. When I'm not behind a screen: traveling, Legos, and anything with four wheels or two.</p>
+            <p className="dp-p">I studied Computer Science at Elon University, with minors in Art History and Digital Art, a blend that shapes how I work: technical problem-solving with a designer's eye. I also studied abroad in Dublin through FIE (Foundation for International Education), completing a software-engineering internship and writing about it on the <a className="dp-link" href={FIE_BLOG} target="_blank" rel="noreferrer">program blog</a>. Since then I've worked across both the technical and business sides of software, turning complex ideas into solutions that create real value.</p>
+            <p className="dp-p">Today I'm a Business Analyst at Coca-Cola Consolidated, bridging business needs and technology. Outside of work I build websites, custom software, and tools for businesses and entrepreneurs, most recently Valora, a personal finance platform. When I'm not behind a screen: traveling, Legos, and anything with four wheels or two.</p>
           </div>
 
           <details className="dp-acc dp-acc-skills">
