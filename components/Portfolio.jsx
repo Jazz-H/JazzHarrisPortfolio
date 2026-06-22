@@ -973,6 +973,9 @@ const CSS = `
   .dp-statement .dp-status{margin-top:16px}
   .dp-name{font-size:19px}
   .dp-work-head{margin-bottom:18px;gap:12px}
+  .dp-filters{flex:1 1 100%;flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch;padding-bottom:2px}
+  .dp-filters::-webkit-scrollbar{display:none}
+  .dp-filter{flex:0 0 auto;white-space:nowrap}
   .dp-detail-h{font-size:clamp(22px,7vw,28px)}
   .dp-cta-h{font-size:clamp(25px,8vw,32px)}
   .dp-detail-overview{font-size:15px}
