@@ -87,11 +87,12 @@ const PROJECTS = [
   },
   {
     cat: "Apps", title: "Real-time Chat App",
-    body: "A multi-user chat with authentication, channels, emoji reactions, message editing/deletion, and live message sync on Firebase v9.",
+    body: "A multi-user chat with authentication, channels, emoji reactions, image sharing, message editing/deletion, and live message sync on Firebase v9.",
     tags: ["React", "Firebase v9", "Tailwind"], image: "/assets/ChatAppChat.png",
     images: [
-      "/assets/ChatAppChat.png",
       "/assets/ChatAppReactions.png",
+      "/assets/ChatAppUpload.png",
+      "/assets/ChatAppImage.png",
       "/assets/ChatAppSignin.png",
       "/assets/ChatAppDelete.png",
     ],
@@ -99,7 +100,7 @@ const PROJECTS = [
     company: "Personal project", role: "Solo developer",
     study: {
       challenge: "Support multiple people chatting live across channels, with proper sign-in and the message controls people expect — reactions, edits, and deletes.",
-      approach: "Built on Firebase v9 for authentication and real-time sync, with email/password and Google sign-in, public channels, emoji reactions, inline editing, message deletion, and typing indicators.",
+      approach: "Built on Firebase v9 for authentication and real-time sync, with email/password and Google sign-in, public channels, emoji reactions, image sharing, inline editing, message deletion, and typing indicators.",
       outcome: "A polished, multi-user chat that updates instantly for everyone in the room — reactions, edits, and deletes all sync live.",
     },
   },
