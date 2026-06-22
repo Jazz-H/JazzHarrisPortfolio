@@ -386,12 +386,14 @@ function WorkList({ onOpen, filter, setFilter }) {
     <section className="dp-view">
       <div className="dp-work-head">
         <p className="dp-label">Selected work · {shown.length}</p>
-        <div className="dp-filters" role="tablist" aria-label="Filter work">
-          {FILTERS.map((f) => (
-            <button key={f} className={"dp-filter" + (filter === f ? " is-active" : "")} onClick={() => setFilter(f)} aria-pressed={filter === f}>
-              {f}
-            </button>
-          ))}
+        <div className="dp-filters-wrap">
+          <div className="dp-filters" role="tablist" aria-label="Filter work">
+            {FILTERS.map((f) => (
+              <button key={f} className={"dp-filter" + (filter === f ? " is-active" : "")} onClick={() => setFilter(f)} aria-pressed={filter === f}>
+                {f}
+              </button>
+            ))}
+          </div>
         </div>
       </div>
       <div className="dp-grid">
@@ -736,6 +738,7 @@ const CSS = `
 .dp-label{font-family:var(--font-mono),'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--amber)}
 .dp-sub{font-family:var(--font-mono),'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--faint);margin-bottom:18px}
 .dp-work-head{display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap;margin-bottom:26px}
+.dp-filters-wrap{display:contents}
 .dp-filters{display:flex;gap:8px;flex-wrap:wrap}
 .dp-filter{font-family:var(--font-mono),'JetBrains Mono',monospace;font-size:13px;color:var(--muted);border:1px solid var(--line);border-radius:999px;padding:7px 15px;transition:all .18s}
 .dp-filter:hover{color:var(--ink);border-color:var(--line-2)}
@@ -933,7 +936,9 @@ const CSS = `
 @media (max-width:880px){
   .dp-root{overflow-x:clip}
   .dp-shell{grid-template-columns:1fr;min-width:0;max-width:100%;overflow-x:clip}
-  .dp-work-head{flex-direction:column;align-items:flex-start;gap:14px}
+  .dp-work-head{flex-direction:column;align-items:flex-start;gap:14px;margin-bottom:26px}
+  .dp-filters-wrap{display:block;position:relative;width:100%;max-width:100%;min-width:0}
+  .dp-filters-wrap::after{content:"";position:absolute;top:0;right:0;bottom:12px;width:34px;background:linear-gradient(to right,transparent,var(--bg));pointer-events:none}
   .dp-filters{width:100%;max-width:100%;flex-wrap:nowrap;overflow-x:auto;scrollbar-width:thin;scrollbar-color:var(--line-2) rgba(243,234,234,.06);-webkit-overflow-scrolling:touch;padding-bottom:8px}
   .dp-filters::-webkit-scrollbar{height:4px}
   .dp-filters::-webkit-scrollbar-track{background:rgba(243,234,234,.06);border-radius:999px}
@@ -979,7 +984,7 @@ const CSS = `
   .dp-kicker{margin-bottom:10px}
   .dp-statement .dp-status{margin-top:16px}
   .dp-name{font-size:19px}
-  .dp-work-head{margin-bottom:18px;gap:12px}
+  .dp-work-head{margin-bottom:24px;gap:12px}
   .dp-detail-h{font-size:clamp(22px,7vw,28px)}
   .dp-cta-h{font-size:clamp(25px,8vw,32px)}
   .dp-detail-overview{font-size:15px}
