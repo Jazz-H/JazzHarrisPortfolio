@@ -37,7 +37,7 @@ const STRUCTURED_DATA = {
       "@type": "WebSite",
       "@id": `${SITE_URL}/#website`,
       url: `${SITE_URL}/`,
-      name: "Jazz Harris — Portfolio",
+      name: "Jazz Harris · Portfolio",
       author: { "@id": `${SITE_URL}/#person` },
       inLanguage: "en-US",
     },
@@ -48,7 +48,7 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>Jazz Harris — Portfolio</title>
+        <title>Jazz Harris · Portfolio</title>
         <meta
           name="description"
           content="Software engineer and business analyst. I turn business problems into websites, tools, and dashboards that actually work."
@@ -62,7 +62,7 @@ export default function Home() {
 
         <meta property="og:type" content="website" />
         <meta property="og:url" content={`${SITE_URL}/`} />
-        <meta property="og:title" content="Jazz Harris — Portfolio" />
+        <meta property="og:title" content="Jazz Harris · Portfolio" />
         <meta
           property="og:description"
           content="Software engineer and business analyst. Selected projects and contact."
@@ -72,7 +72,7 @@ export default function Home() {
         <meta property="og:image:height" content="630" />
 
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Jazz Harris — Portfolio" />
+        <meta name="twitter:title" content="Jazz Harris · Portfolio" />
         <meta
           name="twitter:description"
           content="Software engineer and business analyst. Selected projects and contact."
