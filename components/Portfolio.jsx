@@ -932,7 +932,12 @@ const CSS = `
 }
 @media (max-width:880px){
   .dp-root{overflow-x:clip}
-  .dp-shell{grid-template-columns:1fr}
+  .dp-shell{grid-template-columns:1fr;min-width:0;max-width:100%;overflow-x:clip}
+  .dp-stage{min-width:0}
+  .dp-work-head{flex-direction:column;align-items:flex-start;gap:14px}
+  .dp-filters{width:100%;max-width:100%;flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch;padding-bottom:2px}
+  .dp-filters::-webkit-scrollbar{display:none}
+  .dp-filter{flex:0 0 auto;white-space:nowrap}
   .dp-grid{grid-template-columns:1fr 1fr}
   .dp-poster{position:static;height:auto;flex-direction:column;gap:20px;padding:26px 22px}
   .dp-glow{display:none}
@@ -973,10 +978,7 @@ const CSS = `
   .dp-kicker{margin-bottom:10px}
   .dp-statement .dp-status{margin-top:16px}
   .dp-name{font-size:19px}
-  .dp-work-head{flex-direction:column;align-items:flex-start;gap:14px;margin-bottom:18px}
-  .dp-filters{width:100%;max-width:100%;flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch;padding-bottom:2px}
-  .dp-filters::-webkit-scrollbar{display:none}
-  .dp-filter{flex:0 0 auto;white-space:nowrap}
+  .dp-work-head{margin-bottom:18px}
   .dp-detail-h{font-size:clamp(22px,7vw,28px)}
   .dp-cta-h{font-size:clamp(25px,8vw,32px)}
   .dp-detail-overview{font-size:15px}
