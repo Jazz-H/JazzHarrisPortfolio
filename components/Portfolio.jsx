@@ -144,6 +144,18 @@ const PROJECTS = [
       outcome: "A real-time market view that refreshes straight from the API.",
     },
   },
+  {
+    cat: "Power Apps & Data", title: "Activity Tracker",
+    body: "An internal activity-tracking app for an enterprise team at Coca-Cola Consolidated — replacing a manual, spreadsheet-driven process with a Power Apps front end on SharePoint, so the team logs and reports work in minutes instead of hours. In active development.",
+    tags: ["Power Apps", "SharePoint", "Power Automate", "Business Analysis"],
+    status: "Coming soon",
+    company: "Coca-Cola Consolidated", role: "IT Business Analyst II",
+    study: {
+      challenge: "A team was tracking activity manually across spreadsheets and email — slow, error-prone, and hard to report on. As the BA, I own turning that pain into a tool people will actually use.",
+      approach: "Gathering requirements from the team and stakeholders, modeling the data in SharePoint, and building a Power Apps front end (with Power Automate for notifications and approvals) — designed around the real workflow, not the org chart.",
+      outcome: "In development — full results, metrics, and screenshots coming soon.",
+    },
+  },
 ];
 // Only show category filters that actually have projects (e.g. "Apps" hides
 // when empty, and reappears automatically once an Apps project is added).
