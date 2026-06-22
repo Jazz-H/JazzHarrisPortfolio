@@ -67,25 +67,6 @@ const PROJECTS = [
     },
   },
   {
-    cat: "Websites", title: "Chat App",
-    body: "A real-time chat app that turns a blank channel into a live conversation — message across public rooms and private DMs, react, edit, and share images, with typing indicators as people reply. Built in React and TypeScript on Firebase, live on the web and synced instantly for everyone in the room.",
-    tags: ["React", "TypeScript", "Firebase", "Tailwind"], image: "/assets/ChatAppChat.png", tall: true,
-    images: [
-      "/assets/ChatAppSignin.png",
-      "/assets/ChatAppReactions.png",
-      "/assets/ChatAppUpload.png",
-      "/assets/ChatAppImage.png",
-      "/assets/ChatAppDelete.png",
-    ],
-    live: "https://chatappdemo-e1b26.web.app", code: "https://github.com/Jazz-H/Chat-Application",
-    company: "Independent project", role: "Solo design & development",
-    study: {
-      challenge: "I wanted a chat app that felt instant and complete — not a toy demo, but the things people actually expect: channels, private DMs, reactions, editing, image sharing, and live typing. The catch was doing it without a backend to babysit, while keeping data secure and the UI fast on a phone.",
-      approach: "I built it end to end in React and TypeScript on Firebase — auth, the real-time data model, and the UI. Public channels and private DMs share one message layer, so every feature works in both, and Firestore security rules keep writes author-only and conversations private to their members. Along the way I migrated the codebase from Create React App to Vite, added a typed test suite, and set up a CI/CD pipeline that lints, tests, and deploys on every push.",
-      outcome: "A polished, fully-featured chat where messages, reactions, edits, and typing sync live for everyone — across channels and DMs, on desktop and mobile. I took it from a broken deploy to a modern, type-safe app, owning the architecture, UI, and delivery end to end.",
-    },
-  },
-  {
     cat: "Websites", title: "Electric Supplies Online",
     body: "An e-commerce storefront for an electrical-supplies retailer, organized so customers can find and buy the right parts fast.",
     tags: ["Yahoo Manager", "HTML", "CSS", "JavaScript"], image: "/assets/ElectricCover.jpg",
@@ -102,6 +83,25 @@ const PROJECTS = [
       challenge: "Shoppers needed to find and buy the right electrical part quickly, across a large catalog.",
       approach: "Organized the storefront and product structure around fast discovery and a clean checkout path.",
       outcome: "A storefront that gets customers to the right part with less friction.",
+    },
+  },
+  {
+    cat: "Apps", title: "Chat App",
+    body: "A real-time chat app that turns a blank channel into a live conversation — message across public rooms and private DMs, react, edit, and share images, with typing indicators as people reply. Built in React and TypeScript on Firebase, live on the web and synced instantly for everyone in the room.",
+    tags: ["React", "TypeScript", "Firebase", "Tailwind"], image: "/assets/ChatAppChat.png", tall: true,
+    images: [
+      "/assets/ChatAppSignin.png",
+      "/assets/ChatAppReactions.png",
+      "/assets/ChatAppUpload.png",
+      "/assets/ChatAppImage.png",
+      "/assets/ChatAppDelete.png",
+    ],
+    live: "https://chatappdemo-e1b26.web.app", code: "https://github.com/Jazz-H/Chat-Application",
+    company: "Independent project", role: "Solo design & development",
+    study: {
+      challenge: "I wanted a chat app that felt instant and complete — not a toy demo, but the things people actually expect: channels, private DMs, reactions, editing, image sharing, and live typing. The catch was doing it without a backend to babysit, while keeping data secure and the UI fast on a phone.",
+      approach: "I built it end to end in React and TypeScript on Firebase — auth, the real-time data model, and the UI. Public channels and private DMs share one message layer, so every feature works in both, and Firestore security rules keep writes author-only and conversations private to their members. Along the way I migrated the codebase from Create React App to Vite, added a typed test suite, and set up a CI/CD pipeline that lints, tests, and deploys on every push.",
+      outcome: "A polished, fully-featured chat where messages, reactions, edits, and typing sync live for everyone — across channels and DMs, on desktop and mobile. I took it from a broken deploy to a modern, type-safe app, owning the architecture, UI, and delivery end to end.",
     },
   },
   {
