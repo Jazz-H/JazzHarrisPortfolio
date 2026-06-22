@@ -105,7 +105,19 @@ const PROJECTS = [
     },
   },
   {
-    cat: "Power Apps & Data", title: "KPI Management Dashboard",
+    cat: "Power Apps & Data", kind: "Power Apps", title: "Activity Tracker",
+    body: "An internal activity-tracking app for an enterprise team at Coca-Cola Consolidated — replacing a manual, spreadsheet-driven process with a Power Apps front end on SharePoint, so the team logs and reports work in minutes instead of hours. In active development.",
+    tags: ["Power Apps", "SharePoint", "Power Automate", "Business Analysis"],
+    status: "Coming soon",
+    company: "Coca-Cola Consolidated", role: "IT Business Analyst II",
+    study: {
+      challenge: "A team was tracking activity manually across spreadsheets and email — slow, error-prone, and hard to report on. As the BA, I own turning that pain into a tool people will actually use.",
+      approach: "Gathering requirements from the team and stakeholders, modeling the data in SharePoint, and building a Power Apps front end (with Power Automate for notifications and approvals) — designed around the real workflow, not the org chart.",
+      outcome: "In development — full results, metrics, and screenshots coming soon.",
+    },
+  },
+  {
+    cat: "Power Apps & Data", kind: "Data", title: "KPI Management Dashboard",
     body: "An interactive sales-and-profit dashboard published to Tableau Public for quick decision-making.",
     tags: ["Tableau"], image: "/assets/KPIDashboard.jpg", tall: true,
     images: [
@@ -122,19 +134,7 @@ const PROJECTS = [
     },
   },
   {
-    cat: "Power Apps & Data", title: "Real Estate Web Scraper",
-    body: "A Python scraper that pulls listing data with BeautifulSoup and exports it to CSV.",
-    tags: ["Python", "BeautifulSoup"], image: "/assets/webscraplogo.png",
-    code: "https://github.com/Jazz-Harris/WebScrapingRealEstateData",
-    company: "Personal project", role: "Developer",
-    study: {
-      challenge: "Collect real-estate listing data that isn't available as a clean export.",
-      approach: "Wrote a Python + BeautifulSoup scraper that pulls listings and exports them to CSV.",
-      outcome: "A repeatable way to gather listing data ready for analysis.",
-    },
-  },
-  {
-    cat: "Power Apps & Data", title: "Real-time Stock Market Dashboard",
+    cat: "Power Apps & Data", kind: "Data", title: "Real-time Stock Market Dashboard",
     body: "Live market data pulled from a REST API into an interactive dashboard.",
     tags: ["Power BI", "REST API"], image: "/assets/RTSMDLogo.png",
     company: "Personal project", role: "Data analyst",
@@ -145,15 +145,15 @@ const PROJECTS = [
     },
   },
   {
-    cat: "Power Apps & Data", title: "Activity Tracker",
-    body: "An internal activity-tracking app for an enterprise team at Coca-Cola Consolidated — replacing a manual, spreadsheet-driven process with a Power Apps front end on SharePoint, so the team logs and reports work in minutes instead of hours. In active development.",
-    tags: ["Power Apps", "SharePoint", "Power Automate", "Business Analysis"],
-    status: "Coming soon",
-    company: "Coca-Cola Consolidated", role: "IT Business Analyst II",
+    cat: "Power Apps & Data", kind: "Data", title: "Real Estate Web Scraper",
+    body: "A Python scraper that pulls listing data with BeautifulSoup and exports it to CSV.",
+    tags: ["Python", "BeautifulSoup"], image: "/assets/webscraplogo.png",
+    code: "https://github.com/Jazz-Harris/WebScrapingRealEstateData",
+    company: "Personal project", role: "Developer",
     study: {
-      challenge: "A team was tracking activity manually across spreadsheets and email — slow, error-prone, and hard to report on. As the BA, I own turning that pain into a tool people will actually use.",
-      approach: "Gathering requirements from the team and stakeholders, modeling the data in SharePoint, and building a Power Apps front end (with Power Automate for notifications and approvals) — designed around the real workflow, not the org chart.",
-      outcome: "In development — full results, metrics, and screenshots coming soon.",
+      challenge: "Collect real-estate listing data that isn't available as a clean export.",
+      approach: "Wrote a Python + BeautifulSoup scraper that pulls listings and exports them to CSV.",
+      outcome: "A repeatable way to gather listing data ready for analysis.",
     },
   },
 ];
@@ -374,7 +374,7 @@ function Thumb({ p }) {
         <span className="dp-thumb-mono">{p.title.split(" ")[0]}</span>
       )}
       <span className="dp-thumb-scrim" aria-hidden="true" />
-      <span className="dp-thumb-cat">{p.cat}</span>
+      <span className="dp-thumb-cat">{p.kind || p.cat}</span>
       {p.status && <span className="dp-badge">{p.status}</span>}
     </span>
   );
@@ -493,7 +493,7 @@ function Detail({ p, onBack, filter = "All" }) {
         tall={p.tall}
       />
       <div className="dp-detail-head">
-        <p className="dp-kicker">{p.cat}</p>
+        <p className="dp-kicker">{p.kind || p.cat}</p>
         <h2 className="dp-detail-h">{p.title}</h2>
       </div>
       <p className="dp-detail-overview">{p.body}</p>
@@ -934,8 +934,10 @@ const CSS = `
   .dp-root{overflow-x:clip}
   .dp-shell{grid-template-columns:1fr;min-width:0;max-width:100%;overflow-x:clip}
   .dp-work-head{flex-direction:column;align-items:flex-start;gap:14px}
-  .dp-filters{width:100%;max-width:100%;flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch;padding-bottom:2px;-webkit-mask-image:linear-gradient(to right,#000 calc(100% - 32px),transparent);mask-image:linear-gradient(to right,#000 calc(100% - 32px),transparent)}
-  .dp-filters::-webkit-scrollbar{display:none}
+  .dp-filters{width:100%;max-width:100%;flex-wrap:nowrap;overflow-x:auto;scrollbar-width:thin;scrollbar-color:var(--line-2) rgba(243,234,234,.06);-webkit-overflow-scrolling:touch;padding-bottom:8px}
+  .dp-filters::-webkit-scrollbar{height:4px}
+  .dp-filters::-webkit-scrollbar-track{background:rgba(243,234,234,.06);border-radius:999px}
+  .dp-filters::-webkit-scrollbar-thumb{background:var(--line-2);border-radius:999px}
   .dp-filter{flex:0 0 auto;white-space:nowrap}
   .dp-grid{grid-template-columns:1fr 1fr}
   .dp-poster{position:static;height:auto;flex-direction:column;gap:20px;padding:26px 22px}
