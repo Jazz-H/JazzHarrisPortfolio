@@ -136,6 +136,18 @@ const PROJECTS = [
     },
   },
   {
+    cat: "Power Apps & Data", kind: "Data", title: "Parcel",
+    body: "Parcel is a real-estate market-analytics pipeline that turns official housing data into a clear answer to one investor question: where to buy, and whether now is the time. It pulls published market datasets, models them into investor metrics like rent-to-price and cap rate, and surfaces the result as an interactive Power BI dashboard that ranks markets and flags when one is heating or cooling. Built end to end in Python and sourced entirely from data published for use, not scraped.",
+    tags: ["Python", "Power BI", "SQL", "pandas", "DAX"],
+    status: "Coming soon",
+    company: "Personal project", role: "Data analyst",
+    study: {
+      challenge: "Most real-estate tools show listings, not decisions. As an investor I wanted the opposite: a single view that answers where to put money and whether the timing is right, built on data I could actually stand behind rather than scraped from a portal that prohibits it.",
+      approach: "An end-to-end pipeline in Python that pulls published market data from Redfin, Zillow, and the Census, cleans and models it into a star schema, then turns raw medians into investor signals like rent-to-price, year-over-year appreciation, and a composite market-temperature score, delivered in Power BI and refreshed on a schedule.",
+      outcome: "In development. Live dashboard, metrics, and screenshots coming soon.",
+    },
+  },
+  {
     cat: "Power Apps & Data", kind: "Data", title: "KPI Management Dashboard",
     body: "An interactive sales-and-profit dashboard published to Tableau Public for quick decision-making.",
     tags: ["Tableau"], image: "/assets/KPIDashboard.jpg", tall: true,
@@ -150,29 +162,6 @@ const PROJECTS = [
       challenge: "Turn raw sales and profit data into something a manager can act on at a glance.",
       approach: "Modeled the data and built an interactive Tableau dashboard, published to Tableau Public.",
       outcome: "A shareable dashboard for quick sales-and-profit decisions.",
-    },
-  },
-  {
-    cat: "Power Apps & Data", kind: "Data", title: "Real-time Stock Market Dashboard",
-    body: "Live market data pulled from a REST API into an interactive dashboard.",
-    tags: ["Power BI", "REST API"], image: "/assets/RTSMDLogo.png",
-    company: "Personal project", role: "Data analyst",
-    study: {
-      challenge: "See live market movement in one place instead of jumping between sources.",
-      approach: "Pulled live data from a REST API into an interactive Power BI dashboard.",
-      outcome: "A real-time market view that refreshes straight from the API.",
-    },
-  },
-  {
-    cat: "Power Apps & Data", kind: "Data", title: "Real Estate Web Scraper",
-    body: "A Python scraper that pulls listing data with BeautifulSoup and exports it to CSV.",
-    tags: ["Python", "BeautifulSoup"], image: "/assets/webscraplogo.png",
-    code: "https://github.com/Jazz-Harris/WebScrapingRealEstateData",
-    company: "Personal project", role: "Developer",
-    study: {
-      challenge: "Collect real-estate listing data that isn't available as a clean export.",
-      approach: "Wrote a Python + BeautifulSoup scraper that pulls listings and exports them to CSV.",
-      outcome: "A repeatable way to gather listing data ready for analysis.",
     },
   },
 ];
@@ -240,16 +229,6 @@ const METRICS = {
     { value: "Published", label: "Live on Tableau Public" },
     { value: "Interactive", label: "Filterable sales & profit" },
     { value: "Decision-ready", label: "Built for quick reads" },
-  ],
-  "Real Estate Web Scraper": [
-    { value: "Automated", label: "Repeatable data pulls" },
-    { value: "CSV export", label: "Analysis-ready output" },
-    { value: "Python", label: "BeautifulSoup pipeline" },
-  ],
-  "Real-time Stock Market Dashboard": [
-    { value: "Real-time", label: "Live REST API feed" },
-    { value: "Interactive", label: "Filterable market view" },
-    { value: "Power BI", label: "Auto-refreshing dashboard" },
   ],
 };
 
