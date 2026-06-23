@@ -832,7 +832,7 @@ const CSS = `
 .dp-metric{position:relative;border:1px solid var(--line);background:var(--card);border-radius:12px;padding:15px 16px 15px 19px;overflow:hidden;transition:border-color .2s,transform .2s,box-shadow .2s}
 .dp-metric::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--ember);opacity:.85}
 .dp-metric:hover{border-color:rgba(214,95,116,.4);transform:translateY(-2px);box-shadow:0 14px 30px -22px rgba(0,0,0,.9)}
-.dp-metric-v{display:block;font-family:var(--font-display),'Bricolage Grotesque',sans-serif;font-weight:700;font-size:19px;color:var(--ink);letter-spacing:-.01em;line-height:1.1}
+.dp-metric-v{display:block;font-family:var(--font-display),'Bricolage Grotesque',sans-serif;font-weight:700;font-size:19px;color:var(--ink);letter-spacing:-.01em;line-height:1.1;overflow-wrap:break-word;hyphens:auto}
 .dp-metric-l{display:block;color:var(--muted);font-size:12.5px;line-height:1.45;margin-top:6px}
 
 /* about — bento grid */
@@ -1022,6 +1022,8 @@ const CSS = `
   .dp-study{gap:14px;padding-top:20px}
   .dp-study-row{grid-template-columns:1fr;gap:6px}
   .dp-metrics{grid-template-columns:1fr 1fr;gap:10px}
+  .dp-metric{padding:14px 13px 14px 16px}
+  .dp-metric-v{font-size:17px}
   .dp-card-body{padding:16px;gap:8px}
   .dp-bento-tile{padding:16px}
   .dp-contact-row{padding:14px 15px;gap:12px}
