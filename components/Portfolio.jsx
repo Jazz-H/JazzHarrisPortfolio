@@ -106,15 +106,22 @@ const PROJECTS = [
   },
   {
     cat: "Apps", title: "Clearcast",
-    body: "Clearcast is a weather app that answers what you can actually do today. Instead of just showing the temperature, it reads the forecast and writes a plain, friendly recommendation: what to wear, which activities are worth it, and the best window to get out. Built in React and TypeScript on a serverless Claude backend, installable and ready to work offline. Live in public beta.",
+    body: "Clearcast is a weather app that answers what you can actually do today. Instead of just showing the temperature, it reads the forecast and writes a plain, friendly recommendation: what to wear, which activities are worth it, and the best window to get out. Built in React and TypeScript on a serverless Claude backend, installable as a PWA and ready to work offline.",
     tags: ["React", "TypeScript", "Claude API", "PWA"],
-    status: "Beta",
+    image: "/assets/ClearcastCover.png", tall: true,
+    images: [
+      "/assets/ClearcastRecommendation.png",
+      "/assets/ClearcastOverview.png",
+      "/assets/ClearcastWeekly.png",
+      "/assets/ClearcastRain.png",
+      "/assets/ClearcastStorm.png",
+    ],
     live: "https://useclearcast.netlify.app/", code: "https://github.com/Jazz-H/WeatherApp",
     company: "Independent project", role: "Solo design & development",
     study: {
-      challenge: "I wanted Clearcast to be a weather app that's actually useful, one that tells you what to do and not just the temperature. The hard part is turning a noisy hourly forecast into a single confident recommendation, fast and cheap enough to run on every visit, without leaking an API key to the browser.",
-      approach: "I built it in React and TypeScript on Vite. It pulls forecasts from Open-Meteo and sends them to a serverless function that calls Claude with a strict schema, so the UI always gets clean, typed data back. It's an installable app that works offline, shipped through a CI/CD pipeline.",
-      outcome: "Live in public beta and open to try. A fuller case study with screenshots is coming soon.",
+      challenge: "Most weather apps give you data and leave the decision to you. I wanted to build one that makes the call. The hard part is turning a noisy hourly forecast into a single confident recommendation, fast and cheap enough to run on every page load, without leaking an API key to the browser or burning through budget on repeat visits.",
+      approach: "Built in Next.js and TypeScript, deployed on Netlify. Weather data comes from Open-Meteo (free, no key required). Each forecast is trimmed to a minimal payload (just current conditions, the next 12 hours, and today's daily summary), then sent to a serverless function that calls Claude Haiku with a strict Zod schema for structured output, so the UI gets clean, typed data it can render directly. Responses are cached in memory by location and hour with a configurable daily call cap, keeping costs predictable. The app ships as an installable PWA with a service worker that caches the last forecast for offline use.",
+      outcome: "Shipped. The app geocodes any city, auto-selects °F or °C by country, and renders an AI recommendation with color-coded activity verdicts and a best-time-of-day callout, all within a few seconds. The background gradient adapts across eight weather conditions, making the atmosphere itself part of the interface. It ships through a full CI/CD pipeline on GitHub Actions, with lint, typecheck, and test gates on every push.",
     },
   },
   {
@@ -224,6 +231,11 @@ const METRICS = {
     { value: "Real-time", label: "Messages, reactions & typing sync instantly" },
     { value: "Channels + DMs", label: "Public rooms and private conversations" },
     { value: "Type-safe & tested", label: "TS strict, CI-gated tests, auto-deploy" },
+  ],
+  "Clearcast": [
+    { value: "AI recommendations", label: "Reads the forecast and tells you what to do" },
+    { value: "Adaptive UI", label: "Background shifts across eight weather conditions" },
+    { value: "Offline-ready PWA", label: "Installable, typed schema, CI-gated deploys" },
   ],
   "KPI Management Dashboard": [
     { value: "Published", label: "Live on Tableau Public" },
