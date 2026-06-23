@@ -106,22 +106,22 @@ const PROJECTS = [
   },
   {
     cat: "Apps", title: "Clearcast",
-    body: "Clearcast is a weather app that answers what you can actually do today. Instead of just showing the temperature, it reads the forecast and writes a plain, friendly recommendation: what to wear, which activities are worth it, and the best window to get out. Built in React and TypeScript on a serverless Claude backend, installable as a PWA and ready to work offline.",
-    tags: ["React", "TypeScript", "Claude API", "PWA"],
+    body: "Clearcast is a production-ready weather PWA that turns a raw forecast into a plain-English plan for your day. It uses Claude to generate structured activity recommendations, adapts its theme to live weather conditions, and works offline as an installable app. Every layer, from the API design to the caching strategy to unit detection, is built for correctness, not just demo appeal.",
+    tags: ["Next.js", "TypeScript", "Claude API", "PWA", "Tailwind"],
     image: "/assets/ClearcastCover.png", tall: true,
     images: [
       "/assets/ClearcastRecommendation.png",
-      "/assets/ClearcastOverview.png",
-      "/assets/ClearcastWeekly.png",
+      "/assets/ClearcastCurrent.png",
+      "/assets/ClearcastDaily.png",
       "/assets/ClearcastRain.png",
       "/assets/ClearcastStorm.png",
     ],
     live: "https://useclearcast.netlify.app/", code: "https://github.com/Jazz-H/WeatherApp",
     company: "Independent project", role: "Solo design & development",
     study: {
-      challenge: "Most weather apps give you data and leave the decision to you. I wanted to build one that makes the call. The hard part is turning a noisy hourly forecast into a single confident recommendation, fast and cheap enough to run on every page load, without leaking an API key to the browser or burning through budget on repeat visits.",
-      approach: "Built in Next.js and TypeScript, deployed on Netlify. Weather data comes from Open-Meteo (free, no key required). Each forecast is trimmed to a minimal payload (just current conditions, the next 12 hours, and today's daily summary), then sent to a serverless function that calls Claude Haiku with a strict Zod schema for structured output, so the UI gets clean, typed data it can render directly. Responses are cached in memory by location and hour with a configurable daily call cap, keeping costs predictable. The app ships as an installable PWA with a service worker that caches the last forecast for offline use.",
-      outcome: "Shipped. The app geocodes any city, auto-selects °F or °C by country, and renders an AI recommendation with color-coded activity verdicts and a best-time-of-day callout, all within a few seconds. The background gradient adapts across eight weather conditions, making the atmosphere itself part of the interface. It ships through a full CI/CD pipeline on GitHub Actions, with lint, typecheck, and test gates on every push.",
+      challenge: "Most weather apps hand you data and leave the decision to you. I wanted one that makes the call, turning a noisy forecast into a single confident recommendation. The harder goal was building it for correctness rather than demo appeal: keep the API key off the client, keep cost predictable, fail gracefully, and get the units right, all fast enough to run on every page load.",
+      approach: "Built in Next.js and TypeScript in strict mode, with Tailwind, deployed on Netlify. A server-only route calls Claude Haiku and validates the JSON it returns against a Zod schema that doubles as the app's TypeScript types, so a bad model response becomes a handled 502 instead of a client crash. Forecasts come from Open-Meteo, trimmed to current conditions plus the next 12 hours before they reach Claude, then cached in a 500-entry LRU with a daily call cap to hold down latency and cost. Eight CSS sky themes follow the live weather code, units auto-detect from the geocoded country with a saved manual override, and a service worker makes it an installable PWA that serves the last forecast offline.",
+      outcome: "Shipped and production-ready. Clearcast geocodes any city, auto-selects °F or °C by country, and renders an AI recommendation with color-coded activity verdicts and a best-time callout in seconds, on a background that shifts across eight weather conditions. It's backed by 38 unit tests, Playwright smoke tests, and a GitHub Actions pipeline that lints, type-checks, and tests on every push.",
     },
   },
   {
@@ -233,9 +233,9 @@ const METRICS = {
     { value: "Type-safe & tested", label: "TS strict, CI-gated tests, auto-deploy" },
   ],
   "Clearcast": [
-    { value: "AI recommendations", label: "Reads the forecast and tells you what to do" },
-    { value: "Adaptive UI", label: "Background shifts across eight weather conditions" },
-    { value: "Offline-ready PWA", label: "Installable, typed schema, CI-gated deploys" },
+    { value: "AI recommendations", label: "Claude verdicts, validated at runtime with Zod" },
+    { value: "Built for correctness", label: "TS strict, 38 unit tests, Playwright, CI/CD" },
+    { value: "Adaptive & offline", label: "8 live sky themes, installable PWA, smart units" },
   ],
   "KPI Management Dashboard": [
     { value: "Published", label: "Live on Tableau Public" },
