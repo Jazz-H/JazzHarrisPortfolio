@@ -106,15 +106,22 @@ const PROJECTS = [
   },
   {
     cat: "Apps", title: "Clearcast",
-    body: "Clearcast is a weather app that answers what you can actually do today. Instead of just showing the temperature, it reads the forecast and writes a plain, friendly recommendation: what to wear, which activities are worth it, and the best window to get out. Built in React and TypeScript on a serverless Claude backend, installable and ready to work offline. Live in public beta.",
-    tags: ["React", "TypeScript", "Claude API", "PWA"],
-    status: "Beta",
+    body: "Clearcast is a production-ready weather PWA that turns a raw forecast into a plain-English plan for your day. It uses Claude to generate structured activity recommendations, adapts its theme to live weather conditions, and works offline as an installable app. Every layer, from the API design to the caching strategy to unit detection, is built for correctness, not just demo appeal.",
+    tags: ["Next.js", "TypeScript", "Claude API", "PWA", "Tailwind"],
+    image: "/assets/ClearcastCover.png", tall: true,
+    images: [
+      "/assets/ClearcastRecommendation.png",
+      "/assets/ClearcastCurrent.png",
+      "/assets/ClearcastDaily.png",
+      "/assets/ClearcastRain.png",
+      "/assets/ClearcastStorm.png",
+    ],
     live: "https://useclearcast.netlify.app/", code: "https://github.com/Jazz-H/WeatherApp",
     company: "Independent project", role: "Solo design & development",
     study: {
-      challenge: "I wanted Clearcast to be a weather app that's actually useful, one that tells you what to do and not just the temperature. The hard part is turning a noisy hourly forecast into a single confident recommendation, fast and cheap enough to run on every visit, without leaking an API key to the browser.",
-      approach: "I built it in React and TypeScript on Vite. It pulls forecasts from Open-Meteo and sends them to a serverless function that calls Claude with a strict schema, so the UI always gets clean, typed data back. It's an installable app that works offline, shipped through a CI/CD pipeline.",
-      outcome: "Live in public beta and open to try. A fuller case study with screenshots is coming soon.",
+      challenge: "Most weather apps hand you data and leave the decision to you. I wanted one that makes the call, turning a noisy forecast into a single confident recommendation. The harder goal was building it for correctness rather than demo appeal: keep the API key off the client, keep cost predictable, fail gracefully, and get the units right, all fast enough to run on every page load.",
+      approach: "Built in Next.js and TypeScript in strict mode, with Tailwind, deployed on Netlify. A server-only route calls Claude Haiku and validates the JSON it returns against a Zod schema that doubles as the app's TypeScript types, so a bad model response becomes a handled 502 instead of a client crash. Forecasts come from Open-Meteo, trimmed to current conditions plus the next 12 hours before they reach Claude, then cached in a 500-entry LRU with a daily call cap to hold down latency and cost. Eight CSS sky themes follow the live weather code, units auto-detect from the geocoded country with a saved manual override, and a service worker makes it an installable PWA that serves the last forecast offline.",
+      outcome: "Shipped and production-ready. Clearcast geocodes any city, auto-selects °F or °C by country, and renders an AI recommendation with color-coded activity verdicts and a best-time callout in seconds, on a background that shifts across eight weather conditions. It's backed by 38 unit tests, Playwright smoke tests, and a GitHub Actions pipeline that lints, type-checks, and tests on every push.",
     },
   },
   {
@@ -224,6 +231,11 @@ const METRICS = {
     { value: "Real-time", label: "Messages, reactions & typing sync instantly" },
     { value: "Channels + DMs", label: "Public rooms and private conversations" },
     { value: "Type-safe & tested", label: "TS strict, CI-gated tests, auto-deploy" },
+  ],
+  "Clearcast": [
+    { value: "AI recommendations", label: "Claude verdicts, validated at runtime with Zod" },
+    { value: "Built for correctness", label: "TS strict, 38 unit tests, Playwright, CI/CD" },
+    { value: "Adaptive & offline", label: "8 live sky themes, installable PWA, smart units" },
   ],
   "KPI Management Dashboard": [
     { value: "Published", label: "Live on Tableau Public" },
@@ -820,7 +832,7 @@ const CSS = `
 .dp-metric{position:relative;border:1px solid var(--line);background:var(--card);border-radius:12px;padding:15px 16px 15px 19px;overflow:hidden;transition:border-color .2s,transform .2s,box-shadow .2s}
 .dp-metric::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--ember);opacity:.85}
 .dp-metric:hover{border-color:rgba(214,95,116,.4);transform:translateY(-2px);box-shadow:0 14px 30px -22px rgba(0,0,0,.9)}
-.dp-metric-v{display:block;font-family:var(--font-display),'Bricolage Grotesque',sans-serif;font-weight:700;font-size:19px;color:var(--ink);letter-spacing:-.01em;line-height:1.1}
+.dp-metric-v{display:block;font-family:var(--font-display),'Bricolage Grotesque',sans-serif;font-weight:700;font-size:19px;color:var(--ink);letter-spacing:-.01em;line-height:1.1;overflow-wrap:break-word;hyphens:auto}
 .dp-metric-l{display:block;color:var(--muted);font-size:12.5px;line-height:1.45;margin-top:6px}
 
 /* about — bento grid */
@@ -1010,6 +1022,8 @@ const CSS = `
   .dp-study{gap:14px;padding-top:20px}
   .dp-study-row{grid-template-columns:1fr;gap:6px}
   .dp-metrics{grid-template-columns:1fr 1fr;gap:10px}
+  .dp-metric{padding:14px 13px 14px 16px}
+  .dp-metric-v{font-size:17px}
   .dp-card-body{padding:16px;gap:8px}
   .dp-bento-tile{padding:16px}
   .dp-contact-row{padding:14px 15px;gap:12px}
