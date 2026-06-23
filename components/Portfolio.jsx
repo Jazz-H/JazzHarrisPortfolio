@@ -124,6 +124,18 @@ const PROJECTS = [
     },
   },
   {
+    cat: "Power Apps & Data", kind: "Data", title: "Support Ticket Dashboard",
+    body: "A service-desk analytics dashboard for Osapiens, the driver-routing app at Coca-Cola Consolidated. It groups support tickets by issue type and root cause, surfaces the patterns behind a noisy queue, and flags where documentation gaps drive repeat work, turning raw tickets into a clear picture of what to fix first. Being recreated for the portfolio with synthetic data.",
+    tags: ["Power BI", "ServiceNow", "Data Analysis", "Business Analysis"],
+    status: "Coming soon",
+    company: "Coca-Cola Consolidated", role: "IT Business Analyst II",
+    study: {
+      challenge: "A driver-routing app was generating 3 to 4 support tickets a day, many of them repeats, with an on-call rotation absorbing the load. The team needed to see the patterns behind the noise: which issues recurred, and where missing documentation was driving avoidable tickets.",
+      approach: "Built a support-ticket dashboard that grouped tickets by issue type and root cause, surfaced the recurring patterns, and flagged where knowledge-base articles needed updating. Paired it with triage documentation so the team could resolve the common cases without escalation. The original was built in ServiceNow; it is being recreated for the portfolio on synthetic data.",
+      outcome: "In development. The original work ended the team's on-call rotation and cut support tickets from 3 to 4 a day to 3 to 4 a week. Portfolio rebuild with screenshots and metrics coming soon.",
+    },
+  },
+  {
     cat: "Power Apps & Data", kind: "Power Apps", title: "Activity Tracker",
     body: "An internal activity-tracking app for an enterprise team at Coca-Cola Consolidated. It replaces a manual, spreadsheet-driven process with a Power Apps front end on SharePoint, so the team logs and reports work in minutes instead of hours. In active development.",
     tags: ["Power Apps", "SharePoint", "Power Automate", "Business Analysis"],
