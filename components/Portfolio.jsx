@@ -161,8 +161,8 @@ const PROJECTS = [
   },
   {
     cat: "Power Apps & Data", kind: "Data", title: "KPI Management Dashboard",
-    body: "An interactive sales-and-profit dashboard published to Tableau Public for quick decision-making.",
-    tags: ["Tableau"], image: "/assets/KPIDashboard.jpg", tall: true,
+    body: "A sales-and-profit analytics dashboard that turns raw transaction exports into a single, decision-ready view of how the business is performing. It models the data into clean measures (revenue, profit, and margin with their trends) and surfaces them in an interactive Tableau dashboard a manager can filter by product, region, and period to move from the headline number to the segment driving it. Published to Tableau Public for one-click sharing, no analyst in the loop.",
+    tags: ["Tableau", "Tableau Public", "Data modeling"], image: "/assets/KPIDashboard.jpg", tall: true,
     images: [
       "/assets/KPIDashboard.jpg",
       "/assets/KPIStateNC.jpg",
@@ -171,9 +171,9 @@ const PROJECTS = [
     live: "https://public.tableau.com/views/SalesandProfitManagementDashboard_16673599690350/Dashboard1",
     company: "Personal project", role: "Data analyst",
     study: {
-      challenge: "Turn raw sales and profit data into something a manager can act on at a glance.",
-      approach: "Modeled the data and built an interactive Tableau dashboard, published to Tableau Public.",
-      outcome: "A shareable dashboard for quick sales-and-profit decisions.",
+      challenge: "Raw sales and profit exports answer what happened, not what to do about it. A manager needs to see at a glance which products, regions, and periods drive the business and where margin is leaking, without waiting on an analyst.",
+      approach: "Modeled the data into a clean, filterable structure, defined the KPIs that matter (revenue, profit, and margin % with period-over-period trends) as calculated fields, then built an interactive Tableau dashboard with filters and drill-downs, published to Tableau Public.",
+      outcome: "A shareable, self-serve dashboard that replaces a static export: filter by segment, read the trend, and act in seconds instead of filing a data request.",
     },
   },
 ];
@@ -239,8 +239,8 @@ const METRICS = {
   ],
   "KPI Management Dashboard": [
     { value: "Published", label: "Live on Tableau Public" },
-    { value: "Interactive", label: "Filterable sales & profit" },
-    { value: "Decision-ready", label: "Built for quick reads" },
+    { value: "Interactive", label: "Filter by product, region & time" },
+    { value: "Decision-ready", label: "KPIs and trends at a glance" },
   ],
 };
 
