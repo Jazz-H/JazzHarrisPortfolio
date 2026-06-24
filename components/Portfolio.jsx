@@ -69,8 +69,8 @@ const PROJECTS = [
   },
   {
     cat: "Websites", title: "Electric Supplies Online",
-    body: "An e-commerce storefront for an electrical-supplies retailer, organized so customers can find and buy the right parts fast.",
-    tags: ["Yahoo Manager", "HTML", "CSS", "JavaScript"], image: "/assets/ElectricCover.jpg",
+    body: "A live e-commerce storefront for an electrical-supplies retailer, with a deep, technical catalog spanning lighting, circuit breakers, transformers, and dozens of categories in between. As the in-house designer and developer, I organized the catalog for fast discovery, shaped the storefront and merchandising, and kept the customer-facing experience running for a real, operating business.",
+    tags: ["E-commerce", "Information architecture", "HTML", "CSS", "JavaScript"], image: "/assets/ElectricCover.jpg",
     images: [
       "/assets/ElectricStore.jpg",
       "/assets/ElectricHome.jpg",
@@ -80,9 +80,9 @@ const PROJECTS = [
     live: "https://electricsuppliesonline.com/",
     company: "Electric Supplies Online", role: "Designer & developer",
     study: {
-      challenge: "Shoppers needed to find and buy the right electrical part quickly, across a large catalog.",
-      approach: "Organized the storefront and product structure around fast discovery and a clean checkout path.",
-      outcome: "A storefront that gets customers to the right part with less friction.",
+      challenge: "An electrical-supplies retailer carries a deep, technical catalog: breakers, dimmers, transformers, indoor and outdoor lighting, and dozens of categories in between. The job was to make that range easy for a contractor or homeowner to navigate and buy from, without getting lost, on a platform a small team could keep current.",
+      approach: "Working as the in-house designer and developer, I structured the catalog into clear, browsable categories built around how customers actually shop, shaped the homepage and merchandising to surface promotions and featured products, and maintained the storefront, account, and checkout experience. The focus was the customer-facing experience and information architecture, not a from-scratch rebuild of the platform.",
+      outcome: "A live, operating storefront that serves real customers across a large product catalog, organized so a shopper reaches the right part with less friction. It remains in active use today.",
     },
   },
   {
@@ -208,9 +208,9 @@ const METRICS = {
     { value: "Freelance", label: "Designed & built solo, end-to-end" },
   ],
   "Electric Supplies Online": [
-    { value: "Live store", label: "Active e-commerce storefront" },
-    { value: "Full catalog", label: "Organized for fast discovery" },
-    { value: "In-house", label: "Designer / developer role" },
+    { value: "Live store", label: "Real, operating e-commerce business" },
+    { value: "Deep catalog", label: "Lighting, breakers, transformers & more" },
+    { value: "Owned in-house", label: "Designer and developer of the storefront" },
   ],
   "Chat App": [
     { value: "Real-time", label: "Messages, reactions & typing sync instantly" },
@@ -377,12 +377,32 @@ function Thumb({ p }) {
 
 function WorkList({ onOpen, filter, setFilter }) {
   const shown = PROJECTS.filter((p) => filter === "All" || p.cat === filter);
+  const filtersRef = useRef(null);
+  const [moreRight, setMoreRight] = useState(false);
+
+  useEffect(() => {
+    const el = filtersRef.current;
+    if (!el) return;
+    const update = () => {
+      const overflow = el.scrollWidth - el.clientWidth > 1;
+      const atEnd = el.scrollLeft + el.clientWidth >= el.scrollWidth - 1;
+      setMoreRight(overflow && !atEnd);
+    };
+    update();
+    el.addEventListener("scroll", update, { passive: true });
+    window.addEventListener("resize", update);
+    return () => {
+      el.removeEventListener("scroll", update);
+      window.removeEventListener("resize", update);
+    };
+  }, []);
+
   return (
     <section className="dp-view">
       <div className="dp-work-head">
         <p className="dp-label">Selected work · {shown.length}</p>
-        <div className="dp-filters-wrap">
-          <div className="dp-filters" role="tablist" aria-label="Filter work">
+        <div className={"dp-filters-wrap" + (moreRight ? " can-scroll-end" : "")}>
+          <div className="dp-filters" role="tablist" aria-label="Filter work" ref={filtersRef}>
             {FILTERS.map((f) => (
               <button key={f} className={"dp-filter" + (filter === f ? " is-active" : "")} onClick={() => setFilter(f)} aria-pressed={filter === f}>
                 {f}
@@ -995,7 +1015,7 @@ const CSS = `
   .dp-shell{grid-template-columns:1fr;min-width:0;max-width:100%;overflow-x:clip}
   .dp-work-head{flex-direction:column;align-items:flex-start;gap:14px;margin-bottom:26px}
   .dp-filters-wrap{display:block;position:relative;width:100%;max-width:100%;min-width:0}
-  .dp-filters-wrap::after{content:"";position:absolute;top:0;right:0;bottom:12px;width:34px;background:linear-gradient(to right,transparent,var(--bg));pointer-events:none}
+  .dp-filters-wrap.can-scroll-end::after{content:"";position:absolute;top:0;right:0;bottom:12px;width:34px;background:linear-gradient(to right,transparent,var(--bg));pointer-events:none}
   .dp-filters{width:100%;max-width:100%;flex-wrap:nowrap;overflow-x:auto;scrollbar-width:thin;scrollbar-color:var(--line-2) rgba(243,234,234,.06);-webkit-overflow-scrolling:touch;padding-bottom:8px}
   .dp-filters::-webkit-scrollbar{height:4px}
   .dp-filters::-webkit-scrollbar-track{background:rgba(243,234,234,.06);border-radius:999px}
