@@ -161,23 +161,6 @@ const PROJECTS = [
       outcome: "In development. Live dashboard, metrics, and screenshots coming soon.",
     },
   },
-  {
-    cat: "Power Apps & Data", kind: "Data", title: "KPI Management Dashboard",
-    body: "A sales-and-profit analytics dashboard that turns raw transaction exports into a single, decision-ready view of how the business is performing. It models the data into clean measures (revenue, profit, and margin with their trends) and surfaces them in an interactive Tableau dashboard a manager can filter by product, region, and period to move from the headline number to the segment driving it. Published to Tableau Public for one-click sharing.",
-    tags: ["Tableau", "Tableau Public", "Data modeling"], image: "/assets/KPIDashboard.jpg", tall: true,
-    images: [
-      "/assets/KPIDashboard.jpg",
-      "/assets/KPIStateNC.jpg",
-      "/assets/KPIStateNY.jpg",
-    ],
-    live: "https://public.tableau.com/views/SalesandProfitManagementDashboard_16673599690350/Dashboard1",
-    company: "Personal project", role: "Data analyst",
-    study: {
-      challenge: "Raw sales and profit exports answer what happened, not what to do about it. A manager needs to see at a glance which products, regions, and periods drive the business and where margin is leaking.",
-      approach: "Modeled the data into a clean, filterable structure, defined the KPIs that matter (revenue, profit, and margin % with period-over-period trends) as calculated fields, then built an interactive Tableau dashboard with filters and drill-downs, published to Tableau Public.",
-      outcome: "A shareable, self-serve dashboard that replaces a static export: filter by segment, read the trend, and act in seconds instead of filing a data request.",
-    },
-  },
 ];
 // Only show category filters that actually have projects (e.g. "Apps" hides
 // when empty, and reappears automatically once an Apps project is added).
@@ -238,11 +221,6 @@ const METRICS = {
     { value: "AI recommendations", label: "Claude verdicts, validated at runtime with Zod" },
     { value: "Built for correctness", label: "TS strict, 38 unit tests, Playwright, CI/CD" },
     { value: "Adaptive & offline", label: "8 live sky themes, installable PWA, smart units" },
-  ],
-  "KPI Management Dashboard": [
-    { value: "Published", label: "Live on Tableau Public" },
-    { value: "Interactive", label: "Filter by product, region & time" },
-    { value: "Decision-ready", label: "KPIs and trends at a glance" },
   ],
 };
 
