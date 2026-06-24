@@ -80,7 +80,7 @@ const PROJECTS = [
     live: "https://electricsuppliesonline.com/",
     company: "Electric Supplies Online", role: "Designer & developer",
     study: {
-      challenge: "An electrical-supplies retailer carries a deep, technical catalog: breakers, dimmers, transformers, indoor and outdoor lighting, and dozens of categories in between. The job was to make that range easy for a contractor or homeowner to navigate and buy from, without getting lost, on a platform a small team could keep current.",
+      challenge: "An electrical-supplies retailer carries a deep, technical catalog: breakers, dimmers, transformers, indoor and outdoor lighting, and dozens of categories in between. In a category that has shifted heavily online, where most buyers now shop the web for parts, the job was to make that range easy for a contractor or homeowner to navigate and buy from, without getting lost, on a platform a small team could keep current.",
       approach: "Working as the in-house designer and developer, I structured the catalog into clear, browsable categories built around how customers actually shop, shaped the homepage and merchandising to surface promotions and featured products, and maintained the storefront, account, and checkout experience. The focus was the customer-facing experience and information architecture, not a from-scratch rebuild of the platform.",
       outcome: "A live, operating storefront that serves real customers across a large product catalog, organized so a shopper reaches the right part with less friction. It remains in active use today.",
     },
