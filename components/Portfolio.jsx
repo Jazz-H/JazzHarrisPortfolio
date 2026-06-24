@@ -377,12 +377,32 @@ function Thumb({ p }) {
 
 function WorkList({ onOpen, filter, setFilter }) {
   const shown = PROJECTS.filter((p) => filter === "All" || p.cat === filter);
+  const filtersRef = useRef(null);
+  const [moreRight, setMoreRight] = useState(false);
+
+  useEffect(() => {
+    const el = filtersRef.current;
+    if (!el) return;
+    const update = () => {
+      const overflow = el.scrollWidth - el.clientWidth > 1;
+      const atEnd = el.scrollLeft + el.clientWidth >= el.scrollWidth - 1;
+      setMoreRight(overflow && !atEnd);
+    };
+    update();
+    el.addEventListener("scroll", update, { passive: true });
+    window.addEventListener("resize", update);
+    return () => {
+      el.removeEventListener("scroll", update);
+      window.removeEventListener("resize", update);
+    };
+  }, []);
+
   return (
     <section className="dp-view">
       <div className="dp-work-head">
         <p className="dp-label">Selected work · {shown.length}</p>
-        <div className="dp-filters-wrap">
-          <div className="dp-filters" role="tablist" aria-label="Filter work">
+        <div className={"dp-filters-wrap" + (moreRight ? " can-scroll-end" : "")}>
+          <div className="dp-filters" role="tablist" aria-label="Filter work" ref={filtersRef}>
             {FILTERS.map((f) => (
               <button key={f} className={"dp-filter" + (filter === f ? " is-active" : "")} onClick={() => setFilter(f)} aria-pressed={filter === f}>
                 {f}
@@ -995,7 +1015,7 @@ const CSS = `
   .dp-shell{grid-template-columns:1fr;min-width:0;max-width:100%;overflow-x:clip}
   .dp-work-head{flex-direction:column;align-items:flex-start;gap:14px;margin-bottom:26px}
   .dp-filters-wrap{display:block;position:relative;width:100%;max-width:100%;min-width:0}
-  .dp-filters-wrap::after{content:"";position:absolute;top:0;right:0;bottom:12px;width:34px;background:linear-gradient(to right,transparent,var(--bg));pointer-events:none}
+  .dp-filters-wrap.can-scroll-end::after{content:"";position:absolute;top:0;right:0;bottom:12px;width:34px;background:linear-gradient(to right,transparent,var(--bg));pointer-events:none}
   .dp-filters{width:100%;max-width:100%;flex-wrap:nowrap;overflow-x:auto;scrollbar-width:thin;scrollbar-color:var(--line-2) rgba(243,234,234,.06);-webkit-overflow-scrolling:touch;padding-bottom:8px}
   .dp-filters::-webkit-scrollbar{height:4px}
   .dp-filters::-webkit-scrollbar-track{background:rgba(243,234,234,.06);border-radius:999px}
