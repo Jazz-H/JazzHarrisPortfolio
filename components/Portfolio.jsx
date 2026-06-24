@@ -161,7 +161,7 @@ const PROJECTS = [
   },
   {
     cat: "Power Apps & Data", kind: "Data", title: "KPI Management Dashboard",
-    body: "A sales-and-profit analytics dashboard that turns raw transaction exports into a single, decision-ready view of how the business is performing. It models the data into clean measures (revenue, profit, and margin with their trends) and surfaces them in an interactive Tableau dashboard a manager can filter by product, region, and period to move from the headline number to the segment driving it. Published to Tableau Public for one-click sharing, no analyst in the loop.",
+    body: "A sales-and-profit analytics dashboard that turns raw transaction exports into a single, decision-ready view of how the business is performing. It models the data into clean measures (revenue, profit, and margin with their trends) and surfaces them in an interactive Tableau dashboard a manager can filter by product, region, and period to move from the headline number to the segment driving it. Published to Tableau Public for one-click sharing.",
     tags: ["Tableau", "Tableau Public", "Data modeling"], image: "/assets/KPIDashboard.jpg", tall: true,
     images: [
       "/assets/KPIDashboard.jpg",
