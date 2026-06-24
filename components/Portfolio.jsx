@@ -2,6 +2,7 @@
 /* eslint-disable @next/next/no-img-element */
 
 import { useState, useEffect, useRef } from "react";
+import { createPortal } from "react-dom";
 import {
   FiGithub,
   FiLinkedin,
@@ -13,6 +14,7 @@ import {
   FiChevronLeft,
   FiChevronRight,
   FiChevronDown,
+  FiX,
   FiMapPin,
   FiBriefcase,
   FiActivity,
@@ -434,6 +436,7 @@ function Gallery({ images, title, gradient, status, fallbackWord, tall }) {
   const trackRef = useRef(null);
   const [idx, setIdx] = useState(0);
   const [broken, setBroken] = useState(false);
+  const [lightbox, setLightbox] = useState(null);
   const multi = images.length > 1;
 
   const onScroll = () => {
@@ -446,6 +449,23 @@ function Gallery({ images, title, gradient, status, fallbackWord, tall }) {
     const clamped = Math.max(0, Math.min(images.length - 1, i));
     el.scrollTo({ left: clamped * el.clientWidth, behavior: "smooth" });
   };
+  const lbClamp = (i) => Math.max(0, Math.min(images.length - 1, i));
+
+  useEffect(() => {
+    if (lightbox === null) return;
+    const onKey = (e) => {
+      if (e.key === "Escape") setLightbox(null);
+      else if (e.key === "ArrowRight") setLightbox((v) => (v === null ? v : lbClamp(v + 1)));
+      else if (e.key === "ArrowLeft") setLightbox((v) => (v === null ? v : lbClamp(v - 1)));
+    };
+    window.addEventListener("keydown", onKey);
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      window.removeEventListener("keydown", onKey);
+      document.body.style.overflow = prev;
+    };
+  }, [lightbox, images.length]);
 
   return (
     <div className="dp-gallery-wrap">
@@ -460,14 +480,20 @@ function Gallery({ images, title, gradient, status, fallbackWord, tall }) {
         {images.length && !broken ? (
           <div className="dp-gallery-track" ref={trackRef} onScroll={onScroll}>
             {images.map((src, i) => (
-              <div className="dp-gallery-slide" key={src}>
+              <button
+                type="button"
+                className="dp-gallery-slide"
+                key={src}
+                onClick={() => setLightbox(i)}
+                aria-label={multi ? `Enlarge ${title} screen ${i + 1}` : `Enlarge ${title}`}
+              >
                 <img
                   src={src}
                   alt={multi ? `${title} — screen ${i + 1}` : title}
                   loading={i === 0 ? undefined : "lazy"}
                   onError={() => { if (i === 0) setBroken(true); }}
                 />
-              </div>
+              </button>
             ))}
           </div>
         ) : (
@@ -491,6 +517,31 @@ function Gallery({ images, title, gradient, status, fallbackWord, tall }) {
             <button type="button" key={src} className={"dp-gallery-dot" + (i === idx ? " is-active" : "")} aria-label={`Go to image ${i + 1}`} aria-current={i === idx} onClick={() => go(i)} />
           ))}
         </div>
+      )}
+      {lightbox !== null && typeof document !== "undefined" && createPortal(
+        <div className="dp-lightbox" role="dialog" aria-modal="true" aria-label={`${title} enlarged`} onClick={() => setLightbox(null)}>
+          <button type="button" className="dp-lb-close" aria-label="Close" onClick={() => setLightbox(null)}>
+            <FiX aria-hidden="true" />
+          </button>
+          {multi && (
+            <button type="button" className="dp-lb-nav dp-lb-prev" aria-label="Previous image" onClick={(e) => { e.stopPropagation(); setLightbox(lbClamp(lightbox - 1)); }} disabled={lightbox === 0}>
+              <FiChevronLeft aria-hidden="true" />
+            </button>
+          )}
+          <img
+            className="dp-lb-img"
+            src={images[lightbox]}
+            alt={multi ? `${title} — screen ${lightbox + 1}` : title}
+            onClick={(e) => e.stopPropagation()}
+          />
+          {multi && (
+            <button type="button" className="dp-lb-nav dp-lb-next" aria-label="Next image" onClick={(e) => { e.stopPropagation(); setLightbox(lbClamp(lightbox + 1)); }} disabled={lightbox === images.length - 1}>
+              <FiChevronRight aria-hidden="true" />
+            </button>
+          )}
+          {multi && <div className="dp-lb-count">{lightbox + 1} / {images.length}</div>}
+        </div>,
+        document.body
       )}
     </div>
   );
@@ -802,6 +853,19 @@ const CSS = `
 .dp-gallery-dots .dp-gallery-dot{width:7px;height:7px;border-radius:50%;background:rgba(243,234,234,.9);box-shadow:0 1px 3px rgba(0,0,0,.55);transition:background .2s,transform .2s}
 .dp-gallery-dots .dp-gallery-dot:hover{background:#fff}
 .dp-gallery-dots .dp-gallery-dot.is-active{background:var(--ember);transform:scale(1.35)}
+.dp-gallery-track .dp-gallery-slide{cursor:zoom-in;display:block}
+.dp-lightbox{position:fixed;inset:0;z-index:200;display:flex;align-items:center;justify-content:center;padding:32px;background:rgba(6,5,8,.93);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);animation:dpLbIn .2s ease}
+@keyframes dpLbIn{from{opacity:0}to{opacity:1}}
+.dp-lightbox .dp-lb-img{max-width:92vw;max-height:88vh;width:auto;height:auto;object-fit:contain;border-radius:10px;box-shadow:0 24px 60px -20px rgba(0,0,0,.85);cursor:default}
+.dp-lightbox .dp-lb-close{position:absolute;top:18px;right:18px;width:42px;height:42px;display:flex;align-items:center;justify-content:center;border-radius:50%;background:rgba(8,6,9,.72);border:1px solid rgba(242,131,155,.5);color:#ff8fa6;font-size:20px;cursor:pointer;box-shadow:0 4px 14px -4px rgba(0,0,0,.6);transition:background .2s,border-color .2s,color .2s}
+.dp-lightbox .dp-lb-close:hover{background:rgba(8,6,9,.95);border-color:#ff8fa6;color:#ffa7bb}
+.dp-lightbox .dp-lb-nav{position:absolute;top:50%;transform:translateY(-50%);width:46px;height:46px;display:flex;align-items:center;justify-content:center;border-radius:50%;background:rgba(8,6,9,.72);border:1px solid rgba(242,131,155,.5);color:#ff8fa6;font-size:22px;cursor:pointer;box-shadow:0 4px 14px -4px rgba(0,0,0,.6);transition:background .2s,border-color .2s,color .2s,opacity .2s}
+.dp-lightbox .dp-lb-nav:hover{background:rgba(8,6,9,.95);border-color:#ff8fa6;color:#ffa7bb}
+.dp-lightbox .dp-lb-nav:disabled{opacity:.25;pointer-events:none}
+.dp-lightbox .dp-lb-prev{left:18px}
+.dp-lightbox .dp-lb-next{right:18px}
+.dp-lightbox .dp-lb-count{position:absolute;bottom:20px;left:50%;transform:translateX(-50%);font-size:12px;letter-spacing:.08em;color:rgba(243,234,234,.85);background:rgba(8,6,9,.6);padding:5px 12px;border-radius:20px}
+.dp-lightbox .dp-lb-close:focus-visible,.dp-lightbox .dp-lb-nav:focus-visible{outline:2px solid var(--amber);outline-offset:3px}
 .dp-detail-head{margin-bottom:14px}
 .dp-detail-h{font-family:var(--font-display),'Bricolage Grotesque',sans-serif;font-weight:700;font-size:clamp(26px,3.4vw,40px);letter-spacing:-.02em;line-height:1.06;margin-top:8px}
 .dp-detail-overview{color:var(--muted);font-size:17px;max-width:62ch;margin-bottom:26px}
@@ -1006,6 +1070,11 @@ const CSS = `
   .dp-gallery-wrap{margin:14px 0 20px}
   .dp-gallery{height:190px;border-radius:16px}
   .dp-gallery-tall{height:420px}
+  .dp-lightbox{padding:14px}
+  .dp-lightbox .dp-lb-nav{width:40px;height:40px;font-size:19px}
+  .dp-lightbox .dp-lb-prev{left:8px}
+  .dp-lightbox .dp-lb-next{right:8px}
+  .dp-lightbox .dp-lb-close{top:10px;right:10px}
   .dp-detail-mono{font-size:36px}
   .dp-meta{gap:18px;padding:16px 0;margin-bottom:18px}
   .dp-stack-row{margin-bottom:20px}
