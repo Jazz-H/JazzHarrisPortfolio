@@ -171,7 +171,7 @@ const PROJECTS = [
     live: "https://public.tableau.com/views/SalesandProfitManagementDashboard_16673599690350/Dashboard1",
     company: "Personal project", role: "Data analyst",
     study: {
-      challenge: "Raw sales and profit exports answer what happened, not what to do about it. A manager needs to see at a glance which products, regions, and periods drive the business and where margin is leaking, without waiting on an analyst.",
+      challenge: "Raw sales and profit exports answer what happened, not what to do about it. A manager needs to see at a glance which products, regions, and periods drive the business and where margin is leaking.",
       approach: "Modeled the data into a clean, filterable structure, defined the KPIs that matter (revenue, profit, and margin % with period-over-period trends) as calculated fields, then built an interactive Tableau dashboard with filters and drill-downs, published to Tableau Public.",
       outcome: "A shareable, self-serve dashboard that replaces a static export: filter by segment, read the trend, and act in seconds instead of filing a data request.",
     },
