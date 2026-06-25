@@ -133,7 +133,7 @@ const PROJECTS = [
     cat: "Power Apps & Data", kind: "Data", title: "DSD Support Operations Dashboard",
     body: "A ServiceNow analytics dashboard for Osapiens, the DSD (direct store delivery) routing app at Coca-Cola Consolidated. It monitors a redesigned support model: Tier-1 vs Tier-2 routing, knowledge-base deflection, SLA health, and vendor escalations, so the team can see at a glance where work is being resolved and what to fix next. Visuals recreated without internal data for confidentiality.",
     tags: ["ServiceNow", "Knowledge Base", "Process Design", "Business Analysis"],
-    image: "/assets/SupportDashHero.jpg", tall: true,
+    image: "/assets/SupportDashTeam.jpg", tall: true,
     images: [
       "/assets/SupportDashPersonal.jpg",
       "/assets/SupportDashTeam.jpg",
@@ -410,6 +410,16 @@ function WorkList({ onOpen, filter, setFilter }) {
       window.removeEventListener("resize", update);
     };
   }, []);
+
+  // Keep the selected filter fully in view, so it is never clipped under the fade.
+  useEffect(() => {
+    const el = filtersRef.current;
+    if (!el) return;
+    const active = el.querySelector(".dp-filter.is-active");
+    if (!active) return;
+    const target = active.offsetLeft - (el.clientWidth - active.offsetWidth) / 2;
+    el.scrollTo({ left: Math.max(0, target), behavior: "smooth" });
+  }, [filter]);
 
   return (
     <section className="dp-view">
