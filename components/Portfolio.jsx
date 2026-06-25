@@ -137,6 +137,7 @@ const PROJECTS = [
     images: [
       "/assets/SupportDashTeam.jpg",
       "/assets/SupportDashService.jpg",
+      "/assets/SupportDashPersonal.jpg",
     ],
     company: "Coca-Cola Consolidated", role: "IT Business Analyst II",
     study: {
