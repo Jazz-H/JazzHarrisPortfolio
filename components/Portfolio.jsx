@@ -130,11 +130,12 @@ const PROJECTS = [
     },
   },
   {
-    cat: "Power Apps & Data", kind: "Data", title: "Support Ticket Dashboard",
+    cat: "Power Apps & Data", kind: "Data", title: "DSD Support Operations Dashboard",
     body: "A ServiceNow analytics dashboard for Osapiens, the DSD (direct store delivery) routing app at Coca-Cola Consolidated. It monitors a redesigned support model: Tier-1 vs Tier-2 routing, knowledge-base deflection, SLA health, and vendor escalations, so the team can see at a glance where work is being resolved and what to fix next. Visuals recreated without internal data for confidentiality.",
     tags: ["ServiceNow", "Knowledge Base", "Process Design", "Business Analysis"],
     image: "/assets/SupportDashHero.jpg", tall: true,
     images: [
+      "/assets/SupportDashPersonal.jpg",
       "/assets/SupportDashTeam.jpg",
       "/assets/SupportDashService.jpg",
     ],
@@ -205,7 +206,7 @@ const CAT_GRADIENT = {
 // Result highlights per project (qualitative stat-style — swap in real
 // numbers like donations raised, users, traffic, or time saved any time).
 const METRICS = {
-  "Support Ticket Dashboard": [
+  "DSD Support Operations Dashboard": [
     { value: "~95% fewer", label: "Tier 2 escalations: 5+/day to 2-3/week" },
     { value: "On-call ended", label: "After-hours absorbed by Tier 1 (SCT)" },
     { value: "73% KB deflection", label: "New articles let first-line self-serve" },
