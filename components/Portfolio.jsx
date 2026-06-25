@@ -131,14 +131,18 @@ const PROJECTS = [
   },
   {
     cat: "Power Apps & Data", kind: "Data", title: "Support Ticket Dashboard",
-    body: "A service-desk analytics dashboard for Osapiens, the driver-routing app at Coca-Cola Consolidated. It groups support tickets by issue type and root cause, surfaces the patterns behind a noisy queue, and flags where documentation gaps drive repeat work, turning raw tickets into a clear picture of what to fix first. Being recreated for the portfolio with synthetic data.",
-    tags: ["Power BI", "ServiceNow", "Data Analysis", "Business Analysis"],
-    status: "Coming soon",
+    body: "A ServiceNow analytics dashboard for Osapiens, the DSD (direct store delivery) routing app at Coca-Cola Consolidated. It monitors a redesigned support model: Tier-1 vs Tier-2 routing, knowledge-base deflection, SLA health, and vendor escalations, so the team can see at a glance where work is being resolved and what to fix next. Visuals recreated without internal data for confidentiality.",
+    tags: ["ServiceNow", "Knowledge Base", "Process Design", "Business Analysis"],
+    image: "/assets/SupportDashHero.jpg", tall: true,
+    images: [
+      "/assets/SupportDashTeam.jpg",
+      "/assets/SupportDashService.jpg",
+    ],
     company: "Coca-Cola Consolidated", role: "IT Business Analyst II",
     study: {
-      challenge: "A driver-routing app was generating 3 to 4 support tickets a day, many of them repeats, with an on-call rotation absorbing the load. The team needed to see the patterns behind the noise: which issues recurred, and where missing documentation was driving avoidable tickets.",
-      approach: "Built a support-ticket dashboard that grouped tickets by issue type and root cause, surfaced the recurring patterns, and flagged where knowledge-base articles needed updating. Paired it with triage documentation so the team could resolve the common cases without escalation. The original was built in ServiceNow; it is being recreated for the portfolio on synthetic data.",
-      outcome: "In development. The original work ended the team's on-call rotation and cut support tickets from 3 to 4 a day to 3 to 4 a week. Portfolio rebuild with screenshots and metrics coming soon.",
+      challenge: "The Osapiens routing app was sending 5+ tickets a day straight to Tier 2, with the first-line Service Center Team escalating entry-level issues instead of resolving them, and Tier 2 carrying an overnight on-call rotation. The fix wasn't more people; it was changing where work got resolved.",
+      approach: "I analyzed the escalation pattern to find which issue types Tier 1 could own, then redesigned the support model around it: step-by-step knowledge-base articles (cloud backup, shipment reset, mobile PIN, vendor e-bonding, routing) that let the Service Center Team resolve at first contact, with a clear escalation path to the vendor for true exceptions. I ran a training walkthrough and built a ServiceNow dashboard to monitor Tier-1 vs Tier-2 routing, KB deflection, and SLA health.",
+      outcome: "Tier 2 escalations fell from 5+ a day to 2-3 a week, about a 95% reduction, and the after-hours on-call rotation was eliminated as the Service Center Team absorbed first-line resolution. Drivers and warehouse users get faster answers at Tier 1, with vendor escalation reserved for genuine exceptions.",
     },
   },
   {
@@ -201,6 +205,11 @@ const CAT_GRADIENT = {
 // Result highlights per project (qualitative stat-style — swap in real
 // numbers like donations raised, users, traffic, or time saved any time).
 const METRICS = {
+  "Support Ticket Dashboard": [
+    { value: "~95% fewer", label: "Tier 2 escalations: 5+/day to 2-3/week" },
+    { value: "On-call ended", label: "After-hours absorbed by Tier 1 (SCT)" },
+    { value: "73% KB deflection", label: "New articles let first-line self-serve" },
+  ],
   "Valora": [
     { value: "Privacy-first", label: "Your data stays yours, no forced bank linking" },
     { value: "End-to-end", label: "Designed & built solo" },
