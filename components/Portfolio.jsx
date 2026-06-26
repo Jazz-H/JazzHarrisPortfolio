@@ -150,7 +150,7 @@ const PROJECTS = [
     cat: "Power Apps & Data", kind: "Data", title: "Activity & Objective Dashboard",
     body: "A Power BI dashboard, fed by a SharePoint form, that tracks daily BA activity against my 2026 objectives so progress is always current instead of reconstructed at review time. Each logged activity maps to a project, an objective, an activity type, and a competency behavior, and the report rolls it up into objective progress, effort distribution, and trend. Built end to end; the data shown is generic for confidentiality.",
     tags: ["Power BI", "SharePoint", "Data Modeling", "Business Analysis"],
-    image: "/assets/ActivityObjectives.jpg", tall: true,
+    image: "/assets/ActivityCover.jpg", tall: true,
     images: [
       "/assets/ActivityOverview.jpg",
       "/assets/ActivityObjectives.jpg",
