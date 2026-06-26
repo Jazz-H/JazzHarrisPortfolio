@@ -147,15 +147,19 @@ const PROJECTS = [
     },
   },
   {
-    cat: "Power Apps & Data", kind: "Power Apps", title: "Activity Tracker",
-    body: "An internal activity-tracking app for an enterprise team at Coca-Cola Consolidated. It replaces a manual, spreadsheet-driven process with a Power Apps front end on SharePoint, so the team logs and reports work in minutes instead of hours. In active development.",
-    tags: ["Power Apps", "SharePoint", "Power Automate", "Business Analysis"],
-    status: "Coming soon",
+    cat: "Power Apps & Data", kind: "Data", title: "BA3 Activity Dashboard",
+    body: "A Power BI dashboard, fed by a SharePoint form, that tracks daily BA activity against my 2026 objectives so progress is always current instead of reconstructed at review time. Each logged activity maps to a project, an objective, an activity type, and a competency behavior, and the report rolls it up into objective progress, effort distribution, and trend. Built end to end; the data shown is generic for confidentiality.",
+    tags: ["Power BI", "SharePoint", "Data Modeling", "Business Analysis"],
+    image: "/assets/ActivityObjectives.jpg", tall: true,
+    images: [
+      "/assets/ActivityOverview.jpg",
+      "/assets/ActivityObjectives.jpg",
+    ],
     company: "Coca-Cola Consolidated", role: "IT Business Analyst II",
     study: {
-      challenge: "A team was tracking activity manually across spreadsheets and email, which was slow, error-prone, and hard to report on. As the BA, I own turning that pain into a tool people will actually use.",
-      approach: "Gathering requirements from the team and stakeholders, modeling the data in SharePoint, and building a Power Apps front end (with Power Automate for notifications and approvals), all designed around the real workflow, not the org chart.",
-      outcome: "In development. Full results, metrics, and screenshots coming soon.",
+      challenge: "Across multiple projects and a set of annual objectives, I had no single, current view of where my effort was going or how close each objective was. Progress got reconstructed manually at review time, which was slow and always out of date.",
+      approach: "I designed a small data model where every activity maps to a project, an objective, an activity type, and a competency behavior, captured through a SharePoint form for fast logging. On top of it I built a Power BI report: objective-progress bars against targets with on-track and needs-focus banding, effort distribution, project mix, behavior trends, and an activity timeline. I modeled, built, and wired it end to end. The data shown here is generic for confidentiality.",
+      outcome: "A live, self-service view of objective progress that updates as I log work, so I can rebalance effort during the year instead of finding out at review time. It is the same shape of work I do for stakeholders, applied to my own goals: structured data in, a clear decision out.",
     },
   },
   {
@@ -210,6 +214,11 @@ const METRICS = {
     { value: "~95% fewer", label: "Tier 2 escalations: 5+/day to 2-3/week" },
     { value: "On-call ended", label: "After-hours absorbed by Tier 1 (SCT)" },
     { value: "73% KB deflection", label: "New articles let first-line self-serve" },
+  ],
+  "BA3 Activity Dashboard": [
+    { value: "Live progress", label: "Objective tracking that updates as work is logged" },
+    { value: "End-to-end", label: "SharePoint form to Power BI, modeled and built solo" },
+    { value: "Objective-aligned", label: "Every activity maps to a 2026 objective" },
   ],
   "Valora": [
     { value: "Privacy-first", label: "Your data stays yours, no forced bank linking" },
