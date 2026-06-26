@@ -147,7 +147,7 @@ const PROJECTS = [
     },
   },
   {
-    cat: "Power Apps & Data", kind: "Data", title: "BA3 Activity Dashboard",
+    cat: "Power Apps & Data", kind: "Data", title: "Activity & Objective Dashboard",
     body: "A Power BI dashboard, fed by a SharePoint form, that tracks daily BA activity against my 2026 objectives so progress is always current instead of reconstructed at review time. Each logged activity maps to a project, an objective, an activity type, and a competency behavior, and the report rolls it up into objective progress, effort distribution, and trend. Built end to end; the data shown is generic for confidentiality.",
     tags: ["Power BI", "SharePoint", "Data Modeling", "Business Analysis"],
     image: "/assets/ActivityObjectives.jpg", tall: true,
@@ -215,7 +215,7 @@ const METRICS = {
     { value: "On-call ended", label: "After-hours absorbed by Tier 1 (SCT)" },
     { value: "73% KB deflection", label: "New articles let first-line self-serve" },
   ],
-  "BA3 Activity Dashboard": [
+  "Activity & Objective Dashboard": [
     { value: "Live progress", label: "Objective tracking that updates as work is logged" },
     { value: "End-to-end", label: "SharePoint form to Power BI, modeled and built solo" },
     { value: "Objective-aligned", label: "Every activity maps to a 2026 objective" },
