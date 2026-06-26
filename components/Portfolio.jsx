@@ -147,27 +147,22 @@ const PROJECTS = [
     },
   },
   {
-    cat: "Power Apps & Data", kind: "Power Apps", title: "Activity Tracker",
-    body: "An internal activity-tracking app for an enterprise team at Coca-Cola Consolidated. It replaces a manual, spreadsheet-driven process with a Power Apps front end on SharePoint, so the team logs and reports work in minutes instead of hours. In active development.",
-    tags: ["Power Apps", "SharePoint", "Power Automate", "Business Analysis"],
-    status: "Coming soon",
+    cat: "Power Apps & Data", kind: "Data", title: "Activity & Objective Dashboard",
+    body: "A self-service Power BI dashboard, fed by a SharePoint form, that turns everyday BA work into a live view of progress against my 2026 objectives, instead of something pieced together from memory at review time. I designed the data model behind it, so every logged activity maps to a project, an objective, an activity type, and a competency behavior, and a thirty-second entry rolls up into objective progress against target, where my effort is going, project mix, and trend over time. It is the same analyst craft I bring to stakeholder work, structured inputs and a clean model producing a decision-ready view, pointed at my own goals. Designed, modeled, and built end to end; the data shown is generic for confidentiality.",
+    tags: ["Power BI", "SharePoint", "Data Modeling", "Business Analysis"],
+    image: "/assets/ActivityCover.jpg", tall: true,
+    images: [
+      "/assets/ActivityOverview.jpg",
+      "/assets/ActivityObjectives.jpg",
+      "/assets/ActivityEffort.jpg",
+      "/assets/ActivityLog.jpg",
+      "/assets/ActivityStatus.jpg",
+    ],
     company: "Coca-Cola Consolidated", role: "IT Business Analyst II",
     study: {
-      challenge: "A team was tracking activity manually across spreadsheets and email, which was slow, error-prone, and hard to report on. As the BA, I own turning that pain into a tool people will actually use.",
-      approach: "Gathering requirements from the team and stakeholders, modeling the data in SharePoint, and building a Power Apps front end (with Power Automate for notifications and approvals), all designed around the real workflow, not the org chart.",
-      outcome: "In development. Full results, metrics, and screenshots coming soon.",
-    },
-  },
-  {
-    cat: "Power Apps & Data", kind: "Data", title: "Parcel",
-    body: "Parcel is a real-estate market-analytics pipeline that turns official housing data into a clear answer to one investor question: where to buy, and whether now is the time. It pulls published market datasets, models them into investor metrics like rent-to-price and cap rate, and surfaces the result as an interactive Power BI dashboard that ranks markets and flags when one is heating or cooling. Built end to end in Python and sourced entirely from data published for use, not scraped.",
-    tags: ["Python", "Power BI", "SQL", "pandas", "DAX"],
-    status: "Coming soon",
-    company: "Personal project", role: "Data analyst",
-    study: {
-      challenge: "Most real-estate tools show listings, not decisions. As an investor I wanted the opposite: a single view that answers where to put money and whether the timing is right, built on data I could actually stand behind rather than scraped from a portal that prohibits it.",
-      approach: "An end-to-end pipeline in Python that pulls published market data from Redfin, Zillow, and the Census, cleans and models it into a star schema, then turns raw medians into investor signals like rent-to-price, year-over-year appreciation, and a composite market-temperature score, delivered in Power BI and refreshed on a schedule.",
-      outcome: "In development. Live dashboard, metrics, and screenshots coming soon.",
+      challenge: "Across multiple projects and a set of annual objectives, I had no single, current view of where my effort was going or how close each objective was. Progress got reconstructed manually at review time, which was slow and always out of date.",
+      approach: "I designed a small data model where every activity maps to a project, an objective, an activity type, and a competency behavior, captured through a SharePoint form for fast logging. On top of it I built a multi-page Power BI report: objective progress against target with on-track and needs-focus banding, an effort matrix of hours by project and activity type, project and behavior mix, delivery status and throughput, and a drill-down activity log back to the source records. I modeled, built, and wired it end to end. The data shown here is generic for confidentiality.",
+      outcome: "A live, self-service view of objective progress that updates as I log work, so I can rebalance effort during the year instead of finding out at review time. It is the same shape of work I do for stakeholders, applied to my own goals: structured data in, a clear decision out.",
     },
   },
 ];
@@ -210,6 +205,11 @@ const METRICS = {
     { value: "~95% fewer", label: "Tier 2 escalations: 5+/day to 2-3/week" },
     { value: "On-call ended", label: "After-hours absorbed by Tier 1 (SCT)" },
     { value: "73% KB deflection", label: "New articles let first-line self-serve" },
+  ],
+  "Activity & Objective Dashboard": [
+    { value: "Live progress", label: "Objective tracking that updates as work is logged" },
+    { value: "End-to-end", label: "SharePoint form to Power BI, modeled and built solo" },
+    { value: "Objective-aligned", label: "Every activity maps to a 2026 objective" },
   ],
   "Valora": [
     { value: "Privacy-first", label: "Your data stays yours, no forced bank linking" },
