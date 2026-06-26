@@ -154,11 +154,14 @@ const PROJECTS = [
     images: [
       "/assets/ActivityOverview.jpg",
       "/assets/ActivityObjectives.jpg",
+      "/assets/ActivityEffort.jpg",
+      "/assets/ActivityLog.jpg",
+      "/assets/ActivityStatus.jpg",
     ],
     company: "Coca-Cola Consolidated", role: "IT Business Analyst II",
     study: {
       challenge: "Across multiple projects and a set of annual objectives, I had no single, current view of where my effort was going or how close each objective was. Progress got reconstructed manually at review time, which was slow and always out of date.",
-      approach: "I designed a small data model where every activity maps to a project, an objective, an activity type, and a competency behavior, captured through a SharePoint form for fast logging. On top of it I built a Power BI report: objective-progress bars against targets with on-track and needs-focus banding, effort distribution, project mix, behavior trends, and an activity timeline. I modeled, built, and wired it end to end. The data shown here is generic for confidentiality.",
+      approach: "I designed a small data model where every activity maps to a project, an objective, an activity type, and a competency behavior, captured through a SharePoint form for fast logging. On top of it I built a multi-page Power BI report: objective progress against target with on-track and needs-focus banding, an effort matrix of hours by project and activity type, project and behavior mix, delivery status and throughput, and a drill-down activity log back to the source records. I modeled, built, and wired it end to end. The data shown here is generic for confidentiality.",
       outcome: "A live, self-service view of objective progress that updates as I log work, so I can rebalance effort during the year instead of finding out at review time. It is the same shape of work I do for stakeholders, applied to my own goals: structured data in, a clear decision out.",
     },
   },
