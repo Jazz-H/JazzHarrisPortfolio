@@ -259,6 +259,27 @@ const METRICS = {
     { value: "Adaptive & offline", label: "8 live sky themes, installable PWA, smart units" },
   ],
 };
+// Headline impact band shown atop the work view — career-level highlights, each
+// already substantiated by a project below (Alamance, DSD dashboard, the grid).
+const IMPACT = [
+  { value: "8", label: "Projects shipped across web, apps, data & branding" },
+  { value: "$27M+", label: "Assets stewarded by a foundation site I built" },
+  { value: "~95%", label: "Fewer support escalations after a redesign I led" },
+  { value: "End-to-end", label: "Designed, built & shipped — mostly solo" },
+];
+// Recognition strip (social proof). Anonymized by attribution at the author's
+// level rather than by name, since naming isn't confirmed. Both lines are from
+// internal kudos on the shrink-reporting form work.
+const PRAISE = [
+  {
+    text: "Delivered a high-quality MVP with impressive speed, and with the end user in mind.",
+    by: "Operations leadership · Coca-Cola Consolidated",
+  },
+  {
+    text: "Responsiveness, problem-solving mindset, and the ability to execute under a tight timeline truly stood out.",
+    by: "Operations leadership · Coca-Cola Consolidated",
+  },
+];
 
 export default function Portfolio() {
   const [view, setView] = useState("work");
@@ -445,6 +466,14 @@ function WorkList({ onOpen, filter, setFilter }) {
 
   return (
     <section className="dp-view">
+      <div className="dp-impact">
+        {IMPACT.map((s) => (
+          <div className="dp-impact-stat" key={s.value + s.label}>
+            <span className="dp-impact-v">{s.value}</span>
+            <span className="dp-impact-l">{s.label}</span>
+          </div>
+        ))}
+      </div>
       <div className="dp-work-head">
         <p className="dp-label">Selected work · {shown.length}</p>
         <div className={"dp-filters-wrap" + (moreRight ? " can-scroll-end" : "")}>
@@ -471,6 +500,17 @@ function WorkList({ onOpen, filter, setFilter }) {
             </span>
           </button>
         ))}
+      </div>
+      <div className="dp-praise">
+        <p className="dp-label">Recognition</p>
+        <div className="dp-praise-grid">
+          {PRAISE.map((q) => (
+            <figure className="dp-quote" key={q.text}>
+              <blockquote className="dp-quote-t">{q.text}</blockquote>
+              <figcaption className="dp-quote-by">— {q.by}</figcaption>
+            </figure>
+          ))}
+        </div>
       </div>
     </section>
   );
@@ -854,6 +894,21 @@ const CSS = `
 .dp-filter:hover{color:var(--ink);border-color:var(--line-2)}
 .dp-filter.is-active{background:var(--ember);color:#2a0f15;border-color:var(--ember);font-weight:500}
 
+/* impact band — headline stats atop the work view */
+.dp-impact{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line-2);border-radius:16px;overflow:hidden;margin-bottom:28px}
+.dp-impact-stat{background:var(--card);padding:17px 18px;display:flex;flex-direction:column;justify-content:flex-start}
+.dp-impact-v{font-family:var(--font-display),'Bricolage Grotesque',sans-serif;font-weight:700;font-size:clamp(21px,2.3vw,29px);letter-spacing:-.02em;line-height:1.04;color:var(--ember)}
+.dp-impact-l{color:var(--muted);font-size:11.5px;line-height:1.45;margin-top:8px}
+
+/* recognition — anonymized social-proof quotes under the grid */
+.dp-praise{margin-top:36px;padding-top:30px;border-top:1px solid var(--line)}
+.dp-praise .dp-label{display:block;margin-bottom:16px}
+.dp-praise-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.dp-quote{position:relative;overflow:hidden;border:1px solid var(--line-2);background:var(--card);border-radius:16px;padding:22px}
+.dp-quote::before{content:"\\201C";position:absolute;top:-12px;left:14px;font-family:var(--font-display),'Bricolage Grotesque',sans-serif;font-size:78px;line-height:1;color:rgba(214,95,116,.15);pointer-events:none}
+.dp-quote-t{position:relative;font-size:16px;line-height:1.58;color:var(--ink);font-style:normal}
+.dp-quote-by{margin-top:14px;font-family:var(--font-mono),'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:.03em;color:var(--amber)}
+
 /* cards — lifted off true black with border + shadow */
 .dp-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
 .dp-card{display:flex;flex-direction:column;border:1px solid var(--line-2);border-radius:18px;overflow:hidden;background:var(--card);box-shadow:0 14px 34px -24px rgba(0,0,0,.9);transition:transform .2s,border-color .2s,box-shadow .25s}
@@ -1067,6 +1122,8 @@ const CSS = `
   .dp-filters::-webkit-scrollbar-track{background:rgba(243,234,234,.06);border-radius:999px}
   .dp-filters::-webkit-scrollbar-thumb{background:var(--line-2);border-radius:999px}
   .dp-filter{flex:0 0 auto;white-space:nowrap}
+  .dp-impact{grid-template-columns:1fr 1fr}
+  .dp-praise-grid{grid-template-columns:1fr}
   .dp-grid{grid-template-columns:1fr 1fr}
   .dp-poster{position:static;height:auto;flex-direction:column;gap:20px;padding:26px 22px}
   .dp-glow{display:none}
