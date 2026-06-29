@@ -165,10 +165,26 @@ const PROJECTS = [
       outcome: "A live, self-service view of objective progress that updates as I log work, so I can rebalance effort during the year instead of finding out at review time. It is the same shape of work I do for stakeholders, applied to my own goals: structured data in, a clear decision out.",
     },
   },
+  {
+    cat: "Branding & Design", kind: "Branding", title: "Inventory Shrink Reduction Form",
+    body: "An app icon and visual identity I designed for a shrink-reporting form I supported as the BA. The form replaced a manual email process for logging excessive inventory shrink, and to make an internal tool feel like a real product and earn field adoption, I created a branded clipboard mark that reads instantly on a phone home screen. It shipped as a complete, production-ready app icon set at every screen density.",
+    tags: ["Logo Design", "Brand Identity", "App Icon", "Business Analysis"],
+    image: "/assets/ShrinkLogoCover.jpg",
+    images: [
+      "/assets/ShrinkLogo1.jpg",
+      "/assets/ShrinkLogo2.jpg",
+    ],
+    company: "Coca-Cola Consolidated", role: "IT Business Analyst II",
+    study: {
+      challenge: "The excessive-shrink reporting process was a manual email template, which created friction in the field and made the data hard to track or trust. As it was digitized into a SharePoint form and mobile app, it had no identity, and an unbranded internal tool is easy for busy field users to overlook.",
+      approach: "I designed an app icon and visual identity for the form: a clipboard mark carrying the report's checklist motif in the company brand red, built to stay legible from a full-size home-screen icon down to the smallest density. I delivered it as a complete, production-ready icon set, from 48 up to 192 px, so it could ship cleanly to every device.",
+      outcome: "The form launched with a clear, recognizable identity and was pushed to all field devices, so users could find and trust it from day one. The branding turned an internal form into something that looked and felt like a real product, supporting fast adoption across sales and service.",
+    },
+  },
 ];
 // Only show category filters that actually have projects (e.g. "Apps" hides
 // when empty, and reappears automatically once an Apps project is added).
-const CAT_ORDER = ["Websites", "Apps", "Power Apps & Data"];
+const CAT_ORDER = ["Websites", "Apps", "Power Apps & Data", "Branding & Design"];
 const FILTERS = ["All", ...CAT_ORDER.filter((c) => PROJECTS.some((p) => p.cat === c))];
 const TECH_GROUPS = [
   { label: "Languages", Icon: FiCode, items: ["JavaScript", "TypeScript", "Python", "SQL"] },
@@ -197,6 +213,7 @@ const CAT_GRADIENT = {
   Websites: "linear-gradient(135deg, #e98a99 0%, #9c4a60 100%)",
   Apps: "linear-gradient(135deg, #d77fa6 0%, #7d3f63 100%)",
   "Power Apps & Data": "linear-gradient(135deg, #b9697f 0%, #5e3450 100%)",
+  "Branding & Design": "linear-gradient(135deg, #d65f6e 0%, #6e2f3c 100%)",
 };
 // Result highlights per project (qualitative stat-style — swap in real
 // numbers like donations raised, users, traffic, or time saved any time).
@@ -210,6 +227,11 @@ const METRICS = {
     { value: "Live progress", label: "Objective tracking that updates as work is logged" },
     { value: "End-to-end", label: "SharePoint form to Power BI, modeled and built solo" },
     { value: "Objective-aligned", label: "Every activity maps to a 2026 objective" },
+  ],
+  "Inventory Shrink Reduction Form": [
+    { value: "Day one", label: "Launched with a ready identity, pushed to all field devices" },
+    { value: "5 densities", label: "Production app icon set, 48 to 192 px" },
+    { value: "Email to app", label: "A manual template reimagined as a branded mobile form" },
   ],
   "Valora": [
     { value: "Privacy-first", label: "Your data stays yours, no forced bank linking" },
