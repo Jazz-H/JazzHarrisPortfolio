@@ -466,8 +466,11 @@ function WorkList({ onOpen, filter, setFilter }) {
 
   return (
     <section className="dp-view">
-      <div className="dp-praise">
-        <p className="dp-label">Recognition</p>
+      <details className="dp-praise" open>
+        <summary className="dp-praise-sum">
+          <span className="dp-label">Recognition</span>
+          <FiChevronDown className="dp-praise-chev" aria-hidden="true" />
+        </summary>
         <div className="dp-praise-grid">
           {PRAISE.map((q) => (
             <figure className="dp-quote" key={q.text}>
@@ -476,7 +479,7 @@ function WorkList({ onOpen, filter, setFilter }) {
             </figure>
           ))}
         </div>
-      </div>
+      </details>
       <div className="dp-work-head">
         <p className="dp-label">Selected work · {shown.length}</p>
         <div className={"dp-filters-wrap" + (moreRight ? " can-scroll-end" : "")}>
@@ -905,9 +908,14 @@ const CSS = `
 .dp-impact-l{color:var(--muted);font-size:11.5px;line-height:1.45;margin-top:8px}
 .dp-about-impact .dp-label{display:block;margin-bottom:16px}
 
-/* recognition — anonymized social-proof quotes atop the work view */
+/* recognition — collapsible social-proof quotes atop the work view */
 .dp-praise{margin-bottom:32px}
-.dp-praise .dp-label{display:block;margin-bottom:16px}
+.dp-praise-sum{display:flex;align-items:center;gap:10px;width:fit-content;margin-bottom:16px;list-style:none;cursor:pointer}
+.dp-praise-sum::-webkit-details-marker{display:none}
+.dp-praise-sum:focus-visible{outline:2px solid var(--amber);outline-offset:3px;border-radius:8px}
+.dp-praise-chev{flex:none;color:var(--muted);font-size:16px;transition:transform .2s,color .2s}
+.dp-praise-sum:hover .dp-praise-chev{color:var(--ember)}
+.dp-praise[open] .dp-praise-chev{transform:rotate(180deg)}
 .dp-praise-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
 .dp-quote{position:relative;overflow:hidden;border:1px solid var(--line-2);background:var(--card);border-radius:16px;padding:22px}
 .dp-quote::before{content:"\\201C";position:absolute;top:-12px;left:14px;font-family:var(--font-display),'Bricolage Grotesque',sans-serif;font-size:78px;line-height:1;color:rgba(214,95,116,.15);pointer-events:none}
