@@ -166,7 +166,7 @@ const PROJECTS = [
     },
   },
   {
-    cat: "Branding & Design", kind: "Branding", title: "Inventory Shrink Reduction Form",
+    cat: "Branding & Design", kind: "Branding", title: "Inventory Shrink Reduction Form", noLink: true,
     body: "An app icon and visual identity I designed for a shrink-reporting form I supported as the BA. The form replaced a manual email process for logging excessive inventory shrink, and to make an internal tool feel like a real product and earn field adoption, I created a branded clipboard mark that reads instantly on a phone home screen. It shipped as a complete, production-ready app icon set at every screen density.",
     tags: ["Logo Design", "Brand Identity", "App Icon", "Business Analysis"],
     image: "/assets/ShrinkLogoCover.jpg",
@@ -621,7 +621,7 @@ function Detail({ p, onBack, filter = "All" }) {
         <div className="dp-detail-links">
           {p.live && <a className="dp-btn dp-btn-primary" href={p.live} target="_blank" rel="noreferrer">Visit live <FiArrowUpRight aria-hidden="true" /></a>}
           {p.code && <a className="dp-btn dp-btn-ghost" href={p.code} target="_blank" rel="noreferrer"><FiGithub aria-hidden="true" /> View code</a>}
-          {!p.live && !p.code && <span className="dp-detail-soon">Link coming soon</span>}
+          {!p.live && !p.code && !p.noLink && <span className="dp-detail-soon">Link coming soon</span>}
         </div>
       </div>
       {p.study ? (
