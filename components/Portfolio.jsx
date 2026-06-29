@@ -259,8 +259,8 @@ const METRICS = {
     { value: "Adaptive & offline", label: "8 live sky themes, installable PWA, smart units" },
   ],
 };
-// Headline impact band shown atop the work view — career-level highlights, each
-// already substantiated by a project below (Alamance, DSD dashboard, the grid).
+// Headline KPI band shown in the about section — career-level highlights, each
+// already substantiated by a project in the work grid (Alamance, DSD, the set).
 const IMPACT = [
   { value: "8", label: "Projects shipped across web, apps, data & branding" },
   { value: "$27M+", label: "Assets stewarded by a foundation site I built" },
@@ -466,13 +466,16 @@ function WorkList({ onOpen, filter, setFilter }) {
 
   return (
     <section className="dp-view">
-      <div className="dp-impact">
-        {IMPACT.map((s) => (
-          <div className="dp-impact-stat" key={s.value + s.label}>
-            <span className="dp-impact-v">{s.value}</span>
-            <span className="dp-impact-l">{s.label}</span>
-          </div>
-        ))}
+      <div className="dp-praise">
+        <p className="dp-label">Recognition</p>
+        <div className="dp-praise-grid">
+          {PRAISE.map((q) => (
+            <figure className="dp-quote" key={q.text}>
+              <blockquote className="dp-quote-t">{q.text}</blockquote>
+              <figcaption className="dp-quote-by">— {q.by}</figcaption>
+            </figure>
+          ))}
+        </div>
       </div>
       <div className="dp-work-head">
         <p className="dp-label">Selected work · {shown.length}</p>
@@ -500,17 +503,6 @@ function WorkList({ onOpen, filter, setFilter }) {
             </span>
           </button>
         ))}
-      </div>
-      <div className="dp-praise">
-        <p className="dp-label">Recognition</p>
-        <div className="dp-praise-grid">
-          {PRAISE.map((q) => (
-            <figure className="dp-quote" key={q.text}>
-              <blockquote className="dp-quote-t">{q.text}</blockquote>
-              <figcaption className="dp-quote-by">— {q.by}</figcaption>
-            </figure>
-          ))}
-        </div>
       </div>
     </section>
   );
@@ -765,6 +757,18 @@ function About({ go }) {
         </div>
       </div>
 
+      <div className="dp-about-impact">
+        <p className="dp-label">By the numbers</p>
+        <div className="dp-impact">
+          {IMPACT.map((s) => (
+            <div className="dp-impact-stat" key={s.value + s.label}>
+              <span className="dp-impact-v">{s.value}</span>
+              <span className="dp-impact-l">{s.label}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+
       <div className="dp-about-cta">
         <p className="dp-about-cta-t">Have something in mind?</p>
         <div className="dp-about-cta-btns">
@@ -894,14 +898,15 @@ const CSS = `
 .dp-filter:hover{color:var(--ink);border-color:var(--line-2)}
 .dp-filter.is-active{background:var(--ember);color:#2a0f15;border-color:var(--ember);font-weight:500}
 
-/* impact band — headline stats atop the work view */
-.dp-impact{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line-2);border-radius:16px;overflow:hidden;margin-bottom:28px}
+/* impact band — headline KPI stats (lives in the about section) */
+.dp-impact{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line-2);border-radius:16px;overflow:hidden}
 .dp-impact-stat{background:var(--card);padding:17px 18px;display:flex;flex-direction:column;justify-content:flex-start}
 .dp-impact-v{font-family:var(--font-display),'Bricolage Grotesque',sans-serif;font-weight:700;font-size:clamp(21px,2.3vw,29px);letter-spacing:-.02em;line-height:1.04;color:var(--ember)}
 .dp-impact-l{color:var(--muted);font-size:11.5px;line-height:1.45;margin-top:8px}
+.dp-about-impact .dp-label{display:block;margin-bottom:16px}
 
-/* recognition — anonymized social-proof quotes under the grid */
-.dp-praise{margin-top:36px;padding-top:30px;border-top:1px solid var(--line)}
+/* recognition — anonymized social-proof quotes atop the work view */
+.dp-praise{margin-bottom:32px}
 .dp-praise .dp-label{display:block;margin-bottom:16px}
 .dp-praise-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
 .dp-quote{position:relative;overflow:hidden;border:1px solid var(--line-2);background:var(--card);border-radius:16px;padding:22px}
