@@ -191,7 +191,7 @@ const TECH_GROUPS = [
   { label: "Languages", Icon: FiCode, items: ["JavaScript", "TypeScript", "Python", "SQL"] },
   { label: "Frameworks & UI", Icon: FiLayers, items: ["React", "Next.js"] },
   { label: "Data & Power Platform", Icon: FiBarChart2, items: ["Power BI", "Power Apps", "SharePoint"] },
-  { label: "Design & UX/UI", Icon: FiPenTool, items: ["Figma", "Adobe XD", "Photoshop", "Illustrator", "InDesign", "Sketch"] },
+  { label: "Design & UX/UI", Icon: FiPenTool, items: ["Figma", "Photoshop", "Illustrator", "InDesign"] },
 ];
 const SERVICES = [
   { Icon: FiTrendingUp, title: "Business analysis & strategy", body: "Translating business goals into clear requirements and a roadmap, working between stakeholders, vendors, and engineers to ship the right thing." },
