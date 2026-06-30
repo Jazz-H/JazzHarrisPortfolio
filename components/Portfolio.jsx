@@ -133,7 +133,7 @@ const PROJECTS = [
   },
   {
     cat: "Power Apps & Data", kind: "Data", title: "DSD Support Operations Dashboard",
-    body: "A ServiceNow analytics dashboard for Osapiens, the DSD (direct store delivery) routing app at Coca-Cola Consolidated. It monitors a redesigned support model: Tier-1 vs Tier-2 routing, knowledge-base deflection, SLA health, and vendor escalations, so the team can see at a glance where work is being resolved and what to fix next. Visuals recreated without internal data for confidentiality.",
+    body: "A ServiceNow analytics dashboard for Osapiens, the DSD (direct store delivery) routing app at Coca-Cola Consolidated, where I'm the primary support for Tier 2 incidents. It monitors a redesigned support model: Tier-1 vs Tier-2 routing, knowledge-base deflection, SLA health, and vendor escalations, so the team can see at a glance where work is being resolved and what to fix next. Visuals recreated without internal data for confidentiality.",
     tags: ["ServiceNow"], confidential: true, diagram: "dsd",
     image: "/assets/SupportDashTeam.jpg", tall: true,
     images: [
@@ -628,7 +628,7 @@ const DIAGRAM_CAPTION = {
 function Diagram({ kind }) {
   if (kind === "dsd") {
     return (
-      <div className="dp-diagram" role="img" aria-label="Support routing before and after the redesign. The chain runs Field users, Service Center Team (Tier 1), Tier 2 (me), Vendor. After granting the Service Center Team the Osapiens access they were missing and adding knowledge-base articles, first-line resolution moved to them, so far fewer tickets reach Tier 2; after-hours escalations route to CONA and the Tier 2 on-call ended.">
+      <div className="dp-diagram" role="img" aria-label="Support routing before and after the redesign. The chain runs Field users, Service Center Team (Tier 1), Tier 2 (DSD Team), Vendor. After granting the Service Center Team the Osapiens access they were missing and adding knowledge-base articles, first-line resolution moved to them, so far fewer tickets reach Tier 2; after-hours escalations route to CONA and the Tier 2 on-call ended.">
         <div className="dp-dgm-lane">
           <span className="dp-dgm-lane-l dp-dgm-before">Before</span>
           <div className="dp-dgm-flow">
@@ -636,7 +636,7 @@ function Diagram({ kind }) {
             <span className="dp-dgm-arrow" aria-hidden="true"><FiArrowRight /></span>
             <span className="dp-dgm-node">Tier 1<small>Missing Osapiens access</small></span>
             <span className="dp-dgm-arrow" aria-hidden="true"><FiArrowRight /></span>
-            <span className="dp-dgm-node dp-dgm-bad">Tier 2 (me)<small>Primary support — most tickets</small></span>
+            <span className="dp-dgm-node dp-dgm-bad">Tier 2 (DSD Team)<small>Primary support — most tickets</small></span>
             <span className="dp-dgm-arrow" aria-hidden="true"><FiArrowRight /></span>
             <span className="dp-dgm-node">Vendor<small>True bugs — backend &amp; code</small></span>
           </div>
@@ -649,7 +649,7 @@ function Diagram({ kind }) {
             <span className="dp-dgm-arrow" aria-hidden="true"><FiArrowRight /></span>
             <span className="dp-dgm-node dp-dgm-good">Tier 1<small>Osapiens access + KB</small></span>
             <span className="dp-dgm-arrow" aria-hidden="true"><FiArrowRight /></span>
-            <span className="dp-dgm-node">Tier 2 (me)<small>Primary support — beyond Tier 1</small></span>
+            <span className="dp-dgm-node">Tier 2 (DSD Team)<small>Primary support — beyond Tier 1</small></span>
             <span className="dp-dgm-arrow" aria-hidden="true"><FiArrowRight /></span>
             <span className="dp-dgm-node">Vendor<small>True bugs — backend &amp; code</small></span>
           </div>
