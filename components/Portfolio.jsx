@@ -25,6 +25,7 @@ import {
   FiLayers,
   FiGlobe,
   FiPenTool,
+  FiLock,
 } from "react-icons/fi";
 
 const HEADSHOT_SRC = "/jazz-headshot.jpg";
@@ -133,7 +134,7 @@ const PROJECTS = [
   {
     cat: "Power Apps & Data", kind: "Data", title: "DSD Support Operations Dashboard",
     body: "A ServiceNow analytics dashboard for Osapiens, the DSD (direct store delivery) routing app at Coca-Cola Consolidated. It monitors a redesigned support model: Tier-1 vs Tier-2 routing, knowledge-base deflection, SLA health, and vendor escalations, so the team can see at a glance where work is being resolved and what to fix next. Visuals recreated without internal data for confidentiality.",
-    tags: ["ServiceNow"],
+    tags: ["ServiceNow"], confidential: true, diagram: "dsd",
     image: "/assets/SupportDashTeam.jpg", tall: true,
     images: [
       "/assets/SupportDashPersonal.jpg",
@@ -150,7 +151,7 @@ const PROJECTS = [
   {
     cat: "Power Apps & Data", kind: "Data", title: "Activity & Objective Dashboard",
     body: "A self-service Power BI dashboard, fed by a SharePoint form, that turns everyday BA work into a live view of progress against my 2026 objectives, instead of something pieced together from memory at review time. I designed the data model behind it, so every logged activity maps to a project, an objective, an activity type, and a competency behavior, and a thirty-second entry rolls up into objective progress against target, where my effort is going, project mix, and trend over time. It is the same analyst craft I bring to stakeholder work, structured inputs and a clean model producing a decision-ready view, pointed at my own goals. Designed, modeled, and built end to end; the data shown is generic for confidentiality.",
-    tags: ["Power BI", "Power Query", "DAX", "SharePoint"],
+    tags: ["Power BI", "Power Query", "DAX", "SharePoint"], confidential: true, diagram: "activity",
     image: "/assets/ActivityCover.jpg", tall: true,
     images: [
       "/assets/ActivityOverview.jpg",
@@ -618,19 +619,93 @@ function Gallery({ images, title, gradient, status, fallbackWord, tall }) {
   );
 }
 
+// PII-safe visual proof for confidential internal tools: process/data-model
+// flows that show the thinking and outcome without exposing any real data.
+function Diagram({ kind }) {
+  if (kind === "dsd") {
+    return (
+      <div className="dp-diagram" role="img" aria-label="Support routing before and after the redesign: resolution shifts from Tier 2 to Tier 1, ending the on-call rotation.">
+        <div className="dp-dgm-lane">
+          <span className="dp-dgm-lane-l dp-dgm-before">Before</span>
+          <div className="dp-dgm-flow">
+            <span className="dp-dgm-node">Field users<small>Drivers &amp; warehouse</small></span>
+            <span className="dp-dgm-arrow" aria-hidden="true"><FiArrowRight /></span>
+            <span className="dp-dgm-node">Service Center<small>Tier 1 — forwards on</small></span>
+            <span className="dp-dgm-arrow" aria-hidden="true"><FiArrowRight /></span>
+            <span className="dp-dgm-node dp-dgm-bad">Tier 2<small>Resolves everything</small></span>
+          </div>
+          <span className="dp-dgm-tag dp-dgm-tag-bad">5+ tickets/day · overnight on-call</span>
+        </div>
+        <div className="dp-dgm-lane">
+          <span className="dp-dgm-lane-l dp-dgm-after">After</span>
+          <div className="dp-dgm-flow">
+            <span className="dp-dgm-node">Field users<small>Drivers &amp; warehouse</small></span>
+            <span className="dp-dgm-arrow" aria-hidden="true"><FiArrowRight /></span>
+            <span className="dp-dgm-node dp-dgm-good">Service Center<small>Tier 1 — resolves via KB</small></span>
+            <span className="dp-dgm-arrow" aria-hidden="true"><FiArrowRight /></span>
+            <span className="dp-dgm-node">Vendor / Tier 2<small>True exceptions only</small></span>
+          </div>
+          <span className="dp-dgm-tag dp-dgm-tag-good">2–3 tickets/week · no on-call</span>
+        </div>
+      </div>
+    );
+  }
+  if (kind === "activity") {
+    return (
+      <div className="dp-diagram dp-diagram-activity" role="img" aria-label="Data pipeline: a SharePoint form feeds an Activity fact table linked to four dimensions, surfaced as five Power BI report pages.">
+        <div className="dp-dgm-stage">
+          <span className="dp-dgm-stage-l">Capture</span>
+          <span className="dp-dgm-node">SharePoint form<small>30-second entry</small></span>
+        </div>
+        <span className="dp-dgm-arrow dp-dgm-arrow-lg" aria-hidden="true"><FiArrowRight /></span>
+        <div className="dp-dgm-stage">
+          <span className="dp-dgm-stage-l">Model</span>
+          <div className="dp-dgm-star">
+            <span className="dp-dgm-node dp-dgm-fact">Activity<small>fact table</small></span>
+            <div className="dp-dgm-dims">
+              <span className="dp-dgm-dim">Project</span>
+              <span className="dp-dgm-dim">Objective</span>
+              <span className="dp-dgm-dim">Activity type</span>
+              <span className="dp-dgm-dim">Competency</span>
+            </div>
+          </div>
+        </div>
+        <span className="dp-dgm-arrow dp-dgm-arrow-lg" aria-hidden="true"><FiArrowRight /></span>
+        <div className="dp-dgm-stage">
+          <span className="dp-dgm-stage-l">Report</span>
+          <div className="dp-dgm-pages">
+            <span className="dp-dgm-page">Objective progress</span>
+            <span className="dp-dgm-page">Effort matrix</span>
+            <span className="dp-dgm-page">Project &amp; behavior mix</span>
+            <span className="dp-dgm-page">Delivery status</span>
+            <span className="dp-dgm-page">Activity log</span>
+          </div>
+        </div>
+      </div>
+    );
+  }
+  return null;
+}
+
 function Detail({ p, onBack, filter = "All" }) {
   if (!p) return null;
+  const gallery = (
+    <Gallery
+      images={p.images || (p.image ? [p.image] : [])}
+      title={p.title}
+      gradient={CAT_GRADIENT[p.cat]}
+      status={p.status}
+      fallbackWord={p.title.split(" ")[0]}
+      tall={p.tall}
+    />
+  );
+  const hasImages = (p.images && p.images.length) || p.image;
   return (
     <section className="dp-view dp-detail">
       <button className="dp-back" onClick={onBack}><FiArrowLeft aria-hidden="true" /> {filter === "All" ? "All work" : filter}</button>
-      <Gallery
-        images={p.images || (p.image ? [p.image] : [])}
-        title={p.title}
-        gradient={CAT_GRADIENT[p.cat]}
-        status={p.status}
-        fallbackWord={p.title.split(" ")[0]}
-        tall={p.tall}
-      />
+      {/* For confidential tools, a PII-safe diagram is the hero; the recreated
+          gallery (if any) moves below the case study. Otherwise gallery leads. */}
+      {p.diagram ? <Diagram kind={p.diagram} /> : gallery}
       <div className="dp-detail-head">
         <p className="dp-kicker">{p.kind || p.cat}</p>
         <h2 className="dp-detail-h">{p.title}</h2>
@@ -648,7 +723,8 @@ function Detail({ p, onBack, filter = "All" }) {
         <div className="dp-detail-links">
           {p.live && <a className="dp-btn dp-btn-primary" href={p.live} target="_blank" rel="noreferrer">Visit live <FiArrowUpRight aria-hidden="true" /></a>}
           {p.code && <a className="dp-btn dp-btn-ghost" href={p.code} target="_blank" rel="noreferrer"><FiGithub aria-hidden="true" /> View code</a>}
-          {!p.live && !p.code && !p.noLink && <span className="dp-detail-soon">Link coming soon</span>}
+          {p.confidential && <span className="dp-detail-confidential"><FiLock aria-hidden="true" /> Confidential internal tool</span>}
+          {!p.live && !p.code && !p.noLink && !p.confidential && <span className="dp-detail-soon">Link coming soon</span>}
         </div>
       </div>
       {p.study ? (
@@ -675,6 +751,12 @@ function Detail({ p, onBack, filter = "All" }) {
         </div>
       ) : (
         <p className="dp-detail-note">Your challenge → approach → outcome write-up goes here.</p>
+      )}
+      {p.diagram && hasImages && (
+        <div className="dp-detail-recreated">
+          <span className="dp-meta-l">Recreated views — confidential data removed</span>
+          {gallery}
+        </div>
       )}
     </section>
   );
@@ -1006,7 +1088,46 @@ const CSS = `
 .dp-detail-stack .dp-meta-l{margin-bottom:0}
 .dp-detail-links{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
 .dp-detail-soon{font-family:var(--font-mono),'JetBrains Mono',monospace;font-size:12.5px;color:var(--faint)}
+.dp-detail-confidential{display:inline-flex;align-items:center;gap:7px;font-family:var(--font-mono),'JetBrains Mono',monospace;font-size:12px;color:var(--amber);border:1px solid rgba(214,95,116,.35);background:rgba(214,95,116,.08);border-radius:999px;padding:7px 13px}
+.dp-detail-confidential svg{font-size:13px;flex:none}
 .dp-detail-note{font-family:var(--font-mono),'JetBrains Mono',monospace;font-size:12.5px;color:var(--faint);border:1px dashed var(--line-2);border-radius:10px;padding:14px 16px}
+
+/* confidential-project diagrams — PII-safe process / data-model flows */
+.dp-diagram{border:1px solid var(--line-2);background:var(--card);border-radius:20px;padding:22px;margin:18px 0 24px}
+.dp-dgm-lane{display:flex;flex-direction:column;gap:12px}
+.dp-dgm-lane + .dp-dgm-lane{margin-top:18px;padding-top:18px;border-top:1px solid var(--line)}
+.dp-dgm-lane-l{font-family:var(--font-mono),'JetBrains Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase}
+.dp-dgm-before{color:var(--faint)}
+.dp-dgm-after{color:var(--ember)}
+.dp-dgm-flow{display:flex;align-items:stretch;gap:8px}
+.dp-dgm-node{flex:1 1 0;min-width:0;display:flex;flex-direction:column;gap:3px;background:var(--card-2);border:1px solid var(--line-2);border-radius:12px;padding:12px 14px;font-size:13.5px;font-weight:500;color:var(--ink)}
+.dp-dgm-node small{font-weight:400;font-size:11.5px;color:var(--muted)}
+.dp-dgm-good{border-color:rgba(214,95,116,.55);background:rgba(214,95,116,.08)}
+.dp-dgm-bad{border-style:dashed;opacity:.85}
+.dp-dgm-arrow{display:flex;align-items:center;justify-content:center;color:var(--faint);font-size:16px;flex:none}
+.dp-dgm-tag{align-self:flex-start;font-family:var(--font-mono),'JetBrains Mono',monospace;font-size:11.5px;border-radius:999px;padding:5px 12px}
+.dp-dgm-tag-bad{color:var(--muted);border:1px solid var(--line-2)}
+.dp-dgm-tag-good{color:var(--amber);background:rgba(214,95,116,.12);border:1px solid rgba(214,95,116,.4)}
+/* activity data-model pipeline (capture -> model -> report) */
+.dp-diagram-activity{display:flex;align-items:center;gap:10px}
+.dp-dgm-stage{flex:1 1 0;min-width:0;display:flex;flex-direction:column;gap:10px;align-self:stretch}
+.dp-dgm-stage-l{font-family:var(--font-mono),'JetBrains Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--amber)}
+.dp-dgm-arrow-lg{font-size:20px}
+.dp-dgm-star{display:flex;flex-direction:column;gap:8px}
+.dp-dgm-fact{align-items:center;text-align:center;background:rgba(214,95,116,.1);border:1px solid rgba(214,95,116,.5);border-radius:12px;padding:11px 14px;font-weight:600;font-size:14px;color:var(--ink)}
+.dp-dgm-fact small{font-weight:400;font-size:11px;color:var(--amber)}
+.dp-dgm-dims{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+.dp-dgm-dim{background:var(--card-2);border:1px solid var(--line-2);border-radius:9px;padding:8px 10px;font-size:12px;color:var(--muted);text-align:center}
+.dp-dgm-pages{display:flex;flex-direction:column;gap:6px}
+.dp-dgm-page{background:var(--card-2);border:1px solid var(--line-2);border-left:3px solid rgba(214,95,116,.6);border-radius:9px;padding:9px 12px;font-size:12.5px;color:var(--ink)}
+.dp-detail-recreated{margin-top:24px;border-top:1px solid var(--line);padding-top:22px}
+.dp-detail-recreated .dp-meta-l{display:block;margin-bottom:14px}
+.dp-detail-recreated .dp-gallery-wrap{margin:0}
+@media (max-width:680px){
+  .dp-diagram-activity{flex-direction:column;align-items:stretch}
+  .dp-dgm-flow{flex-direction:column}
+  .dp-dgm-flow .dp-dgm-arrow,.dp-diagram-activity .dp-dgm-arrow-lg{transform:rotate(90deg);align-self:center}
+}
 .dp-study{display:flex;flex-direction:column;gap:18px;border-top:1px solid var(--line);padding-top:24px}
 .dp-study-row{display:grid;grid-template-columns:118px 1fr;gap:18px;align-items:start}
 .dp-study-l{font-family:var(--font-mono),'JetBrains Mono',monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--ember);padding-top:3px}
