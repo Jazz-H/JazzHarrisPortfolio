@@ -259,13 +259,14 @@ const METRICS = {
     { value: "Adaptive & offline", label: "8 live sky themes, installable PWA, smart units" },
   ],
 };
-// Headline KPI band shown in the about section — career-level highlights
-// spanning the full Central Piedmont + Coca-Cola journey, not just the work grid.
+// Headline KPI band shown in the about section — career-level highlights spanning
+// the full journey (Encompass, Canidium, Central Piedmont, Coca-Cola + freelance),
+// drawn from the résumé and portfolio, not just the work grid.
 const IMPACT = [
-  { value: "20+", label: "Projects delivered across my Central Piedmont & Coca-Cola work" },
-  { value: "$27M+", label: "Assets stewarded by a foundation site I built" },
-  { value: "~95%", label: "Fewer support escalations after a redesign I led" },
-  { value: "End-to-end", label: "Designed, built & shipped — mostly solo" },
+  { value: "5+ yrs", label: "In software & business analysis, across five roles" },
+  { value: "20+", label: "Projects delivered, from enterprise platforms to freelance builds" },
+  { value: "$27M+", label: "Assets stewarded by a community foundation I built for" },
+  { value: "~95%", label: "Fewer support tickets after a model I redesigned at Coca-Cola" },
 ];
 // Recognition quotes (social proof) — shown as a credibility block in the about
 // view and as a single pull-quote on contact. Attributed to the named author
