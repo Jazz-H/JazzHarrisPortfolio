@@ -10,6 +10,7 @@ import {
   FiFileText,
   FiArrowLeft,
   FiArrowRight,
+  FiArrowDown,
   FiArrowUpRight,
   FiChevronLeft,
   FiChevronRight,
@@ -660,34 +661,49 @@ function Diagram({ kind }) {
     );
   }
   if (kind === "activity") {
+    const DIMS = [
+      { name: "Project", pk: "ProjectID", fields: "Name · Status" },
+      { name: "Objective", pk: "ObjectiveID", fields: "Name · 2026 target" },
+      { name: "Activity Type", pk: "ActivityTypeID", fields: "Name · Category" },
+      { name: "Competency", pk: "BehaviorID", fields: "Behavior · Competency" },
+    ];
+    const PAGES = ["Objective progress", "Effort matrix", "Project & behavior mix", "Delivery status", "Activity log"];
     return (
-      <div className="dp-diagram dp-diagram-activity" role="img" aria-label="Data pipeline: a SharePoint form feeds an Activity fact table linked to four dimensions, surfaced as five Power BI report pages.">
-        <div className="dp-dgm-stage">
-          <span className="dp-dgm-stage-l">Capture</span>
-          <span className="dp-dgm-node">SharePoint form<small>30-second entry</small></span>
+      <div className="dp-diagram dp-diagram-activity" role="img" aria-label="Data model for the activity dashboard. A SharePoint form feeds an Activity fact table — one row per logged activity with hours, date and status — joined by key to four dimensions: Project, Objective, Activity Type and Competency Behavior. The model is surfaced as five Power BI report pages.">
+        <div className="dp-schema-stage">
+          <span className="dp-schema-tag">Capture</span>
+          <span className="dp-dgm-node dp-schema-src">SharePoint form<small>30-second entry</small></span>
         </div>
-        <span className="dp-dgm-arrow dp-dgm-arrow-lg" aria-hidden="true"><FiArrowRight /></span>
-        <div className="dp-dgm-stage">
-          <span className="dp-dgm-stage-l">Model</span>
-          <div className="dp-dgm-star">
-            <span className="dp-dgm-node dp-dgm-fact">Activity<small>fact table</small></span>
-            <div className="dp-dgm-dims">
-              <span className="dp-dgm-dim">Project</span>
-              <span className="dp-dgm-dim">Objective</span>
-              <span className="dp-dgm-dim">Activity type</span>
-              <span className="dp-dgm-dim">Competency</span>
+        <span className="dp-schema-arrow" aria-hidden="true"><FiArrowDown /></span>
+        <div className="dp-schema-stage">
+          <span className="dp-schema-tag">Model · star schema</span>
+          <div className="dp-schema-dims">
+            {DIMS.map((d) => (
+              <div className="dp-schema-dim" key={d.name}>
+                <span className="dp-schema-h">{d.name}</span>
+                <span className="dp-schema-pk">{d.pk}</span>
+                <span className="dp-schema-f">{d.fields}</span>
+              </div>
+            ))}
+          </div>
+          <span className="dp-schema-join"><FiArrowDown aria-hidden="true" /> joined on keys</span>
+          <div className="dp-schema-fact">
+            <span className="dp-schema-h">Activity <small>fact · one row per logged activity</small></span>
+            <div className="dp-schema-cols">
+              {DIMS.map((d) => (<span className="dp-schema-fk" key={d.pk}>{d.pk}</span>))}
+            </div>
+            <div className="dp-schema-cols">
+              <span className="dp-schema-m">Hours</span>
+              <span className="dp-schema-m">Date</span>
+              <span className="dp-schema-m">Status</span>
             </div>
           </div>
         </div>
-        <span className="dp-dgm-arrow dp-dgm-arrow-lg" aria-hidden="true"><FiArrowRight /></span>
-        <div className="dp-dgm-stage">
-          <span className="dp-dgm-stage-l">Report</span>
+        <span className="dp-schema-arrow" aria-hidden="true"><FiArrowDown /></span>
+        <div className="dp-schema-stage">
+          <span className="dp-schema-tag">Report · 5 Power BI pages</span>
           <div className="dp-dgm-pages">
-            <span className="dp-dgm-page">Objective progress</span>
-            <span className="dp-dgm-page">Effort matrix</span>
-            <span className="dp-dgm-page">Project &amp; behavior mix</span>
-            <span className="dp-dgm-page">Delivery status</span>
-            <span className="dp-dgm-page">Activity log</span>
+            {PAGES.map((pg) => (<span className="dp-dgm-page" key={pg}>{pg}</span>))}
           </div>
         </div>
       </div>
@@ -1122,26 +1138,35 @@ const CSS = `
 .dp-dgm-tag-bad{color:var(--muted);border:1px solid var(--line-2)}
 .dp-dgm-tag-good{color:var(--amber);background:rgba(214,95,116,.12);border:1px solid rgba(214,95,116,.4)}
 .dp-dgm-note{font-size:12px;line-height:1.45;color:var(--muted)}
-/* activity data-model pipeline (capture -> model -> report) */
-.dp-diagram-activity{display:flex;align-items:center;gap:10px}
-.dp-dgm-stage{flex:1 1 0;min-width:0;display:flex;flex-direction:column;gap:10px;align-self:stretch}
-.dp-dgm-stage-l{font-family:var(--font-mono),'JetBrains Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--amber)}
-.dp-dgm-arrow-lg{font-size:20px}
-.dp-dgm-star{display:flex;flex-direction:column;gap:8px}
-.dp-dgm-fact{align-items:center;text-align:center;background:rgba(214,95,116,.1);border:1px solid rgba(214,95,116,.5);border-radius:12px;padding:11px 14px;font-weight:600;font-size:14px;color:var(--ink)}
-.dp-dgm-fact small{font-weight:400;font-size:11px;color:var(--amber)}
-.dp-dgm-dims{display:grid;grid-template-columns:1fr 1fr;gap:6px}
-.dp-dgm-dim{background:var(--card-2);border:1px solid var(--line-2);border-radius:9px;padding:8px 10px;font-size:12px;color:var(--muted);text-align:center}
-.dp-dgm-pages{display:flex;flex-direction:column;gap:6px}
+/* activity data model — SharePoint form -> star schema -> Power BI pages (vertical) */
+.dp-diagram-activity{display:flex;flex-direction:column;gap:12px}
+.dp-schema-stage{display:flex;flex-direction:column;gap:10px}
+.dp-schema-tag{font-family:var(--font-mono),'JetBrains Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--amber)}
+.dp-schema-arrow{display:flex;justify-content:center;color:var(--faint);font-size:18px}
+.dp-schema-src{max-width:280px}
+.dp-schema-dims{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.dp-schema-dim{display:flex;flex-direction:column;gap:4px;background:var(--card-2);border:1px solid var(--line-2);border-radius:10px;padding:11px 12px}
+.dp-schema-h{font-family:var(--font-display),'Bricolage Grotesque',sans-serif;font-weight:600;font-size:13.5px;color:var(--ink);display:flex;flex-wrap:wrap;align-items:baseline;gap:6px;line-height:1.2}
+.dp-schema-h small{font-family:var(--font-inter),'Inter',sans-serif;font-weight:400;font-size:11px;color:var(--muted)}
+.dp-schema-pk{font-family:var(--font-mono),'JetBrains Mono',monospace;font-size:11px;color:var(--amber)}
+.dp-schema-pk::before{content:"\\25C8";color:var(--ember);margin-right:5px}
+.dp-schema-f{font-size:11.5px;color:var(--muted);line-height:1.4}
+.dp-schema-join{display:flex;align-items:center;justify-content:center;gap:7px;font-family:var(--font-mono),'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--faint)}
+.dp-schema-fact{background:rgba(214,95,116,.1);border:1px solid rgba(214,95,116,.5);border-radius:12px;padding:14px 16px;display:flex;flex-direction:column;gap:10px}
+.dp-schema-cols{display:flex;flex-wrap:wrap;gap:6px}
+.dp-schema-fk,.dp-schema-m{font-family:var(--font-mono),'JetBrains Mono',monospace;font-size:11px;border-radius:6px;padding:4px 9px}
+.dp-schema-fk{color:var(--amber);background:rgba(214,95,116,.14);border:1px solid rgba(214,95,116,.3)}
+.dp-schema-m{color:var(--muted);background:var(--card-2);border:1px solid var(--line-2)}
+.dp-dgm-pages{display:flex;flex-wrap:wrap;gap:6px}
 .dp-dgm-page{background:var(--card-2);border:1px solid var(--line-2);border-left:3px solid rgba(214,95,116,.6);border-radius:9px;padding:9px 12px;font-size:12.5px;color:var(--ink)}
 /* diagram placed inside the case study (after Approach), as a labeled figure */
 .dp-study-figure{margin:0}
 .dp-study-figcap{display:block;font-family:var(--font-mono),'JetBrains Mono',monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--ember);margin-bottom:14px}
 .dp-study-figure .dp-diagram{margin:0}
 @media (max-width:680px){
-  .dp-diagram-activity{flex-direction:column;align-items:stretch}
   .dp-dgm-flow{flex-direction:column}
-  .dp-dgm-flow .dp-dgm-arrow,.dp-diagram-activity .dp-dgm-arrow-lg{transform:rotate(90deg);align-self:center}
+  .dp-dgm-flow .dp-dgm-arrow{transform:rotate(90deg);align-self:center}
+  .dp-schema-dims{grid-template-columns:1fr 1fr}
 }
 .dp-study{display:flex;flex-direction:column;gap:18px;border-top:1px solid var(--line);padding-top:24px}
 .dp-study-row{display:grid;grid-template-columns:118px 1fr;gap:18px;align-items:start}
