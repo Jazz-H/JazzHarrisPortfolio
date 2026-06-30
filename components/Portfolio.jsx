@@ -831,7 +831,7 @@ function Contact() {
         </a>
         <div className="dp-contact-row dp-contact-row-static">
           <span className="dp-cr-icn"><FiMapPin aria-hidden="true" /></span>
-          <span className="dp-cr-text"><span className="dp-cr-l">Location</span><span className="dp-cr-v">Charlotte, NC · available worldwide</span></span>
+          <span className="dp-cr-text"><span className="dp-cr-l">Location</span><span className="dp-cr-v">Charlotte, NC</span></span>
         </div>
       </div>
     </section>
