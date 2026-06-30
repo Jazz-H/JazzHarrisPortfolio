@@ -1,63 +1,59 @@
 # Project Ideas Backlog
 
-Candidate portfolio projects, unrelated to existing site work. Each is scoped to
-be buildable with PII-safe / demo data so it can be showcased confidentially.
+Candidate portfolio projects, unrelated to existing site work. Scoped to be
+buildable with PII-safe / demo (or spec) assets so each can be showcased.
 
 ---
 
-## ⚡ Power Apps & Data
+## 🎨 Branding & Design — two pieces to round out the section
 
-### Project Intake & Prioritization App
-A canvas/model-driven Power App for capturing and triaging project and
-enhancement requests — a classic BA / PMO demand-management tool.
-
-- **Problem:** Requests arrive ad hoc (email, hallway, meetings) with no
-  consistent way to capture the business case, weigh value vs. effort, or
-  decide what actually gets worked.
-- **Scope / deliverables:**
-  - Intake form — problem statement, requested outcome, sponsor, business
-    value, estimated effort, target date.
-  - Auto value/effort scoring → a priority rank.
-  - Power Automate routing to a review board with approve / defer / reject,
-    plus status notifications back to the requester.
-  - Status tracking through the request lifecycle.
-  - A Power BI intake dashboard — pipeline by status, a value-vs-effort bubble
-    chart, and throughput over time.
-- **Stack:** Power Apps (canvas), Dataverse, Power Automate, Power BI.
-- **Why it fits:** Demonstrates demand management and governance — core BA/PMO
-  craft — combining a built app, a scoring model, workflow, and BI. Generic and
-  demo-data only (no PII), and it covers a different domain (intake/governance)
-  than the existing support and objective dashboards.
-- **Alternate:** a Change Request / Service Request app (leans on the ITIL 4
-  cert) — same Power Platform stack, different flavor.
-
----
-
-## 🎨 Branding & Design
-
-### Craft Beverage Brand & Packaging *(spec)*
-A small-batch craft soda or cold-brew brand — logo through physical packaging.
+### 1. Craft Beverage Brand & Packaging *(spec)* — chosen
+A small-batch craft soda or cold-brew brand, logo through physical packaging.
 
 - **Scope / deliverables:** Logomark + wordmark, color & type system, can /
   bottle / label design with realistic mockups, and a one-page brand guide.
 - **Stack:** Illustrator, Photoshop, Figma.
-- **Why it fits:** Adds **packaging design** to the section — a discipline the
-  CPG background makes credible — shown as a personal concept. A different
-  muscle than the app-icon piece.
+- **Why it's the stronger branding pick:** adds **packaging design** (a distinct,
+  tangible discipline), and a beverage brand reads as on-narrative given the
+  CPG / Coca-Cola background — credible, not a hobby piece.
 
-### Performance Auto Garage Brand Identity *(spec)*
-A bold athletic identity for a performance auto shop.
+### 2. Mobile App UX Case Study *(UI/UX)* — to balance the section
+A full product-design case study, to complement the *visual* branding pieces
+with **interaction design and UX process**.
 
-- **Scope / deliverables:** Logo, type & color system, merch (tee / hat /
-  sticker), shop signage, and a social-media kit.
-- **Stack:** Illustrator, Photoshop, Figma.
-- **Why it fits:** Shows **identity + merch / environmental** design — a third
-  distinct discipline (vs. packaging and app icons), so the section reads as
-  range, not repetition.
-- **Swap option:** an MMA gym or boutique-travel brand — same deliverables,
-  different vibe.
+- **Scope / deliverables:** problem & quick research, user flows, wireframes,
+  hi-fi UI, an interactive prototype, and a mini design system.
+- **Subject — pick one you can speak to confidently:**
+  - Travel itinerary planner *(recommended — rich, relatable flows)*
+  - Strength / MMA training tracker
+  - Car-maintenance log
+- **Stack:** Figma (design + prototype); optionally Maze for a usability test.
+- **Why it fits:** shows process + product thinking (research → prototype), so
+  the section reads as a well-rounded designer rather than only a maker of
+  marks. Leans into the BA strengths (research, problem-solving).
+
+_Backup branding idea (parked):_ Performance Auto Garage brand identity
+(logo + merch + signage + social kit).
 
 ---
 
-_The mix: a work-appropriate Power Platform app + two branding pieces that each
-show a different design discipline, all unrelated to existing portfolio work._
+## ⚡ Power Apps — small projects to *learn the tool* (pick one)
+
+Ordered easiest first. Each is a weekend-sized build on a SharePoint or
+Dataverse list; all teach core Power Apps muscles.
+
+1. **To-Do / Task app** — gallery + edit form over a list; add, complete,
+   filter. _Teaches:_ galleries, forms, data sources, basic formulas.
+2. **Expense & Receipt tracker** — log an expense, snap a receipt photo,
+   categorize, running total + a simple chart. _Teaches:_ camera/attachments,
+   aggregation, filtering.
+3. **Pantry / Inventory stock** — items, quantities, a low-stock flag, search.
+   _Teaches:_ CRUD, search/filter, conditional formatting.
+4. **Event RSVP & check-in** — attendee list, check-in toggle, live count.
+   _Teaches:_ Patch(), status toggles, counters.
+5. **Feedback / Suggestion box** — submit feedback, an admin view, and a
+   Power Automate email on new entry. _Teaches:_ forms + a first taste of flows.
+
+_When ready for a portfolio-grade one:_ a **Project Intake & Prioritization**
+app (intake → value/effort scoring → approval flow → Power BI dashboard) — a
+strong BA/PMO showcase once the basics click.
