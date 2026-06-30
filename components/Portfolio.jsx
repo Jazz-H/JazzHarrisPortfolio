@@ -259,6 +259,31 @@ const METRICS = {
     { value: "Adaptive & offline", label: "8 live sky themes, installable PWA, smart units" },
   ],
 };
+// Headline KPI band shown in the about section — career-level highlights spanning
+// the full journey (Encompass, Canidium, Central Piedmont, Coca-Cola + freelance),
+// drawn from the résumé and portfolio, not just the work grid.
+const IMPACT = [
+  { value: "5+ yrs", label: "Across software engineering & business analysis roles" },
+  { value: "20+", label: "Projects delivered, from enterprise platforms to freelance builds" },
+  { value: "$27M+", label: "Assets at a foundation I built the site for — ~$1.9M granted yearly to 30+ nonprofits" },
+  { value: "~95%", label: "Fewer tickets on Coca-Cola's Osapiens app after I assisted on changing its triage model — ending the team's after-hours on-call" },
+];
+// Recognition quotes (social proof) — shown as a credibility block in the about
+// view and as a single pull-quote on contact. Attributed to the named author
+// (provided by the site owner); both lines are from internal kudos on the
+// shrink-reporting form work.
+const PRAISE = [
+  {
+    text: "Delivered a high-quality MVP with impressive speed, and with the end user in mind.",
+    by: "John Palmer",
+    role: "Senior Director, Operational Insights & Sales Effectiveness · Coca-Cola Consolidated",
+  },
+  {
+    text: "Responsiveness, problem-solving mindset, and the ability to execute under a tight timeline truly stood out.",
+    by: "John Palmer",
+    role: "Senior Director, Operational Insights & Sales Effectiveness · Coca-Cola Consolidated",
+  },
+];
 
 export default function Portfolio() {
   const [view, setView] = useState("work");
@@ -725,6 +750,33 @@ function About({ go }) {
         </div>
       </div>
 
+      <div className="dp-about-impact">
+        <p className="dp-label">By the numbers</p>
+        <div className="dp-impact">
+          {IMPACT.map((s) => (
+            <div className="dp-impact-stat" key={s.value + s.label}>
+              <span className="dp-impact-v">{s.value}</span>
+              <span className="dp-impact-l">{s.label}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div className="dp-about-praise">
+        <p className="dp-label">Recognition</p>
+        <div className="dp-praise-grid">
+          {PRAISE.map((q) => (
+            <figure className="dp-quote" key={q.text}>
+              <blockquote className="dp-quote-t">{q.text}</blockquote>
+              <figcaption className="dp-quote-by">
+                <span className="dp-quote-name">— {q.by}</span>
+                <span className="dp-quote-role">{q.role}</span>
+              </figcaption>
+            </figure>
+          ))}
+        </div>
+      </div>
+
       <div className="dp-about-cta">
         <p className="dp-about-cta-t">Have something in mind?</p>
         <div className="dp-about-cta-btns">
@@ -744,6 +796,14 @@ function Contact() {
         <h2 className="dp-cta-h">Let's build something that works.</h2>
         <p className="dp-cta-sub">Got a project, a problem, or a half-formed idea? Email is the fastest way to reach me, and I read everything.</p>
       </div>
+
+      <figure className="dp-contact-quote">
+        <blockquote>{PRAISE[0].text}</blockquote>
+        <figcaption>
+          <span className="dp-quote-name">— {PRAISE[0].by}</span>
+          <span className="dp-quote-role">{PRAISE[0].role}</span>
+        </figcaption>
+      </figure>
 
       <div className="dp-contact-card">
         <a className="dp-contact-row" href={GMAIL_COMPOSE} target="_blank" rel="noreferrer">
@@ -853,6 +913,28 @@ const CSS = `
 .dp-filter{font-family:var(--font-mono),'JetBrains Mono',monospace;font-size:13px;color:var(--muted);border:1px solid var(--line);border-radius:999px;padding:7px 15px;transition:all .18s}
 .dp-filter:hover{color:var(--ink);border-color:var(--line-2)}
 .dp-filter.is-active{background:var(--ember);color:#2a0f15;border-color:var(--ember);font-weight:500}
+
+/* impact band — headline KPI stats (lives in the about section) */
+.dp-impact{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line-2);border-radius:16px;overflow:hidden}
+.dp-impact-stat{background:var(--card);padding:17px 18px;display:flex;flex-direction:column;justify-content:flex-start}
+.dp-impact-v{font-family:var(--font-display),'Bricolage Grotesque',sans-serif;font-weight:700;font-size:clamp(21px,2.3vw,29px);letter-spacing:-.02em;line-height:1.04;color:var(--ember)}
+.dp-impact-l{color:var(--muted);font-size:11.5px;line-height:1.45;margin-top:8px}
+.dp-about-impact .dp-label{display:block;margin-bottom:16px}
+
+/* recognition — social-proof quotes (credibility block in the about view) */
+.dp-about-praise .dp-label{display:block;margin-bottom:16px}
+.dp-praise-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.dp-quote{position:relative;overflow:hidden;border:1px solid var(--line-2);background:var(--card);border-radius:16px;padding:22px}
+.dp-quote::before{content:"\\201C";position:absolute;top:-12px;left:14px;font-family:var(--font-display),'Bricolage Grotesque',sans-serif;font-size:78px;line-height:1;color:rgba(214,95,116,.15);pointer-events:none}
+.dp-quote-t{position:relative;font-size:16px;line-height:1.58;color:var(--ink);font-style:normal}
+.dp-quote-by{margin-top:14px;display:flex;flex-direction:column;gap:3px}
+/* shared attribution: name (mono, accent) over title + company (muted) */
+.dp-quote-name{font-family:var(--font-mono),'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:.03em;color:var(--amber)}
+.dp-quote-role{font-size:11.5px;line-height:1.4;color:var(--faint)}
+/* single pull-quote on the contact view, beside the email action */
+.dp-contact-quote{margin:0 0 26px;padding:2px 0 2px 20px;border-left:2px solid var(--ember)}
+.dp-contact-quote blockquote{font-family:var(--font-display),'Bricolage Grotesque',sans-serif;font-weight:500;font-size:clamp(17px,2vw,20px);line-height:1.45;letter-spacing:-.01em;color:var(--ink)}
+.dp-contact-quote figcaption{margin-top:12px;display:flex;flex-direction:column;gap:3px}
 
 /* cards — lifted off true black with border + shadow */
 .dp-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
@@ -1067,6 +1149,8 @@ const CSS = `
   .dp-filters::-webkit-scrollbar-track{background:rgba(243,234,234,.06);border-radius:999px}
   .dp-filters::-webkit-scrollbar-thumb{background:var(--line-2);border-radius:999px}
   .dp-filter{flex:0 0 auto;white-space:nowrap}
+  .dp-impact{grid-template-columns:1fr 1fr}
+  .dp-praise-grid{grid-template-columns:1fr}
   .dp-grid{grid-template-columns:1fr 1fr}
   .dp-poster{position:static;height:auto;flex-direction:column;gap:20px;padding:26px 22px}
   .dp-glow{display:none}
