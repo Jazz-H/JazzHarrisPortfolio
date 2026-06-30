@@ -24,6 +24,7 @@ import {
   FiBarChart2,
   FiLayers,
   FiGlobe,
+  FiPenTool,
 } from "react-icons/fi";
 
 const HEADSHOT_SRC = "/jazz-headshot.jpg";
@@ -74,7 +75,7 @@ const PROJECTS = [
   {
     cat: "Websites", title: "Electric Supplies Online",
     body: "A live e-commerce storefront for an electrical-supplies retailer, with a deep, technical catalog spanning lighting, circuit breakers, transformers, and dozens of categories in between. As the in-house designer and developer, I organized the catalog for fast discovery, shaped the storefront and merchandising, and kept the customer-facing experience running for a real, operating business.",
-    tags: ["E-commerce", "Information architecture", "HTML", "CSS", "JavaScript"], image: "/assets/ElectricCover.jpg",
+    tags: ["HTML", "CSS", "JavaScript"], image: "/assets/ElectricCover.jpg",
     images: [
       "/assets/ElectricStore.jpg",
       "/assets/ElectricHome.jpg",
@@ -132,7 +133,7 @@ const PROJECTS = [
   {
     cat: "Power Apps & Data", kind: "Data", title: "DSD Support Operations Dashboard",
     body: "A ServiceNow analytics dashboard for Osapiens, the DSD (direct store delivery) routing app at Coca-Cola Consolidated. It monitors a redesigned support model: Tier-1 vs Tier-2 routing, knowledge-base deflection, SLA health, and vendor escalations, so the team can see at a glance where work is being resolved and what to fix next. Visuals recreated without internal data for confidentiality.",
-    tags: ["ServiceNow", "Knowledge Base", "Process Design", "Business Analysis"],
+    tags: ["ServiceNow"],
     image: "/assets/SupportDashTeam.jpg", tall: true,
     images: [
       "/assets/SupportDashPersonal.jpg",
@@ -149,7 +150,7 @@ const PROJECTS = [
   {
     cat: "Power Apps & Data", kind: "Data", title: "Activity & Objective Dashboard",
     body: "A self-service Power BI dashboard, fed by a SharePoint form, that turns everyday BA work into a live view of progress against my 2026 objectives, instead of something pieced together from memory at review time. I designed the data model behind it, so every logged activity maps to a project, an objective, an activity type, and a competency behavior, and a thirty-second entry rolls up into objective progress against target, where my effort is going, project mix, and trend over time. It is the same analyst craft I bring to stakeholder work, structured inputs and a clean model producing a decision-ready view, pointed at my own goals. Designed, modeled, and built end to end; the data shown is generic for confidentiality.",
-    tags: ["Power BI", "SharePoint", "Data Modeling", "Business Analysis"],
+    tags: ["Power BI", "Power Query", "DAX", "SharePoint"],
     image: "/assets/ActivityCover.jpg", tall: true,
     images: [
       "/assets/ActivityOverview.jpg",
@@ -168,7 +169,7 @@ const PROJECTS = [
   {
     cat: "Branding & Design", kind: "Branding", title: "Inventory Shrink Reduction Form", noLink: true,
     body: "An app icon and visual identity I designed for a shrink-reporting form I supported as the BA. The form replaced a manual email process for logging excessive inventory shrink, and to make an internal tool feel like a real product and earn field adoption, I created a branded clipboard mark that reads instantly on a phone home screen. It shipped as a complete, production-ready app icon set at every screen density.",
-    tags: ["Logo Design", "Brand Identity", "App Icon", "Business Analysis"],
+    tags: ["Copilot", "Photoshop"],
     image: "/assets/ShrinkLogoCover.jpg",
     images: [
       "/assets/ShrinkLogo1.jpg",
@@ -190,6 +191,7 @@ const TECH_GROUPS = [
   { label: "Languages", Icon: FiCode, items: ["JavaScript", "TypeScript", "Python", "SQL"] },
   { label: "Frameworks & UI", Icon: FiLayers, items: ["React", "Next.js"] },
   { label: "Data & Power Platform", Icon: FiBarChart2, items: ["Power BI", "Power Apps", "SharePoint"] },
+  { label: "Design & UX/UI", Icon: FiPenTool, items: ["Figma", "Photoshop", "Illustrator"] },
 ];
 const SERVICES = [
   { Icon: FiTrendingUp, title: "Business analysis & strategy", body: "Translating business goals into clear requirements and a roadmap, working between stakeholders, vendors, and engineers to ship the right thing." },
@@ -265,7 +267,7 @@ const METRICS = {
 const IMPACT = [
   { value: "5+ yrs", label: "Across software engineering & business analysis roles" },
   { value: "20+", label: "Projects delivered, from enterprise platforms to freelance builds" },
-  { value: "$27M+", label: "Assets at a foundation I built the site for — ~$1.9M granted yearly to 30+ nonprofits" },
+  { value: "$27M+", label: "In assets at a foundation whose site I built — ~$1.9M granted yearly to 30+ nonprofits" },
   { value: "~95%", label: "Fewer tickets on Coca-Cola's Osapiens app after I assisted on changing its triage model — ending the team's after-hours on-call" },
 ];
 // Recognition quotes (social proof) — shown as a credibility block in the about
@@ -701,7 +703,7 @@ function About({ go }) {
             <summary className="dp-acc-sum">
               <span className="dp-acc-head">
                 <span className="dp-sub">Tools &amp; technologies</span>
-                <span className="dp-acc-preview">Full-stack dev · Data &amp; BI · Microsoft Power Platform</span>
+                <span className="dp-acc-preview">Full-stack dev · Data &amp; Power Platform · Design &amp; UX/UI</span>
               </span>
               <FiChevronDown className="dp-acc-chev" aria-hidden="true" />
             </summary>
@@ -765,7 +767,8 @@ function About({ go }) {
       <div className="dp-about-praise">
         <p className="dp-label">Recognition</p>
         <div className="dp-praise-grid">
-          {PRAISE.map((q) => (
+          {/* PRAISE[0] is featured on Contact; show the rest here to avoid repeating it */}
+          {PRAISE.slice(1).map((q) => (
             <figure className="dp-quote" key={q.text}>
               <blockquote className="dp-quote-t">{q.text}</blockquote>
               <figcaption className="dp-quote-by">
@@ -828,7 +831,7 @@ function Contact() {
         </a>
         <div className="dp-contact-row dp-contact-row-static">
           <span className="dp-cr-icn"><FiMapPin aria-hidden="true" /></span>
-          <span className="dp-cr-text"><span className="dp-cr-l">Location</span><span className="dp-cr-v">Charlotte, NC · available worldwide</span></span>
+          <span className="dp-cr-text"><span className="dp-cr-l">Location</span><span className="dp-cr-v">Charlotte, NC</span></span>
         </div>
       </div>
     </section>
@@ -923,7 +926,7 @@ const CSS = `
 
 /* recognition — social-proof quotes (credibility block in the about view) */
 .dp-about-praise .dp-label{display:block;margin-bottom:16px}
-.dp-praise-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.dp-praise-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
 .dp-quote{position:relative;overflow:hidden;border:1px solid var(--line-2);background:var(--card);border-radius:16px;padding:22px}
 .dp-quote::before{content:"\\201C";position:absolute;top:-12px;left:14px;font-family:var(--font-display),'Bricolage Grotesque',sans-serif;font-size:78px;line-height:1;color:rgba(214,95,116,.15);pointer-events:none}
 .dp-quote-t{position:relative;font-size:16px;line-height:1.58;color:var(--ink);font-style:normal}
@@ -1034,6 +1037,10 @@ const CSS = `
 .dp-acc[open] .dp-acc-chev{transform:rotate(180deg)}
 @media (min-width:881px){
   .dp-acc-body{display:block !important}
+  /* Modern engines hide a closed <details>'s content via ::details-content
+     (content-visibility:hidden), which the display rule above can't override.
+     Force it visible so the always-open desktop accordions actually paint. */
+  .dp-acc::details-content{content-visibility:visible;display:block}
   .dp-acc-sum{margin-bottom:14px}
   .dp-acc-sum .dp-sub{margin-bottom:0}
 }
