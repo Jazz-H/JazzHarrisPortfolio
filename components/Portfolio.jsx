@@ -184,6 +184,30 @@ const PROJECTS = [
       outcome: "The form launched with a clear, recognizable identity and was pushed to all field devices, so users could find and trust it from day one. The branding turned an internal form into something that looked and felt like a real product, supporting fast adoption across sales and service.",
     },
   },
+  // --- Scaffolded concept pieces (no live assets yet). Add image/images and
+  // refine the case study, then this renders like any other project. ---
+  {
+    cat: "Branding & Design", kind: "Branding", title: "Craft Beverage Brand & Packaging", noLink: true, status: "Concept",
+    body: "A self-initiated brand identity and packaging concept for a small-batch craft beverage — taken from a single logomark through a full color and type system to shelf-ready can and label artwork.",
+    tags: ["Illustrator", "Photoshop", "Figma"],
+    company: "Self-initiated concept", role: "Brand & packaging design",
+    study: {
+      challenge: "A small-batch craft beverage has to win the cooler: stand out against established brands, communicate flavor and personality at a glance, and stay legible from a full shelf down to a thumbnail product photo online.",
+      approach: "Build the identity from one strong idea — a distinctive logomark and wordmark, a tight color and type system, and a flavor-led label layout that scales across can sizes. Design to production specs (dielines, print-ready color) and present it in realistic context mockups.",
+      outcome: "A shelf-ready brand kit: logo suite, color and type system, can and label artwork, and a one-page brand guide, shown with realistic packaging mockups.",
+    },
+  },
+  {
+    cat: "Branding & Design", kind: "UI/UX", title: "Travel Planner — UX Case Study", noLink: true, status: "Concept",
+    body: "A self-initiated product-design case study for a travel-planning app: turning the scattered, multi-tab process of planning a trip into one calm, day-by-day itinerary. Covers research, flows, wireframes, hi-fi UI, and an interactive prototype.",
+    tags: ["Figma", "FigJam", "Maze"],
+    company: "Self-initiated concept", role: "Product design (UX/UI)",
+    study: {
+      challenge: "Planning a trip is scattered across tabs, notes, and chats — flights here, hotels there, a list of maybe-activities somewhere else. The goal: one place that turns all of it into a clear, shareable, day-by-day plan without feeling like work.",
+      approach: "Start from the jobs to be done and a couple of quick user interviews, map the core flows (create a trip, add stops, build the daily timeline, share), then move from low-fi wireframes to a hi-fi UI on a small reusable design system. Validate the key flow with a clickable prototype and a quick usability test.",
+      outcome: "An end-to-end UX case study: research notes, user flows, wireframes, a polished hi-fi UI, a working prototype, and a mini design system — documented as a walkthrough of the decisions behind each.",
+    },
+  },
 ];
 // Only show category filters that actually have projects (e.g. "Apps" hides
 // when empty, and reappears automatically once an Apps project is added).
