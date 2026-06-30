@@ -266,7 +266,7 @@ const IMPACT = [
   { value: "5+ yrs", label: "Across software engineering & business analysis roles" },
   { value: "20+", label: "Projects delivered, from enterprise platforms to freelance builds" },
   { value: "$27M+", label: "Assets at a foundation I built the site for — ~$1.9M granted yearly to 30+ nonprofits" },
-  { value: "~95%", label: "Fewer tickets on Coca-Cola's Osapiens app after I redesigned its triage model — ending the team's after-hours on-call" },
+  { value: "~95%", label: "Fewer tickets on Coca-Cola's Osapiens app after I assisted on changing its triage model — ending the team's after-hours on-call" },
 ];
 // Recognition quotes (social proof) — shown as a credibility block in the about
 // view and as a single pull-quote on contact. Attributed to the named author
