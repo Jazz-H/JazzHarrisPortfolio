@@ -133,7 +133,7 @@ const PROJECTS = [
   {
     cat: "Power Apps & Data", kind: "Data", title: "DSD Support Operations Dashboard",
     body: "A ServiceNow analytics dashboard for Osapiens, the DSD (direct store delivery) routing app at Coca-Cola Consolidated. It monitors a redesigned support model: Tier-1 vs Tier-2 routing, knowledge-base deflection, SLA health, and vendor escalations, so the team can see at a glance where work is being resolved and what to fix next. Visuals recreated without internal data for confidentiality.",
-    tags: ["ServiceNow", "Performance Analytics"],
+    tags: ["ServiceNow"],
     image: "/assets/SupportDashTeam.jpg", tall: true,
     images: [
       "/assets/SupportDashPersonal.jpg",
@@ -169,7 +169,7 @@ const PROJECTS = [
   {
     cat: "Branding & Design", kind: "Branding", title: "Inventory Shrink Reduction Form", noLink: true,
     body: "An app icon and visual identity I designed for a shrink-reporting form I supported as the BA. The form replaced a manual email process for logging excessive inventory shrink, and to make an internal tool feel like a real product and earn field adoption, I created a branded clipboard mark that reads instantly on a phone home screen. It shipped as a complete, production-ready app icon set at every screen density.",
-    tags: ["Illustrator", "Photoshop", "Figma"],
+    tags: ["Copilot", "Photoshop"],
     image: "/assets/ShrinkLogoCover.jpg",
     images: [
       "/assets/ShrinkLogo1.jpg",
