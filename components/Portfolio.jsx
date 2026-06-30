@@ -634,9 +634,9 @@ function Diagram({ kind }) {
           <div className="dp-dgm-flow">
             <span className="dp-dgm-node">Field users<small>Drivers &amp; warehouse</small></span>
             <span className="dp-dgm-arrow" aria-hidden="true"><FiArrowRight /></span>
-            <span className="dp-dgm-node">Service Center Team<small>Tier 1 — missing Osapiens access</small></span>
+            <span className="dp-dgm-node">Service Center Team</span>
             <span className="dp-dgm-arrow" aria-hidden="true"><FiArrowRight /></span>
-            <span className="dp-dgm-node dp-dgm-bad">Tier 2 (DSD Team)<small>Primary support — most tickets</small></span>
+            <span className="dp-dgm-node dp-dgm-bad">Tier 2 (DSD Team)</span>
             <span className="dp-dgm-arrow" aria-hidden="true"><FiArrowRight /></span>
             <span className="dp-dgm-node">Vendor<small>True bugs — backend &amp; code</small></span>
           </div>
@@ -647,9 +647,9 @@ function Diagram({ kind }) {
           <div className="dp-dgm-flow">
             <span className="dp-dgm-node">Field users<small>Drivers &amp; warehouse</small></span>
             <span className="dp-dgm-arrow" aria-hidden="true"><FiArrowRight /></span>
-            <span className="dp-dgm-node dp-dgm-good">Service Center Team<small>Tier 1 — Osapiens access + KB</small></span>
+            <span className="dp-dgm-node dp-dgm-good">Service Center Team</span>
             <span className="dp-dgm-arrow" aria-hidden="true"><FiArrowRight /></span>
-            <span className="dp-dgm-node">Tier 2 (DSD Team)<small>Primary support — beyond Tier 1</small></span>
+            <span className="dp-dgm-node">Tier 2 (DSD Team)</span>
             <span className="dp-dgm-arrow" aria-hidden="true"><FiArrowRight /></span>
             <span className="dp-dgm-node">Vendor<small>True bugs — backend &amp; code</small></span>
           </div>
