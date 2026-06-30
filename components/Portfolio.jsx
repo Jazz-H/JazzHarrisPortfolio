@@ -259,10 +259,10 @@ const METRICS = {
     { value: "Adaptive & offline", label: "8 live sky themes, installable PWA, smart units" },
   ],
 };
-// Headline KPI band shown in the about section — career-level highlights, each
-// already substantiated by a project in the work grid (Alamance, DSD, the set).
+// Headline KPI band shown in the about section — career-level highlights
+// spanning the full Central Piedmont + Coca-Cola journey, not just the work grid.
 const IMPACT = [
-  { value: "8", label: "Projects shipped across web, apps, data & branding" },
+  { value: "20+", label: "Projects delivered across my Central Piedmont & Coca-Cola work" },
   { value: "$27M+", label: "Assets stewarded by a foundation site I built" },
   { value: "~95%", label: "Fewer support escalations after a redesign I led" },
   { value: "End-to-end", label: "Designed, built & shipped — mostly solo" },
