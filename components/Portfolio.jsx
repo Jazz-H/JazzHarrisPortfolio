@@ -144,8 +144,8 @@ const PROJECTS = [
     company: "Coca-Cola Consolidated", role: "IT Business Analyst II",
     study: {
       challenge: "The Osapiens routing app was sending 5+ tickets a day straight to Tier 2, with the first-line Service Center Team escalating entry-level issues instead of resolving them, and Tier 2 carrying an overnight on-call rotation. The fix wasn't more people; it was changing where work got resolved.",
-      approach: "I analyzed the escalation pattern to find which issue types Tier 1 could own, then redesigned the support model around it: step-by-step knowledge-base articles (cloud backup, shipment reset, mobile PIN, vendor e-bonding, routing) that let the Service Center Team resolve at first contact, with a clear escalation path to the vendor for true exceptions. I ran a training walkthrough and built a ServiceNow dashboard to monitor Tier-1 vs Tier-2 routing, KB deflection, and SLA health.",
-      outcome: "Tier 2 escalations fell from 5+ a day to 2-3 a week, about a 95% reduction, and the after-hours on-call rotation was eliminated as the Service Center Team absorbed first-line resolution. Drivers and warehouse users get faster answers at Tier 1, with vendor escalation reserved for genuine exceptions.",
+      approach: "I analyzed the escalation pattern to find which issue types Tier 1 could own, and recognized the Service Center Team was missing the permissions inside the Osapiens app they needed to triage and resolve in the first place. I redesigned the support model around that: getting them the right access, writing step-by-step knowledge-base articles (cloud backup, shipment reset, mobile PIN, vendor e-bonding, routing) so they could resolve at first contact, routing after-hours escalations directly to CONA instead of a Tier 2 overnight on-call, and keeping a clear path to the vendor for true exceptions. I ran a training walkthrough and built a ServiceNow dashboard to monitor Tier-1 vs Tier-2 routing, KB deflection, and SLA health.",
+      outcome: "Tier 2 escalations fell from 5+ a day to 2-3 a week, about a 95% reduction, and the after-hours on-call rotation was eliminated: the Service Center Team absorbed first-line resolution and after-hours escalations now route to CONA. Drivers and warehouse users get faster answers at Tier 1, with vendor escalation reserved for genuine exceptions.",
     },
   },
   {
@@ -628,15 +628,17 @@ const DIAGRAM_CAPTION = {
 function Diagram({ kind }) {
   if (kind === "dsd") {
     return (
-      <div className="dp-diagram" role="img" aria-label="Support routing before and after the redesign: resolution shifts from Tier 2 to Tier 1, ending the on-call rotation.">
+      <div className="dp-diagram" role="img" aria-label="Support routing before and after the redesign. The chain runs Field users, Service Center Team (Tier 1), Tier 2 (me), Vendor. After granting the Service Center Team the Osapiens access they were missing and adding knowledge-base articles, first-line resolution moved to them, so far fewer tickets reach Tier 2; after-hours escalations route to CONA and the Tier 2 on-call ended.">
         <div className="dp-dgm-lane">
           <span className="dp-dgm-lane-l dp-dgm-before">Before</span>
           <div className="dp-dgm-flow">
             <span className="dp-dgm-node">Field users<small>Drivers &amp; warehouse</small></span>
             <span className="dp-dgm-arrow" aria-hidden="true"><FiArrowRight /></span>
-            <span className="dp-dgm-node">Service Center<small>Tier 1 — forwards on</small></span>
+            <span className="dp-dgm-node">Service Center Team<small>Tier 1 — missing Osapiens access</small></span>
             <span className="dp-dgm-arrow" aria-hidden="true"><FiArrowRight /></span>
-            <span className="dp-dgm-node dp-dgm-bad">Tier 2<small>Resolves everything</small></span>
+            <span className="dp-dgm-node dp-dgm-bad">Tier 2 (me)<small>Resolves everything</small></span>
+            <span className="dp-dgm-arrow" aria-hidden="true"><FiArrowRight /></span>
+            <span className="dp-dgm-node">Vendor<small>True exceptions</small></span>
           </div>
           <span className="dp-dgm-tag dp-dgm-tag-bad">5+ tickets/day · overnight on-call</span>
         </div>
@@ -645,11 +647,14 @@ function Diagram({ kind }) {
           <div className="dp-dgm-flow">
             <span className="dp-dgm-node">Field users<small>Drivers &amp; warehouse</small></span>
             <span className="dp-dgm-arrow" aria-hidden="true"><FiArrowRight /></span>
-            <span className="dp-dgm-node dp-dgm-good">Service Center<small>Tier 1 — resolves via KB</small></span>
+            <span className="dp-dgm-node dp-dgm-good">Service Center Team<small>Tier 1 — Osapiens access + KB</small></span>
             <span className="dp-dgm-arrow" aria-hidden="true"><FiArrowRight /></span>
-            <span className="dp-dgm-node">Vendor / Tier 2<small>True exceptions only</small></span>
+            <span className="dp-dgm-node">Tier 2 (me)<small>Exceptions only</small></span>
+            <span className="dp-dgm-arrow" aria-hidden="true"><FiArrowRight /></span>
+            <span className="dp-dgm-node">Vendor<small>True exceptions</small></span>
           </div>
           <span className="dp-dgm-tag dp-dgm-tag-good">2–3 tickets/week · no on-call</span>
+          <span className="dp-dgm-note">After hours, the Service Center Team escalates directly to CONA — not a Tier 2 on-call.</span>
         </div>
       </div>
     );
@@ -1116,6 +1121,7 @@ const CSS = `
 .dp-dgm-tag{align-self:flex-start;font-family:var(--font-mono),'JetBrains Mono',monospace;font-size:11.5px;border-radius:999px;padding:5px 12px}
 .dp-dgm-tag-bad{color:var(--muted);border:1px solid var(--line-2)}
 .dp-dgm-tag-good{color:var(--amber);background:rgba(214,95,116,.12);border:1px solid rgba(214,95,116,.4)}
+.dp-dgm-note{font-size:12px;line-height:1.45;color:var(--muted)}
 /* activity data-model pipeline (capture -> model -> report) */
 .dp-diagram-activity{display:flex;align-items:center;gap:10px}
 .dp-dgm-stage{flex:1 1 0;min-width:0;display:flex;flex-direction:column;gap:10px;align-self:stretch}
