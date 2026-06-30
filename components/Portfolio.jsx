@@ -621,6 +621,10 @@ function Gallery({ images, title, gradient, status, fallbackWord, tall }) {
 
 // PII-safe visual proof for confidential internal tools: process/data-model
 // flows that show the thinking and outcome without exposing any real data.
+const DIAGRAM_CAPTION = {
+  dsd: "The redesigned support model — before & after",
+  activity: "The data model — from form to report",
+};
 function Diagram({ kind }) {
   if (kind === "dsd") {
     return (
@@ -699,13 +703,10 @@ function Detail({ p, onBack, filter = "All" }) {
       tall={p.tall}
     />
   );
-  const hasImages = (p.images && p.images.length) || p.image;
   return (
     <section className="dp-view dp-detail">
       <button className="dp-back" onClick={onBack}><FiArrowLeft aria-hidden="true" /> {filter === "All" ? "All work" : filter}</button>
-      {/* For confidential tools, a PII-safe diagram is the hero; the recreated
-          gallery (if any) moves below the case study. Otherwise gallery leads. */}
-      {p.diagram ? <Diagram kind={p.diagram} /> : gallery}
+      {gallery}
       <div className="dp-detail-head">
         <p className="dp-kicker">{p.kind || p.cat}</p>
         <h2 className="dp-detail-h">{p.title}</h2>
@@ -729,12 +730,25 @@ function Detail({ p, onBack, filter = "All" }) {
       </div>
       {p.study ? (
         <div className="dp-study">
-          {[["Challenge", p.study.challenge], ["Approach", p.study.approach], ["Outcome", p.study.outcome]].map(([label, text]) => (
-            <div className="dp-study-row" key={label}>
-              <span className="dp-study-l">{label}</span>
-              <p className="dp-study-p">{text}</p>
-            </div>
-          ))}
+          <div className="dp-study-row">
+            <span className="dp-study-l">Challenge</span>
+            <p className="dp-study-p">{p.study.challenge}</p>
+          </div>
+          <div className="dp-study-row">
+            <span className="dp-study-l">Approach</span>
+            <p className="dp-study-p">{p.study.approach}</p>
+          </div>
+          {/* The diagram visualizes the approach — placed right after it, before the outcome. */}
+          {p.diagram && (
+            <figure className="dp-study-figure">
+              <figcaption className="dp-study-figcap">{DIAGRAM_CAPTION[p.diagram]}</figcaption>
+              <Diagram kind={p.diagram} />
+            </figure>
+          )}
+          <div className="dp-study-row">
+            <span className="dp-study-l">Outcome</span>
+            <p className="dp-study-p">{p.study.outcome}</p>
+          </div>
           {METRICS[p.title] && (
             <div className="dp-study-row">
               <span className="dp-study-l">Results</span>
@@ -751,12 +765,6 @@ function Detail({ p, onBack, filter = "All" }) {
         </div>
       ) : (
         <p className="dp-detail-note">Your challenge → approach → outcome write-up goes here.</p>
-      )}
-      {p.diagram && hasImages && (
-        <div className="dp-detail-recreated">
-          <span className="dp-meta-l">Recreated views — confidential data removed</span>
-          {gallery}
-        </div>
       )}
     </section>
   );
@@ -1120,9 +1128,10 @@ const CSS = `
 .dp-dgm-dim{background:var(--card-2);border:1px solid var(--line-2);border-radius:9px;padding:8px 10px;font-size:12px;color:var(--muted);text-align:center}
 .dp-dgm-pages{display:flex;flex-direction:column;gap:6px}
 .dp-dgm-page{background:var(--card-2);border:1px solid var(--line-2);border-left:3px solid rgba(214,95,116,.6);border-radius:9px;padding:9px 12px;font-size:12.5px;color:var(--ink)}
-.dp-detail-recreated{margin-top:24px;border-top:1px solid var(--line);padding-top:22px}
-.dp-detail-recreated .dp-meta-l{display:block;margin-bottom:14px}
-.dp-detail-recreated .dp-gallery-wrap{margin:0}
+/* diagram placed inside the case study (after Approach), as a labeled figure */
+.dp-study-figure{margin:0}
+.dp-study-figcap{display:block;font-family:var(--font-mono),'JetBrains Mono',monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--ember);margin-bottom:14px}
+.dp-study-figure .dp-diagram{margin:0}
 @media (max-width:680px){
   .dp-diagram-activity{flex-direction:column;align-items:stretch}
   .dp-dgm-flow{flex-direction:column}
