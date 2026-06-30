@@ -268,17 +268,19 @@ const IMPACT = [
   { value: "End-to-end", label: "Designed, built & shipped — mostly solo" },
 ];
 // Recognition quotes (social proof) — shown as a credibility block in the about
-// view and as a single pull-quote on contact. Anonymized by attribution at the
-// author's level rather than by name, since naming isn't confirmed. Both lines
-// are from internal kudos on the shrink-reporting form work.
+// view and as a single pull-quote on contact. Attributed to the named author
+// (provided by the site owner); both lines are from internal kudos on the
+// shrink-reporting form work.
 const PRAISE = [
   {
     text: "Delivered a high-quality MVP with impressive speed, and with the end user in mind.",
-    by: "Operations leadership · Coca-Cola Consolidated",
+    by: "John Palmer",
+    role: "Senior Director, Operational Insights & Sales Effectiveness · Coca-Cola Consolidated",
   },
   {
     text: "Responsiveness, problem-solving mindset, and the ability to execute under a tight timeline truly stood out.",
-    by: "Operations leadership · Coca-Cola Consolidated",
+    by: "John Palmer",
+    role: "Senior Director, Operational Insights & Sales Effectiveness · Coca-Cola Consolidated",
   },
 ];
 
@@ -765,7 +767,10 @@ function About({ go }) {
           {PRAISE.map((q) => (
             <figure className="dp-quote" key={q.text}>
               <blockquote className="dp-quote-t">{q.text}</blockquote>
-              <figcaption className="dp-quote-by">— {q.by}</figcaption>
+              <figcaption className="dp-quote-by">
+                <span className="dp-quote-name">— {q.by}</span>
+                <span className="dp-quote-role">{q.role}</span>
+              </figcaption>
             </figure>
           ))}
         </div>
@@ -793,7 +798,10 @@ function Contact() {
 
       <figure className="dp-contact-quote">
         <blockquote>{PRAISE[0].text}</blockquote>
-        <figcaption>— {PRAISE[0].by}</figcaption>
+        <figcaption>
+          <span className="dp-quote-name">— {PRAISE[0].by}</span>
+          <span className="dp-quote-role">{PRAISE[0].role}</span>
+        </figcaption>
       </figure>
 
       <div className="dp-contact-card">
@@ -918,11 +926,14 @@ const CSS = `
 .dp-quote{position:relative;overflow:hidden;border:1px solid var(--line-2);background:var(--card);border-radius:16px;padding:22px}
 .dp-quote::before{content:"\\201C";position:absolute;top:-12px;left:14px;font-family:var(--font-display),'Bricolage Grotesque',sans-serif;font-size:78px;line-height:1;color:rgba(214,95,116,.15);pointer-events:none}
 .dp-quote-t{position:relative;font-size:16px;line-height:1.58;color:var(--ink);font-style:normal}
-.dp-quote-by{margin-top:14px;font-family:var(--font-mono),'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:.03em;color:var(--amber)}
+.dp-quote-by{margin-top:14px;display:flex;flex-direction:column;gap:3px}
+/* shared attribution: name (mono, accent) over title + company (muted) */
+.dp-quote-name{font-family:var(--font-mono),'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:.03em;color:var(--amber)}
+.dp-quote-role{font-size:11.5px;line-height:1.4;color:var(--faint)}
 /* single pull-quote on the contact view, beside the email action */
 .dp-contact-quote{margin:0 0 26px;padding:2px 0 2px 20px;border-left:2px solid var(--ember)}
 .dp-contact-quote blockquote{font-family:var(--font-display),'Bricolage Grotesque',sans-serif;font-weight:500;font-size:clamp(17px,2vw,20px);line-height:1.45;letter-spacing:-.01em;color:var(--ink)}
-.dp-contact-quote figcaption{margin-top:10px;font-family:var(--font-mono),'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:.03em;color:var(--amber)}
+.dp-contact-quote figcaption{margin-top:12px;display:flex;flex-direction:column;gap:3px}
 
 /* cards — lifted off true black with border + shadow */
 .dp-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
