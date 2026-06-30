@@ -634,7 +634,7 @@ function Diagram({ kind }) {
           <div className="dp-dgm-flow">
             <span className="dp-dgm-node">Field users<small>Drivers &amp; warehouse</small></span>
             <span className="dp-dgm-arrow" aria-hidden="true"><FiArrowRight /></span>
-            <span className="dp-dgm-node">Service Center Team<small>Tier 1 — missing Osapiens access</small></span>
+            <span className="dp-dgm-node">Tier 1<small>Missing Osapiens access</small></span>
             <span className="dp-dgm-arrow" aria-hidden="true"><FiArrowRight /></span>
             <span className="dp-dgm-node dp-dgm-bad">Tier 2 (me)<small>Primary support — most tickets</small></span>
             <span className="dp-dgm-arrow" aria-hidden="true"><FiArrowRight /></span>
@@ -647,14 +647,14 @@ function Diagram({ kind }) {
           <div className="dp-dgm-flow">
             <span className="dp-dgm-node">Field users<small>Drivers &amp; warehouse</small></span>
             <span className="dp-dgm-arrow" aria-hidden="true"><FiArrowRight /></span>
-            <span className="dp-dgm-node dp-dgm-good">Service Center Team<small>Tier 1 — Osapiens access + KB</small></span>
+            <span className="dp-dgm-node dp-dgm-good">Tier 1<small>Osapiens access + KB</small></span>
             <span className="dp-dgm-arrow" aria-hidden="true"><FiArrowRight /></span>
             <span className="dp-dgm-node">Tier 2 (me)<small>Primary support — beyond Tier 1</small></span>
             <span className="dp-dgm-arrow" aria-hidden="true"><FiArrowRight /></span>
             <span className="dp-dgm-node">Vendor<small>True bugs — backend &amp; code</small></span>
           </div>
           <span className="dp-dgm-tag dp-dgm-tag-good">2–3 tickets/week · no on-call</span>
-          <span className="dp-dgm-note">After hours, the Service Center Team escalates directly to CONA — not a Tier 2 on-call.</span>
+          <span className="dp-dgm-note">After hours, Tier 1 escalates directly to CONA — not a Tier 2 on-call.</span>
         </div>
       </div>
     );
