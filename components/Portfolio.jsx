@@ -75,7 +75,7 @@ const PROJECTS = [
   {
     cat: "Websites", title: "Electric Supplies Online",
     body: "A live e-commerce storefront for an electrical-supplies retailer, with a deep, technical catalog spanning lighting, circuit breakers, transformers, and dozens of categories in between. As the in-house designer and developer, I organized the catalog for fast discovery, shaped the storefront and merchandising, and kept the customer-facing experience running for a real, operating business.",
-    tags: ["E-commerce", "Information architecture", "HTML", "CSS", "JavaScript"], image: "/assets/ElectricCover.jpg",
+    tags: ["HTML", "CSS", "JavaScript"], image: "/assets/ElectricCover.jpg",
     images: [
       "/assets/ElectricStore.jpg",
       "/assets/ElectricHome.jpg",
@@ -133,7 +133,7 @@ const PROJECTS = [
   {
     cat: "Power Apps & Data", kind: "Data", title: "DSD Support Operations Dashboard",
     body: "A ServiceNow analytics dashboard for Osapiens, the DSD (direct store delivery) routing app at Coca-Cola Consolidated. It monitors a redesigned support model: Tier-1 vs Tier-2 routing, knowledge-base deflection, SLA health, and vendor escalations, so the team can see at a glance where work is being resolved and what to fix next. Visuals recreated without internal data for confidentiality.",
-    tags: ["ServiceNow", "Knowledge Base", "Process Design"],
+    tags: ["ServiceNow", "Performance Analytics"],
     image: "/assets/SupportDashTeam.jpg", tall: true,
     images: [
       "/assets/SupportDashPersonal.jpg",
@@ -150,7 +150,7 @@ const PROJECTS = [
   {
     cat: "Power Apps & Data", kind: "Data", title: "Activity & Objective Dashboard",
     body: "A self-service Power BI dashboard, fed by a SharePoint form, that turns everyday BA work into a live view of progress against my 2026 objectives, instead of something pieced together from memory at review time. I designed the data model behind it, so every logged activity maps to a project, an objective, an activity type, and a competency behavior, and a thirty-second entry rolls up into objective progress against target, where my effort is going, project mix, and trend over time. It is the same analyst craft I bring to stakeholder work, structured inputs and a clean model producing a decision-ready view, pointed at my own goals. Designed, modeled, and built end to end; the data shown is generic for confidentiality.",
-    tags: ["Power BI", "SharePoint", "Data Modeling"],
+    tags: ["Power BI", "Power Query", "DAX", "SharePoint"],
     image: "/assets/ActivityCover.jpg", tall: true,
     images: [
       "/assets/ActivityOverview.jpg",
@@ -169,7 +169,7 @@ const PROJECTS = [
   {
     cat: "Branding & Design", kind: "Branding", title: "Inventory Shrink Reduction Form", noLink: true,
     body: "An app icon and visual identity I designed for a shrink-reporting form I supported as the BA. The form replaced a manual email process for logging excessive inventory shrink, and to make an internal tool feel like a real product and earn field adoption, I created a branded clipboard mark that reads instantly on a phone home screen. It shipped as a complete, production-ready app icon set at every screen density.",
-    tags: ["Logo Design", "Brand Identity", "App Icon", "Illustrator", "Photoshop", "Iconography", "Color Theory"],
+    tags: ["Illustrator", "Photoshop", "Figma"],
     image: "/assets/ShrinkLogoCover.jpg",
     images: [
       "/assets/ShrinkLogo1.jpg",
