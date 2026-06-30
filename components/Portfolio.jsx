@@ -263,7 +263,7 @@ const METRICS = {
 // the full journey (Encompass, Canidium, Central Piedmont, Coca-Cola + freelance),
 // drawn from the résumé and portfolio, not just the work grid.
 const IMPACT = [
-  { value: "5+ yrs", label: "Across software engineering & business analysis" },
+  { value: "5+ yrs", label: "Software engineering & business analysis, across five roles" },
   { value: "20+", label: "Projects delivered, from enterprise platforms to freelance builds" },
   { value: "$27M+", label: "Assets at a foundation I built the site for — ~$1.9M granted yearly to 30+ nonprofits" },
   { value: "~95%", label: "Fewer support tickets after a model I redesigned at Coca-Cola" },
