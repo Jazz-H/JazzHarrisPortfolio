@@ -24,6 +24,7 @@ import {
   FiBarChart2,
   FiLayers,
   FiGlobe,
+  FiPenTool,
 } from "react-icons/fi";
 
 const HEADSHOT_SRC = "/jazz-headshot.jpg";
@@ -190,6 +191,7 @@ const TECH_GROUPS = [
   { label: "Languages", Icon: FiCode, items: ["JavaScript", "TypeScript", "Python", "SQL"] },
   { label: "Frameworks & UI", Icon: FiLayers, items: ["React", "Next.js"] },
   { label: "Data & Power Platform", Icon: FiBarChart2, items: ["Power BI", "Power Apps", "SharePoint"] },
+  { label: "Design & UX/UI", Icon: FiPenTool, items: ["Figma", "Adobe XD", "Photoshop", "Illustrator", "InDesign", "Sketch"] },
 ];
 const SERVICES = [
   { Icon: FiTrendingUp, title: "Business analysis & strategy", body: "Translating business goals into clear requirements and a roadmap, working between stakeholders, vendors, and engineers to ship the right thing." },
@@ -701,7 +703,7 @@ function About({ go }) {
             <summary className="dp-acc-sum">
               <span className="dp-acc-head">
                 <span className="dp-sub">Tools &amp; technologies</span>
-                <span className="dp-acc-preview">Full-stack dev · Data &amp; BI · Microsoft Power Platform</span>
+                <span className="dp-acc-preview">Full-stack dev · Data &amp; Power Platform · Design &amp; UX/UI</span>
               </span>
               <FiChevronDown className="dp-acc-chev" aria-hidden="true" />
             </summary>
@@ -765,7 +767,8 @@ function About({ go }) {
       <div className="dp-about-praise">
         <p className="dp-label">Recognition</p>
         <div className="dp-praise-grid">
-          {PRAISE.map((q) => (
+          {/* PRAISE[0] is featured on Contact; show the rest here to avoid repeating it */}
+          {PRAISE.slice(1).map((q) => (
             <figure className="dp-quote" key={q.text}>
               <blockquote className="dp-quote-t">{q.text}</blockquote>
               <figcaption className="dp-quote-by">
@@ -923,7 +926,7 @@ const CSS = `
 
 /* recognition — social-proof quotes (credibility block in the about view) */
 .dp-about-praise .dp-label{display:block;margin-bottom:16px}
-.dp-praise-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.dp-praise-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
 .dp-quote{position:relative;overflow:hidden;border:1px solid var(--line-2);background:var(--card);border-radius:16px;padding:22px}
 .dp-quote::before{content:"\\201C";position:absolute;top:-12px;left:14px;font-family:var(--font-display),'Bricolage Grotesque',sans-serif;font-size:78px;line-height:1;color:rgba(214,95,116,.15);pointer-events:none}
 .dp-quote-t{position:relative;font-size:16px;line-height:1.58;color:var(--ink);font-style:normal}
@@ -1034,6 +1037,10 @@ const CSS = `
 .dp-acc[open] .dp-acc-chev{transform:rotate(180deg)}
 @media (min-width:881px){
   .dp-acc-body{display:block !important}
+  /* Modern engines hide a closed <details>'s content via ::details-content
+     (content-visibility:hidden), which the display rule above can't override.
+     Force it visible so the always-open desktop accordions actually paint. */
+  .dp-acc::details-content{content-visibility:visible;display:block}
   .dp-acc-sum{margin-bottom:14px}
   .dp-acc-sum .dp-sub{margin-bottom:0}
 }
