@@ -184,6 +184,34 @@ const PROJECTS = [
       outcome: "The form launched with a clear, recognizable identity and was pushed to all field devices, so users could find and trust it from day one. The branding turned an internal form into something that looked and felt like a real product, supporting fast adoption across sales and service.",
     },
   },
+  // --- Scaffolded concept pieces (no live assets yet). Add image/images and
+  // refine the case study, then this renders like any other project. ---
+  {
+    cat: "Branding & Design", kind: "Branding", title: "Craft Beverage Brand & Packaging", noLink: true, status: "Concept",
+    body: "A self-initiated brand identity and packaging concept for a small-batch craft beverage — taken from a single logomark through a full color and type system to shelf-ready can and label artwork.",
+    tags: ["Illustrator", "Photoshop", "Figma"],
+    image: "/assets/BeverageCover.png", tall: true,
+    images: ["/assets/BeverageCover.png", "/assets/BeverageSystem.png", "/assets/BeveragePackaging.png"],
+    company: "Self-initiated concept", role: "Brand & packaging design",
+    study: {
+      challenge: "A small-batch craft beverage has to win the cooler: stand out against established brands, communicate flavor and personality at a glance, and stay legible from a full shelf down to a thumbnail product photo online.",
+      approach: "Build the identity from one strong idea — a distinctive logomark and wordmark, a tight color and type system, and a flavor-led label layout that scales across can sizes. Design to production specs (dielines, print-ready color) and present it in realistic context mockups.",
+      outcome: "A shelf-ready brand kit: logo suite, color and type system, can and label artwork, and a one-page brand guide, shown with realistic packaging mockups.",
+    },
+  },
+  {
+    cat: "Branding & Design", kind: "UI/UX", title: "UX Redesign Teardown", noLink: true, status: "Concept",
+    body: "A self-initiated UX redesign: take a real product with a clunky, frustrating flow, diagnose exactly why it fails its users, and rebuild the experience. Grounded in a heuristic evaluation and quick research, it shows the reasoning behind a clear before-and-after.",
+    tags: ["Figma", "FigJam", "Maze"],
+    image: "/assets/UxCover.png", tall: true,
+    images: ["/assets/UxCover.png", "/assets/UxBefore.png", "/assets/UxAfter.png"],
+    company: "Self-initiated concept", role: "UX research & design",
+    study: {
+      challenge: "Plenty of everyday products work, but fight their users — buried actions, confusing flows, and friction that quietly adds up. The goal: pick one, prove where and why it breaks down, and redesign it so the core task becomes obvious.",
+      approach: "Run a heuristic evaluation and a couple of quick usability sessions to surface the real problems, prioritize them by impact, then redesign the core flow — new information architecture, wireframes, and a hi-fi UI on a small design system. Keep the original screens side by side so every decision is defensible.",
+      outcome: "A before-and-after case study: an annotated teardown of the original, the prioritized problems, the reworked flow and UI, and a clickable prototype — each change tied back to the specific user problem it solves.",
+    },
+  },
 ];
 // Only show category filters that actually have projects (e.g. "Apps" hides
 // when empty, and reappears automatically once an Apps project is added).
