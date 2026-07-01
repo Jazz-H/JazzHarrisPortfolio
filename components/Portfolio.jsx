@@ -200,16 +200,16 @@ const PROJECTS = [
     },
   },
   {
-    cat: "Branding & Design", kind: "UI/UX", title: "UX Redesign Teardown", noLink: true, status: "Concept",
-    body: "A self-initiated UX redesign: take a real product with a clunky, frustrating flow, diagnose exactly why it fails its users, and rebuild the experience. Grounded in a heuristic evaluation and quick research, it shows the reasoning behind a clear before-and-after.",
+    cat: "Branding & Design", kind: "UI/UX", title: "LOFT Living — UX Redesign", noLink: true, status: "Concept",
+    body: "A self-initiated, unaffiliated redesign of LOFT Living, a property-management resident app at 2.4 stars across 6,000+ reviews. I clustered the public complaints into six themes, benchmarked LOFT against higher-rated peers, traced the failures to likely architectural root causes, and sized the business impact — then rebuilt the sign-in, rent-payment, and maintenance flows around what residents hit most.",
     tags: ["Figma", "FigJam", "Maze"],
     image: "/assets/UxCover.png", tall: true,
-    images: ["/assets/UxCover.png", "/assets/UxBefore.png", "/assets/UxAfter.png"],
-    company: "Self-initiated concept", role: "UX research & design",
+    images: ["/assets/UxCover.png", "/assets/UxFindings.png", "/assets/UxBench.png", "/assets/UxTech.png", "/assets/UxBiz.png", "/assets/UxBefore.png", "/assets/UxAfter.png"],
+    company: "Self-initiated concept", role: "UX research, design & systems analysis",
     study: {
-      challenge: "Plenty of everyday products work, but fight their users — buried actions, confusing flows, and friction that quietly adds up. The goal: pick one, prove where and why it breaks down, and redesign it so the core task becomes obvious.",
-      approach: "Run a heuristic evaluation and a couple of quick usability sessions to surface the real problems, prioritize them by impact, then redesign the core flow — new information architecture, wireframes, and a hi-fi UI on a small design system. Keep the original screens side by side so every decision is defensible.",
-      outcome: "A before-and-after case study: an annotated teardown of the original, the prioritized problems, the reworked flow and UI, and a clickable prototype — each change tied back to the specific user problem it solves.",
+      challenge: "LOFT Living promises 'everything resident in one app,' but at 2.4 stars across 6,000+ reviews, residents disagree — while peer apps like RentCafe (4.8) and Zego (4.5) clear the bar easily. Clustering the public complaints surfaced six themes, and the biggest isn't cosmetic: people can't reliably sign in, then hit a confusing payment center with surprise fees, while the tasks they came for (rent, maintenance) sit buried under a five-item nav.",
+      approach: "I built an affinity map from the public reviews to cluster the complaints into six themes, benchmarked LOFT against higher-rated peers to see what 'good' looks like, and connected the worst failures to their likely architectural root causes — a webview shell, fragile session handling, non-idempotent payments — so the fix targets systems, not just screens. Prioritizing by what blocks the core jobs (pay rent, request maintenance), the redesign lands on passwordless sign-in, a task-first home, fees shown up front, and a simplified nav — from an annotated before to a hi-fi after on a small design system.",
+      outcome: "A research-driven before-and-after: the affinity map of six review themes, a competitive benchmark, a technical read tracing symptoms to likely root causes (from the outside), the business case for fixing it, an annotated teardown, the reworked sign-in and rent-payment flows, a clean hi-fi UI, and a clickable prototype — each change traced back to the complaint it resolves.",
     },
   },
 ];
