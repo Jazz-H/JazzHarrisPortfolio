@@ -170,6 +170,19 @@ const PROJECTS = [
     },
   },
   {
+    cat: "Power Apps & Data", kind: "AI Agent", title: "Copilot Studio DevOps Agent",
+    ai: true, confidential: true, noLink: true, diagram: "agent",
+    image: "/assets/AgentCover.png", tall: true,
+    tags: ["Copilot Studio", "Azure DevOps", "Power Platform"],
+    body: "A Copilot Studio agent wired to my team's Azure DevOps board. From a plain-language ask in Microsoft Teams it creates and updates epics, features, and user stories, pulls board status and summaries, and drafts requirements, meeting notes, and communications — turning repetitive BA upkeep into a single request. Built and used on the job; shown without internal data for confidentiality.",
+    company: "Coca-Cola Consolidated", role: "IT Business Analyst II",
+    study: {
+      challenge: "A lot of business-analyst work is repetitive by nature: opening and updating epics, features, and user stories in Azure DevOps, pulling board status together for stakeholders, and hand-writing the same shapes of requirements, meeting notes, and updates. It's necessary, but it's administration that eats time better spent on analysis.",
+      approach: "I built an agent in Copilot Studio and connected it to my team's Azure DevOps board through the Azure DevOps connector, so it acts on real work items rather than a copy. From a plain-language request in Teams it creates and updates epics, features, and user stories, pulls back board status and summaries on demand, and drafts requirements, meeting notes, and communications from a short prompt. I designed the topics and grounding so responses reflect the live board, and kept a human in the loop to review before anything is finalized. The board and its data aren't shown here for confidentiality.",
+      outcome: "Routine work-item upkeep and first drafts now start from a sentence in Teams instead of a manual pass through the board and a blank document. It shifts my time from administration toward the analysis the role is actually for, and gives the team a faster, more consistent way to keep the board and its paper trail current.",
+    },
+  },
+  {
     cat: "Branding & Design", kind: "Branding", title: "Inventory Shrink Reduction Form", noLink: true, ai: true,
     body: "An app icon and visual identity I designed for a shrink-reporting form I supported as the BA. The form replaced a manual email process for logging excessive inventory shrink, and to make an internal tool feel like a real product and earn field adoption, I created a branded clipboard mark that reads instantly on a phone home screen. It shipped as a complete, production-ready app icon set at every screen density.",
     tags: ["Copilot", "Photoshop"],
@@ -234,6 +247,7 @@ const FILTERS = [
 const WORK_ORDER = [
   "Valora",
   "Clearcast",
+  "Copilot Studio DevOps Agent",
   "DSD Support Operations Dashboard",
   "Alamance Community Foundation",
   "Chat App",
@@ -427,7 +441,7 @@ function Poster({ view, go }) {
             <path d="M109 24 H121 V80 H109" stroke="#1e78e4" strokeWidth="7" strokeLinecap="round" strokeLinejoin="round" />
             <path d="M64 31 V73" stroke="#1e78e4" strokeWidth="2.6" strokeLinecap="round" />
             <path d="M47 32 V58 C47 68 40 70 33 69" stroke="currentColor" strokeWidth="7.5" strokeLinecap="round" />
-            <path d="M81 32 V72 M81 52 H101 M101 32 V72" stroke="#1e78e4" strokeWidth="7.5" strokeLinecap="round" strokeLinejoin="round" />
+            <path d="M81 32 V72 M81 52 H101 M101 32 V72" stroke="currentColor" strokeWidth="7.5" strokeLinecap="round" strokeLinejoin="round" />
           </svg>
         </span>
         <span className="dp-id-text">
@@ -687,6 +701,7 @@ function Gallery({ images, title, gradient, status, fallbackWord, tall }) {
 const DIAGRAM_CAPTION = {
   dsd: "The redesigned support model — before & after",
   activity: "The data model — from form to report",
+  agent: "How the agent works — one ask, three jobs",
 };
 function Diagram({ kind }) {
   if (kind === "dsd") {
@@ -766,6 +781,38 @@ function Diagram({ kind }) {
           <span className="dp-schema-tag">Report · 5 Power BI pages</span>
           <div className="dp-dgm-pages">
             {PAGES.map((pg) => (<span className="dp-dgm-page" key={pg}>{pg}</span>))}
+          </div>
+        </div>
+      </div>
+    );
+  }
+  if (kind === "agent") {
+    const CAPS = [
+      { h: "Work items", f: "Create & update epics, features, and user stories" },
+      { h: "Reports", f: "Board status & summaries, pulled on demand" },
+      { h: "Drafts", f: "Requirements, meeting notes, and communications" },
+    ];
+    return (
+      <div className="dp-diagram dp-diagram-activity" role="img" aria-label="How the Copilot Studio agent works. A plain-language request in Microsoft Teams reaches a Copilot Studio agent connected to the team's Azure DevOps board through the Azure DevOps connector. The agent creates and updates epics, features and user stories, pulls board status and summaries on demand, and drafts requirements, meeting notes and communications.">
+        <div className="dp-schema-stage">
+          <span className="dp-schema-tag">Ask · in Teams</span>
+          <span className="dp-dgm-node dp-schema-src">Plain-language request<small>&ldquo;Open a feature for…&rdquo; · &ldquo;Summarize the board&rdquo;</small></span>
+        </div>
+        <span className="dp-schema-arrow" aria-hidden="true"><FiArrowDown /></span>
+        <div className="dp-schema-stage">
+          <span className="dp-schema-tag">Copilot Studio agent</span>
+          <span className="dp-dgm-node dp-dgm-good">Interprets the request · calls the board<small>Grounded in the live board via the Azure DevOps connector</small></span>
+        </div>
+        <span className="dp-schema-arrow" aria-hidden="true"><FiArrowDown /></span>
+        <div className="dp-schema-stage">
+          <span className="dp-schema-tag">Does the work · in Azure DevOps</span>
+          <div className="dp-schema-dims">
+            {CAPS.map((c) => (
+              <div className="dp-schema-dim" key={c.h}>
+                <span className="dp-schema-h">{c.h}</span>
+                <span className="dp-schema-f">{c.f}</span>
+              </div>
+            ))}
           </div>
         </div>
       </div>
