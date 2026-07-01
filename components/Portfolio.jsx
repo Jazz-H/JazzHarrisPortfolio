@@ -221,7 +221,7 @@ const FILTERS = ["All", ...CAT_ORDER.filter((c) => PROJECTS.some((p) => p.cat ==
 const TECH_GROUPS = [
   { label: "Languages", Icon: FiCode, items: ["JavaScript", "TypeScript", "Python", "SQL"] },
   { label: "Frameworks & UI", Icon: FiLayers, items: ["React", "Next.js"] },
-  { label: "AI & LLM", Icon: FiCpu, items: ["Claude API", "Copilot Studio", "ChatGPT", "GitHub Copilot"] },
+  { label: "AI & LLM", Icon: FiCpu, items: ["Claude", "Claude API", "Copilot Studio", "ChatGPT", "GitHub Copilot"] },
   { label: "Data & Power Platform", Icon: FiBarChart2, items: ["Power BI", "Power Apps", "SharePoint"] },
   { label: "Design & UX/UI", Icon: FiPenTool, items: ["Figma", "Photoshop", "Illustrator"] },
 ];
