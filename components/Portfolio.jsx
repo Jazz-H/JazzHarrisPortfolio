@@ -201,15 +201,15 @@ const PROJECTS = [
   },
   {
     cat: "Branding & Design", kind: "UI/UX", title: "LOFT Living — UX Redesign", noLink: true, status: "Concept",
-    body: "A self-initiated, unaffiliated redesign of LOFT Living, a property-management resident app sitting at 2.4 stars across 6,000+ reviews. The public reviews and a heuristic evaluation pinpoint why residents struggle, and I rebuild the core rent-payment and maintenance flows around what they actually need.",
+    body: "A self-initiated, unaffiliated redesign of LOFT Living, a property-management resident app at 2.4 stars across 6,000+ reviews. I clustered the public complaints into six themes, then rebuilt the sign-in, rent-payment, and maintenance flows around the issues residents hit most.",
     tags: ["Figma", "FigJam", "Maze"],
     image: "/assets/UxCover.png", tall: true,
-    images: ["/assets/UxCover.png", "/assets/UxBefore.png", "/assets/UxAfter.png"],
+    images: ["/assets/UxCover.png", "/assets/UxFindings.png", "/assets/UxBefore.png", "/assets/UxAfter.png"],
     company: "Self-initiated concept", role: "UX research & design",
     study: {
-      challenge: "LOFT Living promises 'everything resident in one app,' but at 2.4 stars across 6,000+ reviews, residents disagree. The home screen leads with points and promos over rent and maintenance, the jobs people open the app for are buried under a five-item nav, and a surprise 'convenience fee' appears at the very end of payment.",
-      approach: "Mine the public reviews and run a heuristic evaluation to cluster the real complaints, prioritize them by how often they block the core jobs — pay rent, request maintenance — then redesign those flows: a task-first home, fee transparency up front, and a simplified nav, moving from an annotated before to a hi-fi after on a small design system.",
-      outcome: "A before-and-after case study: an annotated teardown tied to real review themes, the reworked rent-payment and maintenance flows, a clean hi-fi UI, and a clickable prototype — each change traced back to a complaint it resolves.",
+      challenge: "LOFT Living promises 'everything resident in one app,' but at 2.4 stars across 6,000+ reviews, residents disagree. Clustering the public complaints surfaced six themes — and the biggest isn't cosmetic: people can't reliably sign in, then hit a confusing payment center with surprise fees, while the tasks they came for (rent, maintenance) sit buried under a five-item nav.",
+      approach: "I built an affinity map from the public reviews to cluster the complaints into six themes, then prioritized by how often each blocks the core jobs — pay rent, request maintenance. The top three (sign-in reliability, payment friction and fee surprises, and buried core tasks) set the redesign: passwordless sign-in that sticks, a task-first home, fees shown up front, and a simplified nav — moving from an annotated before to a hi-fi after on a small design system.",
+      outcome: "A research-driven before-and-after: the affinity map of six review themes, an annotated teardown, the reworked sign-in and rent-payment flows, a clean hi-fi UI, and a clickable prototype — each change traced back to the complaint it resolves.",
     },
   },
 ];
