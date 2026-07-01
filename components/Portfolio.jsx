@@ -36,7 +36,7 @@ const FIE_BLOG =
 
 const PROJECTS = [
   {
-    cat: "Websites", title: "Valora",
+    cat: "Websites", title: "Valora", ai: true,
     body: "A personal budgeting web app that turns messy finances into clear, calm decisions. Track spending, set goals, and see where your money actually goes, privately and without forced bank linking. Live in public beta as a website, with a native mobile app on the way.",
     tags: ["React", "TypeScript", "JavaScript", "CSS", "HTML"], status: "Beta",
     image: "/assets/ValoraReports.jpg",
@@ -114,7 +114,7 @@ const PROJECTS = [
     },
   },
   {
-    cat: "Apps", title: "Clearcast",
+    cat: "Apps", title: "Clearcast", ai: true,
     body: "Clearcast is a production-ready weather PWA that turns a raw forecast into a plain-English plan for your day. It uses Claude to generate structured activity recommendations, adapts its theme to live weather conditions, and works offline as an installable app. Every layer, from the API design to the caching strategy to unit detection, is built for correctness, not just demo appeal.",
     tags: ["Next.js", "TypeScript", "Claude API", "PWA", "Tailwind"],
     image: "/assets/ClearcastCover.png", tall: true,
@@ -217,7 +217,13 @@ const PROJECTS = [
 // Only show category filters that actually have projects (e.g. "Apps" hides
 // when empty, and reappears automatically once an Apps project is added).
 const CAT_ORDER = ["Websites", "Apps", "Power Apps & Data", "Branding & Design"];
-const FILTERS = ["All", ...CAT_ORDER.filter((c) => PROJECTS.some((p) => p.cat === c))];
+// "AI" is a cross-cutting filter (a project keeps its category and is also
+// tagged ai:true), so it sits right after "All" when any AI work exists.
+const FILTERS = [
+  "All",
+  ...(PROJECTS.some((p) => p.ai) ? ["AI"] : []),
+  ...CAT_ORDER.filter((c) => PROJECTS.some((p) => p.cat === c)),
+];
 const TECH_GROUPS = [
   { label: "Languages", Icon: FiCode, items: ["JavaScript", "TypeScript", "Python", "SQL"] },
   { label: "Frameworks & UI", Icon: FiLayers, items: ["React", "Next.js"] },
@@ -466,13 +472,14 @@ function Thumb({ p }) {
       )}
       <span className="dp-thumb-scrim" aria-hidden="true" />
       <span className="dp-thumb-cat">{p.kind || p.cat}</span>
+      {p.ai && <span className={"dp-thumb-ai" + (p.status ? " is-stacked" : "")}><FiCpu aria-hidden="true" /> AI</span>}
       {p.status && <span className="dp-badge">{p.status}</span>}
     </span>
   );
 }
 
 function WorkList({ onOpen, filter, setFilter }) {
-  const shown = PROJECTS.filter((p) => filter === "All" || p.cat === filter);
+  const shown = PROJECTS.filter((p) => filter === "All" || (filter === "AI" ? p.ai : p.cat === filter));
   const filtersRef = useRef(null);
   const [moreRight, setMoreRight] = useState(false);
 
@@ -760,7 +767,7 @@ function Detail({ p, onBack, filter = "All" }) {
       <button className="dp-back" onClick={onBack}><FiArrowLeft aria-hidden="true" /> {filter === "All" ? "All work" : filter}</button>
       {gallery}
       <div className="dp-detail-head">
-        <p className="dp-kicker">{p.kind || p.cat}</p>
+        <p className="dp-kicker">{p.kind || p.cat}{p.ai && <span className="dp-kicker-ai"><FiCpu aria-hidden="true" /> AI</span>}</p>
         <h2 className="dp-detail-h">{p.title}</h2>
       </div>
       <p className="dp-detail-overview">{p.body}</p>
@@ -1090,6 +1097,11 @@ const CSS = `
 .dp-thumb-scrim{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(0,0,0,.30),transparent 32%,transparent 60%,rgba(0,0,0,.32));pointer-events:none}
 .dp-thumb-cat{position:absolute;top:14px;left:14px;z-index:1;font-family:var(--font-mono),'JetBrains Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:rgba(243,234,234,.92);background:rgba(8,6,9,.5);backdrop-filter:blur(5px);-webkit-backdrop-filter:blur(5px);border:1px solid rgba(243,234,234,.12);border-radius:6px;padding:3px 8px;font-weight:500}
 .dp-badge{position:absolute;top:13px;right:13px;z-index:1;font-family:var(--font-mono),'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:#2a0f15;background:var(--ember);border-radius:6px;padding:3px 8px;font-weight:600}
+.dp-thumb-ai{position:absolute;top:13px;right:13px;z-index:1;display:inline-flex;align-items:center;gap:4px;font-family:var(--font-mono),'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;font-weight:600;color:#ff8fa6;background:rgba(8,6,9,.5);backdrop-filter:blur(5px);-webkit-backdrop-filter:blur(5px);border:1px solid rgba(242,131,155,.45);border-radius:6px;padding:3px 8px}
+.dp-thumb-ai svg{width:12px;height:12px}
+.dp-thumb-ai.is-stacked{top:44px}
+.dp-kicker-ai{display:inline-flex;align-items:center;gap:4px;margin-left:10px;color:#ff8fa6;font-weight:600}
+.dp-kicker-ai svg{width:13px;height:13px}
 .dp-badge-lg{font-size:12px;padding:5px 11px;top:18px;right:18px}
 .dp-thumb-mono{position:relative;z-index:1;font-family:var(--font-display),'Bricolage Grotesque',sans-serif;font-weight:700;font-size:30px;color:rgba(20,8,14,.85);line-height:1}
 .dp-card-body{padding:20px;display:flex;flex-direction:column;gap:10px}
