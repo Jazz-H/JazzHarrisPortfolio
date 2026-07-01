@@ -217,12 +217,15 @@ const PROJECTS = [
 // Only show category filters that actually have projects (e.g. "Apps" hides
 // when empty, and reappears automatically once an Apps project is added).
 const CAT_ORDER = ["Websites", "Apps", "Power Apps & Data", "Branding & Design"];
-// "AI" is a cross-cutting filter (a project keeps its category and is also
-// tagged ai:true), so it sits right after "All" when any AI work exists.
+// "All" is pinned first as the reset/show-everything default; every other
+// filter — the cross-cutting AI lens (shown only when AI work exists) and the
+// categories that actually have projects — is listed alphabetically.
 const FILTERS = [
   "All",
-  ...(PROJECTS.some((p) => p.ai) ? ["AI"] : []),
-  ...CAT_ORDER.filter((c) => PROJECTS.some((p) => p.cat === c)),
+  ...[
+    ...(PROJECTS.some((p) => p.ai) ? ["AI"] : []),
+    ...CAT_ORDER.filter((c) => PROJECTS.some((p) => p.cat === c)),
+  ].sort((a, b) => a.localeCompare(b)),
 ];
 const TECH_GROUPS = [
   { label: "Languages", Icon: FiCode, items: ["JavaScript", "TypeScript", "Python", "SQL"] },
