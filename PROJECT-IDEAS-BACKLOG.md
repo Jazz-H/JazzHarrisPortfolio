@@ -26,8 +26,8 @@ rebuild it — a before-and-after redesign that leans on the BA strengths
   prioritized problems, reworked information architecture, wireframes, hi-fi
   UI on a small design system, a clickable prototype, and side-by-side
   before/after.
-- **Subject:** _TBD — pick a product with a genuinely frustrating flow you can
-  speak to (an everyday app or site works best)._
+- **Subject:** LOFT Living resident app (2.4★ across 6,000+ reviews) — a real,
+  poorly-reviewed product with public complaints to mine. Unaffiliated concept.
 - **Stack:** Figma (design + prototype), FigJam (eval/flows), Maze (testing).
 - **Why it fits:** shows analytical UX (research → problem → redesign), which
   most design portfolios lack and which pairs with the analyst background.

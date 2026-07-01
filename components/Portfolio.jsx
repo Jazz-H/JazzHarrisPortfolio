@@ -200,16 +200,16 @@ const PROJECTS = [
     },
   },
   {
-    cat: "Branding & Design", kind: "UI/UX", title: "UX Redesign Teardown", noLink: true, status: "Concept",
-    body: "A self-initiated UX redesign: take a real product with a clunky, frustrating flow, diagnose exactly why it fails its users, and rebuild the experience. Grounded in a heuristic evaluation and quick research, it shows the reasoning behind a clear before-and-after.",
+    cat: "Branding & Design", kind: "UI/UX", title: "LOFT Living — UX Redesign", noLink: true, status: "Concept",
+    body: "A self-initiated, unaffiliated redesign of LOFT Living, a property-management resident app sitting at 2.4 stars across 6,000+ reviews. The public reviews and a heuristic evaluation pinpoint why residents struggle, and I rebuild the core rent-payment and maintenance flows around what they actually need.",
     tags: ["Figma", "FigJam", "Maze"],
     image: "/assets/UxCover.png", tall: true,
     images: ["/assets/UxCover.png", "/assets/UxBefore.png", "/assets/UxAfter.png"],
     company: "Self-initiated concept", role: "UX research & design",
     study: {
-      challenge: "Plenty of everyday products work, but fight their users — buried actions, confusing flows, and friction that quietly adds up. The goal: pick one, prove where and why it breaks down, and redesign it so the core task becomes obvious.",
-      approach: "Run a heuristic evaluation and a couple of quick usability sessions to surface the real problems, prioritize them by impact, then redesign the core flow — new information architecture, wireframes, and a hi-fi UI on a small design system. Keep the original screens side by side so every decision is defensible.",
-      outcome: "A before-and-after case study: an annotated teardown of the original, the prioritized problems, the reworked flow and UI, and a clickable prototype — each change tied back to the specific user problem it solves.",
+      challenge: "LOFT Living promises 'everything resident in one app,' but at 2.4 stars across 6,000+ reviews, residents disagree. The home screen leads with points and promos over rent and maintenance, the jobs people open the app for are buried under a five-item nav, and a surprise 'convenience fee' appears at the very end of payment.",
+      approach: "Mine the public reviews and run a heuristic evaluation to cluster the real complaints, prioritize them by how often they block the core jobs — pay rent, request maintenance — then redesign those flows: a task-first home, fee transparency up front, and a simplified nav, moving from an annotated before to a hi-fi after on a small design system.",
+      outcome: "A before-and-after case study: an annotated teardown tied to real review themes, the reworked rent-payment and maintenance flows, a clean hi-fi UI, and a clickable prototype — each change traced back to a complaint it resolves.",
     },
   },
 ];
