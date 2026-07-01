@@ -190,6 +190,8 @@ const PROJECTS = [
     cat: "Branding & Design", kind: "Branding", title: "Craft Beverage Brand & Packaging", noLink: true, status: "Concept",
     body: "A self-initiated brand identity and packaging concept for a small-batch craft beverage — taken from a single logomark through a full color and type system to shelf-ready can and label artwork.",
     tags: ["Illustrator", "Photoshop", "Figma"],
+    image: "/assets/BeverageCover.png", tall: true,
+    images: ["/assets/BeverageCover.png", "/assets/BeverageSystem.png", "/assets/BeveragePackaging.png"],
     company: "Self-initiated concept", role: "Brand & packaging design",
     study: {
       challenge: "A small-batch craft beverage has to win the cooler: stand out against established brands, communicate flavor and personality at a glance, and stay legible from a full shelf down to a thumbnail product photo online.",
@@ -201,6 +203,8 @@ const PROJECTS = [
     cat: "Branding & Design", kind: "UI/UX", title: "UX Redesign Teardown", noLink: true, status: "Concept",
     body: "A self-initiated UX redesign: take a real product with a clunky, frustrating flow, diagnose exactly why it fails its users, and rebuild the experience. Grounded in a heuristic evaluation and quick research, it shows the reasoning behind a clear before-and-after.",
     tags: ["Figma", "FigJam", "Maze"],
+    image: "/assets/UxCover.png", tall: true,
+    images: ["/assets/UxCover.png", "/assets/UxBefore.png", "/assets/UxAfter.png"],
     company: "Self-initiated concept", role: "UX research & design",
     study: {
       challenge: "Plenty of everyday products work, but fight their users — buried actions, confusing flows, and friction that quietly adds up. The goal: pick one, prove where and why it breaks down, and redesign it so the core task becomes obvious.",
