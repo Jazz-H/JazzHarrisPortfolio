@@ -10,7 +10,7 @@
     <path d="M23 24 H11 V80 H23" stroke="#1e78e4" stroke-width="7.5"></path>
     <path d="M109 24 H121 V80 H109" stroke="#1e78e4" stroke-width="7.5"></path>
     <path d="M64 31 V73" stroke="#1e78e4" stroke-width="3"></path>
-    <path d="M47 32 V58 C47 68 40 70 33 69" stroke="#1e78e4" stroke-width="8"></path>
-    <path d="M81 32 V72 M81 52 H101 M101 32 V72" stroke="#F2ECE2" stroke-width="8"></path>
+    <path d="M47 32 V58 C47 68 40 70 33 69" stroke="#F2ECE2" stroke-width="8"></path>
+    <path d="M81 32 V72 M81 52 H101 M101 32 V72" stroke="#1e78e4" stroke-width="8"></path>
   </g>
 </svg>
