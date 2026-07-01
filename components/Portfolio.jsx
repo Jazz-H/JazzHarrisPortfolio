@@ -173,7 +173,7 @@ const PROJECTS = [
     cat: "Power Apps & Data", kind: "AI Agent", title: "Copilot Studio DevOps Agent",
     ai: true, confidential: true, noLink: true, diagram: "agent",
     image: "/assets/AgentCover.png", tall: true,
-    tags: ["Copilot Studio", "Azure DevOps", "Power Platform"],
+    tags: ["Copilot Studio", "Azure DevOps"],
     body: "A Copilot Studio agent wired to my team's Azure DevOps board. From a plain-language ask in Microsoft Teams it creates and updates epics, features, and user stories, pulls board status and summaries, and drafts requirements, meeting notes, and communications — turning repetitive BA upkeep into a single request. Built and used on the job; shown without internal data for confidentiality.",
     company: "Coca-Cola Consolidated", role: "IT Business Analyst II",
     study: {
