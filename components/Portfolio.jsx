@@ -36,7 +36,7 @@ const FIE_BLOG =
 
 const PROJECTS = [
   {
-    cat: "Websites", title: "Valora",
+    cat: "Websites", title: "Valora", ai: true,
     body: "A personal budgeting web app that turns messy finances into clear, calm decisions. Track spending, set goals, and see where your money actually goes, privately and without forced bank linking. Live in public beta as a website, with a native mobile app on the way.",
     tags: ["React", "TypeScript", "JavaScript", "CSS", "HTML"], status: "Beta",
     image: "/assets/ValoraReports.jpg",
@@ -94,27 +94,7 @@ const PROJECTS = [
     },
   },
   {
-    cat: "Apps", title: "Chat App",
-    body: "Chat App is a real-time messaging platform that works the way people expect: instant delivery, no refresh, no lag. It supports public channels, one-to-one direct messages, emoji reactions, typing indicators, and image sharing, all backed by Firebase and secured with server-side Firestore rules. Built solo, end to end, with a full QA and regression pipeline.",
-    tags: ["React", "TypeScript", "Firebase", "Firestore", "Vite", "Tailwind"], image: "/assets/ChatAppCover.png", tall: true,
-    images: [
-      "/assets/ChatAppDMs.png",
-      "/assets/ChatAppActions.png",
-      "/assets/ChatAppReactions.png",
-      "/assets/ChatAppImage.png",
-      "/assets/ChatAppSignin.png",
-      "/assets/ChatAppMobile.png",
-    ],
-    live: "https://chatappdemo-e1b26.web.app", code: "https://github.com/Jazz-H/Chat-Application",
-    company: "Independent project", role: "Solo design & development",
-    study: {
-      challenge: "The hard part of a chat app isn't the messaging. It's making everything feel instantaneous across rooms, DMs, reactions, and typing indicators, while keeping Firestore costs low, writes safe, and the UI honest when something goes wrong. Most tutorials skip the edge cases. I wanted to build the version that doesn't.",
-      approach: "Built with React 18 and TypeScript on Vite, using Firebase Auth for multi-provider sign-in (email and password, Google OAuth, anonymous guest) and Firestore onSnapshot listeners for push-based real-time updates, with no polling and no WebSocket management. The chat shell is code-split with React.lazy so the Firestore SDK only loads after sign-in, keeping the initial bundle lean. Security rules enforce access control server-side: authors-only edits and deletes, explicit membership checks for DMs, and content validation on every write. Typing indicators use throttled writes with client-side auto-expiry to keep costs predictable, images are compressed client-side through a canvas pipeline before storing, and messages paginate 25 at a time. A 21-check Playwright suite runs against the live dev server after every change to catch layout, auth, and interaction regressions automatically.",
-      outcome: "Shipped a feature-complete chat platform across desktop and mobile: five public channels with real-time messaging and message grouping, one-to-one direct messages with deterministic conversation IDs, emoji reactions with live per-user counts, author-only edit and delete enforced on both client and server, live typing indicators with stale-entry handling, and image sharing with client-side compression. Three sign-in methods map every Firebase error code to human-readable copy, and the layout adapts from a collapsible desktop sidebar to a slide-out mobile drawer. Along the way I found and fixed five QA issues, from a silent failure on message actions to a blob URL memory leak on unmount.",
-    },
-  },
-  {
-    cat: "Apps", title: "Clearcast",
+    cat: "Apps", title: "Clearcast", ai: true,
     body: "Clearcast is a production-ready weather PWA that turns a raw forecast into a plain-English plan for your day. It uses Claude to generate structured activity recommendations, adapts its theme to live weather conditions, and works offline as an installable app. Every layer, from the API design to the caching strategy to unit detection, is built for correctness, not just demo appeal.",
     tags: ["Next.js", "TypeScript", "Claude API", "PWA", "Tailwind"],
     image: "/assets/ClearcastCover.png", tall: true,
@@ -131,6 +111,26 @@ const PROJECTS = [
       challenge: "Most weather apps hand you data and leave the decision to you. I wanted one that makes the call, turning a noisy forecast into a single confident recommendation. The harder goal was building it for correctness rather than demo appeal: keep the API key off the client, keep cost predictable, fail gracefully, and get the units right, all fast enough to run on every page load.",
       approach: "Built in Next.js and TypeScript in strict mode, with Tailwind, deployed on Netlify. A server-only route calls Claude Haiku and validates the JSON it returns against a Zod schema that doubles as the app's TypeScript types, so a bad model response becomes a handled 502 instead of a client crash. Forecasts come from Open-Meteo, trimmed to current conditions plus the next 12 hours before they reach Claude, then cached in a 500-entry LRU with a daily call cap to hold down latency and cost. Eight CSS sky themes follow the live weather code, units auto-detect from the geocoded country with a saved manual override, and a service worker makes it an installable PWA that serves the last forecast offline.",
       outcome: "Shipped and production-ready. Clearcast geocodes any city, auto-selects °F or °C by country, and renders an AI recommendation with color-coded activity verdicts and a best-time callout in seconds, on a background that shifts across eight weather conditions. It's backed by 38 unit tests, Playwright smoke tests, and a GitHub Actions pipeline that lints, type-checks, and tests on every push.",
+    },
+  },
+  {
+    cat: "Apps", title: "Chat App", ai: true,
+    body: "Chat App is a real-time messaging platform that works the way people expect: instant delivery, no refresh, no lag. It supports public channels, one-to-one direct messages, emoji reactions, typing indicators, and image sharing, all backed by Firebase and secured with server-side Firestore rules. Built solo, end to end, with a full QA and regression pipeline.",
+    tags: ["React", "TypeScript", "Firebase", "Firestore", "Vite", "Tailwind"], image: "/assets/ChatAppCover.png", tall: true,
+    images: [
+      "/assets/ChatAppDMs.png",
+      "/assets/ChatAppActions.png",
+      "/assets/ChatAppReactions.png",
+      "/assets/ChatAppImage.png",
+      "/assets/ChatAppSignin.png",
+      "/assets/ChatAppMobile.png",
+    ],
+    live: "https://chatappdemo-e1b26.web.app", code: "https://github.com/Jazz-H/Chat-Application",
+    company: "Independent project", role: "Solo design & development",
+    study: {
+      challenge: "The hard part of a chat app isn't the messaging. It's making everything feel instantaneous across rooms, DMs, reactions, and typing indicators, while keeping Firestore costs low, writes safe, and the UI honest when something goes wrong. Most tutorials skip the edge cases. I wanted to build the version that doesn't.",
+      approach: "Built with React 18 and TypeScript on Vite, using Firebase Auth for multi-provider sign-in (email and password, Google OAuth, anonymous guest) and Firestore onSnapshot listeners for push-based real-time updates, with no polling and no WebSocket management. The chat shell is code-split with React.lazy so the Firestore SDK only loads after sign-in, keeping the initial bundle lean. Security rules enforce access control server-side: authors-only edits and deletes, explicit membership checks for DMs, and content validation on every write. Typing indicators use throttled writes with client-side auto-expiry to keep costs predictable, images are compressed client-side through a canvas pipeline before storing, and messages paginate 25 at a time. A 21-check Playwright suite runs against the live dev server after every change to catch layout, auth, and interaction regressions automatically.",
+      outcome: "Shipped a feature-complete chat platform across desktop and mobile: five public channels with real-time messaging and message grouping, one-to-one direct messages with deterministic conversation IDs, emoji reactions with live per-user counts, author-only edit and delete enforced on both client and server, live typing indicators with stale-entry handling, and image sharing with client-side compression. Three sign-in methods map every Firebase error code to human-readable copy, and the layout adapts from a collapsible desktop sidebar to a slide-out mobile drawer. Along the way I found and fixed five QA issues, from a silent failure on message actions to a blob URL memory leak on unmount.",
     },
   },
   {
@@ -170,7 +170,7 @@ const PROJECTS = [
     },
   },
   {
-    cat: "Branding & Design", kind: "Branding", title: "Inventory Shrink Reduction Form", noLink: true,
+    cat: "Branding & Design", kind: "Branding", title: "Inventory Shrink Reduction Form", noLink: true, ai: true,
     body: "An app icon and visual identity I designed for a shrink-reporting form I supported as the BA. The form replaced a manual email process for logging excessive inventory shrink, and to make an internal tool feel like a real product and earn field adoption, I created a branded clipboard mark that reads instantly on a phone home screen. It shipped as a complete, production-ready app icon set at every screen density.",
     tags: ["Copilot", "Photoshop"],
     image: "/assets/ShrinkLogoCover.jpg",
@@ -214,10 +214,40 @@ const PROJECTS = [
     },
   },
 ];
-// Only show category filters that actually have projects (e.g. "Apps" hides
-// when empty, and reappears automatically once an Apps project is added).
+// Category order mirrors the hero line ("websites, applications, and
+// dashboards"), leading with the strongest disciplines and ending with the
+// concept-heavy design work. Categories with no projects are hidden (e.g.
+// "Apps" reappears automatically once an Apps project is added).
 const CAT_ORDER = ["Websites", "Apps", "Power Apps & Data", "Branding & Design"];
-const FILTERS = ["All", ...CAT_ORDER.filter((c) => PROJECTS.some((p) => p.cat === c))];
+// "All" (reset) first, then the featured cross-cutting "AI" lens, then the
+// categories in narrative order.
+const FILTERS = [
+  "All",
+  ...(PROJECTS.some((p) => p.ai) ? ["AI"] : []),
+  ...CAT_ORDER.filter((c) => PROJECTS.some((p) => p.cat === c)),
+];
+// Curated default ("All") order — a greatest-hits interleave that leads with
+// range (product · AI app · enterprise dashboard) instead of grouping by
+// category, keeps real work ahead of concepts, and ends on the polished
+// concept pieces. Category filters re-slice this same list, so each category
+// still reads strongest-first. Unlisted projects fall to the end.
+const WORK_ORDER = [
+  "Valora",
+  "Clearcast",
+  "DSD Support Operations Dashboard",
+  "Alamance Community Foundation",
+  "Chat App",
+  "Activity & Objective Dashboard",
+  "Electric Supplies Online",
+  "Inventory Shrink Reduction Form",
+  "Craft Beverage Brand & Packaging",
+  "LOFT Living — UX Redesign",
+];
+const ORDERED_PROJECTS = [...PROJECTS].sort(
+  (a, b) =>
+    (WORK_ORDER.indexOf(a.title) + 1 || Infinity) -
+    (WORK_ORDER.indexOf(b.title) + 1 || Infinity)
+);
 const TECH_GROUPS = [
   { label: "Languages", Icon: FiCode, items: ["JavaScript", "TypeScript", "Python", "SQL"] },
   { label: "Frameworks & UI", Icon: FiLayers, items: ["React", "Next.js"] },
@@ -466,13 +496,14 @@ function Thumb({ p }) {
       )}
       <span className="dp-thumb-scrim" aria-hidden="true" />
       <span className="dp-thumb-cat">{p.kind || p.cat}</span>
+      {p.ai && <span className={"dp-thumb-ai" + (p.status ? " is-stacked" : "")}><FiCpu aria-hidden="true" /> AI</span>}
       {p.status && <span className="dp-badge">{p.status}</span>}
     </span>
   );
 }
 
 function WorkList({ onOpen, filter, setFilter }) {
-  const shown = PROJECTS.filter((p) => filter === "All" || p.cat === filter);
+  const shown = ORDERED_PROJECTS.filter((p) => filter === "All" || (filter === "AI" ? p.ai : p.cat === filter));
   const filtersRef = useRef(null);
   const [moreRight, setMoreRight] = useState(false);
 
@@ -760,7 +791,7 @@ function Detail({ p, onBack, filter = "All" }) {
       <button className="dp-back" onClick={onBack}><FiArrowLeft aria-hidden="true" /> {filter === "All" ? "All work" : filter}</button>
       {gallery}
       <div className="dp-detail-head">
-        <p className="dp-kicker">{p.kind || p.cat}</p>
+        <p className="dp-kicker">{p.kind || p.cat}{p.ai && <span className="dp-kicker-ai"><FiCpu aria-hidden="true" /> AI</span>}</p>
         <h2 className="dp-detail-h">{p.title}</h2>
       </div>
       <p className="dp-detail-overview">{p.body}</p>
@@ -1090,6 +1121,11 @@ const CSS = `
 .dp-thumb-scrim{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(0,0,0,.30),transparent 32%,transparent 60%,rgba(0,0,0,.32));pointer-events:none}
 .dp-thumb-cat{position:absolute;top:14px;left:14px;z-index:1;font-family:var(--font-mono),'JetBrains Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:rgba(243,234,234,.92);background:rgba(8,6,9,.5);backdrop-filter:blur(5px);-webkit-backdrop-filter:blur(5px);border:1px solid rgba(243,234,234,.12);border-radius:6px;padding:3px 8px;font-weight:500}
 .dp-badge{position:absolute;top:13px;right:13px;z-index:1;font-family:var(--font-mono),'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:#2a0f15;background:var(--ember);border-radius:6px;padding:3px 8px;font-weight:600}
+.dp-thumb-ai{position:absolute;top:13px;right:13px;z-index:1;display:inline-flex;align-items:center;gap:4px;font-family:var(--font-mono),'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;font-weight:600;color:#ff8fa6;background:rgba(8,6,9,.5);backdrop-filter:blur(5px);-webkit-backdrop-filter:blur(5px);border:1px solid rgba(242,131,155,.45);border-radius:6px;padding:3px 8px}
+.dp-thumb-ai svg{width:12px;height:12px}
+.dp-thumb-ai.is-stacked{top:44px}
+.dp-kicker-ai{display:inline-flex;align-items:center;gap:4px;margin-left:10px;color:#ff8fa6;font-weight:600}
+.dp-kicker-ai svg{width:13px;height:13px}
 .dp-badge-lg{font-size:12px;padding:5px 11px;top:18px;right:18px}
 .dp-thumb-mono{position:relative;z-index:1;font-family:var(--font-display),'Bricolage Grotesque',sans-serif;font-weight:700;font-size:30px;color:rgba(20,8,14,.85);line-height:1}
 .dp-card-body{padding:20px;display:flex;flex-direction:column;gap:10px}
