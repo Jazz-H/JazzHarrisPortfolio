@@ -221,14 +221,14 @@ const FILTERS = ["All", ...CAT_ORDER.filter((c) => PROJECTS.some((p) => p.cat ==
 const TECH_GROUPS = [
   { label: "Languages", Icon: FiCode, items: ["JavaScript", "TypeScript", "Python", "SQL"] },
   { label: "Frameworks & UI", Icon: FiLayers, items: ["React", "Next.js"] },
-  { label: "AI & LLM", Icon: FiCpu, items: ["Claude API", "GitHub Copilot", "Microsoft Copilot"] },
+  { label: "AI & LLM", Icon: FiCpu, items: ["Claude API", "Copilot Studio", "ChatGPT", "GitHub Copilot"] },
   { label: "Data & Power Platform", Icon: FiBarChart2, items: ["Power BI", "Power Apps", "SharePoint"] },
   { label: "Design & UX/UI", Icon: FiPenTool, items: ["Figma", "Photoshop", "Illustrator"] },
 ];
 const SERVICES = [
   { Icon: FiTrendingUp, title: "Business analysis & strategy", body: "Translating business goals into clear requirements and a roadmap, working between stakeholders, vendors, and engineers to ship the right thing." },
   { Icon: FiCode, title: "Software & web development", body: "Building software and responsive websites, from applications to custom tools to polished web experiences, with React, Next.js, and modern tooling. Functional, reliable, and a pleasure to use." },
-  { Icon: FiCpu, title: "AI & LLM engineering", body: "Building AI-powered features on large language models: prompt design, structured outputs validated at runtime, and the caching and cost controls that make them production-ready. I shipped Clearcast on the Claude API and use Copilot in my day-to-day workflow." },
+  { Icon: FiCpu, title: "AI engineering & agents", body: "Building with AI on both ends: LLM-powered product features and low-code agents. I shipped Clearcast on the Claude API with schema-validated outputs and cost controls, and built a Copilot Studio agent wired to our Azure DevOps board that creates and updates epics, features, and user stories, pulls board summaries, and drafts requirements, notes, and communications." },
   { Icon: FiBarChart2, title: "Data & dashboards", body: "Turning raw data into clear, decision-ready dashboards and reports with Power BI, Tableau, and the Python data stack." },
 ];
 const NAV = [
