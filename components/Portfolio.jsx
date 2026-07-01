@@ -214,19 +214,40 @@ const PROJECTS = [
     },
   },
 ];
-// Only show category filters that actually have projects (e.g. "Apps" hides
-// when empty, and reappears automatically once an Apps project is added).
+// Category order mirrors the hero line ("websites, applications, and
+// dashboards"), leading with the strongest disciplines and ending with the
+// concept-heavy design work. Categories with no projects are hidden (e.g.
+// "Apps" reappears automatically once an Apps project is added).
 const CAT_ORDER = ["Websites", "Apps", "Power Apps & Data", "Branding & Design"];
-// "All" is pinned first as the reset/show-everything default; every other
-// filter — the cross-cutting AI lens (shown only when AI work exists) and the
-// categories that actually have projects — is listed alphabetically.
+// "All" (reset) first, then the featured cross-cutting "AI" lens, then the
+// categories in narrative order.
 const FILTERS = [
   "All",
-  ...[
-    ...(PROJECTS.some((p) => p.ai) ? ["AI"] : []),
-    ...CAT_ORDER.filter((c) => PROJECTS.some((p) => p.cat === c)),
-  ].sort((a, b) => a.localeCompare(b)),
+  ...(PROJECTS.some((p) => p.ai) ? ["AI"] : []),
+  ...CAT_ORDER.filter((c) => PROJECTS.some((p) => p.cat === c)),
 ];
+// Curated default ("All") order — a greatest-hits interleave that leads with
+// range (product · AI app · enterprise dashboard) instead of grouping by
+// category, keeps real work ahead of concepts, and ends on the polished
+// concept pieces. Category filters re-slice this same list, so each category
+// still reads strongest-first. Unlisted projects fall to the end.
+const WORK_ORDER = [
+  "Valora",
+  "Clearcast",
+  "DSD Support Operations Dashboard",
+  "Alamance Community Foundation",
+  "Chat App",
+  "Activity & Objective Dashboard",
+  "Electric Supplies Online",
+  "Inventory Shrink Reduction Form",
+  "Craft Beverage Brand & Packaging",
+  "LOFT Living — UX Redesign",
+];
+const ORDERED_PROJECTS = [...PROJECTS].sort(
+  (a, b) =>
+    (WORK_ORDER.indexOf(a.title) + 1 || Infinity) -
+    (WORK_ORDER.indexOf(b.title) + 1 || Infinity)
+);
 const TECH_GROUPS = [
   { label: "Languages", Icon: FiCode, items: ["JavaScript", "TypeScript", "Python", "SQL"] },
   { label: "Frameworks & UI", Icon: FiLayers, items: ["React", "Next.js"] },
@@ -482,7 +503,7 @@ function Thumb({ p }) {
 }
 
 function WorkList({ onOpen, filter, setFilter }) {
-  const shown = PROJECTS.filter((p) => filter === "All" || (filter === "AI" ? p.ai : p.cat === filter));
+  const shown = ORDERED_PROJECTS.filter((p) => filter === "All" || (filter === "AI" ? p.ai : p.cat === filter));
   const filtersRef = useRef(null);
   const [moreRight, setMoreRight] = useState(false);
 
