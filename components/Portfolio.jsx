@@ -198,14 +198,14 @@ const PROJECTS = [
     },
   },
   {
-    cat: "Branding & Design", kind: "UI/UX", title: "Travel Planner — UX Case Study", noLink: true, status: "Concept",
-    body: "A self-initiated product-design case study for a travel-planning app: turning the scattered, multi-tab process of planning a trip into one calm, day-by-day itinerary. Covers research, flows, wireframes, hi-fi UI, and an interactive prototype.",
+    cat: "Branding & Design", kind: "UI/UX", title: "UX Redesign Teardown", noLink: true, status: "Concept",
+    body: "A self-initiated UX redesign: take a real product with a clunky, frustrating flow, diagnose exactly why it fails its users, and rebuild the experience. Grounded in a heuristic evaluation and quick research, it shows the reasoning behind a clear before-and-after.",
     tags: ["Figma", "FigJam", "Maze"],
-    company: "Self-initiated concept", role: "Product design (UX/UI)",
+    company: "Self-initiated concept", role: "UX research & design",
     study: {
-      challenge: "Planning a trip is scattered across tabs, notes, and chats — flights here, hotels there, a list of maybe-activities somewhere else. The goal: one place that turns all of it into a clear, shareable, day-by-day plan without feeling like work.",
-      approach: "Start from the jobs to be done and a couple of quick user interviews, map the core flows (create a trip, add stops, build the daily timeline, share), then move from low-fi wireframes to a hi-fi UI on a small reusable design system. Validate the key flow with a clickable prototype and a quick usability test.",
-      outcome: "An end-to-end UX case study: research notes, user flows, wireframes, a polished hi-fi UI, a working prototype, and a mini design system — documented as a walkthrough of the decisions behind each.",
+      challenge: "Plenty of everyday products work, but fight their users — buried actions, confusing flows, and friction that quietly adds up. The goal: pick one, prove where and why it breaks down, and redesign it so the core task becomes obvious.",
+      approach: "Run a heuristic evaluation and a couple of quick usability sessions to surface the real problems, prioritize them by impact, then redesign the core flow — new information architecture, wireframes, and a hi-fi UI on a small design system. Keep the original screens side by side so every decision is defensible.",
+      outcome: "A before-and-after case study: an annotated teardown of the original, the prioritized problems, the reworked flow and UI, and a clickable prototype — each change tied back to the specific user problem it solves.",
     },
   },
 ];

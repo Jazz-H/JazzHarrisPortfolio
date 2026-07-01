@@ -17,29 +17,33 @@ A small-batch craft soda or cold-brew brand, logo through physical packaging.
   tangible discipline), and a beverage brand reads as on-narrative given the
   CPG / Coca-Cola background — credible, not a hobby piece.
 
-### 2. Mobile App UX Case Study *(UI/UX)* — to balance the section
-A full product-design case study, to complement the *visual* branding pieces
-with **interaction design and UX process**.
+### 2. UX Redesign Teardown *(UI/UX)* — chosen, to balance the section
+Take a real product with a clunky flow, diagnose why it fails users, and
+rebuild it — a before-and-after redesign that leans on the BA strengths
+(research, problem-solving) more than pure visual output.
 
-- **Scope / deliverables:** problem & quick research, user flows, wireframes,
-  hi-fi UI, an interactive prototype, and a mini design system.
-- **Subject — pick one you can speak to confidently:**
-  - Travel itinerary planner *(recommended — rich, relatable flows)*
-  - Strength / MMA training tracker
-  - Car-maintenance log
-- **Stack:** Figma (design + prototype); optionally Maze for a usability test.
-- **Why it fits:** shows process + product thinking (research → prototype), so
-  the section reads as a well-rounded designer rather than only a maker of
-  marks. Leans into the BA strengths (research, problem-solving).
+- **Scope / deliverables:** heuristic evaluation + quick usability sessions,
+  prioritized problems, reworked information architecture, wireframes, hi-fi
+  UI on a small design system, a clickable prototype, and side-by-side
+  before/after.
+- **Subject:** _TBD — pick a product with a genuinely frustrating flow you can
+  speak to (an everyday app or site works best)._
+- **Stack:** Figma (design + prototype), FigJam (eval/flows), Maze (testing).
+- **Why it fits:** shows analytical UX (research → problem → redesign), which
+  most design portfolios lack and which pairs with the analyst background.
+
+_Parked UX alternatives:_ travel itinerary planner, strength/MMA training
+tracker, recipe & meal planner, home-renovation planner, enterprise request
+portal.
 
 _Backup branding idea (parked):_ Performance Auto Garage brand identity
 (logo + merch + signage + social kit).
 
 ---
 
-## ⚡ Power Apps — small projects to *learn the tool* (pick one)
+## ⚡ Power Apps — small projects to *learn the tool* (selection on hold)
 
-Ordered easiest first. Each is a weekend-sized build on a SharePoint or
+Options for when you're ready to start learning; ordered easiest first. Each is a weekend-sized build on a SharePoint or
 Dataverse list; all teach core Power Apps muscles.
 
 1. **To-Do / Task app** — gallery + edit form over a list; add, complete,
