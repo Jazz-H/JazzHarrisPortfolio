@@ -27,6 +27,7 @@ import {
   FiGlobe,
   FiPenTool,
   FiLock,
+  FiCpu,
 } from "react-icons/fi";
 
 const HEADSHOT_SRC = "/jazz-headshot.jpg";
@@ -220,12 +221,14 @@ const FILTERS = ["All", ...CAT_ORDER.filter((c) => PROJECTS.some((p) => p.cat ==
 const TECH_GROUPS = [
   { label: "Languages", Icon: FiCode, items: ["JavaScript", "TypeScript", "Python", "SQL"] },
   { label: "Frameworks & UI", Icon: FiLayers, items: ["React", "Next.js"] },
+  { label: "AI & LLM", Icon: FiCpu, items: ["Claude", "Claude API", "Copilot Studio", "ChatGPT", "GitHub Copilot"] },
   { label: "Data & Power Platform", Icon: FiBarChart2, items: ["Power BI", "Power Apps", "SharePoint"] },
   { label: "Design & UX/UI", Icon: FiPenTool, items: ["Figma", "Photoshop", "Illustrator"] },
 ];
 const SERVICES = [
   { Icon: FiTrendingUp, title: "Business analysis & strategy", body: "Translating business goals into clear requirements and a roadmap, working between stakeholders, vendors, and engineers to ship the right thing." },
   { Icon: FiCode, title: "Software & web development", body: "Building software and responsive websites, from applications to custom tools to polished web experiences, with React, Next.js, and modern tooling. Functional, reliable, and a pleasure to use." },
+  { Icon: FiCpu, title: "AI engineering & agents", body: "Building with AI on both ends: LLM-powered product features and low-code agents. I shipped Clearcast on the Claude API with schema-validated outputs and cost controls, and built a Copilot Studio agent wired to our Azure DevOps board that creates and updates epics, features, and user stories, pulls board summaries, and drafts requirements, notes, and communications." },
   { Icon: FiBarChart2, title: "Data & dashboards", body: "Turning raw data into clear, decision-ready dashboards and reports with Power BI, Tableau, and the Python data stack." },
 ];
 const NAV = [
@@ -842,7 +845,7 @@ function About({ go }) {
             <summary className="dp-acc-sum">
               <span className="dp-acc-head">
                 <span className="dp-sub">Tools &amp; technologies</span>
-                <span className="dp-acc-preview">Full-stack dev · Data &amp; Power Platform · Design &amp; UX/UI</span>
+                <span className="dp-acc-preview">Full-stack dev · AI &amp; LLM · Data &amp; Power Platform · Design</span>
               </span>
               <FiChevronDown className="dp-acc-chev" aria-hidden="true" />
             </summary>
@@ -872,7 +875,7 @@ function About({ go }) {
             <summary className="dp-acc-sum">
               <span className="dp-acc-head">
                 <span className="dp-sub">Core skills</span>
-                <span className="dp-acc-preview">Business analysis · Software &amp; web · Data &amp; dashboards</span>
+                <span className="dp-acc-preview">Business analysis · Software &amp; web · AI &amp; LLM · Data</span>
               </span>
               <FiChevronDown className="dp-acc-chev" aria-hidden="true" />
             </summary>
