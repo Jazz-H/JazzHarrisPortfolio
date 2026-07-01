@@ -94,26 +94,6 @@ const PROJECTS = [
     },
   },
   {
-    cat: "Apps", title: "Chat App",
-    body: "Chat App is a real-time messaging platform that works the way people expect: instant delivery, no refresh, no lag. It supports public channels, one-to-one direct messages, emoji reactions, typing indicators, and image sharing, all backed by Firebase and secured with server-side Firestore rules. Built solo, end to end, with a full QA and regression pipeline.",
-    tags: ["React", "TypeScript", "Firebase", "Firestore", "Vite", "Tailwind"], image: "/assets/ChatAppCover.png", tall: true,
-    images: [
-      "/assets/ChatAppDMs.png",
-      "/assets/ChatAppActions.png",
-      "/assets/ChatAppReactions.png",
-      "/assets/ChatAppImage.png",
-      "/assets/ChatAppSignin.png",
-      "/assets/ChatAppMobile.png",
-    ],
-    live: "https://chatappdemo-e1b26.web.app", code: "https://github.com/Jazz-H/Chat-Application",
-    company: "Independent project", role: "Solo design & development",
-    study: {
-      challenge: "The hard part of a chat app isn't the messaging. It's making everything feel instantaneous across rooms, DMs, reactions, and typing indicators, while keeping Firestore costs low, writes safe, and the UI honest when something goes wrong. Most tutorials skip the edge cases. I wanted to build the version that doesn't.",
-      approach: "Built with React 18 and TypeScript on Vite, using Firebase Auth for multi-provider sign-in (email and password, Google OAuth, anonymous guest) and Firestore onSnapshot listeners for push-based real-time updates, with no polling and no WebSocket management. The chat shell is code-split with React.lazy so the Firestore SDK only loads after sign-in, keeping the initial bundle lean. Security rules enforce access control server-side: authors-only edits and deletes, explicit membership checks for DMs, and content validation on every write. Typing indicators use throttled writes with client-side auto-expiry to keep costs predictable, images are compressed client-side through a canvas pipeline before storing, and messages paginate 25 at a time. A 21-check Playwright suite runs against the live dev server after every change to catch layout, auth, and interaction regressions automatically.",
-      outcome: "Shipped a feature-complete chat platform across desktop and mobile: five public channels with real-time messaging and message grouping, one-to-one direct messages with deterministic conversation IDs, emoji reactions with live per-user counts, author-only edit and delete enforced on both client and server, live typing indicators with stale-entry handling, and image sharing with client-side compression. Three sign-in methods map every Firebase error code to human-readable copy, and the layout adapts from a collapsible desktop sidebar to a slide-out mobile drawer. Along the way I found and fixed five QA issues, from a silent failure on message actions to a blob URL memory leak on unmount.",
-    },
-  },
-  {
     cat: "Apps", title: "Clearcast", ai: true,
     body: "Clearcast is a production-ready weather PWA that turns a raw forecast into a plain-English plan for your day. It uses Claude to generate structured activity recommendations, adapts its theme to live weather conditions, and works offline as an installable app. Every layer, from the API design to the caching strategy to unit detection, is built for correctness, not just demo appeal.",
     tags: ["Next.js", "TypeScript", "Claude API", "PWA", "Tailwind"],
@@ -131,6 +111,26 @@ const PROJECTS = [
       challenge: "Most weather apps hand you data and leave the decision to you. I wanted one that makes the call, turning a noisy forecast into a single confident recommendation. The harder goal was building it for correctness rather than demo appeal: keep the API key off the client, keep cost predictable, fail gracefully, and get the units right, all fast enough to run on every page load.",
       approach: "Built in Next.js and TypeScript in strict mode, with Tailwind, deployed on Netlify. A server-only route calls Claude Haiku and validates the JSON it returns against a Zod schema that doubles as the app's TypeScript types, so a bad model response becomes a handled 502 instead of a client crash. Forecasts come from Open-Meteo, trimmed to current conditions plus the next 12 hours before they reach Claude, then cached in a 500-entry LRU with a daily call cap to hold down latency and cost. Eight CSS sky themes follow the live weather code, units auto-detect from the geocoded country with a saved manual override, and a service worker makes it an installable PWA that serves the last forecast offline.",
       outcome: "Shipped and production-ready. Clearcast geocodes any city, auto-selects °F or °C by country, and renders an AI recommendation with color-coded activity verdicts and a best-time callout in seconds, on a background that shifts across eight weather conditions. It's backed by 38 unit tests, Playwright smoke tests, and a GitHub Actions pipeline that lints, type-checks, and tests on every push.",
+    },
+  },
+  {
+    cat: "Apps", title: "Chat App", ai: true,
+    body: "Chat App is a real-time messaging platform that works the way people expect: instant delivery, no refresh, no lag. It supports public channels, one-to-one direct messages, emoji reactions, typing indicators, and image sharing, all backed by Firebase and secured with server-side Firestore rules. Built solo, end to end, with a full QA and regression pipeline.",
+    tags: ["React", "TypeScript", "Firebase", "Firestore", "Vite", "Tailwind"], image: "/assets/ChatAppCover.png", tall: true,
+    images: [
+      "/assets/ChatAppDMs.png",
+      "/assets/ChatAppActions.png",
+      "/assets/ChatAppReactions.png",
+      "/assets/ChatAppImage.png",
+      "/assets/ChatAppSignin.png",
+      "/assets/ChatAppMobile.png",
+    ],
+    live: "https://chatappdemo-e1b26.web.app", code: "https://github.com/Jazz-H/Chat-Application",
+    company: "Independent project", role: "Solo design & development",
+    study: {
+      challenge: "The hard part of a chat app isn't the messaging. It's making everything feel instantaneous across rooms, DMs, reactions, and typing indicators, while keeping Firestore costs low, writes safe, and the UI honest when something goes wrong. Most tutorials skip the edge cases. I wanted to build the version that doesn't.",
+      approach: "Built with React 18 and TypeScript on Vite, using Firebase Auth for multi-provider sign-in (email and password, Google OAuth, anonymous guest) and Firestore onSnapshot listeners for push-based real-time updates, with no polling and no WebSocket management. The chat shell is code-split with React.lazy so the Firestore SDK only loads after sign-in, keeping the initial bundle lean. Security rules enforce access control server-side: authors-only edits and deletes, explicit membership checks for DMs, and content validation on every write. Typing indicators use throttled writes with client-side auto-expiry to keep costs predictable, images are compressed client-side through a canvas pipeline before storing, and messages paginate 25 at a time. A 21-check Playwright suite runs against the live dev server after every change to catch layout, auth, and interaction regressions automatically.",
+      outcome: "Shipped a feature-complete chat platform across desktop and mobile: five public channels with real-time messaging and message grouping, one-to-one direct messages with deterministic conversation IDs, emoji reactions with live per-user counts, author-only edit and delete enforced on both client and server, live typing indicators with stale-entry handling, and image sharing with client-side compression. Three sign-in methods map every Firebase error code to human-readable copy, and the layout adapts from a collapsible desktop sidebar to a slide-out mobile drawer. Along the way I found and fixed five QA issues, from a silent failure on message actions to a blob URL memory leak on unmount.",
     },
   },
   {
@@ -170,7 +170,7 @@ const PROJECTS = [
     },
   },
   {
-    cat: "Branding & Design", kind: "Branding", title: "Inventory Shrink Reduction Form", noLink: true,
+    cat: "Branding & Design", kind: "Branding", title: "Inventory Shrink Reduction Form", noLink: true, ai: true,
     body: "An app icon and visual identity I designed for a shrink-reporting form I supported as the BA. The form replaced a manual email process for logging excessive inventory shrink, and to make an internal tool feel like a real product and earn field adoption, I created a branded clipboard mark that reads instantly on a phone home screen. It shipped as a complete, production-ready app icon set at every screen density.",
     tags: ["Copilot", "Photoshop"],
     image: "/assets/ShrinkLogoCover.jpg",
