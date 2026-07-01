@@ -426,8 +426,8 @@ function Poster({ view, go }) {
             <path d="M23 24 H11 V80 H23" stroke="#1e78e4" strokeWidth="7" strokeLinecap="round" strokeLinejoin="round" />
             <path d="M109 24 H121 V80 H109" stroke="#1e78e4" strokeWidth="7" strokeLinecap="round" strokeLinejoin="round" />
             <path d="M64 31 V73" stroke="#1e78e4" strokeWidth="2.6" strokeLinecap="round" />
-            <path d="M47 32 V58 C47 68 40 70 33 69" stroke="#1e78e4" strokeWidth="7.5" strokeLinecap="round" />
-            <path d="M81 32 V72 M81 52 H101 M101 32 V72" stroke="currentColor" strokeWidth="7.5" strokeLinecap="round" strokeLinejoin="round" />
+            <path d="M47 32 V58 C47 68 40 70 33 69" stroke="currentColor" strokeWidth="7.5" strokeLinecap="round" />
+            <path d="M81 32 V72 M81 52 H101 M101 32 V72" stroke="#1e78e4" strokeWidth="7.5" strokeLinecap="round" strokeLinejoin="round" />
           </svg>
         </span>
         <span className="dp-id-text">
