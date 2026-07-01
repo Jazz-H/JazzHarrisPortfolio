@@ -173,6 +173,7 @@ const PROJECTS = [
     cat: "Power Apps & Data", kind: "AI Agent", title: "Copilot Studio DevOps Agent",
     ai: true, confidential: true, noLink: true, diagram: "agent",
     image: "/assets/AgentCover.png", tall: true,
+    images: ["/assets/AgentCover.png", "/assets/AgentTeams.png", "/assets/AgentBoard.png"],
     tags: ["Copilot Studio", "Azure DevOps", "Microsoft Teams"],
     body: "A Copilot Studio agent wired to my team's Azure DevOps board. From a plain-language ask in Microsoft Teams it creates and updates epics, features, and user stories, pulls board status and summaries, and drafts requirements, meeting notes, and communications — turning repetitive BA upkeep into a single request. Built and used on the job; shown without internal data for confidentiality.",
     company: "Coca-Cola Consolidated", role: "IT Business Analyst II",
@@ -701,7 +702,7 @@ function Gallery({ images, title, gradient, status, fallbackWord, tall }) {
 const DIAGRAM_CAPTION = {
   dsd: "The redesigned support model — before & after",
   activity: "The data model — from form to report",
-  agent: "How the agent works — one ask, three jobs",
+  agent: "How the agent works — from a Teams ask to a saved work item",
 };
 function Diagram({ kind }) {
   if (kind === "dsd") {
@@ -788,32 +789,38 @@ function Diagram({ kind }) {
   }
   if (kind === "agent") {
     const CAPS = [
-      { h: "Work items", f: "Create & update epics, features, and user stories" },
-      { h: "Reports", f: "Board status & summaries, pulled on demand" },
-      { h: "Drafts", f: "Requirements, meeting notes, and communications" },
+      { h: "Work items", f: "Create & update epics, features, and user stories", eg: "New user story, with acceptance criteria" },
+      { h: "Reports", f: "Board status & summaries, on demand", eg: "“What's still open this sprint?”" },
+      { h: "Drafts", f: "Requirements, meeting notes, and comms", eg: "A stakeholder status update" },
     ];
     return (
-      <div className="dp-diagram dp-diagram-activity" role="img" aria-label="How the Copilot Studio agent works. A plain-language request in Microsoft Teams reaches a Copilot Studio agent connected to the team's Azure DevOps board through the Azure DevOps connector. The agent creates and updates epics, features and user stories, pulls board status and summaries on demand, and drafts requirements, meeting notes and communications.">
+      <div className="dp-diagram dp-diagram-activity dp-diagram-agent" role="img" aria-label="How the Copilot Studio agent works, in four steps. 1: I send a plain-language request in Microsoft Teams, for example asking it to create a user story for resetting a driver's app PIN. 2: the Copilot Studio agent interprets the request and reads or writes the live board through the Azure DevOps connector. 3: it does one of three jobs — create or update work items, pull board status and summaries, or draft requirements, notes and communications. 4: nothing is written to Azure DevOps until I review and confirm the draft.">
         <div className="dp-schema-stage">
-          <span className="dp-schema-tag">Ask · in Teams</span>
-          <span className="dp-dgm-node dp-schema-src">Plain-language request<small>&ldquo;Open a feature for…&rdquo; · &ldquo;Summarize the board&rdquo;</small></span>
+          <span className="dp-schema-tag">1 · Ask in Teams</span>
+          <span className="dp-agent-bubble">&ldquo;Create a user story for resetting a driver&rsquo;s app PIN from the login screen — under the Driver Sign-in feature.&rdquo;</span>
         </div>
         <span className="dp-schema-arrow" aria-hidden="true"><FiArrowDown /></span>
         <div className="dp-schema-stage">
-          <span className="dp-schema-tag">Copilot Studio agent</span>
-          <span className="dp-dgm-node dp-dgm-good">Interprets the request · calls the board<small>Grounded in the live board via the Azure DevOps connector</small></span>
+          <span className="dp-schema-tag">2 · Copilot Studio agent</span>
+          <span className="dp-dgm-node dp-dgm-good">Interprets the request &middot; grounded on the live board<small>Reads &amp; writes work items through the Azure DevOps connector</small></span>
         </div>
         <span className="dp-schema-arrow" aria-hidden="true"><FiArrowDown /></span>
         <div className="dp-schema-stage">
-          <span className="dp-schema-tag">Does the work · in Azure DevOps</span>
+          <span className="dp-schema-tag">3 · One of three jobs</span>
           <div className="dp-schema-dims">
             {CAPS.map((c) => (
               <div className="dp-schema-dim" key={c.h}>
                 <span className="dp-schema-h">{c.h}</span>
                 <span className="dp-schema-f">{c.f}</span>
+                <span className="dp-agent-eg">{c.eg}</span>
               </div>
             ))}
           </div>
+        </div>
+        <span className="dp-schema-arrow" aria-hidden="true"><FiArrowDown /></span>
+        <div className="dp-schema-stage">
+          <span className="dp-schema-tag">4 · I confirm, then it saves</span>
+          <span className="dp-dgm-node">Human in the loop<small>Nothing is written to Azure DevOps until I review and approve the draft</small></span>
         </div>
       </div>
     );
@@ -1265,6 +1272,9 @@ const CSS = `
 .dp-schema-pk{font-family:var(--font-mono),'JetBrains Mono',monospace;font-size:11px;color:var(--amber)}
 .dp-schema-pk::before{content:"\\25C8";color:var(--ember);margin-right:5px}
 .dp-schema-f{font-size:11.5px;color:var(--muted);line-height:1.4}
+.dp-agent-bubble{align-self:flex-start;max-width:min(560px,92%);background:rgba(30,120,228,.12);border:1px solid rgba(30,120,228,.35);border-radius:14px 14px 14px 4px;padding:12px 16px;color:var(--ink);font-size:14px;line-height:1.5}
+.dp-agent-eg{font-family:var(--font-mono),'JetBrains Mono',monospace;font-size:10px;letter-spacing:.02em;color:var(--faint);line-height:1.4;margin-top:4px}
+.dp-diagram-agent .dp-schema-dim{gap:6px}
 .dp-schema-join{display:flex;align-items:center;justify-content:center;gap:7px;font-family:var(--font-mono),'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--faint)}
 .dp-schema-fact{background:rgba(30,120,228,.1);border:1px solid rgba(30,120,228,.5);border-radius:12px;padding:14px 16px;display:flex;flex-direction:column;gap:10px}
 .dp-schema-cols{display:flex;flex-wrap:wrap;gap:6px}
