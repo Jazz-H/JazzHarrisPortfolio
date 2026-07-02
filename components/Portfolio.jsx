@@ -219,7 +219,7 @@ const PROJECTS = [
     body: "A self-initiated, unaffiliated redesign of LOFT Living, a property-management resident app at 2.4 stars across 6,000+ reviews. I clustered the public complaints into six themes, benchmarked LOFT against higher-rated peers, traced the failures to likely architectural root causes, and sized the business impact — then rebuilt the sign-in, rent-payment, and maintenance flows around what residents hit most.",
     tags: ["Figma", "FigJam", "Maze"],
     image: "/assets/UxCover.png", tall: true,
-    images: ["/assets/UxCover.png", "/assets/UxFindings.png", "/assets/UxBench.png", "/assets/UxTech.png", "/assets/UxBiz.png", "/assets/UxBefore.png", "/assets/UxAfter.png"],
+    images: ["/assets/UxCover.png", "/assets/UxFindings.png", "/assets/UxBench.png", "/assets/UxTech.png", "/assets/UxBiz.png", "/assets/UxBefore.png", "/assets/UxAfter.png", "/assets/UxFigma.png"],
     company: "Self-initiated concept", role: "UX research, design & systems analysis",
     study: {
       challenge: "LOFT Living promises 'everything resident in one app,' but at 2.4 stars across 6,000+ reviews, residents disagree — while peer apps like RentCafe (4.8) and Zego (4.5) clear the bar easily. Clustering the public complaints surfaced six themes, and the biggest isn't cosmetic: people can't reliably sign in, then hit a confusing payment center with surprise fees, while the tasks they came for (rent, maintenance) sit buried under a five-item nav.",
