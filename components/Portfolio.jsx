@@ -170,7 +170,7 @@ const PROJECTS = [
     },
   },
   {
-    cat: "Power Apps & Data", kind: "AI Agent", title: "Copilot Studio DevOps Agent",
+    cat: "Agents", kind: "AI Agent", title: "Copilot Studio DevOps Agent",
     ai: true, confidential: true, noLink: true, diagram: "agent",
     image: "/assets/AgentCover.png", tall: true,
     images: ["/assets/AgentCover.png", "/assets/AgentTeams.png", "/assets/AgentBoard.png"],
@@ -232,7 +232,7 @@ const PROJECTS = [
 // dashboards"), leading with the strongest disciplines and ending with the
 // concept-heavy design work. Categories with no projects are hidden (e.g.
 // "Apps" reappears automatically once an Apps project is added).
-const CAT_ORDER = ["Websites", "Apps", "Power Apps & Data", "Branding & Design"];
+const CAT_ORDER = ["Websites", "Apps", "Agents", "Power Apps & Data", "Branding & Design"];
 // "All" (reset) first, then the featured cross-cutting "AI" lens, then the
 // categories in narrative order.
 const FILTERS = [
@@ -292,6 +292,7 @@ const SOCIALS = [
 const CAT_GRADIENT = {
   Websites: "linear-gradient(135deg, #e98a99 0%, #9c4a60 100%)",
   Apps: "linear-gradient(135deg, #d77fa6 0%, #7d3f63 100%)",
+  Agents: "linear-gradient(135deg, #3a8bec 0%, #163f78 100%)",
   "Power Apps & Data": "linear-gradient(135deg, #b9697f 0%, #5e3450 100%)",
   "Branding & Design": "linear-gradient(135deg, #d65f6e 0%, #6e2f3c 100%)",
 };
