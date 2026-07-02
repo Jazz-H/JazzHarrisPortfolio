@@ -290,11 +290,11 @@ const SOCIALS = [
   { Icon: FiFileText, label: "Résumé", href: "/Jazz-Harris-Resume.pdf" },
 ];
 const CAT_GRADIENT = {
-  Websites: "linear-gradient(135deg, #e98a99 0%, #9c4a60 100%)",
-  Apps: "linear-gradient(135deg, #d77fa6 0%, #7d3f63 100%)",
+  Websites: "linear-gradient(135deg, #4a9bf0 0%, #1a4e8f 100%)",
+  Apps: "linear-gradient(135deg, #5f8ff0 0%, #2a3f86 100%)",
   Agents: "linear-gradient(135deg, #3a8bec 0%, #163f78 100%)",
-  "Power Apps & Data": "linear-gradient(135deg, #b9697f 0%, #5e3450 100%)",
-  "Branding & Design": "linear-gradient(135deg, #d65f6e 0%, #6e2f3c 100%)",
+  "Power Apps & Data": "linear-gradient(135deg, #3fa8d6 0%, #1a4f74 100%)",
+  "Branding & Design": "linear-gradient(135deg, #7f9ff0 0%, #3a3f86 100%)",
 };
 // Result highlights per project (qualitative stat-style — swap in real
 // numbers like donations raised, users, traffic, or time saved any time).
