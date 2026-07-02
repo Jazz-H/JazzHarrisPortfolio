@@ -1068,7 +1068,7 @@ function Contact() {
 
 const CSS = `
 .dp-root{
-  --bg:#000000; --bg-2:#0a080b; --card:#19141d; --card-2:#221b27; --ink:#f3eaea; --muted:#b9a6ad; --faint:#8c7b84;
+  --bg:#000000; --bg-2:#080a0d; --card:#16181e; --card-2:#1e212a; --ink:#f3eaea; --muted:#b9a6ad; --faint:#8c7b84;
   --line:rgba(243,234,234,.10); --line-2:rgba(243,234,234,.17); --ember:#1e78e4; --amber:#8ab4f6;
   background:var(--bg); color:var(--ink); font-family:var(--font-inter),'Inter',system-ui,sans-serif; -webkit-font-smoothing:antialiased; line-height:1.55;
 }
