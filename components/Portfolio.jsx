@@ -170,6 +170,20 @@ const PROJECTS = [
     },
   },
   {
+    cat: "Agents", kind: "AI Agent", title: "Copilot Studio DevOps Agent",
+    ai: true, confidential: true, noLink: true, diagram: "agent",
+    image: "/assets/AgentCover.png", tall: true,
+    images: ["/assets/AgentCover.png", "/assets/AgentTeams.png", "/assets/AgentBoard.png"],
+    tags: ["Copilot Studio", "Azure DevOps", "Microsoft Teams"],
+    body: "A Copilot Studio agent wired to my team's Azure DevOps board. From a plain-language ask in Microsoft Teams it creates and updates epics, features, and user stories, pulls board status and summaries, and drafts requirements, meeting notes, and communications — turning repetitive BA upkeep into a single request. Built and used on the job; shown without internal data for confidentiality.",
+    company: "Coca-Cola Consolidated", role: "IT Business Analyst II",
+    study: {
+      challenge: "A lot of business-analyst work is repetitive by nature: opening and updating epics, features, and user stories in Azure DevOps, pulling board status together for stakeholders, and hand-writing the same shapes of requirements, meeting notes, and updates. It's necessary, but it's administration that eats time better spent on analysis.",
+      approach: "I built an agent in Copilot Studio and connected it to my team's Azure DevOps board through the Azure DevOps connector, so it acts on real work items rather than a copy. From a plain-language request in Teams it creates and updates epics, features, and user stories, pulls back board status and summaries on demand, and drafts requirements, meeting notes, and communications from a short prompt. I designed the topics and grounding so responses reflect the live board, and kept a human in the loop to review before anything is finalized. The board and its data aren't shown here for confidentiality.",
+      outcome: "Routine work-item upkeep and first drafts now start from a sentence in Teams instead of a manual pass through the board and a blank document. It shifts my time from administration toward the analysis the role is actually for, and gives the team a faster, more consistent way to keep the board and its paper trail current.",
+    },
+  },
+  {
     cat: "Branding & Design", kind: "Branding", title: "Inventory Shrink Reduction Form", noLink: true, ai: true,
     body: "An app icon and visual identity I designed for a shrink-reporting form I supported as the BA. The form replaced a manual email process for logging excessive inventory shrink, and to make an internal tool feel like a real product and earn field adoption, I created a branded clipboard mark that reads instantly on a phone home screen. It shipped as a complete, production-ready app icon set at every screen density.",
     tags: ["Copilot", "Photoshop"],
@@ -218,7 +232,7 @@ const PROJECTS = [
 // dashboards"), leading with the strongest disciplines and ending with the
 // concept-heavy design work. Categories with no projects are hidden (e.g.
 // "Apps" reappears automatically once an Apps project is added).
-const CAT_ORDER = ["Websites", "Apps", "Power Apps & Data", "Branding & Design"];
+const CAT_ORDER = ["Websites", "Apps", "Agents", "Power Apps & Data", "Branding & Design"];
 // "All" (reset) first, then the featured cross-cutting "AI" lens, then the
 // categories in narrative order.
 const FILTERS = [
@@ -234,6 +248,7 @@ const FILTERS = [
 const WORK_ORDER = [
   "Valora",
   "Clearcast",
+  "Copilot Studio DevOps Agent",
   "DSD Support Operations Dashboard",
   "Alamance Community Foundation",
   "Chat App",
@@ -275,10 +290,11 @@ const SOCIALS = [
   { Icon: FiFileText, label: "Résumé", href: "/Jazz-Harris-Resume.pdf" },
 ];
 const CAT_GRADIENT = {
-  Websites: "linear-gradient(135deg, #e98a99 0%, #9c4a60 100%)",
-  Apps: "linear-gradient(135deg, #d77fa6 0%, #7d3f63 100%)",
-  "Power Apps & Data": "linear-gradient(135deg, #b9697f 0%, #5e3450 100%)",
-  "Branding & Design": "linear-gradient(135deg, #d65f6e 0%, #6e2f3c 100%)",
+  Websites: "linear-gradient(135deg, #4a9bf0 0%, #1a4e8f 100%)",
+  Apps: "linear-gradient(135deg, #5f8ff0 0%, #2a3f86 100%)",
+  Agents: "linear-gradient(135deg, #3a8bec 0%, #163f78 100%)",
+  "Power Apps & Data": "linear-gradient(135deg, #3fa8d6 0%, #1a4f74 100%)",
+  "Branding & Design": "linear-gradient(135deg, #7f9ff0 0%, #3a3f86 100%)",
 };
 // Result highlights per project (qualitative stat-style — swap in real
 // numbers like donations raised, users, traffic, or time saved any time).
@@ -427,7 +443,7 @@ function Poster({ view, go }) {
             <path d="M109 24 H121 V80 H109" stroke="#1e78e4" strokeWidth="7" strokeLinecap="round" strokeLinejoin="round" />
             <path d="M64 31 V73" stroke="#1e78e4" strokeWidth="2.6" strokeLinecap="round" />
             <path d="M47 32 V58 C47 68 40 70 33 69" stroke="currentColor" strokeWidth="7.5" strokeLinecap="round" />
-            <path d="M81 32 V72 M81 52 H101 M101 32 V72" stroke="#1e78e4" strokeWidth="7.5" strokeLinecap="round" strokeLinejoin="round" />
+            <path d="M81 32 V72 M81 52 H101 M101 32 V72" stroke="currentColor" strokeWidth="7.5" strokeLinecap="round" strokeLinejoin="round" />
           </svg>
         </span>
         <span className="dp-id-text">
@@ -687,6 +703,7 @@ function Gallery({ images, title, gradient, status, fallbackWord, tall }) {
 const DIAGRAM_CAPTION = {
   dsd: "The redesigned support model — before & after",
   activity: "The data model — from form to report",
+  agent: "How the agent works — from a Teams ask to a saved work item",
 };
 function Diagram({ kind }) {
   if (kind === "dsd") {
@@ -767,6 +784,44 @@ function Diagram({ kind }) {
           <div className="dp-dgm-pages">
             {PAGES.map((pg) => (<span className="dp-dgm-page" key={pg}>{pg}</span>))}
           </div>
+        </div>
+      </div>
+    );
+  }
+  if (kind === "agent") {
+    const CAPS = [
+      { h: "Work items", f: "Create & update epics, features, and user stories", eg: "New user story, with acceptance criteria" },
+      { h: "Reports", f: "Board status & summaries, on demand", eg: "“What's still open this sprint?”" },
+      { h: "Drafts", f: "Requirements, meeting notes, and comms", eg: "A stakeholder status update" },
+    ];
+    return (
+      <div className="dp-diagram dp-diagram-activity dp-diagram-agent" role="img" aria-label="How the Copilot Studio agent works, in four steps. 1: I send a plain-language request in Microsoft Teams, for example asking it to create a user story for resetting a driver's app PIN. 2: the Copilot Studio agent interprets the request and reads or writes the live board through the Azure DevOps connector. 3: it does one of three jobs — create or update work items, pull board status and summaries, or draft requirements, notes and communications. 4: nothing is written to Azure DevOps until I review and confirm the draft.">
+        <div className="dp-schema-stage">
+          <span className="dp-schema-tag">1 · Ask in Teams</span>
+          <span className="dp-agent-bubble">&ldquo;Create a user story for resetting a driver&rsquo;s app PIN from the login screen — under the Driver Sign-in feature.&rdquo;</span>
+        </div>
+        <span className="dp-schema-arrow" aria-hidden="true"><FiArrowDown /></span>
+        <div className="dp-schema-stage">
+          <span className="dp-schema-tag">2 · Copilot Studio agent</span>
+          <span className="dp-dgm-node dp-dgm-good">Interprets the request &middot; grounded on the live board<small>Reads &amp; writes work items through the Azure DevOps connector</small></span>
+        </div>
+        <span className="dp-schema-arrow" aria-hidden="true"><FiArrowDown /></span>
+        <div className="dp-schema-stage">
+          <span className="dp-schema-tag">3 · One of three jobs</span>
+          <div className="dp-schema-dims">
+            {CAPS.map((c) => (
+              <div className="dp-schema-dim" key={c.h}>
+                <span className="dp-schema-h">{c.h}</span>
+                <span className="dp-schema-f">{c.f}</span>
+                <span className="dp-agent-eg">{c.eg}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+        <span className="dp-schema-arrow" aria-hidden="true"><FiArrowDown /></span>
+        <div className="dp-schema-stage">
+          <span className="dp-schema-tag">4 · I confirm, then it saves</span>
+          <span className="dp-dgm-node">Human in the loop<small>Nothing is written to Azure DevOps until I review and approve the draft</small></span>
         </div>
       </div>
     );
@@ -1218,6 +1273,9 @@ const CSS = `
 .dp-schema-pk{font-family:var(--font-mono),'JetBrains Mono',monospace;font-size:11px;color:var(--amber)}
 .dp-schema-pk::before{content:"\\25C8";color:var(--ember);margin-right:5px}
 .dp-schema-f{font-size:11.5px;color:var(--muted);line-height:1.4}
+.dp-agent-bubble{align-self:flex-start;max-width:min(560px,92%);background:rgba(30,120,228,.12);border:1px solid rgba(30,120,228,.35);border-radius:14px 14px 14px 4px;padding:12px 16px;color:var(--ink);font-size:14px;line-height:1.5}
+.dp-agent-eg{font-family:var(--font-mono),'JetBrains Mono',monospace;font-size:10px;letter-spacing:.02em;color:var(--faint);line-height:1.4;margin-top:4px}
+.dp-diagram-agent .dp-schema-dim{gap:6px}
 .dp-schema-join{display:flex;align-items:center;justify-content:center;gap:7px;font-family:var(--font-mono),'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--faint)}
 .dp-schema-fact{background:rgba(30,120,228,.1);border:1px solid rgba(30,120,228,.5);border-radius:12px;padding:14px 16px;display:flex;flex-direction:column;gap:10px}
 .dp-schema-cols{display:flex;flex-wrap:wrap;gap:6px}
