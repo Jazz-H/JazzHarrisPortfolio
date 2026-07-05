@@ -1314,13 +1314,17 @@ const CSS = `
 
 /* skills + stack accordions (open on desktop, collapsible on mobile) */
 .dp-acc{min-width:0}
-.dp-acc-sum{display:flex;align-items:center;justify-content:space-between;gap:12px;list-style:none}
+.dp-acc-sum{display:flex;align-items:center;justify-content:space-between;gap:12px;list-style:none;cursor:pointer}
 .dp-acc-sum::-webkit-details-marker{display:none}
 .dp-acc-head{display:flex;flex-direction:column;gap:6px;min-width:0}
-.dp-acc-preview{display:none}
+/* one-line summary of the section, shown only while collapsed (all widths) */
+.dp-acc-preview{display:none;font-size:12.5px;color:var(--muted);line-height:1.5}
+.dp-acc:not([open]) .dp-acc-preview{display:block}
 .dp-facts-avatar{display:block;align-self:center;width:120px;height:120px;border-radius:50%;object-fit:cover;object-position:center 22%;border:1px solid var(--line-2)}
-.dp-acc-chev{display:none;flex:none;color:var(--muted);font-size:18px;transition:transform .2s}
+.dp-acc-chev{display:block;flex:none;color:var(--muted);font-size:18px;transition:transform .2s}
 .dp-acc[open] .dp-acc-chev{transform:rotate(180deg)}
+.dp-acc:not([open]) .dp-acc-sum{align-items:flex-start}
+.dp-acc:not([open]) .dp-acc-chev{margin-top:1px}
 /* Deterministic collapse: hide the body whenever the accordion is closed,
    independent of engine-specific ::details-content behavior. */
 .dp-acc:not([open]) .dp-acc-body{display:none !important}
@@ -1465,12 +1469,9 @@ const CSS = `
   .dp-bento-skills{grid-template-columns:1fr}
   .dp-acc{overflow:hidden;border-radius:16px}
   .dp-acc-skills,.dp-acc-stack{border:1px solid var(--line);background:var(--card)}
-  .dp-acc-sum{padding:16px;cursor:pointer;align-items:flex-start}
+  .dp-acc-sum{padding:16px;align-items:flex-start}
   .dp-acc-sum .dp-sub{margin-bottom:0}
-  .dp-acc-preview{display:block;font-size:12.5px;color:var(--muted);line-height:1.5}
-  .dp-acc[open] .dp-acc-preview{display:none}
   .dp-acc[open] .dp-acc-sum{align-items:center}
-  .dp-acc-chev{display:block;margin-top:1px}
   .dp-acc-body{padding:0 16px 16px}
   .dp-about-cta{display:none}
 }
