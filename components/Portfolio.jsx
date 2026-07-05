@@ -927,7 +927,7 @@ function About({ go }) {
             </div>
           </div>
 
-          <details className="dp-acc dp-acc-stack" open>
+          <details className="dp-acc dp-acc-stack">
             <summary className="dp-acc-sum">
               <span className="dp-acc-head">
                 <span className="dp-sub">Tools &amp; technologies</span>
@@ -957,7 +957,7 @@ function About({ go }) {
             <p className="dp-p">Today I'm a Business Analyst at Coca-Cola Consolidated, bridging business needs and technology. Outside of work I build websites, custom software, and tools for businesses and entrepreneurs, most recently Valora, a personal finance platform. When I'm not behind a screen: traveling, Legos, and anything with four wheels or two.</p>
           </div>
 
-          <details className="dp-acc dp-acc-skills" open>
+          <details className="dp-acc dp-acc-skills">
             <summary className="dp-acc-sum">
               <span className="dp-acc-head">
                 <span className="dp-sub">Core skills</span>
@@ -1155,10 +1155,12 @@ const CSS = `
 /* recognition — social-proof quotes (credibility block in the about view) */
 .dp-about-praise .dp-label{display:block;margin-bottom:16px}
 .dp-praise-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
-.dp-quote{position:relative;overflow:hidden;border:1px solid var(--line-2);background:var(--card);border-radius:16px;padding:22px}
-.dp-quote::before{content:"\\201C";position:absolute;top:-12px;left:14px;font-family:var(--font-display),'Bricolage Grotesque',sans-serif;font-size:78px;line-height:1;color:rgba(30,120,228,.15);pointer-events:none}
-.dp-quote-t{position:relative;font-size:16px;line-height:1.58;color:var(--ink);font-style:normal}
-.dp-quote-by{margin-top:14px;display:flex;flex-direction:column;gap:3px}
+.dp-quote{position:relative;overflow:hidden;border:1px solid var(--line-2);border-radius:16px;padding:38px 22px 22px;
+  background:radial-gradient(180px 120px at 10% -10%,rgba(30,120,228,.14),transparent 60%),var(--card);}
+.dp-quote::before{content:"\\201C";position:absolute;top:12px;left:20px;z-index:0;font-family:var(--font-display),'Bricolage Grotesque',sans-serif;font-weight:700;font-size:42px;line-height:1;color:rgba(138,180,246,.32);pointer-events:none}
+.dp-quote::after{content:"\\201D";position:absolute;bottom:10px;right:18px;z-index:0;font-family:var(--font-display),'Bricolage Grotesque',sans-serif;font-weight:700;font-size:34px;line-height:1;color:rgba(138,180,246,.14);pointer-events:none}
+.dp-quote-t{position:relative;z-index:1;font-size:17px;font-weight:700;line-height:1.5;color:var(--ink);font-style:normal}
+.dp-quote-by{position:relative;z-index:1;margin-top:14px;display:flex;flex-direction:column;gap:3px}
 /* shared attribution: name (mono, accent) over title + company (muted) */
 .dp-quote-name{font-family:var(--font-mono),'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:.03em;color:var(--amber)}
 .dp-quote-role{font-size:11.5px;line-height:1.4;color:var(--faint)}
@@ -1312,7 +1314,7 @@ const CSS = `
 .dp-bento-bio .dp-p:first-of-type{margin-top:14px}
 .dp-bento-facts{display:flex;flex-direction:column;gap:16px}
 
-/* skills + stack accordions (open on desktop, collapsible on mobile) */
+/* skills + stack accordions (collapsed by default, at every width) */
 .dp-acc{min-width:0}
 .dp-acc-sum{display:flex;align-items:center;justify-content:space-between;gap:12px;list-style:none;cursor:pointer}
 .dp-acc-sum::-webkit-details-marker{display:none}
