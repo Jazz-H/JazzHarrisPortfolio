@@ -518,9 +518,92 @@ function Thumb({ p }) {
   );
 }
 
+// Fades + rises `.dp-reveal` descendants of the returned ref into view once,
+// the first time each scrolls into the viewport. Skips straight to visible
+// when the user prefers reduced motion (or the browser lacks the API).
+function useReveal(deps) {
+  const ref = useRef(null);
+  useEffect(() => {
+    const root = ref.current;
+    if (!root) return;
+    const els = root.querySelectorAll(".dp-reveal");
+    const reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (reduce || !("IntersectionObserver" in window)) {
+      els.forEach((el) => el.classList.add("is-in"));
+      return;
+    }
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-in");
+            io.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.15, rootMargin: "0px 0px -10% 0px" }
+    );
+    els.forEach((el) => io.observe(el));
+    return () => io.disconnect();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, deps);
+  return ref;
+}
+
+// A single "by the numbers" stat: fades in like the other reveal grids, and
+// counts its leading number up from 0 the first time it scrolls into view.
+function ImpactStat({ value, label, index }) {
+  const ref = useRef(null);
+  // If motion is reduced (or IO is unsupported) skip the effect's observer
+  // entirely and start already "in" — resolved once, in the lazy initializer,
+  // rather than via a synchronous setState in the effect body.
+  const [on, setOn] = useState(
+    () => typeof window !== "undefined" &&
+      ((window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) || !("IntersectionObserver" in window))
+  );
+  const [display, setDisplay] = useState(value);
+  useEffect(() => {
+    const el = ref.current;
+    if (!el || on) return;
+    const match = value.match(/^(\D*)(\d+(?:\.\d+)?)(.*)$/);
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          setOn(true);
+          io.unobserve(el);
+          if (!match) return;
+          const prefix = match[1], target = parseFloat(match[2]), suffix = match[3];
+          const isInt = Number.isInteger(target);
+          const dur = 1100, start = performance.now();
+          const step = (now) => {
+            const p = Math.min(1, (now - start) / dur);
+            const eased = 1 - Math.pow(1 - p, 3);
+            const cur = target * eased;
+            setDisplay(`${prefix}${isInt ? Math.round(cur) : cur.toFixed(1)}${suffix}`);
+            if (p < 1) requestAnimationFrame(step);
+          };
+          requestAnimationFrame(step);
+        });
+      },
+      { threshold: 0.4 }
+    );
+    io.observe(el);
+    return () => io.disconnect();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [value]);
+  return (
+    <div className={"dp-impact-stat dp-reveal" + (on ? " is-in" : "")} style={{ "--i": index }} ref={ref}>
+      <span className="dp-impact-v">{display}</span>
+      <span className="dp-impact-l">{label}</span>
+    </div>
+  );
+}
+
 function WorkList({ onOpen, filter, setFilter }) {
   const shown = ORDERED_PROJECTS.filter((p) => filter === "All" || (filter === "AI" ? p.ai : p.cat === filter));
   const filtersRef = useRef(null);
+  const gridRef = useReveal([shown.length, filter]);
   const [moreRight, setMoreRight] = useState(false);
 
   useEffect(() => {
@@ -564,9 +647,9 @@ function WorkList({ onOpen, filter, setFilter }) {
           </div>
         </div>
       </div>
-      <div className="dp-grid">
-        {shown.map((p) => (
-          <button className="dp-card" key={p.title} onClick={() => onOpen(p.title)}>
+      <div className="dp-grid" ref={gridRef}>
+        {shown.map((p, i) => (
+          <button className="dp-card dp-reveal" style={{ "--i": i }} key={p.title} onClick={() => onOpen(p.title)}>
             <Thumb p={p} />
             <span className="dp-card-body">
               <span className="dp-card-h">{p.title}</span>
@@ -830,6 +913,7 @@ function Diagram({ kind }) {
 }
 
 function Detail({ p, onBack, filter = "All" }) {
+  const studyRef = useReveal([p && p.title]);
   if (!p) return null;
   const gallery = (
     <Gallery
@@ -867,7 +951,7 @@ function Detail({ p, onBack, filter = "All" }) {
         </div>
       </div>
       {p.study ? (
-        <div className="dp-study">
+        <div className="dp-study" ref={studyRef}>
           <div className="dp-study-row">
             <span className="dp-study-l">Challenge</span>
             <p className="dp-study-p">{p.study.challenge}</p>
@@ -878,7 +962,7 @@ function Detail({ p, onBack, filter = "All" }) {
           </div>
           {/* The diagram visualizes the approach — placed right after it, before the outcome. */}
           {p.diagram && (
-            <figure className="dp-study-figure">
+            <figure className="dp-study-figure dp-reveal">
               <figcaption className="dp-study-figcap">{DIAGRAM_CAPTION[p.diagram]}</figcaption>
               <Diagram kind={p.diagram} />
             </figure>
@@ -891,8 +975,8 @@ function Detail({ p, onBack, filter = "All" }) {
             <div className="dp-study-row">
               <span className="dp-study-l">Results</span>
               <div className="dp-metrics">
-                {METRICS[p.title].map((m) => (
-                  <div className="dp-metric" key={m.value + m.label}>
+                {METRICS[p.title].map((m, i) => (
+                  <div className="dp-metric dp-reveal" style={{ "--i": i }} key={m.value + m.label}>
                     <span className="dp-metric-v">{m.value}</span>
                     <span className="dp-metric-l">{m.label}</span>
                   </div>
@@ -909,9 +993,11 @@ function Detail({ p, onBack, filter = "All" }) {
 }
 
 function About({ go }) {
+  const bentoRef = useReveal([]);
+  const praiseRef = useReveal([]);
   return (
     <section className="dp-view dp-about">
-      <div className="dp-bento">
+      <div className="dp-bento" ref={bentoRef}>
         <div className="dp-bento-left">
           <div className="dp-bento-tile dp-bento-facts">
             <img className="dp-facts-avatar" src={HEADSHOT_SRC} alt="Jazz Harris" loading="lazy" />
@@ -937,8 +1023,8 @@ function About({ go }) {
             </summary>
             <div className="dp-acc-body">
               <div className="dp-techgroups">
-                {TECH_GROUPS.map(({ label, Icon, items }) => (
-                  <div className="dp-service dp-techcard" key={label}>
+                {TECH_GROUPS.map(({ label, Icon, items }, i) => (
+                  <div className="dp-service dp-techcard dp-reveal" style={{ "--i": i }} key={label}>
                     <span className="dp-techcard-icn"><Icon aria-hidden="true" /></span>
                     <h3 className="dp-service-h">{label}</h3>
                     <div className="dp-pills dp-techcard-pills">{items.map((t) => (<span className="dp-pill" key={t}>{t}</span>))}</div>
@@ -967,8 +1053,8 @@ function About({ go }) {
             </summary>
             <div className="dp-acc-body">
               <div className="dp-bento-skills">
-                {SERVICES.map(({ Icon, title, body }) => (
-                  <div className="dp-service" key={title}>
+                {SERVICES.map(({ Icon, title, body }, i) => (
+                  <div className="dp-service dp-reveal" style={{ "--i": i }} key={title}>
                     <span className="dp-service-icn"><Icon aria-hidden="true" /></span>
                     <h3 className="dp-service-h">{title}</h3>
                     <p className="dp-service-p">{body}</p>
@@ -983,21 +1069,18 @@ function About({ go }) {
       <div className="dp-about-impact">
         <p className="dp-label">By the numbers</p>
         <div className="dp-impact">
-          {IMPACT.map((s) => (
-            <div className="dp-impact-stat" key={s.value + s.label}>
-              <span className="dp-impact-v">{s.value}</span>
-              <span className="dp-impact-l">{s.label}</span>
-            </div>
+          {IMPACT.map((s, i) => (
+            <ImpactStat key={s.value + s.label} value={s.value} label={s.label} index={i} />
           ))}
         </div>
       </div>
 
       <div className="dp-about-praise">
         <p className="dp-label">Recognition</p>
-        <div className="dp-praise-grid">
+        <div className="dp-praise-grid" ref={praiseRef}>
           {/* PRAISE[0] is featured on Contact; show the rest here to avoid repeating it */}
-          {PRAISE.slice(1).map((q) => (
-            <figure className="dp-quote" key={q.text}>
+          {PRAISE.slice(1).map((q, i) => (
+            <figure className="dp-quote dp-reveal" style={{ "--i": i }} key={q.text}>
               <blockquote className="dp-quote-t">{q.text}</blockquote>
               <figcaption className="dp-quote-by">
                 <span className="dp-quote-name">— {q.by}</span>
@@ -1086,6 +1169,8 @@ const CSS = `
   background:var(--bg-2);padding:48px 44px;display:flex;flex-direction:column;gap:34px}
 .dp-glow{position:absolute;top:-100px;left:-100px;width:380px;height:380px;
   background:radial-gradient(closest-side,rgba(30,120,228,.22),transparent 70%);filter:blur(14px);pointer-events:none}
+.dp-root.motion-on .dp-glow{animation:dpDrift 13s ease-in-out infinite}
+@keyframes dpDrift{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(20px,16px) scale(1.08)}}
 .dp-id{display:flex;gap:14px;align-items:center;position:relative;width:fit-content;border-radius:12px;transition:opacity .2s}
 .dp-id:hover{opacity:.92}
 .dp-id-text{display:flex;flex-direction:column}
@@ -1173,7 +1258,8 @@ const CSS = `
 .dp-card{display:flex;flex-direction:column;border:1px solid var(--line-2);border-radius:18px;overflow:hidden;background:var(--card);box-shadow:0 14px 34px -24px rgba(0,0,0,.9);transition:transform .2s,border-color .2s,box-shadow .25s}
 .dp-card:hover{transform:translateY(-4px);border-color:rgba(30,120,228,.6);box-shadow:0 26px 56px -24px rgba(0,0,0,.95),0 0 0 1px rgba(30,120,228,.25)}
 .dp-thumb{position:relative;aspect-ratio:16/10;display:flex;align-items:flex-end;padding:16px;overflow:hidden}
-.dp-thumb-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.dp-thumb-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .5s cubic-bezier(.2,.7,.2,1)}
+.dp-card:hover .dp-thumb-img{transform:scale(1.045)}
 .dp-thumb-scrim{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(0,0,0,.30),transparent 32%,transparent 60%,rgba(0,0,0,.32));pointer-events:none}
 .dp-thumb-cat{position:absolute;top:14px;left:14px;z-index:1;font-family:var(--font-mono),'JetBrains Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:rgba(243,234,234,.92);background:rgba(8,6,9,.5);backdrop-filter:blur(5px);-webkit-backdrop-filter:blur(5px);border:1px solid rgba(243,234,234,.12);border-radius:6px;padding:3px 8px;font-weight:500}
 .dp-badge{position:absolute;top:13px;right:13px;z-index:1;font-family:var(--font-mono),'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:#f3f7ff;background:var(--ember);border-radius:6px;padding:3px 8px;font-weight:600}
@@ -1418,6 +1504,11 @@ const CSS = `
 .dp-root.motion-on .dp-gallery{transform-origin:top center;animation:dpExpand .5s cubic-bezier(.2,.7,.2,1) forwards}
 @keyframes dpRise{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
 @keyframes dpExpand{from{opacity:0;transform:scale(.97)}to{opacity:1;transform:none}}
+/* scroll reveal — grid/card items fade + rise once as they enter the viewport,
+   staggered via the --i custom property set per item in JS */
+.dp-reveal{opacity:0;transform:translateY(18px);transition:opacity .6s cubic-bezier(.2,.7,.2,1),transform .6s cubic-bezier(.2,.7,.2,1);transition-delay:calc(var(--i,0) * 70ms)}
+.dp-reveal.is-in{opacity:1;transform:none}
+.dp-root:not(.motion-on) .dp-reveal{opacity:1;transform:none;transition:none}
 @media (prefers-reduced-motion:reduce){.dp-root *{animation:none!important;transition:none!important}}
 
 /* responsive */
