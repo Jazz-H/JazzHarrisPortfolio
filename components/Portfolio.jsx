@@ -1028,9 +1028,9 @@ function Contact() {
         <p className="dp-cta-sub">Got a project, a problem, or a half-formed idea? Email is the fastest way to reach me, and I read everything.</p>
       </div>
 
-      <figure className="dp-contact-quote">
-        <blockquote>{PRAISE[0].text}</blockquote>
-        <figcaption>
+      <figure className="dp-contact-quote dp-quote">
+        <blockquote className="dp-quote-t">{PRAISE[0].text}</blockquote>
+        <figcaption className="dp-quote-by">
           <span className="dp-quote-name">— {PRAISE[0].by}</span>
           <span className="dp-quote-role">{PRAISE[0].role}</span>
         </figcaption>
@@ -1164,10 +1164,9 @@ const CSS = `
 /* shared attribution: name (mono, accent) over title + company (muted) */
 .dp-quote-name{font-family:var(--font-mono),'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:.03em;color:var(--amber)}
 .dp-quote-role{font-size:11.5px;line-height:1.4;color:var(--faint)}
-/* single pull-quote on the contact view, beside the email action */
-.dp-contact-quote{margin:0 0 26px;padding:2px 0 2px 20px;border-left:2px solid var(--ember)}
-.dp-contact-quote blockquote{font-family:var(--font-display),'Bricolage Grotesque',sans-serif;font-weight:500;font-size:clamp(17px,2vw,20px);line-height:1.45;letter-spacing:-.01em;color:var(--ink)}
-.dp-contact-quote figcaption{margin-top:12px;display:flex;flex-direction:column;gap:3px}
+/* single pull-quote on the contact view, above the email action — same card
+   style as the recognition quotes (.dp-quote), just with extra bottom margin */
+.dp-contact-quote{margin:0 0 26px}
 
 /* cards — lifted off true black with border + shadow */
 .dp-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
