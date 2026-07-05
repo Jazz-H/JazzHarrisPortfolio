@@ -219,7 +219,7 @@ const PROJECTS = [
     body: "A self-initiated, unaffiliated redesign of LOFT Living, a property-management resident app at 2.4 stars across 6,000+ reviews. I clustered the public complaints into six themes, benchmarked LOFT against higher-rated peers, traced the failures to likely architectural root causes, and sized the business impact — then rebuilt the sign-in, rent-payment, and maintenance flows around what residents hit most.",
     tags: ["Figma", "FigJam", "Maze"],
     image: "/assets/UxCover.png", tall: true,
-    images: ["/assets/UxCover.png", "/assets/UxFindings.png", "/assets/UxBench.png", "/assets/UxTech.png", "/assets/UxBiz.png", "/assets/UxBefore.png", "/assets/UxAfter.png"],
+    images: ["/assets/UxCover.png", "/assets/UxFindings.png", "/assets/UxBench.png", "/assets/UxTech.png", "/assets/UxBiz.png", "/assets/UxBefore.png", "/assets/UxAfter.png", "/assets/UxFigma.png"],
     company: "Self-initiated concept", role: "UX research, design & systems analysis",
     study: {
       challenge: "LOFT Living promises 'everything resident in one app,' but at 2.4 stars across 6,000+ reviews, residents disagree — while peer apps like RentCafe (4.8) and Zego (4.5) clear the bar easily. Clustering the public complaints surfaced six themes, and the biggest isn't cosmetic: people can't reliably sign in, then hit a confusing payment center with surprise fees, while the tasks they came for (rent, maintenance) sit buried under a five-item nav.",
@@ -927,7 +927,7 @@ function About({ go }) {
             </div>
           </div>
 
-          <details className="dp-acc dp-acc-stack">
+          <details className="dp-acc dp-acc-stack" open>
             <summary className="dp-acc-sum">
               <span className="dp-acc-head">
                 <span className="dp-sub">Tools &amp; technologies</span>
@@ -957,7 +957,7 @@ function About({ go }) {
             <p className="dp-p">Today I'm a Business Analyst at Coca-Cola Consolidated, bridging business needs and technology. Outside of work I build websites, custom software, and tools for businesses and entrepreneurs, most recently Valora, a personal finance platform. When I'm not behind a screen: traveling, Legos, and anything with four wheels or two.</p>
           </div>
 
-          <details className="dp-acc dp-acc-skills">
+          <details className="dp-acc dp-acc-skills" open>
             <summary className="dp-acc-sum">
               <span className="dp-acc-head">
                 <span className="dp-sub">Core skills</span>
@@ -1321,20 +1321,20 @@ const CSS = `
 .dp-facts-avatar{display:block;align-self:center;width:120px;height:120px;border-radius:50%;object-fit:cover;object-position:center 22%;border:1px solid var(--line-2)}
 .dp-acc-chev{display:none;flex:none;color:var(--muted);font-size:18px;transition:transform .2s}
 .dp-acc[open] .dp-acc-chev{transform:rotate(180deg)}
+/* Deterministic collapse: hide the body whenever the accordion is closed,
+   independent of engine-specific ::details-content behavior. */
+.dp-acc:not([open]) .dp-acc-body{display:none !important}
 @media (min-width:881px){
-  .dp-acc-body{display:block !important}
-  /* Modern engines hide a closed <details>'s content via ::details-content
-     (content-visibility:hidden), which the display rule above can't override.
-     Force it visible so the always-open desktop accordions actually paint. */
-  .dp-acc::details-content{content-visibility:visible;display:block}
-  .dp-acc-sum{margin-bottom:14px}
+  /* Accordions default open (the open attribute) but stay collapsible —
+     let native details hide the content when the user closes them. */
+  .dp-acc[open] .dp-acc-sum{margin-bottom:14px}
   .dp-acc-sum .dp-sub{margin-bottom:0}
 }
-/* tools card stretches to align its bottom with core skills (2-col layout only) */
+/* tools card stretches to align its bottom with core skills (2-col, when open) */
 @media (min-width:1081px){
-  .dp-bento-left .dp-acc-stack{flex:1;display:flex;flex-direction:column}
-  .dp-bento-left .dp-acc-stack .dp-acc-body{display:flex !important;flex-direction:column;flex:1}
-  .dp-bento-left .dp-acc-stack .dp-techgroups{flex:1;justify-content:space-between}
+  .dp-bento-left .dp-acc-stack[open]{flex:1;display:flex;flex-direction:column}
+  .dp-bento-left .dp-acc-stack[open] .dp-acc-body{display:flex;flex-direction:column;flex:1}
+  .dp-bento-left .dp-acc-stack[open] .dp-techgroups{flex:1;justify-content:space-between}
 }
 .dp-about-facts{display:flex;flex-direction:column;gap:13px}
 .dp-fact{display:flex;align-items:flex-start;gap:11px;color:var(--muted);font-size:13px}
