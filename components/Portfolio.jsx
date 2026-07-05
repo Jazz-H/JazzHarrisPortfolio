@@ -1166,7 +1166,8 @@ const CSS = `
 
 /* poster (left) */
 .dp-poster{position:sticky;top:0;height:100vh;overflow-y:auto;border-right:1px solid var(--line);
-  background:var(--bg-2);padding:48px 44px;display:flex;flex-direction:column;gap:34px}
+  background:var(--bg-2);padding:48px 44px;display:flex;flex-direction:column;gap:34px;
+  border-bottom-left-radius:24px;border-bottom-right-radius:24px}
 .dp-glow{position:absolute;top:-100px;left:-100px;width:380px;height:380px;
   background:radial-gradient(closest-side,rgba(30,120,228,.22),transparent 70%);filter:blur(14px);pointer-events:none}
 .dp-root.motion-on .dp-glow{animation:dpDrift 13s ease-in-out infinite}
