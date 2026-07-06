@@ -1207,7 +1207,7 @@ function ContactModal({ open, onClose }) {
   };
 
   return createPortal(
-    <div className="dp-modal-overlay" role="dialog" aria-modal="true" aria-label="Tell me about your project" onClick={() => !submitting && onClose()}>
+    <div className="dp-modal-overlay" role="dialog" aria-modal="true" aria-label="Tell me what's on your mind" onClick={() => !submitting && onClose()}>
       <div className="dp-modal" onClick={(e) => e.stopPropagation()}>
         <button type="button" className="dp-modal-close" aria-label="Close" onClick={onClose} disabled={submitting}>
           <FiX aria-hidden="true" />
@@ -1221,8 +1221,8 @@ function ContactModal({ open, onClose }) {
           </div>
         ) : (
           <form className="dp-modal-form" onSubmit={submit} noValidate>
-            <p className="dp-label dp-modal-kicker">Start a project</p>
-            <h3 className="dp-modal-h">Tell me about your project</h3>
+            <p className="dp-label dp-modal-kicker">Get in touch</p>
+            <h3 className="dp-modal-h">Tell me what's on your mind</h3>
             <p className="dp-modal-sub">I reply within 24 hours. No obligation.</p>
 
             <div className="dp-modal-row2">
@@ -1246,8 +1246,8 @@ function ContactModal({ open, onClose }) {
               </label>
             </div>
             <label className="dp-field">
-              <span className="dp-field-l">Project description <b>*</b></span>
-              <textarea required rows={4} value={values.description} onChange={setField("description")} placeholder="What are you building, what problem does it solve, any timeline or budget in mind…" />
+              <span className="dp-field-l">What's on your mind <b>*</b></span>
+              <textarea required rows={4} value={values.description} onChange={setField("description")} placeholder="A project, a role, a question — include timeline or budget if relevant…" />
             </label>
 
             <label className="dp-field">
@@ -1334,7 +1334,7 @@ function Contact() {
       <div className="dp-contact-card">
         <button type="button" className="dp-contact-row dp-contact-row-primary" onClick={() => setModalOpen(true)}>
           <span className="dp-cr-icn"><FiMail aria-hidden="true" /></span>
-          <span className="dp-cr-text"><span className="dp-cr-l">Contact me</span><span className="dp-cr-v">Send a project request</span></span>
+          <span className="dp-cr-text"><span className="dp-cr-l">Contact me</span><span className="dp-cr-v">Send a message</span></span>
           <FiArrowRight className="dp-cr-arrow" aria-hidden="true" />
         </button>
         <a className="dp-contact-row" href="https://www.linkedin.com/in/maurajharris/" target="_blank" rel="noreferrer">
