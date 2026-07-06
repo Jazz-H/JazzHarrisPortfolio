@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="utf-8"><title>Netlify form detection</title></head>
+<body>
+  <!--
+    Not a real page — never linked to. Netlify's build-time crawler needs a
+    plain, unprocessed static HTML file (Next.js pages no longer produce one)
+    to register the "project-request" form. Field names must match the
+    FormData keys built in ContactModal (components/Portfolio.jsx).
+    See: https://ntl.fyi/runtime-forms-migration
+  -->
+  <form name="project-request" data-netlify="true" enctype="multipart/form-data">
+    <input type="text" name="first_name" />
+    <input type="text" name="last_name" />
+    <input type="email" name="email" />
+    <input type="tel" name="phone" />
+    <textarea name="description"></textarea>
+    <input type="text" name="reference_links" />
+    <input type="file" name="attachments" />
+  </form>
+</body>
+</html>

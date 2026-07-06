@@ -1115,7 +1115,8 @@ function About({ go }) {
 }
 
 // Netlify's build-time crawler only registers a form if it finds matching
-// static markup (see the hidden twin in pages/index.js) — this name and every
+// static markup (see public/forms/project-request.html — Next.js pages no
+// longer produce static HTML the crawler can read) — this name and every
 // field here must match that markup exactly.
 const PROJECT_FORM_NAME = "project-request";
 const PROJECT_FORM_INITIAL = { firstName: "", lastName: "", email: "", phone: "", description: "" };
