@@ -1115,7 +1115,8 @@ function About({ go }) {
 }
 
 // Netlify's build-time crawler only registers a form if it finds matching
-// static markup (see the hidden twin in pages/index.js) — this name and every
+// static markup (see public/forms/project-request.html — Next.js pages no
+// longer produce static HTML the crawler can read) — this name and every
 // field here must match that markup exactly.
 const PROJECT_FORM_NAME = "project-request";
 const PROJECT_FORM_INITIAL = { firstName: "", lastName: "", email: "", phone: "", description: "" };
@@ -1690,8 +1691,7 @@ const CSS = `
 .dp-contact-row:last-child{border-bottom:none}
 .dp-contact-row:not(.dp-contact-row-static):hover{background:rgba(30,120,228,.06)}
 .dp-cr-icn{display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:10px;background:var(--card-2);border:1px solid var(--line);color:var(--ink);font-size:17px;flex:none;transition:color .18s,border-color .18s}
-.dp-contact-row:not(.dp-contact-row-static):not(.dp-contact-row-primary):hover .dp-cr-icn{color:var(--ember);border-color:rgba(30,120,228,.5)}
-.dp-contact-row-primary .dp-cr-icn{background:var(--ember);border-color:var(--ember);color:#f3f7ff}
+.dp-contact-row:not(.dp-contact-row-static):hover .dp-cr-icn{color:var(--ember);border-color:rgba(30,120,228,.5)}
 .dp-cr-text{display:flex;flex-direction:column;gap:2px;min-width:0}
 .dp-cr-l{font-family:var(--font-mono),'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--faint)}
 .dp-cr-v{font-size:15px;color:var(--ink);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
