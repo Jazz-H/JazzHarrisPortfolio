@@ -1369,10 +1369,10 @@ const CSS = `
   background:var(--bg); color:var(--ink); font-family:var(--font-inter),'Inter',system-ui,sans-serif; -webkit-font-smoothing:antialiased; line-height:1.55;
 }
 .dp-root *{box-sizing:border-box;margin:0;padding:0}
-.dp-root a{color:inherit;text-decoration:none}
+.dp-root :where(a){color:inherit;text-decoration:none}
 .dp-root a.dp-link{color:var(--ember);text-decoration:underline;text-underline-offset:3px;text-decoration-thickness:1px;font-weight:500;transition:color .18s}
 .dp-root a.dp-link:hover{color:var(--amber)}
-.dp-root button{font:inherit;color:inherit;background:none;border:none;cursor:pointer;text-align:left}
+.dp-root :where(button){font:inherit;color:inherit;background:none;border:none;cursor:pointer;text-align:left}
 .dp-root svg{display:inline-block;vertical-align:middle}
 
 .dp-shell{display:grid;grid-template-columns:minmax(360px,42%) 1fr;min-height:100vh}
