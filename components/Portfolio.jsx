@@ -28,6 +28,8 @@ import {
   FiPenTool,
   FiLock,
   FiCpu,
+  FiPaperclip,
+  FiCheckCircle,
 } from "react-icons/fi";
 
 const HEADSHOT_SRC = "/jazz-headshot.jpg";
@@ -372,6 +374,11 @@ export default function Portfolio() {
   const [filter, setFilter] = useState("All");
   const rootRef = useRef(null);
   const didMount = useRef(false);
+  // "stage" (default) scrolls new content to the top of .dp-stage — correct
+  // for regular nav, since on mobile .dp-stage sits below the hero/poster and
+  // switching sections shouldn't re-show it. "top" scrolls to the true page
+  // top instead, for the logo's "back to home" click.
+  const scrollMode = useRef("stage");
 
   useEffect(() => {
     const r = rootRef.current;
@@ -397,6 +404,11 @@ export default function Portfolio() {
   useEffect(() => {
     // Don't jump on first load — let the page open at the hero/poster.
     if (!didMount.current) { didMount.current = true; return; }
+    if (scrollMode.current === "top") {
+      window.scrollTo({ top: 0, behavior: "auto" });
+      scrollMode.current = "stage";
+      return;
+    }
     const stage = document.querySelector(".dp-stage");
     if (stage) {
       const top = stage.getBoundingClientRect().top + window.scrollY;
@@ -406,7 +418,7 @@ export default function Portfolio() {
     }
   }, [view, selected]);
 
-  const go = (v) => { setSelected(null); setView(v); };
+  const go = (v, opts) => { setSelected(null); setView(v); scrollMode.current = (opts && opts.toTop) ? "top" : "stage"; };
   const project = PROJECTS.find((p) => p.title === selected);
 
   return (
@@ -436,7 +448,7 @@ function Poster({ view, go }) {
   return (
     <aside className="dp-poster">
       <div className="dp-glow" aria-hidden="true" />
-      <button type="button" className="dp-id" onClick={() => go("work")} aria-label="Jazz Harris — back to top">
+      <button type="button" className="dp-id" onClick={() => go("work", { toTop: true })} aria-label="Jazz Harris — back to top">
         <span className="dp-mark" aria-hidden="true">
           <svg viewBox="0 0 132 104" fill="none">
             <path d="M23 24 H11 V80 H23" stroke="#1e78e4" strokeWidth="7" strokeLinecap="round" strokeLinejoin="round" />
@@ -1102,13 +1114,212 @@ function About({ go }) {
   );
 }
 
+// Netlify's build-time crawler only registers a form if it finds matching
+// static markup (see the hidden twin in pages/index.js) — this name and every
+// field here must match that markup exactly.
+const PROJECT_FORM_NAME = "project-request";
+const PROJECT_FORM_INITIAL = { firstName: "", lastName: "", email: "", phone: "", description: "" };
+const PROJECT_FORM_MAX_FILES = 5;
+const PROJECT_FORM_MAX_MB = 10;
+
+function ContactModal({ open, onClose }) {
+  const [values, setValues] = useState(PROJECT_FORM_INITIAL);
+  const [links, setLinks] = useState([]);
+  const [linkInput, setLinkInput] = useState("");
+  const [files, setFiles] = useState([]);
+  const [dragOver, setDragOver] = useState(false);
+  const [status, setStatus] = useState("idle"); // idle | submitting | success | error
+  const fileInputRef = useRef(null);
+  const firstFieldRef = useRef(null);
+  const submitting = status === "submitting";
+
+  useEffect(() => {
+    if (!open) return;
+    const onKey = (e) => { if (e.key === "Escape" && !submitting) onClose(); };
+    window.addEventListener("keydown", onKey);
+    const prevOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    const t = setTimeout(() => firstFieldRef.current && firstFieldRef.current.focus(), 60);
+    return () => {
+      window.removeEventListener("keydown", onKey);
+      document.body.style.overflow = prevOverflow;
+      clearTimeout(t);
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [open]);
+
+  // Reset a beat after close finishes, so the closing state doesn't flash empty.
+  useEffect(() => {
+    if (open) return;
+    const t = setTimeout(() => {
+      setValues(PROJECT_FORM_INITIAL);
+      setLinks([]);
+      setLinkInput("");
+      setFiles([]);
+      setStatus("idle");
+    }, 300);
+    return () => clearTimeout(t);
+  }, [open]);
+
+  if (!open || typeof document === "undefined") return null;
+
+  const setField = (key) => (e) => setValues((v) => ({ ...v, [key]: e.target.value }));
+
+  const addLink = () => {
+    const v = linkInput.trim();
+    if (!v) return;
+    setLinks((L) => (L.includes(v) ? L : [...L, v]));
+    setLinkInput("");
+  };
+  const removeLink = (v) => setLinks((L) => L.filter((x) => x !== v));
+
+  const addFiles = (list) => {
+    const incoming = Array.from(list).filter(
+      (f) => /^(image\/(png|jpe?g)|application\/pdf)$/.test(f.type) && f.size <= PROJECT_FORM_MAX_MB * 1024 * 1024
+    );
+    setFiles((F) => [...F, ...incoming].slice(0, PROJECT_FORM_MAX_FILES));
+  };
+  const removeFile = (i) => setFiles((F) => F.filter((_, idx) => idx !== i));
+
+  const valid = values.firstName.trim() && values.lastName.trim() && values.email.trim() && values.phone.trim() && values.description.trim();
+
+  const submit = async (e) => {
+    e.preventDefault();
+    if (!valid || submitting) return;
+    setStatus("submitting");
+    try {
+      const fd = new FormData();
+      fd.append("form-name", PROJECT_FORM_NAME);
+      fd.append("first_name", values.firstName);
+      fd.append("last_name", values.lastName);
+      fd.append("email", values.email);
+      fd.append("phone", values.phone);
+      fd.append("description", values.description);
+      fd.append("reference_links", links.join(", "));
+      files.forEach((f) => fd.append("attachments", f, f.name));
+      const res = await fetch("/", { method: "POST", body: fd });
+      if (!res.ok) throw new Error("submit failed");
+      setStatus("success");
+    } catch {
+      setStatus("error");
+    }
+  };
+
+  return createPortal(
+    <div className="dp-modal-overlay" role="dialog" aria-modal="true" aria-label="Tell me about your project" onClick={() => !submitting && onClose()}>
+      <div className="dp-modal" onClick={(e) => e.stopPropagation()}>
+        <button type="button" className="dp-modal-close" aria-label="Close" onClick={onClose} disabled={submitting}>
+          <FiX aria-hidden="true" />
+        </button>
+        {status === "success" ? (
+          <div className="dp-modal-success">
+            <span className="dp-modal-success-icn"><FiCheckCircle aria-hidden="true" /></span>
+            <h3 className="dp-modal-h">Got it — thanks!</h3>
+            <p className="dp-modal-sub">I reply within 24 hours. Talk soon.</p>
+            <button type="button" className="dp-btn dp-btn-primary" onClick={onClose}>Done</button>
+          </div>
+        ) : (
+          <form className="dp-modal-form" onSubmit={submit} noValidate>
+            <p className="dp-label dp-modal-kicker">Start a project</p>
+            <h3 className="dp-modal-h">Tell me about your project</h3>
+            <p className="dp-modal-sub">I reply within 24 hours. No obligation.</p>
+
+            <div className="dp-modal-row2">
+              <label className="dp-field">
+                <span className="dp-field-l">First name <b>*</b></span>
+                <input ref={firstFieldRef} required value={values.firstName} onChange={setField("firstName")} placeholder="Jane" />
+              </label>
+              <label className="dp-field">
+                <span className="dp-field-l">Last name <b>*</b></span>
+                <input required value={values.lastName} onChange={setField("lastName")} placeholder="Doe" />
+              </label>
+            </div>
+            <div className="dp-modal-row2">
+              <label className="dp-field">
+                <span className="dp-field-l">Email <b>*</b></span>
+                <input type="email" required value={values.email} onChange={setField("email")} placeholder="jane@company.com" />
+              </label>
+              <label className="dp-field">
+                <span className="dp-field-l">Phone <b>*</b></span>
+                <input type="tel" required value={values.phone} onChange={setField("phone")} placeholder="(704) 555-0142" />
+              </label>
+            </div>
+            <label className="dp-field">
+              <span className="dp-field-l">Project description <b>*</b></span>
+              <textarea required rows={4} value={values.description} onChange={setField("description")} placeholder="What are you building, what problem does it solve, any timeline or budget in mind…" />
+            </label>
+
+            <label className="dp-field">
+              <span className="dp-field-l">Reference links <i>(optional)</i></span>
+              <input
+                value={linkInput}
+                onChange={(e) => setLinkInput(e.target.value)}
+                onKeyDown={(e) => { if (e.key === "Enter") { e.preventDefault(); addLink(); } }}
+                placeholder="https://a-site-you-like.com"
+              />
+              <span className="dp-field-hint">Sites you like, your current site, a brief — press Enter to add.</span>
+              {links.length > 0 && (
+                <div className="dp-tag-row">
+                  {links.map((l) => (
+                    <span className="dp-tag" key={l}>
+                      {l.replace(/^https?:\/\//, "")}
+                      <button type="button" onClick={() => removeLink(l)} aria-label={`Remove ${l}`}><FiX aria-hidden="true" /></button>
+                    </span>
+                  ))}
+                </div>
+              )}
+            </label>
+
+            <div className="dp-field">
+              <span className="dp-field-l">Attach images <i>(optional)</i></span>
+              <div
+                className={"dp-drop" + (dragOver ? " is-over" : "")}
+                onDragOver={(e) => { e.preventDefault(); setDragOver(true); }}
+                onDragLeave={() => setDragOver(false)}
+                onDrop={(e) => { e.preventDefault(); setDragOver(false); addFiles(e.dataTransfer.files); }}
+                onClick={() => fileInputRef.current && fileInputRef.current.click()}
+              >
+                <FiPaperclip aria-hidden="true" />
+                <span><b>Drop sketches / screenshots here</b>, or click to browse</span>
+                <span className="dp-drop-hint">PNG, JPG, PDF · up to {PROJECT_FORM_MAX_FILES} files · {PROJECT_FORM_MAX_MB} MB each</span>
+                <input ref={fileInputRef} type="file" hidden multiple accept="image/png,image/jpeg,application/pdf" onChange={(e) => addFiles(e.target.files)} />
+              </div>
+              {files.length > 0 && (
+                <div className="dp-tag-row">
+                  {files.map((f, i) => (
+                    <span className="dp-tag" key={f.name + i}>
+                      {f.name}
+                      <button type="button" onClick={() => removeFile(i)} aria-label={`Remove ${f.name}`}><FiX aria-hidden="true" /></button>
+                    </span>
+                  ))}
+                </div>
+              )}
+            </div>
+
+            {status === "error" && (
+              <p className="dp-modal-error">Something went wrong sending that. Please try again, or email me directly at <a className="dp-link" href={GMAIL_COMPOSE}>{EMAIL}</a>.</p>
+            )}
+
+            <button type="submit" className="dp-btn dp-btn-primary dp-modal-submit" disabled={!valid || submitting}>
+              {submitting ? "Sending…" : <>Send request <FiArrowRight aria-hidden="true" /></>}
+            </button>
+            <p className="dp-modal-privacy"><FiLock aria-hidden="true" /> Goes straight to Jazz. Never shared or sold.</p>
+          </form>
+        )}
+      </div>
+    </div>,
+    document.querySelector(".dp-root") || document.body
+  );
+}
+
 function Contact() {
+  const [modalOpen, setModalOpen] = useState(false);
   return (
     <section className="dp-view dp-contact">
       <div className="dp-contact-head">
         <p className="dp-label">Contact</p>
         <h2 className="dp-cta-h">Let's build something that works.</h2>
-        <p className="dp-cta-sub">Got a project, a problem, or a half-formed idea? Email is the fastest way to reach me, and I read everything.</p>
+        <p className="dp-cta-sub">Got a project, a problem, or a half-formed idea? Tell me about it below, and I read everything.</p>
       </div>
 
       <figure className="dp-contact-quote dp-quote">
@@ -1120,11 +1331,11 @@ function Contact() {
       </figure>
 
       <div className="dp-contact-card">
-        <a className="dp-contact-row" href={GMAIL_COMPOSE} target="_blank" rel="noreferrer">
+        <button type="button" className="dp-contact-row dp-contact-row-primary" onClick={() => setModalOpen(true)}>
           <span className="dp-cr-icn"><FiMail aria-hidden="true" /></span>
-          <span className="dp-cr-text"><span className="dp-cr-l">Email</span><span className="dp-cr-v">{EMAIL}</span></span>
-          <FiArrowUpRight className="dp-cr-arrow" aria-hidden="true" />
-        </a>
+          <span className="dp-cr-text"><span className="dp-cr-l">Contact me</span><span className="dp-cr-v">Send a project request</span></span>
+          <FiArrowRight className="dp-cr-arrow" aria-hidden="true" />
+        </button>
         <a className="dp-contact-row" href="https://www.linkedin.com/in/maurajharris/" target="_blank" rel="noreferrer">
           <span className="dp-cr-icn"><FiLinkedin aria-hidden="true" /></span>
           <span className="dp-cr-text"><span className="dp-cr-l">LinkedIn</span><span className="dp-cr-v">/in/maurajharris</span></span>
@@ -1145,6 +1356,7 @@ function Contact() {
           <span className="dp-cr-text"><span className="dp-cr-l">Location</span><span className="dp-cr-v">Charlotte, NC</span></span>
         </div>
       </div>
+      <ContactModal open={modalOpen} onClose={() => setModalOpen(false)} />
     </section>
   );
 }
@@ -1486,6 +1698,43 @@ const CSS = `
 .dp-cr-arrow{margin-left:auto;color:var(--faint);font-size:16px;flex:none;transition:color .18s,transform .18s}
 .dp-contact-row:hover .dp-cr-arrow{color:var(--ember);transform:translate(2px,-2px)}
 
+/* project-request modal */
+.dp-modal-overlay{position:fixed;inset:0;z-index:210;display:flex;align-items:flex-start;justify-content:center;padding:48px 20px;overflow-y:auto;background:rgba(6,5,8,.82);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);animation:dpLbIn .2s ease}
+.dp-modal{position:relative;width:100%;max-width:600px;background:var(--card);border:1px solid var(--line-2);border-radius:22px;padding:32px 36px 30px;box-shadow:0 40px 90px -30px rgba(0,0,0,.9)}
+.dp-modal-close{position:absolute;top:18px;right:18px;width:38px;height:38px;display:flex;align-items:center;justify-content:center;border-radius:10px;background:var(--card-2);border:1px solid var(--line-2);color:var(--muted);font-size:18px;transition:color .18s,border-color .18s,background .18s}
+.dp-modal-close:hover{color:var(--ink);border-color:rgba(30,120,228,.5)}
+.dp-modal-close:disabled{opacity:.4;pointer-events:none}
+.dp-modal-kicker{margin-bottom:8px}
+.dp-modal-h{font-family:var(--font-display),'Bricolage Grotesque',sans-serif;font-weight:700;font-size:clamp(22px,3vw,27px);letter-spacing:-.01em;line-height:1.15;max-width:22ch}
+.dp-modal-sub{color:var(--muted);font-size:14.5px;margin-top:8px}
+.dp-modal-form{display:flex;flex-direction:column;gap:16px;margin-top:4px}
+.dp-modal-row2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.dp-field{display:flex;flex-direction:column;gap:7px}
+.dp-field-l{font-size:13px;font-weight:600;color:var(--ink)}
+.dp-field-l b{color:var(--ember);font-weight:600}
+.dp-field-l i{font-weight:400;font-style:normal;color:var(--faint)}
+.dp-field input,.dp-field textarea{width:100%;background:var(--card-2);border:1px solid var(--line-2);border-radius:10px;padding:11px 13px;font:inherit;font-size:14.5px;color:var(--ink);transition:border-color .18s,background .18s}
+.dp-field input::placeholder,.dp-field textarea::placeholder{color:var(--faint)}
+.dp-field input:focus,.dp-field textarea:focus{outline:none;border-color:var(--ember);background:var(--card)}
+.dp-field textarea{resize:vertical;min-height:96px;line-height:1.5}
+.dp-field-hint{font-size:12px;color:var(--faint)}
+.dp-tag-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:2px}
+.dp-tag{display:inline-flex;align-items:center;gap:7px;font-family:var(--font-mono),'JetBrains Mono',monospace;font-size:12px;color:var(--ink);background:var(--card-2);border:1px solid var(--line-2);border-radius:999px;padding:5px 8px 5px 12px;max-width:100%}
+.dp-tag button{display:inline-flex;align-items:center;justify-content:center;width:16px;height:16px;flex:none;color:var(--faint);border-radius:50%;transition:color .15s,background .15s}
+.dp-tag button:hover{color:var(--ink);background:rgba(243,234,234,.08)}
+.dp-drop{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;text-align:center;border:1.5px dashed var(--line-2);border-radius:12px;padding:22px 16px;color:var(--muted);font-size:13.5px;cursor:pointer;transition:border-color .18s,background .18s}
+.dp-drop svg{font-size:19px;color:var(--faint);margin-bottom:3px}
+.dp-drop:hover,.dp-drop.is-over{border-color:rgba(30,120,228,.55);background:rgba(30,120,228,.05)}
+.dp-drop b{color:var(--ink);font-weight:600}
+.dp-drop-hint{font-size:12px;color:var(--faint)}
+.dp-modal-error{font-size:13.5px;color:#ff9f9f;line-height:1.5}
+.dp-modal-submit{justify-content:center;width:100%;margin-top:2px}
+.dp-modal-submit:disabled{opacity:.45;pointer-events:none}
+.dp-modal-privacy{display:flex;align-items:center;justify-content:center;gap:7px;font-size:12.5px;color:var(--faint);text-align:center}
+.dp-modal-success{display:flex;flex-direction:column;align-items:center;text-align:center;gap:10px;padding:26px 10px 6px}
+.dp-modal-success-icn{font-size:40px;color:var(--ember);margin-bottom:4px}
+.dp-modal-success .dp-btn{margin-top:10px}
+
 .dp-root a:focus-visible,.dp-root button:focus-visible{outline:2px solid var(--amber);outline-offset:3px;border-radius:8px}
 
 /* mobile-only helpers (hidden on desktop) */
@@ -1603,5 +1852,8 @@ const CSS = `
   .dp-contact-row{padding:14px 15px;gap:12px}
   .dp-cr-icn{width:36px;height:36px;font-size:16px}
   .dp-about-cta{gap:14px}
+  .dp-modal-overlay{padding:20px 12px}
+  .dp-modal{padding:24px 20px 26px}
+  .dp-modal-row2{grid-template-columns:1fr}
 }
 `;
