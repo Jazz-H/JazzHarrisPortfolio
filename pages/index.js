@@ -85,6 +85,22 @@ export default function Home() {
         />
       </Head>
 
+      {/* Static twin so Netlify's build-time form crawler registers "project-request".
+          Field names must match the FormData keys built in ContactModal (components/Portfolio.jsx). */}
+      <form
+        name="project-request"
+        data-netlify="true"
+        hidden
+      >
+        <input type="text" name="first_name" />
+        <input type="text" name="last_name" />
+        <input type="email" name="email" />
+        <input type="tel" name="phone" />
+        <textarea name="description"></textarea>
+        <input type="text" name="reference_links" />
+        <input type="file" name="attachments" />
+      </form>
+
       <Portfolio />
     </>
   );
