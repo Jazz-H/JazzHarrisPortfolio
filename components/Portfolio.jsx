@@ -204,7 +204,7 @@ const PROJECTS = [
   // --- Scaffolded concept pieces (no live assets yet). Add image/images and
   // refine the case study, then this renders like any other project. ---
   {
-    cat: "Branding & Design", kind: "Branding", title: "Craft Beverage Brand & Packaging", noLink: true, status: "Concept",
+    cat: "Branding & Design", kind: "Branding", title: "Craft Beverage Brand & Packaging", noLink: true, status: "Coming soon",
     body: "A self-initiated brand identity and packaging concept for a small-batch craft beverage — taken from a single logomark through a full color and type system to shelf-ready can and label artwork.",
     tags: ["Illustrator", "Photoshop", "Figma"],
     image: "/assets/BeverageCover.png", tall: true,
@@ -217,7 +217,7 @@ const PROJECTS = [
     },
   },
   {
-    cat: "Branding & Design", kind: "UI/UX", title: "LOFT Living — UX Redesign", noLink: true, status: "Concept",
+    cat: "Branding & Design", kind: "UI/UX", title: "LOFT Living — UX Redesign", noLink: true, status: "Coming soon",
     body: "A self-initiated, unaffiliated redesign of LOFT Living, a property-management resident app at 2.4 stars across 6,000+ reviews. I clustered the public complaints into six themes, benchmarked LOFT against higher-rated peers, traced the failures to likely architectural root causes, and sized the business impact — then rebuilt the sign-in, rent-payment, and maintenance flows around what residents hit most.",
     tags: ["Figma", "FigJam", "Maze"],
     image: "/assets/UxCover.png", tall: true,
