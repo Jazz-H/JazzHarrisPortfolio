@@ -372,6 +372,11 @@ export default function Portfolio() {
   const [filter, setFilter] = useState("All");
   const rootRef = useRef(null);
   const didMount = useRef(false);
+  // "stage" (default) scrolls new content to the top of .dp-stage — correct
+  // for regular nav, since on mobile .dp-stage sits below the hero/poster and
+  // switching sections shouldn't re-show it. "top" scrolls to the true page
+  // top instead, for the logo's "back to home" click.
+  const scrollMode = useRef("stage");
 
   useEffect(() => {
     const r = rootRef.current;
@@ -397,6 +402,11 @@ export default function Portfolio() {
   useEffect(() => {
     // Don't jump on first load — let the page open at the hero/poster.
     if (!didMount.current) { didMount.current = true; return; }
+    if (scrollMode.current === "top") {
+      window.scrollTo({ top: 0, behavior: "auto" });
+      scrollMode.current = "stage";
+      return;
+    }
     const stage = document.querySelector(".dp-stage");
     if (stage) {
       const top = stage.getBoundingClientRect().top + window.scrollY;
@@ -406,7 +416,7 @@ export default function Portfolio() {
     }
   }, [view, selected]);
 
-  const go = (v) => { setSelected(null); setView(v); };
+  const go = (v, opts) => { setSelected(null); setView(v); scrollMode.current = (opts && opts.toTop) ? "top" : "stage"; };
   const project = PROJECTS.find((p) => p.title === selected);
 
   return (
@@ -436,7 +446,7 @@ function Poster({ view, go }) {
   return (
     <aside className="dp-poster">
       <div className="dp-glow" aria-hidden="true" />
-      <button type="button" className="dp-id" onClick={() => go("work")} aria-label="Jazz Harris — back to top">
+      <button type="button" className="dp-id" onClick={() => go("work", { toTop: true })} aria-label="Jazz Harris — back to top">
         <span className="dp-mark" aria-hidden="true">
           <svg viewBox="0 0 132 104" fill="none">
             <path d="M23 24 H11 V80 H23" stroke="#1e78e4" strokeWidth="7" strokeLinecap="round" strokeLinejoin="round" />
