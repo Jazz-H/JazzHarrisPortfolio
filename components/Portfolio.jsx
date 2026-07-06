@@ -1687,7 +1687,7 @@ const CSS = `
 .dp-cta-sub{color:var(--muted);font-size:17px;max-width:50ch;margin-top:18px}
 .dp-contact-head .dp-status{margin-top:22px}
 .dp-contact-card{border:1px solid var(--line-2);border-radius:18px;background:var(--card);overflow:hidden;box-shadow:0 18px 44px -28px rgba(0,0,0,.9)}
-.dp-contact-row{display:flex;align-items:center;gap:15px;padding:18px 20px;border-bottom:1px solid var(--line);transition:background .18s}
+.dp-contact-row{display:flex;align-items:center;width:100%;gap:15px;padding:18px 20px;border-bottom:1px solid var(--line);transition:background .18s}
 .dp-contact-row:last-child{border-bottom:none}
 .dp-contact-row:not(.dp-contact-row-static):hover{background:rgba(30,120,228,.06)}
 .dp-cr-icn{display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:10px;background:var(--card-2);border:1px solid var(--line);color:var(--ink);font-size:17px;flex:none;transition:color .18s,border-color .18s}
