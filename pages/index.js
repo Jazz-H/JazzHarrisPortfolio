@@ -16,7 +16,7 @@ const STRUCTURED_DATA = {
       jobTitle: "Business Analyst & Software Engineer",
       email: "mailto:mauraharris948@gmail.com",
       description:
-        "Business analyst and software engineer who leads business analysis into websites, applications, and dashboards that deliver measurable results.",
+        "Business analyst and software engineer who leads the business analysis behind websites, applications, and dashboards that deliver measurable results.",
       worksFor: { "@type": "Organization", name: "Coca-Cola Consolidated" },
       alumniOf: { "@type": "CollegeOrUniversity", name: "Elon University" },
       knowsAbout: [
@@ -51,7 +51,7 @@ export default function Home() {
         <title>Jazz Harris · Portfolio</title>
         <meta
           name="description"
-          content="Business analyst and software engineer. I lead business analysis into websites, tools, and dashboards that actually work."
+          content="Business analyst and software engineer. I lead the business analysis behind websites, tools, and dashboards that actually work."
         />
         <meta
           name="viewport"

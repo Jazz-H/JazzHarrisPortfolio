@@ -440,7 +440,7 @@ function Poster({ view, go }) {
       <div className="dp-statement">
         <p className="dp-kicker">Portfolio · 2026</p>
         <h1 className="dp-h1">
-          I lead business analysis into websites, applications, and dashboards that deliver{" "}
+          I lead the business analysis behind websites, applications, and dashboards that deliver{" "}
           <span className="dp-mark-text">measurable results</span>.
         </h1>
         <span className="dp-status"><i className="dp-dot" /> Booking new projects for 2026</span>
