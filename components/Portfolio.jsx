@@ -19,6 +19,7 @@ import {
   FiMapPin,
   FiBriefcase,
   FiActivity,
+  FiUsers,
   FiBookOpen,
   FiTrendingUp,
   FiCode,
@@ -216,19 +217,19 @@ const FILTERS = [
   ...(PROJECTS.some((p) => p.ai) ? ["AI"] : []),
   ...CAT_ORDER.filter((c) => PROJECTS.some((p) => p.cat === c)),
 ];
-// Curated default ("All") order — a greatest-hits interleave that leads with
-// range (product · AI app · enterprise dashboard) instead of grouping by
-// category, keeps real work ahead of concepts, and ends on the polished
-// concept pieces. Category filters re-slice this same list, so each category
+// Curated default ("All") order — leads with the strongest business-analysis
+// work (quantified process fixes, BA leadership) since that's the primary
+// positioning, then the flagship product/dev work, then freelance and
+// design pieces. Category filters re-slice this same list, so each category
 // still reads strongest-first. Unlisted projects fall to the end.
 const WORK_ORDER = [
+  "DSD Support Operations Dashboard",
+  "Copilot Studio DevOps Agent",
+  "Activity & Objective Dashboard",
   "Valora",
   "Clearcast",
-  "Copilot Studio DevOps Agent",
-  "DSD Support Operations Dashboard",
   "Alamance Community Foundation",
   "Chat App",
-  "Activity & Objective Dashboard",
   "Electric Supplies Online",
   "Inventory Shrink Reduction Form",
 ];
@@ -432,14 +433,14 @@ function Poster({ view, go }) {
         </span>
         <span className="dp-id-text">
           <span className="dp-name">Jazz Harris</span>
-          <span className="dp-role" aria-hidden="true">Software engineer &amp; business analyst</span>
+          <span className="dp-role" aria-hidden="true">Business analyst &amp; software engineer</span>
         </span>
       </button>
 
       <div className="dp-statement">
         <p className="dp-kicker">Portfolio · 2026</p>
         <h1 className="dp-h1">
-          I transform business challenges into websites, applications, and dashboards that deliver{" "}
+          I lead business analysis into websites, applications, and dashboards that deliver{" "}
           <span className="dp-mark-text">measurable results</span>.
         </h1>
         <span className="dp-status"><i className="dp-dot" /> Booking new projects for 2026</span>
@@ -990,6 +991,7 @@ function About({ go }) {
               <div className="dp-about-facts">
                 <div className="dp-fact"><FiMapPin aria-hidden="true" /><div><span className="dp-fact-l">Based in</span><span className="dp-fact-v">Charlotte, NC</span></div></div>
                 <div className="dp-fact"><FiBriefcase aria-hidden="true" /><div><span className="dp-fact-l">By day</span><span className="dp-fact-v">Business Analyst · Coca-Cola Consolidated</span></div></div>
+                <div className="dp-fact"><FiUsers aria-hidden="true" /><div><span className="dp-fact-l">Leads</span><span className="dp-fact-v">Mentors BA I analysts on process mapping &amp; AI tooling adoption</span></div></div>
                 <div className="dp-fact"><FiBookOpen aria-hidden="true" /><div><span className="dp-fact-l">Studied</span><span className="dp-fact-v">B.A. Computer Science · Elon University</span></div></div>
                 <div className="dp-fact"><FiGlobe aria-hidden="true" /><div><span className="dp-fact-l">Studied abroad</span><span className="dp-fact-v">Dublin, Ireland · <a className="dp-link" href={FIE_BLOG} target="_blank" rel="noreferrer">FIE</a></span></div></div>
                 <div className="dp-fact"><FiActivity aria-hidden="true" /><div><span className="dp-fact-l">Currently</span><span className="dp-fact-v">Building Valora, a budgeting app</span></div></div>
@@ -1022,9 +1024,9 @@ function About({ go }) {
         <div className="dp-bento-right">
           <div className="dp-bento-tile dp-bento-bio">
             <p className="dp-label">About</p>
-            <h2 className="dp-detail-h">Builder by craft, analyst by training.</h2>
+            <h2 className="dp-detail-h">Analyst by training, builder by craft.</h2>
             <p className="dp-p">I studied Computer Science at Elon University, with minors in Art History and Digital Art, a blend that shapes how I work: technical problem-solving with a designer's eye. I also studied abroad in Dublin through FIE (Foundation for International Education), completing a software-engineering internship and writing about it on the <a className="dp-link" href={FIE_BLOG} target="_blank" rel="noreferrer">program blog</a>. Since then I've worked across both the technical and business sides of software, turning complex ideas into solutions that create real value.</p>
-            <p className="dp-p">Today I'm a Business Analyst at Coca-Cola Consolidated, bridging business needs and technology. Outside of work I build websites, custom software, and tools for businesses and entrepreneurs, most recently Valora, a personal finance platform. When I'm not behind a screen: traveling, Legos, and anything with four wheels or two.</p>
+            <p className="dp-p">Today I'm a Business Analyst at Coca-Cola Consolidated, leading requirements for an Agile team and mentoring newer analysts on process mapping and AI tooling, while bridging business needs and technology. Outside of work I build websites, custom software, and tools for businesses and entrepreneurs, most recently Valora, a personal finance platform. When I'm not behind a screen: traveling, Legos, and anything with four wheels or two.</p>
           </div>
 
           <details className="dp-acc dp-acc-skills">

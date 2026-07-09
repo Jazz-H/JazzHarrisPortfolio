@@ -13,10 +13,10 @@ const STRUCTURED_DATA = {
       alternateName: "Maura Harris",
       url: `${SITE_URL}/`,
       image: `${SITE_URL}/jazz-headshot.jpg`,
-      jobTitle: "Software Engineer & Business Analyst",
+      jobTitle: "Business Analyst & Software Engineer",
       email: "mailto:mauraharris948@gmail.com",
       description:
-        "Software engineer and business analyst who turns business problems into websites, applications, and dashboards that deliver measurable results.",
+        "Business analyst and software engineer who leads business analysis into websites, applications, and dashboards that deliver measurable results.",
       worksFor: { "@type": "Organization", name: "Coca-Cola Consolidated" },
       alumniOf: { "@type": "CollegeOrUniversity", name: "Elon University" },
       knowsAbout: [
@@ -51,7 +51,7 @@ export default function Home() {
         <title>Jazz Harris · Portfolio</title>
         <meta
           name="description"
-          content="Software engineer and business analyst. I turn business problems into websites, tools, and dashboards that actually work."
+          content="Business analyst and software engineer. I lead business analysis into websites, tools, and dashboards that actually work."
         />
         <meta
           name="viewport"
@@ -65,7 +65,7 @@ export default function Home() {
         <meta property="og:title" content="Jazz Harris · Portfolio" />
         <meta
           property="og:description"
-          content="Software engineer and business analyst. Selected projects and contact."
+          content="Business analyst and software engineer. Selected projects and contact."
         />
         <meta property="og:image" content={`${SITE_URL}/assets/og.png`} />
         <meta property="og:image:width" content="1200" />
@@ -75,7 +75,7 @@ export default function Home() {
         <meta name="twitter:title" content="Jazz Harris · Portfolio" />
         <meta
           name="twitter:description"
-          content="Software engineer and business analyst. Selected projects and contact."
+          content="Business analyst and software engineer. Selected projects and contact."
         />
         <meta name="twitter:image" content={`${SITE_URL}/assets/og.png`} />
 
