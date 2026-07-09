@@ -341,22 +341,6 @@ const IMPACT = [
   { value: "$27M+", label: "In assets at a foundation whose site I built — ~$1.9M granted yearly to 30+ nonprofits" },
   { value: "~95%", label: "Fewer tickets on Coca-Cola's Osapiens app after I assisted on changing its triage model — ending the team's after-hours on-call" },
 ];
-// Recognition quotes (social proof) — shown as a credibility block in the about
-// view and as a single pull-quote on contact. Attributed to the named author
-// (provided by the site owner); both lines are from internal kudos on the
-// shrink-reporting form work.
-const PRAISE = [
-  {
-    text: "Delivered a high-quality MVP with impressive speed, and with the end user in mind.",
-    by: "John Palmer",
-    role: "Senior Director, Operational Insights & Sales Effectiveness · Coca-Cola Consolidated",
-  },
-  {
-    text: "Responsiveness, problem-solving mindset, and the ability to execute under a tight timeline truly stood out.",
-    by: "John Palmer",
-    role: "Senior Director, Operational Insights & Sales Effectiveness · Coca-Cola Consolidated",
-  },
-];
 
 export default function Portfolio() {
   const [view, setView] = useState("work");
@@ -996,7 +980,6 @@ function Detail({ p, onBack, filter = "All" }) {
 
 function About({ go }) {
   const bentoRef = useReveal([]);
-  const praiseRef = useReveal([]);
   return (
     <section className="dp-view dp-about">
       <div className="dp-bento" ref={bentoRef}>
@@ -1074,22 +1057,6 @@ function About({ go }) {
         <div className="dp-impact">
           {IMPACT.map((s, i) => (
             <ImpactStat key={s.value + s.label} value={s.value} label={s.label} index={i} />
-          ))}
-        </div>
-      </div>
-
-      <div className="dp-about-praise">
-        <p className="dp-label">Recognition</p>
-        <div className="dp-praise-grid" ref={praiseRef}>
-          {/* PRAISE[0] is featured on Contact; show the rest here to avoid repeating it */}
-          {PRAISE.slice(1).map((q, i) => (
-            <figure className="dp-quote dp-reveal" style={{ "--i": i }} key={q.text}>
-              <blockquote className="dp-quote-t">{q.text}</blockquote>
-              <figcaption className="dp-quote-by">
-                <span className="dp-quote-name">— {q.by}</span>
-                <span className="dp-quote-role">{q.role}</span>
-              </figcaption>
-            </figure>
           ))}
         </div>
       </div>
@@ -1314,14 +1281,6 @@ function Contact() {
         <p className="dp-cta-sub">Got a project, a problem, or a half-formed idea? Tell me about it below, and I read everything.</p>
       </div>
 
-      <figure className="dp-contact-quote dp-quote">
-        <blockquote className="dp-quote-t">{PRAISE[0].text}</blockquote>
-        <figcaption className="dp-quote-by">
-          <span className="dp-quote-name">— {PRAISE[0].by}</span>
-          <span className="dp-quote-role">{PRAISE[0].role}</span>
-        </figcaption>
-      </figure>
-
       <div className="dp-contact-card">
         <button type="button" className="dp-contact-row dp-contact-row-primary" onClick={() => setModalOpen(true)}>
           <span className="dp-cr-icn"><FiMail aria-hidden="true" /></span>
@@ -1441,22 +1400,6 @@ const CSS = `
 .dp-impact-v{font-family:var(--font-display),'Bricolage Grotesque',sans-serif;font-weight:700;font-size:clamp(21px,2.3vw,29px);letter-spacing:-.02em;line-height:1.04;color:var(--ember)}
 .dp-impact-l{color:var(--muted);font-size:11.5px;line-height:1.45;margin-top:8px}
 .dp-about-impact .dp-label{display:block;margin-bottom:16px}
-
-/* recognition — social-proof quotes (credibility block in the about view) */
-.dp-about-praise .dp-label{display:block;margin-bottom:16px}
-.dp-praise-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
-.dp-quote{position:relative;overflow:hidden;border:1px solid var(--line-2);border-radius:16px;padding:38px 22px 22px;
-  background:radial-gradient(180px 120px at 10% -10%,rgba(30,120,228,.14),transparent 60%),var(--card);}
-.dp-quote::before{content:"\\201C";position:absolute;top:12px;left:20px;z-index:0;font-family:var(--font-display),'Bricolage Grotesque',sans-serif;font-weight:700;font-size:42px;line-height:1;color:rgba(138,180,246,.32);pointer-events:none}
-.dp-quote::after{content:"\\201D";position:absolute;bottom:10px;right:18px;z-index:0;font-family:var(--font-display),'Bricolage Grotesque',sans-serif;font-weight:700;font-size:34px;line-height:1;color:rgba(138,180,246,.14);pointer-events:none}
-.dp-quote-t{position:relative;z-index:1;font-size:17px;font-weight:700;line-height:1.5;color:var(--ink);font-style:normal}
-.dp-quote-by{position:relative;z-index:1;margin-top:14px;display:flex;flex-direction:column;gap:3px}
-/* shared attribution: name (mono, accent) over title + company (muted) */
-.dp-quote-name{font-family:var(--font-mono),'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:.03em;color:var(--amber)}
-.dp-quote-role{font-size:11.5px;line-height:1.4;color:var(--faint)}
-/* single pull-quote on the contact view, above the email action — same card
-   style as the recognition quotes (.dp-quote), just with extra bottom margin */
-.dp-contact-quote{margin:0 0 26px}
 
 /* cards — lifted off true black with border + shadow */
 .dp-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
@@ -1780,7 +1723,6 @@ const CSS = `
   .dp-filters::-webkit-scrollbar-thumb{background:var(--line-2);border-radius:999px}
   .dp-filter{flex:0 0 auto;white-space:nowrap}
   .dp-impact{grid-template-columns:1fr 1fr}
-  .dp-praise-grid{grid-template-columns:1fr}
   .dp-grid{grid-template-columns:1fr 1fr}
   .dp-poster{position:static;height:auto;flex-direction:column;gap:20px;padding:26px 22px}
   .dp-glow{display:none}
