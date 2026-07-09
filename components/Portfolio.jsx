@@ -19,6 +19,7 @@ import {
   FiMapPin,
   FiBriefcase,
   FiActivity,
+  FiUsers,
   FiBookOpen,
   FiTrendingUp,
   FiCode,
@@ -201,34 +202,8 @@ const PROJECTS = [
       outcome: "The form launched with a clear, recognizable identity and was pushed to all field devices, so users could find and trust it from day one. The branding turned an internal form into something that looked and felt like a real product, supporting fast adoption across sales and service.",
     },
   },
-  // --- Scaffolded concept pieces (no live assets yet). Add image/images and
-  // refine the case study, then this renders like any other project. ---
-  {
-    cat: "Branding & Design", kind: "Branding", title: "Craft Beverage Brand & Packaging", noLink: true, status: "Coming soon",
-    body: "A self-initiated brand identity and packaging concept for a small-batch craft beverage — taken from a single logomark through a full color and type system to shelf-ready can and label artwork.",
-    tags: ["Illustrator", "Photoshop", "Figma"],
-    image: "/assets/BeverageCover.png", tall: true,
-    images: ["/assets/BeverageCover.png", "/assets/BeverageSystem.png", "/assets/BeveragePackaging.png"],
-    company: "Self-initiated concept", role: "Brand & packaging design",
-    study: {
-      challenge: "A small-batch craft beverage has to win the cooler: stand out against established brands, communicate flavor and personality at a glance, and stay legible from a full shelf down to a thumbnail product photo online.",
-      approach: "Build the identity from one strong idea — a distinctive logomark and wordmark, a tight color and type system, and a flavor-led label layout that scales across can sizes. Design to production specs (dielines, print-ready color) and present it in realistic context mockups.",
-      outcome: "A shelf-ready brand kit: logo suite, color and type system, can and label artwork, and a one-page brand guide, shown with realistic packaging mockups.",
-    },
-  },
-  {
-    cat: "Branding & Design", kind: "UI/UX", title: "LOFT Living — UX Redesign", noLink: true, status: "Coming soon",
-    body: "A self-initiated, unaffiliated redesign of LOFT Living, a property-management resident app at 2.4 stars across 6,000+ reviews. I clustered the public complaints into six themes, benchmarked LOFT against higher-rated peers, traced the failures to likely architectural root causes, and sized the business impact — then rebuilt the sign-in, rent-payment, and maintenance flows around what residents hit most.",
-    tags: ["Figma", "FigJam", "Maze"],
-    image: "/assets/UxCover.png", tall: true,
-    images: ["/assets/UxCover.png", "/assets/UxFindings.png", "/assets/UxBench.png", "/assets/UxTech.png", "/assets/UxBiz.png", "/assets/UxBefore.png", "/assets/UxAfter.png", "/assets/UxFigma.png"],
-    company: "Self-initiated concept", role: "UX research, design & systems analysis",
-    study: {
-      challenge: "LOFT Living promises 'everything resident in one app,' but at 2.4 stars across 6,000+ reviews, residents disagree — while peer apps like RentCafe (4.8) and Zego (4.5) clear the bar easily. Clustering the public complaints surfaced six themes, and the biggest isn't cosmetic: people can't reliably sign in, then hit a confusing payment center with surprise fees, while the tasks they came for (rent, maintenance) sit buried under a five-item nav.",
-      approach: "I built an affinity map from the public reviews to cluster the complaints into six themes, benchmarked LOFT against higher-rated peers to see what 'good' looks like, and connected the worst failures to their likely architectural root causes — a webview shell, fragile session handling, non-idempotent payments — so the fix targets systems, not just screens. Prioritizing by what blocks the core jobs (pay rent, request maintenance), the redesign lands on passwordless sign-in, a task-first home, fees shown up front, and a simplified nav — from an annotated before to a hi-fi after on a small design system.",
-      outcome: "A research-driven before-and-after: the affinity map of six review themes, a competitive benchmark, a technical read tracing symptoms to likely root causes (from the outside), the business case for fixing it, an annotated teardown, the reworked sign-in and rent-payment flows, a clean hi-fi UI, and a clickable prototype — each change traced back to the complaint it resolves.",
-    },
-  },
+  // Craft Beverage Brand & Packaging and LOFT Living — UX Redesign moved to
+  // BACKLOG.md pending real Figma designs. See that file to restore them.
 ];
 // Category order mirrors the hero line ("websites, applications, and
 // dashboards"), leading with the strongest disciplines and ending with the
@@ -242,23 +217,21 @@ const FILTERS = [
   ...(PROJECTS.some((p) => p.ai) ? ["AI"] : []),
   ...CAT_ORDER.filter((c) => PROJECTS.some((p) => p.cat === c)),
 ];
-// Curated default ("All") order — a greatest-hits interleave that leads with
-// range (product · AI app · enterprise dashboard) instead of grouping by
-// category, keeps real work ahead of concepts, and ends on the polished
-// concept pieces. Category filters re-slice this same list, so each category
+// Curated default ("All") order — leads with the strongest business-analysis
+// work (quantified process fixes, BA leadership) since that's the primary
+// positioning, then the flagship product/dev work, then freelance and
+// design pieces. Category filters re-slice this same list, so each category
 // still reads strongest-first. Unlisted projects fall to the end.
 const WORK_ORDER = [
+  "DSD Support Operations Dashboard",
+  "Copilot Studio DevOps Agent",
+  "Activity & Objective Dashboard",
   "Valora",
   "Clearcast",
-  "Copilot Studio DevOps Agent",
-  "DSD Support Operations Dashboard",
   "Alamance Community Foundation",
   "Chat App",
-  "Activity & Objective Dashboard",
   "Electric Supplies Online",
   "Inventory Shrink Reduction Form",
-  "Craft Beverage Brand & Packaging",
-  "LOFT Living — UX Redesign",
 ];
 const ORDERED_PROJECTS = [...PROJECTS].sort(
   (a, b) =>
@@ -460,14 +433,14 @@ function Poster({ view, go }) {
         </span>
         <span className="dp-id-text">
           <span className="dp-name">Jazz Harris</span>
-          <span className="dp-role">Software engineer &amp; business analyst</span>
+          <span className="dp-role" aria-hidden="true">Business analyst &amp; software engineer</span>
         </span>
       </button>
 
       <div className="dp-statement">
         <p className="dp-kicker">Portfolio · 2026</p>
         <h1 className="dp-h1">
-          I transform business challenges into websites, applications, and dashboards that deliver{" "}
+          I bridge business goals and software engineering to build digital products that deliver{" "}
           <span className="dp-mark-text">measurable results</span>.
         </h1>
         <span className="dp-status"><i className="dp-dot" /> Booking new projects for 2026</span>
@@ -650,7 +623,7 @@ function WorkList({ onOpen, filter, setFilter }) {
       <div className="dp-work-head">
         <p className="dp-label">Selected work · {shown.length}</p>
         <div className={"dp-filters-wrap" + (moreRight ? " can-scroll-end" : "")}>
-          <div className="dp-filters" role="tablist" aria-label="Filter work" ref={filtersRef}>
+          <div className="dp-filters" role="group" aria-label="Filter work" ref={filtersRef}>
             {FILTERS.map((f) => (
               <button key={f} className={"dp-filter" + (filter === f ? " is-active" : "")} onClick={() => setFilter(f)} aria-pressed={filter === f}>
                 {f}
@@ -1018,6 +991,7 @@ function About({ go }) {
               <div className="dp-about-facts">
                 <div className="dp-fact"><FiMapPin aria-hidden="true" /><div><span className="dp-fact-l">Based in</span><span className="dp-fact-v">Charlotte, NC</span></div></div>
                 <div className="dp-fact"><FiBriefcase aria-hidden="true" /><div><span className="dp-fact-l">By day</span><span className="dp-fact-v">Business Analyst · Coca-Cola Consolidated</span></div></div>
+                <div className="dp-fact"><FiUsers aria-hidden="true" /><div><span className="dp-fact-l">Leads</span><span className="dp-fact-v">Mentors BA I analysts on process mapping &amp; AI tooling adoption</span></div></div>
                 <div className="dp-fact"><FiBookOpen aria-hidden="true" /><div><span className="dp-fact-l">Studied</span><span className="dp-fact-v">B.A. Computer Science · Elon University</span></div></div>
                 <div className="dp-fact"><FiGlobe aria-hidden="true" /><div><span className="dp-fact-l">Studied abroad</span><span className="dp-fact-v">Dublin, Ireland · <a className="dp-link" href={FIE_BLOG} target="_blank" rel="noreferrer">FIE</a></span></div></div>
                 <div className="dp-fact"><FiActivity aria-hidden="true" /><div><span className="dp-fact-l">Currently</span><span className="dp-fact-v">Building Valora, a budgeting app</span></div></div>
@@ -1050,9 +1024,9 @@ function About({ go }) {
         <div className="dp-bento-right">
           <div className="dp-bento-tile dp-bento-bio">
             <p className="dp-label">About</p>
-            <h2 className="dp-detail-h">Builder by craft, analyst by training.</h2>
+            <h2 className="dp-detail-h">Analyst by training, builder by craft.</h2>
             <p className="dp-p">I studied Computer Science at Elon University, with minors in Art History and Digital Art, a blend that shapes how I work: technical problem-solving with a designer's eye. I also studied abroad in Dublin through FIE (Foundation for International Education), completing a software-engineering internship and writing about it on the <a className="dp-link" href={FIE_BLOG} target="_blank" rel="noreferrer">program blog</a>. Since then I've worked across both the technical and business sides of software, turning complex ideas into solutions that create real value.</p>
-            <p className="dp-p">Today I'm a Business Analyst at Coca-Cola Consolidated, bridging business needs and technology. Outside of work I build websites, custom software, and tools for businesses and entrepreneurs, most recently Valora, a personal finance platform. When I'm not behind a screen: traveling, Legos, and anything with four wheels or two.</p>
+            <p className="dp-p">Today I'm a Business Analyst at Coca-Cola Consolidated, leading requirements for an Agile team and mentoring newer analysts on process mapping and AI tooling, while bridging business needs and technology. Outside of work I build websites, custom software, and tools for businesses and entrepreneurs, most recently Valora, a personal finance platform. When I'm not behind a screen: traveling, Legos, and anything with four wheels or two.</p>
           </div>
 
           <details className="dp-acc dp-acc-skills">
@@ -1442,7 +1416,7 @@ const CSS = `
 .dp-filters{display:flex;gap:8px;flex-wrap:wrap}
 .dp-filter{font-family:var(--font-mono),'JetBrains Mono',monospace;font-size:13px;color:var(--muted);border:1px solid var(--line);border-radius:999px;padding:7px 15px;transition:all .18s}
 .dp-filter:hover{color:var(--ink);border-color:var(--line-2)}
-.dp-filter.is-active{background:var(--ember);color:#f3f7ff;border-color:var(--ember);font-weight:500}
+.dp-filter.is-active{background:#1b6ccd;color:#f3f7ff;border-color:#1b6ccd;font-weight:500}
 
 /* impact band — headline KPI stats (lives in the about section) */
 .dp-impact{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line-2);border-radius:16px;overflow:hidden}
@@ -1476,7 +1450,7 @@ const CSS = `
 .dp-card:hover .dp-thumb-img{transform:scale(1.045)}
 .dp-thumb-scrim{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(0,0,0,.30),transparent 32%,transparent 60%,rgba(0,0,0,.32));pointer-events:none}
 .dp-thumb-cat{position:absolute;top:14px;left:14px;z-index:1;font-family:var(--font-mono),'JetBrains Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:rgba(243,234,234,.92);background:rgba(8,6,9,.5);backdrop-filter:blur(5px);-webkit-backdrop-filter:blur(5px);border:1px solid rgba(243,234,234,.12);border-radius:6px;padding:3px 8px;font-weight:500}
-.dp-badge{position:absolute;top:13px;right:13px;z-index:1;font-family:var(--font-mono),'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:#f3f7ff;background:var(--ember);border-radius:6px;padding:3px 8px;font-weight:600}
+.dp-badge{position:absolute;top:13px;right:13px;z-index:1;font-family:var(--font-mono),'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:#f3f7ff;background:#1b6ccd;border-radius:6px;padding:3px 8px;font-weight:600}
 .dp-thumb-ai{position:absolute;top:13px;right:13px;z-index:1;display:inline-flex;align-items:center;gap:4px;font-family:var(--font-mono),'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;font-weight:600;color:#8ab4f6;background:rgba(8,6,9,.5);backdrop-filter:blur(5px);-webkit-backdrop-filter:blur(5px);border:1px solid rgba(138,180,246,.45);border-radius:6px;padding:3px 8px}
 .dp-thumb-ai svg{width:12px;height:12px}
 .dp-thumb-ai.is-stacked{top:44px}
@@ -1489,7 +1463,7 @@ const CSS = `
 .dp-card-p{color:var(--muted);font-size:13.5px}
 .dp-card-pills{margin-top:4px}
 .dp-card:hover .dp-pill{border-color:rgba(30,120,228,.35)}
-.dp-card-open{display:inline-flex;align-items:center;gap:6px;font-family:var(--font-mono),'JetBrains Mono',monospace;font-size:12.5px;color:var(--ember);margin-top:4px;transition:gap .2s}
+.dp-card-open{display:inline-flex;align-items:center;gap:6px;font-family:var(--font-mono),'JetBrains Mono',monospace;font-size:12.5px;color:var(--amber);margin-top:4px;transition:gap .2s}
 .dp-card:hover .dp-card-open{gap:10px}
 
 /* detail */
@@ -1803,7 +1777,7 @@ const CSS = `
   .dp-poster-bottom{display:none}
   .dp-stage{padding:28px 20px;min-width:0}
   .dp-sticky-bar{display:flex;justify-content:center;padding:16px;padding-bottom:max(16px,env(safe-area-inset-bottom));border-top:1px solid var(--line-2);background:var(--bg)}
-  .dp-sticky-cta{display:inline-flex;width:auto;align-items:center;justify-content:center;gap:8px;padding:13px 30px;font-family:var(--font-inter),'Inter',system-ui,sans-serif;font-size:15px;font-weight:600;border-radius:12px;border:1px solid rgba(30,120,228,.5);background:var(--ember);color:#f3f7ff;transition:background .2s,transform .15s,box-shadow .2s}
+  .dp-sticky-cta{display:inline-flex;width:auto;align-items:center;justify-content:center;gap:8px;padding:13px 30px;font-family:var(--font-inter),'Inter',system-ui,sans-serif;font-size:15px;font-weight:600;border-radius:12px;border:1px solid rgba(30,120,228,.5);background:#1b6ccd;color:#f3f7ff;transition:background .2s,transform .15s,box-shadow .2s}
   .dp-sticky-cta svg{transition:transform .2s}
   .dp-sticky-cta:hover{background:#3d8bec;transform:translateY(-1px);box-shadow:0 8px 22px -10px rgba(30,120,228,.7)}
   .dp-sticky-cta:hover svg{transform:translateX(4px)}
