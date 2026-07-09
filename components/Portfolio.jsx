@@ -432,7 +432,7 @@ function Poster({ view, go }) {
         </span>
         <span className="dp-id-text">
           <span className="dp-name">Jazz Harris</span>
-          <span className="dp-role">Software engineer &amp; business analyst</span>
+          <span className="dp-role" aria-hidden="true">Software engineer &amp; business analyst</span>
         </span>
       </button>
 
@@ -622,7 +622,7 @@ function WorkList({ onOpen, filter, setFilter }) {
       <div className="dp-work-head">
         <p className="dp-label">Selected work · {shown.length}</p>
         <div className={"dp-filters-wrap" + (moreRight ? " can-scroll-end" : "")}>
-          <div className="dp-filters" role="tablist" aria-label="Filter work" ref={filtersRef}>
+          <div className="dp-filters" role="group" aria-label="Filter work" ref={filtersRef}>
             {FILTERS.map((f) => (
               <button key={f} className={"dp-filter" + (filter === f ? " is-active" : "")} onClick={() => setFilter(f)} aria-pressed={filter === f}>
                 {f}
@@ -1414,7 +1414,7 @@ const CSS = `
 .dp-filters{display:flex;gap:8px;flex-wrap:wrap}
 .dp-filter{font-family:var(--font-mono),'JetBrains Mono',monospace;font-size:13px;color:var(--muted);border:1px solid var(--line);border-radius:999px;padding:7px 15px;transition:all .18s}
 .dp-filter:hover{color:var(--ink);border-color:var(--line-2)}
-.dp-filter.is-active{background:var(--ember);color:#f3f7ff;border-color:var(--ember);font-weight:500}
+.dp-filter.is-active{background:#1b6ccd;color:#f3f7ff;border-color:#1b6ccd;font-weight:500}
 
 /* impact band — headline KPI stats (lives in the about section) */
 .dp-impact{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line-2);border-radius:16px;overflow:hidden}
@@ -1448,7 +1448,7 @@ const CSS = `
 .dp-card:hover .dp-thumb-img{transform:scale(1.045)}
 .dp-thumb-scrim{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(0,0,0,.30),transparent 32%,transparent 60%,rgba(0,0,0,.32));pointer-events:none}
 .dp-thumb-cat{position:absolute;top:14px;left:14px;z-index:1;font-family:var(--font-mono),'JetBrains Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:rgba(243,234,234,.92);background:rgba(8,6,9,.5);backdrop-filter:blur(5px);-webkit-backdrop-filter:blur(5px);border:1px solid rgba(243,234,234,.12);border-radius:6px;padding:3px 8px;font-weight:500}
-.dp-badge{position:absolute;top:13px;right:13px;z-index:1;font-family:var(--font-mono),'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:#f3f7ff;background:var(--ember);border-radius:6px;padding:3px 8px;font-weight:600}
+.dp-badge{position:absolute;top:13px;right:13px;z-index:1;font-family:var(--font-mono),'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:#f3f7ff;background:#1b6ccd;border-radius:6px;padding:3px 8px;font-weight:600}
 .dp-thumb-ai{position:absolute;top:13px;right:13px;z-index:1;display:inline-flex;align-items:center;gap:4px;font-family:var(--font-mono),'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;font-weight:600;color:#8ab4f6;background:rgba(8,6,9,.5);backdrop-filter:blur(5px);-webkit-backdrop-filter:blur(5px);border:1px solid rgba(138,180,246,.45);border-radius:6px;padding:3px 8px}
 .dp-thumb-ai svg{width:12px;height:12px}
 .dp-thumb-ai.is-stacked{top:44px}
@@ -1461,7 +1461,7 @@ const CSS = `
 .dp-card-p{color:var(--muted);font-size:13.5px}
 .dp-card-pills{margin-top:4px}
 .dp-card:hover .dp-pill{border-color:rgba(30,120,228,.35)}
-.dp-card-open{display:inline-flex;align-items:center;gap:6px;font-family:var(--font-mono),'JetBrains Mono',monospace;font-size:12.5px;color:var(--ember);margin-top:4px;transition:gap .2s}
+.dp-card-open{display:inline-flex;align-items:center;gap:6px;font-family:var(--font-mono),'JetBrains Mono',monospace;font-size:12.5px;color:var(--amber);margin-top:4px;transition:gap .2s}
 .dp-card:hover .dp-card-open{gap:10px}
 
 /* detail */
@@ -1775,7 +1775,7 @@ const CSS = `
   .dp-poster-bottom{display:none}
   .dp-stage{padding:28px 20px;min-width:0}
   .dp-sticky-bar{display:flex;justify-content:center;padding:16px;padding-bottom:max(16px,env(safe-area-inset-bottom));border-top:1px solid var(--line-2);background:var(--bg)}
-  .dp-sticky-cta{display:inline-flex;width:auto;align-items:center;justify-content:center;gap:8px;padding:13px 30px;font-family:var(--font-inter),'Inter',system-ui,sans-serif;font-size:15px;font-weight:600;border-radius:12px;border:1px solid rgba(30,120,228,.5);background:var(--ember);color:#f3f7ff;transition:background .2s,transform .15s,box-shadow .2s}
+  .dp-sticky-cta{display:inline-flex;width:auto;align-items:center;justify-content:center;gap:8px;padding:13px 30px;font-family:var(--font-inter),'Inter',system-ui,sans-serif;font-size:15px;font-weight:600;border-radius:12px;border:1px solid rgba(30,120,228,.5);background:#1b6ccd;color:#f3f7ff;transition:background .2s,transform .15s,box-shadow .2s}
   .dp-sticky-cta svg{transition:transform .2s}
   .dp-sticky-cta:hover{background:#3d8bec;transform:translateY(-1px);box-shadow:0 8px 22px -10px rgba(30,120,228,.7)}
   .dp-sticky-cta:hover svg{transform:translateX(4px)}
