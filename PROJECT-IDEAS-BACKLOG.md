@@ -29,12 +29,14 @@ image; pulled off the site so the portfolio only shows finished/real work.
   - `outcome`: "A shelf-ready brand kit: logo suite, color and type system, can and label artwork, and a one-page brand guide, shown with realistic packaging mockups."
   - Existing brand direction to build on: "Wildroot" — craft soda, blackberry basil flavor, small-batch positioning (see prior mockup for color/type starting point: pink/orange/green/near-black palette).
 
-### 2. UX Redesign Teardown *(UI/UX)* — pulled from site, pending real Figma work
+### 2. UX Redesign Teardown *(UI/UX)* — back on the site as "Coming soon", execution plan in progress
 Take a real product with a clunky flow, diagnose why it fails users, and
 rebuild it — a before-and-after redesign that leans on the BA strengths
-(research, problem-solving) more than pure visual output.
-Was live on the site as a "Coming soon" placeholder card; pulled off the site
-so the portfolio only shows finished/real work.
+(research, problem-solving) more than pure visual output. Restored to
+`PROJECTS` with a "Coming soon" badge (it's the strongest BA-methodology fit
+in the whole portfolio — see the recruiter-critique conversation this came
+from). See **`LOFT-LIVING-PLAN.md`** for the lightweight execution plan to
+turn it into a real, finished piece.
 
 - **Scope / deliverables:** heuristic evaluation + quick usability sessions,
   prioritized problems, reworked information architecture, wireframes, hi-fi
@@ -45,21 +47,11 @@ so the portfolio only shows finished/real work.
 - **Stack:** Figma (design + prototype), FigJam (eval/flows), Maze (testing).
 - **Why it fits:** shows analytical UX (research → problem → redesign), which
   most design portfolios lack and which pairs with the analyst background.
-- **Finished case-study copy (ready to paste back into `PROJECTS` once real
-  Figma assets replace the placeholder images):**
-  - `cat`: "Branding & Design", `kind`: "UI/UX", `title`: "LOFT Living — UX Redesign"
-  - `tags`: ["Figma", "FigJam", "Maze"]
-  - `company`: "Self-initiated concept", `role`: "UX research, design & systems analysis"
-  - `body`: "A self-initiated, unaffiliated redesign of LOFT Living, a property-management resident app at 2.4 stars across 6,000+ reviews. I clustered the public complaints into six themes, benchmarked LOFT against higher-rated peers, traced the failures to likely architectural root causes, and sized the business impact — then rebuilt the sign-in, rent-payment, and maintenance flows around what residents hit most."
-  - `challenge`: "LOFT Living promises 'everything resident in one app,' but at 2.4 stars across 6,000+ reviews, residents disagree — while peer apps like RentCafe (4.8) and Zego (4.5) clear the bar easily. Clustering the public complaints surfaced six themes, and the biggest isn't cosmetic: people can't reliably sign in, then hit a confusing payment center with surprise fees, while the tasks they came for (rent, maintenance) sit buried under a five-item nav."
-  - `approach`: "I built an affinity map from the public reviews to cluster the complaints into six themes, benchmarked LOFT against higher-rated peers to see what 'good' looks like, and connected the worst failures to their likely architectural root causes — a webview shell, fragile session handling, non-idempotent payments — so the fix targets systems, not just screens. Prioritizing by what blocks the core jobs (pay rent, request maintenance), the redesign lands on passwordless sign-in, a task-first home, fees shown up front, and a simplified nav — from an annotated before to a hi-fi after on a small design system."
-  - `outcome`: "A research-driven before-and-after: the affinity map of six review themes, a competitive benchmark, a technical read tracing symptoms to likely root causes (from the outside), the business case for fixing it, an annotated teardown, the reworked sign-in and rent-payment flows, a clean hi-fi UI, and a clickable prototype — each change traced back to the complaint it resolves."
 
-**Restoring either one:** re-add the object to `PROJECTS` in `components/Portfolio.jsx`
-(the fields above map directly), re-add the title to `WORK_ORDER`, point
-`image`/`images` at the new real Figma exports, and drop `status: "Coming soon"`
-once it's finished (or keep `noLink: true` if it should stay a non-clickable
-external link either way).
+**Restoring Craft Beverage** (item 1 above): re-add the object to `PROJECTS` in
+`components/Portfolio.jsx` (the fields above map directly), re-add the title
+to `WORK_ORDER`, point `image`/`images` at the new real Figma exports, and
+drop `status: "Coming soon"` once it's finished.
 
 _Parked UX alternatives:_ travel itinerary planner, strength/MMA training
 tracker, recipe & meal planner, home-renovation planner, enterprise request
