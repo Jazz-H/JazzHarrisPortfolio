@@ -620,10 +620,6 @@ export default function LoftLivingApp() {
           <LoadingScreen />
         ) : (
           <>
-            <div className="statusbar">
-              <span>9:41</span>
-              <span>●●●</span>
-            </div>
             <div className="body">
               {!authed ? (
                 <SignInScreen onSignedIn={handleSignedIn} />
@@ -651,39 +647,23 @@ export default function LoftLivingApp() {
       </div>
       <style jsx global>{`
         .ll-shell {
-          min-height: 100vh;
+          min-height: 100dvh;
           display: flex;
-          align-items: center;
           justify-content: center;
-          background: #08090C;
-          padding: 24px 12px;
+          background: #0B0E14;
           font-family: -apple-system, "Inter", "Helvetica Neue", Arial, sans-serif;
         }
         .ll-shell .phone {
           width: 100%;
-          max-width: 420px;
-          height: 700px;
+          max-width: 480px;
+          min-height: 100dvh;
           background: #0B0E14;
-          border-radius: 32px;
-          border: 1px solid #20232C;
-          overflow: hidden;
           position: relative;
           color: #fff;
-          box-shadow: 0 40px 100px -30px rgba(0,0,0,.7);
           display: flex;
           flex-direction: column;
         }
-        .ll-shell .statusbar {
-          height: 34px;
-          flex-shrink: 0;
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-          padding: 0 20px;
-          font-size: 12px;
-          color: #9BA0AE;
-        }
-        .ll-shell .body { flex: 1; overflow-y: auto; padding-bottom: 68px; }
+        .ll-shell .body { flex: 1; overflow-y: auto; padding-top: 14px; padding-bottom: 68px; }
         .ll-shell button { font-family: inherit; }
         .ll-shell * { box-sizing: border-box; }
       `}</style>
