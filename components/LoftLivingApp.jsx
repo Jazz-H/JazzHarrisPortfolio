@@ -17,6 +17,7 @@ import {
   FiLogOut,
   FiChevronRight,
   FiStar,
+  FiCamera,
 } from "react-icons/fi";
 
 const AUTH_KEY = "loftLivingDemoAuthed";
@@ -28,9 +29,9 @@ function fmt(n) {
 }
 
 const SEED_REQUESTS = [
-  { id: 1, title: "Leaking kitchen faucet", date: "Jul 6", status: "In progress" },
-  { id: 2, title: "AC not cooling", date: "Jun 28", status: "Resolved" },
-  { id: 3, title: "Hallway light out", date: "Jun 14", status: "Resolved" },
+  { id: 1, title: "Leaking kitchen faucet", category: "Plumbing", urgent: true, date: "Jul 6", status: "In progress" },
+  { id: 2, title: "AC not cooling", category: "HVAC", urgent: false, date: "Jun 28", status: "Resolved" },
+  { id: 3, title: "Hallway light out", category: "Electrical", urgent: false, date: "Jun 14", status: "Resolved" },
 ];
 
 function LoadingScreen() {
@@ -127,7 +128,7 @@ function SignInScreen({ onSignedIn }) {
   );
 }
 
-function HomeScreen({ requests, amount, onNavigate, onSignOut, onOpenRewards }) {
+function HomeScreen({ requests, amount, card, onNavigate, onSignOut, onOpenRewards }) {
   const open = requests.filter((r) => r.status !== "Resolved");
   return (
     <div className="screen">
@@ -136,10 +137,10 @@ function HomeScreen({ requests, amount, onNavigate, onSignOut, onOpenRewards }) 
         <b>Jordan</b>
       </div>
       <button type="button" className="lead" onClick={() => onNavigate("pay")}>
-        <div className="l1">Rent due Aug 1</div>
-        <div className="l2">${fmt(amount)}</div>
-        <div className="l3">No hidden fees · pay in one tap</div>
-        <div className="cta">Pay with Face ID</div>
+        <div className="l1">{amount > 0 ? "Rent due Aug 1" : "Rent"}</div>
+        <div className="l2">{amount > 0 ? `$${fmt(amount)}` : "Paid in full"}</div>
+        <div className="l3">No hidden fees · partial payments OK</div>
+        {amount > 0 && <div className="cta">{card ? `Pay with card ····${card.last4}` : "Add card to pay"}</div>}
       </button>
       <div className="row2">
         <button type="button" className="mini" onClick={() => onNavigate("maintenance")}>
@@ -194,10 +195,83 @@ function HomeScreen({ requests, amount, onNavigate, onSignOut, onOpenRewards }) 
   );
 }
 
-function PayScreen({ amount, setAmount, onBack, onNavigate }) {
-  const [paid, setPaid] = useState(false);
+const PAY_STEP = 50;
+const MIN_PAYMENT = 50;
+
+function AddCardForm({ onSave, onCancel }) {
+  const [number, setNumber] = useState("");
+  const [expiry, setExpiry] = useState("");
+  const [name, setName] = useState("");
+
+  function submit(e) {
+    e.preventDefault();
+    const digits = number.replace(/\D/g, "");
+    if (digits.length < 4 || !expiry.trim() || !name.trim()) return;
+    onSave({ last4: digits.slice(-4) });
+  }
+
+  return (
+    <form className="form" onSubmit={submit}>
+      <div className="form-head">
+        <span>Add a card</span>
+        <button type="button" onClick={onCancel} aria-label="Close">
+          <FiX aria-hidden="true" />
+        </button>
+      </div>
+      <label>
+        Card number
+        <input
+          value={number}
+          onChange={(e) => setNumber(e.target.value)}
+          placeholder="4242 4242 4242 4242"
+          inputMode="numeric"
+          required
+        />
+      </label>
+      <div className="row2f">
+        <label>
+          Expiry
+          <input value={expiry} onChange={(e) => setExpiry(e.target.value)} placeholder="MM/YY" required />
+        </label>
+        <label>
+          Name on card
+          <input value={name} onChange={(e) => setName(e.target.value)} placeholder="Jordan Ellis" required />
+        </label>
+      </div>
+      <button type="submit" className="primary">Save card</button>
+      <style jsx>{`
+        .form { background: #171A22; border: 1px solid #262A35; border-radius: 16px; padding: 16px; display: flex; flex-direction: column; gap: 10px; margin-top: 18px; }
+        .form-head { display: flex; justify-content: space-between; align-items: center; font-size: 12.5px; font-weight: 700; color: #fff; }
+        .form-head button { background: none; border: none; color: #6D7280; cursor: pointer; display: flex; }
+        label { display: flex; flex-direction: column; gap: 6px; font-size: 11.5px; color: #9BA0AE; }
+        .row2f { display: flex; gap: 10px; }
+        .row2f label { flex: 1; }
+        input { background: #0B0E14; border: 1px solid #262A35; border-radius: 10px; padding: 10px; color: #fff; font-size: 13px; font-family: inherit; width: 100%; }
+        input:focus { outline: 2px solid #8B7CFA; outline-offset: 1px; }
+        .primary { background: #8B7CFA; color: #0B0E14; text-align: center; padding: 12px; border-radius: 12px; font-size: 13px; font-weight: 800; border: none; cursor: pointer; margin-top: 4px; }
+      `}</style>
+    </form>
+  );
+}
+
+function PayScreen({ balance, card, onSaveCard, onPay, onBack, onNavigate }) {
+  const [payAmount, setPayAmount] = useState(balance);
+  const [addingCard, setAddingCard] = useState(false);
+  const [paid, setPaid] = useState(null);
   const serviceFee = 0;
-  const total = amount;
+
+  const clampedPay = Math.min(payAmount, balance);
+
+  function submitPayment() {
+    if (!card) {
+      setAddingCard(true);
+      return;
+    }
+    // Capture remaining balance now — `balance` itself updates (via onPay)
+    // before this component re-renders, so it can't be derived afterward.
+    setPaid({ amount: clampedPay, last4: card.last4, remaining: balance - clampedPay });
+    onPay(clampedPay);
+  }
 
   if (paid) {
     return (
@@ -206,7 +280,10 @@ function PayScreen({ amount, setAmount, onBack, onNavigate }) {
           <FiCheckCircle aria-hidden="true" />
         </div>
         <h1>Payment received</h1>
-        <p>${fmt(total)} paid · confirmation sent</p>
+        <p>
+          ${fmt(paid.amount)} paid with card ····{paid.last4}
+          {paid.remaining > 0 ? ` · $${fmt(paid.remaining)} remaining` : " · paid in full"}
+        </p>
         <button type="button" className="primary" onClick={() => onNavigate("home")}>
           Back to home
         </button>
@@ -215,7 +292,7 @@ function PayScreen({ amount, setAmount, onBack, onNavigate }) {
           .check { width: 84px; height: 84px; border-radius: 26px; background: rgba(74,222,128,.15); display: flex; align-items: center; justify-content: center; margin-bottom: 22px; }
           .check :global(svg) { width: 38px; height: 38px; color: #4ADE80; }
           h1 { font-size: 20px; font-weight: 800; margin: 0; }
-          p { font-size: 13px; color: #9BA0AE; margin: 6px 0 30px; }
+          p { font-size: 13px; color: #9BA0AE; margin: 6px 0 30px; line-height: 1.5; }
           .primary { width: 100%; background: #8B7CFA; color: #0B0E14; text-align: center; padding: 15px; border-radius: 16px; font-size: 14.5px; font-weight: 800; border: none; cursor: pointer; }
         `}</style>
       </div>
@@ -229,58 +306,193 @@ function PayScreen({ amount, setAmount, onBack, onNavigate }) {
       </button>
       <div className="balance">
         <div className="l">Amount due · due Aug 1</div>
-        <div className="amt">${fmt(amount)}</div>
-      </div>
-      <div className="stepper">
-        <button type="button" onClick={() => setAmount((a) => Math.max(50, a - 10))} aria-label="Decrease amount">
-          <FiMinus aria-hidden="true" />
-        </button>
-        <span>Edit amount</span>
-        <button type="button" onClick={() => setAmount((a) => a + 10)} aria-label="Increase amount">
-          <FiPlus aria-hidden="true" />
-        </button>
+        <div className="amt">${fmt(balance)}</div>
       </div>
       <div className="card">
         <div className="line"><span>Base rent</span><span>${fmt(BASE_RENT)}</span></div>
         <div className="line"><span>Utilities</span><span>${fmt(UTILITIES)}</span></div>
         <div className="line"><span>Service fee</span><span className="good">${fmt(serviceFee)} · no hidden fees</span></div>
-        <div className="line total"><span>Total</span><span>${fmt(total)}</span></div>
+        <div className="line total"><span>Total due</span><span>${fmt(balance)}</span></div>
       </div>
-      <button type="button" className="primary" onClick={() => setPaid(true)}>
-        Pay with Face ID
-      </button>
-      <p className="note">Pay early or adjust the amount any time before the due date — nothing here is locked.</p>
+
+      <div className="paying-label">You're paying</div>
+      <div className="stepper">
+        <button
+          type="button"
+          onClick={() => setPayAmount((a) => Math.max(MIN_PAYMENT, a - PAY_STEP))}
+          disabled={clampedPay <= MIN_PAYMENT}
+          aria-label="Decrease payment amount"
+        >
+          <FiMinus aria-hidden="true" />
+        </button>
+        <span className="pay-amt">${fmt(clampedPay)}</span>
+        <button
+          type="button"
+          onClick={() => setPayAmount((a) => Math.min(balance, a + PAY_STEP))}
+          disabled={clampedPay >= balance}
+          aria-label="Increase payment amount"
+        >
+          <FiPlus aria-hidden="true" />
+        </button>
+      </div>
+      <p className="note">
+        Partial payments are OK — pay any amount up to your full balance of ${fmt(balance)}. The base rent amount itself can&rsquo;t be changed.
+      </p>
+
+      {addingCard ? (
+        <AddCardForm
+          onCancel={() => setAddingCard(false)}
+          onSave={(c) => { onSaveCard(c); setAddingCard(false); }}
+        />
+      ) : (
+        <>
+          {card && (
+            <div className="method">
+              <span>Card ····{card.last4}</span>
+              <button type="button" onClick={() => setAddingCard(true)}>Change</button>
+            </div>
+          )}
+          <button type="button" className="primary" onClick={submitPayment}>
+            {card ? `Pay $${fmt(clampedPay)} with card ····${card.last4}` : "Add card to pay"}
+          </button>
+        </>
+      )}
       <style jsx>{`
         .screen { padding: 8px 20px 40px; }
         .back { background: #171A22; border: 1px solid #262A35; width: 34px; height: 34px; border-radius: 10px; display: flex; align-items: center; justify-content: center; color: #fff; cursor: pointer; margin-bottom: 8px; }
         .balance { text-align: center; padding: 10px 0 4px; }
         .l { font-size: 12px; color: #9BA0AE; }
         .amt { font-size: 40px; font-weight: 800; margin-top: 6px; }
-        .stepper { display: flex; align-items: center; justify-content: center; gap: 16px; margin: 14px 0 4px; }
-        .stepper span { font-size: 13px; color: #9BA0AE; }
-        .stepper button { width: 34px; height: 34px; border-radius: 10px; background: #262A35; border: none; display: flex; align-items: center; justify-content: center; color: #fff; cursor: pointer; }
         .card { background: #171A22; border: 1px solid #262A35; border-radius: 20px; padding: 20px; margin-top: 18px; }
         .line { display: flex; justify-content: space-between; font-size: 12.5px; padding: 9px 0; border-bottom: 1px solid #20232C; color: #C7CAD3; }
         .line.total { color: #fff; font-weight: 700; border-bottom: none; }
         .line .good { color: #4ADE80; font-weight: 700; }
-        .primary { width: 100%; background: #8B7CFA; color: #0B0E14; text-align: center; padding: 15px; border-radius: 16px; font-size: 14.5px; font-weight: 800; border: none; cursor: pointer; margin-top: 16px; }
+        .paying-label { font-size: 11px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; color: #6D7280; margin-top: 20px; text-align: center; }
+        .stepper { display: flex; align-items: center; justify-content: center; gap: 16px; margin: 10px 0 4px; }
+        .pay-amt { font-size: 17px; font-weight: 800; color: #fff; min-width: 92px; text-align: center; }
+        .stepper button { width: 34px; height: 34px; border-radius: 10px; background: #262A35; border: none; display: flex; align-items: center; justify-content: center; color: #fff; cursor: pointer; }
+        .stepper button:disabled { opacity: .35; cursor: not-allowed; }
         .note { font-size: 11px; color: #6D7280; text-align: center; margin-top: 14px; line-height: 1.5; }
+        .method { display: flex; justify-content: space-between; align-items: center; background: #171A22; border: 1px solid #262A35; border-radius: 12px; padding: 12px 14px; margin-top: 18px; font-size: 12.5px; color: #C7CAD3; }
+        .method button { background: none; border: none; color: #8B7CFA; font-size: 12px; font-weight: 700; cursor: pointer; }
+        .primary { width: 100%; background: #8B7CFA; color: #0B0E14; text-align: center; padding: 15px; border-radius: 16px; font-size: 14.5px; font-weight: 800; border: none; cursor: pointer; margin-top: 12px; }
       `}</style>
     </div>
   );
 }
 
-function MaintenanceScreen({ requests, onAdd, initialFormOpen }) {
-  const [formOpen, setFormOpen] = useState(!!initialFormOpen);
+const CATEGORIES = ["Plumbing", "Electrical", "Appliance", "HVAC", "Pest control", "Other"];
+
+function NewRequestForm({ onAdd, onClose }) {
   const [title, setTitle] = useState("");
+  const [category, setCategory] = useState(CATEGORIES[0]);
+  const [urgent, setUrgent] = useState(false);
+  const [okToEnter, setOkToEnter] = useState(true);
   const [desc, setDesc] = useState("");
+  const [photo, setPhoto] = useState(null);
+
+  function handlePhoto(e) {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    setPhoto({ url: URL.createObjectURL(file), name: file.name });
+  }
+
+  function removePhoto() {
+    if (photo) URL.revokeObjectURL(photo.url);
+    setPhoto(null);
+  }
 
   function submit(e) {
     e.preventDefault();
     if (!title.trim()) return;
-    onAdd({ title: title.trim(), desc: desc.trim() });
-    setTitle("");
-    setDesc("");
+    onAdd({
+      title: title.trim(),
+      desc: desc.trim(),
+      category,
+      urgent,
+      okToEnter,
+      photoUrl: photo?.url ?? null,
+    });
+  }
+
+  return (
+    <form className="form" onSubmit={submit}>
+      <div className="form-head">
+        <span>New request</span>
+        <button type="button" onClick={onClose} aria-label="Close">
+          <FiX aria-hidden="true" />
+        </button>
+      </div>
+      <label>
+        Issue
+        <input value={title} onChange={(e) => setTitle(e.target.value)} placeholder="e.g. Garbage disposal jammed" required />
+      </label>
+      <label>
+        Category
+        <select value={category} onChange={(e) => setCategory(e.target.value)}>
+          {CATEGORIES.map((c) => (
+            <option key={c} value={c}>{c}</option>
+          ))}
+        </select>
+      </label>
+      <div className="urgency">
+        <button type="button" className={!urgent ? "active" : ""} onClick={() => setUrgent(false)}>Standard</button>
+        <button type="button" className={urgent ? "active urgent" : ""} onClick={() => setUrgent(true)}>Urgent</button>
+      </div>
+      <label>
+        Details (optional)
+        <textarea value={desc} onChange={(e) => setDesc(e.target.value)} rows={3} placeholder="Anything the maintenance team should know" />
+      </label>
+      <label className="photo-label">
+        Photo (optional)
+        {photo ? (
+          <div className="photo-preview">
+            <img src={photo.url} alt="" />
+            <button type="button" onClick={removePhoto} aria-label="Remove photo"><FiX aria-hidden="true" /></button>
+          </div>
+        ) : (
+          <label className="photo-btn">
+            <FiCamera aria-hidden="true" /> Add photo
+            <input type="file" accept="image/*" onChange={handlePhoto} hidden />
+          </label>
+        )}
+      </label>
+      <label className="check-row">
+        <input type="checkbox" checked={okToEnter} onChange={(e) => setOkToEnter(e.target.checked)} />
+        OK to enter if I&rsquo;m not home
+      </label>
+      <button type="submit" className="primary">Submit request</button>
+      <style jsx>{`
+        .form { background: #171A22; border: 1px solid #262A35; border-radius: 16px; padding: 16px; display: flex; flex-direction: column; gap: 10px; }
+        .form-head { display: flex; justify-content: space-between; align-items: center; font-size: 12.5px; font-weight: 700; color: #fff; }
+        .form-head button { background: none; border: none; color: #6D7280; cursor: pointer; display: flex; }
+        label { display: flex; flex-direction: column; gap: 6px; font-size: 11.5px; color: #9BA0AE; }
+        input, textarea, select { background: #0B0E14; border: 1px solid #262A35; border-radius: 10px; padding: 10px; color: #fff; font-size: 13px; font-family: inherit; resize: none; }
+        input:focus, textarea:focus, select:focus { outline: 2px solid #8B7CFA; outline-offset: 1px; }
+        .urgency { display: flex; gap: 8px; }
+        .urgency button { flex: 1; background: #0B0E14; border: 1px solid #262A35; color: #9BA0AE; font-size: 12px; font-weight: 700; padding: 9px; border-radius: 10px; cursor: pointer; }
+        .urgency button.active { background: rgba(139,124,250,.16); border-color: #8B7CFA; color: #C9C0FE; }
+        .urgency button.active.urgent { background: rgba(242,124,124,.14); border-color: #F27C7C; color: #F7B2B2; }
+        .photo-label { gap: 8px; }
+        .photo-btn { display: inline-flex; align-items: center; gap: 8px; background: #0B0E14; border: 1px dashed #262A35; color: #9BA0AE; font-size: 12px; font-weight: 600; padding: 10px 14px; border-radius: 10px; cursor: pointer; width: fit-content; }
+        .photo-btn :global(svg) { width: 15px; height: 15px; }
+        .photo-preview { position: relative; width: 84px; height: 84px; }
+        .photo-preview img { width: 100%; height: 100%; object-fit: cover; border-radius: 10px; border: 1px solid #262A35; }
+        .photo-preview button { position: absolute; top: -7px; right: -7px; width: 22px; height: 22px; border-radius: 999px; background: #171A22; border: 1px solid #262A35; color: #fff; display: flex; align-items: center; justify-content: center; cursor: pointer; }
+        .photo-preview button :global(svg) { width: 12px; height: 12px; }
+        .check-row { flex-direction: row; align-items: center; gap: 8px; font-size: 12px; color: #C7CAD3; }
+        .check-row input { width: auto; padding: 0; accent-color: #8B7CFA; }
+        .primary { background: #8B7CFA; color: #0B0E14; text-align: center; padding: 12px; border-radius: 12px; font-size: 13px; font-weight: 800; border: none; cursor: pointer; margin-top: 4px; }
+      `}</style>
+    </form>
+  );
+}
+
+function MaintenanceScreen({ requests, onAdd, initialFormOpen }) {
+  const [formOpen, setFormOpen] = useState(!!initialFormOpen);
+
+  function handleAdd(data) {
+    onAdd(data);
     setFormOpen(false);
   }
 
@@ -288,23 +500,7 @@ function MaintenanceScreen({ requests, onAdd, initialFormOpen }) {
     <div className="screen">
       <h1>Maintenance requests</h1>
       {formOpen ? (
-        <form className="form" onSubmit={submit}>
-          <div className="form-head">
-            <span>New request</span>
-            <button type="button" onClick={() => setFormOpen(false)} aria-label="Close">
-              <FiX aria-hidden="true" />
-            </button>
-          </div>
-          <label>
-            Issue
-            <input value={title} onChange={(e) => setTitle(e.target.value)} placeholder="e.g. Garbage disposal jammed" required />
-          </label>
-          <label>
-            Details (optional)
-            <textarea value={desc} onChange={(e) => setDesc(e.target.value)} rows={3} placeholder="Anything the maintenance team should know" />
-          </label>
-          <button type="submit" className="primary">Submit request</button>
-        </form>
+        <NewRequestForm onAdd={handleAdd} onClose={() => setFormOpen(false)} />
       ) : (
         <button type="button" className="new" onClick={() => setFormOpen(true)}>
           + New request
@@ -313,10 +509,19 @@ function MaintenanceScreen({ requests, onAdd, initialFormOpen }) {
       <div className="list">
         {requests.map((r) => (
           <div className="row" key={r.id}>
-            <div className="thumb" aria-hidden="true"><FiTool /></div>
+            {r.photoUrl ? (
+              <img className="thumb photo" src={r.photoUrl} alt="" />
+            ) : (
+              <div className="thumb" aria-hidden="true"><FiTool /></div>
+            )}
             <div className="meta">
-              <div className="rt">{r.title}</div>
-              <div className="rs">Submitted {r.date}</div>
+              <div className="rt">
+                {r.title}
+                {r.urgent && <span className="urgent-tag">Urgent</span>}
+              </div>
+              <div className="rs">
+                {r.category ? `${r.category} · ` : ""}Submitted {r.date}
+              </div>
             </div>
             <StatusChip status={r.status} />
           </div>
@@ -326,18 +531,13 @@ function MaintenanceScreen({ requests, onAdd, initialFormOpen }) {
         .screen { padding: 8px 20px 40px; }
         h1 { font-size: 15px; font-weight: 700; margin: 6px 0 14px; }
         .new { width: 100%; background: #8B7CFA; color: #0B0E14; text-align: center; padding: 13px; border-radius: 14px; font-size: 13px; font-weight: 800; border: none; cursor: pointer; }
-        .form { background: #171A22; border: 1px solid #262A35; border-radius: 16px; padding: 16px; display: flex; flex-direction: column; gap: 10px; }
-        .form-head { display: flex; justify-content: space-between; align-items: center; font-size: 12.5px; font-weight: 700; color: #fff; }
-        .form-head button { background: none; border: none; color: #6D7280; cursor: pointer; display: flex; }
-        label { display: flex; flex-direction: column; gap: 6px; font-size: 11.5px; color: #9BA0AE; }
-        input, textarea { background: #0B0E14; border: 1px solid #262A35; border-radius: 10px; padding: 10px; color: #fff; font-size: 13px; font-family: inherit; resize: none; }
-        input:focus, textarea:focus { outline: 2px solid #8B7CFA; outline-offset: 1px; }
-        .form .primary { background: #8B7CFA; color: #0B0E14; text-align: center; padding: 12px; border-radius: 12px; font-size: 13px; font-weight: 800; border: none; cursor: pointer; margin-top: 4px; }
         .list { margin-top: 14px; display: flex; flex-direction: column; gap: 10px; }
         .row { display: flex; align-items: center; gap: 12px; padding: 13px; background: #171A22; border: 1px solid #262A35; border-radius: 14px; }
         .thumb { width: 40px; height: 40px; border-radius: 10px; background: #262A35; flex-shrink: 0; display: flex; align-items: center; justify-content: center; color: #8B7CFA; }
+        .thumb.photo { object-fit: cover; }
         .meta { min-width: 0; }
-        .rt { font-size: 12.5px; font-weight: 700; }
+        .rt { font-size: 12.5px; font-weight: 700; display: flex; align-items: center; gap: 6px; }
+        .urgent-tag { font-size: 9px; font-weight: 700; color: #F7B2B2; background: rgba(242,124,124,.16); padding: 2px 7px; border-radius: 999px; flex-shrink: 0; }
         .rs { font-size: 10.5px; color: #6D7280; margin-top: 2px; }
       `}</style>
     </div>
@@ -570,7 +770,8 @@ export default function LoftLivingApp() {
   const [authed, setAuthed] = useState(() => window.localStorage.getItem(AUTH_KEY) === "1");
   const [view, setView] = useState("home");
   const [overlay, setOverlay] = useState(null);
-  const [amount, setAmount] = useState(BASE_RENT + UTILITIES);
+  const [balance, setBalance] = useState(BASE_RENT + UTILITIES);
+  const [card, setCard] = useState(null);
   const [requests, setRequests] = useState(SEED_REQUESTS);
   const [maintFormOpen, setMaintFormOpen] = useState(false);
 
@@ -606,11 +807,15 @@ export default function LoftLivingApp() {
     }
   }
 
-  function addRequest({ title, desc }) {
+  function addRequest({ title, desc, category, urgent, okToEnter, photoUrl }) {
     setRequests((rs) => [
-      { id: Date.now(), title, desc, date: "Just now", status: "Submitted" },
+      { id: Date.now(), title, desc, category, urgent, okToEnter, photoUrl, date: "Just now", status: "Submitted" },
       ...rs,
     ]);
+  }
+
+  function handlePay(paidAmount) {
+    setBalance((b) => Math.max(0, b - paidAmount));
   }
 
   return (
@@ -632,9 +837,9 @@ export default function LoftLivingApp() {
                   onBack={() => setOverlay(null)}
                 />
               ) : view === "home" ? (
-                <HomeScreen requests={requests} amount={amount} onNavigate={navigate} onSignOut={handleSignOut} onOpenRewards={() => setOverlay("rewards")} />
+                <HomeScreen requests={requests} amount={balance} card={card} onNavigate={navigate} onSignOut={handleSignOut} onOpenRewards={() => setOverlay("rewards")} />
               ) : view === "pay" ? (
-                <PayScreen amount={amount} setAmount={setAmount} onBack={() => navigate("home")} onNavigate={navigate} />
+                <PayScreen balance={balance} card={card} onSaveCard={setCard} onPay={handlePay} onBack={() => navigate("home")} onNavigate={navigate} />
               ) : view === "maintenance" ? (
                 <MaintenanceScreen requests={requests} onAdd={addRequest} initialFormOpen={maintFormOpen} />
               ) : (
