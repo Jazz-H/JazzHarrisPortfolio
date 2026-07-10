@@ -7,13 +7,23 @@ const STRIP_INERT = [
   { l: "Amenities", Icon: FiMapPin },
 ];
 
+function getGreeting() {
+  const hour = new Date().getHours();
+  if (hour < 12) return "Good morning";
+  if (hour < 18) return "Good afternoon";
+  return "Good evening";
+}
+
 export default function HomeScreen({ requests, amount, card, onNavigate, onSignOut, onOpenRewards }) {
   const open = requests.filter((r) => r.status !== "Resolved");
   return (
     <div className="screen">
       <div className="greet">
-        Good morning
-        <b>Jordan</b>
+        <div className="avatar" aria-hidden="true">J</div>
+        <div className="greet-text">
+          <span className="hi">{getGreeting()}</span>
+          <span className="name">Jordan</span>
+        </div>
       </div>
       <button type="button" className="lead" onClick={() => onNavigate("pay")}>
         <div className="l1">{amount > 0 ? "Rent due Aug 1" : "Rent"}</div>
@@ -50,8 +60,11 @@ export default function HomeScreen({ requests, amount, card, onNavigate, onSignO
       </button>
       <style jsx>{`
         .screen { padding: 4px 20px 90px; }
-        .greet { font-size: 13px; color: var(--ll-text-muted); margin-top: 8px; }
-        .greet b { color: var(--ll-text); font-size: 20px; font-weight: 700; display: block; margin-top: 2px; }
+        .greet { display: flex; align-items: center; gap: 13px; margin-top: 8px; }
+        .avatar { width: 42px; height: 42px; border-radius: 12px; background: var(--ll-accent-soft); color: var(--ll-accent-soft-ink); display: flex; align-items: center; justify-content: center; font-size: 16px; font-weight: 700; flex-shrink: 0; }
+        .greet-text { display: flex; flex-direction: column; }
+        .hi { font-size: 13px; color: var(--ll-text-muted); }
+        .name { color: var(--ll-text); font-size: 20px; font-weight: 700; margin-top: 1px; }
         .lead { display: block; width: 100%; text-align: left; margin-top: 18px; background: var(--ll-surface); border: 1px solid var(--ll-border); border-radius: 14px; padding: 20px; cursor: pointer; box-shadow: var(--ll-shadow); }
         .l1 { font-size: 11px; color: var(--ll-text-faint); font-weight: 700; text-transform: uppercase; letter-spacing: .04em; }
         .l2 { font-size: 28px; font-weight: 700; margin-top: 8px; color: var(--ll-text); }
