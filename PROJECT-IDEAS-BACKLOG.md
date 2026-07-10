@@ -40,17 +40,19 @@ conversation this came from). See **`LOFT-LIVING-PLAN.md`** and
 
 - **Delivered:** an affinity map of six complaint themes, a competitive
   benchmark (LOFT 1.94★ vs. Zego 3.56★ vs. RentCafe 4.7★), a root-cause
-  analysis, a reasoned business case, and before/after hi-fi screens for
-  sign-in, rent-payment, and maintenance.
+  analysis, a reasoned business case, and a real, installable PWA at
+  `/loft-living` covering sign-in, rent-payment, and maintenance — not
+  static screens.
 - **Subject:** LOFT Living resident app (1.94★ across 5,200+ ratings) — a
   real, poorly-reviewed product with public complaints to mine. Unaffiliated
   concept.
-- **Built with:** hand-coded HTML/CSS mockups, not Figma — no Figma access
-  was available in the session that built this, so the tags/copy reflect
-  that (no Figma/FigJam/Maze, no "clickable prototype" claim). Swap in real
-  Figma work later if it happens.
-- **Why it fits:** shows analytical UX (research → problem → redesign), which
-  most design portfolios lack and which pairs with the analyst background.
+- **Built with:** React (`components/LoftLivingApp.jsx`), not Figma — no
+  Figma access was available in the sessions that built this, so a working
+  PWA was built instead of a Figma prototype. Case-study copy and tags
+  (React, PWA) reflect that; "Visit live" and "View code" links are real.
+- **Why it fits:** shows analytical UX (research → problem → redesign) *and*
+  the engineering to actually ship it, which most design-only portfolios
+  lack and which pairs with the analyst + software-engineer background.
 
 **Restoring Craft Beverage** (item 1 above): re-add the object to `PROJECTS` in
 `components/Portfolio.jsx` (the fields above map directly), re-add the title
