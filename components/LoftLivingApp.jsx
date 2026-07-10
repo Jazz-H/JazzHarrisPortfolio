@@ -666,6 +666,77 @@ function DetailScreen({ title, onBack, rows }) {
   );
 }
 
+function PropertyInfoScreen({ rows, onBack }) {
+  const [subject, setSubject] = useState("");
+  const [message, setMessage] = useState("");
+  const [sent, setSent] = useState(false);
+
+  function submit(e) {
+    e.preventDefault();
+    if (!message.trim()) return;
+    setSent(true);
+  }
+
+  return (
+    <div className="screen">
+      <BackHeader title="Property Info" onBack={onBack} />
+      <div className="dcard">
+        {rows.map(([label, value]) => (
+          <div className="drow" key={label}>
+            <span className="dl">{label}</span>
+            {label === "Email" ? (
+              <a className="dv link" href={`mailto:${value}`}>{value}</a>
+            ) : (
+              <span className="dv">{value}</span>
+            )}
+          </div>
+        ))}
+      </div>
+
+      <div className="slabel">Contact the office</div>
+      {sent ? (
+        <div className="sent-card">
+          <FiCheckCircle aria-hidden="true" />
+          <div className="st">Message sent</div>
+          <div className="ss">The office typically responds within 1 business day.</div>
+        </div>
+      ) : (
+        <form className="form" onSubmit={submit}>
+          <label>
+            Subject
+            <input value={subject} onChange={(e) => setSubject(e.target.value)} placeholder="e.g. Question about parking" />
+          </label>
+          <label>
+            Message
+            <textarea value={message} onChange={(e) => setMessage(e.target.value)} rows={4} placeholder="What can the office help with?" required />
+          </label>
+          <button type="submit" className="primary">Send message</button>
+        </form>
+      )}
+      <style jsx>{`
+        .screen { padding: 4px 20px 40px; }
+        .dcard { background: var(--ll-surface); border: 1px solid var(--ll-border); border-radius: 14px; margin-top: 16px; padding: 4px 16px; }
+        .drow { display: flex; justify-content: space-between; gap: 16px; padding: 14px 0; border-bottom: 1px solid var(--ll-border); font-size: 12.5px; }
+        .drow:last-child { border-bottom: none; }
+        .dl { color: var(--ll-text-muted); }
+        .dv { color: var(--ll-text); font-weight: 600; text-align: right; }
+        .dv.link { color: var(--ll-accent); text-decoration: none; }
+        .dv.link:hover { text-decoration: underline; }
+        .slabel { font-size: 11px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; color: var(--ll-text-faint); margin: 22px 0 8px; }
+        .form { background: var(--ll-surface); border: 1px solid var(--ll-border); border-radius: 14px; padding: 16px; display: flex; flex-direction: column; gap: 10px; }
+        label { display: flex; flex-direction: column; gap: 6px; font-size: 11.5px; color: var(--ll-text-muted); }
+        input, textarea { background: var(--ll-surface-2); border: 1px solid var(--ll-border); border-radius: 10px; padding: 10px; color: var(--ll-text); font-size: 13px; font-family: inherit; resize: none; }
+        .primary { background: var(--ll-accent); color: var(--ll-accent-ink); text-align: center; padding: 12px; border-radius: 10px; font-size: 13px; font-weight: 700; border: none; cursor: pointer; margin-top: 4px; }
+        .primary:hover { background: var(--ll-accent-hover); }
+        .sent-card { background: var(--ll-surface); border: 1px solid var(--ll-border); border-radius: 14px; padding: 24px; text-align: center; }
+        .sent-card :global(svg) { width: 28px; height: 28px; color: var(--ll-success); }
+        .st { font-size: 14px; font-weight: 700; color: var(--ll-text); margin-top: 10px; }
+        .ss { font-size: 12px; color: var(--ll-text-muted); margin-top: 4px; line-height: 1.5; }
+      `}</style>
+    </div>
+  );
+}
+
 function AccountSettingsScreen({ rows, theme, onSetTheme, onBack }) {
   return (
     <div className="screen">
@@ -812,6 +883,7 @@ const DETAIL_CONTENT = {
     rows: [
       ["Property", "Cedar Row Apartments"],
       ["Office phone", "(555) 010-0100"],
+      ["Email", "leasing@example.com"],
       ["Address", "100 Main St, Anytown, ST"],
       ["Office hours", "Mon–Fri, 9am–6pm"],
     ],
@@ -898,6 +970,8 @@ export default function LoftLivingApp() {
                   onSetTheme={handleSetTheme}
                   onBack={() => setOverlay(null)}
                 />
+              ) : overlay === "property" ? (
+                <PropertyInfoScreen rows={DETAIL_CONTENT.property.rows} onBack={() => setOverlay(null)} />
               ) : overlay ? (
                 <DetailScreen
                   title={DETAIL_CONTENT[overlay].title}
