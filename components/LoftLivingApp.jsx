@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   FiHome,
   FiCreditCard,
@@ -9,6 +9,14 @@ import {
   FiCheckCircle,
   FiArrowLeft,
   FiX,
+  FiAward,
+  FiUser,
+  FiSettings,
+  FiFileText,
+  FiInfo,
+  FiLogOut,
+  FiChevronRight,
+  FiStar,
 } from "react-icons/fi";
 
 const AUTH_KEY = "loftLivingDemoAuthed";
@@ -24,6 +32,28 @@ const SEED_REQUESTS = [
   { id: 2, title: "AC not cooling", date: "Jun 28", status: "Resolved" },
   { id: 3, title: "Hallway light out", date: "Jun 14", status: "Resolved" },
 ];
+
+function LoadingScreen() {
+  return (
+    <div className="loading">
+      <div className="mark">
+        <FiHome aria-hidden="true" />
+      </div>
+      <div className="bar">
+        <div className="fill" />
+      </div>
+      <style jsx>{`
+        .loading { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 22px; background: #0B0E14; }
+        .mark { width: 72px; height: 72px; border-radius: 22px; background: linear-gradient(135deg,#8B7CFA,#5A3FE0); display: flex; align-items: center; justify-content: center; animation: pulse 1.1s ease-in-out infinite; }
+        .mark :global(svg) { width: 32px; height: 32px; color: #fff; }
+        .bar { width: 96px; height: 3px; border-radius: 999px; background: #20232C; overflow: hidden; }
+        .fill { width: 40%; height: 100%; background: #8B7CFA; border-radius: 999px; animation: slide 1.1s ease-in-out infinite; }
+        @keyframes pulse { 0%, 100% { transform: scale(1); opacity: 1; } 50% { transform: scale(0.92); opacity: 0.8; } }
+        @keyframes slide { 0% { transform: translateX(-120%); } 100% { transform: translateX(340%); } }
+      `}</style>
+    </div>
+  );
+}
 
 function StatusChip({ status }) {
   const done = status === "Resolved";
@@ -97,7 +127,7 @@ function SignInScreen({ onSignedIn }) {
   );
 }
 
-function HomeScreen({ requests, amount, onNavigate, onSignOut }) {
+function HomeScreen({ requests, amount, onNavigate, onSignOut, onOpenRewards }) {
   const open = requests.filter((r) => r.status !== "Resolved");
   return (
     <div className="screen">
@@ -124,8 +154,12 @@ function HomeScreen({ requests, amount, onNavigate, onSignOut }) {
         </button>
       </div>
       <div className="strip">
-        {["Rewards", "Events", "Docs", "Amenities"].map((l) => (
-          <div className="stripitem" key={l}>
+        <button type="button" className="stripitem" onClick={onOpenRewards}>
+          <div className="dot"><FiAward aria-hidden="true" /></div>
+          <span>Rewards</span>
+        </button>
+        {["Events", "Docs", "Amenities"].map((l) => (
+          <div className="stripitem inert" key={l}>
             <div className="dot" />
             <span>{l}</span>
           </div>
@@ -149,8 +183,10 @@ function HomeScreen({ requests, amount, onNavigate, onSignOut }) {
         .mini .t { font-size: 12.5px; font-weight: 700; }
         .mini .s { font-size: 10.5px; color: #6D7280; margin-top: 2px; }
         .strip { display: flex; gap: 12px; margin-top: 18px; }
-        .stripitem { display: flex; flex-direction: column; align-items: center; gap: 6px; flex: 1; }
-        .dot { width: 100%; aspect-ratio: 1; border-radius: 14px; background: #171A22; border: 1px solid #262A35; }
+        .stripitem { display: flex; flex-direction: column; align-items: center; gap: 6px; flex: 1; background: none; border: none; padding: 0; cursor: pointer; }
+        .stripitem.inert { cursor: default; }
+        .dot { width: 100%; aspect-ratio: 1; border-radius: 14px; background: #171A22; border: 1px solid #262A35; display: flex; align-items: center; justify-content: center; }
+        .dot :global(svg) { width: 18px; height: 18px; color: #8B7CFA; }
         .stripitem span { font-size: 10px; color: #6D7280; }
         .signout { margin-top: 28px; background: none; border: none; color: #4A4F5E; font-size: 11px; text-decoration: underline; cursor: pointer; }
       `}</style>
@@ -308,36 +344,240 @@ function MaintenanceScreen({ requests, onAdd, initialFormOpen }) {
   );
 }
 
-function MoreScreen({ onBack }) {
+function BackHeader({ title, onBack }) {
   return (
-    <div className="screen center">
-      <h1>Not part of this redesign</h1>
-      <p>
-        This prototype focuses on the three flows the research prioritized —
-        sign-in, rent payment, and maintenance. Rewards, events, and documents
-        weren&rsquo;t in scope for this pass.
-      </p>
-      <button type="button" className="primary" onClick={onBack}>
-        Back to home
+    <div className="back-header">
+      <button type="button" className="back" onClick={onBack} aria-label="Back">
+        <FiArrowLeft aria-hidden="true" />
       </button>
+      {title && <h1>{title}</h1>}
       <style jsx>{`
-        .screen.center { display: flex; flex-direction: column; align-items: center; text-align: center; padding: 90px 26px 0; }
-        h1 { font-size: 17px; font-weight: 800; margin: 0; }
-        p { font-size: 12.5px; color: #9BA0AE; margin: 10px 0 26px; line-height: 1.6; }
-        .primary { background: #171A22; border: 1px solid #262A35; color: #fff; text-align: center; padding: 12px 20px; border-radius: 14px; font-size: 13px; font-weight: 700; cursor: pointer; }
+        .back-header { display: flex; align-items: center; gap: 12px; margin-bottom: 6px; }
+        .back { background: #171A22; border: 1px solid #262A35; width: 34px; height: 34px; border-radius: 10px; display: flex; align-items: center; justify-content: center; color: #fff; cursor: pointer; flex-shrink: 0; }
+        h1 { font-size: 15px; font-weight: 700; }
       `}</style>
     </div>
   );
 }
 
+const REWARDS_TABS = ["Earn", "Redeem", "Benefits", "Activity"];
+
+function RewardsScreen({ onBack }) {
+  const [tab, setTab] = useState("Earn");
+  return (
+    <div className="screen">
+      <BackHeader title="Rewards" onBack={onBack} />
+      <div className="status">
+        <div className="tier"><FiAward aria-hidden="true" /> Silver Tier</div>
+        <div className="pts">120 pts · $25 in credits</div>
+        <div className="track"><div className="fill" style={{ width: "50%" }} /></div>
+        <div className="sub">2 of 4 payments to Gold Tier</div>
+      </div>
+      <div className="tabs2">
+        {REWARDS_TABS.map((t) => (
+          <button key={t} type="button" className={"t2b" + (tab === t ? " active" : "")} onClick={() => setTab(t)}>
+            {t}
+          </button>
+        ))}
+      </div>
+      {tab === "Earn" && (
+        <div className="cards">
+          <div className="promo violet">
+            <FiStar aria-hidden="true" />
+            <div className="pt">Earn points on rent payments</div>
+            <div className="ps">10 pts per on-time payment</div>
+          </div>
+          <div className="promo amber">
+            <FiTool aria-hidden="true" />
+            <div className="pt">Home services</div>
+            <div className="ps">Partner discounts on move-in services</div>
+          </div>
+        </div>
+      )}
+      {tab === "Redeem" && <div className="empty">Nothing to redeem yet — earn points first.</div>}
+      {tab === "Benefits" && (
+        <ul className="benefits">
+          <li>Priority maintenance scheduling</li>
+          <li>Fee-free payment methods</li>
+          <li>Early access to renewal offers</li>
+        </ul>
+      )}
+      {tab === "Activity" && <div className="empty">No activity yet this cycle.</div>}
+      <style jsx>{`
+        .screen { padding: 8px 20px 40px; }
+        .status { background: linear-gradient(135deg,#8B7CFA,#5A3FE0); border-radius: 20px; padding: 20px; margin-top: 14px; }
+        .tier { display: flex; align-items: center; gap: 8px; font-size: 15px; font-weight: 800; }
+        .tier :global(svg) { width: 18px; height: 18px; }
+        .pts { font-size: 12px; opacity: .9; margin-top: 4px; }
+        .track { height: 6px; border-radius: 999px; background: rgba(0,0,0,.25); margin-top: 16px; overflow: hidden; }
+        .track .fill { height: 100%; background: #fff; border-radius: 999px; }
+        .sub { font-size: 11px; opacity: .85; margin-top: 8px; }
+        .tabs2 { display: flex; gap: 4px; margin-top: 18px; border-bottom: 1px solid #20232C; }
+        .t2b { flex: 1; background: none; border: none; color: #6D7280; font-size: 11.5px; font-weight: 700; padding: 10px 4px; cursor: pointer; border-bottom: 2px solid transparent; }
+        .t2b.active { color: #fff; border-bottom-color: #8B7CFA; }
+        .cards { margin-top: 16px; display: flex; flex-direction: column; gap: 12px; }
+        .promo { border-radius: 16px; padding: 16px; }
+        .promo :global(svg) { width: 20px; height: 20px; }
+        .promo.violet { background: rgba(139,124,250,.14); color: #C9C0FE; }
+        .promo.amber { background: rgba(250,178,25,.12); color: #F2C368; }
+        .pt { font-size: 13px; font-weight: 700; color: #fff; margin-top: 10px; }
+        .ps { font-size: 11px; color: #9BA0AE; margin-top: 3px; }
+        .empty { margin-top: 24px; font-size: 12.5px; color: #6D7280; text-align: center; }
+        .benefits { margin-top: 16px; padding-left: 18px; display: flex; flex-direction: column; gap: 10px; font-size: 12.5px; color: #C7CAD3; }
+      `}</style>
+    </div>
+  );
+}
+
+function DetailScreen({ title, onBack, rows }) {
+  return (
+    <div className="screen">
+      <BackHeader title={title} onBack={onBack} />
+      <div className="dcard">
+        {rows.map(([label, value]) => (
+          <div className="drow" key={label}>
+            <span className="dl">{label}</span>
+            <span className="dv">{value}</span>
+          </div>
+        ))}
+      </div>
+      <style jsx>{`
+        .screen { padding: 8px 20px 40px; }
+        .dcard { background: #171A22; border: 1px solid #262A35; border-radius: 16px; margin-top: 16px; padding: 4px 16px; }
+        .drow { display: flex; justify-content: space-between; gap: 16px; padding: 14px 0; border-bottom: 1px solid #20232C; font-size: 12.5px; }
+        .drow:last-child { border-bottom: none; }
+        .dl { color: #9BA0AE; }
+        .dv { color: #fff; font-weight: 600; text-align: right; }
+      `}</style>
+    </div>
+  );
+}
+
+const MORE_SECTIONS = [
+  {
+    label: "My Account",
+    items: [
+      { key: "account", label: "Account Settings", sub: "Manage account details", Icon: FiSettings },
+      { key: "profile", label: "My Public Profile", sub: "Edit your public info", Icon: FiUser },
+    ],
+  },
+  {
+    label: "My Apartment",
+    items: [
+      { key: "pay", label: "Payment Center", sub: "View balance & pay rent", Icon: FiCreditCard, jump: true },
+      { key: "maintenance", label: "Service Requests", sub: "Track maintenance requests", Icon: FiTool, jump: true },
+      { key: "lease", label: "My Lease", sub: "View lease documents", Icon: FiFileText },
+    ],
+  },
+  {
+    label: "My Community",
+    items: [
+      { key: "property", label: "Property Info", sub: "Contact & address", Icon: FiInfo },
+      { key: "rewards", label: "Rewards", sub: "Points, tier & perks", Icon: FiAward },
+    ],
+  },
+];
+
+function MoreScreen({ onOpen, onSignOut }) {
+  return (
+    <div className="screen">
+      <div className="head">
+        <h1>Unit 214</h1>
+      </div>
+      {MORE_SECTIONS.map((section) => (
+        <div className="section" key={section.label}>
+          <div className="slabel">{section.label}</div>
+          <div className="scard">
+            {section.items.map(({ key, label, sub, Icon }) => (
+              <button type="button" className="mrow" key={key} onClick={() => onOpen(key)}>
+                <span className="mic"><Icon aria-hidden="true" /></span>
+                <span className="mtext">
+                  <span className="mt">{label}</span>
+                  <span className="ms">{sub}</span>
+                </span>
+                <FiChevronRight aria-hidden="true" className="mchev" />
+              </button>
+            ))}
+          </div>
+        </div>
+      ))}
+      <button type="button" className="logout" onClick={onSignOut}>
+        <FiLogOut aria-hidden="true" /> Logout
+      </button>
+      <style jsx>{`
+        .screen { padding: 8px 20px 40px; }
+        .head h1 { font-size: 17px; font-weight: 800; margin: 6px 0 4px; }
+        .section { margin-top: 20px; }
+        .slabel { font-size: 11px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; color: #6D7280; margin-bottom: 8px; }
+        .scard { background: #171A22; border: 1px solid #262A35; border-radius: 16px; overflow: hidden; }
+        .mrow { width: 100%; display: flex; align-items: center; gap: 12px; padding: 14px 16px; background: none; border: none; border-bottom: 1px solid #20232C; cursor: pointer; text-align: left; }
+        .mrow:last-child { border-bottom: none; }
+        .mic { width: 30px; height: 30px; border-radius: 9px; background: #20232C; display: flex; align-items: center; justify-content: center; color: #8B7CFA; flex-shrink: 0; }
+        .mic :global(svg) { width: 15px; height: 15px; }
+        .mtext { flex: 1; min-width: 0; display: flex; flex-direction: column; }
+        .mt { font-size: 12.5px; font-weight: 700; color: #fff; }
+        .ms { font-size: 10.5px; color: #6D7280; margin-top: 2px; }
+        .mchev { width: 15px; height: 15px; color: #4A4F5E; flex-shrink: 0; }
+        .logout { width: 100%; display: flex; align-items: center; justify-content: center; gap: 8px; background: none; border: 1px solid #3A2530; color: #F27C7C; font-size: 13px; font-weight: 700; padding: 13px; border-radius: 14px; margin-top: 28px; cursor: pointer; }
+        .logout :global(svg) { width: 15px; height: 15px; }
+      `}</style>
+    </div>
+  );
+}
+
+const DETAIL_CONTENT = {
+  account: {
+    title: "Account Settings",
+    rows: [
+      ["Name", "Jordan Ellis"],
+      ["Email", "jordan@example.com"],
+      ["Phone", "(555) 010-0142"],
+      ["Notifications", "On"],
+    ],
+  },
+  profile: {
+    title: "My Public Profile",
+    rows: [
+      ["Display name", "Jordan E."],
+      ["Visible to", "Your community"],
+      ["Move-in date", "Mar 2025"],
+    ],
+  },
+  lease: {
+    title: "My Lease",
+    rows: [
+      ["Unit", "214"],
+      ["Term", "Mar 2025 – Feb 2026"],
+      ["Monthly rent", `$${fmt(BASE_RENT)}`],
+      ["Renewal status", "Not yet offered"],
+    ],
+  },
+  property: {
+    title: "Property Info",
+    rows: [
+      ["Property", "Cedar Row Apartments"],
+      ["Office phone", "(555) 010-0100"],
+      ["Address", "100 Main St, Anytown, ST"],
+      ["Office hours", "Mon–Fri, 9am–6pm"],
+    ],
+  },
+};
+
 export default function LoftLivingApp() {
+  const [loading, setLoading] = useState(true);
   // Rendered client-only (see pages/loft-living/index.js, dynamic + ssr:false),
   // so reading localStorage in the initializer can't cause a hydration mismatch.
   const [authed, setAuthed] = useState(() => window.localStorage.getItem(AUTH_KEY) === "1");
   const [view, setView] = useState("home");
+  const [overlay, setOverlay] = useState(null);
   const [amount, setAmount] = useState(BASE_RENT + UTILITIES);
   const [requests, setRequests] = useState(SEED_REQUESTS);
   const [maintFormOpen, setMaintFormOpen] = useState(false);
+
+  useEffect(() => {
+    const id = setTimeout(() => setLoading(false), 1100);
+    return () => clearTimeout(id);
+  }, []);
 
   function handleSignedIn() {
     window.localStorage.setItem(AUTH_KEY, "1");
@@ -348,12 +588,22 @@ export default function LoftLivingApp() {
     window.localStorage.removeItem(AUTH_KEY);
     setAuthed(false);
     setView("home");
+    setOverlay(null);
   }
 
   function navigate(next, opts) {
     if (next === "maintenance" && opts?.openForm) setMaintFormOpen(true);
     else setMaintFormOpen(false);
+    setOverlay(null);
     setView(next);
+  }
+
+  function openFromMenu(key) {
+    if (key === "pay" || key === "maintenance") {
+      navigate(key);
+    } else {
+      setOverlay(key);
+    }
   }
 
   function addRequest({ title, desc }) {
@@ -366,24 +616,38 @@ export default function LoftLivingApp() {
   return (
     <div className="ll-shell">
       <div className="phone">
-        <div className="statusbar">
-          <span>9:41</span>
-          <span>●●●</span>
-        </div>
-        <div className="body">
-          {!authed ? (
-            <SignInScreen onSignedIn={handleSignedIn} />
-          ) : view === "home" ? (
-            <HomeScreen requests={requests} amount={amount} onNavigate={navigate} onSignOut={handleSignOut} />
-          ) : view === "pay" ? (
-            <PayScreen amount={amount} setAmount={setAmount} onBack={() => navigate("home")} onNavigate={navigate} />
-          ) : view === "maintenance" ? (
-            <MaintenanceScreen requests={requests} onAdd={addRequest} initialFormOpen={maintFormOpen} />
-          ) : (
-            <MoreScreen onBack={() => navigate("home")} />
-          )}
-        </div>
-        {authed && <TabBar view={view} onNavigate={navigate} />}
+        {loading ? (
+          <LoadingScreen />
+        ) : (
+          <>
+            <div className="statusbar">
+              <span>9:41</span>
+              <span>●●●</span>
+            </div>
+            <div className="body">
+              {!authed ? (
+                <SignInScreen onSignedIn={handleSignedIn} />
+              ) : overlay === "rewards" ? (
+                <RewardsScreen onBack={() => setOverlay(null)} />
+              ) : overlay ? (
+                <DetailScreen
+                  title={DETAIL_CONTENT[overlay].title}
+                  rows={DETAIL_CONTENT[overlay].rows}
+                  onBack={() => setOverlay(null)}
+                />
+              ) : view === "home" ? (
+                <HomeScreen requests={requests} amount={amount} onNavigate={navigate} onSignOut={handleSignOut} onOpenRewards={() => setOverlay("rewards")} />
+              ) : view === "pay" ? (
+                <PayScreen amount={amount} setAmount={setAmount} onBack={() => navigate("home")} onNavigate={navigate} />
+              ) : view === "maintenance" ? (
+                <MaintenanceScreen requests={requests} onAdd={addRequest} initialFormOpen={maintFormOpen} />
+              ) : (
+                <MoreScreen onOpen={openFromMenu} onSignOut={handleSignOut} />
+              )}
+            </div>
+            {authed && <TabBar view={view} onNavigate={navigate} />}
+          </>
+        )}
       </div>
       <style jsx global>{`
         .ll-shell {
