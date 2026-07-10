@@ -1,5 +1,5 @@
-import { FiAward, FiCalendar, FiFileText, FiMapPin, FiPlus, FiSun, FiSunrise, FiSunset, FiTool } from "react-icons/fi";
-import { fmt } from "../constants";
+import { FiAward, FiCalendar, FiChevronRight, FiFileText, FiMapPin, FiPlus, FiSun, FiSunrise, FiSunset, FiTool } from "react-icons/fi";
+import { fmt, DETAIL_CONTENT } from "../constants";
 
 const STRIP_LINKS = [
   { key: "events", l: "Events", Icon: FiCalendar },
@@ -20,6 +20,7 @@ function getGreeting(hour) {
 export default function HomeScreen({ requests, amount, card, onNavigate, onOpen }) {
   const open = requests.filter((r) => r.status !== "Resolved" && r.status !== "Cancelled");
   const hour = getGreetingHour();
+  const [nextEventTitle, nextEventWhen] = DETAIL_CONTENT.events.rows[0];
   return (
     <div className="screen">
       <div className="greet">
@@ -63,6 +64,15 @@ export default function HomeScreen({ requests, amount, card, onNavigate, onOpen 
           </button>
         ))}
       </div>
+      <button type="button" className="upcoming" onClick={() => onOpen("events")}>
+        <div className="up-icon" aria-hidden="true"><FiCalendar /></div>
+        <div className="up-text">
+          <div className="up-label">Coming up at Cedar Row</div>
+          <div className="up-title">{nextEventTitle}</div>
+          <div className="up-when">{nextEventWhen}</div>
+        </div>
+        <FiChevronRight aria-hidden="true" className="up-chev" />
+      </button>
       <style jsx>{`
         .screen { padding: 4px 20px 90px; }
         .greet { display: flex; align-items: center; gap: 13px; margin-top: 8px; }
@@ -86,6 +96,14 @@ export default function HomeScreen({ requests, amount, card, onNavigate, onOpen 
         .dot { width: 100%; aspect-ratio: 1; border-radius: 12px; background: var(--ll-surface); border: 1px solid var(--ll-border); display: flex; align-items: center; justify-content: center; }
         .dot :global(svg) { width: 17px; height: 17px; color: var(--ll-accent); }
         .stripitem span { font-size: 10.5px; color: var(--ll-text-muted); }
+        .upcoming { width: 100%; display: flex; align-items: center; gap: 12px; text-align: left; margin-top: 16px; background: var(--ll-surface); border: 1px solid var(--ll-border); border-radius: 14px; padding: 14px 16px; cursor: pointer; }
+        .up-icon { width: 36px; height: 36px; border-radius: 10px; background: var(--ll-accent-soft); color: var(--ll-accent-soft-ink); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+        .up-icon :global(svg) { width: 16px; height: 16px; }
+        .up-text { flex: 1; min-width: 0; }
+        .up-label { font-size: 10px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; color: var(--ll-text-faint); }
+        .up-title { font-size: 12.5px; font-weight: 700; color: var(--ll-text); margin-top: 3px; }
+        .up-when { font-size: 11px; color: var(--ll-text-muted); margin-top: 1px; }
+        .up-chev { width: 15px; height: 15px; color: var(--ll-text-faint); flex-shrink: 0; }
       `}</style>
     </div>
   );
