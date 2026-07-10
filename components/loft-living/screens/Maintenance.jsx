@@ -148,8 +148,10 @@ function RequestTimeline({ request }) {
 }
 
 function RequestDetail({ request, onBack, onCancel }) {
+  const showAssignee = request.assignee && request.status === "In progress";
   const rows = [
     ["Category", request.category || "General"],
+    ...(showAssignee ? [["Assigned to", request.eta ? `${request.assignee} · ETA ${request.eta}` : request.assignee]] : []),
     ["Priority", request.urgent ? "Urgent" : "Standard"],
     ["OK to enter", request.okToEnter ? "Yes" : "No"],
   ];
@@ -241,6 +243,12 @@ export default function MaintenanceScreen({ requests, onAdd, onCancel, initialFo
               <div className="rs">
                 {r.category ? `${r.category} · ` : ""}Submitted {r.date}
               </div>
+              {r.assignee && r.status === "In progress" && (
+                <div className="assignee">
+                  <span className="aav">{r.assignee[0]}</span>
+                  Assigned to {r.assignee}{r.eta ? ` · ETA ${r.eta}` : ""}
+                </div>
+              )}
             </div>
             <StatusChip status={r.status} />
             <FiChevronRight aria-hidden="true" className="rchev" />
@@ -258,6 +266,8 @@ export default function MaintenanceScreen({ requests, onAdd, onCancel, initialFo
         .rt { font-size: 12.5px; font-weight: 700; color: var(--ll-text); display: flex; align-items: center; gap: 6px; }
         .urgent-tag { font-size: 9.5px; font-weight: 700; color: var(--ll-danger); background: var(--ll-danger-soft); padding: 2px 7px; border-radius: 999px; flex-shrink: 0; }
         .rs { font-size: 11px; color: var(--ll-text-muted); margin-top: 2px; }
+        .assignee { display: flex; align-items: center; gap: 6px; margin-top: 5px; font-size: 10.5px; color: var(--ll-text-muted); }
+        .aav { width: 16px; height: 16px; border-radius: 999px; background: var(--ll-accent); color: var(--ll-accent-ink); font-size: 8px; font-weight: 700; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
         .rchev { width: 15px; height: 15px; color: var(--ll-text-faint); flex-shrink: 0; }
       `}</style>
     </div>

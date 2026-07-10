@@ -6,7 +6,7 @@ import PayScreen from "./loft-living/screens/Pay";
 import MaintenanceScreen from "./loft-living/screens/Maintenance";
 import RewardsScreen from "./loft-living/screens/Rewards";
 import MoreScreen, { DetailScreen, PropertyInfoScreen, AccountSettingsScreen } from "./loft-living/screens/More";
-import { AUTH_KEY, THEME_KEY, BASE_RENT, UTILITIES, SEED_REQUESTS, SEED_HISTORY, DETAIL_CONTENT } from "./loft-living/constants";
+import { AUTH_KEY, THEME_KEY, BASE_RENT, UTILITIES, SEED_REQUESTS, SEED_HISTORY, DETAIL_CONTENT, methodPhrase } from "./loft-living/constants";
 
 export default function LoftLivingApp() {
   const [loading, setLoading] = useState(true);
@@ -23,6 +23,7 @@ export default function LoftLivingApp() {
   const [requests, setRequests] = useState(SEED_REQUESTS);
   const [history, setHistory] = useState(SEED_HISTORY);
   const [redeemedRewards, setRedeemedRewards] = useState([]);
+  const [autopayEnabled, setAutopayEnabled] = useState(false);
   const [maintFormOpen, setMaintFormOpen] = useState(false);
 
   useEffect(() => {
@@ -73,15 +74,19 @@ export default function LoftLivingApp() {
     setRequests((rs) => rs.map((r) => (r.id === id ? { ...r, status: "Cancelled" } : r)));
   }
 
-  function handlePay(paidAmount, last4) {
+  function handlePay(paidAmount, method) {
     setBalance((b) => Math.max(0, b - paidAmount));
-    setHistory((h) => [...h, { id: Date.now(), date: "Just now", desc: `Payment — card ····${last4}`, amount: -paidAmount }]);
+    setHistory((h) => [...h, { id: Date.now(), date: "Just now", desc: `Payment — ${methodPhrase(method)}`, amount: -paidAmount }]);
   }
 
   function addCard(c) {
-    const newCard = { id: Date.now(), last4: c.last4 };
+    const newCard = { id: Date.now(), ...c };
     setCards((cs) => [...cs, newCard]);
     setActiveCardId(newCard.id);
+  }
+
+  function toggleAutopay() {
+    setAutopayEnabled((v) => !v);
   }
 
   function deleteCard(id) {
@@ -140,6 +145,8 @@ export default function LoftLivingApp() {
                   onPay={handlePay}
                   onBack={() => navigate("home")}
                   onNavigate={navigate}
+                  autopayEnabled={autopayEnabled}
+                  onToggleAutopay={toggleAutopay}
                 />
               ) : view === "maintenance" ? (
                 <MaintenanceScreen requests={requests} onAdd={addRequest} onCancel={cancelRequest} initialFormOpen={maintFormOpen} />

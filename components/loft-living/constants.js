@@ -5,11 +5,42 @@ export const UTILITIES = 30;
 export const PAY_STEP = 50;
 export const MIN_PAYMENT = 50;
 export const CATEGORIES = ["Plumbing", "Electrical", "Appliance", "HVAC", "Pest control", "Other"];
-export const REWARDS_TABS = ["Earn", "Redeem", "Benefits", "Activity"];
 
 export function fmt(n) {
   return n.toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
 }
+
+// Mid-sentence and standalone display text for a payment method, shared by
+// Home (lead card CTA) and Pay (method row, confirmation screen, history
+// entries) so "bank account ····5678" / "cash code 123456" / "card ····4242"
+// stay consistent everywhere a method gets mentioned.
+export function methodPhrase(m) {
+  if (!m) return null;
+  if (m.type === "bank") return `bank account ····${m.last4}`;
+  if (m.type === "cash") return `cash code ${m.code}`;
+  return `card ····${m.last4}`;
+}
+
+export function methodLabel(m) {
+  const p = methodPhrase(m);
+  return p.charAt(0).toUpperCase() + p.slice(1);
+}
+
+export const PAYMENT_METHOD_TYPES = [
+  { key: "bank", label: "Bank account (ACH)", sub: "No fee · 2–3 business days" },
+  { key: "card", label: "Debit or credit card", sub: "2.9% processing fee" },
+  { key: "cash", label: "Cash at retail", sub: "Pay in person · $3.99 fee" },
+];
+
+// The one recurring feature every top-rated resident app has that LOFT
+// Living didn't: a property-wide notice on the home screen (Buildium
+// Resident Center, RentCafe Resident).
+export const ANNOUNCEMENTS = [
+  {
+    title: "Water shut off Thu, Jul 17 · 10am–2pm",
+    detail: "For scheduled repairs in Building B",
+  },
+];
 
 // Rewards are derived from real payment history rather than tracked as
 // separate state, so a payment made in the Pay tab immediately shows up
@@ -76,6 +107,8 @@ export const SEED_REQUESTS = [
     desc: "Water pooling under the sink, worse when running hot water.",
     date: "Jul 6",
     status: "In progress",
+    assignee: "Mike R.",
+    eta: "Jul 9",
   },
   {
     id: 2,

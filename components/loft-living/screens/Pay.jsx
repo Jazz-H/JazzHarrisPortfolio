@@ -1,42 +1,118 @@
 import { useState } from "react";
-import { FiArrowLeft, FiCheck, FiCheckCircle, FiChevronRight, FiMinus, FiPlus, FiTrash2 } from "react-icons/fi";
+import { FiArrowLeft, FiBriefcase, FiCheck, FiCheckCircle, FiChevronRight, FiCreditCard, FiDollarSign, FiMinus, FiPlus, FiTrash2 } from "react-icons/fi";
 import { BackHeader, FormCard, FormField, FormHead, PrimaryButton } from "../primitives";
-import { BASE_RENT, MIN_PAYMENT, PAY_STEP, UTILITIES, fmt } from "../constants";
+import { BASE_RENT, MIN_PAYMENT, PAY_STEP, UTILITIES, PAYMENT_METHOD_TYPES, fmt, methodPhrase, methodLabel } from "../constants";
 
-function AddCardForm({ onSave, onCancel }) {
+const METHOD_ICONS = { bank: FiBriefcase, card: FiCreditCard, cash: FiDollarSign };
+
+function AddPaymentMethodForm({ onSave, onCancel }) {
+  const [type, setType] = useState("bank");
   const [number, setNumber] = useState("");
   const [expiry, setExpiry] = useState("");
   const [name, setName] = useState("");
+  const [routing, setRouting] = useState("");
+  const [account, setAccount] = useState("");
+  const [bankName, setBankName] = useState("");
 
   function submit(e) {
     e.preventDefault();
-    const digits = number.replace(/\D/g, "");
-    if (digits.length < 4 || !expiry.trim() || !name.trim()) return;
-    onSave({ last4: digits.slice(-4) });
+    if (type === "card") {
+      const digits = number.replace(/\D/g, "");
+      if (digits.length < 4 || !expiry.trim() || !name.trim()) return;
+      onSave({ type: "card", last4: digits.slice(-4) });
+    } else if (type === "bank") {
+      const digits = account.replace(/\D/g, "");
+      if (digits.length < 4 || !routing.trim() || !bankName.trim()) return;
+      onSave({ type: "bank", last4: digits.slice(-4) });
+    } else {
+      onSave({ type: "cash", code: String(Math.floor(100000 + Math.random() * 900000)) });
+    }
   }
 
   return (
     <FormCard onSubmit={submit}>
-      <FormHead title="Add a card" onClose={onCancel} />
-      <FormField label="Card number">
-        <input
-          value={number}
-          onChange={(e) => setNumber(e.target.value)}
-          placeholder="4242 4242 4242 4242"
-          inputMode="numeric"
-          required
-        />
-      </FormField>
-      <div className="row2f">
-        <FormField label="Expiry">
-          <input value={expiry} onChange={(e) => setExpiry(e.target.value)} placeholder="MM/YY" required />
-        </FormField>
-        <FormField label="Name on card">
-          <input value={name} onChange={(e) => setName(e.target.value)} placeholder="Jordan Ellis" required />
-        </FormField>
+      <FormHead title="Add payment method" onClose={onCancel} />
+      <div className="pmtypes" role="group" aria-label="Payment method type">
+        {PAYMENT_METHOD_TYPES.map((pt) => {
+          const Icon = METHOD_ICONS[pt.key];
+          return (
+            <button
+              type="button"
+              key={pt.key}
+              className={"pmtype" + (type === pt.key ? " sel" : "")}
+              aria-pressed={type === pt.key}
+              onClick={() => setType(pt.key)}
+            >
+              <span className="pmtype-icon"><Icon aria-hidden="true" /></span>
+              <span className="pmtype-text">
+                <span className="pmtype-t">{pt.label}</span>
+                <span className="pmtype-s">{pt.sub}</span>
+              </span>
+              <span className={"pmtype-radio" + (type === pt.key ? " on" : "")} />
+            </button>
+          );
+        })}
       </div>
-      <PrimaryButton type="submit">Save card</PrimaryButton>
+
+      {type === "card" && (
+        <>
+          <FormField label="Card number">
+            <input
+              value={number}
+              onChange={(e) => setNumber(e.target.value)}
+              placeholder="4242 4242 4242 4242"
+              inputMode="numeric"
+              required
+            />
+          </FormField>
+          <div className="row2f">
+            <FormField label="Expiry">
+              <input value={expiry} onChange={(e) => setExpiry(e.target.value)} placeholder="MM/YY" required />
+            </FormField>
+            <FormField label="Name on card">
+              <input value={name} onChange={(e) => setName(e.target.value)} placeholder="Jordan Ellis" required />
+            </FormField>
+          </div>
+          <PrimaryButton type="submit">Save card</PrimaryButton>
+        </>
+      )}
+
+      {type === "bank" && (
+        <>
+          <FormField label="Routing number">
+            <input value={routing} onChange={(e) => setRouting(e.target.value)} placeholder="021000021" inputMode="numeric" required />
+          </FormField>
+          <FormField label="Account number">
+            <input value={account} onChange={(e) => setAccount(e.target.value)} placeholder="000123456789" inputMode="numeric" required />
+          </FormField>
+          <FormField label="Name on account">
+            <input value={bankName} onChange={(e) => setBankName(e.target.value)} placeholder="Jordan Ellis" required />
+          </FormField>
+          <PrimaryButton type="submit">Save bank account</PrimaryButton>
+        </>
+      )}
+
+      {type === "cash" && (
+        <>
+          <p className="cash-note">
+            We&rsquo;ll generate a payment code you can take to any participating retail location to pay your rent in cash.
+          </p>
+          <PrimaryButton type="submit">Get payment code</PrimaryButton>
+        </>
+      )}
+
       <style jsx>{`
+        .pmtypes { display: flex; flex-direction: column; gap: 8px; }
+        .pmtype { display: flex; align-items: center; gap: 12px; padding: 12px 13px; border-radius: 12px; border: 1.5px solid var(--ll-border); background: var(--ll-surface-2); cursor: pointer; text-align: left; font-family: inherit; }
+        .pmtype.sel { border-color: var(--ll-accent); background: var(--ll-accent-soft); }
+        .pmtype-icon { width: 30px; height: 30px; border-radius: 9px; background: var(--ll-surface); color: var(--ll-accent); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+        .pmtype-icon :global(svg) { width: 14px; height: 14px; }
+        .pmtype-text { flex: 1; min-width: 0; }
+        .pmtype-t { display: block; font-size: 12px; font-weight: 700; color: var(--ll-text); }
+        .pmtype-s { display: block; font-size: 10.5px; color: var(--ll-text-muted); margin-top: 1px; }
+        .pmtype-radio { width: 17px; height: 17px; border-radius: 999px; border: 1.5px solid var(--ll-border); flex-shrink: 0; }
+        .pmtype-radio.on { border-color: var(--ll-accent); background: var(--ll-accent); box-shadow: inset 0 0 0 3px var(--ll-surface-2); }
+        .cash-note { font-size: 12px; color: var(--ll-text-muted); line-height: 1.5; margin: 4px 0 0; }
         .row2f { display: flex; gap: 10px; }
         .row2f :global(label) { flex: 1; }
       `}</style>
@@ -52,19 +128,23 @@ function PaymentMethodsScreen({ cards, activeCardId, onSetActive, onDelete, onAd
         <div className="empty">No saved payment methods yet.</div>
       ) : (
         <div className="list">
-          {cards.map((c) => (
-            <div className="row" key={c.id}>
-              <button type="button" className="select" onClick={() => onSetActive(c.id)} aria-pressed={c.id === activeCardId}>
-                <span className={"radio" + (c.id === activeCardId ? " on" : "")}>
-                  {c.id === activeCardId && <FiCheck aria-hidden="true" />}
-                </span>
-                <span>Card ····{c.last4}</span>
-              </button>
-              <button type="button" className="del" onClick={() => onDelete(c.id)} aria-label={`Remove card ending in ${c.last4}`}>
-                <FiTrash2 aria-hidden="true" />
-              </button>
-            </div>
-          ))}
+          {cards.map((c) => {
+            const Icon = METHOD_ICONS[c.type] || FiCreditCard;
+            return (
+              <div className="row" key={c.id}>
+                <button type="button" className="select" onClick={() => onSetActive(c.id)} aria-pressed={c.id === activeCardId}>
+                  <span className={"radio" + (c.id === activeCardId ? " on" : "")}>
+                    {c.id === activeCardId && <FiCheck aria-hidden="true" />}
+                  </span>
+                  <Icon aria-hidden="true" className="pm-icon" />
+                  <span>{methodLabel(c)}</span>
+                </button>
+                <button type="button" className="del" onClick={() => onDelete(c.id)} aria-label={`Remove ${methodLabel(c)}`}>
+                  <FiTrash2 aria-hidden="true" />
+                </button>
+              </div>
+            );
+          })}
         </div>
       )}
       <button type="button" className="new" onClick={onAddNew}>+ Add payment method</button>
@@ -73,10 +153,11 @@ function PaymentMethodsScreen({ cards, activeCardId, onSetActive, onDelete, onAd
         .empty { font-size: 12.5px; color: var(--ll-text-faint); text-align: center; margin: 24px 0; }
         .list { display: flex; flex-direction: column; gap: 10px; margin-top: 16px; }
         .row { display: flex; align-items: center; gap: 8px; }
-        .select { flex: 1; display: flex; align-items: center; gap: 12px; background: var(--ll-surface); border: 1px solid var(--ll-border); border-radius: 12px; padding: 14px; cursor: pointer; text-align: left; font-size: 12.5px; color: var(--ll-text); font-weight: 600; }
+        .select { flex: 1; display: flex; align-items: center; gap: 10px; background: var(--ll-surface); border: 1px solid var(--ll-border); border-radius: 12px; padding: 14px; cursor: pointer; text-align: left; font-size: 12.5px; color: var(--ll-text); font-weight: 600; }
         .radio { width: 20px; height: 20px; border-radius: 999px; border: 1.5px solid var(--ll-border); display: flex; align-items: center; justify-content: center; flex-shrink: 0; color: var(--ll-accent-ink); }
         .radio.on { background: var(--ll-accent); border-color: var(--ll-accent); }
         .radio :global(svg) { width: 12px; height: 12px; }
+        .pm-icon { width: 15px; height: 15px; color: var(--ll-accent); flex-shrink: 0; }
         .del { width: 40px; height: 40px; border-radius: 10px; background: var(--ll-surface); border: 1px solid var(--ll-border); color: var(--ll-danger); display: flex; align-items: center; justify-content: center; cursor: pointer; flex-shrink: 0; }
         .del :global(svg) { width: 16px; height: 16px; }
         .new { width: 100%; background: var(--ll-surface-2); border: 1px dashed var(--ll-border); color: var(--ll-text-muted); text-align: center; padding: 13px; border-radius: 10px; font-size: 13px; font-weight: 700; cursor: pointer; margin-top: 16px; }
@@ -129,7 +210,20 @@ function HistoryScreen({ history, onBack }) {
   );
 }
 
-export default function PayScreen({ balance, cards, activeCard, onSetActiveCard, onAddCard, onDeleteCard, history, onPay, onBack, onNavigate }) {
+export default function PayScreen({
+  balance,
+  cards,
+  activeCard,
+  onSetActiveCard,
+  onAddCard,
+  onDeleteCard,
+  history,
+  onPay,
+  onBack,
+  onNavigate,
+  autopayEnabled,
+  onToggleAutopay,
+}) {
   const [payAmount, setPayAmount] = useState(balance);
   const [mode, setMode] = useState("pay"); // 'pay' | 'add' | 'manage' | 'history'
   const [pending, setPending] = useState(false);
@@ -153,10 +247,10 @@ export default function PayScreen({ balance, cards, activeCard, onSetActiveCard,
     setPending(true);
     const paidAmount = clampedPay;
     const remaining = balance - paidAmount;
-    const last4 = activeCard.last4;
+    const method = activeCard;
     setTimeout(() => {
-      setPaid({ amount: paidAmount, last4, remaining });
-      onPay(paidAmount, last4);
+      setPaid({ amount: paidAmount, methodPhrase: methodPhrase(method), remaining });
+      onPay(paidAmount, method);
       setPending(false);
     }, 900);
   }
@@ -169,7 +263,7 @@ export default function PayScreen({ balance, cards, activeCard, onSetActiveCard,
         </div>
         <h1>Payment received</h1>
         <p>
-          ${fmt(paid.amount)} paid with card ····{paid.last4}
+          ${fmt(paid.amount)} paid with {paid.methodPhrase}
           {paid.remaining > 0 ? ` · $${fmt(paid.remaining)} remaining` : " · paid in full"}
         </p>
         <PrimaryButton onClick={() => onNavigate("home")}>Back to home</PrimaryButton>
@@ -200,7 +294,7 @@ export default function PayScreen({ balance, cards, activeCard, onSetActiveCard,
   if (mode === "add") {
     return (
       <div className="screen">
-        <AddCardForm
+        <AddPaymentMethodForm
           onCancel={() => setMode(cards.length ? "manage" : "pay")}
           onSave={(c) => { onAddCard(c); setMode("pay"); }}
         />
@@ -213,11 +307,27 @@ export default function PayScreen({ balance, cards, activeCard, onSetActiveCard,
     return <HistoryScreen history={history} onBack={() => setMode("pay")} />;
   }
 
+  const recentHistory = history.slice(-2).reverse();
+
   return (
     <div className="screen">
       <button type="button" className="back" onClick={onBack} aria-label="Back">
         <FiArrowLeft aria-hidden="true" />
       </button>
+      <div className="autopay-row">
+        <div>
+          <div className="ap-t">Autopay</div>
+          <div className="ap-s">{autopayEnabled ? "On · charges your default method 3 days before each due date" : "Off · turn on to never miss a due date"}</div>
+        </div>
+        <button
+          type="button"
+          className={"toggle-switch" + (autopayEnabled ? " on" : "")}
+          role="switch"
+          aria-checked={autopayEnabled}
+          aria-label="Autopay"
+          onClick={onToggleAutopay}
+        />
+      </div>
       <div className="balance">
         <div className="l">Amount due · due Aug 1</div>
         <div className="amt">${fmt(balance)}</div>
@@ -231,6 +341,19 @@ export default function PayScreen({ balance, cards, activeCard, onSetActiveCard,
       <button type="button" className="history-link" onClick={() => setMode("history")}>
         View account history <FiChevronRight aria-hidden="true" />
       </button>
+      {recentHistory.length > 0 && (
+        <div className="hist-preview">
+          {recentHistory.map((t) => {
+            const isCharge = t.amount > 0;
+            return (
+              <div className="hist-row" key={t.id}>
+                <span className="hd">{t.desc} · {t.date}</span>
+                <span className={isCharge ? "hc" : "ha"}>{isCharge ? "+" : "−"}${fmt(Math.abs(t.amount))}</span>
+              </div>
+            );
+          })}
+        </div>
+      )}
 
       <div className="paying-label">You're paying</div>
       <div className="stepper">
@@ -258,7 +381,7 @@ export default function PayScreen({ balance, cards, activeCard, onSetActiveCard,
 
       {activeCard && (
         <div className="method">
-          <span>Card ····{activeCard.last4}</span>
+          <span>{methodLabel(activeCard)}</span>
           <button type="button" onClick={() => setMode("manage")} disabled={pending}>Manage</button>
         </div>
       )}
@@ -266,14 +389,21 @@ export default function PayScreen({ balance, cards, activeCard, onSetActiveCard,
         {pending ? (
           <span className="spinner-row"><span className="spinner" aria-hidden="true" /> Processing payment&hellip;</span>
         ) : activeCard ? (
-          `Pay $${fmt(clampedPay)} with card ····${activeCard.last4}`
+          `Pay $${fmt(clampedPay)} with ${methodPhrase(activeCard)}`
         ) : (
-          "Add card to pay"
+          "Add payment method"
         )}
       </PrimaryButton>
       <style jsx>{`
         .screen { padding: 4px 20px 40px; }
         .back { background: var(--ll-surface); border: 1px solid var(--ll-border); width: 36px; height: 36px; border-radius: 10px; display: flex; align-items: center; justify-content: center; color: var(--ll-text); cursor: pointer; margin-bottom: 8px; }
+        .autopay-row { display: flex; align-items: center; gap: 12px; background: var(--ll-surface); border: 1px solid var(--ll-border); border-radius: 14px; padding: 14px 16px; margin-top: 4px; }
+        .ap-t { font-size: 12.5px; font-weight: 700; color: var(--ll-text); }
+        .ap-s { font-size: 10.5px; color: var(--ll-text-muted); margin-top: 2px; }
+        .toggle-switch { width: 38px; height: 22px; border-radius: 999px; background: var(--ll-surface-2); border: 1px solid var(--ll-border); margin-left: auto; flex-shrink: 0; position: relative; cursor: pointer; padding: 0; }
+        .toggle-switch::after { content: ""; position: absolute; top: 1px; left: 1px; width: 16px; height: 16px; border-radius: 999px; background: var(--ll-text-faint); transition: left .15s ease; }
+        .toggle-switch.on { background: var(--ll-accent); border-color: var(--ll-accent); }
+        .toggle-switch.on::after { left: 17px; background: #fff; }
         .balance { text-align: center; padding: 14px 0 4px; }
         .l { font-size: 12px; color: var(--ll-text-muted); }
         .amt { font-family: var(--ll-font-display); font-size: 36px; font-weight: 700; margin-top: 6px; color: var(--ll-text); font-variant-numeric: tabular-nums; }
@@ -283,6 +413,12 @@ export default function PayScreen({ balance, cards, activeCard, onSetActiveCard,
         .line .good { color: var(--ll-success); font-weight: 600; }
         .history-link { width: 100%; display: flex; align-items: center; justify-content: center; gap: 4px; background: none; border: none; color: var(--ll-accent); font-size: 12px; font-weight: 700; cursor: pointer; padding: 12px 4px 0; }
         .history-link :global(svg) { width: 14px; height: 14px; }
+        .hist-preview { margin-top: 10px; background: var(--ll-surface); border: 1px solid var(--ll-border); border-radius: 12px; padding: 2px 14px; }
+        .hist-row { display: flex; justify-content: space-between; align-items: center; padding: 9px 0; border-bottom: 1px solid var(--ll-border); font-size: 11.5px; }
+        .hist-row:last-child { border-bottom: none; }
+        .hd { color: var(--ll-text-muted); }
+        .ha { font-weight: 700; color: var(--ll-success); }
+        .hc { font-weight: 700; color: var(--ll-text); }
         .paying-label { font-size: 11px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; color: var(--ll-text-faint); margin-top: 20px; text-align: center; }
         .stepper { display: flex; align-items: center; justify-content: center; gap: 16px; margin: 10px 0 4px; }
         .pay-amt { font-size: 17px; font-weight: 700; color: var(--ll-text); min-width: 92px; text-align: center; }
