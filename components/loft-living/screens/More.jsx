@@ -6,6 +6,7 @@ import {
   FiFileText,
   FiInfo,
   FiLogOut,
+  FiRefreshCw,
   FiSettings,
   FiTool,
   FiUser,
@@ -141,6 +142,9 @@ export default function MoreScreen({ onOpen, onSignOut }) {
           </div>
         </div>
       ))}
+      <button type="button" className="reset-demo" onClick={onSignOut}>
+        <FiRefreshCw aria-hidden="true" /> Sign out (reset demo)
+      </button>
       <button type="button" className="logout" onClick={onSignOut}>
         <FiLogOut aria-hidden="true" /> Logout
       </button>
@@ -157,7 +161,9 @@ export default function MoreScreen({ onOpen, onSignOut }) {
         .mt { font-size: 12.5px; font-weight: 700; color: var(--ll-text); }
         .ms { font-size: 11px; color: var(--ll-text-muted); margin-top: 2px; }
         .mchev { width: 15px; height: 15px; color: var(--ll-text-faint); flex-shrink: 0; }
-        .logout { width: 100%; display: flex; align-items: center; justify-content: center; gap: 8px; background: none; border: 1px solid var(--ll-danger); color: var(--ll-danger); font-size: 13px; font-weight: 700; padding: 13px; border-radius: 10px; margin-top: 28px; cursor: pointer; }
+        .reset-demo { width: 100%; display: flex; align-items: center; justify-content: center; gap: 8px; background: none; border: 1px solid var(--ll-border); color: var(--ll-text-muted); font-size: 13px; font-weight: 700; padding: 13px; border-radius: 10px; margin-top: 28px; cursor: pointer; }
+        .reset-demo :global(svg) { width: 15px; height: 15px; }
+        .logout { width: 100%; display: flex; align-items: center; justify-content: center; gap: 8px; background: none; border: 1px solid var(--ll-danger); color: var(--ll-danger); font-size: 13px; font-weight: 700; padding: 13px; border-radius: 10px; margin-top: 10px; cursor: pointer; }
         .logout :global(svg) { width: 15px; height: 15px; }
       `}</style>
     </div>

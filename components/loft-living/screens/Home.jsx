@@ -14,7 +14,7 @@ function getGreeting() {
   return "Good evening";
 }
 
-export default function HomeScreen({ requests, amount, card, onNavigate, onSignOut, onOpenRewards }) {
+export default function HomeScreen({ requests, amount, card, onNavigate, onOpenRewards }) {
   const open = requests.filter((r) => r.status !== "Resolved");
   return (
     <div className="screen">
@@ -55,9 +55,6 @@ export default function HomeScreen({ requests, amount, card, onNavigate, onSignO
           </div>
         ))}
       </div>
-      <button type="button" className="signout" onClick={onSignOut}>
-        Sign out (reset demo)
-      </button>
       <style jsx>{`
         .screen { padding: 4px 20px 90px; }
         .greet { display: flex; align-items: center; gap: 13px; margin-top: 8px; }
@@ -81,7 +78,6 @@ export default function HomeScreen({ requests, amount, card, onNavigate, onSignO
         .dot { width: 100%; aspect-ratio: 1; border-radius: 12px; background: var(--ll-surface); border: 1px solid var(--ll-border); display: flex; align-items: center; justify-content: center; }
         .dot :global(svg) { width: 17px; height: 17px; color: var(--ll-accent); }
         .stripitem span { font-size: 10.5px; color: var(--ll-text-muted); }
-        .signout { margin-top: 24px; background: none; border: none; color: var(--ll-text-faint); font-size: 11.5px; text-decoration: underline; cursor: pointer; padding: 4px; }
       `}</style>
     </div>
   );

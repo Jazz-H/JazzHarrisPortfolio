@@ -113,7 +113,7 @@ export default function LoftLivingApp() {
                   onBack={() => setOverlay(null)}
                 />
               ) : view === "home" ? (
-                <HomeScreen requests={requests} amount={balance} card={activeCard} onNavigate={navigate} onSignOut={handleSignOut} onOpenRewards={() => setOverlay("rewards")} />
+                <HomeScreen requests={requests} amount={balance} card={activeCard} onNavigate={navigate} onOpenRewards={() => setOverlay("rewards")} />
               ) : view === "pay" ? (
                 <PayScreen
                   balance={balance}
