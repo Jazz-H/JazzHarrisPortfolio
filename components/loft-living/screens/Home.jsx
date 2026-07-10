@@ -1,4 +1,4 @@
-import { FiAward, FiCalendar, FiFileText, FiMapPin, FiPlus, FiTool } from "react-icons/fi";
+import { FiAward, FiCalendar, FiFileText, FiMapPin, FiPlus, FiSun, FiSunrise, FiSunset, FiTool } from "react-icons/fi";
 import { fmt } from "../constants";
 
 const STRIP_LINKS = [
@@ -7,8 +7,11 @@ const STRIP_LINKS = [
   { key: "amenities", l: "Amenities", Icon: FiMapPin },
 ];
 
-function getGreeting() {
-  const hour = new Date().getHours();
+function getGreetingHour() {
+  return new Date().getHours();
+}
+
+function getGreeting(hour) {
   if (hour < 12) return "Good morning";
   if (hour < 18) return "Good afternoon";
   return "Good evening";
@@ -16,13 +19,15 @@ function getGreeting() {
 
 export default function HomeScreen({ requests, amount, card, onNavigate, onOpen }) {
   const open = requests.filter((r) => r.status !== "Resolved" && r.status !== "Cancelled");
+  const hour = getGreetingHour();
   return (
     <div className="screen">
       <div className="greet">
-        <div className="avatar" aria-hidden="true">J</div>
-        <div className="greet-text">
-          <span className="hi">{getGreeting()}</span>
-          <span className="name">Jordan</span>
+        <div className="greet-icon" aria-hidden="true">
+          {hour < 12 ? <FiSunrise /> : hour < 18 ? <FiSun /> : <FiSunset />}
+        </div>
+        <div className="greet-line">
+          {getGreeting(hour)}, <span className="name">Jordan</span>
         </div>
       </div>
       <button type="button" className="lead" onClick={() => onNavigate("pay")}>
@@ -58,10 +63,10 @@ export default function HomeScreen({ requests, amount, card, onNavigate, onOpen 
       <style jsx>{`
         .screen { padding: 4px 20px 90px; }
         .greet { display: flex; align-items: center; gap: 13px; margin-top: 8px; }
-        .avatar { width: 42px; height: 42px; border-radius: 12px; background: var(--ll-accent-soft); color: var(--ll-accent-soft-ink); display: flex; align-items: center; justify-content: center; font-size: 16px; font-weight: 700; flex-shrink: 0; }
-        .greet-text { display: flex; flex-direction: column; }
-        .hi { font-size: 13px; color: var(--ll-text-muted); }
-        .name { color: var(--ll-text); font-size: 20px; font-weight: 700; margin-top: 1px; }
+        .greet-icon { width: 42px; height: 42px; border-radius: 12px; background: var(--ll-surface); border: 1px solid var(--ll-border); display: flex; align-items: center; justify-content: center; color: var(--ll-accent); flex-shrink: 0; }
+        .greet-icon :global(svg) { width: 19px; height: 19px; }
+        .greet-line { font-size: 20px; font-weight: 700; color: var(--ll-text); }
+        .greet-line .name { color: var(--ll-accent); }
         .lead { display: block; width: 100%; text-align: left; margin-top: 18px; background: var(--ll-surface); border: 1px solid var(--ll-border); border-radius: 14px; padding: 20px; cursor: pointer; box-shadow: var(--ll-shadow); }
         .l1 { font-size: 11px; color: var(--ll-text-faint); font-weight: 700; text-transform: uppercase; letter-spacing: .04em; }
         .l2 { font-size: 28px; font-weight: 700; margin-top: 8px; color: var(--ll-text); }
