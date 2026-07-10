@@ -276,7 +276,7 @@ export default function PayScreen({ balance, cards, activeCard, onSetActiveCard,
         .back { background: var(--ll-surface); border: 1px solid var(--ll-border); width: 36px; height: 36px; border-radius: 10px; display: flex; align-items: center; justify-content: center; color: var(--ll-text); cursor: pointer; margin-bottom: 8px; }
         .balance { text-align: center; padding: 14px 0 4px; }
         .l { font-size: 12px; color: var(--ll-text-muted); }
-        .amt { font-size: 36px; font-weight: 700; margin-top: 6px; color: var(--ll-text); }
+        .amt { font-family: var(--ll-font-display); font-size: 36px; font-weight: 700; margin-top: 6px; color: var(--ll-text); font-variant-numeric: tabular-nums; }
         .card { background: var(--ll-surface); border: 1px solid var(--ll-border); border-radius: 14px; padding: 18px 20px; margin-top: 18px; }
         .line { display: flex; justify-content: space-between; font-size: 12.5px; padding: 9px 0; border-bottom: 1px solid var(--ll-border); color: var(--ll-text-muted); }
         .line.total { color: var(--ll-text); font-weight: 700; border-bottom: none; }

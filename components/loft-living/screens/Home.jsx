@@ -26,8 +26,11 @@ export default function HomeScreen({ requests, amount, card, onNavigate, onOpen 
         <div className="greet-icon" aria-hidden="true">
           {hour < 12 ? <FiSunrise /> : hour < 18 ? <FiSun /> : <FiSunset />}
         </div>
-        <div className="greet-line">
-          {getGreeting(hour)}, <span className="name">Jordan</span>
+        <div>
+          <div className="greet-line">
+            {getGreeting(hour)}, <span className="name">Jordan</span>
+          </div>
+          <div className="greet-rule" aria-hidden="true" />
         </div>
       </div>
       <button type="button" className="lead" onClick={() => onNavigate("pay")}>
@@ -65,11 +68,12 @@ export default function HomeScreen({ requests, amount, card, onNavigate, onOpen 
         .greet { display: flex; align-items: center; gap: 13px; margin-top: 8px; }
         .greet-icon { width: 42px; height: 42px; border-radius: 12px; background: var(--ll-surface); border: 1px solid var(--ll-border); display: flex; align-items: center; justify-content: center; color: var(--ll-accent); flex-shrink: 0; }
         .greet-icon :global(svg) { width: 19px; height: 19px; }
-        .greet-line { font-size: 20px; font-weight: 700; color: var(--ll-text); }
+        .greet-line { font-family: var(--ll-font-display); font-size: 20px; font-weight: 700; color: var(--ll-text); }
         .greet-line .name { color: var(--ll-accent); }
+        .greet-rule { width: 26px; height: 3px; background: var(--ll-accent); border-radius: 999px; margin-top: 8px; }
         .lead { display: block; width: 100%; text-align: left; margin-top: 18px; background: var(--ll-surface); border: 1px solid var(--ll-border); border-radius: 14px; padding: 20px; cursor: pointer; box-shadow: var(--ll-shadow); }
         .l1 { font-size: 11px; color: var(--ll-text-faint); font-weight: 700; text-transform: uppercase; letter-spacing: .04em; }
-        .l2 { font-size: 28px; font-weight: 700; margin-top: 8px; color: var(--ll-text); }
+        .l2 { font-family: var(--ll-font-display); font-size: 28px; font-weight: 700; margin-top: 8px; color: var(--ll-text); font-variant-numeric: tabular-nums; }
         .l3 { font-size: 12px; color: var(--ll-text-muted); margin-top: 4px; }
         .cta { margin-top: 16px; background: var(--ll-accent); color: var(--ll-accent-ink); text-align: center; padding: 12px; border-radius: 10px; font-size: 13px; font-weight: 700; }
         .row2 { display: flex; gap: 10px; margin-top: 12px; }
