@@ -21,6 +21,7 @@ import {
 } from "react-icons/fi";
 
 const AUTH_KEY = "loftLivingDemoAuthed";
+const THEME_KEY = "loftLivingTheme";
 const BASE_RENT = 1450;
 const UTILITIES = 30;
 
@@ -36,7 +37,7 @@ const SEED_REQUESTS = [
 
 function LoadingScreen() {
   return (
-    <div className="loading">
+    <div className="loading" role="status" aria-live="polite" aria-label="Loading">
       <div className="mark">
         <FiHome aria-hidden="true" />
       </div>
@@ -44,11 +45,11 @@ function LoadingScreen() {
         <div className="fill" />
       </div>
       <style jsx>{`
-        .loading { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 22px; background: #0B0E14; }
-        .mark { width: 72px; height: 72px; border-radius: 22px; background: linear-gradient(135deg,#8B7CFA,#5A3FE0); display: flex; align-items: center; justify-content: center; animation: pulse 1.1s ease-in-out infinite; }
-        .mark :global(svg) { width: 32px; height: 32px; color: #fff; }
-        .bar { width: 96px; height: 3px; border-radius: 999px; background: #20232C; overflow: hidden; }
-        .fill { width: 40%; height: 100%; background: #8B7CFA; border-radius: 999px; animation: slide 1.1s ease-in-out infinite; }
+        .loading { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 20px; background: var(--ll-bg); }
+        .mark { width: 64px; height: 64px; border-radius: 16px; background: var(--ll-accent); display: flex; align-items: center; justify-content: center; animation: pulse 1.1s ease-in-out infinite; }
+        .mark :global(svg) { width: 28px; height: 28px; color: var(--ll-accent-ink); }
+        .bar { width: 88px; height: 3px; border-radius: 999px; background: var(--ll-border); overflow: hidden; }
+        .fill { width: 40%; height: 100%; background: var(--ll-accent); border-radius: 999px; animation: slide 1.1s ease-in-out infinite; }
         @keyframes pulse { 0%, 100% { transform: scale(1); opacity: 1; } 50% { transform: scale(0.92); opacity: 0.8; } }
         @keyframes slide { 0% { transform: translateX(-120%); } 100% { transform: translateX(340%); } }
       `}</style>
@@ -62,9 +63,9 @@ function StatusChip({ status }) {
     <span className={"chip" + (done ? " done" : " progress")}>
       {status}
       <style jsx>{`
-        .chip { font-size: 10px; font-weight: 700; padding: 4px 9px; border-radius: 999px; margin-left: auto; flex-shrink: 0; }
-        .progress { background: rgba(139,124,250,.18); color: #8B7CFA; }
-        .done { background: rgba(74,222,128,.15); color: #4ADE80; }
+        .chip { font-size: 10.5px; font-weight: 700; padding: 4px 9px; border-radius: 999px; margin-left: auto; flex-shrink: 0; }
+        .progress { background: var(--ll-accent-soft); color: var(--ll-accent-soft-ink); }
+        .done { background: var(--ll-success-soft); color: var(--ll-success); }
       `}</style>
     </span>
   );
@@ -92,10 +93,10 @@ function TabBar({ view, onNavigate }) {
         </button>
       ))}
       <style jsx>{`
-        .tabs { position: absolute; bottom: 0; left: 0; right: 0; height: 68px; background: #12141B; border-top: 1px solid #20232C; display: flex; }
-        .tab { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 5px; background: none; border: none; color: #6D7280; font-size: 9.5px; font-weight: 600; cursor: pointer; }
+        .tabs { position: absolute; bottom: 0; left: 0; right: 0; height: 64px; background: var(--ll-surface); border-top: 1px solid var(--ll-border); display: flex; }
+        .tab { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; background: none; border: none; color: var(--ll-text-faint); font-size: 10px; font-weight: 600; cursor: pointer; min-height: 44px; }
         .tab :global(svg) { width: 19px; height: 19px; }
-        .tab.active { color: #8B7CFA; }
+        .tab.active { color: var(--ll-accent); }
       `}</style>
     </nav>
   );
@@ -116,13 +117,14 @@ function SignInScreen({ onSignedIn }) {
         Use passcode instead
       </button>
       <style jsx>{`
-        .screen.center { display: flex; flex-direction: column; align-items: center; text-align: center; padding: 90px 22px 0; }
-        .faceid { width: 84px; height: 84px; border-radius: 26px; background: linear-gradient(135deg,#8B7CFA,#5A3FE0); display: flex; align-items: center; justify-content: center; margin-bottom: 22px; }
-        .faceid :global(svg) { width: 38px; height: 38px; color: #fff; }
-        h1 { font-size: 20px; font-weight: 800; margin: 0; }
-        p { font-size: 13px; color: #9BA0AE; margin: 6px 0 30px; }
-        .primary { width: 100%; background: #8B7CFA; color: #0B0E14; text-align: center; padding: 15px; border-radius: 16px; font-size: 14.5px; font-weight: 800; border: none; cursor: pointer; }
-        .ghost { background: none; border: none; color: #9BA0AE; font-size: 12.5px; margin-top: 16px; cursor: pointer; }
+        .screen.center { display: flex; flex-direction: column; align-items: center; text-align: center; padding: 100px 24px 0; }
+        .faceid { width: 64px; height: 64px; border-radius: 16px; background: var(--ll-accent-soft); display: flex; align-items: center; justify-content: center; margin-bottom: 20px; }
+        .faceid :global(svg) { width: 28px; height: 28px; color: var(--ll-accent); }
+        h1 { font-size: 19px; font-weight: 700; margin: 0; color: var(--ll-text); }
+        p { font-size: 13px; color: var(--ll-text-muted); margin: 6px 0 28px; }
+        .primary { width: 100%; background: var(--ll-accent); color: var(--ll-accent-ink); text-align: center; padding: 14px; border-radius: 10px; font-size: 14px; font-weight: 700; border: none; cursor: pointer; }
+        .primary:hover { background: var(--ll-accent-hover); }
+        .ghost { background: none; border: none; color: var(--ll-text-muted); font-size: 12.5px; margin-top: 14px; cursor: pointer; padding: 8px; }
       `}</style>
     </div>
   );
@@ -170,26 +172,26 @@ function HomeScreen({ requests, amount, card, onNavigate, onSignOut, onOpenRewar
         Sign out (reset demo)
       </button>
       <style jsx>{`
-        .screen { padding: 8px 20px 90px; }
-        .greet { font-size: 13px; color: #9BA0AE; margin-top: 10px; }
-        .greet b { color: #fff; font-size: 19px; display: block; margin-top: 2px; }
-        .lead { display: block; width: 100%; text-align: left; margin-top: 18px; background: linear-gradient(135deg,#8B7CFA,#5A3FE0); border: none; border-radius: 22px; padding: 22px; cursor: pointer; color: #fff; }
-        .l1 { font-size: 12px; opacity: .85; font-weight: 700; text-transform: uppercase; letter-spacing: .04em; }
-        .l2 { font-size: 30px; font-weight: 800; margin-top: 8px; }
-        .l3 { font-size: 12px; opacity: .85; margin-top: 4px; }
-        .cta { margin-top: 16px; background: rgba(0,0,0,.25); text-align: center; padding: 11px; border-radius: 12px; font-size: 13px; font-weight: 700; }
-        .row2 { display: flex; gap: 12px; margin-top: 12px; }
-        .mini { flex: 1; text-align: left; background: #171A22; border: 1px solid #262A35; border-radius: 16px; padding: 14px; cursor: pointer; color: #fff; }
-        .mini :global(svg) { width: 22px; height: 22px; color: #8B7CFA; margin-bottom: 20px; }
-        .mini .t { font-size: 12.5px; font-weight: 700; }
-        .mini .s { font-size: 10.5px; color: #6D7280; margin-top: 2px; }
-        .strip { display: flex; gap: 12px; margin-top: 18px; }
+        .screen { padding: 4px 20px 90px; }
+        .greet { font-size: 13px; color: var(--ll-text-muted); margin-top: 8px; }
+        .greet b { color: var(--ll-text); font-size: 20px; font-weight: 700; display: block; margin-top: 2px; }
+        .lead { display: block; width: 100%; text-align: left; margin-top: 18px; background: var(--ll-surface); border: 1px solid var(--ll-border); border-radius: 14px; padding: 20px; cursor: pointer; box-shadow: var(--ll-shadow); }
+        .l1 { font-size: 11px; color: var(--ll-text-faint); font-weight: 700; text-transform: uppercase; letter-spacing: .04em; }
+        .l2 { font-size: 28px; font-weight: 700; margin-top: 8px; color: var(--ll-text); }
+        .l3 { font-size: 12px; color: var(--ll-text-muted); margin-top: 4px; }
+        .cta { margin-top: 16px; background: var(--ll-accent); color: var(--ll-accent-ink); text-align: center; padding: 12px; border-radius: 10px; font-size: 13px; font-weight: 700; }
+        .row2 { display: flex; gap: 10px; margin-top: 12px; }
+        .mini { flex: 1; text-align: left; background: var(--ll-surface); border: 1px solid var(--ll-border); border-radius: 12px; padding: 14px; cursor: pointer; }
+        .mini :global(svg) { width: 20px; height: 20px; color: var(--ll-accent); margin-bottom: 18px; }
+        .mini .t { font-size: 12.5px; font-weight: 700; color: var(--ll-text); }
+        .mini .s { font-size: 11px; color: var(--ll-text-muted); margin-top: 2px; }
+        .strip { display: flex; gap: 10px; margin-top: 16px; }
         .stripitem { display: flex; flex-direction: column; align-items: center; gap: 6px; flex: 1; background: none; border: none; padding: 0; cursor: pointer; }
         .stripitem.inert { cursor: default; }
-        .dot { width: 100%; aspect-ratio: 1; border-radius: 14px; background: #171A22; border: 1px solid #262A35; display: flex; align-items: center; justify-content: center; }
-        .dot :global(svg) { width: 18px; height: 18px; color: #8B7CFA; }
-        .stripitem span { font-size: 10px; color: #6D7280; }
-        .signout { margin-top: 28px; background: none; border: none; color: #4A4F5E; font-size: 11px; text-decoration: underline; cursor: pointer; }
+        .dot { width: 100%; aspect-ratio: 1; border-radius: 12px; background: var(--ll-surface); border: 1px solid var(--ll-border); display: flex; align-items: center; justify-content: center; }
+        .dot :global(svg) { width: 17px; height: 17px; color: var(--ll-accent); }
+        .stripitem span { font-size: 10.5px; color: var(--ll-text-muted); }
+        .signout { margin-top: 24px; background: none; border: none; color: var(--ll-text-faint); font-size: 11.5px; text-decoration: underline; cursor: pointer; padding: 4px; }
       `}</style>
     </div>
   );
@@ -240,15 +242,15 @@ function AddCardForm({ onSave, onCancel }) {
       </div>
       <button type="submit" className="primary">Save card</button>
       <style jsx>{`
-        .form { background: #171A22; border: 1px solid #262A35; border-radius: 16px; padding: 16px; display: flex; flex-direction: column; gap: 10px; margin-top: 18px; }
-        .form-head { display: flex; justify-content: space-between; align-items: center; font-size: 12.5px; font-weight: 700; color: #fff; }
-        .form-head button { background: none; border: none; color: #6D7280; cursor: pointer; display: flex; }
-        label { display: flex; flex-direction: column; gap: 6px; font-size: 11.5px; color: #9BA0AE; }
+        .form { background: var(--ll-surface); border: 1px solid var(--ll-border); border-radius: 14px; padding: 16px; display: flex; flex-direction: column; gap: 10px; margin-top: 18px; }
+        .form-head { display: flex; justify-content: space-between; align-items: center; font-size: 12.5px; font-weight: 700; color: var(--ll-text); }
+        .form-head button { background: none; border: none; color: var(--ll-text-faint); cursor: pointer; display: flex; padding: 4px; }
+        label { display: flex; flex-direction: column; gap: 6px; font-size: 11.5px; color: var(--ll-text-muted); }
         .row2f { display: flex; gap: 10px; }
         .row2f label { flex: 1; }
-        input { background: #0B0E14; border: 1px solid #262A35; border-radius: 10px; padding: 10px; color: #fff; font-size: 13px; font-family: inherit; width: 100%; }
-        input:focus { outline: 2px solid #8B7CFA; outline-offset: 1px; }
-        .primary { background: #8B7CFA; color: #0B0E14; text-align: center; padding: 12px; border-radius: 12px; font-size: 13px; font-weight: 800; border: none; cursor: pointer; margin-top: 4px; }
+        input { background: var(--ll-surface-2); border: 1px solid var(--ll-border); border-radius: 10px; padding: 10px; color: var(--ll-text); font-size: 13px; font-family: inherit; width: 100%; }
+        .primary { background: var(--ll-accent); color: var(--ll-accent-ink); text-align: center; padding: 12px; border-radius: 10px; font-size: 13px; font-weight: 700; border: none; cursor: pointer; margin-top: 4px; }
+        .primary:hover { background: var(--ll-accent-hover); }
       `}</style>
     </form>
   );
@@ -288,12 +290,13 @@ function PayScreen({ balance, card, onSaveCard, onPay, onBack, onNavigate }) {
           Back to home
         </button>
         <style jsx>{`
-          .screen.center { display: flex; flex-direction: column; align-items: center; text-align: center; padding: 90px 22px 0; }
-          .check { width: 84px; height: 84px; border-radius: 26px; background: rgba(74,222,128,.15); display: flex; align-items: center; justify-content: center; margin-bottom: 22px; }
-          .check :global(svg) { width: 38px; height: 38px; color: #4ADE80; }
-          h1 { font-size: 20px; font-weight: 800; margin: 0; }
-          p { font-size: 13px; color: #9BA0AE; margin: 6px 0 30px; line-height: 1.5; }
-          .primary { width: 100%; background: #8B7CFA; color: #0B0E14; text-align: center; padding: 15px; border-radius: 16px; font-size: 14.5px; font-weight: 800; border: none; cursor: pointer; }
+          .screen.center { display: flex; flex-direction: column; align-items: center; text-align: center; padding: 100px 24px 0; }
+          .check { width: 64px; height: 64px; border-radius: 16px; background: var(--ll-success-soft); display: flex; align-items: center; justify-content: center; margin-bottom: 20px; }
+          .check :global(svg) { width: 28px; height: 28px; color: var(--ll-success); }
+          h1 { font-size: 19px; font-weight: 700; margin: 0; color: var(--ll-text); }
+          p { font-size: 13px; color: var(--ll-text-muted); margin: 6px 0 28px; line-height: 1.5; }
+          .primary { width: 100%; background: var(--ll-accent); color: var(--ll-accent-ink); text-align: center; padding: 14px; border-radius: 10px; font-size: 14px; font-weight: 700; border: none; cursor: pointer; }
+          .primary:hover { background: var(--ll-accent-hover); }
         `}</style>
       </div>
     );
@@ -358,24 +361,25 @@ function PayScreen({ balance, card, onSaveCard, onPay, onBack, onNavigate }) {
         </>
       )}
       <style jsx>{`
-        .screen { padding: 8px 20px 40px; }
-        .back { background: #171A22; border: 1px solid #262A35; width: 34px; height: 34px; border-radius: 10px; display: flex; align-items: center; justify-content: center; color: #fff; cursor: pointer; margin-bottom: 8px; }
-        .balance { text-align: center; padding: 10px 0 4px; }
-        .l { font-size: 12px; color: #9BA0AE; }
-        .amt { font-size: 40px; font-weight: 800; margin-top: 6px; }
-        .card { background: #171A22; border: 1px solid #262A35; border-radius: 20px; padding: 20px; margin-top: 18px; }
-        .line { display: flex; justify-content: space-between; font-size: 12.5px; padding: 9px 0; border-bottom: 1px solid #20232C; color: #C7CAD3; }
-        .line.total { color: #fff; font-weight: 700; border-bottom: none; }
-        .line .good { color: #4ADE80; font-weight: 700; }
-        .paying-label { font-size: 11px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; color: #6D7280; margin-top: 20px; text-align: center; }
+        .screen { padding: 4px 20px 40px; }
+        .back { background: var(--ll-surface); border: 1px solid var(--ll-border); width: 36px; height: 36px; border-radius: 10px; display: flex; align-items: center; justify-content: center; color: var(--ll-text); cursor: pointer; margin-bottom: 8px; }
+        .balance { text-align: center; padding: 14px 0 4px; }
+        .l { font-size: 12px; color: var(--ll-text-muted); }
+        .amt { font-size: 36px; font-weight: 700; margin-top: 6px; color: var(--ll-text); }
+        .card { background: var(--ll-surface); border: 1px solid var(--ll-border); border-radius: 14px; padding: 18px 20px; margin-top: 18px; }
+        .line { display: flex; justify-content: space-between; font-size: 12.5px; padding: 9px 0; border-bottom: 1px solid var(--ll-border); color: var(--ll-text-muted); }
+        .line.total { color: var(--ll-text); font-weight: 700; border-bottom: none; }
+        .line .good { color: var(--ll-success); font-weight: 600; }
+        .paying-label { font-size: 11px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; color: var(--ll-text-faint); margin-top: 20px; text-align: center; }
         .stepper { display: flex; align-items: center; justify-content: center; gap: 16px; margin: 10px 0 4px; }
-        .pay-amt { font-size: 17px; font-weight: 800; color: #fff; min-width: 92px; text-align: center; }
-        .stepper button { width: 34px; height: 34px; border-radius: 10px; background: #262A35; border: none; display: flex; align-items: center; justify-content: center; color: #fff; cursor: pointer; }
+        .pay-amt { font-size: 17px; font-weight: 700; color: var(--ll-text); min-width: 92px; text-align: center; }
+        .stepper button { width: 36px; height: 36px; border-radius: 10px; background: var(--ll-surface-2); border: 1px solid var(--ll-border); display: flex; align-items: center; justify-content: center; color: var(--ll-text); cursor: pointer; }
         .stepper button:disabled { opacity: .35; cursor: not-allowed; }
-        .note { font-size: 11px; color: #6D7280; text-align: center; margin-top: 14px; line-height: 1.5; }
-        .method { display: flex; justify-content: space-between; align-items: center; background: #171A22; border: 1px solid #262A35; border-radius: 12px; padding: 12px 14px; margin-top: 18px; font-size: 12.5px; color: #C7CAD3; }
-        .method button { background: none; border: none; color: #8B7CFA; font-size: 12px; font-weight: 700; cursor: pointer; }
-        .primary { width: 100%; background: #8B7CFA; color: #0B0E14; text-align: center; padding: 15px; border-radius: 16px; font-size: 14.5px; font-weight: 800; border: none; cursor: pointer; margin-top: 12px; }
+        .note { font-size: 11.5px; color: var(--ll-text-faint); text-align: center; margin-top: 14px; line-height: 1.5; }
+        .method { display: flex; justify-content: space-between; align-items: center; background: var(--ll-surface); border: 1px solid var(--ll-border); border-radius: 10px; padding: 12px 14px; margin-top: 18px; font-size: 12.5px; color: var(--ll-text-muted); }
+        .method button { background: none; border: none; color: var(--ll-accent); font-size: 12px; font-weight: 700; cursor: pointer; padding: 4px; }
+        .primary { width: 100%; background: var(--ll-accent); color: var(--ll-accent-ink); text-align: center; padding: 14px; border-radius: 10px; font-size: 14px; font-weight: 700; border: none; cursor: pointer; margin-top: 12px; }
+        .primary:hover { background: var(--ll-accent-hover); }
       `}</style>
     </div>
   );
@@ -435,9 +439,9 @@ function NewRequestForm({ onAdd, onClose }) {
           ))}
         </select>
       </label>
-      <div className="urgency">
-        <button type="button" className={!urgent ? "active" : ""} onClick={() => setUrgent(false)}>Standard</button>
-        <button type="button" className={urgent ? "active urgent" : ""} onClick={() => setUrgent(true)}>Urgent</button>
+      <div className="urgency" role="group" aria-label="Priority">
+        <button type="button" className={!urgent ? "active" : ""} aria-pressed={!urgent} onClick={() => setUrgent(false)}>Standard</button>
+        <button type="button" className={urgent ? "active urgent" : ""} aria-pressed={urgent} onClick={() => setUrgent(true)}>Urgent</button>
       </div>
       <label>
         Details (optional)
@@ -463,26 +467,26 @@ function NewRequestForm({ onAdd, onClose }) {
       </label>
       <button type="submit" className="primary">Submit request</button>
       <style jsx>{`
-        .form { background: #171A22; border: 1px solid #262A35; border-radius: 16px; padding: 16px; display: flex; flex-direction: column; gap: 10px; }
-        .form-head { display: flex; justify-content: space-between; align-items: center; font-size: 12.5px; font-weight: 700; color: #fff; }
-        .form-head button { background: none; border: none; color: #6D7280; cursor: pointer; display: flex; }
-        label { display: flex; flex-direction: column; gap: 6px; font-size: 11.5px; color: #9BA0AE; }
-        input, textarea, select { background: #0B0E14; border: 1px solid #262A35; border-radius: 10px; padding: 10px; color: #fff; font-size: 13px; font-family: inherit; resize: none; }
-        input:focus, textarea:focus, select:focus { outline: 2px solid #8B7CFA; outline-offset: 1px; }
+        .form { background: var(--ll-surface); border: 1px solid var(--ll-border); border-radius: 14px; padding: 16px; display: flex; flex-direction: column; gap: 10px; }
+        .form-head { display: flex; justify-content: space-between; align-items: center; font-size: 12.5px; font-weight: 700; color: var(--ll-text); }
+        .form-head button { background: none; border: none; color: var(--ll-text-faint); cursor: pointer; display: flex; padding: 4px; }
+        label { display: flex; flex-direction: column; gap: 6px; font-size: 11.5px; color: var(--ll-text-muted); }
+        input, textarea, select { background: var(--ll-surface-2); border: 1px solid var(--ll-border); border-radius: 10px; padding: 10px; color: var(--ll-text); font-size: 13px; font-family: inherit; resize: none; }
         .urgency { display: flex; gap: 8px; }
-        .urgency button { flex: 1; background: #0B0E14; border: 1px solid #262A35; color: #9BA0AE; font-size: 12px; font-weight: 700; padding: 9px; border-radius: 10px; cursor: pointer; }
-        .urgency button.active { background: rgba(139,124,250,.16); border-color: #8B7CFA; color: #C9C0FE; }
-        .urgency button.active.urgent { background: rgba(242,124,124,.14); border-color: #F27C7C; color: #F7B2B2; }
+        .urgency button { flex: 1; background: var(--ll-surface-2); border: 1px solid var(--ll-border); color: var(--ll-text-muted); font-size: 12px; font-weight: 700; padding: 9px; border-radius: 10px; cursor: pointer; }
+        .urgency button.active { background: var(--ll-accent-soft); border-color: var(--ll-accent); color: var(--ll-accent-soft-ink); }
+        .urgency button.active.urgent { background: var(--ll-danger-soft); border-color: var(--ll-danger); color: var(--ll-danger); }
         .photo-label { gap: 8px; }
-        .photo-btn { display: inline-flex; align-items: center; gap: 8px; background: #0B0E14; border: 1px dashed #262A35; color: #9BA0AE; font-size: 12px; font-weight: 600; padding: 10px 14px; border-radius: 10px; cursor: pointer; width: fit-content; }
+        .photo-btn { display: inline-flex; align-items: center; gap: 8px; background: var(--ll-surface-2); border: 1px dashed var(--ll-border); color: var(--ll-text-muted); font-size: 12px; font-weight: 600; padding: 10px 14px; border-radius: 10px; cursor: pointer; width: fit-content; }
         .photo-btn :global(svg) { width: 15px; height: 15px; }
         .photo-preview { position: relative; width: 84px; height: 84px; }
-        .photo-preview img { width: 100%; height: 100%; object-fit: cover; border-radius: 10px; border: 1px solid #262A35; }
-        .photo-preview button { position: absolute; top: -7px; right: -7px; width: 22px; height: 22px; border-radius: 999px; background: #171A22; border: 1px solid #262A35; color: #fff; display: flex; align-items: center; justify-content: center; cursor: pointer; }
+        .photo-preview img { width: 100%; height: 100%; object-fit: cover; border-radius: 10px; border: 1px solid var(--ll-border); }
+        .photo-preview button { position: absolute; top: -8px; right: -8px; width: 24px; height: 24px; border-radius: 999px; background: var(--ll-surface); border: 1px solid var(--ll-border); color: var(--ll-text); display: flex; align-items: center; justify-content: center; cursor: pointer; }
         .photo-preview button :global(svg) { width: 12px; height: 12px; }
-        .check-row { flex-direction: row; align-items: center; gap: 8px; font-size: 12px; color: #C7CAD3; }
-        .check-row input { width: auto; padding: 0; accent-color: #8B7CFA; }
-        .primary { background: #8B7CFA; color: #0B0E14; text-align: center; padding: 12px; border-radius: 12px; font-size: 13px; font-weight: 800; border: none; cursor: pointer; margin-top: 4px; }
+        .check-row { flex-direction: row; align-items: center; gap: 8px; font-size: 12px; color: var(--ll-text-muted); }
+        .check-row input { width: auto; padding: 0; accent-color: var(--ll-accent); }
+        .primary { background: var(--ll-accent); color: var(--ll-accent-ink); text-align: center; padding: 12px; border-radius: 10px; font-size: 13px; font-weight: 700; border: none; cursor: pointer; margin-top: 4px; }
+        .primary:hover { background: var(--ll-accent-hover); }
       `}</style>
     </form>
   );
@@ -528,17 +532,18 @@ function MaintenanceScreen({ requests, onAdd, initialFormOpen }) {
         ))}
       </div>
       <style jsx>{`
-        .screen { padding: 8px 20px 40px; }
-        h1 { font-size: 15px; font-weight: 700; margin: 6px 0 14px; }
-        .new { width: 100%; background: #8B7CFA; color: #0B0E14; text-align: center; padding: 13px; border-radius: 14px; font-size: 13px; font-weight: 800; border: none; cursor: pointer; }
+        .screen { padding: 4px 20px 40px; }
+        h1 { font-size: 15px; font-weight: 700; margin: 6px 0 14px; color: var(--ll-text); }
+        .new { width: 100%; background: var(--ll-accent); color: var(--ll-accent-ink); text-align: center; padding: 13px; border-radius: 10px; font-size: 13px; font-weight: 700; border: none; cursor: pointer; }
+        .new:hover { background: var(--ll-accent-hover); }
         .list { margin-top: 14px; display: flex; flex-direction: column; gap: 10px; }
-        .row { display: flex; align-items: center; gap: 12px; padding: 13px; background: #171A22; border: 1px solid #262A35; border-radius: 14px; }
-        .thumb { width: 40px; height: 40px; border-radius: 10px; background: #262A35; flex-shrink: 0; display: flex; align-items: center; justify-content: center; color: #8B7CFA; }
+        .row { display: flex; align-items: center; gap: 12px; padding: 13px; background: var(--ll-surface); border: 1px solid var(--ll-border); border-radius: 12px; }
+        .thumb { width: 40px; height: 40px; border-radius: 10px; background: var(--ll-surface-2); flex-shrink: 0; display: flex; align-items: center; justify-content: center; color: var(--ll-accent); }
         .thumb.photo { object-fit: cover; }
         .meta { min-width: 0; }
-        .rt { font-size: 12.5px; font-weight: 700; display: flex; align-items: center; gap: 6px; }
-        .urgent-tag { font-size: 9px; font-weight: 700; color: #F7B2B2; background: rgba(242,124,124,.16); padding: 2px 7px; border-radius: 999px; flex-shrink: 0; }
-        .rs { font-size: 10.5px; color: #6D7280; margin-top: 2px; }
+        .rt { font-size: 12.5px; font-weight: 700; color: var(--ll-text); display: flex; align-items: center; gap: 6px; }
+        .urgent-tag { font-size: 9.5px; font-weight: 700; color: var(--ll-danger); background: var(--ll-danger-soft); padding: 2px 7px; border-radius: 999px; flex-shrink: 0; }
+        .rs { font-size: 11px; color: var(--ll-text-muted); margin-top: 2px; }
       `}</style>
     </div>
   );
@@ -553,8 +558,8 @@ function BackHeader({ title, onBack }) {
       {title && <h1>{title}</h1>}
       <style jsx>{`
         .back-header { display: flex; align-items: center; gap: 12px; margin-bottom: 6px; }
-        .back { background: #171A22; border: 1px solid #262A35; width: 34px; height: 34px; border-radius: 10px; display: flex; align-items: center; justify-content: center; color: #fff; cursor: pointer; flex-shrink: 0; }
-        h1 { font-size: 15px; font-weight: 700; }
+        .back { background: var(--ll-surface); border: 1px solid var(--ll-border); width: 36px; height: 36px; border-radius: 10px; display: flex; align-items: center; justify-content: center; color: var(--ll-text); cursor: pointer; flex-shrink: 0; }
+        h1 { font-size: 15px; font-weight: 700; color: var(--ll-text); }
       `}</style>
     </div>
   );
@@ -573,9 +578,9 @@ function RewardsScreen({ onBack }) {
         <div className="track"><div className="fill" style={{ width: "50%" }} /></div>
         <div className="sub">2 of 4 payments to Gold Tier</div>
       </div>
-      <div className="tabs2">
+      <div className="tabs2" role="tablist" aria-label="Rewards sections">
         {REWARDS_TABS.map((t) => (
-          <button key={t} type="button" className={"t2b" + (tab === t ? " active" : "")} onClick={() => setTab(t)}>
+          <button key={t} type="button" role="tab" aria-selected={tab === t} className={"t2b" + (tab === t ? " active" : "")} onClick={() => setTab(t)}>
             {t}
           </button>
         ))}
@@ -604,26 +609,28 @@ function RewardsScreen({ onBack }) {
       )}
       {tab === "Activity" && <div className="empty">No activity yet this cycle.</div>}
       <style jsx>{`
-        .screen { padding: 8px 20px 40px; }
-        .status { background: linear-gradient(135deg,#8B7CFA,#5A3FE0); border-radius: 20px; padding: 20px; margin-top: 14px; }
-        .tier { display: flex; align-items: center; gap: 8px; font-size: 15px; font-weight: 800; }
-        .tier :global(svg) { width: 18px; height: 18px; }
-        .pts { font-size: 12px; opacity: .9; margin-top: 4px; }
-        .track { height: 6px; border-radius: 999px; background: rgba(0,0,0,.25); margin-top: 16px; overflow: hidden; }
-        .track .fill { height: 100%; background: #fff; border-radius: 999px; }
-        .sub { font-size: 11px; opacity: .85; margin-top: 8px; }
-        .tabs2 { display: flex; gap: 4px; margin-top: 18px; border-bottom: 1px solid #20232C; }
-        .t2b { flex: 1; background: none; border: none; color: #6D7280; font-size: 11.5px; font-weight: 700; padding: 10px 4px; cursor: pointer; border-bottom: 2px solid transparent; }
-        .t2b.active { color: #fff; border-bottom-color: #8B7CFA; }
+        .screen { padding: 4px 20px 40px; }
+        .status { background: var(--ll-surface); border: 1px solid var(--ll-border); border-radius: 14px; padding: 20px; margin-top: 14px; }
+        .tier { display: flex; align-items: center; gap: 8px; font-size: 15px; font-weight: 700; color: var(--ll-text); }
+        .tier :global(svg) { width: 18px; height: 18px; color: var(--ll-accent); }
+        .pts { font-size: 12px; color: var(--ll-text-muted); margin-top: 4px; }
+        .track { height: 6px; border-radius: 999px; background: var(--ll-surface-2); margin-top: 16px; overflow: hidden; }
+        .track .fill { height: 100%; background: var(--ll-accent); border-radius: 999px; }
+        .sub { font-size: 11px; color: var(--ll-text-faint); margin-top: 8px; }
+        .tabs2 { display: flex; gap: 4px; margin-top: 18px; border-bottom: 1px solid var(--ll-border); }
+        .t2b { flex: 1; background: none; border: none; color: var(--ll-text-faint); font-size: 11.5px; font-weight: 700; padding: 10px 4px; cursor: pointer; border-bottom: 2px solid transparent; }
+        .t2b.active { color: var(--ll-accent); border-bottom-color: var(--ll-accent); }
         .cards { margin-top: 16px; display: flex; flex-direction: column; gap: 12px; }
-        .promo { border-radius: 16px; padding: 16px; }
+        .promo { border-radius: 12px; padding: 16px; border: 1px solid var(--ll-border); }
         .promo :global(svg) { width: 20px; height: 20px; }
-        .promo.violet { background: rgba(139,124,250,.14); color: #C9C0FE; }
-        .promo.amber { background: rgba(250,178,25,.12); color: #F2C368; }
-        .pt { font-size: 13px; font-weight: 700; color: #fff; margin-top: 10px; }
-        .ps { font-size: 11px; color: #9BA0AE; margin-top: 3px; }
-        .empty { margin-top: 24px; font-size: 12.5px; color: #6D7280; text-align: center; }
-        .benefits { margin-top: 16px; padding-left: 18px; display: flex; flex-direction: column; gap: 10px; font-size: 12.5px; color: #C7CAD3; }
+        .promo.violet { background: var(--ll-accent-soft); }
+        .promo.violet :global(svg), .promo.violet .pt { color: var(--ll-accent-soft-ink); }
+        .promo.amber { background: var(--ll-warning-soft); }
+        .promo.amber :global(svg), .promo.amber .pt { color: var(--ll-warning); }
+        .pt { font-size: 13px; font-weight: 700; margin-top: 10px; }
+        .ps { font-size: 11px; color: var(--ll-text-muted); margin-top: 3px; }
+        .empty { margin-top: 24px; font-size: 12.5px; color: var(--ll-text-faint); text-align: center; }
+        .benefits { margin-top: 16px; padding-left: 18px; display: flex; flex-direction: column; gap: 10px; font-size: 12.5px; color: var(--ll-text-muted); }
       `}</style>
     </div>
   );
@@ -642,12 +649,54 @@ function DetailScreen({ title, onBack, rows }) {
         ))}
       </div>
       <style jsx>{`
-        .screen { padding: 8px 20px 40px; }
-        .dcard { background: #171A22; border: 1px solid #262A35; border-radius: 16px; margin-top: 16px; padding: 4px 16px; }
-        .drow { display: flex; justify-content: space-between; gap: 16px; padding: 14px 0; border-bottom: 1px solid #20232C; font-size: 12.5px; }
+        .screen { padding: 4px 20px 40px; }
+        .dcard { background: var(--ll-surface); border: 1px solid var(--ll-border); border-radius: 14px; margin-top: 16px; padding: 4px 16px; }
+        .drow { display: flex; justify-content: space-between; gap: 16px; padding: 14px 0; border-bottom: 1px solid var(--ll-border); font-size: 12.5px; }
         .drow:last-child { border-bottom: none; }
-        .dl { color: #9BA0AE; }
-        .dv { color: #fff; font-weight: 600; text-align: right; }
+        .dl { color: var(--ll-text-muted); }
+        .dv { color: var(--ll-text); font-weight: 600; text-align: right; }
+      `}</style>
+    </div>
+  );
+}
+
+function AccountSettingsScreen({ rows, theme, onSetTheme, onBack }) {
+  return (
+    <div className="screen">
+      <BackHeader title="Account Settings" onBack={onBack} />
+      <div className="dcard">
+        {rows.map(([label, value]) => (
+          <div className="drow" key={label}>
+            <span className="dl">{label}</span>
+            <span className="dv">{value}</span>
+          </div>
+        ))}
+      </div>
+      <div className="slabel">Appearance</div>
+      <div className="dcard">
+        <div className="drow">
+          <span className="dl">Theme</span>
+          <div className="segmented" role="group" aria-label="Theme">
+            <button type="button" className={theme === "light" ? "active" : ""} aria-pressed={theme === "light"} onClick={() => onSetTheme("light")}>
+              Light
+            </button>
+            <button type="button" className={theme === "dark" ? "active" : ""} aria-pressed={theme === "dark"} onClick={() => onSetTheme("dark")}>
+              Dark
+            </button>
+          </div>
+        </div>
+      </div>
+      <style jsx>{`
+        .screen { padding: 4px 20px 40px; }
+        .dcard { background: var(--ll-surface); border: 1px solid var(--ll-border); border-radius: 14px; margin-top: 16px; padding: 4px 16px; }
+        .drow { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 14px 0; border-bottom: 1px solid var(--ll-border); font-size: 12.5px; }
+        .drow:last-child { border-bottom: none; }
+        .dl { color: var(--ll-text-muted); }
+        .dv { color: var(--ll-text); font-weight: 600; text-align: right; }
+        .slabel { font-size: 11px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; color: var(--ll-text-faint); margin: 22px 0 8px; }
+        .segmented { display: flex; background: var(--ll-surface-2); border: 1px solid var(--ll-border); border-radius: 8px; padding: 2px; }
+        .segmented button { background: none; border: none; color: var(--ll-text-muted); font-size: 11.5px; font-weight: 700; padding: 7px 14px; border-radius: 6px; cursor: pointer; }
+        .segmented button.active { background: var(--ll-accent); color: var(--ll-accent-ink); }
       `}</style>
     </div>
   );
@@ -705,20 +754,20 @@ function MoreScreen({ onOpen, onSignOut }) {
         <FiLogOut aria-hidden="true" /> Logout
       </button>
       <style jsx>{`
-        .screen { padding: 8px 20px 40px; }
-        .head h1 { font-size: 17px; font-weight: 800; margin: 6px 0 4px; }
+        .screen { padding: 4px 20px 40px; }
+        .head h1 { font-size: 17px; font-weight: 700; margin: 6px 0 4px; color: var(--ll-text); }
         .section { margin-top: 20px; }
-        .slabel { font-size: 11px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; color: #6D7280; margin-bottom: 8px; }
-        .scard { background: #171A22; border: 1px solid #262A35; border-radius: 16px; overflow: hidden; }
-        .mrow { width: 100%; display: flex; align-items: center; gap: 12px; padding: 14px 16px; background: none; border: none; border-bottom: 1px solid #20232C; cursor: pointer; text-align: left; }
+        .slabel { font-size: 11px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; color: var(--ll-text-faint); margin-bottom: 8px; }
+        .scard { background: var(--ll-surface); border: 1px solid var(--ll-border); border-radius: 14px; overflow: hidden; }
+        .mrow { width: 100%; display: flex; align-items: center; gap: 12px; padding: 14px 16px; background: none; border: none; border-bottom: 1px solid var(--ll-border); cursor: pointer; text-align: left; min-height: 44px; }
         .mrow:last-child { border-bottom: none; }
-        .mic { width: 30px; height: 30px; border-radius: 9px; background: #20232C; display: flex; align-items: center; justify-content: center; color: #8B7CFA; flex-shrink: 0; }
+        .mic { width: 30px; height: 30px; border-radius: 9px; background: var(--ll-surface-2); display: flex; align-items: center; justify-content: center; color: var(--ll-accent); flex-shrink: 0; }
         .mic :global(svg) { width: 15px; height: 15px; }
         .mtext { flex: 1; min-width: 0; display: flex; flex-direction: column; }
-        .mt { font-size: 12.5px; font-weight: 700; color: #fff; }
-        .ms { font-size: 10.5px; color: #6D7280; margin-top: 2px; }
-        .mchev { width: 15px; height: 15px; color: #4A4F5E; flex-shrink: 0; }
-        .logout { width: 100%; display: flex; align-items: center; justify-content: center; gap: 8px; background: none; border: 1px solid #3A2530; color: #F27C7C; font-size: 13px; font-weight: 700; padding: 13px; border-radius: 14px; margin-top: 28px; cursor: pointer; }
+        .mt { font-size: 12.5px; font-weight: 700; color: var(--ll-text); }
+        .ms { font-size: 11px; color: var(--ll-text-muted); margin-top: 2px; }
+        .mchev { width: 15px; height: 15px; color: var(--ll-text-faint); flex-shrink: 0; }
+        .logout { width: 100%; display: flex; align-items: center; justify-content: center; gap: 8px; background: none; border: 1px solid var(--ll-danger); color: var(--ll-danger); font-size: 13px; font-weight: 700; padding: 13px; border-radius: 10px; margin-top: 28px; cursor: pointer; }
         .logout :global(svg) { width: 15px; height: 15px; }
       `}</style>
     </div>
@@ -768,6 +817,7 @@ export default function LoftLivingApp() {
   // Rendered client-only (see pages/loft-living/index.js, dynamic + ssr:false),
   // so reading localStorage in the initializer can't cause a hydration mismatch.
   const [authed, setAuthed] = useState(() => window.localStorage.getItem(AUTH_KEY) === "1");
+  const [theme, setThemeState] = useState(() => window.localStorage.getItem(THEME_KEY) || "light");
   const [view, setView] = useState("home");
   const [overlay, setOverlay] = useState(null);
   const [balance, setBalance] = useState(BASE_RENT + UTILITIES);
@@ -790,6 +840,11 @@ export default function LoftLivingApp() {
     setAuthed(false);
     setView("home");
     setOverlay(null);
+  }
+
+  function handleSetTheme(t) {
+    window.localStorage.setItem(THEME_KEY, t);
+    setThemeState(t);
   }
 
   function navigate(next, opts) {
@@ -819,7 +874,7 @@ export default function LoftLivingApp() {
   }
 
   return (
-    <div className="ll-shell">
+    <div className="ll-shell" data-theme={theme}>
       <div className="phone">
         {loading ? (
           <LoadingScreen />
@@ -830,6 +885,13 @@ export default function LoftLivingApp() {
                 <SignInScreen onSignedIn={handleSignedIn} />
               ) : overlay === "rewards" ? (
                 <RewardsScreen onBack={() => setOverlay(null)} />
+              ) : overlay === "account" ? (
+                <AccountSettingsScreen
+                  rows={DETAIL_CONTENT.account.rows}
+                  theme={theme}
+                  onSetTheme={handleSetTheme}
+                  onBack={() => setOverlay(null)}
+                />
               ) : overlay ? (
                 <DetailScreen
                   title={DETAIL_CONTENT[overlay].title}
@@ -852,25 +914,68 @@ export default function LoftLivingApp() {
       </div>
       <style jsx global>{`
         .ll-shell {
+          --ll-bg: #F7F7F8;
+          --ll-surface: #FFFFFF;
+          --ll-surface-2: #F2F3F5;
+          --ll-border: #E3E4E8;
+          --ll-text: #14161A;
+          --ll-text-muted: #5B5E68;
+          --ll-text-faint: #6E7180;
+          --ll-accent: #4F46E5;
+          --ll-accent-hover: #4338CA;
+          --ll-accent-ink: #FFFFFF;
+          --ll-accent-soft: #EEF0FD;
+          --ll-accent-soft-ink: #4338CA;
+          --ll-success: #117A36;
+          --ll-success-soft: #E7F6EC;
+          --ll-danger: #B91C1C;
+          --ll-danger-soft: #FCEAEA;
+          --ll-warning: #B45309;
+          --ll-warning-soft: #FEF3E0;
+          --ll-focus: #4F46E5;
+          --ll-shadow: 0 1px 2px rgba(20,22,26,.04), 0 8px 24px -14px rgba(20,22,26,.14);
           min-height: 100dvh;
           display: flex;
           justify-content: center;
-          background: #0B0E14;
+          background: var(--ll-bg);
           font-family: -apple-system, "Inter", "Helvetica Neue", Arial, sans-serif;
+        }
+        .ll-shell[data-theme="dark"] {
+          --ll-bg: #0B0E14;
+          --ll-surface: #15171E;
+          --ll-surface-2: #1C1F27;
+          --ll-border: #262A35;
+          --ll-text: #F2F3F5;
+          --ll-text-muted: #9BA0AE;
+          --ll-text-faint: #6D7280;
+          --ll-accent: #818CF8;
+          --ll-accent-hover: #A5B0FB;
+          --ll-accent-ink: #10121A;
+          --ll-accent-soft: rgba(129,140,248,.16);
+          --ll-accent-soft-ink: #A5B0FB;
+          --ll-success: #4ADE80;
+          --ll-success-soft: rgba(74,222,128,.15);
+          --ll-danger: #F87171;
+          --ll-danger-soft: rgba(248,113,113,.15);
+          --ll-warning: #FBBF24;
+          --ll-warning-soft: rgba(251,191,36,.15);
+          --ll-focus: #818CF8;
+          --ll-shadow: 0 1px 2px rgba(0,0,0,.3), 0 12px 30px -16px rgba(0,0,0,.5);
         }
         .ll-shell .phone {
           width: 100%;
           max-width: 480px;
           min-height: 100dvh;
-          background: #0B0E14;
+          background: var(--ll-bg);
           position: relative;
-          color: #fff;
+          color: var(--ll-text);
           display: flex;
           flex-direction: column;
         }
         .ll-shell .body { flex: 1; overflow-y: auto; padding-top: 14px; padding-bottom: 68px; }
-        .ll-shell button { font-family: inherit; }
+        .ll-shell button, .ll-shell input, .ll-shell select, .ll-shell textarea { font-family: inherit; }
         .ll-shell * { box-sizing: border-box; }
+        .ll-shell *:focus-visible { outline: 2px solid var(--ll-focus); outline-offset: 2px; }
       `}</style>
     </div>
   );
