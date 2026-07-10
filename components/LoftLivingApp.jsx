@@ -18,6 +18,8 @@ import {
   FiChevronRight,
   FiStar,
   FiCamera,
+  FiCalendar,
+  FiMapPin,
 } from "react-icons/fi";
 
 const AUTH_KEY = "loftLivingDemoAuthed";
@@ -161,9 +163,13 @@ function HomeScreen({ requests, amount, card, onNavigate, onSignOut, onOpenRewar
           <div className="dot"><FiAward aria-hidden="true" /></div>
           <span>Rewards</span>
         </button>
-        {["Events", "Docs", "Amenities"].map((l) => (
+        {[
+          { l: "Events", Icon: FiCalendar },
+          { l: "Docs", Icon: FiFileText },
+          { l: "Amenities", Icon: FiMapPin },
+        ].map(({ l, Icon }) => (
           <div className="stripitem inert" key={l}>
-            <div className="dot" />
+            <div className="dot"><Icon aria-hidden="true" /></div>
             <span>{l}</span>
           </div>
         ))}
