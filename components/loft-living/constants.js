@@ -11,6 +11,57 @@ export function fmt(n) {
   return n.toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
 }
 
+// Rewards are derived from real payment history rather than tracked as
+// separate state, so a payment made in the Pay tab immediately shows up
+// as points, credits, tier progress, and an Activity entry here. With the
+// single seed payment in SEED_HISTORY these constants net out to the
+// same 120 pts / $25 credits a first-time visitor should see.
+export const POINTS_PER_PAYMENT = 10;
+export const BASE_POINTS = 110;
+export const CREDITS_PER_PAYMENT = 5;
+export const BASE_CREDITS = 20;
+
+export const REWARD_TIERS = [
+  { key: "silver", name: "Silver", minPayments: 0 },
+  { key: "gold", name: "Gold", minPayments: 5 },
+  { key: "platinum", name: "Platinum", minPayments: 12 },
+];
+
+export const REWARD_CATALOG = [
+  { key: "credit10", label: "$10 statement credit", cost: 100 },
+  { key: "parking", label: "Reserved parking upgrade", sub: "1 month", cost: 150 },
+  { key: "carpet", label: "In-unit carpet cleaning", sub: "One-time service", cost: 300 },
+  { key: "credit50", label: "$50 statement credit", cost: 500 },
+];
+
+export const REWARD_BENEFITS = [
+  { label: "Priority maintenance scheduling", iconKey: "tool" },
+  { label: "Fee-free payment methods", iconKey: "creditCard" },
+  { label: "Early access to renewal offers", iconKey: "clock" },
+];
+
+export function paymentsCount(history) {
+  return history.filter((t) => t.amount < 0).length;
+}
+
+export function rewardsPoints(history) {
+  return BASE_POINTS + paymentsCount(history) * POINTS_PER_PAYMENT;
+}
+
+export function rewardsCredits(history) {
+  return BASE_CREDITS + paymentsCount(history) * CREDITS_PER_PAYMENT;
+}
+
+export function currentTier(history) {
+  const count = paymentsCount(history);
+  return REWARD_TIERS.reduce((cur, t) => (count >= t.minPayments ? t : cur), REWARD_TIERS[0]);
+}
+
+export function nextTier(history) {
+  const count = paymentsCount(history);
+  return REWARD_TIERS.find((t) => t.minPayments > count) ?? null;
+}
+
 export const SEED_REQUESTS = [
   { id: 1, title: "Leaking kitchen faucet", category: "Plumbing", urgent: true, date: "Jul 6", status: "In progress" },
   { id: 2, title: "AC not cooling", category: "HVAC", urgent: false, date: "Jun 28", status: "Resolved" },

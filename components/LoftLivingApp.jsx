@@ -96,7 +96,7 @@ export default function LoftLivingApp() {
               {!authed ? (
                 <SignInScreen onSignedIn={handleSignedIn} />
               ) : overlay === "rewards" ? (
-                <RewardsScreen onBack={() => setOverlay(null)} />
+                <RewardsScreen onBack={() => setOverlay(null)} history={history} />
               ) : overlay === "account" ? (
                 <AccountSettingsScreen
                   rows={DETAIL_CONTENT.account.rows}
