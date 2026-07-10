@@ -20,6 +20,8 @@ import {
   FiCamera,
   FiCalendar,
   FiMapPin,
+  FiTrash2,
+  FiCheck,
 } from "react-icons/fi";
 
 const AUTH_KEY = "loftLivingDemoAuthed";
@@ -35,6 +37,18 @@ const SEED_REQUESTS = [
   { id: 1, title: "Leaking kitchen faucet", category: "Plumbing", urgent: true, date: "Jul 6", status: "In progress" },
   { id: 2, title: "AC not cooling", category: "HVAC", urgent: false, date: "Jun 28", status: "Resolved" },
   { id: 3, title: "Hallway light out", category: "Electrical", urgent: false, date: "Jun 14", status: "Resolved" },
+];
+
+// Running balance is computed by folding over this list (see HistoryScreen),
+// so amounts just need to net out to the current starting balance —
+// two charges post Jul 1 with nothing paid against them yet, landing on
+// the same $1,480 the app starts with.
+const SEED_HISTORY = [
+  { id: 1, date: "Jun 1", desc: "Rent", amount: BASE_RENT },
+  { id: 2, date: "Jun 1", desc: "Utilities", amount: UTILITIES },
+  { id: 3, date: "Jun 3", desc: "Payment — card ····4242", amount: -(BASE_RENT + UTILITIES) },
+  { id: 4, date: "Jul 1", desc: "Rent", amount: BASE_RENT },
+  { id: 5, date: "Jul 1", desc: "Utilities", amount: UTILITIES },
 ];
 
 function LoadingScreen() {
@@ -262,23 +276,121 @@ function AddCardForm({ onSave, onCancel }) {
   );
 }
 
-function PayScreen({ balance, card, onSaveCard, onPay, onBack, onNavigate }) {
+function PaymentMethodsScreen({ cards, activeCardId, onSetActive, onDelete, onAddNew, onBack }) {
+  return (
+    <div className="screen">
+      <BackHeader title="Payment Methods" onBack={onBack} />
+      {cards.length === 0 ? (
+        <div className="empty">No saved payment methods yet.</div>
+      ) : (
+        <div className="list">
+          {cards.map((c) => (
+            <div className="row" key={c.id}>
+              <button type="button" className="select" onClick={() => onSetActive(c.id)} aria-pressed={c.id === activeCardId}>
+                <span className={"radio" + (c.id === activeCardId ? " on" : "")}>
+                  {c.id === activeCardId && <FiCheck aria-hidden="true" />}
+                </span>
+                <span>Card ····{c.last4}</span>
+              </button>
+              <button type="button" className="del" onClick={() => onDelete(c.id)} aria-label={`Remove card ending in ${c.last4}`}>
+                <FiTrash2 aria-hidden="true" />
+              </button>
+            </div>
+          ))}
+        </div>
+      )}
+      <button type="button" className="new" onClick={onAddNew}>+ Add payment method</button>
+      <style jsx>{`
+        .screen { padding: 4px 20px 40px; }
+        .empty { font-size: 12.5px; color: var(--ll-text-faint); text-align: center; margin: 24px 0; }
+        .list { display: flex; flex-direction: column; gap: 10px; margin-top: 16px; }
+        .row { display: flex; align-items: center; gap: 8px; }
+        .select { flex: 1; display: flex; align-items: center; gap: 12px; background: var(--ll-surface); border: 1px solid var(--ll-border); border-radius: 12px; padding: 14px; cursor: pointer; text-align: left; font-size: 12.5px; color: var(--ll-text); font-weight: 600; }
+        .radio { width: 20px; height: 20px; border-radius: 999px; border: 1.5px solid var(--ll-border); display: flex; align-items: center; justify-content: center; flex-shrink: 0; color: var(--ll-accent-ink); }
+        .radio.on { background: var(--ll-accent); border-color: var(--ll-accent); }
+        .radio :global(svg) { width: 12px; height: 12px; }
+        .del { width: 40px; height: 40px; border-radius: 10px; background: var(--ll-surface); border: 1px solid var(--ll-border); color: var(--ll-danger); display: flex; align-items: center; justify-content: center; cursor: pointer; flex-shrink: 0; }
+        .del :global(svg) { width: 16px; height: 16px; }
+        .new { width: 100%; background: var(--ll-surface-2); border: 1px dashed var(--ll-border); color: var(--ll-text-muted); text-align: center; padding: 13px; border-radius: 10px; font-size: 13px; font-weight: 700; cursor: pointer; margin-top: 16px; }
+      `}</style>
+    </div>
+  );
+}
+
+function HistoryScreen({ history, onBack }) {
+  const withBalance = history.reduce((acc, t) => {
+    const runningBalance = (acc.at(-1)?.runningBalance ?? 0) + t.amount;
+    return [...acc, { ...t, runningBalance }];
+  }, []);
+  const newestFirst = withBalance.slice().reverse();
+
+  return (
+    <div className="screen">
+      <BackHeader title="Account History" onBack={onBack} />
+      <div className="list">
+        {newestFirst.map((t) => {
+          const isCharge = t.amount > 0;
+          return (
+            <div className="row" key={t.id}>
+              <div className="meta">
+                <div className="desc">{t.desc}</div>
+                <div className="date">{t.date}</div>
+              </div>
+              <div className="amts">
+                <div className={"amt" + (isCharge ? "" : " payment")}>
+                  {isCharge ? "+" : "−"}${fmt(Math.abs(t.amount))}
+                </div>
+                <div className="running">Balance ${fmt(t.runningBalance)}</div>
+              </div>
+            </div>
+          );
+        })}
+      </div>
+      <style jsx>{`
+        .screen { padding: 4px 20px 40px; }
+        .list { margin-top: 16px; display: flex; flex-direction: column; gap: 10px; }
+        .row { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; padding: 13px 14px; background: var(--ll-surface); border: 1px solid var(--ll-border); border-radius: 12px; }
+        .desc { font-size: 12.5px; font-weight: 700; color: var(--ll-text); }
+        .date { font-size: 11px; color: var(--ll-text-muted); margin-top: 2px; }
+        .amts { text-align: right; flex-shrink: 0; }
+        .amt { font-size: 13px; font-weight: 700; color: var(--ll-text); }
+        .amt.payment { color: var(--ll-success); }
+        .running { font-size: 10.5px; color: var(--ll-text-faint); margin-top: 2px; }
+      `}</style>
+    </div>
+  );
+}
+
+function PayScreen({ balance, cards, activeCard, onSetActiveCard, onAddCard, onDeleteCard, history, onPay, onBack, onNavigate }) {
   const [payAmount, setPayAmount] = useState(balance);
-  const [addingCard, setAddingCard] = useState(false);
+  const [mode, setMode] = useState("pay"); // 'pay' | 'add' | 'manage' | 'history'
+  const [pending, setPending] = useState(false);
   const [paid, setPaid] = useState(null);
   const serviceFee = 0;
 
   const clampedPay = Math.min(payAmount, balance);
 
   function submitPayment() {
-    if (!card) {
-      setAddingCard(true);
+    if (!activeCard) {
+      setMode("add");
       return;
     }
-    // Capture remaining balance now — `balance` itself updates (via onPay)
-    // before this component re-renders, so it can't be derived afterward.
-    setPaid({ amount: clampedPay, last4: card.last4, remaining: balance - clampedPay });
-    onPay(clampedPay);
+    // Disabling immediately on click (not after the timeout) is what makes
+    // a rapid double-tap safe — the second click has nothing to act on
+    // because the button is already disabled, so it can never fire a
+    // second charge for the same request. This is the fix for the
+    // non-idempotent-payments root cause: not a random simulated failure,
+    // but a UI that can't submit the same payment twice in the first place.
+    if (pending) return;
+    setPending(true);
+    const paidAmount = clampedPay;
+    const remaining = balance - paidAmount;
+    const last4 = activeCard.last4;
+    setTimeout(() => {
+      setPaid({ amount: paidAmount, last4, remaining });
+      onPay(paidAmount, last4);
+      setPending(false);
+    }, 900);
   }
 
   if (paid) {
@@ -308,6 +420,35 @@ function PayScreen({ balance, card, onSaveCard, onPay, onBack, onNavigate }) {
     );
   }
 
+  if (mode === "manage") {
+    return (
+      <PaymentMethodsScreen
+        cards={cards}
+        activeCardId={activeCard?.id ?? null}
+        onSetActive={onSetActiveCard}
+        onDelete={onDeleteCard}
+        onAddNew={() => setMode("add")}
+        onBack={() => setMode("pay")}
+      />
+    );
+  }
+
+  if (mode === "add") {
+    return (
+      <div className="screen">
+        <AddCardForm
+          onCancel={() => setMode(cards.length ? "manage" : "pay")}
+          onSave={(c) => { onAddCard(c); setMode("pay"); }}
+        />
+        <style jsx>{`.screen { padding: 4px 20px 40px; }`}</style>
+      </div>
+    );
+  }
+
+  if (mode === "history") {
+    return <HistoryScreen history={history} onBack={() => setMode("pay")} />;
+  }
+
   return (
     <div className="screen">
       <button type="button" className="back" onClick={onBack} aria-label="Back">
@@ -323,13 +464,16 @@ function PayScreen({ balance, card, onSaveCard, onPay, onBack, onNavigate }) {
         <div className="line"><span>Service fee</span><span className="good">${fmt(serviceFee)} · no hidden fees</span></div>
         <div className="line total"><span>Total due</span><span>${fmt(balance)}</span></div>
       </div>
+      <button type="button" className="history-link" onClick={() => setMode("history")}>
+        View account history <FiChevronRight aria-hidden="true" />
+      </button>
 
       <div className="paying-label">You're paying</div>
       <div className="stepper">
         <button
           type="button"
           onClick={() => setPayAmount((a) => Math.max(MIN_PAYMENT, a - PAY_STEP))}
-          disabled={clampedPay <= MIN_PAYMENT}
+          disabled={pending || clampedPay <= MIN_PAYMENT}
           aria-label="Decrease payment amount"
         >
           <FiMinus aria-hidden="true" />
@@ -338,7 +482,7 @@ function PayScreen({ balance, card, onSaveCard, onPay, onBack, onNavigate }) {
         <button
           type="button"
           onClick={() => setPayAmount((a) => Math.min(balance, a + PAY_STEP))}
-          disabled={clampedPay >= balance}
+          disabled={pending || clampedPay >= balance}
           aria-label="Increase payment amount"
         >
           <FiPlus aria-hidden="true" />
@@ -348,24 +492,21 @@ function PayScreen({ balance, card, onSaveCard, onPay, onBack, onNavigate }) {
         Partial payments are OK — pay any amount up to your full balance of ${fmt(balance)}. The base rent amount itself can&rsquo;t be changed.
       </p>
 
-      {addingCard ? (
-        <AddCardForm
-          onCancel={() => setAddingCard(false)}
-          onSave={(c) => { onSaveCard(c); setAddingCard(false); }}
-        />
-      ) : (
-        <>
-          {card && (
-            <div className="method">
-              <span>Card ····{card.last4}</span>
-              <button type="button" onClick={() => setAddingCard(true)}>Change</button>
-            </div>
-          )}
-          <button type="button" className="primary" onClick={submitPayment}>
-            {card ? `Pay $${fmt(clampedPay)} with card ····${card.last4}` : "Add card to pay"}
-          </button>
-        </>
+      {activeCard && (
+        <div className="method">
+          <span>Card ····{activeCard.last4}</span>
+          <button type="button" onClick={() => setMode("manage")} disabled={pending}>Manage</button>
+        </div>
       )}
+      <button type="button" className="primary" onClick={submitPayment} disabled={pending} aria-busy={pending}>
+        {pending ? (
+          <span className="spinner-row"><span className="spinner" aria-hidden="true" /> Processing payment&hellip;</span>
+        ) : activeCard ? (
+          `Pay $${fmt(clampedPay)} with card ····${activeCard.last4}`
+        ) : (
+          "Add card to pay"
+        )}
+      </button>
       <style jsx>{`
         .screen { padding: 4px 20px 40px; }
         .back { background: var(--ll-surface); border: 1px solid var(--ll-border); width: 36px; height: 36px; border-radius: 10px; display: flex; align-items: center; justify-content: center; color: var(--ll-text); cursor: pointer; margin-bottom: 8px; }
@@ -376,6 +517,8 @@ function PayScreen({ balance, card, onSaveCard, onPay, onBack, onNavigate }) {
         .line { display: flex; justify-content: space-between; font-size: 12.5px; padding: 9px 0; border-bottom: 1px solid var(--ll-border); color: var(--ll-text-muted); }
         .line.total { color: var(--ll-text); font-weight: 700; border-bottom: none; }
         .line .good { color: var(--ll-success); font-weight: 600; }
+        .history-link { width: 100%; display: flex; align-items: center; justify-content: center; gap: 4px; background: none; border: none; color: var(--ll-accent); font-size: 12px; font-weight: 700; cursor: pointer; padding: 12px 4px 0; }
+        .history-link :global(svg) { width: 14px; height: 14px; }
         .paying-label { font-size: 11px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; color: var(--ll-text-faint); margin-top: 20px; text-align: center; }
         .stepper { display: flex; align-items: center; justify-content: center; gap: 16px; margin: 10px 0 4px; }
         .pay-amt { font-size: 17px; font-weight: 700; color: var(--ll-text); min-width: 92px; text-align: center; }
@@ -384,8 +527,13 @@ function PayScreen({ balance, card, onSaveCard, onPay, onBack, onNavigate }) {
         .note { font-size: 11.5px; color: var(--ll-text-faint); text-align: center; margin-top: 14px; line-height: 1.5; }
         .method { display: flex; justify-content: space-between; align-items: center; background: var(--ll-surface); border: 1px solid var(--ll-border); border-radius: 10px; padding: 12px 14px; margin-top: 18px; font-size: 12.5px; color: var(--ll-text-muted); }
         .method button { background: none; border: none; color: var(--ll-accent); font-size: 12px; font-weight: 700; cursor: pointer; padding: 4px; }
+        .method button:disabled { opacity: .4; cursor: not-allowed; }
         .primary { width: 100%; background: var(--ll-accent); color: var(--ll-accent-ink); text-align: center; padding: 14px; border-radius: 10px; font-size: 14px; font-weight: 700; border: none; cursor: pointer; margin-top: 12px; }
-        .primary:hover { background: var(--ll-accent-hover); }
+        .primary:hover:not(:disabled) { background: var(--ll-accent-hover); }
+        .primary:disabled { opacity: .75; cursor: not-allowed; }
+        .spinner-row { display: inline-flex; align-items: center; gap: 8px; }
+        .spinner { width: 14px; height: 14px; border-radius: 999px; border: 2px solid rgba(255,255,255,.4); border-top-color: var(--ll-accent-ink); animation: spin .7s linear infinite; }
+        @keyframes spin { to { transform: rotate(360deg); } }
       `}</style>
     </div>
   );
@@ -899,8 +1047,11 @@ export default function LoftLivingApp() {
   const [view, setView] = useState("home");
   const [overlay, setOverlay] = useState(null);
   const [balance, setBalance] = useState(BASE_RENT + UTILITIES);
-  const [card, setCard] = useState(null);
+  const [cards, setCards] = useState([]);
+  const [activeCardId, setActiveCardId] = useState(null);
+  const activeCard = cards.find((c) => c.id === activeCardId) || null;
   const [requests, setRequests] = useState(SEED_REQUESTS);
+  const [history, setHistory] = useState(SEED_HISTORY);
   const [maintFormOpen, setMaintFormOpen] = useState(false);
 
   useEffect(() => {
@@ -947,8 +1098,21 @@ export default function LoftLivingApp() {
     ]);
   }
 
-  function handlePay(paidAmount) {
+  function handlePay(paidAmount, last4) {
     setBalance((b) => Math.max(0, b - paidAmount));
+    setHistory((h) => [...h, { id: Date.now(), date: "Just now", desc: `Payment — card ····${last4}`, amount: -paidAmount }]);
+  }
+
+  function addCard(c) {
+    const newCard = { id: Date.now(), last4: c.last4 };
+    setCards((cs) => [...cs, newCard]);
+    setActiveCardId(newCard.id);
+  }
+
+  function deleteCard(id) {
+    const next = cards.filter((c) => c.id !== id);
+    setCards(next);
+    setActiveCardId((cur) => (cur === id ? (next[0]?.id ?? null) : cur));
   }
 
   return (
@@ -979,9 +1143,20 @@ export default function LoftLivingApp() {
                   onBack={() => setOverlay(null)}
                 />
               ) : view === "home" ? (
-                <HomeScreen requests={requests} amount={balance} card={card} onNavigate={navigate} onSignOut={handleSignOut} onOpenRewards={() => setOverlay("rewards")} />
+                <HomeScreen requests={requests} amount={balance} card={activeCard} onNavigate={navigate} onSignOut={handleSignOut} onOpenRewards={() => setOverlay("rewards")} />
               ) : view === "pay" ? (
-                <PayScreen balance={balance} card={card} onSaveCard={setCard} onPay={handlePay} onBack={() => navigate("home")} onNavigate={navigate} />
+                <PayScreen
+                  balance={balance}
+                  cards={cards}
+                  activeCard={activeCard}
+                  onSetActiveCard={setActiveCardId}
+                  onAddCard={addCard}
+                  onDeleteCard={deleteCard}
+                  history={history}
+                  onPay={handlePay}
+                  onBack={() => navigate("home")}
+                  onNavigate={navigate}
+                />
               ) : view === "maintenance" ? (
                 <MaintenanceScreen requests={requests} onAdd={addRequest} initialFormOpen={maintFormOpen} />
               ) : (
