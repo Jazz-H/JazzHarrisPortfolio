@@ -91,4 +91,31 @@ export const DETAIL_CONTENT = {
       ["Office hours", "Mon–Fri, 9am–6pm"],
     ],
   },
+  events: {
+    title: "Events",
+    rows: [
+      ["Rooftop Yoga", "Sat, Jul 12 · 9:00 AM"],
+      ["Resident Mixer", "Fri, Jul 18 · 6:00 PM"],
+      ["Food Truck Friday", "Fri, Jul 25 · 5:00 PM"],
+      ["Community Yard Sale", "Sun, Aug 3 · 10:00 AM"],
+    ],
+  },
+  docs: {
+    title: "Docs",
+    rows: [
+      ["Lease Agreement", "Signed Mar 2025"],
+      ["Move-in Checklist", "PDF"],
+      ["Community Rules & Regulations", "PDF"],
+      ["Renters Insurance Policy", "On file"],
+    ],
+  },
+  amenities: {
+    title: "Amenities",
+    rows: [
+      ["Fitness Center", "Open 5am–11pm"],
+      ["Rooftop Lounge", "Open 8am–10pm"],
+      ["Package Room", "24/7 access"],
+      ["Resident Parking", "Assigned · Spot 214"],
+    ],
+  },
 };

@@ -1,10 +1,10 @@
 import { FiAward, FiCalendar, FiFileText, FiMapPin, FiPlus, FiTool } from "react-icons/fi";
 import { fmt } from "../constants";
 
-const STRIP_INERT = [
-  { l: "Events", Icon: FiCalendar },
-  { l: "Docs", Icon: FiFileText },
-  { l: "Amenities", Icon: FiMapPin },
+const STRIP_LINKS = [
+  { key: "events", l: "Events", Icon: FiCalendar },
+  { key: "docs", l: "Docs", Icon: FiFileText },
+  { key: "amenities", l: "Amenities", Icon: FiMapPin },
 ];
 
 function getGreeting() {
@@ -14,7 +14,7 @@ function getGreeting() {
   return "Good evening";
 }
 
-export default function HomeScreen({ requests, amount, card, onNavigate, onOpenRewards }) {
+export default function HomeScreen({ requests, amount, card, onNavigate, onOpen }) {
   const open = requests.filter((r) => r.status !== "Resolved");
   return (
     <div className="screen">
@@ -44,15 +44,15 @@ export default function HomeScreen({ requests, amount, card, onNavigate, onOpenR
         </button>
       </div>
       <div className="strip">
-        <button type="button" className="stripitem" onClick={onOpenRewards}>
+        <button type="button" className="stripitem" onClick={() => onOpen("rewards")}>
           <div className="dot"><FiAward aria-hidden="true" /></div>
           <span>Rewards</span>
         </button>
-        {STRIP_INERT.map(({ l, Icon }) => (
-          <div className="stripitem inert" key={l}>
+        {STRIP_LINKS.map(({ key, l, Icon }) => (
+          <button type="button" className="stripitem" key={key} onClick={() => onOpen(key)}>
             <div className="dot"><Icon aria-hidden="true" /></div>
             <span>{l}</span>
-          </div>
+          </button>
         ))}
       </div>
       <style jsx>{`
@@ -74,7 +74,6 @@ export default function HomeScreen({ requests, amount, card, onNavigate, onOpenR
         .mini .s { font-size: 11px; color: var(--ll-text-muted); margin-top: 2px; }
         .strip { display: flex; gap: 10px; margin-top: 16px; }
         .stripitem { display: flex; flex-direction: column; align-items: center; gap: 6px; flex: 1; background: none; border: none; padding: 0; cursor: pointer; }
-        .stripitem.inert { cursor: default; }
         .dot { width: 100%; aspect-ratio: 1; border-radius: 12px; background: var(--ll-surface); border: 1px solid var(--ll-border); display: flex; align-items: center; justify-content: center; }
         .dot :global(svg) { width: 17px; height: 17px; color: var(--ll-accent); }
         .stripitem span { font-size: 10.5px; color: var(--ll-text-muted); }
