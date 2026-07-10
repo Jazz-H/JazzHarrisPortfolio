@@ -62,6 +62,10 @@ export function nextTier(history) {
   return REWARD_TIERS.find((t) => t.minPayments > count) ?? null;
 }
 
+export function spentPoints(redemptions) {
+  return redemptions.reduce((sum, r) => sum + r.cost, 0);
+}
+
 export const SEED_REQUESTS = [
   { id: 1, title: "Leaking kitchen faucet", category: "Plumbing", urgent: true, date: "Jul 6", status: "In progress" },
   { id: 2, title: "AC not cooling", category: "HVAC", urgent: false, date: "Jun 28", status: "Resolved" },

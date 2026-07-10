@@ -10,18 +10,18 @@ import {
   paymentsCount,
   rewardsPoints,
   rewardsCredits,
+  spentPoints,
   currentTier,
   nextTier,
 } from "../constants";
 
 const BENEFIT_ICONS = { tool: FiTool, creditCard: FiCreditCard, clock: FiClock };
 
-export default function RewardsScreen({ onBack, history }) {
+export default function RewardsScreen({ onBack, history, redeemedRewards = [], onRedeem }) {
   const [tab, setTab] = useState("Earn");
-  const [redeemed, setRedeemed] = useState(() => new Set());
 
   const count = paymentsCount(history);
-  const points = rewardsPoints(history);
+  const points = rewardsPoints(history) - spentPoints(redeemedRewards);
   const credits = rewardsCredits(history);
   const tier = currentTier(history);
   const next = nextTier(history);
@@ -29,10 +29,16 @@ export default function RewardsScreen({ onBack, history }) {
   const needed = next ? next.minPayments - tier.minPayments : 0;
   const progressPct = next ? Math.min(100, Math.round((into / needed) * 100)) : 100;
 
-  const activity = history
+  const earnEvents = history
     .filter((t) => t.amount < 0)
     .slice()
-    .reverse();
+    .reverse()
+    .map((t) => ({ id: `pay-${t.id}`, desc: t.desc, date: t.date, delta: POINTS_PER_PAYMENT }));
+  const spendEvents = redeemedRewards
+    .slice()
+    .reverse()
+    .map((r) => ({ id: `redeem-${r.id}`, desc: `Redeemed — ${r.label}`, date: r.date, delta: -r.cost }));
+  const activity = [...spendEvents, ...earnEvents];
 
   return (
     <div className="screen">
@@ -84,8 +90,8 @@ export default function RewardsScreen({ onBack, history }) {
       {tab === "Redeem" && (
         <div className="catalog">
           {REWARD_CATALOG.map((item) => {
-            const unlocked = points >= item.cost;
-            const isRedeemed = redeemed.has(item.key);
+            const isRedeemed = redeemedRewards.some((r) => r.key === item.key);
+            const unlocked = isRedeemed || points >= item.cost;
             return (
               <div className={"citem" + (unlocked ? "" : " locked")} key={item.key}>
                 <div className="cicon">{unlocked ? <FiStar aria-hidden="true" /> : <FiLock aria-hidden="true" />}</div>
@@ -101,7 +107,7 @@ export default function RewardsScreen({ onBack, history }) {
                     <button
                       type="button"
                       className="redeem-btn"
-                      onClick={() => setRedeemed((s) => new Set(s).add(item.key))}
+                      onClick={() => onRedeem(item)}
                     >
                       Redeem
                     </button>
@@ -134,7 +140,9 @@ export default function RewardsScreen({ onBack, history }) {
                   <div className="at">{a.desc}</div>
                   <div className="ad">{a.date}</div>
                 </div>
-                <div className="ap">+{POINTS_PER_PAYMENT} pts</div>
+                <div className={"ap" + (a.delta < 0 ? " spend" : "")}>
+                  {a.delta > 0 ? "+" : "−"}{Math.abs(a.delta)} pts
+                </div>
               </div>
             ))}
           </div>
@@ -194,6 +202,7 @@ export default function RewardsScreen({ onBack, history }) {
         .at { font-size: 12.5px; font-weight: 700; color: var(--ll-text); }
         .ad { font-size: 11px; color: var(--ll-text-muted); margin-top: 2px; }
         .ap { font-size: 13px; font-weight: 700; color: var(--ll-success); flex-shrink: 0; }
+        .ap.spend { color: var(--ll-accent); }
       `}</style>
     </div>
   );

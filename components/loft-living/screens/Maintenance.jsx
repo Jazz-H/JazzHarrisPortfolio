@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { FiCamera, FiTool, FiX } from "react-icons/fi";
-import { FormCard, FormField, FormHead, PrimaryButton, StatusChip } from "../primitives";
+import { FiCamera, FiChevronRight, FiTool, FiX } from "react-icons/fi";
+import { BackHeader, DetailCard, FormCard, FormField, FormHead, PrimaryButton, StatusChip } from "../primitives";
 import { CATEGORIES } from "../constants";
 
 function NewRequestForm({ onAdd, onClose }) {
@@ -93,12 +93,61 @@ function NewRequestForm({ onAdd, onClose }) {
   );
 }
 
+function RequestDetail({ request, onBack }) {
+  const rows = [
+    ["Category", request.category || "General"],
+    ["Priority", request.urgent ? "Urgent" : "Standard"],
+    ["Submitted", request.date],
+    ["OK to enter", request.okToEnter ? "Yes" : "No"],
+  ];
+  return (
+    <div className="screen">
+      <BackHeader title="Request details" onBack={onBack} />
+      <div className="dheader">
+        {request.photoUrl ? (
+          <img className="dphoto" src={request.photoUrl} alt="" />
+        ) : (
+          <div className="dicon" aria-hidden="true"><FiTool /></div>
+        )}
+        <div className="dtitle">{request.title}</div>
+        <div className="dstatus"><StatusChip status={request.status} /></div>
+      </div>
+      <DetailCard rows={rows}>
+        {request.desc && (
+          <div className="ddesc">
+            <div className="ddesc-label">Details</div>
+            <div className="ddesc-text">{request.desc}</div>
+          </div>
+        )}
+      </DetailCard>
+      <style jsx>{`
+        .screen { padding: 4px 20px 40px; }
+        .dheader { background: var(--ll-surface); border: 1px solid var(--ll-border); border-radius: 14px; padding: 22px; margin-top: 16px; text-align: center; }
+        .dicon, .dphoto { width: 56px; height: 56px; border-radius: 14px; margin: 0 auto 14px; }
+        .dicon { background: var(--ll-surface-2); display: flex; align-items: center; justify-content: center; color: var(--ll-accent); }
+        .dicon :global(svg) { width: 24px; height: 24px; }
+        .dphoto { object-fit: cover; display: block; }
+        .dtitle { font-size: 15px; font-weight: 700; color: var(--ll-text); }
+        .dstatus { margin-top: 10px; }
+        .ddesc { padding: 14px 0 10px; }
+        .ddesc-label { font-size: 10.5px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; color: var(--ll-text-faint); }
+        .ddesc-text { font-size: 12.5px; color: var(--ll-text); margin-top: 6px; line-height: 1.5; }
+      `}</style>
+    </div>
+  );
+}
+
 export default function MaintenanceScreen({ requests, onAdd, initialFormOpen }) {
   const [formOpen, setFormOpen] = useState(!!initialFormOpen);
+  const [selected, setSelected] = useState(null);
 
   function handleAdd(data) {
     onAdd(data);
     setFormOpen(false);
+  }
+
+  if (selected) {
+    return <RequestDetail request={selected} onBack={() => setSelected(null)} />;
   }
 
   return (
@@ -111,7 +160,7 @@ export default function MaintenanceScreen({ requests, onAdd, initialFormOpen }) 
       )}
       <div className="list">
         {requests.map((r) => (
-          <div className="row" key={r.id}>
+          <button type="button" className="row" key={r.id} onClick={() => setSelected(r)}>
             {r.photoUrl ? (
               <img className="thumb photo" src={r.photoUrl} alt="" />
             ) : (
@@ -127,20 +176,22 @@ export default function MaintenanceScreen({ requests, onAdd, initialFormOpen }) 
               </div>
             </div>
             <StatusChip status={r.status} />
-          </div>
+            <FiChevronRight aria-hidden="true" className="rchev" />
+          </button>
         ))}
       </div>
       <style jsx>{`
         .screen { padding: 4px 20px 40px; }
         h1 { font-size: 15px; font-weight: 700; margin: 6px 0 14px; color: var(--ll-text); }
         .list { margin-top: 14px; display: flex; flex-direction: column; gap: 10px; }
-        .row { display: flex; align-items: center; gap: 12px; padding: 13px; background: var(--ll-surface); border: 1px solid var(--ll-border); border-radius: 12px; }
+        .row { width: 100%; display: flex; align-items: center; gap: 12px; padding: 13px; background: var(--ll-surface); border: 1px solid var(--ll-border); border-radius: 12px; cursor: pointer; text-align: left; }
         .thumb { width: 40px; height: 40px; border-radius: 10px; background: var(--ll-surface-2); flex-shrink: 0; display: flex; align-items: center; justify-content: center; color: var(--ll-accent); }
         .thumb.photo { object-fit: cover; }
         .meta { min-width: 0; }
         .rt { font-size: 12.5px; font-weight: 700; color: var(--ll-text); display: flex; align-items: center; gap: 6px; }
         .urgent-tag { font-size: 9.5px; font-weight: 700; color: var(--ll-danger); background: var(--ll-danger-soft); padding: 2px 7px; border-radius: 999px; flex-shrink: 0; }
         .rs { font-size: 11px; color: var(--ll-text-muted); margin-top: 2px; }
+        .rchev { width: 15px; height: 15px; color: var(--ll-text-faint); flex-shrink: 0; }
       `}</style>
     </div>
   );

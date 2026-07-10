@@ -22,6 +22,7 @@ export default function LoftLivingApp() {
   const activeCard = cards.find((c) => c.id === activeCardId) || null;
   const [requests, setRequests] = useState(SEED_REQUESTS);
   const [history, setHistory] = useState(SEED_HISTORY);
+  const [redeemedRewards, setRedeemedRewards] = useState([]);
   const [maintFormOpen, setMaintFormOpen] = useState(false);
 
   useEffect(() => {
@@ -85,6 +86,10 @@ export default function LoftLivingApp() {
     setActiveCardId((cur) => (cur === id ? (next[0]?.id ?? null) : cur));
   }
 
+  function redeemReward(item) {
+    setRedeemedRewards((rs) => [...rs, { id: Date.now(), key: item.key, label: item.label, cost: item.cost, date: "Just now" }]);
+  }
+
   return (
     <div className="ll-shell" data-theme={theme}>
       <div className="phone">
@@ -96,7 +101,12 @@ export default function LoftLivingApp() {
               {!authed ? (
                 <SignInScreen onSignedIn={handleSignedIn} />
               ) : overlay === "rewards" ? (
-                <RewardsScreen onBack={() => setOverlay(null)} history={history} />
+                <RewardsScreen
+                  onBack={() => setOverlay(null)}
+                  history={history}
+                  redeemedRewards={redeemedRewards}
+                  onRedeem={redeemReward}
+                />
               ) : overlay === "account" ? (
                 <AccountSettingsScreen
                   rows={DETAIL_CONTENT.account.rows}
