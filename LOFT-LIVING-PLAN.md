@@ -1,10 +1,23 @@
 # LOFT Living — Lightweight Execution Plan
 
-Goal: turn the "Coming soon" placeholder into a real, finished case study —
-without the full production Figma buildout from the original plan. Enough to
-be genuinely defensible in an interview, not vaporware. See
-`PROJECT-IDEAS-BACKLOG.md` for why this project specifically is worth the
-time (it's the strongest BA-methodology fit in the portfolio).
+**Status: shipped.** The "Coming soon" placeholder is gone — the site now
+shows the real affinity map, competitive benchmark, root-cause analysis,
+business case, and before/after screens described below. See
+`LOFT-LIVING-RESEARCH.md` for the underlying research and
+`components/Portfolio.jsx` (search "LOFT Living") for the live copy.
+
+One deliberate deviation from the original plan: the hi-fi screens are
+hand-built HTML/CSS mockups, not Figma files — no Figma access was
+available in the session that built them. Tags and case-study copy were
+updated to match (no Figma/FigJam/Maze tags, no "clickable prototype"
+claim). If real Figma work replaces these later, restore the tags/claims
+that are now accurate.
+
+Goal (as originally scoped): turn the "Coming soon" placeholder into a real,
+finished case study — without the full production Figma buildout from the
+original plan. Enough to be genuinely defensible in an interview, not
+vaporware. See `PROJECT-IDEAS-BACKLOG.md` for why this project specifically
+is worth the time (it's the strongest BA-methodology fit in the portfolio).
 
 ## What "done" looks like
 
