@@ -70,12 +70,12 @@ export default function RewardsScreen({ onBack, history, redeemedRewards = [], o
 
       <SectionLabel>Earn</SectionLabel>
       <div className="cards">
-        <div className="promo violet">
+        <div className="promo accent">
           <FiStar aria-hidden="true" />
           <div className="pt">Earn points on rent payments</div>
           <div className="ps">{POINTS_PER_PAYMENT} pts per on-time payment</div>
         </div>
-        <div className="promo amber">
+        <div className="promo neutral">
           <FiTool aria-hidden="true" />
           <div className="pt">Home services</div>
           <div className="ps">Partner discounts on move-in services</div>
@@ -162,10 +162,11 @@ export default function RewardsScreen({ onBack, history, redeemedRewards = [], o
         .cards { margin-top: 12px; display: flex; flex-direction: column; gap: 12px; }
         .promo { border-radius: 12px; padding: 16px; border: 1px solid var(--ll-border); }
         .promo :global(svg) { width: 20px; height: 20px; }
-        .promo.violet { background: var(--ll-accent-soft); }
-        .promo.violet :global(svg), .promo.violet .pt { color: var(--ll-accent-soft-ink); }
-        .promo.amber { background: var(--ll-warning-soft); }
-        .promo.amber :global(svg), .promo.amber .pt { color: var(--ll-warning); }
+        .promo.accent { background: var(--ll-accent-soft); }
+        .promo.accent :global(svg), .promo.accent .pt { color: var(--ll-accent-soft-ink); }
+        .promo.neutral { background: var(--ll-surface-2); }
+        .promo.neutral :global(svg) { color: var(--ll-text-muted); }
+        .promo.neutral .pt { color: var(--ll-text); }
         .pt { font-size: 13px; font-weight: 700; margin-top: 10px; }
         .ps { font-size: 11px; color: var(--ll-text-muted); margin-top: 3px; }
         .empty { margin-top: 12px; font-size: 12.5px; color: var(--ll-text-faint); text-align: center; }
