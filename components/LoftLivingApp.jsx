@@ -69,6 +69,10 @@ export default function LoftLivingApp() {
     ]);
   }
 
+  function cancelRequest(id) {
+    setRequests((rs) => rs.map((r) => (r.id === id ? { ...r, status: "Cancelled" } : r)));
+  }
+
   function handlePay(paidAmount, last4) {
     setBalance((b) => Math.max(0, b - paidAmount));
     setHistory((h) => [...h, { id: Date.now(), date: "Just now", desc: `Payment — card ····${last4}`, amount: -paidAmount }]);
@@ -138,7 +142,7 @@ export default function LoftLivingApp() {
                   onNavigate={navigate}
                 />
               ) : view === "maintenance" ? (
-                <MaintenanceScreen requests={requests} onAdd={addRequest} initialFormOpen={maintFormOpen} />
+                <MaintenanceScreen requests={requests} onAdd={addRequest} onCancel={cancelRequest} initialFormOpen={maintFormOpen} />
               ) : (
                 <MoreScreen onOpen={openFromMenu} onSignOut={handleSignOut} />
               )}

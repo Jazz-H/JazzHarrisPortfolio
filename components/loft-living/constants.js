@@ -67,9 +67,38 @@ export function spentPoints(redemptions) {
 }
 
 export const SEED_REQUESTS = [
-  { id: 1, title: "Leaking kitchen faucet", category: "Plumbing", urgent: true, date: "Jul 6", status: "In progress" },
-  { id: 2, title: "AC not cooling", category: "HVAC", urgent: false, date: "Jun 28", status: "Resolved" },
-  { id: 3, title: "Hallway light out", category: "Electrical", urgent: false, date: "Jun 14", status: "Resolved" },
+  {
+    id: 1,
+    title: "Leaking kitchen faucet",
+    category: "Plumbing",
+    urgent: true,
+    okToEnter: true,
+    desc: "Water pooling under the sink, worse when running hot water.",
+    date: "Jul 6",
+    status: "In progress",
+  },
+  {
+    id: 2,
+    title: "AC not cooling",
+    category: "HVAC",
+    urgent: false,
+    okToEnter: true,
+    date: "Jun 28",
+    status: "Resolved",
+    resolvedDate: "Jun 29",
+    resolution: "Replaced capacitor and recharged refrigerant. Tested cooling for 30 minutes.",
+  },
+  {
+    id: 3,
+    title: "Hallway light out",
+    category: "Electrical",
+    urgent: false,
+    okToEnter: false,
+    date: "Jun 14",
+    status: "Resolved",
+    resolvedDate: "Jun 16",
+    resolution: "Replaced fixture and bulb, tested switch.",
+  },
 ];
 
 // Running balance is computed by folding over this list (see Pay.jsx's

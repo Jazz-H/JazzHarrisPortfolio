@@ -23,14 +23,15 @@ export function LoadingScreen() {
 }
 
 export function StatusChip({ status }) {
-  const done = status === "Resolved";
+  const variant = status === "Resolved" ? "done" : status === "Cancelled" ? "cancelled" : "progress";
   return (
-    <span className={"chip" + (done ? " done" : " progress")}>
+    <span className={"chip " + variant}>
       {status}
       <style jsx>{`
         .chip { font-size: 10.5px; font-weight: 700; padding: 4px 9px; border-radius: 999px; margin-left: auto; flex-shrink: 0; }
         .progress { background: var(--ll-accent-soft); color: var(--ll-accent-soft-ink); }
         .done { background: var(--ll-success-soft); color: var(--ll-success); }
+        .cancelled { background: var(--ll-surface-2); color: var(--ll-text-faint); border: 1px solid var(--ll-border); }
       `}</style>
     </span>
   );

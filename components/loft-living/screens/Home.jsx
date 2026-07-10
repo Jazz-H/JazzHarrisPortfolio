@@ -15,7 +15,7 @@ function getGreeting() {
 }
 
 export default function HomeScreen({ requests, amount, card, onNavigate, onOpen }) {
-  const open = requests.filter((r) => r.status !== "Resolved");
+  const open = requests.filter((r) => r.status !== "Resolved" && r.status !== "Cancelled");
   return (
     <div className="screen">
       <div className="greet">

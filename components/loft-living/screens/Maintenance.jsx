@@ -1,7 +1,15 @@
 import { useState } from "react";
-import { FiCamera, FiChevronRight, FiTool, FiX } from "react-icons/fi";
+import { FiCamera, FiCheck, FiChevronRight, FiTool, FiX } from "react-icons/fi";
 import { BackHeader, DetailCard, FormCard, FormField, FormHead, PrimaryButton, StatusChip } from "../primitives";
 import { CATEGORIES } from "../constants";
+
+const STAGES = ["Submitted", "In progress", "Resolved"];
+
+function stageIndex(status) {
+  if (status === "Resolved") return 2;
+  if (status === "In progress") return 1;
+  return 0;
+}
 
 function NewRequestForm({ onAdd, onClose }) {
   const [title, setTitle] = useState("");
@@ -93,13 +101,59 @@ function NewRequestForm({ onAdd, onClose }) {
   );
 }
 
-function RequestDetail({ request, onBack }) {
+function RequestTimeline({ request }) {
+  const stage = stageIndex(request.status);
+  return (
+    <div className="tcard">
+      {STAGES.map((label, i) => {
+        const reached = i <= stage;
+        const isLast = i === STAGES.length - 1;
+        return (
+          <div className="tstep" key={label}>
+            <div className="trail">
+              <span className={"tdot" + (reached ? " done" : "")}>{reached && <FiCheck aria-hidden="true" />}</span>
+              {!isLast && <span className={"tbar" + (i < stage ? " done" : "")} />}
+            </div>
+            <div className="tbody">
+              <div className={"tlabel" + (reached ? " done" : "")}>{label}</div>
+              {label === "Submitted" && <div className="tdate">{request.date}</div>}
+              {label === "Resolved" && reached && request.resolvedDate && (
+                <div className="tdate">{request.resolvedDate}</div>
+              )}
+              {label === "Resolved" && reached && request.resolution && (
+                <div className="tnote">{request.resolution}</div>
+              )}
+            </div>
+          </div>
+        );
+      })}
+      <style jsx>{`
+        .tcard { background: var(--ll-surface); border: 1px solid var(--ll-border); border-radius: 14px; padding: 18px 20px; margin-top: 16px; }
+        .tstep { display: flex; gap: 12px; }
+        .trail { display: flex; flex-direction: column; align-items: center; flex-shrink: 0; }
+        .tdot { width: 20px; height: 20px; border-radius: 999px; background: var(--ll-surface-2); border: 1.5px solid var(--ll-border); display: flex; align-items: center; justify-content: center; color: var(--ll-accent-ink); flex-shrink: 0; }
+        .tdot.done { background: var(--ll-accent); border-color: var(--ll-accent); }
+        .tdot :global(svg) { width: 11px; height: 11px; }
+        .tbar { width: 2px; flex: 1; min-height: 22px; background: var(--ll-border); margin: 2px 0; }
+        .tbar.done { background: var(--ll-accent); }
+        .tbody { padding-bottom: 18px; }
+        .tstep:last-child .tbody { padding-bottom: 0; }
+        .tlabel { font-size: 12.5px; font-weight: 700; color: var(--ll-text-faint); padding-top: 1px; }
+        .tlabel.done { color: var(--ll-text); }
+        .tdate { font-size: 11px; color: var(--ll-text-muted); margin-top: 2px; }
+        .tnote { font-size: 12px; color: var(--ll-text-muted); margin-top: 6px; line-height: 1.5; background: var(--ll-surface-2); border-radius: 8px; padding: 10px 12px; }
+      `}</style>
+    </div>
+  );
+}
+
+function RequestDetail({ request, onBack, onCancel }) {
   const rows = [
     ["Category", request.category || "General"],
     ["Priority", request.urgent ? "Urgent" : "Standard"],
-    ["Submitted", request.date],
     ["OK to enter", request.okToEnter ? "Yes" : "No"],
   ];
+  const cancellable = request.status === "Submitted" || request.status === "In progress";
   return (
     <div className="screen">
       <BackHeader title="Request details" onBack={onBack} />
@@ -112,6 +166,11 @@ function RequestDetail({ request, onBack }) {
         <div className="dtitle">{request.title}</div>
         <div className="dstatus"><StatusChip status={request.status} /></div>
       </div>
+      {request.status === "Cancelled" ? (
+        <div className="cancelled-note">This request was cancelled.</div>
+      ) : (
+        <RequestTimeline request={request} />
+      )}
       <DetailCard rows={rows}>
         {request.desc && (
           <div className="ddesc">
@@ -120,6 +179,11 @@ function RequestDetail({ request, onBack }) {
           </div>
         )}
       </DetailCard>
+      {cancellable && (
+        <button type="button" className="cancel-btn" onClick={() => onCancel(request.id)}>
+          Cancel request
+        </button>
+      )}
       <style jsx>{`
         .screen { padding: 4px 20px 40px; }
         .dheader { background: var(--ll-surface); border: 1px solid var(--ll-border); border-radius: 14px; padding: 22px; margin-top: 16px; text-align: center; }
@@ -129,17 +193,20 @@ function RequestDetail({ request, onBack }) {
         .dphoto { object-fit: cover; display: block; }
         .dtitle { font-size: 15px; font-weight: 700; color: var(--ll-text); }
         .dstatus { margin-top: 10px; }
+        .cancelled-note { margin-top: 16px; font-size: 12.5px; color: var(--ll-text-faint); text-align: center; background: var(--ll-surface); border: 1px solid var(--ll-border); border-radius: 14px; padding: 16px; }
         .ddesc { padding: 14px 0 10px; }
         .ddesc-label { font-size: 10.5px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; color: var(--ll-text-faint); }
         .ddesc-text { font-size: 12.5px; color: var(--ll-text); margin-top: 6px; line-height: 1.5; }
+        .cancel-btn { width: 100%; background: none; border: 1px solid var(--ll-danger); color: var(--ll-danger); font-size: 13px; font-weight: 700; padding: 13px; border-radius: 10px; margin-top: 16px; cursor: pointer; }
       `}</style>
     </div>
   );
 }
 
-export default function MaintenanceScreen({ requests, onAdd, initialFormOpen }) {
+export default function MaintenanceScreen({ requests, onAdd, onCancel, initialFormOpen }) {
   const [formOpen, setFormOpen] = useState(!!initialFormOpen);
-  const [selected, setSelected] = useState(null);
+  const [selectedId, setSelectedId] = useState(null);
+  const selected = requests.find((r) => r.id === selectedId) || null;
 
   function handleAdd(data) {
     onAdd(data);
@@ -147,7 +214,7 @@ export default function MaintenanceScreen({ requests, onAdd, initialFormOpen }) 
   }
 
   if (selected) {
-    return <RequestDetail request={selected} onBack={() => setSelected(null)} />;
+    return <RequestDetail request={selected} onBack={() => setSelectedId(null)} onCancel={onCancel} />;
   }
 
   return (
@@ -160,7 +227,7 @@ export default function MaintenanceScreen({ requests, onAdd, initialFormOpen }) 
       )}
       <div className="list">
         {requests.map((r) => (
-          <button type="button" className="row" key={r.id} onClick={() => setSelected(r)}>
+          <button type="button" className="row" key={r.id} onClick={() => setSelectedId(r.id)}>
             {r.photoUrl ? (
               <img className="thumb photo" src={r.photoUrl} alt="" />
             ) : (
