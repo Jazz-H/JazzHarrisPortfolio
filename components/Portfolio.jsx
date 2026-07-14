@@ -1297,6 +1297,11 @@ function Contact() {
           <span className="dp-cr-text"><span className="dp-cr-l">Résumé</span><span className="dp-cr-v">View / download PDF</span></span>
           <FiArrowUpRight className="dp-cr-arrow" aria-hidden="true" />
         </a>
+        <a className="dp-contact-row" href="https://jazzharrisstudio.com" target="_blank" rel="noreferrer">
+          <span className="dp-cr-icn"><FiGlobe aria-hidden="true" /></span>
+          <span className="dp-cr-text"><span className="dp-cr-l">Jazz Harris Studio</span><span className="dp-cr-v">jazzharrisstudio.com</span></span>
+          <FiArrowUpRight className="dp-cr-arrow" aria-hidden="true" />
+        </a>
         <div className="dp-contact-row dp-contact-row-static">
           <span className="dp-cr-icn"><FiMapPin aria-hidden="true" /></span>
           <span className="dp-cr-text"><span className="dp-cr-l">Location</span><span className="dp-cr-v">Charlotte, NC</span></span>
