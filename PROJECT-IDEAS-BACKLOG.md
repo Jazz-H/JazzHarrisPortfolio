@@ -29,24 +29,30 @@ image; pulled off the site so the portfolio only shows finished/real work.
   - `outcome`: "A shelf-ready brand kit: logo suite, color and type system, can and label artwork, and a one-page brand guide, shown with realistic packaging mockups."
   - Existing brand direction to build on: "Wildroot" — craft soda, blackberry basil flavor, small-batch positioning (see prior mockup for color/type starting point: pink/orange/green/near-black palette).
 
-### 2. UX Redesign Teardown *(UI/UX)* — back on the site as "Coming soon", execution plan in progress
+### 2. UX Redesign Teardown *(UI/UX)* — shipped as a finished case study
 Take a real product with a clunky flow, diagnose why it fails users, and
 rebuild it — a before-and-after redesign that leans on the BA strengths
-(research, problem-solving) more than pure visual output. Restored to
-`PROJECTS` with a "Coming soon" badge (it's the strongest BA-methodology fit
-in the whole portfolio — see the recruiter-critique conversation this came
-from). See **`LOFT-LIVING-PLAN.md`** for the lightweight execution plan to
-turn it into a real, finished piece.
+(research, problem-solving) more than pure visual output. Live on `PROJECTS`
+as a finished piece, no longer a placeholder (it's the strongest
+BA-methodology fit in the whole portfolio — see the recruiter-critique
+conversation this came from). See **`LOFT-LIVING-PLAN.md`** and
+**`LOFT-LIVING-RESEARCH.md`** for the execution plan and underlying research.
 
-- **Scope / deliverables:** heuristic evaluation + quick usability sessions,
-  prioritized problems, reworked information architecture, wireframes, hi-fi
-  UI on a small design system, a clickable prototype, and side-by-side
-  before/after.
-- **Subject:** LOFT Living resident app (2.4★ across 6,000+ reviews) — a real,
-  poorly-reviewed product with public complaints to mine. Unaffiliated concept.
-- **Stack:** Figma (design + prototype), FigJam (eval/flows), Maze (testing).
-- **Why it fits:** shows analytical UX (research → problem → redesign), which
-  most design portfolios lack and which pairs with the analyst background.
+- **Delivered:** an affinity map of six complaint themes, a competitive
+  benchmark (LOFT 1.94★ vs. Zego 3.56★ vs. RentCafe 4.7★), a root-cause
+  analysis, a reasoned business case, and a real, installable PWA at
+  `/loft-living` covering sign-in, rent-payment, and maintenance — not
+  static screens.
+- **Subject:** LOFT Living resident app (1.94★ across 5,200+ ratings) — a
+  real, poorly-reviewed product with public complaints to mine. Unaffiliated
+  concept.
+- **Built with:** React (`components/LoftLivingApp.jsx`), not Figma — no
+  Figma access was available in the sessions that built this, so a working
+  PWA was built instead of a Figma prototype. Case-study copy and tags
+  (React, PWA) reflect that; "Visit live" and "View code" links are real.
+- **Why it fits:** shows analytical UX (research → problem → redesign) *and*
+  the engineering to actually ship it, which most design-only portfolios
+  lack and which pairs with the analyst + software-engineer background.
 
 **Restoring Craft Beverage** (item 1 above): re-add the object to `PROJECTS` in
 `components/Portfolio.jsx` (the fields above map directly), re-add the title

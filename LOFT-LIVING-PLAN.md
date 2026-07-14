@@ -1,10 +1,26 @@
 # LOFT Living — Lightweight Execution Plan
 
-Goal: turn the "Coming soon" placeholder into a real, finished case study —
-without the full production Figma buildout from the original plan. Enough to
-be genuinely defensible in an interview, not vaporware. See
-`PROJECT-IDEAS-BACKLOG.md` for why this project specifically is worth the
-time (it's the strongest BA-methodology fit in the portfolio).
+**Status: shipped — and upgraded past the original scope.** The "Coming
+soon" placeholder is gone. The site shows the real affinity map,
+competitive benchmark, and root-cause analysis described below, and instead
+of static hi-fi mockups, the sign-in/rent-payment/maintenance flows are a
+real, installable PWA live at `/loft-living` (source:
+`components/LoftLivingApp.jsx`). See `LOFT-LIVING-RESEARCH.md` for the
+underlying research and `components/Portfolio.jsx` (search "LOFT Living")
+for the live copy.
+
+Two deliberate deviations from the original plan, both upgrades: no Figma
+was used (no access in the sessions that built this) — the screens are a
+real working React app instead, which is a stronger claim than a Figma
+prototype, not a weaker one. And the "clickable prototype" line in the
+outcome copy is no longer a claim to avoid — it's true, since the app is
+genuinely installable and functional at that URL.
+
+Goal (as originally scoped): turn the "Coming soon" placeholder into a real,
+finished case study — without the full production Figma buildout from the
+original plan. Enough to be genuinely defensible in an interview, not
+vaporware. See `PROJECT-IDEAS-BACKLOG.md` for why this project specifically
+is worth the time (it's the strongest BA-methodology fit in the portfolio).
 
 ## What "done" looks like
 

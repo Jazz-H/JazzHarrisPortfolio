@@ -1,0 +1,14 @@
+{
+  "name": "LOFT Living — Redesign Prototype",
+  "short_name": "LOFT Redesign",
+  "description": "Self-initiated redesign prototype: persistent sign-in, transparent rent payment, task-first home.",
+  "start_url": "/loft-living",
+  "scope": "/loft-living",
+  "display": "standalone",
+  "background_color": "#0B0E14",
+  "theme_color": "#0B0E14",
+  "icons": [
+    { "src": "/loft-living/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "/loft-living/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" }
+  ]
+}
