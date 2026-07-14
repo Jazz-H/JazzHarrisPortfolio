@@ -18,7 +18,6 @@ import {
   FiX,
   FiMapPin,
   FiBriefcase,
-  FiActivity,
   FiUsers,
   FiBookOpen,
   FiTrendingUp,
@@ -995,7 +994,6 @@ function About({ go }) {
                 <div className="dp-fact"><FiUsers aria-hidden="true" /><div><span className="dp-fact-l">Leads</span><span className="dp-fact-v">Mentors BA I analysts on process mapping &amp; AI tooling adoption</span></div></div>
                 <div className="dp-fact"><FiBookOpen aria-hidden="true" /><div><span className="dp-fact-l">Studied</span><span className="dp-fact-v">B.A. Computer Science · Elon University</span></div></div>
                 <div className="dp-fact"><FiGlobe aria-hidden="true" /><div><span className="dp-fact-l">Studied abroad</span><span className="dp-fact-v">Dublin, Ireland · <a className="dp-link" href={FIE_BLOG} target="_blank" rel="noreferrer">FIE</a></span></div></div>
-                <div className="dp-fact"><FiActivity aria-hidden="true" /><div><span className="dp-fact-l">Currently</span><span className="dp-fact-v">Building Valora, a budgeting app</span></div></div>
               </div>
             </div>
           </div>
