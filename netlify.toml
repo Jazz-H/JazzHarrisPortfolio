@@ -8,3 +8,10 @@
 
 [[plugins]]
   package = "@netlify/plugin-nextjs"
+
+# The résumé PDF carries a personal phone number and email. Keep it reachable
+# to anyone given the link, but out of search indexes and AI/scraper corpora.
+[[headers]]
+  for = "/Jazz-Harris-Resume.pdf"
+  [headers.values]
+    X-Robots-Tag = "noindex, noarchive, nosnippet, noimageindex"

@@ -14,7 +14,6 @@ const STRUCTURED_DATA = {
       url: `${SITE_URL}/`,
       image: `${SITE_URL}/jazz-headshot.jpg`,
       jobTitle: "Data Solutions Lead II",
-      email: "mailto:mauraharris948@gmail.com",
       description:
         "Data solutions lead and software engineer who bridges business goals and software engineering to build digital products that deliver measurable results.",
       worksFor: { "@type": "Organization", name: "Coca-Cola Consolidated" },
