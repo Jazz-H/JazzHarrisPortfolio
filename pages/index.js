@@ -13,10 +13,10 @@ const STRUCTURED_DATA = {
       alternateName: "Maura Harris",
       url: `${SITE_URL}/`,
       image: `${SITE_URL}/jazz-headshot.jpg`,
-      jobTitle: "Business Analyst & Software Engineer",
+      jobTitle: "Data Solutions Lead II",
       email: "mailto:mauraharris948@gmail.com",
       description:
-        "Business analyst and software engineer who bridges business goals and software engineering to build digital products that deliver measurable results.",
+        "Data solutions lead and software engineer who bridges business goals and software engineering to build digital products that deliver measurable results.",
       worksFor: { "@type": "Organization", name: "Coca-Cola Consolidated" },
       alumniOf: { "@type": "CollegeOrUniversity", name: "Elon University" },
       knowsAbout: [
@@ -51,7 +51,7 @@ export default function Home() {
         <title>Jazz Harris · Portfolio</title>
         <meta
           name="description"
-          content="Business analyst and software engineer. I bridge business goals and software engineering to build digital products that deliver measurable results."
+          content="Data solutions lead and software engineer. I bridge business goals and software engineering to build digital products that deliver measurable results."
         />
         <meta
           name="viewport"
@@ -65,7 +65,7 @@ export default function Home() {
         <meta property="og:title" content="Jazz Harris · Portfolio" />
         <meta
           property="og:description"
-          content="Business analyst and software engineer. Selected projects and contact."
+          content="Data solutions lead and software engineer. Selected projects and contact."
         />
         <meta property="og:image" content={`${SITE_URL}/assets/og.png`} />
         <meta property="og:image:width" content="1200" />
@@ -75,7 +75,7 @@ export default function Home() {
         <meta name="twitter:title" content="Jazz Harris · Portfolio" />
         <meta
           name="twitter:description"
-          content="Business analyst and software engineer. Selected projects and contact."
+          content="Data solutions lead and software engineer. Selected projects and contact."
         />
         <meta name="twitter:image" content={`${SITE_URL}/assets/og.png`} />
 

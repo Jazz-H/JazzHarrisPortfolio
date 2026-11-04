@@ -430,7 +430,7 @@ function Poster({ view, go }) {
         </span>
         <span className="dp-id-text">
           <span className="dp-name">Jazz Harris</span>
-          <span className="dp-role" aria-hidden="true">Business analyst &amp; software engineer</span>
+          <span className="dp-role" aria-hidden="true">Data solutions lead &amp; software engineer</span>
         </span>
       </button>
 
@@ -986,7 +986,7 @@ function About({ go }) {
               <p className="dp-sub">Quick facts</p>
               <div className="dp-about-facts">
                 <div className="dp-fact"><FiMapPin aria-hidden="true" /><div><span className="dp-fact-l">Based in</span><span className="dp-fact-v">Charlotte, NC</span></div></div>
-                <div className="dp-fact"><FiBriefcase aria-hidden="true" /><div><span className="dp-fact-l">By day</span><span className="dp-fact-v">Business Analyst · Coca-Cola Consolidated</span></div></div>
+                <div className="dp-fact"><FiBriefcase aria-hidden="true" /><div><span className="dp-fact-l">By day</span><span className="dp-fact-v">Data Solutions Lead II · Coca-Cola Consolidated</span></div></div>
                 <div className="dp-fact"><FiUsers aria-hidden="true" /><div><span className="dp-fact-l">Leads</span><span className="dp-fact-v">Mentors BA I analysts on process mapping &amp; AI tooling adoption</span></div></div>
                 <div className="dp-fact"><FiBookOpen aria-hidden="true" /><div><span className="dp-fact-l">Studied</span><span className="dp-fact-v">B.A. Computer Science · Elon University</span></div></div>
                 <div className="dp-fact"><FiGlobe aria-hidden="true" /><div><span className="dp-fact-l">Studied abroad</span><span className="dp-fact-v">Dublin, Ireland · <a className="dp-link" href={FIE_BLOG} target="_blank" rel="noreferrer">FIE</a></span></div></div>
@@ -1021,7 +1021,7 @@ function About({ go }) {
             <p className="dp-label">About</p>
             <h2 className="dp-detail-h">Analyst by training, builder by craft.</h2>
             <p className="dp-p">I studied Computer Science at Elon University, with minors in Art History and Digital Art, a blend that shapes how I work: technical problem-solving with a designer's eye. I also studied abroad in Dublin through FIE (Foundation for International Education), completing a software-engineering internship and writing about it on the <a className="dp-link" href={FIE_BLOG} target="_blank" rel="noreferrer">program blog</a>. Since then I've worked across both the technical and business sides of software, turning complex ideas into solutions that create real value.</p>
-            <p className="dp-p">Today I'm a Business Analyst at Coca-Cola Consolidated, leading requirements definition for a cross-functional Agile scrum team of 10+ and mentoring other analysts on process mapping and AI tooling. Outside of work, through <a className="dp-link" href="https://jazzharrisstudio.com" target="_blank" rel="noreferrer">Jazz Harris Studio</a>, I build websites, custom software, and tools for businesses and entrepreneurs, most recently Valora, a personal finance platform. When I'm not behind a screen: traveling, Legos, and anything with four wheels or two.</p>
+            <p className="dp-p">Today I'm a Data Solutions Lead II at Coca-Cola Consolidated, leading requirements definition for a cross-functional Agile scrum team of 10+ and mentoring other analysts on process mapping and AI tooling. Outside of work, through <a className="dp-link" href="https://jazzharrisstudio.com" target="_blank" rel="noreferrer">Jazz Harris Studio</a>, I build websites, custom software, and tools for businesses and entrepreneurs, most recently Valora, a personal finance platform. When I'm not behind a screen: traveling, Legos, and anything with four wheels or two.</p>
           </div>
 
           <details className="dp-acc dp-acc-skills">
