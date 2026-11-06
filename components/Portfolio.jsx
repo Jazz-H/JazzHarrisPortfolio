@@ -1,7 +1,7 @@
 "use client";
 /* eslint-disable @next/next/no-img-element */
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import { createPortal } from "react-dom";
 import {
   FiGithub,
@@ -665,7 +665,11 @@ function Gallery({ images, title, gradient, status, fallbackWord, tall }) {
     const clamped = Math.max(0, Math.min(images.length - 1, i));
     el.scrollTo({ left: clamped * el.clientWidth, behavior: "smooth" });
   };
-  const lbClamp = (i) => Math.max(0, Math.min(images.length - 1, i));
+  // Only closes over images.length, which is why that alone is the dependency.
+  const lbClamp = useCallback(
+    (i) => Math.max(0, Math.min(images.length - 1, i)),
+    [images.length]
+  );
 
   useEffect(() => {
     if (lightbox === null) return;
@@ -681,7 +685,7 @@ function Gallery({ images, title, gradient, status, fallbackWord, tall }) {
       window.removeEventListener("keydown", onKey);
       document.body.style.overflow = prev;
     };
-  }, [lightbox, images.length]);
+  }, [lightbox, lbClamp]);
 
   return (
     <div className="dp-gallery-wrap">

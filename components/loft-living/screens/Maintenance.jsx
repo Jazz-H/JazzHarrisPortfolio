@@ -1,3 +1,7 @@
+/* eslint-disable @next/next/no-img-element */
+// The images here are user-uploaded photo previews served from runtime
+// object URLs (blob:), which next/image cannot optimise — it needs a static
+// path or a configured remote host. Plain <img> is correct for these.
 import { useState } from "react";
 import { FiCamera, FiCheck, FiChevronRight, FiTool, FiX } from "react-icons/fi";
 import { BackHeader, DetailCard, FormCard, FormField, FormHead, PrimaryButton, StatusChip } from "../primitives";
