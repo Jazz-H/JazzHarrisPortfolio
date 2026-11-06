@@ -1,5 +1,4 @@
-const SITE_URL =
-  process.env.NEXT_PUBLIC_SITE_URL || "https://jazzharris.com";
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://jazzharris.com";
 
 function generateSiteMap() {
   const lastmod = new Date().toISOString().split("T")[0];
@@ -17,10 +16,7 @@ export default function Sitemap() {
 export async function getServerSideProps({ res }) {
   const sitemap = generateSiteMap();
   res.setHeader("Content-Type", "text/xml");
-  res.setHeader(
-    "Cache-Control",
-    "public, s-maxage=86400, stale-while-revalidate=43200"
-  );
+  res.setHeader("Cache-Control", "public, s-maxage=86400, stale-while-revalidate=43200");
   res.write(sitemap);
   res.end();
   return { props: {} };

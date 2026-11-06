@@ -31,8 +31,8 @@ export default function NotFound() {
               That page wandered off.
             </h1>
             <p className="mx-auto mt-3 max-w-md text-sm text-zinc-600 dark:text-zinc-400 sm:text-base">
-              The link might be broken or the page may have moved. Try the home
-              page, or jump straight to my work.
+              The link might be broken or the page may have moved. Try the home page, or jump
+              straight to my work.
             </p>
 
             <div className="mt-8 flex flex-wrap items-center justify-center gap-3">

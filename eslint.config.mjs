@@ -6,13 +6,7 @@ export default [
 
   // Ignore patterns must be in their own flat-config object
   {
-    ignores: [
-      ".next/**",
-      "out/**",
-      "node_modules/**",
-      "public/**",
-      "next-env.d.ts",
-    ],
+    ignores: [".next/**", "out/**", "node_modules/**", "public/**", "next-env.d.ts"],
   },
 
   // Project-specific overrides
