@@ -5,8 +5,21 @@ import HomeScreen from "./loft-living/screens/Home";
 import PayScreen from "./loft-living/screens/Pay";
 import MaintenanceScreen from "./loft-living/screens/Maintenance";
 import RewardsScreen from "./loft-living/screens/Rewards";
-import MoreScreen, { DetailScreen, PropertyInfoScreen, AccountSettingsScreen } from "./loft-living/screens/More";
-import { AUTH_KEY, THEME_KEY, BASE_RENT, UTILITIES, SEED_REQUESTS, SEED_HISTORY, DETAIL_CONTENT, methodPhrase } from "./loft-living/constants";
+import MoreScreen, {
+  DetailScreen,
+  PropertyInfoScreen,
+  AccountSettingsScreen,
+} from "./loft-living/screens/More";
+import {
+  AUTH_KEY,
+  THEME_KEY,
+  BASE_RENT,
+  UTILITIES,
+  SEED_REQUESTS,
+  SEED_HISTORY,
+  DETAIL_CONTENT,
+  methodPhrase,
+} from "./loft-living/constants";
 
 export default function LoftLivingApp() {
   const [loading, setLoading] = useState(true);
@@ -65,7 +78,17 @@ export default function LoftLivingApp() {
 
   function addRequest({ title, desc, category, urgent, okToEnter, photoUrl }) {
     setRequests((rs) => [
-      { id: Date.now(), title, desc, category, urgent, okToEnter, photoUrl, date: "Just now", status: "Submitted" },
+      {
+        id: Date.now(),
+        title,
+        desc,
+        category,
+        urgent,
+        okToEnter,
+        photoUrl,
+        date: "Just now",
+        status: "Submitted",
+      },
       ...rs,
     ]);
   }
@@ -76,7 +99,15 @@ export default function LoftLivingApp() {
 
   function handlePay(paidAmount, method) {
     setBalance((b) => Math.max(0, b - paidAmount));
-    setHistory((h) => [...h, { id: Date.now(), date: "Just now", desc: `Payment — ${methodPhrase(method)}`, amount: -paidAmount }]);
+    setHistory((h) => [
+      ...h,
+      {
+        id: Date.now(),
+        date: "Just now",
+        desc: `Payment — ${methodPhrase(method)}`,
+        amount: -paidAmount,
+      },
+    ]);
   }
 
   function addCard(c) {
@@ -96,7 +127,10 @@ export default function LoftLivingApp() {
   }
 
   function redeemReward(item) {
-    setRedeemedRewards((rs) => [...rs, { id: Date.now(), key: item.key, label: item.label, cost: item.cost, date: "Just now" }]);
+    setRedeemedRewards((rs) => [
+      ...rs,
+      { id: Date.now(), key: item.key, label: item.label, cost: item.cost, date: "Just now" },
+    ]);
   }
 
   return (
@@ -124,7 +158,10 @@ export default function LoftLivingApp() {
                   onBack={() => setOverlay(null)}
                 />
               ) : overlay === "property" ? (
-                <PropertyInfoScreen rows={DETAIL_CONTENT.property.rows} onBack={() => setOverlay(null)} />
+                <PropertyInfoScreen
+                  rows={DETAIL_CONTENT.property.rows}
+                  onBack={() => setOverlay(null)}
+                />
               ) : overlay ? (
                 <DetailScreen
                   title={DETAIL_CONTENT[overlay].title}
@@ -132,7 +169,13 @@ export default function LoftLivingApp() {
                   onBack={() => setOverlay(null)}
                 />
               ) : view === "home" ? (
-                <HomeScreen requests={requests} amount={balance} card={activeCard} onNavigate={navigate} onOpen={openFromMenu} />
+                <HomeScreen
+                  requests={requests}
+                  amount={balance}
+                  card={activeCard}
+                  onNavigate={navigate}
+                  onOpen={openFromMenu}
+                />
               ) : view === "pay" ? (
                 <PayScreen
                   balance={balance}
@@ -149,7 +192,12 @@ export default function LoftLivingApp() {
                   onToggleAutopay={toggleAutopay}
                 />
               ) : view === "maintenance" ? (
-                <MaintenanceScreen requests={requests} onAdd={addRequest} onCancel={cancelRequest} initialFormOpen={maintFormOpen} />
+                <MaintenanceScreen
+                  requests={requests}
+                  onAdd={addRequest}
+                  onCancel={cancelRequest}
+                  initialFormOpen={maintFormOpen}
+                />
               ) : (
                 <MoreScreen onOpen={openFromMenu} onSignOut={handleSignOut} />
               )}
@@ -160,26 +208,26 @@ export default function LoftLivingApp() {
       </div>
       <style jsx global>{`
         .ll-shell {
-          --ll-bg: #F7F7F8;
-          --ll-surface: #FFFFFF;
-          --ll-surface-2: #F2F3F5;
-          --ll-border: #E3E4E8;
-          --ll-text: #14161A;
-          --ll-text-muted: #5B5E68;
-          --ll-text-faint: #6E7180;
+          --ll-bg: #f7f7f8;
+          --ll-surface: #ffffff;
+          --ll-surface-2: #f2f3f5;
+          --ll-border: #e3e4e8;
+          --ll-text: #14161a;
+          --ll-text-muted: #5b5e68;
+          --ll-text-faint: #6e7180;
           --ll-accent: #935813;
-          --ll-accent-hover: #7A490F;
-          --ll-accent-ink: #FFFFFF;
-          --ll-accent-soft: #FBF0E2;
-          --ll-accent-soft-ink: #7A490F;
-          --ll-success: #117A36;
-          --ll-success-soft: #E7F6EC;
-          --ll-danger: #B91C1C;
-          --ll-danger-soft: #FCEAEA;
-          --ll-warning: #B45309;
-          --ll-warning-soft: #FEF3E0;
+          --ll-accent-hover: #7a490f;
+          --ll-accent-ink: #ffffff;
+          --ll-accent-soft: #fbf0e2;
+          --ll-accent-soft-ink: #7a490f;
+          --ll-success: #117a36;
+          --ll-success-soft: #e7f6ec;
+          --ll-danger: #b91c1c;
+          --ll-danger-soft: #fceaea;
+          --ll-warning: #b45309;
+          --ll-warning-soft: #fef3e0;
           --ll-focus: #935813;
-          --ll-shadow: 0 1px 2px rgba(20,22,26,.04), 0 8px 24px -14px rgba(20,22,26,.14);
+          --ll-shadow: 0 1px 2px rgba(20, 22, 26, 0.04), 0 8px 24px -14px rgba(20, 22, 26, 0.14);
           --ll-font-display: "Iowan Old Style", "Palatino Linotype", Georgia, serif;
           min-height: 100dvh;
           display: flex;
@@ -188,26 +236,26 @@ export default function LoftLivingApp() {
           font-family: -apple-system, "Inter", "Helvetica Neue", Arial, sans-serif;
         }
         .ll-shell[data-theme="dark"] {
-          --ll-bg: #0B0E14;
-          --ll-surface: #15171E;
-          --ll-surface-2: #1C1F27;
-          --ll-border: #262A35;
-          --ll-text: #F2F3F5;
-          --ll-text-muted: #9BA0AE;
-          --ll-text-faint: #6D7280;
-          --ll-accent: #D79A5E;
-          --ll-accent-hover: #E4B182;
-          --ll-accent-ink: #1D1510;
-          --ll-accent-soft: rgba(215,154,94,.16);
-          --ll-accent-soft-ink: #E4B182;
-          --ll-success: #4ADE80;
-          --ll-success-soft: rgba(74,222,128,.15);
-          --ll-danger: #F87171;
-          --ll-danger-soft: rgba(248,113,113,.15);
-          --ll-warning: #FBBF24;
-          --ll-warning-soft: rgba(251,191,36,.15);
-          --ll-focus: #D79A5E;
-          --ll-shadow: 0 1px 2px rgba(0,0,0,.3), 0 12px 30px -16px rgba(0,0,0,.5);
+          --ll-bg: #0b0e14;
+          --ll-surface: #15171e;
+          --ll-surface-2: #1c1f27;
+          --ll-border: #262a35;
+          --ll-text: #f2f3f5;
+          --ll-text-muted: #9ba0ae;
+          --ll-text-faint: #6d7280;
+          --ll-accent: #d79a5e;
+          --ll-accent-hover: #e4b182;
+          --ll-accent-ink: #1d1510;
+          --ll-accent-soft: rgba(215, 154, 94, 0.16);
+          --ll-accent-soft-ink: #e4b182;
+          --ll-success: #4ade80;
+          --ll-success-soft: rgba(74, 222, 128, 0.15);
+          --ll-danger: #f87171;
+          --ll-danger-soft: rgba(248, 113, 113, 0.15);
+          --ll-warning: #fbbf24;
+          --ll-warning-soft: rgba(251, 191, 36, 0.15);
+          --ll-focus: #d79a5e;
+          --ll-shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 12px 30px -16px rgba(0, 0, 0, 0.5);
         }
         .ll-shell .phone {
           width: 100%;
@@ -219,10 +267,25 @@ export default function LoftLivingApp() {
           display: flex;
           flex-direction: column;
         }
-        .ll-shell .body { flex: 1; overflow-y: auto; padding-top: 14px; padding-bottom: 68px; }
-        .ll-shell button, .ll-shell input, .ll-shell select, .ll-shell textarea { font-family: inherit; }
-        .ll-shell * { box-sizing: border-box; }
-        .ll-shell *:focus-visible { outline: 2px solid var(--ll-focus); outline-offset: 2px; }
+        .ll-shell .body {
+          flex: 1;
+          overflow-y: auto;
+          padding-top: 14px;
+          padding-bottom: 68px;
+        }
+        .ll-shell button,
+        .ll-shell input,
+        .ll-shell select,
+        .ll-shell textarea {
+          font-family: inherit;
+        }
+        .ll-shell * {
+          box-sizing: border-box;
+        }
+        .ll-shell *:focus-visible {
+          outline: 2px solid var(--ll-focus);
+          outline-offset: 2px;
+        }
       `}</style>
     </div>
   );

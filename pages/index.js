@@ -27,10 +27,7 @@ const STRUCTURED_DATA = {
         "Next.js",
         "Power BI",
       ],
-      sameAs: [
-        "https://github.com/Jazz-H",
-        "https://www.linkedin.com/in/maurajharris/",
-      ],
+      sameAs: ["https://github.com/Jazz-H", "https://www.linkedin.com/in/maurajharris/"],
     },
     {
       "@type": "WebSite",
@@ -52,10 +49,7 @@ export default function Home() {
           name="description"
           content="Data solutions lead and software engineer. I bridge business goals and software engineering to build digital products that deliver measurable results."
         />
-        <meta
-          name="viewport"
-          content="width=device-width, initial-scale=1, viewport-fit=cover"
-        />
+        <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
         <meta name="theme-color" content="#08080A" />
         <link rel="canonical" href={`${SITE_URL}/`} />
 

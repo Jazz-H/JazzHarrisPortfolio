@@ -47,7 +47,7 @@ is worth the time (it's the strongest BA-methodology fit in the portfolio).
 3. Pull current ratings for RentCafe and Zego, or swap in better-fitting
    comparators if the market's shifted.
 4. Write a one-page root-cause note: for the 2-3 worst symptoms (sign-in
-   failures, payment confusion, buried core tasks), name the *likely*
+   failures, payment confusion, buried core tasks), name the _likely_
    technical cause — inferred from public behavior, not insider knowledge —
    and why it produces that symptom.
 

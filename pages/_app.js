@@ -22,9 +22,7 @@ const jetbrainsMono = JetBrains_Mono({
 
 function MyApp({ Component, pageProps }) {
   return (
-    <div
-      className={`${inter.variable} ${bricolage.variable} ${jetbrainsMono.variable} font-sans`}
-    >
+    <div className={`${inter.variable} ${bricolage.variable} ${jetbrainsMono.variable} font-sans`}>
       <Component {...pageProps} />
     </div>
   );

@@ -14,12 +14,48 @@ export default function SignInScreen({ onSignedIn }) {
         Use passcode instead
       </button>
       <style jsx>{`
-        .screen.center { display: flex; flex-direction: column; align-items: center; text-align: center; padding: 100px 24px 0; }
-        .faceid { width: 64px; height: 64px; border-radius: 16px; background: var(--ll-accent-soft); display: flex; align-items: center; justify-content: center; margin-bottom: 20px; }
-        .faceid :global(svg) { width: 28px; height: 28px; color: var(--ll-accent); }
-        h1 { font-size: 19px; font-weight: 700; margin: 0; color: var(--ll-text); }
-        p { font-size: 13px; color: var(--ll-text-muted); margin: 6px 0 28px; }
-        .ghost { background: none; border: none; color: var(--ll-text-muted); font-size: 12.5px; margin-top: 14px; cursor: pointer; padding: 8px; }
+        .screen.center {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          text-align: center;
+          padding: 100px 24px 0;
+        }
+        .faceid {
+          width: 64px;
+          height: 64px;
+          border-radius: 16px;
+          background: var(--ll-accent-soft);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          margin-bottom: 20px;
+        }
+        .faceid :global(svg) {
+          width: 28px;
+          height: 28px;
+          color: var(--ll-accent);
+        }
+        h1 {
+          font-size: 19px;
+          font-weight: 700;
+          margin: 0;
+          color: var(--ll-text);
+        }
+        p {
+          font-size: 13px;
+          color: var(--ll-text-muted);
+          margin: 6px 0 28px;
+        }
+        .ghost {
+          background: none;
+          border: none;
+          color: var(--ll-text-muted);
+          font-size: 12.5px;
+          margin-top: 14px;
+          cursor: pointer;
+          padding: 8px;
+        }
       `}</style>
     </div>
   );

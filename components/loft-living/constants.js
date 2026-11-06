@@ -150,15 +150,32 @@ export const MORE_SECTIONS = [
   {
     label: "My Account",
     items: [
-      { key: "account", label: "Account Settings", sub: "Manage account details", iconKey: "settings" },
+      {
+        key: "account",
+        label: "Account Settings",
+        sub: "Manage account details",
+        iconKey: "settings",
+      },
       { key: "profile", label: "My Public Profile", sub: "Edit your public info", iconKey: "user" },
     ],
   },
   {
     label: "My Apartment",
     items: [
-      { key: "pay", label: "Payment Center", sub: "View balance & pay rent", iconKey: "creditCard", jump: true },
-      { key: "maintenance", label: "Service Requests", sub: "Track maintenance requests", iconKey: "tool", jump: true },
+      {
+        key: "pay",
+        label: "Payment Center",
+        sub: "View balance & pay rent",
+        iconKey: "creditCard",
+        jump: true,
+      },
+      {
+        key: "maintenance",
+        label: "Service Requests",
+        sub: "Track maintenance requests",
+        iconKey: "tool",
+        jump: true,
+      },
       { key: "lease", label: "My Lease", sub: "View lease documents", iconKey: "fileText" },
     ],
   },

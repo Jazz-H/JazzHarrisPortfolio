@@ -34,11 +34,7 @@ const Navbar = ({ theme, toggleTheme }) => {
         }`}
       >
         <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3 sm:px-6">
-          <a
-            href="#Home"
-            className="flex items-center gap-2"
-            aria-label="Jazz Harris — home"
-          >
+          <a href="#Home" className="flex items-center gap-2" aria-label="Jazz Harris — home">
             <Image
               src="/assets/JHNavLogo.png"
               alt=""
@@ -76,11 +72,7 @@ const Navbar = ({ theme, toggleTheme }) => {
               aria-label="Toggle theme"
               className="ml-1 rounded-full p-2 text-zinc-600 transition-colors hover:bg-zinc-100 hover:text-zinc-900 dark:text-zinc-400 dark:hover:bg-zinc-800 dark:hover:text-zinc-50"
             >
-              {theme === "dark" ? (
-                <FiSun className="h-4 w-4" />
-              ) : (
-                <FiMoon className="h-4 w-4" />
-              )}
+              {theme === "dark" ? <FiSun className="h-4 w-4" /> : <FiMoon className="h-4 w-4" />}
             </button>
           </div>
 
@@ -91,11 +83,7 @@ const Navbar = ({ theme, toggleTheme }) => {
               aria-label="Toggle theme"
               className="rounded-full p-2 text-zinc-600 transition-colors hover:bg-zinc-100 hover:text-zinc-900 dark:text-zinc-400 dark:hover:bg-zinc-800 dark:hover:text-zinc-50"
             >
-              {theme === "dark" ? (
-                <FiSun className="h-5 w-5" />
-              ) : (
-                <FiMoon className="h-5 w-5" />
-              )}
+              {theme === "dark" ? <FiSun className="h-5 w-5" /> : <FiMoon className="h-5 w-5" />}
             </button>
             <button
               type="button"
@@ -111,9 +99,7 @@ const Navbar = ({ theme, toggleTheme }) => {
 
         <div
           className={`lg:hidden overflow-hidden border-zinc-200 bg-white transition-[max-height,opacity] duration-300 ease-out dark:border-zinc-800 dark:bg-zinc-950 ${
-            open
-              ? "max-h-96 border-t opacity-100"
-              : "max-h-0 border-t-0 opacity-0"
+            open ? "max-h-96 border-t opacity-100" : "max-h-0 border-t-0 opacity-0"
           }`}
         >
           <div className="mx-auto flex max-w-6xl flex-col gap-1 px-4 py-3 sm:px-6">

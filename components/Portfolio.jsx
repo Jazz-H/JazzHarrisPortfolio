@@ -36,9 +36,12 @@ const FIE_BLOG =
 
 const PROJECTS = [
   {
-    cat: "Websites", title: "Valora", ai: true,
+    cat: "Websites",
+    title: "Valora",
+    ai: true,
     body: "A personal budgeting web app that turns messy finances into clear, calm decisions. Track spending, set goals, and see where your money actually goes, privately and without forced bank linking. Live in public beta as a website, with a native mobile app on the way.",
-    tags: ["React", "TypeScript", "JavaScript", "CSS", "HTML"], status: "Beta",
+    tags: ["React", "TypeScript", "JavaScript", "CSS", "HTML"],
+    status: "Beta",
     image: "/assets/ValoraReports.jpg",
     images: [
       "/assets/ValoraOverview.jpg",
@@ -50,17 +53,23 @@ const PROJECTS = [
       "/assets/ValoraFlow.jpg",
     ],
     live: "https://getvalora.netlify.app",
-    company: "Independent project", role: "Solo design & development",
+    company: "Independent project",
+    role: "Solo design & development",
     study: {
-      challenge: "I was tired of budgeting apps that overpromised and boxed you into rigid UIs, where you'd spend ages entering your data only to be frustrated by how it was shown. Most also force you to link a bank account but give you no real control over your own data. I wanted the opposite: a calm, flexible app that answers what actually matters, like where my money is going and what's safe to spend right now, while keeping you in control of your data.",
-      approach: "I designed and built Valora end to end in React and TypeScript: the visual system, data model, and product flows. The home Overview surfaces the essentials at a glance, including savings rate, a safe-to-spend number, cash reserve, income, and goal milestones, paired with an AI Insight that recommends your next money move. I leaned on my design background for a calm, legible UI, built a guided first run so new users reach value in minutes, and made it private by default. Your financial data stays on your device unless you opt into cloud backup, with no forced bank linking.",
-      outcome: "Live in public beta as a website and gathering real user feedback to shape the roadmap, with a native mobile app next. I took it from concept to a working product, owning the design, UX, and engineering end to end.",
+      challenge:
+        "I was tired of budgeting apps that overpromised and boxed you into rigid UIs, where you'd spend ages entering your data only to be frustrated by how it was shown. Most also force you to link a bank account but give you no real control over your own data. I wanted the opposite: a calm, flexible app that answers what actually matters, like where my money is going and what's safe to spend right now, while keeping you in control of your data.",
+      approach:
+        "I designed and built Valora end to end in React and TypeScript: the visual system, data model, and product flows. The home Overview surfaces the essentials at a glance, including savings rate, a safe-to-spend number, cash reserve, income, and goal milestones, paired with an AI Insight that recommends your next money move. I leaned on my design background for a calm, legible UI, built a guided first run so new users reach value in minutes, and made it private by default. Your financial data stays on your device unless you opt into cloud backup, with no forced bank linking.",
+      outcome:
+        "Live in public beta as a website and gathering real user feedback to shape the roadmap, with a native mobile app next. I took it from concept to a working product, owning the design, UX, and engineering end to end.",
     },
   },
   {
-    cat: "Websites", title: "Alamance Community Foundation",
+    cat: "Websites",
+    title: "Alamance Community Foundation",
     body: "The website for the Alamance Community Foundation, a Burlington, NC public charity that stewards over $27M in assets and grants roughly $1.9M a year to local nonprofits. I designed and built it as a freelance project, focused on credibility, clear navigation, and making it easy for donors to find programs and give.",
-    tags: ["Squarespace", "HTML", "CSS", "JavaScript"], image: "/assets/AlamanceCover.jpg",
+    tags: ["Squarespace", "HTML", "CSS", "JavaScript"],
+    image: "/assets/AlamanceCover.jpg",
     images: [
       "/assets/AlamanceFunds.jpg",
       "/assets/AlamanceScholarships.jpg",
@@ -68,17 +77,23 @@ const PROJECTS = [
       "/assets/AlamanceAbout.jpg",
     ],
     live: "https://www.alamancecommunityfoundation.org",
-    company: "Alamance Community Foundation (freelance)", role: "Solo design & development",
+    company: "Alamance Community Foundation (freelance)",
+    role: "Solo design & development",
     study: {
-      challenge: "A foundation stewarding $27M+ in assets needs a site that instantly reads as credible, makes it effortless for donors to find programs and give, and that a small staff can keep current themselves.",
-      approach: "Designed and built the site solo, with clear navigation, a trustworthy structure, and content the staff can update themselves.",
-      outcome: "A polished, credible home for a foundation that distributes roughly $1.9M in grants a year across 30+ local nonprofits, easy for donors to navigate and for the team to maintain.",
+      challenge:
+        "A foundation stewarding $27M+ in assets needs a site that instantly reads as credible, makes it effortless for donors to find programs and give, and that a small staff can keep current themselves.",
+      approach:
+        "Designed and built the site solo, with clear navigation, a trustworthy structure, and content the staff can update themselves.",
+      outcome:
+        "A polished, credible home for a foundation that distributes roughly $1.9M in grants a year across 30+ local nonprofits, easy for donors to navigate and for the team to maintain.",
     },
   },
   {
-    cat: "Websites", title: "Electric Supplies Online",
+    cat: "Websites",
+    title: "Electric Supplies Online",
     body: "A live e-commerce storefront for an electrical-supplies retailer, with a deep, technical catalog spanning lighting, circuit breakers, transformers, and dozens of categories in between. As the in-house designer and developer, I organized the catalog for fast discovery, shaped the storefront and merchandising, and kept the customer-facing experience running for a real, operating business.",
-    tags: ["HTML", "CSS", "JavaScript"], image: "/assets/ElectricCover.jpg",
+    tags: ["HTML", "CSS", "JavaScript"],
+    image: "/assets/ElectricCover.jpg",
     images: [
       "/assets/ElectricStore.jpg",
       "/assets/ElectricHome.jpg",
@@ -86,18 +101,25 @@ const PROJECTS = [
       "/assets/ElectricAbout.jpg",
     ],
     live: "https://electricsuppliesonline.com/",
-    company: "Electric Supplies Online", role: "Designer & developer",
+    company: "Electric Supplies Online",
+    role: "Designer & developer",
     study: {
-      challenge: "An electrical-supplies retailer carries a deep, technical catalog: breakers, dimmers, transformers, indoor and outdoor lighting, and dozens of categories in between. In a category that has shifted heavily online, where most buyers now shop the web for parts, the job was to make that range easy for a contractor or homeowner to navigate and buy from, without getting lost, on a platform a small team could keep current.",
-      approach: "Working as the in-house designer and developer, I structured the catalog into clear, browsable categories built around how customers actually shop, shaped the homepage and merchandising to surface promotions and featured products, and maintained the storefront, account, and checkout experience. The focus was the customer-facing experience and information architecture, not a from-scratch rebuild of the platform.",
-      outcome: "A live, operating storefront that serves real customers across a large product catalog, organized so a shopper reaches the right part with less friction. It remains in active use today.",
+      challenge:
+        "An electrical-supplies retailer carries a deep, technical catalog: breakers, dimmers, transformers, indoor and outdoor lighting, and dozens of categories in between. In a category that has shifted heavily online, where most buyers now shop the web for parts, the job was to make that range easy for a contractor or homeowner to navigate and buy from, without getting lost, on a platform a small team could keep current.",
+      approach:
+        "Working as the in-house designer and developer, I structured the catalog into clear, browsable categories built around how customers actually shop, shaped the homepage and merchandising to surface promotions and featured products, and maintained the storefront, account, and checkout experience. The focus was the customer-facing experience and information architecture, not a from-scratch rebuild of the platform.",
+      outcome:
+        "A live, operating storefront that serves real customers across a large product catalog, organized so a shopper reaches the right part with less friction. It remains in active use today.",
     },
   },
   {
-    cat: "Apps", title: "Clearcast", ai: true,
+    cat: "Apps",
+    title: "Clearcast",
+    ai: true,
     body: "Clearcast is a production-ready weather PWA that turns a raw forecast into a plain-English plan for your day. It uses Claude to generate structured activity recommendations, adapts its theme to live weather conditions, and works offline as an installable app. Every layer, from the API design to the caching strategy to unit detection, is built for correctness, not just demo appeal.",
     tags: ["Next.js", "TypeScript", "Claude API", "PWA", "Tailwind"],
-    image: "/assets/ClearcastCover.png", tall: true,
+    image: "/assets/ClearcastCover.png",
+    tall: true,
     images: [
       "/assets/ClearcastRecommendation.png",
       "/assets/ClearcastCurrent.png",
@@ -105,18 +127,27 @@ const PROJECTS = [
       "/assets/ClearcastRain.png",
       "/assets/ClearcastStorm.png",
     ],
-    live: "https://useclearcast.netlify.app/", code: "https://github.com/Jazz-H/WeatherApp",
-    company: "Independent project", role: "Solo design & development",
+    live: "https://useclearcast.netlify.app/",
+    code: "https://github.com/Jazz-H/WeatherApp",
+    company: "Independent project",
+    role: "Solo design & development",
     study: {
-      challenge: "Most weather apps hand you data and leave the decision to you. I wanted one that makes the call, turning a noisy forecast into a single confident recommendation. The harder goal was building it for correctness rather than demo appeal: keep the API key off the client, keep cost predictable, fail gracefully, and get the units right, all fast enough to run on every page load.",
-      approach: "Built in Next.js and TypeScript in strict mode, with Tailwind, deployed on Netlify. A server-only route calls Claude Haiku and validates the JSON it returns against a Zod schema that doubles as the app's TypeScript types, so a bad model response becomes a handled 502 instead of a client crash. Forecasts come from Open-Meteo, trimmed to current conditions plus the next 12 hours before they reach Claude, then cached in a 500-entry LRU with a daily call cap to hold down latency and cost. Eight CSS sky themes follow the live weather code, units auto-detect from the geocoded country with a saved manual override, and a service worker makes it an installable PWA that serves the last forecast offline.",
-      outcome: "Shipped and production-ready. Clearcast geocodes any city, auto-selects °F or °C by country, and renders an AI recommendation with color-coded activity verdicts and a best-time callout in seconds, on a background that shifts across eight weather conditions. It's backed by 38 unit tests, Playwright smoke tests, and a GitHub Actions pipeline that lints, type-checks, and tests on every push.",
+      challenge:
+        "Most weather apps hand you data and leave the decision to you. I wanted one that makes the call, turning a noisy forecast into a single confident recommendation. The harder goal was building it for correctness rather than demo appeal: keep the API key off the client, keep cost predictable, fail gracefully, and get the units right, all fast enough to run on every page load.",
+      approach:
+        "Built in Next.js and TypeScript in strict mode, with Tailwind, deployed on Netlify. A server-only route calls Claude Haiku and validates the JSON it returns against a Zod schema that doubles as the app's TypeScript types, so a bad model response becomes a handled 502 instead of a client crash. Forecasts come from Open-Meteo, trimmed to current conditions plus the next 12 hours before they reach Claude, then cached in a 500-entry LRU with a daily call cap to hold down latency and cost. Eight CSS sky themes follow the live weather code, units auto-detect from the geocoded country with a saved manual override, and a service worker makes it an installable PWA that serves the last forecast offline.",
+      outcome:
+        "Shipped and production-ready. Clearcast geocodes any city, auto-selects °F or °C by country, and renders an AI recommendation with color-coded activity verdicts and a best-time callout in seconds, on a background that shifts across eight weather conditions. It's backed by 38 unit tests, Playwright smoke tests, and a GitHub Actions pipeline that lints, type-checks, and tests on every push.",
     },
   },
   {
-    cat: "Apps", title: "Chat App", ai: true,
+    cat: "Apps",
+    title: "Chat App",
+    ai: true,
     body: "Chat App is a real-time messaging platform that works the way people expect: instant delivery, no refresh, no lag. It supports public channels, one-to-one direct messages, emoji reactions, typing indicators, and image sharing, all backed by Firebase and secured with server-side Firestore rules. Built solo, end to end, with a full QA and regression pipeline.",
-    tags: ["React", "TypeScript", "Firebase", "Firestore", "Vite", "Tailwind"], image: "/assets/ChatAppCover.png", tall: true,
+    tags: ["React", "TypeScript", "Firebase", "Firestore", "Vite", "Tailwind"],
+    image: "/assets/ChatAppCover.png",
+    tall: true,
     images: [
       "/assets/ChatAppDMs.png",
       "/assets/ChatAppActions.png",
@@ -125,36 +156,55 @@ const PROJECTS = [
       "/assets/ChatAppSignin.png",
       "/assets/ChatAppMobile.png",
     ],
-    live: "https://chatappdemo-e1b26.web.app", code: "https://github.com/Jazz-H/Chat-Application",
-    company: "Independent project", role: "Solo design & development",
+    live: "https://chatappdemo-e1b26.web.app",
+    code: "https://github.com/Jazz-H/Chat-Application",
+    company: "Independent project",
+    role: "Solo design & development",
     study: {
-      challenge: "The hard part of a chat app isn't the messaging. It's making everything feel instantaneous across rooms, DMs, reactions, and typing indicators, while keeping Firestore costs low, writes safe, and the UI honest when something goes wrong. Most tutorials skip the edge cases. I wanted to build the version that doesn't.",
-      approach: "Built with React 18 and TypeScript on Vite, using Firebase Auth for multi-provider sign-in (email and password, Google OAuth, anonymous guest) and Firestore onSnapshot listeners for push-based real-time updates, with no polling and no WebSocket management. The chat shell is code-split with React.lazy so the Firestore SDK only loads after sign-in, keeping the initial bundle lean. Security rules enforce access control server-side: authors-only edits and deletes, explicit membership checks for DMs, and content validation on every write. Typing indicators use throttled writes with client-side auto-expiry to keep costs predictable, images are compressed client-side through a canvas pipeline before storing, and messages paginate 25 at a time. A 21-check Playwright suite runs against the live dev server after every change to catch layout, auth, and interaction regressions automatically.",
-      outcome: "Shipped a feature-complete chat platform across desktop and mobile: five public channels with real-time messaging and message grouping, one-to-one direct messages with deterministic conversation IDs, emoji reactions with live per-user counts, author-only edit and delete enforced on both client and server, live typing indicators with stale-entry handling, and image sharing with client-side compression. Three sign-in methods map every Firebase error code to human-readable copy, and the layout adapts from a collapsible desktop sidebar to a slide-out mobile drawer. Along the way I found and fixed five QA issues, from a silent failure on message actions to a blob URL memory leak on unmount.",
+      challenge:
+        "The hard part of a chat app isn't the messaging. It's making everything feel instantaneous across rooms, DMs, reactions, and typing indicators, while keeping Firestore costs low, writes safe, and the UI honest when something goes wrong. Most tutorials skip the edge cases. I wanted to build the version that doesn't.",
+      approach:
+        "Built with React 18 and TypeScript on Vite, using Firebase Auth for multi-provider sign-in (email and password, Google OAuth, anonymous guest) and Firestore onSnapshot listeners for push-based real-time updates, with no polling and no WebSocket management. The chat shell is code-split with React.lazy so the Firestore SDK only loads after sign-in, keeping the initial bundle lean. Security rules enforce access control server-side: authors-only edits and deletes, explicit membership checks for DMs, and content validation on every write. Typing indicators use throttled writes with client-side auto-expiry to keep costs predictable, images are compressed client-side through a canvas pipeline before storing, and messages paginate 25 at a time. A 21-check Playwright suite runs against the live dev server after every change to catch layout, auth, and interaction regressions automatically.",
+      outcome:
+        "Shipped a feature-complete chat platform across desktop and mobile: five public channels with real-time messaging and message grouping, one-to-one direct messages with deterministic conversation IDs, emoji reactions with live per-user counts, author-only edit and delete enforced on both client and server, live typing indicators with stale-entry handling, and image sharing with client-side compression. Three sign-in methods map every Firebase error code to human-readable copy, and the layout adapts from a collapsible desktop sidebar to a slide-out mobile drawer. Along the way I found and fixed five QA issues, from a silent failure on message actions to a blob URL memory leak on unmount.",
     },
   },
   {
-    cat: "Power Apps & Data", kind: "Data", title: "DSD Support Operations Dashboard",
+    cat: "Power Apps & Data",
+    kind: "Data",
+    title: "DSD Support Operations Dashboard",
     body: "A ServiceNow analytics dashboard for Osapiens, the DSD (direct store delivery) routing app at Coca-Cola Consolidated, where I'm the primary support for Tier 2 incidents. It monitors a redesigned support model: Tier-1 vs Tier-2 routing, knowledge-base deflection, SLA health, and vendor escalations, so the team can see at a glance where work is being resolved and what to fix next. Visuals recreated without internal data for confidentiality.",
-    tags: ["ServiceNow"], confidential: true, diagram: "dsd",
-    image: "/assets/SupportDashTeam.jpg", tall: true,
+    tags: ["ServiceNow"],
+    confidential: true,
+    diagram: "dsd",
+    image: "/assets/SupportDashTeam.jpg",
+    tall: true,
     images: [
       "/assets/SupportDashPersonal.jpg",
       "/assets/SupportDashTeam.jpg",
       "/assets/SupportDashService.jpg",
     ],
-    company: "Coca-Cola Consolidated", role: "IT Business Analyst II",
+    company: "Coca-Cola Consolidated",
+    role: "IT Business Analyst II",
     study: {
-      challenge: "The Osapiens routing app was sending 5+ tickets a day straight to Tier 2, with the first-line Service Center Team escalating entry-level issues instead of resolving them, and Tier 2 carrying an overnight on-call rotation. The fix wasn't more people; it was changing where work got resolved.",
-      approach: "I analyzed the escalation pattern to find which issue types Tier 1 could own, and recognized the Service Center Team was missing the permissions inside the Osapiens app they needed to triage and resolve in the first place. I redesigned the support model around that: getting them the right access, writing step-by-step knowledge-base articles (cloud backup, shipment reset, mobile PIN, vendor e-bonding, routing) so they could resolve at first contact, routing after-hours escalations directly to CONA instead of a Tier 2 overnight on-call, and keeping a clear path to the vendor for true exceptions. I ran a training walkthrough and built a ServiceNow dashboard to monitor Tier-1 vs Tier-2 routing, KB deflection, and SLA health.",
-      outcome: "Tier 2 escalations fell from 5+ a day to 2-3 a week, about a 95% reduction, and the after-hours on-call rotation was eliminated: the Service Center Team absorbed first-line resolution and after-hours escalations now route to CONA. Drivers and warehouse users get faster answers at Tier 1, with vendor escalation reserved for genuine exceptions.",
+      challenge:
+        "The Osapiens routing app was sending 5+ tickets a day straight to Tier 2, with the first-line Service Center Team escalating entry-level issues instead of resolving them, and Tier 2 carrying an overnight on-call rotation. The fix wasn't more people; it was changing where work got resolved.",
+      approach:
+        "I analyzed the escalation pattern to find which issue types Tier 1 could own, and recognized the Service Center Team was missing the permissions inside the Osapiens app they needed to triage and resolve in the first place. I redesigned the support model around that: getting them the right access, writing step-by-step knowledge-base articles (cloud backup, shipment reset, mobile PIN, vendor e-bonding, routing) so they could resolve at first contact, routing after-hours escalations directly to CONA instead of a Tier 2 overnight on-call, and keeping a clear path to the vendor for true exceptions. I ran a training walkthrough and built a ServiceNow dashboard to monitor Tier-1 vs Tier-2 routing, KB deflection, and SLA health.",
+      outcome:
+        "Tier 2 escalations fell from 5+ a day to 2-3 a week, about a 95% reduction, and the after-hours on-call rotation was eliminated: the Service Center Team absorbed first-line resolution and after-hours escalations now route to CONA. Drivers and warehouse users get faster answers at Tier 1, with vendor escalation reserved for genuine exceptions.",
     },
   },
   {
-    cat: "Power Apps & Data", kind: "Data", title: "Activity & Objective Dashboard",
+    cat: "Power Apps & Data",
+    kind: "Data",
+    title: "Activity & Objective Dashboard",
     body: "A self-service Power BI dashboard, fed by a SharePoint form, that turns everyday BA work into a live view of progress against my 2026 objectives — instead of something pieced together from memory at review time. I designed the data model and multi-page report end to end; the data shown is generic for confidentiality.",
-    tags: ["Power BI", "Power Query", "DAX", "SharePoint"], confidential: true, diagram: "activity",
-    image: "/assets/ActivityCover.jpg", tall: true,
+    tags: ["Power BI", "Power Query", "DAX", "SharePoint"],
+    confidential: true,
+    diagram: "activity",
+    image: "/assets/ActivityCover.jpg",
+    tall: true,
     images: [
       "/assets/ActivityOverview.jpg",
       "/assets/ActivityObjectives.jpg",
@@ -162,55 +212,90 @@ const PROJECTS = [
       "/assets/ActivityLog.jpg",
       "/assets/ActivityStatus.jpg",
     ],
-    company: "Coca-Cola Consolidated", role: "IT Business Analyst II",
+    company: "Coca-Cola Consolidated",
+    role: "IT Business Analyst II",
     study: {
-      challenge: "Across multiple projects and a set of annual objectives, I had no single, current view of where my effort was going or how close each objective was. Progress got reconstructed manually at review time, which was slow and always out of date.",
-      approach: "I designed a small data model where every activity maps to a project, an objective, an activity type, and a competency behavior, captured through a SharePoint form for fast logging. On top of it I built a multi-page Power BI report: objective progress against target with on-track and needs-focus banding, an effort matrix of hours by project and activity type, project and behavior mix, delivery status and throughput, and a drill-down activity log back to the source records. I modeled, built, and wired it end to end. The data shown here is generic for confidentiality.",
-      outcome: "A live, self-service view of objective progress that updates as I log work, so I can rebalance effort during the year instead of finding out at review time. It is the same shape of work I do for stakeholders, applied to my own goals: structured data in, a clear decision out.",
+      challenge:
+        "Across multiple projects and a set of annual objectives, I had no single, current view of where my effort was going or how close each objective was. Progress got reconstructed manually at review time, which was slow and always out of date.",
+      approach:
+        "I designed a small data model where every activity maps to a project, an objective, an activity type, and a competency behavior, captured through a SharePoint form for fast logging. On top of it I built a multi-page Power BI report: objective progress against target with on-track and needs-focus banding, an effort matrix of hours by project and activity type, project and behavior mix, delivery status and throughput, and a drill-down activity log back to the source records. I modeled, built, and wired it end to end. The data shown here is generic for confidentiality.",
+      outcome:
+        "A live, self-service view of objective progress that updates as I log work, so I can rebalance effort during the year instead of finding out at review time. It is the same shape of work I do for stakeholders, applied to my own goals: structured data in, a clear decision out.",
     },
   },
   {
-    cat: "Agents", kind: "AI Agent", title: "Copilot Studio DevOps Agent",
-    ai: true, confidential: true, noLink: true, diagram: "agent",
-    image: "/assets/AgentCover.png", tall: true,
+    cat: "Agents",
+    kind: "AI Agent",
+    title: "Copilot Studio DevOps Agent",
+    ai: true,
+    confidential: true,
+    noLink: true,
+    diagram: "agent",
+    image: "/assets/AgentCover.png",
+    tall: true,
     images: ["/assets/AgentCover.png", "/assets/AgentTeams.png", "/assets/AgentBoard.png"],
     tags: ["Copilot Studio", "Azure DevOps", "Microsoft Teams"],
     body: "A Copilot Studio agent wired to my team's Azure DevOps board. From a plain-language ask in Microsoft Teams it creates and updates epics, features, and user stories, pulls board status and summaries, and drafts requirements, meeting notes, and communications — turning repetitive BA upkeep into a single request. Built and used on the job; shown without internal data for confidentiality.",
-    company: "Coca-Cola Consolidated", role: "IT Business Analyst II",
+    company: "Coca-Cola Consolidated",
+    role: "IT Business Analyst II",
     study: {
-      challenge: "A lot of business-analyst work is repetitive by nature: opening and updating epics, features, and user stories in Azure DevOps, pulling board status together for stakeholders, and hand-writing the same shapes of requirements, meeting notes, and updates. It's necessary, but it's administration that eats time better spent on analysis.",
-      approach: "I built an agent in Copilot Studio and connected it to my team's Azure DevOps board through the Azure DevOps connector, so it acts on real work items rather than a copy. From a plain-language request in Teams it creates and updates epics, features, and user stories, pulls back board status and summaries on demand, and drafts requirements, meeting notes, and communications from a short prompt. I designed the topics and grounding so responses reflect the live board, and kept a human in the loop to review before anything is finalized. The board and its data aren't shown here for confidentiality.",
-      outcome: "Routine work-item upkeep and first drafts now start from a sentence in Teams instead of a manual pass through the board and a blank document. It shifts my time from administration toward the analysis the role is actually for, and gives the team a faster, more consistent way to keep the board and its paper trail current.",
+      challenge:
+        "A lot of business-analyst work is repetitive by nature: opening and updating epics, features, and user stories in Azure DevOps, pulling board status together for stakeholders, and hand-writing the same shapes of requirements, meeting notes, and updates. It's necessary, but it's administration that eats time better spent on analysis.",
+      approach:
+        "I built an agent in Copilot Studio and connected it to my team's Azure DevOps board through the Azure DevOps connector, so it acts on real work items rather than a copy. From a plain-language request in Teams it creates and updates epics, features, and user stories, pulls back board status and summaries on demand, and drafts requirements, meeting notes, and communications from a short prompt. I designed the topics and grounding so responses reflect the live board, and kept a human in the loop to review before anything is finalized. The board and its data aren't shown here for confidentiality.",
+      outcome:
+        "Routine work-item upkeep and first drafts now start from a sentence in Teams instead of a manual pass through the board and a blank document. It shifts my time from administration toward the analysis the role is actually for, and gives the team a faster, more consistent way to keep the board and its paper trail current.",
     },
   },
   {
-    cat: "Branding & Design", kind: "Branding", title: "Inventory Shrink Reduction Form", noLink: true, ai: true,
+    cat: "Branding & Design",
+    kind: "Branding",
+    title: "Inventory Shrink Reduction Form",
+    noLink: true,
+    ai: true,
     body: "An app icon and visual identity I designed for a shrink-reporting form I supported as the BA. The form replaced a manual email process for logging excessive inventory shrink, and to make an internal tool feel like a real product and earn field adoption, I created a branded clipboard mark that reads instantly on a phone home screen. It shipped as a complete, production-ready app icon set at every screen density.",
     tags: ["Copilot", "Photoshop"],
     image: "/assets/ShrinkLogoCover.jpg",
-    images: [
-      "/assets/ShrinkLogo1.jpg",
-      "/assets/ShrinkLogo2.jpg",
-    ],
-    company: "Coca-Cola Consolidated", role: "IT Business Analyst II",
+    images: ["/assets/ShrinkLogo1.jpg", "/assets/ShrinkLogo2.jpg"],
+    company: "Coca-Cola Consolidated",
+    role: "IT Business Analyst II",
     study: {
-      challenge: "The excessive-shrink reporting process was a manual email template, which created friction in the field and made the data hard to track or trust. As it was digitized into a SharePoint form and mobile app, it had no identity, and an unbranded internal tool is easy for busy field users to overlook.",
-      approach: "I designed an app icon and visual identity for the form: a clipboard mark carrying the report's checklist motif in the company brand red, built to stay legible from a full-size home-screen icon down to the smallest density. I delivered it as a complete, production-ready icon set, from 48 up to 192 px, so it could ship cleanly to every device.",
-      outcome: "The form launched with a clear, recognizable identity and was pushed to all field devices, so users could find and trust it from day one. The branding turned an internal form into something that looked and felt like a real product, supporting fast adoption across sales and service.",
+      challenge:
+        "The excessive-shrink reporting process was a manual email template, which created friction in the field and made the data hard to track or trust. As it was digitized into a SharePoint form and mobile app, it had no identity, and an unbranded internal tool is easy for busy field users to overlook.",
+      approach:
+        "I designed an app icon and visual identity for the form: a clipboard mark carrying the report's checklist motif in the company brand red, built to stay legible from a full-size home-screen icon down to the smallest density. I delivered it as a complete, production-ready icon set, from 48 up to 192 px, so it could ship cleanly to every device.",
+      outcome:
+        "The form launched with a clear, recognizable identity and was pushed to all field devices, so users could find and trust it from day one. The branding turned an internal form into something that looked and felt like a real product, supporting fast adoption across sales and service.",
     },
   },
   {
-    cat: "Branding & Design", kind: "UI/UX", title: "LOFT Living — UX Redesign",
-    live: "/loft-living", code: "https://github.com/Jazz-H/JazzHarrisPortfolio/blob/master/components/LoftLivingApp.jsx",
+    cat: "Branding & Design",
+    kind: "UI/UX",
+    title: "LOFT Living — UX Redesign",
+    live: "/loft-living",
+    code: "https://github.com/Jazz-H/JazzHarrisPortfolio/blob/master/components/LoftLivingApp.jsx",
     body: "A self-initiated, unaffiliated redesign of LOFT Living, a property-management resident app at 1.94 stars across 5,200+ ratings. I clustered the public complaints into six themes, benchmarked LOFT against higher-rated peers, traced the failures to likely architectural root causes, and sized the business impact — then rebuilt the sign-in, rent-payment, and maintenance flows as a working, installable PWA prototype.",
     tags: ["UX Research", "UI Design", "React", "PWA"],
-    image: "/assets/UxCover.png", tall: true,
-    images: ["/assets/UxCover.png", "/assets/UxFindings.png", "/assets/UxBench.png", "/assets/UxTech.png", "/assets/UxBiz.png", "/assets/UxBefore.png", "/assets/UxAfter.png"],
-    company: "Self-initiated concept", role: "UX research, design & front-end build",
+    image: "/assets/UxCover.png",
+    tall: true,
+    images: [
+      "/assets/UxCover.png",
+      "/assets/UxFindings.png",
+      "/assets/UxBench.png",
+      "/assets/UxTech.png",
+      "/assets/UxBiz.png",
+      "/assets/UxBefore.png",
+      "/assets/UxAfter.png",
+    ],
+    company: "Self-initiated concept",
+    role: "UX research, design & front-end build",
     study: {
-      challenge: "LOFT Living promises 'everything resident in one app,' but at 1.94 stars across 5,200+ ratings, residents disagree — while peer apps like RentCafe (4.7) and Zego (3.56) clear the bar more easily. Clustering the public complaints surfaced six themes, and the biggest isn't cosmetic: people can't reliably sign in, then hit a confusing payment center with surprise fees, while the tasks they came for (rent, maintenance) sit buried under a five-item nav.",
-      approach: "I built an affinity map from the public reviews to cluster the complaints into six themes, benchmarked LOFT against higher-rated peers to see what 'good' looks like, and connected the worst failures to their likely architectural root causes — a webview shell, fragile session handling, non-idempotent payments — so the fix targets systems, not just screens. Prioritizing by what blocks the core jobs (pay rent, request maintenance), the redesign lands on passwordless sign-in, a task-first home, fees shown up front, and a simplified nav — then I built it as a real React PWA instead of stopping at static screens, so the sign-in persistence and payment flow are genuinely functional, not simulated.",
-      outcome: "A research-driven before-and-after: the affinity map of six review themes, a competitive benchmark, a technical read tracing symptoms to likely root causes (from the outside), the business case for fixing it, an annotated before, and a working after — an installable PWA with a session that actually persists across reloads, a payment amount that's actually editable, and maintenance requests that actually submit. Each change traces back to the complaint it resolves.",
+      challenge:
+        "LOFT Living promises 'everything resident in one app,' but at 1.94 stars across 5,200+ ratings, residents disagree — while peer apps like RentCafe (4.7) and Zego (3.56) clear the bar more easily. Clustering the public complaints surfaced six themes, and the biggest isn't cosmetic: people can't reliably sign in, then hit a confusing payment center with surprise fees, while the tasks they came for (rent, maintenance) sit buried under a five-item nav.",
+      approach:
+        "I built an affinity map from the public reviews to cluster the complaints into six themes, benchmarked LOFT against higher-rated peers to see what 'good' looks like, and connected the worst failures to their likely architectural root causes — a webview shell, fragile session handling, non-idempotent payments — so the fix targets systems, not just screens. Prioritizing by what blocks the core jobs (pay rent, request maintenance), the redesign lands on passwordless sign-in, a task-first home, fees shown up front, and a simplified nav — then I built it as a real React PWA instead of stopping at static screens, so the sign-in persistence and payment flow are genuinely functional, not simulated.",
+      outcome:
+        "A research-driven before-and-after: the affinity map of six review themes, a competitive benchmark, a technical read tracing symptoms to likely root causes (from the outside), the business case for fixing it, an annotated before, and a working after — an installable PWA with a session that actually persists across reloads, a payment amount that's actually editable, and maintenance requests that actually submit. Each change traces back to the complaint it resolves.",
     },
   },
   // Craft Beverage Brand & Packaging remains in BACKLOG.md pending real
@@ -250,18 +335,33 @@ const WORK_ORDER = [
 ];
 const ORDERED_PROJECTS = [...PROJECTS].sort(
   (a, b) =>
-    (WORK_ORDER.indexOf(a.title) + 1 || Infinity) -
-    (WORK_ORDER.indexOf(b.title) + 1 || Infinity)
+    (WORK_ORDER.indexOf(a.title) + 1 || Infinity) - (WORK_ORDER.indexOf(b.title) + 1 || Infinity),
 );
 const TECH_GROUPS = [
   { label: "Languages", Icon: FiCode, items: ["JavaScript", "TypeScript", "Python", "SQL"] },
   { label: "Frameworks & UI", Icon: FiLayers, items: ["React", "Next.js"] },
-  { label: "AI & LLM", Icon: FiCpu, items: ["Claude", "Claude API", "Copilot Studio", "ChatGPT", "GitHub Copilot"] },
+  {
+    label: "AI & LLM",
+    Icon: FiCpu,
+    items: ["Claude", "Claude API", "Copilot Studio", "ChatGPT", "GitHub Copilot"],
+  },
 ];
 const SERVICES = [
-  { Icon: FiTrendingUp, title: "Business analysis & strategy", body: "Translating business goals into clear requirements and a roadmap, working between stakeholders, vendors, and engineers to ship the right thing." },
-  { Icon: FiCode, title: "Software & web development", body: "Building software and responsive websites, from applications to custom tools to polished web experiences, with React, Next.js, and modern tooling. Functional, reliable, and a pleasure to use." },
-  { Icon: FiCpu, title: "AI engineering & agents", body: "Building with AI on both ends: LLM-powered product features and low-code agents. I shipped Clearcast on the Claude API with schema-validated outputs and cost controls, and built a Copilot Studio agent wired to our Azure DevOps board that creates and updates epics, features, and user stories, pulls board summaries, and drafts requirements, notes, and communications." },
+  {
+    Icon: FiTrendingUp,
+    title: "Business analysis & strategy",
+    body: "Translating business goals into clear requirements and a roadmap, working between stakeholders, vendors, and engineers to ship the right thing.",
+  },
+  {
+    Icon: FiCode,
+    title: "Software & web development",
+    body: "Building software and responsive websites, from applications to custom tools to polished web experiences, with React, Next.js, and modern tooling. Functional, reliable, and a pleasure to use.",
+  },
+  {
+    Icon: FiCpu,
+    title: "AI engineering & agents",
+    body: "Building with AI on both ends: LLM-powered product features and low-code agents. I shipped Clearcast on the Claude API with schema-validated outputs and cost controls, and built a Copilot Studio agent wired to our Azure DevOps board that creates and updates epics, features, and user stories, pulls board summaries, and drafts requirements, notes, and communications.",
+  },
 ];
 const NAV = [
   { id: "work", label: "Work" },
@@ -302,7 +402,7 @@ const METRICS = {
     { value: "5 densities", label: "Production app icon set, 48 to 192 px" },
     { value: "Email to app", label: "A manual template reimagined as a branded mobile form" },
   ],
-  "Valora": [
+  Valora: [
     { value: "Privacy-first", label: "Your data stays yours, no forced bank linking" },
     { value: "End-to-end", label: "Designed & built solo" },
     { value: "AI insights", label: "Recommends your next money move" },
@@ -322,7 +422,7 @@ const METRICS = {
     { value: "Channels + DMs", label: "Public rooms and private conversations" },
     { value: "Type-safe & tested", label: "TS strict, CI-gated tests, auto-deploy" },
   ],
-  "Clearcast": [
+  Clearcast: [
     { value: "AI recommendations", label: "Claude verdicts, validated at runtime with Zod" },
     { value: "Built for correctness", label: "TS strict, 38 unit tests, Playwright, CI/CD" },
     { value: "Adaptive & offline", label: "8 live sky themes, installable PWA, smart units" },
@@ -334,8 +434,15 @@ const METRICS = {
 const IMPACT = [
   { value: "5+ yrs", label: "Across software engineering & business analysis roles" },
   { value: "20+", label: "Projects delivered, from enterprise platforms to freelance builds" },
-  { value: "$27M+", label: "In assets at a foundation whose site I built — ~$1.9M granted yearly to 30+ nonprofits" },
-  { value: "~95%", label: "Fewer tickets on Coca-Cola's Osapiens app after I assisted on changing its triage model — ending the team's after-hours on-call" },
+  {
+    value: "$27M+",
+    label: "In assets at a foundation whose site I built — ~$1.9M granted yearly to 30+ nonprofits",
+  },
+  {
+    value: "~95%",
+    label:
+      "Fewer tickets on Coca-Cola's Osapiens app after I assisted on changing its triage model — ending the team's after-hours on-call",
+  },
 ];
 
 export default function Portfolio() {
@@ -353,7 +460,8 @@ export default function Portfolio() {
   useEffect(() => {
     const r = rootRef.current;
     if (!r) return;
-    const reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const reduce =
+      window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     if (!reduce) r.classList.add("motion-on");
   }, []);
 
@@ -373,7 +481,10 @@ export default function Portfolio() {
 
   useEffect(() => {
     // Don't jump on first load — let the page open at the hero/poster.
-    if (!didMount.current) { didMount.current = true; return; }
+    if (!didMount.current) {
+      didMount.current = true;
+      return;
+    }
     if (scrollMode.current === "top") {
       window.scrollTo({ top: 0, behavior: "auto" });
       scrollMode.current = "stage";
@@ -388,7 +499,11 @@ export default function Portfolio() {
     }
   }, [view, selected]);
 
-  const go = (v, opts) => { setSelected(null); setView(v); scrollMode.current = (opts && opts.toTop) ? "top" : "stage"; };
+  const go = (v, opts) => {
+    setSelected(null);
+    setView(v);
+    scrollMode.current = opts && opts.toTop ? "top" : "stage";
+  };
   const project = PROJECTS.find((p) => p.title === selected);
 
   return (
@@ -398,8 +513,12 @@ export default function Portfolio() {
         <Poster view={view} go={go} />
         <main className="dp-stage">
           <div className="dp-stagewrap" key={view + ":" + (selected || "")}>
-            {view === "work" && !selected && <WorkList onOpen={setSelected} filter={filter} setFilter={setFilter} />}
-            {view === "work" && selected && <Detail p={project} onBack={() => setSelected(null)} filter={filter} />}
+            {view === "work" && !selected && (
+              <WorkList onOpen={setSelected} filter={filter} setFilter={setFilter} />
+            )}
+            {view === "work" && selected && (
+              <Detail p={project} onBack={() => setSelected(null)} filter={filter} />
+            )}
             {view === "about" && <About go={go} />}
             {view === "contact" && <Contact />}
           </div>
@@ -418,19 +537,49 @@ function Poster({ view, go }) {
   return (
     <aside className="dp-poster">
       <div className="dp-glow" aria-hidden="true" />
-      <button type="button" className="dp-id" onClick={() => go("work", { toTop: true })} aria-label="Jazz Harris — back to top">
+      <button
+        type="button"
+        className="dp-id"
+        onClick={() => go("work", { toTop: true })}
+        aria-label="Jazz Harris — back to top"
+      >
         <span className="dp-mark" aria-hidden="true">
           <svg viewBox="0 0 132 104" fill="none">
-            <path d="M23 24 H11 V80 H23" stroke="#1e78e4" strokeWidth="7" strokeLinecap="round" strokeLinejoin="round" />
-            <path d="M109 24 H121 V80 H109" stroke="#1e78e4" strokeWidth="7" strokeLinecap="round" strokeLinejoin="round" />
+            <path
+              d="M23 24 H11 V80 H23"
+              stroke="#1e78e4"
+              strokeWidth="7"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+            <path
+              d="M109 24 H121 V80 H109"
+              stroke="#1e78e4"
+              strokeWidth="7"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
             <path d="M64 31 V73" stroke="#1e78e4" strokeWidth="2.6" strokeLinecap="round" />
-            <path d="M47 32 V58 C47 68 40 70 33 69" stroke="currentColor" strokeWidth="7.5" strokeLinecap="round" />
-            <path d="M81 32 V72 M81 52 H101 M101 32 V72" stroke="currentColor" strokeWidth="7.5" strokeLinecap="round" strokeLinejoin="round" />
+            <path
+              d="M47 32 V58 C47 68 40 70 33 69"
+              stroke="currentColor"
+              strokeWidth="7.5"
+              strokeLinecap="round"
+            />
+            <path
+              d="M81 32 V72 M81 52 H101 M101 32 V72"
+              stroke="currentColor"
+              strokeWidth="7.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
           </svg>
         </span>
         <span className="dp-id-text">
           <span className="dp-name">Jazz Harris</span>
-          <span className="dp-role" aria-hidden="true">Data solutions lead &amp; software engineer</span>
+          <span className="dp-role" aria-hidden="true">
+            Data solutions lead &amp; software engineer
+          </span>
         </span>
       </button>
 
@@ -440,7 +589,9 @@ function Poster({ view, go }) {
           I bridge business goals and software engineering to build digital products that deliver{" "}
           <span className="dp-mark-text">measurable results</span>.
         </h1>
-        <span className="dp-status"><i className="dp-dot" /> Booking new projects for 2026</span>
+        <span className="dp-status">
+          <i className="dp-dot" /> Booking new projects for 2026
+        </span>
       </div>
 
       <span className="dp-poster-rule" aria-hidden="true" />
@@ -494,7 +645,11 @@ function Thumb({ p }) {
       )}
       <span className="dp-thumb-scrim" aria-hidden="true" />
       <span className="dp-thumb-cat">{p.kind || p.cat}</span>
-      {p.ai && <span className={"dp-thumb-ai" + (p.status ? " is-stacked" : "")}><FiCpu aria-hidden="true" /> AI</span>}
+      {p.ai && (
+        <span className={"dp-thumb-ai" + (p.status ? " is-stacked" : "")}>
+          <FiCpu aria-hidden="true" /> AI
+        </span>
+      )}
       {p.status && <span className="dp-badge">{p.status}</span>}
     </span>
   );
@@ -509,7 +664,8 @@ function useReveal(deps) {
     const root = ref.current;
     if (!root) return;
     const els = root.querySelectorAll(".dp-reveal");
-    const reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const reduce =
+      window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     if (reduce || !("IntersectionObserver" in window)) {
       els.forEach((el) => el.classList.add("is-in"));
       return;
@@ -523,7 +679,7 @@ function useReveal(deps) {
           }
         });
       },
-      { threshold: 0.15, rootMargin: "0px 0px -10% 0px" }
+      { threshold: 0.15, rootMargin: "0px 0px -10% 0px" },
     );
     els.forEach((el) => io.observe(el));
     return () => io.disconnect();
@@ -540,8 +696,10 @@ function ImpactStat({ value, label, index }) {
   // entirely and start already "in" — resolved once, in the lazy initializer,
   // rather than via a synchronous setState in the effect body.
   const [on, setOn] = useState(
-    () => typeof window !== "undefined" &&
-      ((window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) || !("IntersectionObserver" in window))
+    () =>
+      typeof window !== "undefined" &&
+      ((window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) ||
+        !("IntersectionObserver" in window)),
   );
   const [display, setDisplay] = useState(value);
   useEffect(() => {
@@ -555,9 +713,12 @@ function ImpactStat({ value, label, index }) {
           setOn(true);
           io.unobserve(el);
           if (!match) return;
-          const prefix = match[1], target = parseFloat(match[2]), suffix = match[3];
+          const prefix = match[1],
+            target = parseFloat(match[2]),
+            suffix = match[3];
           const isInt = Number.isInteger(target);
-          const dur = 1100, start = performance.now();
+          const dur = 1100,
+            start = performance.now();
           const step = (now) => {
             const p = Math.min(1, (now - start) / dur);
             const eased = 1 - Math.pow(1 - p, 3);
@@ -568,14 +729,18 @@ function ImpactStat({ value, label, index }) {
           requestAnimationFrame(step);
         });
       },
-      { threshold: 0.4 }
+      { threshold: 0.4 },
     );
     io.observe(el);
     return () => io.disconnect();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [value]);
   return (
-    <div className={"dp-impact-stat dp-reveal" + (on ? " is-in" : "")} style={{ "--i": index }} ref={ref}>
+    <div
+      className={"dp-impact-stat dp-reveal" + (on ? " is-in" : "")}
+      style={{ "--i": index }}
+      ref={ref}
+    >
       <span className="dp-impact-v">{display}</span>
       <span className="dp-impact-l">{label}</span>
     </div>
@@ -583,7 +748,9 @@ function ImpactStat({ value, label, index }) {
 }
 
 function WorkList({ onOpen, filter, setFilter }) {
-  const shown = ORDERED_PROJECTS.filter((p) => filter === "All" || (filter === "AI" ? p.ai : p.cat === filter));
+  const shown = ORDERED_PROJECTS.filter(
+    (p) => filter === "All" || (filter === "AI" ? p.ai : p.cat === filter),
+  );
   const filtersRef = useRef(null);
   const gridRef = useReveal([shown.length, filter]);
   const [moreRight, setMoreRight] = useState(false);
@@ -622,7 +789,12 @@ function WorkList({ onOpen, filter, setFilter }) {
         <div className={"dp-filters-wrap" + (moreRight ? " can-scroll-end" : "")}>
           <div className="dp-filters" role="group" aria-label="Filter work" ref={filtersRef}>
             {FILTERS.map((f) => (
-              <button key={f} className={"dp-filter" + (filter === f ? " is-active" : "")} onClick={() => setFilter(f)} aria-pressed={filter === f}>
+              <button
+                key={f}
+                className={"dp-filter" + (filter === f ? " is-active" : "")}
+                onClick={() => setFilter(f)}
+                aria-pressed={filter === f}
+              >
                 {f}
               </button>
             ))}
@@ -631,15 +803,26 @@ function WorkList({ onOpen, filter, setFilter }) {
       </div>
       <div className="dp-grid" ref={gridRef}>
         {shown.map((p, i) => (
-          <button className="dp-card dp-reveal" style={{ "--i": i }} key={p.title} onClick={() => onOpen(p.title)}>
+          <button
+            className="dp-card dp-reveal"
+            style={{ "--i": i }}
+            key={p.title}
+            onClick={() => onOpen(p.title)}
+          >
             <Thumb p={p} />
             <span className="dp-card-body">
               <span className="dp-card-h">{p.title}</span>
               <span className="dp-card-p">{p.body}</span>
               <span className="dp-pills dp-card-pills">
-                {p.tags.slice(0, 4).map((t) => (<span className="dp-pill" key={t}>{t}</span>))}
+                {p.tags.slice(0, 4).map((t) => (
+                  <span className="dp-pill" key={t}>
+                    {t}
+                  </span>
+                ))}
               </span>
-              <span className="dp-card-open">Details <FiArrowRight aria-hidden="true" /></span>
+              <span className="dp-card-open">
+                Details <FiArrowRight aria-hidden="true" />
+              </span>
             </span>
           </button>
         ))}
@@ -666,10 +849,7 @@ function Gallery({ images, title, gradient, status, fallbackWord, tall }) {
     el.scrollTo({ left: clamped * el.clientWidth, behavior: "smooth" });
   };
   // Only closes over images.length, which is why that alone is the dependency.
-  const lbClamp = useCallback(
-    (i) => Math.max(0, Math.min(images.length - 1, i)),
-    [images.length]
-  );
+  const lbClamp = useCallback((i) => Math.max(0, Math.min(images.length - 1, i)), [images.length]);
 
   useEffect(() => {
     if (lightbox === null) return;
@@ -711,7 +891,9 @@ function Gallery({ images, title, gradient, status, fallbackWord, tall }) {
                   src={src}
                   alt={multi ? `${title} — screen ${i + 1}` : title}
                   loading={i === 0 ? undefined : "lazy"}
-                  onError={() => { if (i === 0) setBroken(true); }}
+                  onError={() => {
+                    if (i === 0) setBroken(true);
+                  }}
                 />
               </button>
             ))}
@@ -722,10 +904,22 @@ function Gallery({ images, title, gradient, status, fallbackWord, tall }) {
         {status && <span className="dp-badge dp-badge-lg">{status}</span>}
         {multi && (
           <>
-            <button type="button" className="dp-gallery-nav dp-gallery-prev" aria-label="Previous image" onClick={() => go(idx - 1)} disabled={idx === 0}>
+            <button
+              type="button"
+              className="dp-gallery-nav dp-gallery-prev"
+              aria-label="Previous image"
+              onClick={() => go(idx - 1)}
+              disabled={idx === 0}
+            >
               <FiChevronLeft aria-hidden="true" />
             </button>
-            <button type="button" className="dp-gallery-nav dp-gallery-next" aria-label="Next image" onClick={() => go(idx + 1)} disabled={idx === images.length - 1}>
+            <button
+              type="button"
+              className="dp-gallery-nav dp-gallery-next"
+              aria-label="Next image"
+              onClick={() => go(idx + 1)}
+              disabled={idx === images.length - 1}
+            >
               <FiChevronRight aria-hidden="true" />
             </button>
           </>
@@ -734,35 +928,77 @@ function Gallery({ images, title, gradient, status, fallbackWord, tall }) {
       {multi && (
         <div className="dp-gallery-dots">
           {images.map((src, i) => (
-            <button type="button" key={src} className={"dp-gallery-dot" + (i === idx ? " is-active" : "")} aria-label={`Go to image ${i + 1}`} aria-current={i === idx} onClick={() => go(i)} />
+            <button
+              type="button"
+              key={src}
+              className={"dp-gallery-dot" + (i === idx ? " is-active" : "")}
+              aria-label={`Go to image ${i + 1}`}
+              aria-current={i === idx}
+              onClick={() => go(i)}
+            />
           ))}
         </div>
       )}
-      {lightbox !== null && typeof document !== "undefined" && createPortal(
-        <div className="dp-lightbox" role="dialog" aria-modal="true" aria-label={`${title} enlarged`} onClick={() => setLightbox(null)}>
-          <button type="button" className="dp-lb-close" aria-label="Close" onClick={() => setLightbox(null)}>
-            <FiX aria-hidden="true" />
-          </button>
-          {multi && (
-            <button type="button" className="dp-lb-nav dp-lb-prev" aria-label="Previous image" onClick={(e) => { e.stopPropagation(); setLightbox(lbClamp(lightbox - 1)); }} disabled={lightbox === 0}>
-              <FiChevronLeft aria-hidden="true" />
+      {lightbox !== null &&
+        typeof document !== "undefined" &&
+        createPortal(
+          <div
+            className="dp-lightbox"
+            role="dialog"
+            aria-modal="true"
+            aria-label={`${title} enlarged`}
+            onClick={() => setLightbox(null)}
+          >
+            <button
+              type="button"
+              className="dp-lb-close"
+              aria-label="Close"
+              onClick={() => setLightbox(null)}
+            >
+              <FiX aria-hidden="true" />
             </button>
-          )}
-          <img
-            className="dp-lb-img"
-            src={images[lightbox]}
-            alt={multi ? `${title} — screen ${lightbox + 1}` : title}
-            onClick={(e) => e.stopPropagation()}
-          />
-          {multi && (
-            <button type="button" className="dp-lb-nav dp-lb-next" aria-label="Next image" onClick={(e) => { e.stopPropagation(); setLightbox(lbClamp(lightbox + 1)); }} disabled={lightbox === images.length - 1}>
-              <FiChevronRight aria-hidden="true" />
-            </button>
-          )}
-          {multi && <div className="dp-lb-count">{lightbox + 1} / {images.length}</div>}
-        </div>,
-        document.body
-      )}
+            {multi && (
+              <button
+                type="button"
+                className="dp-lb-nav dp-lb-prev"
+                aria-label="Previous image"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setLightbox(lbClamp(lightbox - 1));
+                }}
+                disabled={lightbox === 0}
+              >
+                <FiChevronLeft aria-hidden="true" />
+              </button>
+            )}
+            <img
+              className="dp-lb-img"
+              src={images[lightbox]}
+              alt={multi ? `${title} — screen ${lightbox + 1}` : title}
+              onClick={(e) => e.stopPropagation()}
+            />
+            {multi && (
+              <button
+                type="button"
+                className="dp-lb-nav dp-lb-next"
+                aria-label="Next image"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setLightbox(lbClamp(lightbox + 1));
+                }}
+                disabled={lightbox === images.length - 1}
+              >
+                <FiChevronRight aria-hidden="true" />
+              </button>
+            )}
+            {multi && (
+              <div className="dp-lb-count">
+                {lightbox + 1} / {images.length}
+              </div>
+            )}
+          </div>,
+          document.body,
+        )}
     </div>
   );
 }
@@ -777,33 +1013,59 @@ const DIAGRAM_CAPTION = {
 function Diagram({ kind }) {
   if (kind === "dsd") {
     return (
-      <div className="dp-diagram" role="img" aria-label="Support routing before and after the redesign. The chain runs Field users, Service Center Team (Tier 1), Tier 2 (DSD Team), Vendor. After granting the Service Center Team the Osapiens access they were missing and adding knowledge-base articles, first-line resolution moved to them, so far fewer tickets reach Tier 2; after-hours escalations route to CONA and the Tier 2 on-call ended.">
+      <div
+        className="dp-diagram"
+        role="img"
+        aria-label="Support routing before and after the redesign. The chain runs Field users, Service Center Team (Tier 1), Tier 2 (DSD Team), Vendor. After granting the Service Center Team the Osapiens access they were missing and adding knowledge-base articles, first-line resolution moved to them, so far fewer tickets reach Tier 2; after-hours escalations route to CONA and the Tier 2 on-call ended."
+      >
         <div className="dp-dgm-lane">
           <span className="dp-dgm-lane-l dp-dgm-before">Before</span>
           <div className="dp-dgm-flow">
-            <span className="dp-dgm-node">Field users<small>Drivers &amp; warehouse</small></span>
-            <span className="dp-dgm-arrow" aria-hidden="true"><FiArrowRight /></span>
+            <span className="dp-dgm-node">
+              Field users<small>Drivers &amp; warehouse</small>
+            </span>
+            <span className="dp-dgm-arrow" aria-hidden="true">
+              <FiArrowRight />
+            </span>
             <span className="dp-dgm-node">Service Center Team</span>
-            <span className="dp-dgm-arrow" aria-hidden="true"><FiArrowRight /></span>
+            <span className="dp-dgm-arrow" aria-hidden="true">
+              <FiArrowRight />
+            </span>
             <span className="dp-dgm-node dp-dgm-bad">Tier 2 (DSD Team)</span>
-            <span className="dp-dgm-arrow" aria-hidden="true"><FiArrowRight /></span>
-            <span className="dp-dgm-node">Vendor<small>True bugs — backend &amp; code</small></span>
+            <span className="dp-dgm-arrow" aria-hidden="true">
+              <FiArrowRight />
+            </span>
+            <span className="dp-dgm-node">
+              Vendor<small>True bugs — backend &amp; code</small>
+            </span>
           </div>
           <span className="dp-dgm-tag dp-dgm-tag-bad">5+ tickets/day · overnight on-call</span>
         </div>
         <div className="dp-dgm-lane">
           <span className="dp-dgm-lane-l dp-dgm-after">After</span>
           <div className="dp-dgm-flow">
-            <span className="dp-dgm-node">Field users<small>Drivers &amp; warehouse</small></span>
-            <span className="dp-dgm-arrow" aria-hidden="true"><FiArrowRight /></span>
+            <span className="dp-dgm-node">
+              Field users<small>Drivers &amp; warehouse</small>
+            </span>
+            <span className="dp-dgm-arrow" aria-hidden="true">
+              <FiArrowRight />
+            </span>
             <span className="dp-dgm-node dp-dgm-good">Service Center Team</span>
-            <span className="dp-dgm-arrow" aria-hidden="true"><FiArrowRight /></span>
+            <span className="dp-dgm-arrow" aria-hidden="true">
+              <FiArrowRight />
+            </span>
             <span className="dp-dgm-node">Tier 2 (DSD Team)</span>
-            <span className="dp-dgm-arrow" aria-hidden="true"><FiArrowRight /></span>
-            <span className="dp-dgm-node">Vendor<small>True bugs — backend &amp; code</small></span>
+            <span className="dp-dgm-arrow" aria-hidden="true">
+              <FiArrowRight />
+            </span>
+            <span className="dp-dgm-node">
+              Vendor<small>True bugs — backend &amp; code</small>
+            </span>
           </div>
           <span className="dp-dgm-tag dp-dgm-tag-good">2–3 tickets/week · no on-call</span>
-          <span className="dp-dgm-note">After hours, the Service Center Team escalates directly to CONA — not a Tier 2 on-call.</span>
+          <span className="dp-dgm-note">
+            After hours, the Service Center Team escalates directly to CONA — not a Tier 2 on-call.
+          </span>
         </div>
       </div>
     );
@@ -815,14 +1077,28 @@ function Diagram({ kind }) {
       { name: "Activity Type", pk: "ActivityTypeID", fields: "Name · Category" },
       { name: "Competency", pk: "BehaviorID", fields: "Behavior · Competency" },
     ];
-    const PAGES = ["Objective progress", "Effort matrix", "Project & behavior mix", "Delivery status", "Activity log"];
+    const PAGES = [
+      "Objective progress",
+      "Effort matrix",
+      "Project & behavior mix",
+      "Delivery status",
+      "Activity log",
+    ];
     return (
-      <div className="dp-diagram dp-diagram-activity" role="img" aria-label="Data model for the activity dashboard. A SharePoint form feeds an Activity fact table — one row per logged activity with hours, date and status — joined by key to four dimensions: Project, Objective, Activity Type and Competency Behavior. The model is surfaced as five Power BI report pages.">
+      <div
+        className="dp-diagram dp-diagram-activity"
+        role="img"
+        aria-label="Data model for the activity dashboard. A SharePoint form feeds an Activity fact table — one row per logged activity with hours, date and status — joined by key to four dimensions: Project, Objective, Activity Type and Competency Behavior. The model is surfaced as five Power BI report pages."
+      >
         <div className="dp-schema-stage">
           <span className="dp-schema-tag">Capture</span>
-          <span className="dp-dgm-node dp-schema-src">SharePoint form<small>30-second entry</small></span>
+          <span className="dp-dgm-node dp-schema-src">
+            SharePoint form<small>30-second entry</small>
+          </span>
         </div>
-        <span className="dp-schema-arrow" aria-hidden="true"><FiArrowDown /></span>
+        <span className="dp-schema-arrow" aria-hidden="true">
+          <FiArrowDown />
+        </span>
         <div className="dp-schema-stage">
           <span className="dp-schema-tag">Model · star schema</span>
           <div className="dp-schema-dims">
@@ -834,11 +1110,19 @@ function Diagram({ kind }) {
               </div>
             ))}
           </div>
-          <span className="dp-schema-join"><FiArrowDown aria-hidden="true" /> joined on keys</span>
+          <span className="dp-schema-join">
+            <FiArrowDown aria-hidden="true" /> joined on keys
+          </span>
           <div className="dp-schema-fact">
-            <span className="dp-schema-h">Activity <small>fact · one row per logged activity</small></span>
+            <span className="dp-schema-h">
+              Activity <small>fact · one row per logged activity</small>
+            </span>
             <div className="dp-schema-cols">
-              {DIMS.map((d) => (<span className="dp-schema-fk" key={d.pk}>{d.pk}</span>))}
+              {DIMS.map((d) => (
+                <span className="dp-schema-fk" key={d.pk}>
+                  {d.pk}
+                </span>
+              ))}
             </div>
             <div className="dp-schema-cols">
               <span className="dp-schema-m">Hours</span>
@@ -847,11 +1131,17 @@ function Diagram({ kind }) {
             </div>
           </div>
         </div>
-        <span className="dp-schema-arrow" aria-hidden="true"><FiArrowDown /></span>
+        <span className="dp-schema-arrow" aria-hidden="true">
+          <FiArrowDown />
+        </span>
         <div className="dp-schema-stage">
           <span className="dp-schema-tag">Report · 5 Power BI pages</span>
           <div className="dp-dgm-pages">
-            {PAGES.map((pg) => (<span className="dp-dgm-page" key={pg}>{pg}</span>))}
+            {PAGES.map((pg) => (
+              <span className="dp-dgm-page" key={pg}>
+                {pg}
+              </span>
+            ))}
           </div>
         </div>
       </div>
@@ -859,22 +1149,48 @@ function Diagram({ kind }) {
   }
   if (kind === "agent") {
     const CAPS = [
-      { h: "Work items", f: "Create & update epics, features, and user stories", eg: "New user story, with acceptance criteria" },
-      { h: "Reports", f: "Board status & summaries, on demand", eg: "“What's still open this sprint?”" },
-      { h: "Drafts", f: "Requirements, meeting notes, and comms", eg: "A stakeholder status update" },
+      {
+        h: "Work items",
+        f: "Create & update epics, features, and user stories",
+        eg: "New user story, with acceptance criteria",
+      },
+      {
+        h: "Reports",
+        f: "Board status & summaries, on demand",
+        eg: "“What's still open this sprint?”",
+      },
+      {
+        h: "Drafts",
+        f: "Requirements, meeting notes, and comms",
+        eg: "A stakeholder status update",
+      },
     ];
     return (
-      <div className="dp-diagram dp-diagram-activity dp-diagram-agent" role="img" aria-label="How the Copilot Studio agent works, in four steps. 1: I send a plain-language request in Microsoft Teams, for example asking it to create a user story for resetting a driver's app PIN. 2: the Copilot Studio agent interprets the request and reads or writes the live board through the Azure DevOps connector. 3: it does one of three jobs — create or update work items, pull board status and summaries, or draft requirements, notes and communications. 4: nothing is written to Azure DevOps until I review and confirm the draft.">
+      <div
+        className="dp-diagram dp-diagram-activity dp-diagram-agent"
+        role="img"
+        aria-label="How the Copilot Studio agent works, in four steps. 1: I send a plain-language request in Microsoft Teams, for example asking it to create a user story for resetting a driver's app PIN. 2: the Copilot Studio agent interprets the request and reads or writes the live board through the Azure DevOps connector. 3: it does one of three jobs — create or update work items, pull board status and summaries, or draft requirements, notes and communications. 4: nothing is written to Azure DevOps until I review and confirm the draft."
+      >
         <div className="dp-schema-stage">
           <span className="dp-schema-tag">1 · Ask in Teams</span>
-          <span className="dp-agent-bubble">&ldquo;Create a user story for resetting a driver&rsquo;s app PIN from the login screen — under the Driver Sign-in feature.&rdquo;</span>
+          <span className="dp-agent-bubble">
+            &ldquo;Create a user story for resetting a driver&rsquo;s app PIN from the login screen
+            — under the Driver Sign-in feature.&rdquo;
+          </span>
         </div>
-        <span className="dp-schema-arrow" aria-hidden="true"><FiArrowDown /></span>
+        <span className="dp-schema-arrow" aria-hidden="true">
+          <FiArrowDown />
+        </span>
         <div className="dp-schema-stage">
           <span className="dp-schema-tag">2 · Copilot Studio agent</span>
-          <span className="dp-dgm-node dp-dgm-good">Interprets the request &middot; grounded on the live board<small>Reads &amp; writes work items through the Azure DevOps connector</small></span>
+          <span className="dp-dgm-node dp-dgm-good">
+            Interprets the request &middot; grounded on the live board
+            <small>Reads &amp; writes work items through the Azure DevOps connector</small>
+          </span>
         </div>
-        <span className="dp-schema-arrow" aria-hidden="true"><FiArrowDown /></span>
+        <span className="dp-schema-arrow" aria-hidden="true">
+          <FiArrowDown />
+        </span>
         <div className="dp-schema-stage">
           <span className="dp-schema-tag">3 · One of three jobs</span>
           <div className="dp-schema-dims">
@@ -887,10 +1203,15 @@ function Diagram({ kind }) {
             ))}
           </div>
         </div>
-        <span className="dp-schema-arrow" aria-hidden="true"><FiArrowDown /></span>
+        <span className="dp-schema-arrow" aria-hidden="true">
+          <FiArrowDown />
+        </span>
         <div className="dp-schema-stage">
           <span className="dp-schema-tag">4 · I confirm, then it saves</span>
-          <span className="dp-dgm-node">Human in the loop<small>Nothing is written to Azure DevOps until I review and approve the draft</small></span>
+          <span className="dp-dgm-node">
+            Human in the loop
+            <small>Nothing is written to Azure DevOps until I review and approve the draft</small>
+          </span>
         </div>
       </div>
     );
@@ -913,27 +1234,66 @@ function Detail({ p, onBack, filter = "All" }) {
   );
   return (
     <section className="dp-view dp-detail">
-      <button className="dp-back" onClick={onBack}><FiArrowLeft aria-hidden="true" /> {filter === "All" ? "All work" : filter}</button>
+      <button className="dp-back" onClick={onBack}>
+        <FiArrowLeft aria-hidden="true" /> {filter === "All" ? "All work" : filter}
+      </button>
       {gallery}
       <div className="dp-detail-head">
-        <p className="dp-kicker">{p.kind || p.cat}{p.ai && <span className="dp-kicker-ai"><FiCpu aria-hidden="true" /> AI</span>}</p>
+        <p className="dp-kicker">
+          {p.kind || p.cat}
+          {p.ai && (
+            <span className="dp-kicker-ai">
+              <FiCpu aria-hidden="true" /> AI
+            </span>
+          )}
+        </p>
         <h2 className="dp-detail-h">{p.title}</h2>
       </div>
       <p className="dp-detail-overview">{p.body}</p>
       <div className="dp-meta">
-        {p.company && <div><span className="dp-meta-l">Company</span><span className="dp-meta-v">{p.company}</span></div>}
-        {p.role && <div><span className="dp-meta-l">Role</span><span className="dp-meta-v">{p.role}</span></div>}
+        {p.company && (
+          <div>
+            <span className="dp-meta-l">Company</span>
+            <span className="dp-meta-v">{p.company}</span>
+          </div>
+        )}
+        {p.role && (
+          <div>
+            <span className="dp-meta-l">Role</span>
+            <span className="dp-meta-v">{p.role}</span>
+          </div>
+        )}
       </div>
       <div className="dp-stack-row">
         <div className="dp-detail-stack">
           <span className="dp-meta-l">Stack</span>
-          <div className="dp-pills">{p.tags.map((t) => (<span className="dp-pill" key={t}>{t}</span>))}</div>
+          <div className="dp-pills">
+            {p.tags.map((t) => (
+              <span className="dp-pill" key={t}>
+                {t}
+              </span>
+            ))}
+          </div>
         </div>
         <div className="dp-detail-links">
-          {p.live && <a className="dp-btn dp-btn-primary" href={p.live} target="_blank" rel="noreferrer">Visit live <FiArrowUpRight aria-hidden="true" /></a>}
-          {p.code && <a className="dp-btn dp-btn-ghost" href={p.code} target="_blank" rel="noreferrer"><FiGithub aria-hidden="true" /> View code</a>}
-          {p.confidential && <span className="dp-detail-confidential"><FiLock aria-hidden="true" /> Confidential internal tool</span>}
-          {!p.live && !p.code && !p.noLink && !p.confidential && <span className="dp-detail-soon">Link coming soon</span>}
+          {p.live && (
+            <a className="dp-btn dp-btn-primary" href={p.live} target="_blank" rel="noreferrer">
+              Visit live <FiArrowUpRight aria-hidden="true" />
+            </a>
+          )}
+          {p.code && (
+            <a className="dp-btn dp-btn-ghost" href={p.code} target="_blank" rel="noreferrer">
+              <FiGithub aria-hidden="true" /> View code
+            </a>
+          )}
+          {p.confidential && (
+            <span className="dp-detail-confidential">
+              <FiLock aria-hidden="true" /> Confidential internal tool
+            </span>
+          )}
+          {!p.live && !p.code && !p.noLink && !p.confidential && (
+            <span className="dp-detail-soon">Link coming soon</span>
+          )}
         </div>
       </div>
       {p.study ? (
@@ -989,11 +1349,50 @@ function About({ go }) {
             <div className="dp-facts-main">
               <p className="dp-sub">Quick facts</p>
               <div className="dp-about-facts">
-                <div className="dp-fact"><FiMapPin aria-hidden="true" /><div><span className="dp-fact-l">Based in</span><span className="dp-fact-v">Charlotte, NC</span></div></div>
-                <div className="dp-fact"><FiBriefcase aria-hidden="true" /><div><span className="dp-fact-l">By day</span><span className="dp-fact-v">Data Solutions Lead II · Coca-Cola Consolidated</span></div></div>
-                <div className="dp-fact"><FiUsers aria-hidden="true" /><div><span className="dp-fact-l">Leads</span><span className="dp-fact-v">Complex, high-visibility data &amp; AI initiatives, from framing to delivery</span></div></div>
-                <div className="dp-fact"><FiBookOpen aria-hidden="true" /><div><span className="dp-fact-l">Studied</span><span className="dp-fact-v">B.A. Computer Science · Elon University</span></div></div>
-                <div className="dp-fact"><FiGlobe aria-hidden="true" /><div><span className="dp-fact-l">Studied abroad</span><span className="dp-fact-v">Dublin, Ireland · <a className="dp-link" href={FIE_BLOG} target="_blank" rel="noreferrer">FIE</a></span></div></div>
+                <div className="dp-fact">
+                  <FiMapPin aria-hidden="true" />
+                  <div>
+                    <span className="dp-fact-l">Based in</span>
+                    <span className="dp-fact-v">Charlotte, NC</span>
+                  </div>
+                </div>
+                <div className="dp-fact">
+                  <FiBriefcase aria-hidden="true" />
+                  <div>
+                    <span className="dp-fact-l">By day</span>
+                    <span className="dp-fact-v">
+                      Data Solutions Lead II · Coca-Cola Consolidated
+                    </span>
+                  </div>
+                </div>
+                <div className="dp-fact">
+                  <FiUsers aria-hidden="true" />
+                  <div>
+                    <span className="dp-fact-l">Leads</span>
+                    <span className="dp-fact-v">
+                      Complex, high-visibility data &amp; AI initiatives, from framing to delivery
+                    </span>
+                  </div>
+                </div>
+                <div className="dp-fact">
+                  <FiBookOpen aria-hidden="true" />
+                  <div>
+                    <span className="dp-fact-l">Studied</span>
+                    <span className="dp-fact-v">B.A. Computer Science · Elon University</span>
+                  </div>
+                </div>
+                <div className="dp-fact">
+                  <FiGlobe aria-hidden="true" />
+                  <div>
+                    <span className="dp-fact-l">Studied abroad</span>
+                    <span className="dp-fact-v">
+                      Dublin, Ireland ·{" "}
+                      <a className="dp-link" href={FIE_BLOG} target="_blank" rel="noreferrer">
+                        FIE
+                      </a>
+                    </span>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -1009,10 +1408,22 @@ function About({ go }) {
             <div className="dp-acc-body">
               <div className="dp-techgroups">
                 {TECH_GROUPS.map(({ label, Icon, items }, i) => (
-                  <div className="dp-service dp-techcard dp-reveal" style={{ "--i": i }} key={label}>
-                    <span className="dp-techcard-icn"><Icon aria-hidden="true" /></span>
+                  <div
+                    className="dp-service dp-techcard dp-reveal"
+                    style={{ "--i": i }}
+                    key={label}
+                  >
+                    <span className="dp-techcard-icn">
+                      <Icon aria-hidden="true" />
+                    </span>
                     <h3 className="dp-service-h">{label}</h3>
-                    <div className="dp-pills dp-techcard-pills">{items.map((t) => (<span className="dp-pill" key={t}>{t}</span>))}</div>
+                    <div className="dp-pills dp-techcard-pills">
+                      {items.map((t) => (
+                        <span className="dp-pill" key={t}>
+                          {t}
+                        </span>
+                      ))}
+                    </div>
                   </div>
                 ))}
               </div>
@@ -1024,15 +1435,45 @@ function About({ go }) {
           <div className="dp-bento-tile dp-bento-bio">
             <p className="dp-label">About</p>
             <h2 className="dp-detail-h">Analyst by training, builder by craft.</h2>
-            <p className="dp-p">I studied Computer Science at Elon University, with minors in Art History and Digital Art, a blend that shapes how I work: technical problem-solving with a designer's eye. I also studied abroad in Dublin through FIE (Foundation for International Education), completing a software-engineering internship and writing about it on the <a className="dp-link" href={FIE_BLOG} target="_blank" rel="noreferrer">program blog</a>. Since then I've worked across both the technical and business sides of software, turning complex ideas into solutions that create real value.</p>
-            <p className="dp-p">Today I'm a Data Solutions Lead II at Coca-Cola Consolidated, on the Data Products &amp; Analytics team, where I take the business's most ambiguous problems and turn them into structured solutions — defining the KPIs and decision frameworks, aligning stakeholders, and leading the work from framing through delivery with data, AI, and automation. Outside of work, through <a className="dp-link" href="https://jazzharrisstudio.com" target="_blank" rel="noreferrer">Jazz Harris Studio</a>, I build websites, custom software, and tools for businesses and entrepreneurs, most recently Valora, a personal finance platform. When I'm not building something: traveling, hiking, Legos, anime, gaming, anything with four wheels or two, and taking my dog Echo on adventures at the Whitewater Center.</p>
+            <p className="dp-p">
+              I studied Computer Science at Elon University, with minors in Art History and Digital
+              Art, a blend that shapes how I work: technical problem-solving with a designer's eye.
+              I also studied abroad in Dublin through FIE (Foundation for International Education),
+              completing a software-engineering internship and writing about it on the{" "}
+              <a className="dp-link" href={FIE_BLOG} target="_blank" rel="noreferrer">
+                program blog
+              </a>
+              . Since then I've worked across both the technical and business sides of software,
+              turning complex ideas into solutions that create real value.
+            </p>
+            <p className="dp-p">
+              Today I'm a Data Solutions Lead II at Coca-Cola Consolidated, on the Data Products
+              &amp; Analytics team, where I take the business's most ambiguous problems and turn
+              them into structured solutions — defining the KPIs and decision frameworks, aligning
+              stakeholders, and leading the work from framing through delivery with data, AI, and
+              automation. Outside of work, through{" "}
+              <a
+                className="dp-link"
+                href="https://jazzharrisstudio.com"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Jazz Harris Studio
+              </a>
+              , I build websites, custom software, and tools for businesses and entrepreneurs, most
+              recently Valora, a personal finance platform. When I'm not building something:
+              traveling, hiking, Legos, anime, gaming, anything with four wheels or two, and taking
+              my dog Echo on adventures at the Whitewater Center.
+            </p>
           </div>
 
           <details className="dp-acc dp-acc-skills">
             <summary className="dp-acc-sum">
               <span className="dp-acc-head">
                 <span className="dp-sub">Core skills</span>
-                <span className="dp-acc-preview">Business analysis · Software &amp; web · AI &amp; LLM</span>
+                <span className="dp-acc-preview">
+                  Business analysis · Software &amp; web · AI &amp; LLM
+                </span>
               </span>
               <FiChevronDown className="dp-acc-chev" aria-hidden="true" />
             </summary>
@@ -1040,7 +1481,9 @@ function About({ go }) {
               <div className="dp-bento-skills">
                 {SERVICES.map(({ Icon, title, body }, i) => (
                   <div className="dp-service dp-reveal" style={{ "--i": i }} key={title}>
-                    <span className="dp-service-icn"><Icon aria-hidden="true" /></span>
+                    <span className="dp-service-icn">
+                      <Icon aria-hidden="true" />
+                    </span>
                     <h3 className="dp-service-h">{title}</h3>
                     <p className="dp-service-p">{body}</p>
                   </div>
@@ -1063,8 +1506,17 @@ function About({ go }) {
       <div className="dp-about-cta">
         <p className="dp-about-cta-t">Have something in mind?</p>
         <div className="dp-about-cta-btns">
-          <a className="dp-btn dp-btn-ghost" href="/Jazz-Harris-Resume.pdf" target="_blank" rel="noreferrer"><FiFileText aria-hidden="true" /> Résumé</a>
-          <button className="dp-btn dp-btn-primary" onClick={() => go("contact")}>Start a project <FiArrowRight aria-hidden="true" /></button>
+          <a
+            className="dp-btn dp-btn-ghost"
+            href="/Jazz-Harris-Resume.pdf"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <FiFileText aria-hidden="true" /> Résumé
+          </a>
+          <button className="dp-btn dp-btn-primary" onClick={() => go("contact")}>
+            Start a project <FiArrowRight aria-hidden="true" />
+          </button>
         </div>
       </div>
     </section>
@@ -1093,7 +1545,9 @@ function ContactModal({ open, onClose }) {
 
   useEffect(() => {
     if (!open) return;
-    const onKey = (e) => { if (e.key === "Escape" && !submitting) onClose(); };
+    const onKey = (e) => {
+      if (e.key === "Escape" && !submitting) onClose();
+    };
     window.addEventListener("keydown", onKey);
     const prevOverflow = document.body.style.overflow;
     document.body.style.overflow = "hidden";
@@ -1133,13 +1587,20 @@ function ContactModal({ open, onClose }) {
 
   const addFiles = (list) => {
     const incoming = Array.from(list).filter(
-      (f) => /^(image\/(png|jpe?g)|application\/pdf)$/.test(f.type) && f.size <= PROJECT_FORM_MAX_MB * 1024 * 1024
+      (f) =>
+        /^(image\/(png|jpe?g)|application\/pdf)$/.test(f.type) &&
+        f.size <= PROJECT_FORM_MAX_MB * 1024 * 1024,
     );
     setFiles((F) => [...F, ...incoming].slice(0, PROJECT_FORM_MAX_FILES));
   };
   const removeFile = (i) => setFiles((F) => F.filter((_, idx) => idx !== i));
 
-  const valid = values.firstName.trim() && values.lastName.trim() && values.email.trim() && values.phone.trim() && values.description.trim();
+  const valid =
+    values.firstName.trim() &&
+    values.lastName.trim() &&
+    values.email.trim() &&
+    values.phone.trim() &&
+    values.description.trim();
 
   const submit = async (e) => {
     e.preventDefault();
@@ -1164,17 +1625,33 @@ function ContactModal({ open, onClose }) {
   };
 
   return createPortal(
-    <div className="dp-modal-overlay" role="dialog" aria-modal="true" aria-label="Tell me what's on your mind" onClick={() => !submitting && onClose()}>
+    <div
+      className="dp-modal-overlay"
+      role="dialog"
+      aria-modal="true"
+      aria-label="Tell me what's on your mind"
+      onClick={() => !submitting && onClose()}
+    >
       <div className="dp-modal" onClick={(e) => e.stopPropagation()}>
-        <button type="button" className="dp-modal-close" aria-label="Close" onClick={onClose} disabled={submitting}>
+        <button
+          type="button"
+          className="dp-modal-close"
+          aria-label="Close"
+          onClick={onClose}
+          disabled={submitting}
+        >
           <FiX aria-hidden="true" />
         </button>
         {status === "success" ? (
           <div className="dp-modal-success">
-            <span className="dp-modal-success-icn"><FiCheckCircle aria-hidden="true" /></span>
+            <span className="dp-modal-success-icn">
+              <FiCheckCircle aria-hidden="true" />
+            </span>
             <h3 className="dp-modal-h">Got it — thanks!</h3>
             <p className="dp-modal-sub">I reply within 24 hours. Talk soon.</p>
-            <button type="button" className="dp-btn dp-btn-primary" onClick={onClose}>Done</button>
+            <button type="button" className="dp-btn dp-btn-primary" onClick={onClose}>
+              Done
+            </button>
           </div>
         ) : (
           <form className="dp-modal-form" onSubmit={submit} noValidate>
@@ -1184,44 +1661,98 @@ function ContactModal({ open, onClose }) {
 
             <div className="dp-modal-row2">
               <label className="dp-field">
-                <span className="dp-field-l">First name <b>*</b></span>
-                <input ref={firstFieldRef} required value={values.firstName} onChange={setField("firstName")} placeholder="Jane" />
+                <span className="dp-field-l">
+                  First name <b>*</b>
+                </span>
+                <input
+                  ref={firstFieldRef}
+                  required
+                  value={values.firstName}
+                  onChange={setField("firstName")}
+                  placeholder="Jane"
+                />
               </label>
               <label className="dp-field">
-                <span className="dp-field-l">Last name <b>*</b></span>
-                <input required value={values.lastName} onChange={setField("lastName")} placeholder="Doe" />
+                <span className="dp-field-l">
+                  Last name <b>*</b>
+                </span>
+                <input
+                  required
+                  value={values.lastName}
+                  onChange={setField("lastName")}
+                  placeholder="Doe"
+                />
               </label>
             </div>
             <div className="dp-modal-row2">
               <label className="dp-field">
-                <span className="dp-field-l">Email <b>*</b></span>
-                <input type="email" required value={values.email} onChange={setField("email")} placeholder="jane@company.com" />
+                <span className="dp-field-l">
+                  Email <b>*</b>
+                </span>
+                <input
+                  type="email"
+                  required
+                  value={values.email}
+                  onChange={setField("email")}
+                  placeholder="jane@company.com"
+                />
               </label>
               <label className="dp-field">
-                <span className="dp-field-l">Phone <b>*</b></span>
-                <input type="tel" required value={values.phone} onChange={setField("phone")} placeholder="(704) 555-0142" />
+                <span className="dp-field-l">
+                  Phone <b>*</b>
+                </span>
+                <input
+                  type="tel"
+                  required
+                  value={values.phone}
+                  onChange={setField("phone")}
+                  placeholder="(704) 555-0142"
+                />
               </label>
             </div>
             <label className="dp-field">
-              <span className="dp-field-l">What's on your mind <b>*</b></span>
-              <textarea required rows={4} value={values.description} onChange={setField("description")} placeholder="A project, a role, a question — include timeline or budget if relevant…" />
+              <span className="dp-field-l">
+                What's on your mind <b>*</b>
+              </span>
+              <textarea
+                required
+                rows={4}
+                value={values.description}
+                onChange={setField("description")}
+                placeholder="A project, a role, a question — include timeline or budget if relevant…"
+              />
             </label>
 
             <label className="dp-field">
-              <span className="dp-field-l">Reference links <i>(optional)</i></span>
+              <span className="dp-field-l">
+                Reference links <i>(optional)</i>
+              </span>
               <input
                 value={linkInput}
                 onChange={(e) => setLinkInput(e.target.value)}
-                onKeyDown={(e) => { if (e.key === "Enter") { e.preventDefault(); addLink(); } }}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter") {
+                    e.preventDefault();
+                    addLink();
+                  }
+                }}
                 placeholder="https://a-site-you-like.com"
               />
-              <span className="dp-field-hint">Sites you like, your current site, a brief — press Enter to add.</span>
+              <span className="dp-field-hint">
+                Sites you like, your current site, a brief — press Enter to add.
+              </span>
               {links.length > 0 && (
                 <div className="dp-tag-row">
                   {links.map((l) => (
                     <span className="dp-tag" key={l}>
                       {l.replace(/^https?:\/\//, "")}
-                      <button type="button" onClick={() => removeLink(l)} aria-label={`Remove ${l}`}><FiX aria-hidden="true" /></button>
+                      <button
+                        type="button"
+                        onClick={() => removeLink(l)}
+                        aria-label={`Remove ${l}`}
+                      >
+                        <FiX aria-hidden="true" />
+                      </button>
                     </span>
                   ))}
                 </div>
@@ -1229,25 +1760,52 @@ function ContactModal({ open, onClose }) {
             </label>
 
             <div className="dp-field">
-              <span className="dp-field-l">Attach images <i>(optional)</i></span>
+              <span className="dp-field-l">
+                Attach images <i>(optional)</i>
+              </span>
               <div
                 className={"dp-drop" + (dragOver ? " is-over" : "")}
-                onDragOver={(e) => { e.preventDefault(); setDragOver(true); }}
+                onDragOver={(e) => {
+                  e.preventDefault();
+                  setDragOver(true);
+                }}
                 onDragLeave={() => setDragOver(false)}
-                onDrop={(e) => { e.preventDefault(); setDragOver(false); addFiles(e.dataTransfer.files); }}
+                onDrop={(e) => {
+                  e.preventDefault();
+                  setDragOver(false);
+                  addFiles(e.dataTransfer.files);
+                }}
                 onClick={() => fileInputRef.current && fileInputRef.current.click()}
               >
                 <FiPaperclip aria-hidden="true" />
-                <span><b>Drop sketches / screenshots here</b>, or click to browse</span>
-                <span className="dp-drop-hint">PNG, JPG, PDF · up to {PROJECT_FORM_MAX_FILES} files · {PROJECT_FORM_MAX_MB} MB each</span>
-                <input ref={fileInputRef} type="file" hidden multiple accept="image/png,image/jpeg,application/pdf" onChange={(e) => addFiles(e.target.files)} />
+                <span>
+                  <b>Drop sketches / screenshots here</b>, or click to browse
+                </span>
+                <span className="dp-drop-hint">
+                  PNG, JPG, PDF · up to {PROJECT_FORM_MAX_FILES} files · {PROJECT_FORM_MAX_MB} MB
+                  each
+                </span>
+                <input
+                  ref={fileInputRef}
+                  type="file"
+                  hidden
+                  multiple
+                  accept="image/png,image/jpeg,application/pdf"
+                  onChange={(e) => addFiles(e.target.files)}
+                />
               </div>
               {files.length > 0 && (
                 <div className="dp-tag-row">
                   {files.map((f, i) => (
                     <span className="dp-tag" key={f.name + i}>
                       {f.name}
-                      <button type="button" onClick={() => removeFile(i)} aria-label={`Remove ${f.name}`}><FiX aria-hidden="true" /></button>
+                      <button
+                        type="button"
+                        onClick={() => removeFile(i)}
+                        aria-label={`Remove ${f.name}`}
+                      >
+                        <FiX aria-hidden="true" />
+                      </button>
                     </span>
                   ))}
                 </div>
@@ -1255,18 +1813,36 @@ function ContactModal({ open, onClose }) {
             </div>
 
             {status === "error" && (
-              <p className="dp-modal-error">Something went wrong sending that. Please try again, or email me directly at <a className="dp-link" href={GMAIL_COMPOSE}>{EMAIL}</a>.</p>
+              <p className="dp-modal-error">
+                Something went wrong sending that. Please try again, or email me directly at{" "}
+                <a className="dp-link" href={GMAIL_COMPOSE}>
+                  {EMAIL}
+                </a>
+                .
+              </p>
             )}
 
-            <button type="submit" className="dp-btn dp-btn-primary dp-modal-submit" disabled={!valid || submitting}>
-              {submitting ? "Sending…" : <>Send request <FiArrowRight aria-hidden="true" /></>}
+            <button
+              type="submit"
+              className="dp-btn dp-btn-primary dp-modal-submit"
+              disabled={!valid || submitting}
+            >
+              {submitting ? (
+                "Sending…"
+              ) : (
+                <>
+                  Send request <FiArrowRight aria-hidden="true" />
+                </>
+              )}
             </button>
-            <p className="dp-modal-privacy"><FiLock aria-hidden="true" /> Goes straight to Jazz. Never shared or sold.</p>
+            <p className="dp-modal-privacy">
+              <FiLock aria-hidden="true" /> Goes straight to Jazz. Never shared or sold.
+            </p>
           </form>
         )}
       </div>
     </div>,
-    document.querySelector(".dp-root") || document.body
+    document.querySelector(".dp-root") || document.body,
   );
 }
 
@@ -1277,38 +1853,95 @@ function Contact() {
       <div className="dp-contact-head">
         <p className="dp-label">Contact</p>
         <h2 className="dp-cta-h">Let's build something that works.</h2>
-        <p className="dp-cta-sub">Got a project, a problem, or a half-formed idea? Tell me about it below, and I read everything.</p>
+        <p className="dp-cta-sub">
+          Got a project, a problem, or a half-formed idea? Tell me about it below, and I read
+          everything.
+        </p>
       </div>
 
       <div className="dp-contact-card">
-        <button type="button" className="dp-contact-row dp-contact-row-primary" onClick={() => setModalOpen(true)}>
-          <span className="dp-cr-icn"><FiMail aria-hidden="true" /></span>
-          <span className="dp-cr-text"><span className="dp-cr-l">Contact me</span><span className="dp-cr-v">Send a message</span></span>
+        <button
+          type="button"
+          className="dp-contact-row dp-contact-row-primary"
+          onClick={() => setModalOpen(true)}
+        >
+          <span className="dp-cr-icn">
+            <FiMail aria-hidden="true" />
+          </span>
+          <span className="dp-cr-text">
+            <span className="dp-cr-l">Contact me</span>
+            <span className="dp-cr-v">Send a message</span>
+          </span>
           <FiArrowRight className="dp-cr-arrow" aria-hidden="true" />
         </button>
-        <a className="dp-contact-row" href="https://www.linkedin.com/in/maurajharris/" target="_blank" rel="noreferrer">
-          <span className="dp-cr-icn"><FiLinkedin aria-hidden="true" /></span>
-          <span className="dp-cr-text"><span className="dp-cr-l">LinkedIn</span><span className="dp-cr-v">/in/maurajharris</span></span>
+        <a
+          className="dp-contact-row"
+          href="https://www.linkedin.com/in/maurajharris/"
+          target="_blank"
+          rel="noreferrer"
+        >
+          <span className="dp-cr-icn">
+            <FiLinkedin aria-hidden="true" />
+          </span>
+          <span className="dp-cr-text">
+            <span className="dp-cr-l">LinkedIn</span>
+            <span className="dp-cr-v">/in/maurajharris</span>
+          </span>
           <FiArrowUpRight className="dp-cr-arrow" aria-hidden="true" />
         </a>
-        <a className="dp-contact-row" href="https://github.com/Jazz-H" target="_blank" rel="noreferrer">
-          <span className="dp-cr-icn"><FiGithub aria-hidden="true" /></span>
-          <span className="dp-cr-text"><span className="dp-cr-l">GitHub</span><span className="dp-cr-v">/Jazz-H</span></span>
+        <a
+          className="dp-contact-row"
+          href="https://github.com/Jazz-H"
+          target="_blank"
+          rel="noreferrer"
+        >
+          <span className="dp-cr-icn">
+            <FiGithub aria-hidden="true" />
+          </span>
+          <span className="dp-cr-text">
+            <span className="dp-cr-l">GitHub</span>
+            <span className="dp-cr-v">/Jazz-H</span>
+          </span>
           <FiArrowUpRight className="dp-cr-arrow" aria-hidden="true" />
         </a>
-        <a className="dp-contact-row" href="/Jazz-Harris-Resume.pdf" target="_blank" rel="noreferrer">
-          <span className="dp-cr-icn"><FiFileText aria-hidden="true" /></span>
-          <span className="dp-cr-text"><span className="dp-cr-l">Résumé</span><span className="dp-cr-v">View / download PDF</span></span>
+        <a
+          className="dp-contact-row"
+          href="/Jazz-Harris-Resume.pdf"
+          target="_blank"
+          rel="noreferrer"
+        >
+          <span className="dp-cr-icn">
+            <FiFileText aria-hidden="true" />
+          </span>
+          <span className="dp-cr-text">
+            <span className="dp-cr-l">Résumé</span>
+            <span className="dp-cr-v">View / download PDF</span>
+          </span>
           <FiArrowUpRight className="dp-cr-arrow" aria-hidden="true" />
         </a>
-        <a className="dp-contact-row" href="https://jazzharrisstudio.com" target="_blank" rel="noreferrer">
-          <span className="dp-cr-icn"><FiGlobe aria-hidden="true" /></span>
-          <span className="dp-cr-text"><span className="dp-cr-l">Jazz Harris Studio</span><span className="dp-cr-v">jazzharrisstudio.com</span></span>
+        <a
+          className="dp-contact-row"
+          href="https://jazzharrisstudio.com"
+          target="_blank"
+          rel="noreferrer"
+        >
+          <span className="dp-cr-icn">
+            <FiGlobe aria-hidden="true" />
+          </span>
+          <span className="dp-cr-text">
+            <span className="dp-cr-l">Jazz Harris Studio</span>
+            <span className="dp-cr-v">jazzharrisstudio.com</span>
+          </span>
           <FiArrowUpRight className="dp-cr-arrow" aria-hidden="true" />
         </a>
         <div className="dp-contact-row dp-contact-row-static">
-          <span className="dp-cr-icn"><FiMapPin aria-hidden="true" /></span>
-          <span className="dp-cr-text"><span className="dp-cr-l">Location</span><span className="dp-cr-v">Charlotte, NC</span></span>
+          <span className="dp-cr-icn">
+            <FiMapPin aria-hidden="true" />
+          </span>
+          <span className="dp-cr-text">
+            <span className="dp-cr-l">Location</span>
+            <span className="dp-cr-v">Charlotte, NC</span>
+          </span>
         </div>
       </div>
       <ContactModal open={modalOpen} onClose={() => setModalOpen(false)} />

@@ -3,10 +3,12 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
     "build": "next build",
-    "start": "next start -H 0.0.0.0 -p ${PORT:-3000}",
-    "lint": "eslint pages components lib"
+    "dev": "next dev",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "lint": "eslint pages components lib",
+    "start": "next start -H 0.0.0.0 -p ${PORT:-3000}"
   },
   "engines": {
     "node": ">=20.9.0"
@@ -26,6 +28,7 @@
     "eslint": "^9.39.4",
     "eslint-config-next": "^16.2.6",
     "postcss": "^8.4.16",
+    "prettier": "^3.9.10",
     "tailwindcss": "^3.1.8",
     "typescript": "^5.8.2"
   }

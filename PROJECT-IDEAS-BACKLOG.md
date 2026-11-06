@@ -7,7 +7,8 @@ buildable with PII-safe / demo (or spec) assets so each can be showcased.
 
 ## 🎨 Branding & Design — two pieces to round out the section
 
-### 1. Craft Beverage Brand & Packaging *(spec)* — pulled from site, pending real Figma work
+### 1. Craft Beverage Brand & Packaging _(spec)_ — pulled from site, pending real Figma work
+
 A small-batch craft soda or cold-brew brand, logo through physical packaging.
 Was live on the site as a "Coming soon" placeholder card with an AI-mockup
 image; pulled off the site so the portfolio only shows finished/real work.
@@ -29,7 +30,8 @@ image; pulled off the site so the portfolio only shows finished/real work.
   - `outcome`: "A shelf-ready brand kit: logo suite, color and type system, can and label artwork, and a one-page brand guide, shown with realistic packaging mockups."
   - Existing brand direction to build on: "Wildroot" — craft soda, blackberry basil flavor, small-batch positioning (see prior mockup for color/type starting point: pink/orange/green/near-black palette).
 
-### 2. UX Redesign Teardown *(UI/UX)* — shipped as a finished case study
+### 2. UX Redesign Teardown _(UI/UX)_ — shipped as a finished case study
+
 Take a real product with a clunky flow, diagnose why it fails users, and
 rebuild it — a before-and-after redesign that leans on the BA strengths
 (research, problem-solving) more than pure visual output. Live on `PROJECTS`
@@ -50,7 +52,7 @@ conversation this came from). See **`LOFT-LIVING-PLAN.md`** and
   Figma access was available in the sessions that built this, so a working
   PWA was built instead of a Figma prototype. Case-study copy and tags
   (React, PWA) reflect that; "Visit live" and "View code" links are real.
-- **Why it fits:** shows analytical UX (research → problem → redesign) *and*
+- **Why it fits:** shows analytical UX (research → problem → redesign) _and_
   the engineering to actually ship it, which most design-only portfolios
   lack and which pairs with the analyst + software-engineer background.
 
@@ -68,7 +70,7 @@ _Backup branding idea (parked):_ Performance Auto Garage brand identity
 
 ---
 
-## ⚡ Power Apps — small projects to *learn the tool* (selection on hold)
+## ⚡ Power Apps — small projects to _learn the tool_ (selection on hold)
 
 Options for when you're ready to start learning; ordered easiest first. Each is a weekend-sized build on a SharePoint or
 Dataverse list; all teach core Power Apps muscles.

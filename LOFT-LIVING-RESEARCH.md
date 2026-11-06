@@ -7,10 +7,10 @@ snapshot, not pulled directly from Apple/Google's own dashboards — flag as
 
 ## Competitive benchmark
 
-| App | Rating | Volume | Source |
-|---|---|---|---|
-| **LOFT Living** (RealPage) | 1.94★ | 5.2K ratings (Android) | Aggregator |
-| **Zego Resident** (PayLease) | 3.56★ | ~2K ratings | Aggregator |
+| App                           | Rating   | Volume                      | Source                                            |
+| ----------------------------- | -------- | --------------------------- | ------------------------------------------------- |
+| **LOFT Living** (RealPage)    | 1.94★    | 5.2K ratings (Android)      | Aggregator                                        |
+| **Zego Resident** (PayLease)  | 3.56★    | ~2K ratings                 | Aggregator                                        |
 | **RentCafe Resident** (Yardi) | **4.7★** | 164K reviews, 1M+ downloads | **User-verified, Google Play, direct screenshot** |
 
 LOFT isn't just below-average — it's in a different tier from a
@@ -58,7 +58,7 @@ Likely cause: a webview-shell architecture — each screen is a separately
 styled web page loaded inside a thin native wrapper, rather than truly
 native (or React Native/Flutter) screens sharing one design system. That
 explains the inconsistent look (each "page" was built independently) and
-why app *updates* specifically trigger crashes — webview cache/version
+why app _updates_ specifically trigger crashes — webview cache/version
 mismatches and JS-bridge breakage are a known failure mode for that
 architecture, distinct from a typical native-app update.
 
@@ -72,7 +72,7 @@ just look nicer:
 - **Sign-in** → persistent session + biometric unlock, one native auth
   state instead of a re-auth-per-webview pattern.
 - **Rent-payment** → a visible payment state machine (submit → pending →
-  confirmed) so retries are safe and the user always sees *why* something
+  confirmed) so retries are safe and the user always sees _why_ something
   did or didn't go through.
 - **Maintenance** → a single consistent native design system across the
   flow, replacing the "stitched-together web pages" feel.
