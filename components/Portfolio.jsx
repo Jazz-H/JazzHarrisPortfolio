@@ -318,7 +318,7 @@ const FILTERS = [
 // positioning, then the flagship product/dev work, then freelance and
 // design pieces. LOFT Living is a "Coming soon" placeholder but slots right
 // after the finished BA work since it's thematically the strongest BA-
-// methodology fit once real assets land — see LOFT-LIVING-PLAN.md. Category
+// methodology fit once real assets land — see docs/LOFT-LIVING-PLAN.md. Category
 // filters re-slice this same list, so each category still reads
 // strongest-first. Unlisted projects fall to the end.
 const WORK_ORDER = [
