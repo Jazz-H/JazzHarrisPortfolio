@@ -37,35 +37,6 @@ const FIE_BLOG =
 const PROJECTS = [
   {
     cat: "Websites",
-    title: "Valora",
-    ai: true,
-    body: "A personal budgeting web app that turns messy finances into clear, calm decisions. Track spending, set goals, and see where your money actually goes, privately and without forced bank linking. Live in public beta as a website, with a native mobile app on the way.",
-    tags: ["React", "TypeScript", "JavaScript", "CSS", "HTML"],
-    status: "Beta",
-    image: "/assets/ValoraReports.jpg",
-    images: [
-      "/assets/ValoraOverview.jpg",
-      "/assets/ValoraPlan.jpg",
-      "/assets/ValoraSpending.jpg",
-      "/assets/ValoraTransactions.jpg",
-      "/assets/ValoraGoals.jpg",
-      "/assets/ValoraDebt.jpg",
-      "/assets/ValoraFlow.jpg",
-    ],
-    live: "https://getvalora.netlify.app",
-    company: "Independent project",
-    role: "Solo design & development",
-    study: {
-      challenge:
-        "I was tired of budgeting apps that overpromised and boxed you into rigid UIs, where you'd spend ages entering your data only to be frustrated by how it was shown. Most also force you to link a bank account but give you no real control over your own data. I wanted the opposite: a calm, flexible app that answers what actually matters, like where my money is going and what's safe to spend right now, while keeping you in control of your data.",
-      approach:
-        "I designed and built Valora end to end in React and TypeScript: the visual system, data model, and product flows. The home Overview surfaces the essentials at a glance, including savings rate, a safe-to-spend number, cash reserve, income, and goal milestones, paired with an AI Insight that recommends your next money move. I leaned on my design background for a calm, legible UI, built a guided first run so new users reach value in minutes, and made it private by default. Your financial data stays on your device unless you opt into cloud backup, with no forced bank linking.",
-      outcome:
-        "Live in public beta as a website and gathering real user feedback to shape the roadmap, with a native mobile app next. I took it from concept to a working product, owning the design, UX, and engineering end to end.",
-    },
-  },
-  {
-    cat: "Websites",
     title: "Alamance Community Foundation",
     body: "The website for the Alamance Community Foundation, a Burlington, NC public charity that stewards over $27M in assets and grants roughly $1.9M a year to local nonprofits. I designed and built it as a freelance project, focused on credibility, clear navigation, and making it easy for donors to find programs and give.",
     tags: ["Squarespace", "HTML", "CSS", "JavaScript"],
@@ -326,7 +297,6 @@ const WORK_ORDER = [
   "Copilot Studio DevOps Agent",
   "Activity & Objective Dashboard",
   "LOFT Living — UX Redesign",
-  "Valora",
   "Clearcast",
   "Alamance Community Foundation",
   "Chat App",
@@ -401,11 +371,6 @@ const METRICS = {
     { value: "Day one", label: "Launched with a ready identity, pushed to all field devices" },
     { value: "5 densities", label: "Production app icon set, 48 to 192 px" },
     { value: "Email to app", label: "A manual template reimagined as a branded mobile form" },
-  ],
-  Valora: [
-    { value: "Privacy-first", label: "Your data stays yours, no forced bank linking" },
-    { value: "End-to-end", label: "Designed & built solo" },
-    { value: "AI insights", label: "Recommends your next money move" },
   ],
   "Alamance Community Foundation": [
     { value: "$27M+", label: "Assets the foundation stewards" },
@@ -1460,10 +1425,9 @@ function About({ go }) {
               >
                 Jazz Harris Studio
               </a>
-              , I build websites, custom software, and tools for businesses and entrepreneurs, most
-              recently Valora, a personal finance platform. When I'm not building something:
-              traveling, hiking, Legos, anime, gaming, anything with four wheels or two, and taking
-              my dog Echo on adventures at the Whitewater Center.
+              , I build websites, custom software, and tools for businesses and entrepreneurs. When
+              I'm not building something: traveling, hiking, Legos, anime, gaming, anything with
+              four wheels or two, and taking my dog Echo on adventures at the Whitewater Center.
             </p>
           </div>
 
